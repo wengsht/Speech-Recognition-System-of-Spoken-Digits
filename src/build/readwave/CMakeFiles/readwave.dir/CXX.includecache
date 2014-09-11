@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/wengsht/Course/speech/hw/master/src/readwave/readwave.cpp
+stdlib.h
+-
+math.h
+-
+memory.h
+-
+assert.h
+-
+string.h
+-
+readwave.h
+/Users/wengsht/Course/speech/hw/master/src/readwave/readwave.h
+
+/Users/wengsht/Course/speech/hw/master/src/readwave/readwave.h
+stdio.h
+/Users/wengsht/Course/speech/hw/master/src/readwave/stdio.h
+
