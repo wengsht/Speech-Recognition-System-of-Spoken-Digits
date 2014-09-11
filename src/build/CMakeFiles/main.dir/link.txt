@@ -1,1 +1,0 @@
-/usr/bin/g++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/main.dir/main.cpp.o  -o main  Analysis/libAnalysis.a Capture/libCapture.a test/libtest.a Configure/libConfigure.a readwave/libreadwave.a data/libdata.a -lportaudio 

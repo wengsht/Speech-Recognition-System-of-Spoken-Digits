@@ -1,2 +1,0 @@
-/usr/bin/ar cr libConfigure.a  CMakeFiles/Configure.dir/tool.cpp.o
-/usr/bin/ranlib libConfigure.a

@@ -1,2 +1,0 @@
-/usr/bin/ar cr libreadwave.a  CMakeFiles/readwave.dir/readwave.cpp.o
-/usr/bin/ranlib libreadwave.a
