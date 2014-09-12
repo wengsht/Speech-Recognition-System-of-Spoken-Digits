@@ -10,17 +10,20 @@
 #include "RawData.h"
 #include <math.h>
 
-void FeatureExtractor::calcFeatures(const RawData* rd){
-    preEmph(rd->getData(),rd->getFrameNum());
-    int size = (int)emp_data.size();
-    int dt = SEGMENT_SIZE-OVERLAP_SIZE;
-    for(int i = 0;i+SEGMENT_SIZE<size;i+=dt){
-        this->dealWithOneSegment((emp_data.data())+i);
-    }
-    standard();
-    normalization();
-}
+//void FeatureExtractor::calcFeatures(const RawData* rd){
+//    preEmph(rd->getData(),rd->getFrameNum());
+//    int size = (int)emp_data.size();
+//    int dt = SEGMENT_SIZE-OVERLAP_SIZE;
+//    for(int i = 0;i+SEGMENT_SIZE<size;i+=dt){
+//        this->dealWithOneSegment((emp_data.data())+i);
+//    }
+//    standard();
+//    normalization();
+//}
 
+SP_RESULT FeatureExtractor::exFeatures(const RawData *data) {
+
+}
 
 void FeatureExtractor::preEmph(const SOUND_DATA* rd,int size,double factor){
     emp_data.push_back(rd[0]);

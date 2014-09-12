@@ -115,3 +115,16 @@ void saveArray(FILE* fid ,const int * data, int len){
     }
     fprintf(fid,"\n");
 }
+
+const char *SP_ERROR_CODE_GLOBAL[] = {
+    "SUCCESS"
+#define ERROR_CODE(ERROR_UID, X, STR) \
+    , STR
+#include "ErrorCode.def"
+#undef ERROR_CODE
+};
+const char * SP_ERROR_CODE(SP_RESULT ERROR_UID) {
+    if(SP_RESULT_CNT <= ERROR_UID) 
+        return "NULL ERROR TYPE";
+    return SP_ERROR_CODE_GLOBAL[ERROR_UID];
+}

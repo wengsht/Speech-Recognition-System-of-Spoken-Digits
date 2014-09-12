@@ -40,6 +40,8 @@ public:
     FeatureExtractor(){}
     ~FeatureExtractor(){}
     
-    void calcFeatures(const RawData* rd);
+//    void calcFeatures(const RawData* rd);
+    
+    SP_RESULT exFeatures(const RawData *data);
 };
 #endif /* defined(__SpeechRecongnitionSystem__FeatureExtractor__) */

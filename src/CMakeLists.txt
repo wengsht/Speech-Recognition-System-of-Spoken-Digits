@@ -1,8 +1,8 @@
 cmake_minimum_required (VERSION 2.6)
 project (Speech)
 
-set (PRO2_MAIN main)
-add_executable(${PRO2_MAIN} main.cpp)
+set (PRO2_MAIN pro2_demo)
+add_executable(${PRO2_MAIN} pro2_demo.cpp)
 
 set(ANALYSIS Analysis)
 set(CAPTURE Capture)
@@ -30,7 +30,7 @@ add_subdirectory (${DATA})
 
 target_link_libraries(${PRO2_MAIN} ${ANALYSIS})
 target_link_libraries(${PRO2_MAIN} ${CAPTURE})
-target_link_libraries(${PRO2_MAIN} ${Feature})
+target_link_libraries(${PRO2_MAIN} ${FEATURE})
 target_link_libraries(${PRO2_MAIN} ${TEST})
 target_link_libraries(${PRO2_MAIN} ${CONFIGURE})
 target_link_libraries(${PRO2_MAIN} ${READWAVE})
