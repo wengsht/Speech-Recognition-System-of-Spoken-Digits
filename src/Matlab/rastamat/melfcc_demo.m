@@ -145,6 +145,17 @@ title('\fontsize{15}Mel Cepstrum: C Plus Plus');
 
 cepstra = lifter(cepstra, lifterexp);
 
+%%%
+figure(5);
+subplot(splite, 1, 1);
+plot(y);
+title('\fontsize{15}Mel Cepstrum: C Plus Plus');
+subplot(splite, 1, 2);
+y = load('normalMelCeps.txt')';
+plot(y);
+title('\fontsize{15}Normalized Mel Cepstrum: C Plus Plus');
+%%%
+
 if useenergy
   cepstra(1,:) = logE;
 end

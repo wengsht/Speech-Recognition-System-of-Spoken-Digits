@@ -100,6 +100,7 @@ enum ERROR_UIDS {
 };
 
 extern const char *SP_ERROR_CODE_GLOBAL[];
+
 typedef int SP_RESULT;
 const char * SP_ERROR_CODE(SP_RESULT );
 

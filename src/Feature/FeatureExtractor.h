@@ -24,6 +24,7 @@ class FeatureExtractor{
     CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , melLogSpec, MelLogSpec)
 
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, melCeps, MelCepstrum);
+    CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, normalMelCeps, NormalMelCepstrum);
 protected:
 
 //    std::vector<Feature> melCeps;
@@ -90,7 +91,9 @@ protected:
             double maxF = MAX_F, \
             int sampleRate = SAMPLE_RATE);
 
-    SP_RESULT mel2dct(Feature & featrue, std::vector<double> melLog, int cepsNum = CEPS_NUM);
+    SP_RESULT mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum = CEPS_NUM);
+
+    SP_RESULT normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes);
 
     SP_RESULT getMelLog(std::vector<double> & melLog, \
             const std::vector<double> & powSpec, \

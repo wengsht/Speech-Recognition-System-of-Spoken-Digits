@@ -34,6 +34,20 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
     fft2MelLog(nfft, melLogSpec, powSpec, nfilts, hz2melFunc, mel2hzFunc, minF, maxF, sampleRate);
 
     melCepstrum(melCeps, melLogSpec, cepsNum);
+
+    normalization(normalMelCeps, melCeps);
+}
+
+SP_RESULT FeatureExtractor::normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes) {
+    normalMels.clear();
+    for(int i = 0;i < melFes.size(); i++) {
+        normalMels.push_back(melFes[i]);
+
+        normalMels[i].meanNormalSelf();
+
+        normalMels[i].varianceNormalSelf();
+    }
+    return SP_SUCCESS;
 }
 
 SP_RESULT FeatureExtractor::mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum) {

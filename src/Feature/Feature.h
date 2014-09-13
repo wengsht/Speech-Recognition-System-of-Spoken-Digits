@@ -39,6 +39,8 @@ public:
         
         return ret;
     }
+    Feature & meanNormalSelf();
+    Feature & varianceNormalSelf();
     void resize(int s) {
         data.resize(s);
     }
