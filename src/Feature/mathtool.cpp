@@ -10,6 +10,8 @@
 
 #include <assert.h>
 
+#include <iostream>
+using namespace std;
 const int MAXN = 1000;
 // fft(a, n, 1) -- dft
 // fft(a, n, -1) -- idft
@@ -36,7 +38,18 @@ void fft(cp *a,int n,int f)
 // use to check fft is right
 void dft(cp *a,int n,int f)
 {
-    
+    cp *b = new cp[n];
+    for(int i = 0;i < n;i++) {
+        b[i] = cp(0, 0);
+
+        for(int j = 0;j < n;j++) {
+
+            b[i] += cp(std::real(a[j])*cos(-2.0*PI*j*i/n), std::real(a[j])*sin(-2.0*PI*j*i/n));
+        }
+    }
+    for(int i = 0;i<n;++i) a[i] = b[i];
+
+    delete []b;
 }
 
 

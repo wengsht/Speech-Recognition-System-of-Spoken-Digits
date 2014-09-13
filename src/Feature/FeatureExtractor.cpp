@@ -1,26 +1,7 @@
-//
-//  FeatureExtractor.cpp
-//  SpeechRecongnitionSystem
-//
-//  Created by Admin on 9/11/14.
-//  Copyright (c) 2014 Admin. All rights reserved.
-//
-
 #include "FeatureExtractor.h"
 #include "RawData.h"
 #include <cmath>
 #include <cstdlib>
-
-//void FeatureExtractor::calcFeatures(const RawData* rd){
-//    preEmph(rd->getData(),rd->getFrameNum());
-//    int size = (int)emp_data.size();
-//    int dt = SEGMENT_SIZE-OVERLAP_SIZE;
-//    for(int i = 0;i+SEGMENT_SIZE<size;i+=dt){
-//        this->dealWithOneSegment((emp_data.data())+i);
-//    }
-//    standard();
-//    normalization();
-//}
 
 SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
         int sampleRate, \
@@ -46,7 +27,7 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
 
     if(powSpec.size() == 0) return SP_SUCCESS;
 
-    int nfft = powSpec[0].size();
+    int nfft = (powSpec[0].size() -1) << 1;
 //    int nfft = (powSpec[0].size() - 1) * 2;
     fft2MelLog(nfft, melLogSpec, powSpec, nfilts, hz2melFunc, mel2hzFunc, minF, maxF, sampleRate);
 
@@ -159,15 +140,16 @@ SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
 
 std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \
         std::vector<double> &data) {
-    if(data.size() > res.size())
-        res.resize(data.size());
+    res.resize(data.size() / 2 + 1);
     std::complex<double> * cp = new std::complex<double>[data.size()];
 
     for(int i = 0;i < data.size();i++) {
         cp[i] = std::complex<double>(data[i], 0);
     }
 
-    fft(cp, data.size(), 1);
+    //fft(cp, data.size(), 1);
+    //fft(cp, data.size(), -1);
+    dft(cp, data.size(), 1);
 
     for(int i = 0;i < res.size();i++) {
         res[i] = std::norm(cp[i]);
