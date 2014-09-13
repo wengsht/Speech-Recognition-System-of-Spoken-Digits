@@ -1,8 +1,0 @@
-/Users/wengsht/Course/speech/hw/master/build/Analysis/CMakeFiles/Analysis.dir
-/Users/wengsht/Course/speech/hw/master/build/Capture/CMakeFiles/Capture.dir
-/Users/wengsht/Course/speech/hw/master/build/Configure/CMakeFiles/Configure.dir
-/Users/wengsht/Course/speech/hw/master/build/Feature/CMakeFiles/Feature.dir
-/Users/wengsht/Course/speech/hw/master/build/data/CMakeFiles/data.dir
-/Users/wengsht/Course/speech/hw/master/build/CMakeFiles/pro2_demo.dir
-/Users/wengsht/Course/speech/hw/master/build/readwave/CMakeFiles/readwave.dir
-/Users/wengsht/Course/speech/hw/master/build/test/CMakeFiles/test.dir

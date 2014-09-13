@@ -1,2 +1,0 @@
-/usr/bin/ar cr libFeature.a  CMakeFiles/Feature.dir/Feature.cpp.o CMakeFiles/Feature.dir/FeatureExtractor.cpp.o CMakeFiles/Feature.dir/mathtool.cpp.o
-/usr/bin/ranlib libFeature.a
