@@ -21,7 +21,7 @@ class FeatureExtractor{
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<double> , emp_data, EmpData)
     CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , windows, Windows)
     CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , powSpec, PowSpectrum)
-    CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , melLogCeps, MelLogCeps)
+    CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , melLogSpec, MelLogSpec)
 
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, melCeps, MelCepstrum);
 protected:
@@ -30,7 +30,7 @@ protected:
     void inital(){
         melCeps.clear();
         emp_data.clear();
-        melLogCeps.clear();
+        melLogSpec.clear();
         powSpec.clear();
         windows.clear();
     }
@@ -54,7 +54,8 @@ protected:
     SP_RESULT powSpectrum(Matrix<double> &powSpectrum, Matrix<double> &windows);
 
     SP_RESULT melCepstrum(std::vector<Feature> &cepstrums, \
-            const Matrix<double> &melLogCeps);
+            const Matrix<double> &melLogSpec, \
+            int cepsNum = CEPS_NUM);
 
     std::vector<double> & windowFFT(std::vector<double> &res, \
             std::vector<double> &data);
@@ -89,6 +90,8 @@ protected:
             double maxF = MAX_F, \
             int sampleRate = SAMPLE_RATE);
 
+    SP_RESULT mel2dct(Feature & featrue, std::vector<double> melLog, int cepsNum = CEPS_NUM);
+
     SP_RESULT getMelLog(std::vector<double> & melLog, \
             const std::vector<double> & powSpec, \
             const Matrix<double> &wts);
@@ -121,7 +124,8 @@ public:
             double maxF = MAX_F, \
             double (*hz2melFunc)(double) = FeatureExtractor::hz2mel, \
             double (*mel2hzFunc)(double) = FeatureExtractor::mel2hz, \
-            int nfilts = MEL_FILTER_NUM);
+            int nfilts = MEL_FILTER_NUM, \
+            int cepsNum = CEPS_NUM);
 
 };
 #endif /* defined(__SpeechRecongnitionSystem__FeatureExtractor__) */

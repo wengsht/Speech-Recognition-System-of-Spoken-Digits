@@ -56,13 +56,13 @@ CMAKE_BINARY_DIR = /Users/wengsht/Course/speech/hw/master/build
 # Target rules for target CMakeFiles/pro2_demo.dir
 
 # All Build rule for target.
-CMakeFiles/pro2_demo.dir/all: test/CMakeFiles/test.dir/all
-CMakeFiles/pro2_demo.dir/all: Feature/CMakeFiles/Feature.dir/all
-CMakeFiles/pro2_demo.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/pro2_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/pro2_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/pro2_demo.dir/all: Capture/CMakeFiles/Capture.dir/all
+CMakeFiles/pro2_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
+CMakeFiles/pro2_demo.dir/all: Feature/CMakeFiles/Feature.dir/all
 CMakeFiles/pro2_demo.dir/all: data/CMakeFiles/data.dir/all
+CMakeFiles/pro2_demo.dir/all: readwave/CMakeFiles/readwave.dir/all
+CMakeFiles/pro2_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
+CMakeFiles/pro2_demo.dir/all: test/CMakeFiles/test.dir/all
 	$(MAKE) -f CMakeFiles/pro2_demo.dir/build.make CMakeFiles/pro2_demo.dir/depend
 	$(MAKE) -f CMakeFiles/pro2_demo.dir/build.make CMakeFiles/pro2_demo.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/wengsht/Course/speech/hw/master/build/CMakeFiles  13

@@ -20,5 +20,6 @@ const double STEPTIME = 0.010;
 const int    MEL_FILTER_NUM = 40;
 const double MIN_F = 0.0;
 const double MAX_F = 4000.0; //(SAMPLE_RATE / 2.0);
+const int    CEPS_NUM = 13;
 
 #endif

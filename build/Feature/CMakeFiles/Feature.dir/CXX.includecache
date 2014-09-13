@@ -63,6 +63,8 @@ cmath
 -
 cstdlib
 -
+mathtool.h
+/Users/wengsht/Course/speech/hw/master/src/Feature/mathtool.h
 
 /Users/wengsht/Course/speech/hw/master/src/Feature/FeatureExtractor.h
 iostream

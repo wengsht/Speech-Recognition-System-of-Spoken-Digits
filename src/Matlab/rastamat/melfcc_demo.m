@@ -102,12 +102,12 @@ end
 %%%
 figure(3);
 subplot(splite, 1, 1);
-plot(aspectrum);
-title('\fontsize{15}Mel Log Cepstrum: rastamat');
+plot(log(aspectrum));
+title('\fontsize{15}Mel Log Spectrum: rastamat');
 subplot(splite, 1, 2);
-y = load('melLogCeps.txt');
+y = load('melLogSpec.txt');
 plot(y);
-title('\fontsize{15}Mel Log Cepstrum: C Plus Plus');
+title('\fontsize{15}Mel Log Spectrum: C Plus Plus');
 %%%
 
 if modelorder > 0
@@ -127,11 +127,21 @@ if modelorder > 0
   % else return the aspectrum that the cepstra are based on, prior to PLP
 
 else
-  
   % Convert to cepstra via DCT
   cepstra = spec2cep(aspectrum, numcep, dcttype);
 
 end
+
+%%%
+figure(4);
+subplot(splite, 1, 1);
+plot(cepstra);
+title('\fontsize{15}Mel Cepstrum: rastamat');
+subplot(splite, 1, 2);
+y = load('melCeps.txt')';
+plot(y);
+title('\fontsize{15}Mel Cepstrum: C Plus Plus');
+%%%
 
 cepstra = lifter(cepstra, lifterexp);
 

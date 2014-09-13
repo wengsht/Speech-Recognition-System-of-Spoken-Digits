@@ -8,3 +8,6 @@
 
 #include "Feature.h"
 
+void Feature::push_back(double d) {
+    data.push_back(d);
+}

@@ -20,5 +20,6 @@ void dft(cp *a,int n,int f);
 void fft(cp *a,int n,int f);
 //size(a) > 2*n
 void dct(double *a,int n,int f);
+void dct2(double *a, int n);
 
 #endif /* defined(__SpeechRecongnitionSystem__mathtool__) */

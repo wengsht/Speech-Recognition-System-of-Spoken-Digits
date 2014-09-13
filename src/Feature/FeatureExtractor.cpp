@@ -2,6 +2,7 @@
 #include "RawData.h"
 #include <cmath>
 #include <cstdlib>
+#include "mathtool.h"
 
 SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
         int sampleRate, \
@@ -13,7 +14,8 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
         double maxF, \
         double (*hz2melFunc)(double), \
         double (*mel2hzFunc)(double), \
-        int nfilts) {
+        int nfilts, \
+        int cepsNum) {
     SP_RESULT res; 
     inital();
 
@@ -28,15 +30,43 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
     if(powSpec.size() == 0) return SP_SUCCESS;
 
     int nfft = (powSpec[0].size() -1) << 1;
-//    int nfft = (powSpec[0].size() - 1) * 2;
-    fft2MelLog(nfft, melLogCeps, powSpec, nfilts, hz2melFunc, mel2hzFunc, minF, maxF, sampleRate);
 
-    melCepstrum(melCeps, melLogCeps);
+    fft2MelLog(nfft, melLogSpec, powSpec, nfilts, hz2melFunc, mel2hzFunc, minF, maxF, sampleRate);
+
+    melCepstrum(melCeps, melLogSpec, cepsNum);
+}
+
+SP_RESULT FeatureExtractor::mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum) {
+    int siz = melLog.size();
+    feature.resize(siz);
+    for(int i = 0;i < siz;i++)
+        feature[i] = melLog[i];
+
+//    dct(feature.rawData(), siz, 1);
+
+    dct2(feature.rawData(), siz);
+
+    feature.resize(cepsNum);
+
+    return SP_SUCCESS;
 }
 
 SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \
-        const Matrix<double> &melLogCeps) {
+        const Matrix<double> &melLogSpec, \
+        int cepsNum) {
+    cepstrums.clear();
+    if(melLogSpec.size() == 0) return SP_SUCCESS;
 
+    for(int i = 0;i < melLogSpec[0].size(); i++) {
+        std::vector<double> tmp;
+        for(int j = 0;j < melLogSpec.size(); j++)
+            if(melLogSpec[j].size() > i)
+                tmp.push_back(melLogSpec[j][i]);
+
+        cepstrums.push_back(Feature());
+
+        mel2dct(cepstrums[i], tmp, cepsNum);
+    }
     return SP_SUCCESS;
 }
 
@@ -156,6 +186,10 @@ SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
 
     MatrixMul01(melLog, wts, powSpec);
 
+    for(int i = 0;i < melLog.size();i++) 
+        for(int j = 0;j < melLog[i].size();j++)
+            melLog[i][j] = log(0.0001+fabs(melLog[i][j]));
+
     return SP_SUCCESS;
 }
 
@@ -168,9 +202,9 @@ std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \
         cp[i] = std::complex<double>(data[i], 0);
     }
 
-    //fft(cp, data.size(), 1);
+    fft(cp, data.size(), 1);
     //fft(cp, data.size(), -1);
-    dft(cp, data.size(), 1);
+    //dft(cp, data.size(), 1);
 
     for(int i = 0;i < res.size();i++) {
         res[i] = std::norm(cp[i]);
@@ -223,6 +257,7 @@ SP_RESULT FeatureExtractor::preEmph(/* out */std::vector<double> &outs, \
     for(int i = 1;i<size;i++){
         outs.push_back(1.0 * rd[i] - factor * rd[i-1]);
     }
+    printf("%d\n", outs.size());
 
     return SP_SUCCESS;
 }
