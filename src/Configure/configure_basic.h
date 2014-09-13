@@ -21,7 +21,7 @@ const int FRAME_PER_SECOND = 40; //don't change
 /// performance configure
 ///
 const bool PRINT_DEBUG_FRAME_INF = true; // print the block energy,bg,etc.
-const char  SAVE_DATA_DIR[] = "/Users/admin/Desktop/homework/";
+const char  SAVE_DATA_DIR[] = "./";
 
 
 
@@ -58,5 +58,8 @@ typedef unsigned char SAMPLE;
 #define PRINTF_S_FORMAT "%d"
 #endif
 
+#include <vector>
+template <class T>
+using Matrix = std::vector< std::vector<T> > ;
 
 #endif

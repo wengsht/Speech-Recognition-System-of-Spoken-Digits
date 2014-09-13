@@ -106,7 +106,7 @@ bool RawData::setFrameNum(int f_num){
                 f_num,SAMPLES_IN_EACH_FRAME);
     }
     this->frame_num = f_num /
-    SAMPLES_IN_EACH_FRAME *
-    SAMPLES_IN_EACH_FRAME;
+        SAMPLES_IN_EACH_FRAME *
+        SAMPLES_IN_EACH_FRAME;
     return true;
 }

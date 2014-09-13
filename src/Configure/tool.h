@@ -64,6 +64,10 @@ void saveArray(FILE* fid ,const int * data, int len);
 protected  :TYPE NAME; \
 public : virtual TYPE get##FUNC()const{return NAME;}
 
+#define CONST_REFERENCE_READ_ONLY_DECLARE(TYPE,NAME,FUNC) \
+protected  :TYPE NAME; \
+public : virtual const TYPE & get##FUNC()const{return NAME;}
+
 #define WRITE_ONLY_DECLARE(TYPE,NAME,FUNC) \
 protected  :TYPE NAME; \
 public :virtual void set##FUNC(TYPE name){this->NAME = name;}

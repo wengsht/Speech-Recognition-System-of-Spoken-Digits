@@ -17,7 +17,7 @@ const int MAXN = 1000;
 void fft(cp *a,int n,int f)
 {
  //   assert(MAXN > n);
-    static cp b[MAXN];
+    cp *b = new cp[n];
     double arg = PI;
     for(int k = n>>1;k;k>>=1,arg*=0.5){
         cp  wm = std::polar(f*arg),w(1,0);
@@ -30,6 +30,7 @@ void fft(cp *a,int n,int f)
         }
         for(int i = 0;i<n;++i) a[i] = b[i];
     }
+    delete []b;
 }
 
 // use to check fft is right
