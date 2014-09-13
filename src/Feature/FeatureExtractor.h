@@ -21,7 +21,7 @@ class FeatureExtractor{
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<double> , emp_data, EmpData)
     CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , windows, Windows)
     CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , powSpec, PowSpectrum)
-    CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , melLogSpec, MelLogSpectrum)
+    CONST_REFERENCE_READ_ONLY_DECLARE(Matrix<double> , melLogCeps, MelLogCeps)
 
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, melCeps, MelCepstrum);
 protected:
@@ -30,7 +30,7 @@ protected:
     void inital(){
         melCeps.clear();
         emp_data.clear();
-        melLogSpec.clear();
+        melLogCeps.clear();
         powSpec.clear();
         windows.clear();
     }
@@ -54,7 +54,7 @@ protected:
     SP_RESULT powSpectrum(Matrix<double> &powSpectrum, Matrix<double> &windows);
 
     SP_RESULT melCepstrum(std::vector<Feature> &cepstrums, \
-            const Matrix<double> &melLogSpec);
+            const Matrix<double> &melLogCeps);
 
     std::vector<double> & windowFFT(std::vector<double> &res, \
             std::vector<double> &data);
@@ -72,6 +72,13 @@ protected:
     static double getDB(double pow) {
         return 10.0 * log(pow) / log(10.0);
     }
+    /* 
+     * melLog = wts * powSpec'
+     * */
+    SP_RESULT MatrixMul01(Matrix<double> & melLog, \
+            const Matrix<double> &wts, \
+            const Matrix<double> & powSpec);
+
     SP_RESULT fft2MelLog(int nfft, \
             Matrix<double> &melLog, \
             Matrix<double> & powSpec, \

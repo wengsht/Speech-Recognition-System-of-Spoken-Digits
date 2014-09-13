@@ -17,8 +17,8 @@ const int OVERLAP_SIZE = OVERLAP_TIME/1000.0 * SAMPLES_IN_EACH_FRAME;
 const double SP_PREEMPH_FACTOR = 0.95;
 const double WINTIME = 0.025; // sec
 const double STEPTIME = 0.010;
-const int    MEL_FILTER_NUM = 12;
+const int    MEL_FILTER_NUM = 40;
 const double MIN_F = 0.0;
-const double MAX_F = (SAMPLE_RATE / 2.0);
+const double MAX_F = 4000.0; //(SAMPLE_RATE / 2.0);
 
 #endif

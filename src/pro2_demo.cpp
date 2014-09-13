@@ -51,4 +51,8 @@ void reportMatlab(FeatureExtractor &extractor) {
     const Matrix<double> &powSpec = extractor.getPowSpectrum();
 
     storeMatrix(powSpec, "powSpec.txt");
+
+    const Matrix<double> &melLog = extractor.getMelLogCeps();
+
+    storeMatrix(melLog, "melLogCeps.txt");
 }

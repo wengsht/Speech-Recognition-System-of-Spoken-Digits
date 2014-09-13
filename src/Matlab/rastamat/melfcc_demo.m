@@ -60,7 +60,7 @@ splite = 2;
           'numcep', 13, 'lifterexp', 0.6, 'sumpower', 1, 'preemph', 0.97, ...
 	  'dither', 0, 'minfreq', 0, 'maxfreq', 4000, ...
 	  'nbands', 40, 'bwidth', 1.0, 'dcttype', 2, ...
-	  'fbtype', 'mel', 'usecmp', 0, 'modelorder', 0, ...
+	  'fbtype', 'htkmel', 'usecmp', 0, 'modelorder', 0, ...
           'broaden', 0, 'useenergy', 0);
 
 if preemph ~= 0
@@ -85,12 +85,10 @@ title('\fontsize{15}PreEmphasize: C Plus Plus');
 figure(2);
 subplot(splite, 1, 1);
 plot(pspectrum);
-size(pspectrum)
 title('\fontsize{15}Pow Spectrum: rastamat');
 subplot(splite, 1, 2);
 y = load('powSpec.txt')';
 plot(y);
-size(y)
 title('\fontsize{15}Pow Spectrum: C Plus Plus');
 %%%
 
@@ -100,6 +98,17 @@ if (usecmp)
   % PLP-like weighting/compression
   aspectrum = postaud(aspectrum, maxfreq, fbtype, broaden);
 end
+
+%%%
+figure(3);
+subplot(splite, 1, 1);
+plot(aspectrum);
+title('\fontsize{15}Mel Log Cepstrum: rastamat');
+subplot(splite, 1, 2);
+y = load('melLogCeps.txt');
+plot(y);
+title('\fontsize{15}Mel Log Cepstrum: C Plus Plus');
+%%%
 
 if modelorder > 0
 

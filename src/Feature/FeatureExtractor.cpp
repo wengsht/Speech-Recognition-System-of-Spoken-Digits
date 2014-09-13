@@ -29,13 +29,13 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
 
     int nfft = (powSpec[0].size() -1) << 1;
 //    int nfft = (powSpec[0].size() - 1) * 2;
-    fft2MelLog(nfft, melLogSpec, powSpec, nfilts, hz2melFunc, mel2hzFunc, minF, maxF, sampleRate);
+    fft2MelLog(nfft, melLogCeps, powSpec, nfilts, hz2melFunc, mel2hzFunc, minF, maxF, sampleRate);
 
-    melCepstrum(melCeps, melLogSpec);
+    melCepstrum(melCeps, melLogCeps);
 }
 
 SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \
-        const Matrix<double> &melLogSpec) {
+        const Matrix<double> &melLogCeps) {
 
     return SP_SUCCESS;
 }
@@ -62,6 +62,8 @@ SP_RESULT FeatureExtractor::getWts(Matrix<double> &wts, \
         int nfilts, \
         double (*hz2melFunc)(double), \
         double (*mel2hzFunc)(double)) {
+
+    int nfreqs = nfft / 2 + 1;
     wts.clear();
     std::vector<double> points;
 
@@ -93,7 +95,7 @@ SP_RESULT FeatureExtractor::getWts(Matrix<double> &wts, \
         for(int k = mp+1;k <= rp;k++) 
             filter.push_back((rf - 1.0*k/nfft * sampleRate) / (rf - mf));
 
-        while(filter.size() < nfft) 
+        while(filter.size() < nfreqs) 
             filter.push_back(0.0);
     }
 
@@ -117,6 +119,27 @@ SP_RESULT FeatureExtractor::getMelLog(std::vector<double> & melLog, \
     return SP_SUCCESS;
 }
 
+SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
+        const Matrix<double> &wts, \
+        const Matrix<double> & powSpec) {
+
+    int r = wts.size(), c = powSpec.size();
+
+    melLog.resize(r);
+    for(int i = 0;i < r;i++)
+        melLog[i].resize(c);
+
+    for(int i = 0;i < r;i++) {
+        for(int j = 0;j < c;j++) {
+            melLog[i][j] = 0.0;
+            int mx = std::min(wts[i].size(), powSpec[j].size());
+            for(int k = 0;k < mx;k++)
+                melLog[i][j] += wts[i][k] * powSpec[j][k];
+        }
+    }
+
+    return SP_SUCCESS;
+}
 SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
         Matrix<double> &melLog, \
         Matrix<double> & powSpec, \
@@ -130,11 +153,9 @@ SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
     getWts(wts, nfft, minF, maxF, sampleRate, nfilts, hz2melFunc, mel2hzFunc);
 
     melLog.clear();
-    for(int i = 0;i < powSpec.size(); i++) {
-        melLog.push_back(std::vector<double>());
 
-        getMelLog(melLog[i], powSpec[i], wts);
-    }
+    MatrixMul01(melLog, wts, powSpec);
+
     return SP_SUCCESS;
 }
 
