@@ -24,6 +24,9 @@ SP_RESULT load_calc(const char *load_file_name,
                EPAnalysis& ep,
                bool playback = true);
 
+void capture(const char *save_file_name, RawData &data, bool playback);
+
 SP_RESULT load_wav_file(const char *file_name, RawData &data);
+
 #endif /* defined(__SpeechRecongnitionSystem__test__) */
 

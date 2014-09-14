@@ -4,23 +4,64 @@
 #include <iostream>
 #include <fstream>
 #include "FeatureExtractor.h"
+#include <unistd.h>
 
 using namespace std;
 
+bool isCapture;
+char wavFileName[1024] = "\0";
 void reportMatlab(FeatureExtractor &extractor);
-int main() {
+bool dealOpts(int argc, char **argv);
+
+int main(int argc, char **argv) {
+    if(! dealOpts(argc, argv))
+        return 0;
+
     FeatureExtractor extractor;
 
     RawData data;
 
-//    load_wav_file("output", data);
+    // capture mode 
+    if(isCapture) 
+        capture(wavFileName, data, false);
+    else 
+        load_wav_file(wavFileName, data);
 
-    load_wav_file("ABCDEFG", data);
     extractor.exFeatures(&data);
 
     reportMatlab(extractor);
 
     return 0;
+}
+bool dealOpts(int argc, char **argv) {
+    int c;
+    while((c = getopt(argc, argv, "c:C:l:L:h")) != -1) {
+        switch(c) {
+            case 'h':
+                printf("usage: \n \
+                        filename example: abc\n \
+                        Capture Mode: ./pro2_demo -c filename\n \
+                        Load    Mode: ./pro2_demo -l filename\n");
+
+                return false;
+                break;
+            case 'c':
+            case 'C':
+                isCapture = true;
+                strcpy(wavFileName, optarg);
+                break;
+            case 'l':
+            case 'L':
+                isCapture = false;
+                strcpy(wavFileName, optarg);
+                break;
+            default:
+                break;
+        }
+    }
+    if(wavFileName[0] == '\0') return false;
+
+    return true;
 }
 template <class T> 
 void storeVector(const vector<T> &data, const char *filename) {

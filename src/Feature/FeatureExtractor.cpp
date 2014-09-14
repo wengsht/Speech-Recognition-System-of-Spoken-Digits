@@ -36,6 +36,8 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
     melCepstrum(melCeps, melLogSpec, cepsNum);
 
     normalization(normalMelCeps, melCeps);
+
+    return SP_SUCCESS;
 }
 
 SP_RESULT FeatureExtractor::normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes) {
@@ -146,6 +148,7 @@ SP_RESULT FeatureExtractor::getWts(Matrix<double> &wts, \
     return SP_SUCCESS;
 }
 
+/*  
 SP_RESULT FeatureExtractor::getMelLog(std::vector<double> & melLog, \
         const std::vector<double> & powSpec, \
         const Matrix<double> &wts) {
@@ -162,6 +165,7 @@ SP_RESULT FeatureExtractor::getMelLog(std::vector<double> & melLog, \
 
     return SP_SUCCESS;
 }
+*/
 
 SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
         const Matrix<double> &wts, \

@@ -95,7 +95,7 @@ protected:
 
     SP_RESULT normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes);
 
-    SP_RESULT getMelLog(std::vector<double> & melLog, \
+//    SP_RESULT getMelLog(std::vector<double> & melLog, \
             const std::vector<double> & powSpec, \
             const Matrix<double> &wts);
 
