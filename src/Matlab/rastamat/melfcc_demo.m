@@ -135,11 +135,15 @@ end
 %%%
 figure(4);
 subplot(splite, 1, 1);
-plot(cepstra);
+pcolor(cepstra);
+shading flat
 title('\fontsize{15}Mel Cepstrum: rastamat');
 subplot(splite, 1, 2);
 y = load('melCeps.txt')';
-plot(y);
+pcolor(y);
+colormap(jet(10000));
+shading flat
+
 title('\fontsize{15}Mel Cepstrum: C Plus Plus');
 %%%
 
@@ -148,11 +152,13 @@ cepstra = lifter(cepstra, lifterexp);
 %%%
 figure(5);
 subplot(splite, 1, 1);
-plot(y);
-title('\fontsize{15}Mel Cepstrum: C Plus Plus');
-subplot(splite, 1, 2);
 y = load('normalMelCeps.txt')';
 plot(y);
+title('\fontsize{15}Normalized Mel Cepstrum: C Plus Plus');
+subplot(splite, 1, 2);
+pcolor(y);
+colormap(jet(10000))
+shading flat
 title('\fontsize{15}Normalized Mel Cepstrum: C Plus Plus');
 %%%
 

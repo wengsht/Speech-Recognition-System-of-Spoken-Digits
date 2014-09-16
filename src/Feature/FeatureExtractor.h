@@ -93,7 +93,7 @@ protected:
 
     SP_RESULT mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum = CEPS_NUM);
 
-    SP_RESULT normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes);
+    SP_RESULT normalization(std::vector<Feature> &normalMels,const std::vector<Feature> & melFes);
 
 //    SP_RESULT getMelLog(std::vector<double> & melLog, \
             const std::vector<double> & powSpec, \

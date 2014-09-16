@@ -42,13 +42,42 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
 
 SP_RESULT FeatureExtractor::normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes) {
     normalMels.clear();
-    for(int i = 0;i < melFes.size(); i++) {
-        normalMels.push_back(melFes[i]);
-
-        normalMels[i].meanNormalSelf();
-
-        normalMels[i].varianceNormalSelf();
+    if(melFes.size() == 0) return SP_SUCCESS;
+    
+    Feature means, variance;
+    int siz = melFes[0].size();
+    means.resize(siz);
+    variance.resize(siz);
+    for(int i = 0;i < siz;i++) {
+        means[i] = variance[i] = 0;
     }
+
+    for(int i = 0;i < melFes.size(); i++) {
+        for(int j = 0;j < siz; j++) {
+            if(melFes[i].size() > j) {
+                means[j] += melFes[i][j];
+
+                variance[j] += melFes[i][j] * melFes[i][j];
+            }
+        }
+    }
+    for(int i = 0;i < siz;i++) {
+        means[i] /= melFes.size();
+        variance[i] /= melFes.size();
+
+        variance[i] = sqrt(variance[i]);
+    }
+
+    for(int i = 0;i < melFes.size();i++) {
+        normalMels.push_back(melFes[i]);
+        for(int j = 0;j < siz;j++) {
+            if(j < melFes[i].size()) {
+                normalMels[i][j] -= means[j];
+                normalMels[i][j] /= variance[j];
+            }
+        }
+    }
+        
     return SP_SUCCESS;
 }
 
