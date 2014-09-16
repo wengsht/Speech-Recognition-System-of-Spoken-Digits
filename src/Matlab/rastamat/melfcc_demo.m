@@ -63,12 +63,16 @@ splite = 2;
 	  'fbtype', 'htkmel', 'usecmp', 0, 'modelorder', 0, ...
           'broaden', 0, 'useenergy', 0);
 
+figure(1);
+plot(samples)
+
 if preemph ~= 0
   samples = filter([1 -preemph], 1, samples); 
 end
 
+
 %%%
-figure(1);
+figure(2);
 subplot(splite, 1, 1);
 plot(samples * 32768);
 title('\fontsize{15}PreEmphasize: rastamat');
@@ -82,7 +86,7 @@ title('\fontsize{15}PreEmphasize: C Plus Plus');
 [pspectrum,logE] = powspec(samples, sr, wintime, hoptime, dither);
 
 %%%
-figure(2);
+figure(3);
 subplot(splite, 1, 1);
 plot(pspectrum);
 title('\fontsize{15}Pow Spectrum: rastamat');
@@ -100,13 +104,17 @@ if (usecmp)
 end
 
 %%%
-figure(3);
+figure(4);
 subplot(splite, 1, 1);
-plot(log(aspectrum));
+pcolor(log(aspectrum));
+colormap(jet(10000))
+shading flat
 title('\fontsize{15}Mel Log Spectrum: rastamat');
 subplot(splite, 1, 2);
 y = load('melLogSpec.txt');
-plot(y);
+pcolor(y);
+colormap(jet(10000))
+shading flat
 title('\fontsize{15}Mel Log Spectrum: C Plus Plus');
 %%%
 
@@ -133,7 +141,7 @@ else
 end
 
 %%%
-figure(4);
+figure(5);
 subplot(splite, 1, 1);
 pcolor(cepstra);
 shading flat
@@ -150,12 +158,15 @@ title('\fontsize{15}Mel Cepstrum: C Plus Plus');
 cepstra = lifter(cepstra, lifterexp);
 
 %%%
-figure(5);
-subplot(splite, 1, 1);
+figure(6);
+subplot(1+splite, 1, 1);
+y = load('melCeps.txt')';
+plot(y);
+subplot(1+splite, 1, 2);
 y = load('normalMelCeps.txt')';
 plot(y);
 title('\fontsize{15}Normalized Mel Cepstrum: C Plus Plus');
-subplot(splite, 1, 2);
+subplot(1+splite, 1, 3);
 pcolor(y);
 colormap(jet(10000))
 shading flat
