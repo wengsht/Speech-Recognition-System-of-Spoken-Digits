@@ -38,6 +38,12 @@ private:
         std::vector<double> * window;
         std::vector<double> * powWinSpec;
     };
+    static void mulTask(void *in);
+    struct mul_task_info {
+        std::vector<double> * wts;
+        Matrix<double> * powSpec;
+        std::vector<double> *melLog;
+    };
 protected:
 
 //    std::vector<Feature> melCeps;
@@ -91,8 +97,8 @@ protected:
      * melLog = wts * powSpec'
      * */
     SP_RESULT MatrixMul01(Matrix<double> & melLog, \
-            const Matrix<double> &wts, \
-            const Matrix<double> & powSpec);
+            Matrix<double> &wts, \
+            Matrix<double> & powSpec);
 
     SP_RESULT fft2MelLog(int nfft, \
             Matrix<double> &melLog, \

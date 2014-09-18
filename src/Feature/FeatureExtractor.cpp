@@ -227,9 +227,25 @@ SP_RESULT FeatureExtractor::getMelLog(std::vector<double> & melLog, \
 }
 */
 
+void FeatureExtractor::mulTask(void *in) {
+    mul_task_info * task_info = (mul_task_info *) in;
+
+    std::vector<double> &melLog = *(task_info->melLog);
+    std::vector<double> &wts = *(task_info->wts);
+    Matrix<double> &powSpec = *(task_info->powSpec);
+
+    for(int j = 0;j < powSpec.size();j++) {
+        melLog[j] = 0.0;
+        int mx = std::min(wts.size(), powSpec[j].size());
+        for(int k = 0;k < mx;k++)
+            melLog[j] += wts[k] * powSpec[j][k];
+    }
+
+    delete task_info;
+}
 SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
-        const Matrix<double> &wts, \
-        const Matrix<double> & powSpec) {
+        Matrix<double> &wts, \
+        Matrix<double> & powSpec) {
 
     int r = wts.size(), c = powSpec.size();
 
@@ -237,6 +253,7 @@ SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
     for(int i = 0;i < r;i++)
         melLog[i].resize(c);
 
+    /*  
     for(int i = 0;i < r;i++) {
         for(int j = 0;j < c;j++) {
             melLog[i][j] = 0.0;
@@ -245,6 +262,23 @@ SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
                 melLog[i][j] += wts[i][k] * powSpec[j][k];
         }
     }
+    */
+    ThreadPool threadPool(threadNum);
+
+    for(int i = 0;i < r;i++) {
+        struct sp_task task_struct;
+        struct mul_task_info *task_info = new mul_task_info;
+        
+        task_info->wts = &(wts[i]);
+        task_info->powSpec = &powSpec;
+        task_info->melLog = &(melLog[i]);
+
+        task_struct.func = mulTask;
+        task_struct.in   = task_info;
+
+        threadPool.addTask(task_struct);
+    }
+    threadPool.run();
 
     return SP_SUCCESS;
 }
