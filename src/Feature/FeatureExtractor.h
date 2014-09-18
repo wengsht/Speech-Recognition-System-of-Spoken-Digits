@@ -28,18 +28,6 @@ class FeatureExtractor{
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, melCeps, MelCepstrum);
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, normalMelCeps, NormalMelCepstrum);
 private:
-    struct paddingThread {
-        vector<double> * window;
-
-        pthread_t pid;
-    };
-    struct fftThread {
-        vector<double> * powWinSpec;
-        vector<double> * window;
-
-        pthread_t pid;
-    };
-    
 protected:
 
 //    std::vector<Feature> melCeps;
