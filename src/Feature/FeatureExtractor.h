@@ -28,18 +28,16 @@ class FeatureExtractor{
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, melCeps, MelCepstrum);
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, normalMelCeps, NormalMelCepstrum);
 private:
-    struct paddingThread {
-        vector<double> * window;
-
-        pthread_t pid;
+    static void paddingTask(void *in);
+    struct padding_task_info {
+        std::vector<double> * window;
+        int nfft;
     };
-    struct fftThread {
-        vector<double> * powWinSpec;
-        vector<double> * window;
-
-        pthread_t pid;
+    static void fftTask(void *in);
+    struct fft_task_info {
+        std::vector<double> * window;
+        std::vector<double> * powWinSpec;
     };
-    
 protected:
 
 //    std::vector<Feature> melCeps;
@@ -73,7 +71,7 @@ protected:
             const Matrix<double> &melLogSpec, \
             int cepsNum = CEPS_NUM);
 
-    std::vector<double> & windowFFT(std::vector<double> &res, \
+    static std::vector<double> & windowFFT(std::vector<double> &res, \
             std::vector<double> &data);
 
 
@@ -127,8 +125,9 @@ protected:
             double (*winFunc)(int, int) );
     
 public:
-    FeatureExtractor(){}
-    ~FeatureExtractor(){}
+    FeatureExtractor() :threadNum(DEFAULT_THREAD_NUM) {}
+    FeatureExtractor(int threadNum) : threadNum(threadNum) {}
+    ~FeatureExtractor() {}
     
 //    void calcFeatures(const RawData* rd);
     
@@ -145,5 +144,7 @@ public:
             int nfilts = MEL_FILTER_NUM, \
             int cepsNum = CEPS_NUM);
 
+private:
+    int threadNum;
 };
 #endif /* defined(__SpeechRecongnitionSystem__FeatureExtractor__) */

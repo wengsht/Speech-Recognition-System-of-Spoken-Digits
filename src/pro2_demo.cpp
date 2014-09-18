@@ -8,6 +8,7 @@
 
 using namespace std;
 
+int  threadNum = DEFAULT_THREAD_NUM;
 bool isCapture;
 char wavFileName[1024] = "\0";
 void reportMatlab(FeatureExtractor &extractor);
@@ -17,7 +18,7 @@ int main(int argc, char **argv) {
     if(! dealOpts(argc, argv))
         return 0;
 
-    FeatureExtractor extractor;
+    FeatureExtractor extractor(threadNum);
 
     RawData data;
 
@@ -35,7 +36,7 @@ int main(int argc, char **argv) {
 }
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "c:C:l:L:h")) != -1) {
+    while((c = getopt(argc, argv, "c:C:l:L:h:j:J")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
@@ -55,6 +56,9 @@ bool dealOpts(int argc, char **argv) {
                 isCapture = false;
                 strcpy(wavFileName, optarg);
                 break;
+            case 'j':
+            case 'J':
+                threadNum = atoi(optarg);
             default:
                 break;
         }

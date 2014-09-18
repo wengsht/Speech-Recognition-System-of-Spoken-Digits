@@ -3,6 +3,7 @@
 #include <cmath>
 #include <cstdlib>
 #include "mathtool.h"
+#include "ThreadPool.h"
 
 SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
         int sampleRate, \
@@ -115,17 +116,47 @@ SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \
     return SP_SUCCESS;
 }
 
+void FeatureExtractor::fftTask(void *in) {
+    fft_task_info * task_info = (fft_task_info *) in;
+
+    std::vector<double> &window = *(task_info->window);
+    std::vector<double> &powSpec = *(task_info->powWinSpec);
+
+    windowFFT(powSpec, window);
+
+    delete task_info;
+}
 SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
         Matrix<double> &windows) {
     if(windows.size() == 0) return SP_SUCCESS;
 
-    powSpec.clear();
+    powSpec.resize(windows.size());
     int siz = windows[0].size();
     std::vector<double> powWinSpec(windows[0].size());
+
+    /*  
     for(int i = 0;i < windows.size(); i++) {
         if(windows[i].size() != siz) continue;
         powSpec.push_back(windowFFT(powWinSpec, windows[i]));
     }
+    */
+    ThreadPool threadPool(threadNum);
+    for(int i = 0;i < windows.size();i++) {
+        sp_task task;
+
+        if(windows[i].size() != siz) continue;
+
+        fft_task_info *task_info = new fft_task_info;
+        task_info->window = &(windows[i]);
+        task_info->powWinSpec = &(powSpec[i]);
+
+        task.func = fftTask;
+        task.in   = task_info;
+
+        threadPool.addTask(task);
+    }
+    threadPool.run();
+
     return SP_SUCCESS;
 }
 
@@ -304,20 +335,48 @@ SP_RESULT FeatureExtractor::preEmph(/* out */std::vector<double> &outs, \
     for(int i = 1;i<size;i++){
         outs.push_back(1.0 * rd[i] - factor * rd[i-1]);
     }
-    printf("%d\n", outs.size());
 
     return SP_SUCCESS;
 }
 
+void FeatureExtractor::paddingTask(void *in) {
+    padding_task_info * info = (padding_task_info *) in;
+
+    std::vector<double> & window = *(info->window);
+    int nfft = info->nfft;
+
+    while(window.size() < nfft) { 
+        window.push_back(0.0);
+    }
+
+    delete info;
+}
 SP_RESULT FeatureExtractor::fftPadding(Matrix<double> & windows) {
     if(windows.size() == 0) return SP_SUCCESS;
     int samplePerWin = windows[0].size();
 
     int nfft = (1 << int(ceil(log(1.0 * samplePerWin)/log(2.0))));
 
+    /*  
     for(int i = 0;i < windows.size();i++) {
         while(windows[i].size() < nfft) 
             windows[i].push_back(0.0);
     }
+    */
+    ThreadPool threadPool(threadNum);
+    for(int i = 0;i < windows.size();i++) {
+        struct sp_task task_struct;
+        struct padding_task_info *task_info = new padding_task_info;
+        
+        task_info->window = &(windows[i]);
+        task_info->nfft = nfft;
+
+        task_struct.func = paddingTask;
+        task_struct.in   = task_info;
+
+        threadPool.addTask(task_struct);
+    }
+    threadPool.run();
+
     return SP_SUCCESS;
 }
