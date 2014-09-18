@@ -16,6 +16,7 @@ if nargin < 8;  bwidth = 1.0;   end
 
 nfft = (nfreqs-1)*2;
 
+maxfreq = sr / 2
 if strcmp(fbtype, 'bark')
   wts = fft2barkmx(nfft, sr, nfilts, bwidth, minfreq, maxfreq);
 elseif strcmp(fbtype, 'mel')
