@@ -65,6 +65,9 @@ splite = 2;
 
 figure(1);
 plot(samples)
+title('\fontsize{15}Raw Signal');
+bordertext('figuretopleft', '\fontsize{20}\color{red}SampleRate=44100');
+
 
 if preemph ~= 0
   samples = filter([1 -preemph], 1, samples); 
@@ -80,6 +83,7 @@ subplot(splite, 1, 2);
 y = load('emp.txt');
 plot(y);
 title('\fontsize{15}PreEmphasize: C Plus Plus');
+bordertext('figuretopleft', '\fontsize{20}\color{red}PreEmpFactor=0.95\nWinTime=0.025s\nStepTime=0.01s\nSampleRate=44100\nWinFunc=hanning\npadding TO FFT');
 %%%
 
 % Compute FFT power spectrum
@@ -116,6 +120,7 @@ pcolor(y);
 colormap(jet(10000))
 shading flat
 title('\fontsize{15}Mel Log Spectrum: C Plus Plus');
+bordertext('figuretopleft', '\fontsize{20}\color{red}Mel Filter Number=40\nhzFunc=2595*log10(1+f/700)\nMinF=0\nMaxF=4000\n');
 %%%
 
 if modelorder > 0
@@ -153,6 +158,7 @@ colormap(jet(10000));
 shading flat
 
 title('\fontsize{15}Mel Cepstrum: C Plus Plus');
+bordertext('figuretopleft', '\fontsize{20}\color{red}Mel Filter Number=40\nCeps Number=13');
 %%%
 
 cepstra = lifter(cepstra, lifterexp);
@@ -172,6 +178,33 @@ colormap(jet(10000))
 shading flat
 title('\fontsize{15}Normalized Mel Cepstrum: C Plus Plus');
 %%%
+
+%%%
+figure(7);
+y = load('melCeps.txt')';
+subplot(1+splite, 1, 1);
+pcolor(y);
+colormap(jet(10000))
+shading flat
+title('\fontsize{15}Normalized Mel Cepstrum: C Plus Plus');
+
+y = idct(y);
+subplot(1+splite, 1, 2);
+pcolor(y);
+colormap(jet(10000))
+shading flat
+title('\fontsize{15}iDCT without zero padding: Matlab');
+
+y = load('melCeps.txt')';
+while size(y, 1) < 64
+    y = [y ; zeros(1, size(y, 2))];
+end
+y = idct(y);
+subplot(1+splite, 1, 3);
+pcolor(y);
+colormap(jet(10000))
+shading flat
+title('\fontsize{15}iDCT zero padding to 64: Matlab');
 
 if useenergy
   cepstra(1,:) = logE;

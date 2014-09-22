@@ -15,6 +15,7 @@ BEPAnalysis	Analysis/BEPAnalysis.h	/^class BEPAnalysis:public EPAnalysis{$/;"	c
 BLUE	Configure/tool.h	50;"	d
 BROWN	Configure/tool.h	57;"	d
 BytesPerSample	readwave/readwave.h	/^	short BytesPerSample;$/;"	m	struct:WavFileHead
+CEPS_NUM	Configure/configure_feature.h	/^const int    CEPS_NUM = 13;$/;"	v
 CHECK_ERR	Capture/Capture.cpp	/^void CHECK_ERR(PaError err){$/;"	f
 CONST_REFERENCE_READ_ONLY_DECLARE	Configure/tool.h	67;"	d
 CYAN	Configure/tool.h	53;"	d
@@ -26,6 +27,7 @@ DARY_GRAY	Configure/tool.h	52;"	d
 DATA_SILENCE	Configure/configure_basic.h	47;"	d
 DATA_SILENCE	Configure/configure_basic.h	52;"	d
 DATA_SILENCE	Configure/configure_basic.h	57;"	d
+DEFAULT_THREAD_NUM	Configure/configure.h	/^const int DEFAULT_THREAD_NUM = 2;$/;"	v
 DITHER_FLAG	Capture/Capture.cpp	11;"	d	file:
 EPAnalysis	Analysis/EPAnalysis.h	/^    EPAnalysis(){$/;"	f	class:EPAnalysis
 EPAnalysis	Analysis/EPAnalysis.h	/^class EPAnalysis{$/;"	c
@@ -42,12 +44,14 @@ ErrorLog	Configure/tool.cpp	/^void ErrorLog(const char *msg,...){$/;"	f
 FORGET_FACTOR	Configure/configure_capture.h	/^const double FORGET_FACTOR = 3;       \/\/ for bg , smaller and faster$/;"	v
 FRAME_PER_SECOND	Configure/configure_basic.h	/^const int FRAME_PER_SECOND = 40; \/\/don't change$/;"	v
 Feature	Feature/Feature.h	/^class Feature{$/;"	c
-FeatureExtractor	Feature/FeatureExtractor.h	/^    FeatureExtractor(){}$/;"	f	class:FeatureExtractor
+FeatureExtractor	Feature/FeatureExtractor.h	/^    FeatureExtractor() :threadNum(DEFAULT_THREAD_NUM) {}$/;"	f	class:FeatureExtractor
+FeatureExtractor	Feature/FeatureExtractor.h	/^    FeatureExtractor(int threadNum) : threadNum(threadNum) {}$/;"	f	class:FeatureExtractor
 FeatureExtractor	Feature/FeatureExtractor.h	/^class FeatureExtractor{$/;"	c
 FileLength	readwave/readwave.h	/^	int FileLength;$/;"	m	struct:WavFileHead
 FillWaveHeader	readwave/readwave.cpp	/^void FillWaveHeader(void *buffer, int raw_wave_len, int sampleRate)$/;"	f
 FormatCategory	readwave/readwave.h	/^	short FormatCategory;$/;"	m	struct:WavFileHead
 GREEN	Configure/tool.h	48;"	d
+GetVersion	Matlab/rastamat/bordertext.m	/^function Version = GetVersion( fn )$/;"	f
 GetWavHeader	readwave/readwave.cpp	/^void GetWavHeader(const char *wavFile, short *Bits, int *Rate,$/;"	f
 Initial	Analysis/AEPAnalysis.h	/^    virtual void Initial(RawData * rawData){$/;"	f	class:AEPAnalysis
 Initial	Analysis/EPAnalysis.h	/^    virtual void Initial(RawData * rawData){$/;"	f	class:EPAnalysis
@@ -61,12 +65,16 @@ LIGHT_RED	Configure/tool.h	47;"	d
 Log	Configure/tool.cpp	/^void Log(const char * msg,...){$/;"	f
 MAXN	Feature/mathtool.cpp	/^const int MAXN = 1000;$/;"	v
 MAX_BUFFER_SECOND	Configure/configure_basic.h	/^const int MAX_BUFFER_SECOND  = 120 ; \/\/ 2 minutes, don't too small$/;"	v
+MAX_F	Configure/configure_feature.h	/^const double MAX_F = 4000.0; \/\/(SAMPLE_RATE \/ 2.0);$/;"	v
 MAX_SIZE	Configure/configure_capture.h	/^const int MAX_SIZE =MAX_TOTAL_SAMPLE *NUM_CHANNELS;$/;"	v
 MAX_TOTAL_SAMPLE	Configure/configure_capture.h	/^const int MAX_TOTAL_SAMPLE = MAX_BUFFER_SECOND *SAMPLE_RATE;$/;"	v
+MEL_FILTER_NUM	Configure/configure_feature.h	/^const int    MEL_FILTER_NUM = 40;$/;"	v
+MIN_F	Configure/configure_feature.h	/^const double MIN_F = 0.0;$/;"	v
 MIN_SILENT_FRAMES	Configure/configure_capture.h	/^const int MIN_SILENT_FRAMES = MIN_SILENT_TIME * FRAME_PER_SECOND \/ 1000;$/;"	v
 MIN_SILENT_TIME	Configure/configure_capture.h	/^const double MIN_SILENT_TIME = 100;$/;"	v
 MIN_SPEECH_FRAMES	Configure/configure_capture.h	/^const int MIN_SPEECH_FRAMES = MIN_SPEECH_TIME * FRAME_PER_SECOND \/1000;$/;"	v
 MIN_SPEECH_TIME	Configure/configure_capture.h	/^const double MIN_SPEECH_TIME = 200;$/;"	v
+MatrixMul01	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \\$/;"	f	class:FeatureExtractor
 NBitsPersample	readwave/readwave.h	/^	short NBitsPersample;$/;"	m	struct:WavFileHead
 NChannels	readwave/readwave.h	/^	short NChannels;$/;"	m	struct:WavFileHead
 NONE	Configure/tool.h	45;"	d
@@ -124,8 +132,12 @@ SpeechRecongnitionSystem_configure_feature_h	Configure/configure_feature.h	10;"	
 SpeechRecongnitionSystem_configure_h	Configure/configure.h	10;"	d
 SpeechRecongnitionSystem_srs_h	Configure/srs.h	10;"	d
 SpeechRecongnitionSystem_tool_h	Configure/tool.h	10;"	d
+TASK_FUNC	ThreadPool/ThreadPool.h	/^typedef void (*TASK_FUNC)(void *) ;$/;"	t
 TESTING	Configure/tool.h	/^const int TESTING = false;$/;"	v
 TRACKING_FACTOR	Configure/configure_capture.h	/^const double TRACKING_FACTOR = 0.01;    \/\/ small and track quikly(in silent)$/;"	v
+ThreadPool	ThreadPool/ThreadPool.cpp	/^ThreadPool::ThreadPool() : idx(0), threadNum(DEFAULT_THREAD_NUM) {$/;"	f	class:ThreadPool
+ThreadPool	ThreadPool/ThreadPool.cpp	/^ThreadPool::ThreadPool(int threadNum) : idx(0), threadNum(threadNum) {$/;"	f	class:ThreadPool
+ThreadPool	ThreadPool/ThreadPool.h	/^class ThreadPool {$/;"	c
 Tip	Configure/tool.cpp	/^void Tip(const char * msg,...){$/;"	f
 WAVEfmt_	readwave/readwave.h	/^	char WAVEfmt_[8];$/;"	m	struct:WavFileHead
 WHITE	Configure/tool.h	60;"	d
@@ -136,6 +148,7 @@ WavFileHead	readwave/readwave.h	/^struct WavFileHead$/;"	s
 WaveRewind	readwave/readwave.cpp	/^bool WaveRewind(FILE *wav_file, WavFileHead *wavFileHead)$/;"	f
 WriteWave	readwave/readwave.cpp	/^void WriteWave(const char *wavFile, short *waveData, int numSamples, int sampleRate)$/;"	f
 YELLOW	Configure/tool.h	58;"	d
+_AUTOGUARD_ThreadPool_H_	ThreadPool/ThreadPool.h	2;"	d
 __SpeechRecongnitionSystem__AdaptiveEndPointAnalysis__	Analysis/AEPAnalysis.h	10;"	d
 __SpeechRecongnitionSystem__BEPAnalysis__	Analysis/BEPAnalysis.h	10;"	d
 __SpeechRecongnitionSystem__Capture__	Capture/Capture.h	10;"	d
@@ -147,11 +160,13 @@ __SpeechRecongnitionSystem__RawData__	data/RawData.h	10;"	d
 __SpeechRecongnitionSystem__mathtool__	Feature/mathtool.h	10;"	d
 __SpeechRecongnitionSystem__test__	test/test.h	10;"	d
 addOneBlockDataWithEndFlag	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::addOneBlockDataWithEndFlag(const SOUND_DATA * src){$/;"	f	class:EPAnalysis
+addTask	ThreadPool/ThreadPool.cpp	/^void ThreadPool::addTask(struct sp_task & task) {$/;"	f	class:ThreadPool
 appendBlockData	data/RawData.cpp	/^bool RawData::appendBlockData(const SOUND_DATA * src){$/;"	f	class:RawData
 audspec	Matlab/rastamat/audspec.m	/^function [aspectrum,wts] = audspec(pspectrum, sr, nfilts, fbtype, minfreq, maxfreq, sumpower, bwidth)$/;"	f
 background	Analysis/EPAnalysis.h	/^    vector<double> background;$/;"	m	class:EPAnalysis
 bark2hz	Matlab/rastamat/bark2hz.m	/^function hz=bark2hz(z)$/;"	f
 block_num	Analysis/EPAnalysis.h	/^    int block_num ;$/;"	m	class:EPAnalysis
+bordertext	Matlab/rastamat/bordertext.m	/^function h = bordertext( varargin )$/;"	f
 calcOneBlockBackground	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::calcOneBlockBackground(int index) {$/;"	f	class:AEPAnalysis
 calcOneBlockBackground	Analysis/BEPAnalysis.cpp	/^void BEPAnalysis::calcOneBlockBackground(int index){$/;"	f	class:BEPAnalysis
 calcOneBlockBackground	Analysis/DAEPAnalysis.cpp	/^void DAEPAnalysis::calcOneBlockBackground(int index){$/;"	f	class:DAEPAnalysis
@@ -165,6 +180,7 @@ calcOneBlockSpeech	Analysis/DAEPAnalysis.cpp	/^void DAEPAnalysis::calcOneBlockSp
 callback	Capture/Capture.h	/^    PaStreamCallback* callback;$/;"	m	class:Capture
 capture	Capture/Capture.cpp	/^bool Capture::capture(RawData * data){$/;"	f	class:Capture
 capture	test/test.cpp	/^void capture(const char * save_file_name,$/;"	f
+capture	test/test.cpp	/^void capture(const char *save_file_name, RawData &data, bool playback) {$/;"	f
 captureAction	Capture/AutoCapture.cpp	/^bool AutoCapture::captureAction(RawData * data){$/;"	f	class:AutoCapture
 captureAction	Capture/Capture.cpp	/^bool Capture::captureAction(RawData * data){$/;"	f	class:Capture
 cep2spec	Matlab/rastamat/cep2spec.m	/^function [spec,idctm] = cep2spec(cep, nfreq, type)$/;"	f
@@ -181,28 +197,39 @@ data	Feature/Feature.h	/^    std::vector<double> data;$/;"	m	class:Feature
 data	data/RawData.h	/^    SOUND_DATA * data;$/;"	m	class:RawData
 data	readwave/readwave.h	/^	char data[4];$/;"	m	struct:WavFileHead
 dct	Feature/mathtool.cpp	/^void dct(double *a,int n,int f)$/;"	f
+dct2	Feature/mathtool.cpp	/^void dct2(double *a, int n) {$/;"	f
+dealOpts	pro2_demo.cpp	/^bool dealOpts(int argc, char **argv) {$/;"	f
 deltas	Matlab/rastamat/deltas.m	/^function d = deltas(x, w)$/;"	f
 dft	Feature/mathtool.cpp	/^void dft(cp *a,int n,int f)$/;"	f
 dolpc	Matlab/rastamat/dolpc.m	/^function y = dolpc(x,modelorder)$/;"	f
 end	Capture/Capture.cpp	/^bool Capture::end(){$/;"	f	class:Capture
 energy	Analysis/EPAnalysis.h	/^    vector<double> energy;$/;"	m	class:EPAnalysis
 ep	Capture/AutoCapture.h	/^    EPAnalysis * ep;$/;"	m	class:AutoCapture
-exFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exFeatures(const RawData *data) {$/;"	f	class:FeatureExtractor
-f_data	Feature/FeatureExtractor.h	/^    std::vector<Feature> f_data;$/;"	m	class:FeatureExtractor
+exFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \\$/;"	f	class:FeatureExtractor
 fft	Feature/mathtool.cpp	/^void fft(cp *a,int n,int f)$/;"	f
+fft2MelLog	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \\$/;"	f	class:FeatureExtractor
 fft2barkmx	Matlab/rastamat/fft2barkmx.m	/^function wts = fft2barkmx(nfft, sr, nfilts, width, minfreq, maxfreq)$/;"	f
 fft2melmx	Matlab/rastamat/fft2melmx.m	/^function [wts,binfrqs] = fft2melmx(nfft, sr, nfilts, width, minfrq, maxfrq, htkmel, constamp)$/;"	f
 fftPadding	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::fftPadding(Matrix<double> & windows) {$/;"	f	class:FeatureExtractor
+fftTask	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::fftTask(void *in) {$/;"	f	class:FeatureExtractor
+fft_task_info	Feature/FeatureExtractor.h	/^    struct fft_task_info {$/;"	s	class:FeatureExtractor
+func	ThreadPool/ThreadPool.h	/^    TASK_FUNC func;$/;"	m	struct:sp_task
 getBlockAveEnergy	data/RawData.cpp	/^double RawData::getBlockAveEnergy(int index){$/;"	f	class:RawData
+getDB	Feature/FeatureExtractor.h	/^    static double getDB(double pow) {$/;"	f	class:FeatureExtractor
 getData	data/RawData.cpp	/^const SOUND_DATA * RawData::getData()const{$/;"	f	class:RawData
+getWts	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::getWts(Matrix<double> &wts, \\$/;"	f	class:FeatureExtractor
 getch	Configure/tool.cpp	/^int getch() {$/;"	f
 getche	Configure/tool.cpp	/^int getche() {$/;"	f
 hanning	Feature/FeatureExtractor.h	/^    static double hanning(int n, int M) {$/;"	f	class:FeatureExtractor
 hz2bark	Matlab/rastamat/fft2barkmx.m	/^function z = hz2bark(f)$/;"	f
 hz2bark	Matlab/rastamat/hz2bark.m	/^function z= hz2bark(f)$/;"	f
+hz2mel	Feature/FeatureExtractor.h	/^    static double hz2mel(double frequency) {$/;"	f	class:FeatureExtractor
 hz2mel	Matlab/rastamat/fft2melmx.m	/^function z = hz2mel(f,htk)$/;"	f
 hz2mel	Matlab/rastamat/hz2mel.m	/^function z = hz2mel(f,htk)$/;"	f
+idx	ThreadPool/ThreadPool.h	/^        int idx;$/;"	m	class:ThreadPool
 in	Capture/Capture.h	/^    PaStreamParameters in;$/;"	m	class:Capture
+in	ThreadPool/ThreadPool.h	/^    void *in;$/;"	m	struct:sp_task
+increament	ThreadPool/ThreadPool.h	/^        void increament() {$/;"	f	class:ThreadPool
 init	Capture/Capture.cpp	/^bool Capture::init(RawData * data,bool input){$/;"	f	class:Capture
 init_PA	Capture/Capture.cpp	/^bool Capture::init_PA(){$/;"	f	class:Capture
 init_callback	Capture/AutoCapture.cpp	/^bool AutoCapture::init_callback(RawData * data,bool input){$/;"	f	class:AutoCapture
@@ -213,6 +240,7 @@ invaudspec	Matlab/rastamat/invaudspec.m	/^function [spec,wts,iwts] = invaudspec(
 invmelfcc	Matlab/rastamat/invmelfcc.m	/^function [x,aspc,spec] = invmelfcc(cep, sr, varargin)$/;"	f
 invpostaud	Matlab/rastamat/invpostaud.m	/^function [x,eql] = invpostaud(y,fmax,fbtype,broaden)$/;"	f
 invpowspec	Matlab/rastamat/invpowspec.m	/^function x = invpowspec(y, sr, wintime, steptime, excit)$/;"	f
+isCapture	pro2_demo.cpp	/^bool isCapture;$/;"	v
 ispecgram	Matlab/rastamat/ispecgram.m	/^function x = ispecgram(d, ftsize, sr, win, nov)$/;"	f
 level	Analysis/AEPAnalysis.h	/^    vector<double> level;$/;"	m	class:AEPAnalysis
 lifter	Matlab/rastamat/lifter.m	/^function y = lifter(x, lift, invs)$/;"	f
@@ -222,33 +250,52 @@ load_wav_file	test/test.cpp	/^SP_RESULT load_wav_file(const char *file_name, Raw
 lpc2cep	Matlab/rastamat/lpc2cep.m	/^function features = lpc2cep(a,nout)$/;"	f
 lpc2spec	Matlab/rastamat/lpc2spec.m	/^function [features,F,M] = lpc2spec(lpcas, nout)$/;"	f
 main	main.cpp	/^int main()$/;"	f
-main	pro2_demo.cpp	/^int main() {$/;"	f
+main	pro2_demo.cpp	/^int main(int argc, char **argv) {$/;"	f
 matrix_file_read	Matlab/matrix_file_read.m	/^function [y] = matrix_file_read(filename)$/;"	f
+mel2dct	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum) {$/;"	f	class:FeatureExtractor
+mel2hz	Feature/FeatureExtractor.h	/^    static double mel2hz(double hz) {$/;"	f	class:FeatureExtractor
 mel2hz	Matlab/rastamat/fft2melmx.m	/^function f = mel2hz(z, htk)$/;"	f
 mel2hz	Matlab/rastamat/mel2hz.m	/^function f = mel2hz(z, htk)$/;"	f
+melCepstrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \\$/;"	f	class:FeatureExtractor
+melLog	Feature/FeatureExtractor.h	/^        std::vector<double> *melLog;$/;"	m	struct:FeatureExtractor::mul_task_info
 melfcc	Matlab/rastamat/melfcc.m	/^function [cepstra,aspectrum,pspectrum] = melfcc(samples, sr, varargin)$/;"	f
 melfcc_demo	Matlab/rastamat/melfcc_demo.m	/^function [cepstra,aspectrum,pspectrum] = melfcc_demo(filename, varargin)$/;"	f
+mulTask	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::mulTask(void *in) {$/;"	f	class:FeatureExtractor
+mul_task_info	Feature/FeatureExtractor.h	/^    struct mul_task_info {$/;"	s	class:FeatureExtractor
+nfft	Feature/FeatureExtractor.h	/^        int nfft;$/;"	m	struct:FeatureExtractor::padding_task_info
 noUse	readwave/readwave.h	/^	unsigned int noUse;$/;"	m	struct:WavFileHead
-normalization	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::normalization(){$/;"	f	class:FeatureExtractor
+normalization	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes) {$/;"	f	class:FeatureExtractor
 operator *	Feature/Feature.h	/^    Feature operator * (const Feature & T)const{$/;"	f	class:Feature
 operator *	Feature/Feature.h	/^    Feature operator * (double c)const{$/;"	f	class:Feature
 operator +	Feature/Feature.h	/^    Feature operator + (const Feature & T)const{$/;"	f	class:Feature
+operator []	Feature/Feature.h	/^    const double &operator[] (int inx) const {$/;"	f	class:Feature
+operator []	Feature/Feature.h	/^    double &operator[] (int inx) {$/;"	f	class:Feature
 out	Capture/Capture.h	/^    PaStreamParameters out;$/;"	m	class:Capture
+paddingTask	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::paddingTask(void *in) {$/;"	f	class:FeatureExtractor
+padding_task_info	Feature/FeatureExtractor.h	/^    struct padding_task_info {$/;"	s	class:FeatureExtractor
 patestCallback	Capture/AutoCapture.cpp	/^static int patestCallback( const void *inputBuffer, void *outputBuffer,$/;"	f	file:
 play	Capture/Capture.cpp	/^bool Capture::play(RawData * data){$/;"	f	class:Capture
 playAction	Capture/Capture.cpp	/^bool Capture::playAction(RawData * data){$/;"	f	class:Capture
 postaud	Matlab/rastamat/postaud.m	/^function [y,eql] = postaud(x,fmax,fbtype,broaden)$/;"	f
-powSpectrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, Matrix<double> &windows) {$/;"	f	class:FeatureExtractor
+powSpec	Feature/FeatureExtractor.h	/^        Matrix<double> * powSpec;$/;"	m	struct:FeatureExtractor::mul_task_info
+powSpectrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \\$/;"	f	class:FeatureExtractor
+powWinSpec	Feature/FeatureExtractor.h	/^        std::vector<double> * powWinSpec;$/;"	m	struct:FeatureExtractor::fft_task_info
 powspec	Matlab/rastamat/powspec.m	/^function [y,e] = powspec(x, sr, wintime, steptime, dither)$/;"	f
-preEmph	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::preEmph(\/* out *\/std::vector<double> &outs, \/*in*\/const SOUND_DATA* rd,int size,double factor){$/;"	f	class:FeatureExtractor
+preEmph	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::preEmph(\/* out *\/std::vector<double> &outs, \\$/;"	f	class:FeatureExtractor
 printInf	Analysis/AEPAnalysis.cpp	/^int AEPAnalysis::printInf(int from,int end){$/;"	f	class:AEPAnalysis
 printInf	Analysis/EPAnalysis.cpp	/^int EPAnalysis::printInf(int from,int end){$/;"	f	class:EPAnalysis
+processThread	ThreadPool/ThreadPool.cpp	/^void *ThreadPool::processThread(void *param) {$/;"	f	class:ThreadPool
 process_options	Matlab/rastamat/process_options.m	/^function [varargout] = process_options(args, varargin)$/;"	f
+push_back	Feature/Feature.cpp	/^void Feature::push_back(double d) {$/;"	f	class:Feature
 rastafilt	Matlab/rastamat/rastafilt.m	/^function y = rastafilt(x)$/;"	f
 rastaplp	Matlab/rastamat/rastaplp.m	/^function [cepstra, spectra, pspectrum, lpcas, F, M] = rastaplp(samples, sr, dorasta, modelorder)$/;"	f
+rawData	Feature/Feature.h	/^    double *rawData() {$/;"	f	class:Feature
 reCalcAllData	Analysis/EPAnalysis.cpp	/^void EPAnalysis::reCalcAllData(){$/;"	f	class:EPAnalysis
 readhtk	Matlab/rastamat/readhtk.m	/^function [d,fp,dt,tc,t]=readhtk(file)$/;"	f
 reportMatlab	pro2_demo.cpp	/^void reportMatlab(FeatureExtractor &extractor) {$/;"	f
+resize	Feature/Feature.h	/^    void resize(int s) {$/;"	f	class:Feature
+riffRead	Matlab/riffRead.m	/^function [d, fs] = riffRead(filename)$/;"	f
+run	ThreadPool/ThreadPool.cpp	/^void ThreadPool::run() {$/;"	f	class:ThreadPool
 saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const char * data, int len){$/;"	f
 saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const double * data, int len){$/;"	f
 saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const int * data, int len){$/;"	f
@@ -259,26 +306,40 @@ saveWav	data/RawDataFile.cpp	/^bool RawData::saveWav(const char * file_name){$/;
 setData	data/RawData.cpp	/^void RawData::setData(int index,SOUND_DATA d){$/;"	f	class:RawData
 setFrameNum	data/RawData.cpp	/^bool RawData::setFrameNum(int f_num){$/;"	f	class:RawData
 silentTime	Analysis/EPAnalysis.h	/^    int silentTime; \/\/ don't find how many block$/;"	m	class:EPAnalysis
+size	Feature/Feature.h	/^    int size() const {$/;"	f	class:Feature
 smooth	Analysis/EPAnalysis.cpp	/^void EPAnalysis::smooth(){$/;"	f	class:EPAnalysis
 solution	main.cpp	/^void solution(){$/;"	f
+sp_task	ThreadPool/ThreadPool.h	/^struct sp_task {$/;"	s
 spec2cep	Matlab/rastamat/spec2cep.m	/^function [cep,dctm] = spec2cep(spec, ncep, type)$/;"	f
 speech	Analysis/EPAnalysis.h	/^    vector<char> speech;$/;"	m	class:EPAnalysis
 sqr	Feature/Feature.h	/^    Feature sqr(){$/;"	f	class:Feature
-standard	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::standard(){$/;"	f	class:FeatureExtractor
-storeMatrix	pro2_demo.cpp	/^void storeMatrix(const Matrix<T> data, const char *filename) {$/;"	f
-storeVector	pro2_demo.cpp	/^void storeVector(const vector<T> data, const char *filename) {$/;"	f
+storeFeas	pro2_demo.cpp	/^void storeFeas(const std::vector<Feature> & data, const char *filename) {$/;"	f
+storeMatrix	pro2_demo.cpp	/^void storeMatrix(const Matrix<T> &data, const char *filename) {$/;"	f
+storeVector	pro2_demo.cpp	/^void storeVector(const vector<T> &data, const char *filename) {$/;"	f
 stream	Capture/Capture.h	/^    PaStream * stream;$/;"	m	class:Capture
 stringFile	test/test.cpp	/^const char * stringFile(const char * a,const char * b,char *ab){$/;"	f
+tasks	ThreadPool/ThreadPool.h	/^    std::vector<sp_task> tasks;$/;"	m	struct:thread_info
+threadNum	Feature/FeatureExtractor.h	/^    int threadNum;$/;"	m	class:FeatureExtractor
+threadNum	ThreadPool/ThreadPool.h	/^        int threadNum;$/;"	m	class:ThreadPool
+threadNum	pro2_demo.cpp	/^int  threadNum = DEFAULT_THREAD_NUM;$/;"	v
+threadTasks	ThreadPool/ThreadPool.h	/^        std::vector< thread_info > threadTasks;$/;"	m	class:ThreadPool
+thread_info	ThreadPool/ThreadPool.h	/^struct thread_info {$/;"	s
+tid	ThreadPool/ThreadPool.h	/^    pthread_t tid;$/;"	m	struct:thread_info
 userData	Capture/Capture.h	/^    void * userData;$/;"	m	class:Capture
 vec_file_read	Matlab/vec_file_read.m	/^function [y] = vec_file_read(filename)$/;"	f
-windowFFT	Feature/FeatureExtractor.cpp	/^std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, std::vector<double> &data) {$/;"	f	class:FeatureExtractor
-windowMul	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowMul(std::vector<double> &window, double (*winFunc)(int, int) ) {$/;"	f	class:FeatureExtractor
-windowing	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowing(Matrix<double> & out_windows, const std::vector<double> & in, double winTime, double stepTime, int rate) {$/;"	f	class:FeatureExtractor
+wavFileName	pro2_demo.cpp	/^char wavFileName[1024] = "\\0";$/;"	v
+window	Feature/FeatureExtractor.h	/^        std::vector<double> * window;$/;"	m	struct:FeatureExtractor::fft_task_info
+window	Feature/FeatureExtractor.h	/^        std::vector<double> * window;$/;"	m	struct:FeatureExtractor::padding_task_info
+windowFFT	Feature/FeatureExtractor.cpp	/^std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \\$/;"	f	class:FeatureExtractor
+windowMul	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowMul(std::vector<double> &window, \\$/;"	f	class:FeatureExtractor
+windowing	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowing(Matrix<double> & out_windows, \\$/;"	f	class:FeatureExtractor
+wts	Feature/FeatureExtractor.h	/^        std::vector<double> * wts;$/;"	m	struct:FeatureExtractor::mul_task_info
 ~AEPAnalysis	Analysis/AEPAnalysis.h	/^    ~AEPAnalysis(){};$/;"	f	class:AEPAnalysis
 ~AutoCapture	Capture/AutoCapture.h	/^    ~AutoCapture(){};$/;"	f	class:AutoCapture
 ~BEPAnalysis	Analysis/BEPAnalysis.h	/^    ~BEPAnalysis(){};$/;"	f	class:BEPAnalysis
 ~Capture	Capture/Capture.cpp	/^Capture::~Capture(){$/;"	f	class:Capture
 ~DAEPAnalysis	Analysis/DAEPAnalysis.h	/^    ~DAEPAnalysis(){};$/;"	f	class:DAEPAnalysis
 ~EPAnalysis	Analysis/EPAnalysis.h	/^    ~EPAnalysis(){};$/;"	f	class:EPAnalysis
-~FeatureExtractor	Feature/FeatureExtractor.h	/^    ~FeatureExtractor(){}$/;"	f	class:FeatureExtractor
+~FeatureExtractor	Feature/FeatureExtractor.h	/^    ~FeatureExtractor() {}$/;"	f	class:FeatureExtractor
 ~RawData	data/RawData.cpp	/^RawData::~RawData(){$/;"	f	class:RawData
+~ThreadPool	ThreadPool/ThreadPool.cpp	/^ThreadPool::~ThreadPool() {$/;"	f	class:ThreadPool

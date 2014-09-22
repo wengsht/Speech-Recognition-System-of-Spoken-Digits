@@ -46,7 +46,6 @@ private:
     };
 protected:
 
-//    std::vector<Feature> melCeps;
     void inital(){
         melCeps.clear();
         emp_data.clear();
@@ -81,15 +80,6 @@ protected:
             std::vector<double> &data);
 
 
-    static double hanning(int n, int M) {
-        return 0.5 - 0.5 * cos (2.0 * PI * n / M);
-    }
-    static double hz2mel(double frequency) {
-        return 2595.0 * log(1+frequency/700.0) / log(10.0);
-    }
-    static double mel2hz(double hz) {
-        return 700.0* ( pow(10.0, hz/2595.0) - 1.0);
-    }
     static double getDB(double pow) {
         return 10.0 * log(pow) / log(10.0);
     }
@@ -131,11 +121,18 @@ protected:
             double (*winFunc)(int, int) );
     
 public:
+    static double hanning(int n, int M) {
+        return 0.5 - 0.5 * cos (2.0 * PI * n / M);
+    }
+    static double hz2mel(double frequency) {
+        return 2595.0 * log(1+frequency/700.0) / log(10.0);
+    }
+    static double mel2hz(double hz) {
+        return 700.0* ( pow(10.0, hz/2595.0) - 1.0);
+    }
     FeatureExtractor() :threadNum(DEFAULT_THREAD_NUM) {}
     FeatureExtractor(int threadNum) : threadNum(threadNum) {}
     ~FeatureExtractor() {}
-    
-//    void calcFeatures(const RawData* rd);
     
     SP_RESULT exFeatures(const RawData *data, \
             int sampleRate = SAMPLE_RATE, \

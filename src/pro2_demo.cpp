@@ -5,6 +5,7 @@
 #include <fstream>
 #include "FeatureExtractor.h"
 #include <unistd.h>
+#include "Configure.h"
 
 using namespace std;
 
@@ -13,6 +14,17 @@ bool isCapture;
 char wavFileName[1024] = "\0";
 void reportMatlab(FeatureExtractor &extractor);
 bool dealOpts(int argc, char **argv);
+
+bool toReport = false;
+
+int sr = SAMPLE_RATE;
+double preEmpFactor = SP_PREEMPH_FACTOR;
+double winTime = WINTIME;
+double step = STEPTIME;
+double minF = MIN_F;
+double maxF = MAX_F;
+int nfilts = MEL_FILTER_NUM;
+int cepsNum = CEPS_NUM;
 
 int main(int argc, char **argv) {
     if(! dealOpts(argc, argv))
@@ -28,21 +40,35 @@ int main(int argc, char **argv) {
     else 
         load_wav_file(wavFileName, data);
 
-    extractor.exFeatures(&data);
+    extractor.exFeatures(&data, \
+            sr, \
+            preEmpFactor, \
+            winTime, \
+            step, \
+            FeatureExtractor::hanning, \
+            minF, \
+            maxF, \
+            FeatureExtractor::hz2mel, \
+            FeatureExtractor::mel2hz, \
+            nfilts, \
+            cepsNum);
 
-    reportMatlab(extractor);
+    if(toReport)
+        reportMatlab(extractor);
 
     return 0;
 }
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "c:C:l:L:h:j:J")) != -1) {
+    while((c = getopt(argc, argv, "ohn:c:C:l:L:j:J:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         filename example: abc\n \
                         Capture Mode: ./pro2_demo -c filename\n \
-                        Load    Mode: ./pro2_demo -l filename\n");
+                        Load    Mode: ./pro2_demo -l filename\n \
+                        -j NUM: Thread Number\n \
+                        -n NUM: Filter Number");
 
                 return false;
                 break;
@@ -59,6 +85,14 @@ bool dealOpts(int argc, char **argv) {
             case 'j':
             case 'J':
                 threadNum = atoi(optarg);
+                break;
+            case 'n':
+                nfilts = atoi(optarg);
+
+                break;
+            case 'o':
+                toReport = true;
+                break;
             default:
                 break;
         }
@@ -104,6 +138,8 @@ void storeFeas(const std::vector<Feature> & data, const char *filename) {
     out.close();
 }
 void reportMatlab(FeatureExtractor &extractor) {
+    Tip("\nReporting for Matlab demo...");
+
     const vector<double> &empData = extractor.getEmpData();
 
     storeVector(empData, "emp.txt");

@@ -8,6 +8,7 @@
 
 #include "mathtool.h"
 
+#include "tool.h"
 #include <assert.h>
 
 #include <iostream>

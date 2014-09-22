@@ -20,22 +20,29 @@ SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
     SP_RESULT res; 
     inital();
 
+    Tip("preEmph...");
     res = preEmph(emp_data, data->getData(), data->getFrameNum(), preEmpFactor);
 
+    Tip("windowing...");
     res = windowing(windows, emp_data, winTime, stepTime, sampleRate, winFunc);
 
+    Tip("padding...");
     fftPadding(windows);
 
+    Tip("fft...");
     powSpectrum(powSpec, windows);
 
     if(powSpec.size() == 0) return SP_SUCCESS;
 
     int nfft = (powSpec[0].size() -1) << 1;
 
+    Tip("mel filter... Log...");
     fft2MelLog(nfft, melLogSpec, powSpec, nfilts, hz2melFunc, mel2hzFunc, minF, maxF, sampleRate);
 
+    Tip("MFCC...");
     melCepstrum(melCeps, melLogSpec, cepsNum);
 
+    Tip("Normalization...");
     normalization(normalMelCeps, melCeps);
 
     return SP_SUCCESS;
@@ -134,12 +141,6 @@ SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
     int siz = windows[0].size();
     std::vector<double> powWinSpec(windows[0].size());
 
-    /*  
-    for(int i = 0;i < windows.size(); i++) {
-        if(windows[i].size() != siz) continue;
-        powSpec.push_back(windowFFT(powWinSpec, windows[i]));
-    }
-    */
     ThreadPool threadPool(threadNum);
     for(int i = 0;i < windows.size();i++) {
         sp_task task;
@@ -176,11 +177,12 @@ SP_RESULT FeatureExtractor::getWts(Matrix<double> &wts, \
     double minmel = hz2melFunc(minF);
     double maxmel = hz2melFunc(maxF);
     double step = (maxmel - minmel) / (nfilts + 1);
-    for(int i = 0; i <= nfilts + 1; i++) 
+    for(int i = 0; i <= nfilts + 1; i++) {
         points.push_back(mel2hzFunc( minmel + step * i));
+    }
 
     for(int i = 0; i <= nfilts + 1; i++) {
-        points[i] = ceil(points[i] / sampleRate * (nfft - 1));
+        points[i] = (points[i] / sampleRate * (nfft - 1));
     }
     for(int i = 0;i < nfilts;i++) {
         wts.push_back(std::vector<double>());
@@ -253,16 +255,6 @@ SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
     for(int i = 0;i < r;i++)
         melLog[i].resize(c);
 
-    /*  
-    for(int i = 0;i < r;i++) {
-        for(int j = 0;j < c;j++) {
-            melLog[i][j] = 0.0;
-            int mx = std::min(wts[i].size(), powSpec[j].size());
-            for(int k = 0;k < mx;k++)
-                melLog[i][j] += wts[i][k] * powSpec[j][k];
-        }
-    }
-    */
     ThreadPool threadPool(threadNum);
 
     for(int i = 0;i < r;i++) {
@@ -299,8 +291,9 @@ SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
     MatrixMul01(melLog, wts, powSpec);
 
     for(int i = 0;i < melLog.size();i++) 
-        for(int j = 0;j < melLog[i].size();j++)
+        for(int j = 0;j < melLog[i].size();j++) {
             melLog[i][j] = log(0.0001+fabs(melLog[i][j]));
+        }
 
     return SP_SUCCESS;
 }
@@ -391,12 +384,6 @@ SP_RESULT FeatureExtractor::fftPadding(Matrix<double> & windows) {
 
     int nfft = (1 << int(ceil(log(1.0 * samplePerWin)/log(2.0))));
 
-    /*  
-    for(int i = 0;i < windows.size();i++) {
-        while(windows[i].size() < nfft) 
-            windows[i].push_back(0.0);
-    }
-    */
     ThreadPool threadPool(threadNum);
     for(int i = 0;i < windows.size();i++) {
         struct sp_task task_struct;
