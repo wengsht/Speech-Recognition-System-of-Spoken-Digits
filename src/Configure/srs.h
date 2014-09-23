@@ -21,4 +21,6 @@
 #include "BEPAnalysis.h"
 #include "DAEPAnalysis.h"
 
+#include "stringtool.h"
+
 #endif
