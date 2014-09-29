@@ -19,7 +19,7 @@
 /// Debug Tool
 ///
 
-const int TESTING = false;
+const int TESTING = true;
 
 void Tip(const char * msg,...);
 
@@ -82,7 +82,7 @@ protected  :TYPE NAME; \
 public :virtual TYPE get##FUNC()const{return NAME;} \
 public :virtual void init##FUNC(TYPE name){this->NAME = name;}
 
-#define SAFE_DELELE_POINTER(val) \
+#define SAFE_DELETE_POINTER(val) \
 do{if(val)delete val;}while(0)
 
 #define ERROR_CODE(DUMMY1, DUMMY2, DUMMY3) \

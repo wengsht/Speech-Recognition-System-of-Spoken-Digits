@@ -36,7 +36,7 @@ RawData::RawData(const RawData& rawData){
 
 RawData::~RawData(){
     Log("Delete RawData");
-    SAFE_DELELE_POINTER(this->data);
+    SAFE_DELETE_POINTER(this->data);
     Log("Delete Safely");
 }
 
