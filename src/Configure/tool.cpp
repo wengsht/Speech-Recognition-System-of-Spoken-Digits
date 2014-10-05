@@ -13,13 +13,26 @@
 #include <unistd.h>
 #include "tool.h"
 
+void Warn(const char *msg,...){
+    //if(! TESTING) return;
+	char Buffer[128];
+	va_list ArgList;
+	va_start (ArgList, msg);
+	vsprintf (Buffer, msg, ArgList);
+	va_end (ArgList);
+    toupper(Buffer[0]);
+	printf("" LIGHT_RED"WARNNING: ");
+	printf ("%s", Buffer);
+	printf(NONE "\n");
+}
+
 void Tip(const char * msg,...){
     char Buffer[128];
 	va_list ArgList;
 	va_start (ArgList, msg);
 	vsprintf (Buffer, msg, ArgList);
 	va_end (ArgList);
-	printf("Tip: ");
+//	printf("Tip: ");
     toupper(Buffer[0]);
 	printf ("%s", Buffer);
 	printf("\n");
