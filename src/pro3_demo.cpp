@@ -15,7 +15,7 @@ void run();
 
 int Conf::threshold = 3;
 int Conf::beam = 3;
-
+int Conf::info = 0;
 int main(int argc,char ** argv)
 {
 	if(! dealOpts(argc, argv))
@@ -40,6 +40,7 @@ usage : ./pro3_demo [-h] [-a|-A <NUM>] [-m|-M] \
 -d 使用字典文件 \n\
 -s 使用故事文本 \n\
 -c 使用正确故事文本 \n\
+-i 输出额外信息 \n\
 ";
 
 ///
@@ -51,11 +52,17 @@ int dealOpts(int argc,char ** argv){
 	int c;	
     
 	while((c = getopt(argc, argv, 
-				"c:s:d:ha:A:mM")
+				"ic:s:d:ha:A:mMf:")
 			) != -1) 
 	{
 		//printf("%d\n",c);
         switch(c) {
+			case 'i':
+				Conf::info = 1;
+				break;
+			case 'f':
+				app.setBStory(optarg);
+				break;
 			case 'd':
 				app.setFromFile(true);
 				app.setDict(optarg);

@@ -29,6 +29,16 @@ string getStrsFromFile(const char *FileName)
 	return f;
 }
 
+void saveStrsToFile(const char *FileName,const vector<int> ind,
+					const vector<string>& v,char splitor )
+{
+	ofstream t(FileName);
+	for(int i =0;i<ind.size();i++){
+		t<< v[ind[i]] << splitor ;
+	}
+	t.close();
+}
+
 bool  getStrsFromFile(
 		vector<string>& words,
 		const char * FileName, 

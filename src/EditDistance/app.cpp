@@ -10,7 +10,7 @@ using namespace std;
 
  //各种模式分割符
 const char * wordSp = ".,:!?\"\t\n\r ";
-const char * sentenceSp = ".!? ";
+const char * sentenceSp = wordSp;
 const char * articleSp = "\n\r";
 
 APP::APP(){
@@ -35,8 +35,8 @@ void APP::readFile(){
 			if(cStoryFile)getStrsFromFile(cStory,cStoryFile,wordSp,true);
 		}
 		else if(mode == 2){
-			getStrsFromFile(story,storyFile,sentenceSp,false);
-			if(cStoryFile)getStrsFromFile(cStory,cStoryFile,sentenceSp,false);
+			getStrsFromFile(story,storyFile,sentenceSp,true);
+			if(cStoryFile)getStrsFromFile(cStory,cStoryFile,sentenceSp,true);
 		}
 		else if(mode == 3){
 			getStrsFromFile(story,storyFile,articleSp,false,false);
@@ -122,7 +122,10 @@ void APP::printInfo(){
 }
 
 bool APP::run(){
-	printInfo();
+
+	if(Conf::info){
+		printInfo();
+	}
 
 	if(fromFile){
 		return fromFileJob();
@@ -142,36 +145,69 @@ void APP::cmp_task(void * in){
 		compareOneWithDict(
 			(task_info->w),
 			*(task_info->dict),
-			task_info->type
+			task_info->type,
+			task_info->p
 		);
 	delete task_info;
 }
 
+
 int APP::calcOne(){
 	int ret;
-	puts("start calc");
+	
+//	puts("start calc");
 	if(mode == 1){
 		if(story.size()==0 || cStory.size()==0){
 			Warn("empty story file or cStory file");	
 			return false;
 		}	
 		
-		if(alg == 1) ret = compare(story[0].c_str(),cStory[0].c_str());
-		else if(alg == 2) ret = compare(story[0].c_str(),
-				cStory[0].c_str(),Conf::threshold);
-		else if(alg == 3) ret = 0;
+		Path p;
+		Count c;
+		for(int i =0;i<story.size() && i<cStory.size();i++){
+			if(alg == 1) {
+				p.setMaxLen(story[i].length()+cStory[i].length()+2);
+				int t = compare(story[i].c_str(),cStory[i].c_str(), &p);
+				if(t!=0)ret++;
+			}
+			else if(alg == 2){
+				int t = compare(story[0].c_str(),cStory[0].c_str(),Conf::threshold);
+				if(t!=0)ret++;
+			}
+			else if(alg == 3) {ret = 0;
+			}
+			c.addPath(p);
+			printPath(story[i].c_str(),cStory[i].c_str(),&p,"");
+			printf(" ");
+		}
+		c.print();
+		cout << "\ntotal different (distance) : "<< ret << endl;
+
 		return ret;
 	}
 
-	if(alg == 1) ret = compare(story,cStory);
-	else if(alg == 2) ret = compare(story,cStory,Conf::threshold);
-	else if(alg == 3) ret = 0;
+	Path p(story.size()+cStory.size() +2);
+	if(alg == 1) {
+		ret = compare(story,cStory,&p);
+	}
+	else if(alg == 2) ret = compare(story,cStory,Conf::threshold,&p);
+	else if(alg == 3) ret = compareWithBeam(story,cStory,Conf::beam,&p);
+	
+	if(mode == 3){
+		printPath(story,cStory,&p,"\n");
+	}
+	else if(mode == 2){
+		printPath(story,cStory,&p," ");	
+	}
+
+	cout << "\ntotal different (distance) : "<< ret << endl;
 	return ret;
 }
 
 int APP::calcAllWithThread(){
     int st_l = story.size();
 	better.resize(st_l);
+	paths.resize(st_l);
 	ThreadPool threadPool(thread_num);
     for(int i =0;i<st_l;i++){
 		int ti = storyIndex[i];
@@ -183,6 +219,7 @@ int APP::calcAllWithThread(){
 		task_info->dict = &dic;
 		task_info->result = &better;
 		task_info->type = alg;
+		task_info->p = &(paths[i]);
 		
 		task_struct.func = cmp_task;
 		task_struct.in   = task_info;
@@ -192,31 +229,40 @@ int APP::calcAllWithThread(){
 	threadPool.run();
 	
 	for(int i =0;i<st_l;i++){
-		printf("storyIndex[%d] =  %d\n",i,storyIndex[i]);
+		//printf("storyIndex[%d] =  %d\n",i,storyIndex[i]);
 		int ti = storyIndex[i];
 		if(ti!=i){better[i] = better[ti];}
-	}	
+	}
+	return 1;
 }
 
 bool APP::fromFileJob(){
 	readFile();
-//	print(story,false);
-	//puts("|||||||");
-	//print(cStory,false);
-	
-	if(dic.size()==0){
-		int result = calcOne();
-		cout << "result : "<<result << endl;
-		return true;
+	if(Conf::info){
+		printf("Story size : %d .Correct story size : %d .\n",
+		(int)story.size(),(int)cStory.size());	
 	}
 
+	if(dic.size()==0){
+		calcOne();
+		return true;
+	}
 	
 	calcIndex(story,storyIndex);
 
 	calcAllWithThread();
 
-	print(better,dic,true);
-	printf("\n\n");
+	//print(better,dic,true);
+	for(int i =0;i<story.size();i++){
+		int t = storyIndex[i];
+		int d = better[i]; 
+		printPath(story[i].c_str(),dic[d].c_str(),&paths[t],"");
+		printf(" ");
+	}
+	if(betterStoryFile){
+		saveStrsToFile(betterStoryFile,better,dic);	
+	}
+	printf("\n");
 	return true;
 }
 
@@ -241,22 +287,38 @@ bool readline(vector<string>& v){
 	return 1;
 }
 
+
+
 bool APP::inputJob(){
 	if(mode == 1){
 		string a,b;
+		printf("\nInput two words :\n");
 		while(cin >> a >> b){
 			int ret ;
-			if(alg==1) ret = compare(a.c_str(),b.c_str());
-			if(alg==2) ret = compare(a.c_str(),b.c_str(),Conf::threshold);
-			cout << ret << endl;
+			Path p (a.length() + b.length()+2);
+			if(alg==1) ret = compare(a.c_str(),b.c_str(),&p);
+			if(alg==2) ret = compare(a.c_str(),b.c_str(),Conf::threshold,&p);
+			Count c;
+			c.addPath(p);
+			c.print();
+			cout << "Total error(distance) : " << ret << endl;
+			printMatrix(a.c_str(),b.c_str(),&p);
+			//printPath(a.c_str(),b.c_str(),&p,"\n");
+			//printPath(a.c_str(),b.c_str(),&p," ");
+			printf("\nInput two words :\n");
 		}
 	}
 	else if(mode == 2){
+		printf("\nInput two sentences : \n");
 		if(readline(story) && readline(cStory)){
 			int ret ;
-			if(alg==1) ret = compare(story,cStory);
+			Path p(story.size() + cStory.size() + 2);
+			if(alg==1) ret = compare(story,cStory,&p);
 			if(alg==2) ret = compare(story,cStory,Conf::threshold);
-			cout << ret << endl;
+			cout << "Total error(distance) : " << ret << endl;
+			//printPath(story,cStory,&p,"\n");
+			printPath(story,cStory,&p," ");
+			printf("\nInput two sentences : \n");
 		}
 		else{
 			Warn("Input error\n");

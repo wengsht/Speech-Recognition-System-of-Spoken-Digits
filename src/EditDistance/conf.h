@@ -4,6 +4,7 @@ class Conf{
 public:
     static int threshold;
     static int beam;
+	static int info;
 };
 
 #endif

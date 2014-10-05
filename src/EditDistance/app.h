@@ -3,7 +3,7 @@
 #include <string>
 #include <map>
 #include <vector>
-
+#include "Path.h"
 #include "tool.h"
 // !
 using namespace std;
@@ -16,6 +16,7 @@ struct cmp_task_info
 	vector<string> * dict;
 	vector<int> * result;
 	int type;
+	Path * p;
 };
 
 class APP{
@@ -35,7 +36,7 @@ protected:
 	vector<string> story;
 	vector<string> cStory;
 
-	
+	vector<Path> paths;	
 	
 	//在单词模式，去除重复单词，并将故事存成索引形式
 	//其他模式由于没有字典并没有用到的必要
