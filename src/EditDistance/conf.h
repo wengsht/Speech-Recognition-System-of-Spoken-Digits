@@ -5,6 +5,7 @@ public:
     static int threshold;
     static int beam;
 	static int info;
+    static int debug;
 };
 
 #endif

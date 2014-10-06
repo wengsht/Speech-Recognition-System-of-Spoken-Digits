@@ -13,6 +13,7 @@ struct Path{
     int * val;
 
 	Path(){
+        len = 0;
 		dir = NULL;
 		val = NULL;
 	};

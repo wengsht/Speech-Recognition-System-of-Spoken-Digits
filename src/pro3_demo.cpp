@@ -16,6 +16,7 @@ void run();
 int Conf::threshold = 3;
 int Conf::beam = 3;
 int Conf::info = 0;
+int Conf::debug = 0;
 int main(int argc,char ** argv)
 {
 	if(! dealOpts(argc, argv))
@@ -31,16 +32,38 @@ APP app;
 
 const char * help = "\
 usage : ./pro3_demo [-h] [-a|-A <NUM>] [-m|-M] \
-[-d <FILE>] [-s <FILE>] [-c <FILE>]\n\
--h 帮助 \n\
--a 使用第一种剪枝(默认使用普通算法)，需要输入threshold \n\
--A 使用beam剪枝，需要输入beam \n\
--m 使用句子模式\n\
--M 使用文章模式\n\
--d 使用字典文件 \n\
--s 使用故事文本 \n\
--c 使用正确故事文本 \n\
--i 输出额外信息 \n\
+[-d <FILE>] [-s <FILE>] [-c <FILE>] [-f <FILE>]\n\
+-h help. \n\
+-a use a fix threshold (default use nothing), also input a threshold.\n\
+-A use beam pruning, also input a beam.\n\
+-m compare two sentence (default compare words).\n\
+-M compare two article.\n\
+-d use a dictionay to compare.\n\
+-s use one story txt.\n\
+-c use one correct story txt, always use with -s together.\n\
+-i output more information(for debug).\n\
+-f save modified txt into a file.\n\
+\n\
+example:\n\
+-a 3 \n\
+--- input two words to compare with fix threshold 3.\n\
+\n\
+-m -a 3 \n\
+--- input two sentence to compare with beam 3.\n\
+\n\
+-s a1.txt -c b1.txt -M\n\
+--- compare two files. calculate lines' different.\n\
+\n\
+-d dict.txt\n\
+--- input one word, and compare it with the whole dictionary.\n\
+\n\
+-c storycorrect.txt -s story.txt -d dict.txt -f better.txt\n\
+--- modify story.txt with dict.txt, and compare with storycorrect.txt.\n\
+then save modified story into better.txt\n\
+\n\
+-s a.txt -c b.txt -m\n\
+--- compare two files, calculate words' different.\n\
+\n\
 ";
 
 ///

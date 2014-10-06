@@ -68,9 +68,9 @@ protected:
 	bool fromFileJob();
 	int calcAllWithThread();
 	int calcOne();
+	int calcOneWithDic();	
 	//手动输入
 	bool inputJob();
-	
 	//根据模式读文件
 	void readFile();
 	void printInfo();

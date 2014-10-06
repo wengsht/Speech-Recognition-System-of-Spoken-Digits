@@ -5,7 +5,7 @@
 #include "calcDist.h"
 #include "ThreadPool.h"
 #include <iostream>
-
+#include <algorithm>
 using namespace std;
 
  //各种模式分割符
@@ -181,12 +181,13 @@ int APP::calcOne(){
 			printf(" ");
 		}
 		c.print();
-		cout << "\ntotal different (distance) : "<< ret << endl;
+		cout << "Total different (distance) : "<< ret << endl;
 
 		return ret;
 	}
-
-	Path p(story.size()+cStory.size() +2);
+	int ma =  (story.size()+cStory.size() +2);
+	Path p(ma);
+//	printf("ma : %d\n",ma);
 	if(alg == 1) {
 		ret = compare(story,cStory,&p);
 	}
@@ -199,9 +200,42 @@ int APP::calcOne(){
 	else if(mode == 2){
 		printPath(story,cStory,&p," ");	
 	}
-
-	cout << "\ntotal different (distance) : "<< ret << endl;
+	printf("\n");
+	cout << "Total different (distance) : "<< ret << endl;
 	return ret;
+}
+
+int APP::calcOneWithDic(){
+	Path p;
+	string a,b;
+	printf("Input One Word : ");
+	int best_val = 1<<30;
+	int best_id = -1; 
+	while(cin >> a){
+		transform(a.begin(), a.end(), a.begin(), ::tolower);
+		for(int i = 0;i<dic.size();i++){
+			int ret ;
+			b = dic[i];
+			Path p (a.length() + b.length()+2);
+			if(alg==1) ret = compare(a.c_str(),b.c_str(),&p);
+			else if(alg==2) ret = compare(a.c_str(),b.c_str(),Conf::threshold,&p);
+			else if(alg==3) ret = compareWithBeam(a.c_str(),
+								b.c_str(),Conf::beam,&p);
+			if(ret < best_val){
+				best_val = ret;
+				best_id = i;
+			}
+			Count c;
+			c.addPath(p);
+			c.print();
+			cout << "Total error(distance) : " << ret << endl;
+			printMatrix(a.c_str(),b.c_str(),&p);
+		}
+		printf("\n\nBest match of %s : %s.(id = %d)\n\n",a.c_str(),dic[best_id].c_str(),best_id);
+		
+		printf("Input One Word : ");
+	}
+	return true;
 }
 
 int APP::calcAllWithThread(){
@@ -238,28 +272,39 @@ int APP::calcAllWithThread(){
 
 bool APP::fromFileJob(){
 	readFile();
-	if(Conf::info){
+	//if(Conf::info){
 		printf("Story size : %d .Correct story size : %d .\n",
 		(int)story.size(),(int)cStory.size());	
-	}
+	//}
 
 	if(dic.size()==0){
-		calcOne();
-		return true;
+		return calcOne();
+	}	
+	if(story.size()==0 && cStory.size()==0){
+		return calcOneWithDic();
 	}
-	
 	calcIndex(story,storyIndex);
 
 	calcAllWithThread();
 
 	//print(better,dic,true);
+	if(Conf::info){
+		printf("Here is the ans:\n");
+	}
+	Count c;
 	for(int i =0;i<story.size();i++){
 		int t = storyIndex[i];
 		int d = better[i]; 
 		printPath(story[i].c_str(),dic[d].c_str(),&paths[t],"");
 		printf(" ");
+		c.addPath(paths[t]);
 	}
+	c.print();
+
+	//printf("difference in story and correctstory:");
+	
 	if(betterStoryFile){
+		printf("Save into %s\n",betterStoryFile);
 		saveStrsToFile(betterStoryFile,better,dic);	
 	}
 	printf("\n");
@@ -292,12 +337,15 @@ bool readline(vector<string>& v){
 bool APP::inputJob(){
 	if(mode == 1){
 		string a,b;
-		printf("\nInput two words :\n");
+		printf("\nInput Two Words :\n");
 		while(cin >> a >> b){
 			int ret ;
 			Path p (a.length() + b.length()+2);
 			if(alg==1) ret = compare(a.c_str(),b.c_str(),&p);
-			if(alg==2) ret = compare(a.c_str(),b.c_str(),Conf::threshold,&p);
+			else if(alg==2) ret = compare(a.c_str(),b.c_str(),Conf::threshold,&p);
+			else if(alg==3) ret = compareWithBeam(a.c_str(),
+								b.c_str(),Conf::beam,&p);
+			
 			Count c;
 			c.addPath(p);
 			c.print();
@@ -305,12 +353,12 @@ bool APP::inputJob(){
 			printMatrix(a.c_str(),b.c_str(),&p);
 			//printPath(a.c_str(),b.c_str(),&p,"\n");
 			//printPath(a.c_str(),b.c_str(),&p," ");
-			printf("\nInput two words :\n");
+			printf("\nInput Two Words :\n");
 		}
 	}
 	else if(mode == 2){
-		printf("\nInput two sentences : \n");
-		if(readline(story) && readline(cStory)){
+		printf("\nInput Two Sentences : \n");
+		while(readline(story) && readline(cStory)){
 			int ret ;
 			Path p(story.size() + cStory.size() + 2);
 			if(alg==1) ret = compare(story,cStory,&p);
@@ -318,11 +366,13 @@ bool APP::inputJob(){
 			cout << "Total error(distance) : " << ret << endl;
 			//printPath(story,cStory,&p,"\n");
 			printPath(story,cStory,&p," ");
-			printf("\nInput two sentences : \n");
+			printf("\n\nInput Two Sentences : \n");
+			story.clear();
+			cStory.clear();
 		}
-		else{
-			Warn("Input error\n");
-		}
+		//else{
+		//	Warn("Input error\n");
+		//}
 	}
 	else if(mode == 3){
 		Warn("Can't not input two article, use File -s and -c!");
