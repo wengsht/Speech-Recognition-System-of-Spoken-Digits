@@ -1,1 +1,6 @@
 src/build
+build/
+*.swp
+*.swo
+tags
+.DS_Store

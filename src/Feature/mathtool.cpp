@@ -10,6 +10,8 @@
 
 #include <assert.h>
 
+#include <iostream>
+using namespace std;
 const int MAXN = 1000;
 // fft(a, n, 1) -- dft
 // fft(a, n, -1) -- idft
@@ -17,10 +19,10 @@ const int MAXN = 1000;
 void fft(cp *a,int n,int f)
 {
  //   assert(MAXN > n);
-    static cp b[MAXN];
+    cp *b = new cp[n];
     double arg = PI;
     for(int k = n>>1;k;k>>=1,arg*=0.5){
-        cp  wm = std::polar(f*arg),w(1,0);
+        cp  wm = std::polar(1.0,f*arg),w(1,0);
         for(int i = 0;i<n;i+=k,w*=wm){
             int p = i << 1;
             if(p>=n) p-= n;
@@ -30,16 +32,46 @@ void fft(cp *a,int n,int f)
         }
         for(int i = 0;i<n;++i) a[i] = b[i];
     }
+    delete []b;
 }
 
 // use to check fft is right
 void dft(cp *a,int n,int f)
 {
-    
+    cp *b = new cp[n];
+    for(int i = 0;i < n;i++) {
+        b[i] = cp(0, 0);
+
+        for(int j = 0;j < n;j++) {
+            b[i] += cp(std::real(a[j])*cos(-2.0*PI*j*i/n), std::real(a[j])*sin(-2.0*PI*j*i/n));
+        }
+    }
+    for(int i = 0;i<n;++i) a[i] = b[i];
+
+    delete []b;
 }
 
-
+// a's size should be more then 2*n
 void dct(double *a,int n,int f)
 {
-    
+    cp *b = new cp[2*n];
+    for(int i = n-1;i >= 0;i--) {
+        b[n-i-1] = b[n+i] = cp(a[i], 0);
+    }
+    dft(b, 2*n, f);
+
+    for(int i = 0;i < 2*n;i++)
+        a[i] = std::real(b[i]);
+    delete [] b;
+}
+void dct2(double *a, int n) {
+    double *b = new double[n];
+    for(int i = 0;i < n;i++) {
+        b[i] = 0.0;
+        for(int j = 0;j < n;j++) 
+            b[i] += a[j] * cos(PI*i*(j+1.0/2)/n);
+    }
+    for(int i = 0;i < n;i++)
+        a[i] = b[i] * sqrt(2.0/n) / sqrt(2.0);
+    delete [] b;
 }

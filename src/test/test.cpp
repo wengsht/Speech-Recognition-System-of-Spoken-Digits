@@ -66,9 +66,39 @@ void capture(const char * save_file_name,
         ErrorLog("Capture error");
     }
 }
+void capture(const char *save_file_name, RawData &data, bool playback) {
+    DAEPAnalysis ep;
+    AutoCapture c(&ep);
+    
+    Tip("Press any key to capture:");
+    getch();
+    puts("");
+    Tip("Preparing...");
+    sleep(1);
+    
+    char fn_buffer [128]="";
+    
+    Tip("Start talking");
+
+    if(c.capture(&data)){
+        data.saveWav(stringFile(save_file_name,".wav",fn_buffer));
+        
+        //if(playback)c.play(&data);
+        
+        ep.smooth();
+        ep.cut();
+        
+        if(playback) c.play(&data);
+        
+        data.saveWav(stringFile(save_file_name,"_cut.wav",fn_buffer));
+    }
+    else{
+        ErrorLog("Capture error");
+    }
+}
 
 
-void load_calc(const char *load_file_name,
+SP_RESULT load_calc(const char *load_file_name,
                const char *file_name,
                EPAnalysis& ep,
                bool playback){
@@ -93,5 +123,19 @@ void load_calc(const char *load_file_name,
     //ep.saveMatlab(stringFile(file_name,"_cut_2.m",fn_buffer));
 
     if(playback)c.play(&data);
+
+    return SP_SUCCESS;
 }
 
+SP_RESULT load_wav_file(const char *file_name, RawData &data) {
+    DAEPAnalysis da_ep;
+    Capture c;
+    char fn_buffer[128] = "";
+    data.loadWav(stringFile(file_name, ".wav", fn_buffer));
+    da_ep.Initial(&data);
+    da_ep.reCalcAllData();
+//    da_ep.smooth();
+//    da_ep.cut();
+
+    return SP_SUCCESS;
+}

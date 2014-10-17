@@ -8,3 +8,7 @@
 
 #include "Feature.h"
 
+#include <cmath>
+void Feature::push_back(double d) {
+    data.push_back(d);
+}

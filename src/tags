@@ -1,0 +1,303 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ADJUSTMENT	Configure/configure_capture.h	/^const double ADJUSTMENT = 0.01;         \/\/ for level , smaller and slower$/;"	v
+AEPAnalysis	Analysis/AEPAnalysis.h	/^    AEPAnalysis(){$/;"	f	class:AEPAnalysis
+AEPAnalysis	Analysis/AEPAnalysis.h	/^class AEPAnalysis:public EPAnalysis{$/;"	c
+ALPHA	Configure/configure_capture.h	/^const double ALPHA = 0.9;               \/\/small and slower(in speech)$/;"	v
+AutoCapture	Capture/AutoCapture.h	/^    AutoCapture(EPAnalysis * ep):ep(ep){};$/;"	f	class:AutoCapture
+AutoCapture	Capture/AutoCapture.h	/^class AutoCapture:public Capture{$/;"	c
+BEPAnalysis	Analysis/BEPAnalysis.h	/^    BEPAnalysis(){}$/;"	f	class:BEPAnalysis
+BEPAnalysis	Analysis/BEPAnalysis.h	/^class BEPAnalysis:public EPAnalysis{$/;"	c
+BLUE	Configure/tool.h	50;"	d
+BROWN	Configure/tool.h	57;"	d
+BytesPerSample	readwave/readwave.h	/^	short BytesPerSample;$/;"	m	struct:WavFileHead
+CEPS_NUM	Configure/configure_feature.h	/^const int    CEPS_NUM = 13;$/;"	v
+CHECK_ERR	Capture/Capture.cpp	/^void CHECK_ERR(PaError err){$/;"	f
+CONST_REFERENCE_READ_ONLY_DECLARE	Configure/tool.h	67;"	d
+CYAN	Configure/tool.h	53;"	d
+Capture	Capture/Capture.cpp	/^Capture::Capture(){$/;"	f	class:Capture
+Capture	Capture/Capture.h	/^class Capture{$/;"	c
+DAEPAnalysis	Analysis/DAEPAnalysis.h	/^    DAEPAnalysis(){};$/;"	f	class:DAEPAnalysis
+DAEPAnalysis	Analysis/DAEPAnalysis.h	/^class DAEPAnalysis:public EPAnalysis{$/;"	c
+DARY_GRAY	Configure/tool.h	52;"	d
+DATA_SILENCE	Configure/configure_basic.h	47;"	d
+DATA_SILENCE	Configure/configure_basic.h	52;"	d
+DATA_SILENCE	Configure/configure_basic.h	57;"	d
+DITHER_FLAG	Capture/Capture.cpp	11;"	d	file:
+EPAnalysis	Analysis/EPAnalysis.h	/^    EPAnalysis(){$/;"	f	class:EPAnalysis
+EPAnalysis	Analysis/EPAnalysis.h	/^class EPAnalysis{$/;"	c
+ERROR_CODE	Configure/tool.cpp	121;"	d	file:
+ERROR_CODE	Configure/tool.cpp	124;"	d	file:
+ERROR_CODE	Configure/tool.h	88;"	d
+ERROR_CODE	Configure/tool.h	93;"	d
+ERROR_CODE	Configure/tool.h	96;"	d
+ERROR_CODE	Configure/tool.h	99;"	d
+ERROR_UIDS	Configure/tool.h	/^enum ERROR_UIDS {$/;"	g
+EXTENT_SPEECH	Configure/configure_capture.h	/^const double EXTENT_SPEECH = 250;  \/\/??? no use now$/;"	v
+EXTENT_SPEECH_FRAMES	Configure/configure_capture.h	/^const int EXTENT_SPEECH_FRAMES = EXTENT_SPEECH * FRAME_PER_SECOND \/ 1000;$/;"	v
+ErrorLog	Configure/tool.cpp	/^void ErrorLog(const char *msg,...){$/;"	f
+FORGET_FACTOR	Configure/configure_capture.h	/^const double FORGET_FACTOR = 3;       \/\/ for bg , smaller and faster$/;"	v
+FRAME_PER_SECOND	Configure/configure_basic.h	/^const int FRAME_PER_SECOND = 40; \/\/don't change$/;"	v
+Feature	Feature/Feature.h	/^class Feature{$/;"	c
+FeatureExtractor	Feature/FeatureExtractor.h	/^    FeatureExtractor(){}$/;"	f	class:FeatureExtractor
+FeatureExtractor	Feature/FeatureExtractor.h	/^class FeatureExtractor{$/;"	c
+FileLength	readwave/readwave.h	/^	int FileLength;$/;"	m	struct:WavFileHead
+FillWaveHeader	readwave/readwave.cpp	/^void FillWaveHeader(void *buffer, int raw_wave_len, int sampleRate)$/;"	f
+FormatCategory	readwave/readwave.h	/^	short FormatCategory;$/;"	m	struct:WavFileHead
+GREEN	Configure/tool.h	48;"	d
+GetWavHeader	readwave/readwave.cpp	/^void GetWavHeader(const char *wavFile, short *Bits, int *Rate,$/;"	f
+Initial	Analysis/AEPAnalysis.h	/^    virtual void Initial(RawData * rawData){$/;"	f	class:AEPAnalysis
+Initial	Analysis/EPAnalysis.h	/^    virtual void Initial(RawData * rawData){$/;"	f	class:EPAnalysis
+LEVEL_BG_THRESHOLD	Configure/configure_capture.h	/^const double LEVEL_BG_THRESHOLD = 10;$/;"	v
+LIGHT_BLUE	Configure/tool.h	51;"	d
+LIGHT_CYAN	Configure/tool.h	54;"	d
+LIGHT_GRAY	Configure/tool.h	59;"	d
+LIGHT_GREEN	Configure/tool.h	49;"	d
+LIGHT_PURPLE	Configure/tool.h	56;"	d
+LIGHT_RED	Configure/tool.h	47;"	d
+Log	Configure/tool.cpp	/^void Log(const char * msg,...){$/;"	f
+MAXN	Feature/mathtool.cpp	/^const int MAXN = 1000;$/;"	v
+MAX_BUFFER_SECOND	Configure/configure_basic.h	/^const int MAX_BUFFER_SECOND  = 120 ; \/\/ 2 minutes, don't too small$/;"	v
+MAX_F	Configure/configure_feature.h	/^const double MAX_F = 4000.0; \/\/(SAMPLE_RATE \/ 2.0);$/;"	v
+MAX_SIZE	Configure/configure_capture.h	/^const int MAX_SIZE =MAX_TOTAL_SAMPLE *NUM_CHANNELS;$/;"	v
+MAX_TOTAL_SAMPLE	Configure/configure_capture.h	/^const int MAX_TOTAL_SAMPLE = MAX_BUFFER_SECOND *SAMPLE_RATE;$/;"	v
+MEL_FILTER_NUM	Configure/configure_feature.h	/^const int    MEL_FILTER_NUM = 40;$/;"	v
+MIN_F	Configure/configure_feature.h	/^const double MIN_F = 0.0;$/;"	v
+MIN_SILENT_FRAMES	Configure/configure_capture.h	/^const int MIN_SILENT_FRAMES = MIN_SILENT_TIME * FRAME_PER_SECOND \/ 1000;$/;"	v
+MIN_SILENT_TIME	Configure/configure_capture.h	/^const double MIN_SILENT_TIME = 100;$/;"	v
+MIN_SPEECH_FRAMES	Configure/configure_capture.h	/^const int MIN_SPEECH_FRAMES = MIN_SPEECH_TIME * FRAME_PER_SECOND \/1000;$/;"	v
+MIN_SPEECH_TIME	Configure/configure_capture.h	/^const double MIN_SPEECH_TIME = 200;$/;"	v
+MatrixMul01	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \\$/;"	f	class:FeatureExtractor
+NBitsPersample	readwave/readwave.h	/^	short NBitsPersample;$/;"	m	struct:WavFileHead
+NChannels	readwave/readwave.h	/^	short NChannels;$/;"	m	struct:WavFileHead
+NONE	Configure/tool.h	45;"	d
+NUM_CHANNELS	Configure/configure_basic.h	/^const int NUM_CHANNELS = 1; \/\/don't change$/;"	v
+OFFSET_THRESHOLD	Configure/configure_capture.h	/^const double OFFSET_THRESHOLD = -2;     \/\/increase in noise environment$/;"	v
+ONSET_THRESHOLD	Configure/configure_capture.h	/^const double ONSET_THRESHOLD = 10;      \/\/decrease in noise environment$/;"	v
+OVERLAP_SIZE	Configure/configure_feature.h	/^const int OVERLAP_SIZE = OVERLAP_TIME\/1000.0 * SAMPLES_IN_EACH_FRAME;$/;"	v
+OVERLAP_TIME	Configure/configure_feature.h	/^const int OVERLAP_TIME = 15;$/;"	v
+PA_DATA_TYPE	Configure/configure_basic.h	45;"	d
+PA_DATA_TYPE	Configure/configure_basic.h	50;"	d
+PA_DATA_TYPE	Configure/configure_basic.h	55;"	d
+PI	Feature/mathtool.h	/^const double PI = std::acos(-1);$/;"	v
+PRINTF_S_FORMAT	Configure/configure_basic.h	48;"	d
+PRINTF_S_FORMAT	Configure/configure_basic.h	53;"	d
+PRINTF_S_FORMAT	Configure/configure_basic.h	58;"	d
+PRINT_DEBUG_FRAME_INF	Configure/configure_basic.h	/^const bool PRINT_DEBUG_FRAME_INF = true; \/\/ print the block energy,bg,etc.$/;"	v
+PURPLE	Configure/tool.h	55;"	d
+READ_INIT_DECLARE	Configure/tool.h	80;"	d
+READ_ONLY_DECLARE	Configure/tool.h	63;"	d
+READ_WRITE_DECLARE	Configure/tool.h	75;"	d
+RED	Configure/tool.h	46;"	d
+RIFF	readwave/readwave.h	/^	char RIFF[4];$/;"	m	struct:WavFileHead
+RawData	data/RawData.cpp	/^RawData::RawData()$/;"	f	class:RawData
+RawData	data/RawData.cpp	/^RawData::RawData(const RawData& rawData){$/;"	f	class:RawData
+RawData	data/RawData.h	/^class RawData{$/;"	c
+RawDataFileLength	readwave/readwave.h	/^	int RawDataFileLength;$/;"	m	struct:WavFileHead
+ReadWav	readwave/readwave.cpp	/^void ReadWav(const char *wavFile, short *waveData, int *numSamples, int *sampleRate)$/;"	f
+ReadWavFile	readwave/readwave.cpp	/^short *ReadWavFile(const char *wavFile, int *numSamples, int *sampleRate )$/;"	f
+ReadWave	readwave/readwave.cpp	/^short *ReadWave(const char *wavFile, int *numSamples, int *sampleRate ) $/;"	f
+SAFE_DELELE_POINTER	Configure/tool.h	85;"	d
+SAMPLE	Configure/configure_basic.h	/^typedef unsigned char SAMPLE;$/;"	t
+SAMPLES_IN_EACH_FRAME	Configure/configure_basic.h	/^const int SAMPLES_IN_EACH_FRAME = SAMPLE_RATE \/ FRAME_PER_SECOND;$/;"	v
+SAMPLE_RATE	Configure/configure_basic.h	/^const int SAMPLE_RATE = 44100;  \/\/don't change$/;"	v
+SAVE_DATA_DIR	Configure/configure_basic.h	/^const char  SAVE_DATA_DIR[] = ".\/";$/;"	v
+SEGMENT_SIZE	Configure/configure_feature.h	/^const int SEGMENT_SIZE = SEGMENT_TIME\/1000.0 * SAMPLES_IN_EACH_FRAME;$/;"	v
+SEGMENT_TIME	Configure/configure_feature.h	/^const int SEGMENT_TIME = 25;$/;"	v
+SILENCE_ENERGY_THRESHOLD	Configure/configure_capture.h	/^const int  SILENCE_ENERGY_THRESHOLD  = 30;  \/\/ as lower as possible$/;"	v
+SOUND_DATA	Configure/configure_basic.h	/^typedef char SOUND_DATA;$/;"	t
+SOUND_DATA	Configure/configure_basic.h	/^typedef short SOUND_DATA;$/;"	t
+SP_ERROR_CODE	Configure/tool.cpp	/^const char * SP_ERROR_CODE(SP_RESULT ERROR_UID) {$/;"	f
+SP_ERROR_CODE_GLOBAL	Configure/tool.cpp	/^const char *SP_ERROR_CODE_GLOBAL[] = {$/;"	v
+SP_PREEMPH_FACTOR	Configure/configure_feature.h	/^const double SP_PREEMPH_FACTOR = 0.95;$/;"	v
+SP_RESULT	Configure/tool.h	/^typedef int SP_RESULT;$/;"	t
+SP_RESULT_CNT	Configure/tool.h	/^const int  SP_RESULT_CNT = 1$/;"	v
+SP_SUCCESS	Configure/tool.h	/^    SP_SUCCESS$/;"	e	enum:ERROR_UIDS
+STEPTIME	Configure/configure_feature.h	/^const double STEPTIME = 0.010;$/;"	v
+STOP_IN_SECONDS	Configure/configure_basic.h	/^const double  STOP_IN_SECONDS = 1; \/\/ how many second to wait when in silent$/;"	v
+SampleBytes	readwave/readwave.h	/^	int SampleBytes;$/;"	m	struct:WavFileHead
+SampleRate	readwave/readwave.h	/^	int SampleRate;$/;"	m	struct:WavFileHead
+SpeechRecongnitionSystem_TimeCapture_h	Capture/AutoCapture.h	10;"	d
+SpeechRecongnitionSystem_common_h	Configure/resource.h	10;"	d
+SpeechRecongnitionSystem_configure_basic_h	Configure/configure_basic.h	10;"	d
+SpeechRecongnitionSystem_configure_capture_h	Configure/configure_capture.h	10;"	d
+SpeechRecongnitionSystem_configure_feature_h	Configure/configure_feature.h	10;"	d
+SpeechRecongnitionSystem_configure_h	Configure/configure.h	10;"	d
+SpeechRecongnitionSystem_srs_h	Configure/srs.h	10;"	d
+SpeechRecongnitionSystem_tool_h	Configure/tool.h	10;"	d
+TESTING	Configure/tool.h	/^const int TESTING = false;$/;"	v
+TRACKING_FACTOR	Configure/configure_capture.h	/^const double TRACKING_FACTOR = 0.01;    \/\/ small and track quikly(in silent)$/;"	v
+Tip	Configure/tool.cpp	/^void Tip(const char * msg,...){$/;"	f
+WAVEfmt_	readwave/readwave.h	/^	char WAVEfmt_[8];$/;"	m	struct:WavFileHead
+WHITE	Configure/tool.h	60;"	d
+WINTIME	Configure/configure_feature.h	/^const double WINTIME = 0.025; \/\/ sec$/;"	v
+WRITE_ONLY_DECLARE	Configure/tool.h	71;"	d
+WarnLog	Configure/tool.cpp	/^void WarnLog(const char *msg,...){$/;"	f
+WavFileHead	readwave/readwave.h	/^struct WavFileHead$/;"	s
+WaveRewind	readwave/readwave.cpp	/^bool WaveRewind(FILE *wav_file, WavFileHead *wavFileHead)$/;"	f
+WriteWave	readwave/readwave.cpp	/^void WriteWave(const char *wavFile, short *waveData, int numSamples, int sampleRate)$/;"	f
+YELLOW	Configure/tool.h	58;"	d
+__SpeechRecongnitionSystem__AdaptiveEndPointAnalysis__	Analysis/AEPAnalysis.h	10;"	d
+__SpeechRecongnitionSystem__BEPAnalysis__	Analysis/BEPAnalysis.h	10;"	d
+__SpeechRecongnitionSystem__Capture__	Capture/Capture.h	10;"	d
+__SpeechRecongnitionSystem__DAEPAnalysis__	Analysis/DAEPAnalysis.h	10;"	d
+__SpeechRecongnitionSystem__EndPointAnalysis__	Analysis/EPAnalysis.h	10;"	d
+__SpeechRecongnitionSystem__FeatureExtractor__	Feature/FeatureExtractor.h	10;"	d
+__SpeechRecongnitionSystem__Feature__	Feature/Feature.h	10;"	d
+__SpeechRecongnitionSystem__RawData__	data/RawData.h	10;"	d
+__SpeechRecongnitionSystem__mathtool__	Feature/mathtool.h	10;"	d
+__SpeechRecongnitionSystem__test__	test/test.h	10;"	d
+addOneBlockDataWithEndFlag	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::addOneBlockDataWithEndFlag(const SOUND_DATA * src){$/;"	f	class:EPAnalysis
+appendBlockData	data/RawData.cpp	/^bool RawData::appendBlockData(const SOUND_DATA * src){$/;"	f	class:RawData
+audspec	Matlab/rastamat/audspec.m	/^function [aspectrum,wts] = audspec(pspectrum, sr, nfilts, fbtype, minfreq, maxfreq, sumpower, bwidth)$/;"	f
+background	Analysis/EPAnalysis.h	/^    vector<double> background;$/;"	m	class:EPAnalysis
+bark2hz	Matlab/rastamat/bark2hz.m	/^function hz=bark2hz(z)$/;"	f
+block_num	Analysis/EPAnalysis.h	/^    int block_num ;$/;"	m	class:EPAnalysis
+calcOneBlockBackground	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::calcOneBlockBackground(int index) {$/;"	f	class:AEPAnalysis
+calcOneBlockBackground	Analysis/BEPAnalysis.cpp	/^void BEPAnalysis::calcOneBlockBackground(int index){$/;"	f	class:BEPAnalysis
+calcOneBlockBackground	Analysis/DAEPAnalysis.cpp	/^void DAEPAnalysis::calcOneBlockBackground(int index){$/;"	f	class:DAEPAnalysis
+calcOneBlockData	Analysis/EPAnalysis.cpp	/^void EPAnalysis::calcOneBlockData(int index){$/;"	f	class:EPAnalysis
+calcOneBlockEnerge	Analysis/EPAnalysis.cpp	/^void EPAnalysis::calcOneBlockEnerge(int index){$/;"	f	class:EPAnalysis
+calcOneBlockOtherData	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::calcOneBlockOtherData(int index) {$/;"	f	class:AEPAnalysis
+calcOneBlockOtherData	Analysis/EPAnalysis.h	/^    virtual void calcOneBlockOtherData(int index) {};$/;"	f	class:EPAnalysis
+calcOneBlockSpeech	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::calcOneBlockSpeech(int index) {$/;"	f	class:AEPAnalysis
+calcOneBlockSpeech	Analysis/BEPAnalysis.cpp	/^void BEPAnalysis::calcOneBlockSpeech(int index){$/;"	f	class:BEPAnalysis
+calcOneBlockSpeech	Analysis/DAEPAnalysis.cpp	/^void DAEPAnalysis::calcOneBlockSpeech(int index){$/;"	f	class:DAEPAnalysis
+callback	Capture/Capture.h	/^    PaStreamCallback* callback;$/;"	m	class:Capture
+capture	Capture/Capture.cpp	/^bool Capture::capture(RawData * data){$/;"	f	class:Capture
+capture	test/test.cpp	/^void capture(const char * save_file_name,$/;"	f
+captureAction	Capture/AutoCapture.cpp	/^bool AutoCapture::captureAction(RawData * data){$/;"	f	class:AutoCapture
+captureAction	Capture/Capture.cpp	/^bool Capture::captureAction(RawData * data){$/;"	f	class:Capture
+cep2spec	Matlab/rastamat/cep2spec.m	/^function [spec,idctm] = cep2spec(cep, nfreq, type)$/;"	f
+changeSilentSegmentIntoSpeech	Analysis/EPAnalysis.cpp	/^void EPAnalysis::changeSilentSegmentIntoSpeech(){$/;"	f	class:EPAnalysis
+changeSpeechSegmentIntoSilent	Analysis/EPAnalysis.cpp	/^void EPAnalysis::changeSpeechSegmentIntoSilent(){$/;"	f	class:EPAnalysis
+checkContinue	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::checkContinue(){$/;"	f	class:EPAnalysis
+clean	data/RawData.cpp	/^void RawData::clean(){$/;"	f	class:RawData
+copyBlockData	data/RawData.cpp	/^void RawData::copyBlockData(int from,int to){$/;"	f	class:RawData
+cp	Feature/mathtool.h	/^typedef std::complex<double> cp;$/;"	t
+createNoise	test/test.cpp	/^void createNoise(const char * file_name){$/;"	f
+cut	Analysis/EPAnalysis.cpp	/^void EPAnalysis::cut(){$/;"	f	class:EPAnalysis
+data	Analysis/EPAnalysis.h	/^    RawData * data() {$/;"	f	class:EPAnalysis
+data	Feature/Feature.h	/^    std::vector<double> data;$/;"	m	class:Feature
+data	data/RawData.h	/^    SOUND_DATA * data;$/;"	m	class:RawData
+data	readwave/readwave.h	/^	char data[4];$/;"	m	struct:WavFileHead
+dct	Feature/mathtool.cpp	/^void dct(double *a,int n,int f)$/;"	f
+dct2	Feature/mathtool.cpp	/^void dct2(double *a, int n) {$/;"	f
+deltas	Matlab/rastamat/deltas.m	/^function d = deltas(x, w)$/;"	f
+dft	Feature/mathtool.cpp	/^void dft(cp *a,int n,int f)$/;"	f
+dolpc	Matlab/rastamat/dolpc.m	/^function y = dolpc(x,modelorder)$/;"	f
+end	Capture/Capture.cpp	/^bool Capture::end(){$/;"	f	class:Capture
+energy	Analysis/EPAnalysis.h	/^    vector<double> energy;$/;"	m	class:EPAnalysis
+ep	Capture/AutoCapture.h	/^    EPAnalysis * ep;$/;"	m	class:AutoCapture
+exFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \\$/;"	f	class:FeatureExtractor
+fft	Feature/mathtool.cpp	/^void fft(cp *a,int n,int f)$/;"	f
+fft2MelLog	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \\$/;"	f	class:FeatureExtractor
+fft2barkmx	Matlab/rastamat/fft2barkmx.m	/^function wts = fft2barkmx(nfft, sr, nfilts, width, minfreq, maxfreq)$/;"	f
+fft2melmx	Matlab/rastamat/fft2melmx.m	/^function [wts,binfrqs] = fft2melmx(nfft, sr, nfilts, width, minfrq, maxfrq, htkmel, constamp)$/;"	f
+fftPadding	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::fftPadding(Matrix<double> & windows) {$/;"	f	class:FeatureExtractor
+getBlockAveEnergy	data/RawData.cpp	/^double RawData::getBlockAveEnergy(int index){$/;"	f	class:RawData
+getDB	Feature/FeatureExtractor.h	/^    static double getDB(double pow) {$/;"	f	class:FeatureExtractor
+getData	data/RawData.cpp	/^const SOUND_DATA * RawData::getData()const{$/;"	f	class:RawData
+getMelLog	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::getMelLog(std::vector<double> & melLog, \\$/;"	f	class:FeatureExtractor
+getWts	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::getWts(Matrix<double> &wts, \\$/;"	f	class:FeatureExtractor
+getch	Configure/tool.cpp	/^int getch() {$/;"	f
+getche	Configure/tool.cpp	/^int getche() {$/;"	f
+hanning	Feature/FeatureExtractor.h	/^    static double hanning(int n, int M) {$/;"	f	class:FeatureExtractor
+hz2bark	Matlab/rastamat/fft2barkmx.m	/^function z = hz2bark(f)$/;"	f
+hz2bark	Matlab/rastamat/hz2bark.m	/^function z= hz2bark(f)$/;"	f
+hz2mel	Feature/FeatureExtractor.h	/^    static double hz2mel(double frequency) {$/;"	f	class:FeatureExtractor
+hz2mel	Matlab/rastamat/fft2melmx.m	/^function z = hz2mel(f,htk)$/;"	f
+hz2mel	Matlab/rastamat/hz2mel.m	/^function z = hz2mel(f,htk)$/;"	f
+in	Capture/Capture.h	/^    PaStreamParameters in;$/;"	m	class:Capture
+init	Capture/Capture.cpp	/^bool Capture::init(RawData * data,bool input){$/;"	f	class:Capture
+init_PA	Capture/Capture.cpp	/^bool Capture::init_PA(){$/;"	f	class:Capture
+init_callback	Capture/AutoCapture.cpp	/^bool AutoCapture::init_callback(RawData * data,bool input){$/;"	f	class:AutoCapture
+init_callback	Capture/Capture.cpp	/^bool Capture::init_callback(RawData * data,bool input){$/;"	f	class:Capture
+init_stream	Capture/Capture.cpp	/^bool Capture::init_stream(bool input){$/;"	f	class:Capture
+inital	Feature/FeatureExtractor.h	/^    void inital(){$/;"	f	class:FeatureExtractor
+invaudspec	Matlab/rastamat/invaudspec.m	/^function [spec,wts,iwts] = invaudspec(aspectrum, sr, nfft, fbtype, minfreq, maxfreq, sumpower, bwidth)$/;"	f
+invmelfcc	Matlab/rastamat/invmelfcc.m	/^function [x,aspc,spec] = invmelfcc(cep, sr, varargin)$/;"	f
+invpostaud	Matlab/rastamat/invpostaud.m	/^function [x,eql] = invpostaud(y,fmax,fbtype,broaden)$/;"	f
+invpowspec	Matlab/rastamat/invpowspec.m	/^function x = invpowspec(y, sr, wintime, steptime, excit)$/;"	f
+ispecgram	Matlab/rastamat/ispecgram.m	/^function x = ispecgram(d, ftsize, sr, win, nov)$/;"	f
+level	Analysis/AEPAnalysis.h	/^    vector<double> level;$/;"	m	class:AEPAnalysis
+lifter	Matlab/rastamat/lifter.m	/^function y = lifter(x, lift, invs)$/;"	f
+loadWav	data/RawDataFile.cpp	/^bool RawData::loadWav(const char * file_name){$/;"	f	class:RawData
+load_calc	test/test.cpp	/^SP_RESULT load_calc(const char *load_file_name,$/;"	f
+load_wav_file	test/test.cpp	/^SP_RESULT load_wav_file(const char *file_name, RawData &data) {$/;"	f
+lpc2cep	Matlab/rastamat/lpc2cep.m	/^function features = lpc2cep(a,nout)$/;"	f
+lpc2spec	Matlab/rastamat/lpc2spec.m	/^function [features,F,M] = lpc2spec(lpcas, nout)$/;"	f
+main	main.cpp	/^int main()$/;"	f
+main	pro2_demo.cpp	/^int main() {$/;"	f
+matrix_file_read	Matlab/matrix_file_read.m	/^function [y] = matrix_file_read(filename)$/;"	f
+mel2dct	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum) {$/;"	f	class:FeatureExtractor
+mel2hz	Feature/FeatureExtractor.h	/^    static double mel2hz(double hz) {$/;"	f	class:FeatureExtractor
+mel2hz	Matlab/rastamat/fft2melmx.m	/^function f = mel2hz(z, htk)$/;"	f
+mel2hz	Matlab/rastamat/mel2hz.m	/^function f = mel2hz(z, htk)$/;"	f
+melCepstrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \\$/;"	f	class:FeatureExtractor
+melfcc	Matlab/rastamat/melfcc.m	/^function [cepstra,aspectrum,pspectrum] = melfcc(samples, sr, varargin)$/;"	f
+melfcc_demo	Matlab/rastamat/melfcc_demo.m	/^function [cepstra,aspectrum,pspectrum] = melfcc_demo(filename, varargin)$/;"	f
+noUse	readwave/readwave.h	/^	unsigned int noUse;$/;"	m	struct:WavFileHead
+operator *	Feature/Feature.h	/^    Feature operator * (const Feature & T)const{$/;"	f	class:Feature
+operator *	Feature/Feature.h	/^    Feature operator * (double c)const{$/;"	f	class:Feature
+operator +	Feature/Feature.h	/^    Feature operator + (const Feature & T)const{$/;"	f	class:Feature
+operator []	Feature/Feature.h	/^    const double &operator[] (int inx) const {$/;"	f	class:Feature
+operator []	Feature/Feature.h	/^    double &operator[] (int inx) {$/;"	f	class:Feature
+out	Capture/Capture.h	/^    PaStreamParameters out;$/;"	m	class:Capture
+patestCallback	Capture/AutoCapture.cpp	/^static int patestCallback( const void *inputBuffer, void *outputBuffer,$/;"	f	file:
+play	Capture/Capture.cpp	/^bool Capture::play(RawData * data){$/;"	f	class:Capture
+playAction	Capture/Capture.cpp	/^bool Capture::playAction(RawData * data){$/;"	f	class:Capture
+postaud	Matlab/rastamat/postaud.m	/^function [y,eql] = postaud(x,fmax,fbtype,broaden)$/;"	f
+powSpectrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \\$/;"	f	class:FeatureExtractor
+powspec	Matlab/rastamat/powspec.m	/^function [y,e] = powspec(x, sr, wintime, steptime, dither)$/;"	f
+preEmph	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::preEmph(\/* out *\/std::vector<double> &outs, \\$/;"	f	class:FeatureExtractor
+printInf	Analysis/AEPAnalysis.cpp	/^int AEPAnalysis::printInf(int from,int end){$/;"	f	class:AEPAnalysis
+printInf	Analysis/EPAnalysis.cpp	/^int EPAnalysis::printInf(int from,int end){$/;"	f	class:EPAnalysis
+process_options	Matlab/rastamat/process_options.m	/^function [varargout] = process_options(args, varargin)$/;"	f
+push_back	Feature/Feature.cpp	/^void Feature::push_back(double d) {$/;"	f	class:Feature
+rastafilt	Matlab/rastamat/rastafilt.m	/^function y = rastafilt(x)$/;"	f
+rastaplp	Matlab/rastamat/rastaplp.m	/^function [cepstra, spectra, pspectrum, lpcas, F, M] = rastaplp(samples, sr, dorasta, modelorder)$/;"	f
+rawData	Feature/Feature.h	/^    double *rawData() {$/;"	f	class:Feature
+reCalcAllData	Analysis/EPAnalysis.cpp	/^void EPAnalysis::reCalcAllData(){$/;"	f	class:EPAnalysis
+readhtk	Matlab/rastamat/readhtk.m	/^function [d,fp,dt,tc,t]=readhtk(file)$/;"	f
+reportMatlab	pro2_demo.cpp	/^void reportMatlab(FeatureExtractor &extractor) {$/;"	f
+resize	Feature/Feature.h	/^    void resize(int s) {$/;"	f	class:Feature
+riffRead	Matlab/riffRead.m	/^function [d, fs] = riffRead(filename)$/;"	f
+saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const char * data, int len){$/;"	f
+saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const double * data, int len){$/;"	f
+saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const int * data, int len){$/;"	f
+saveMatlab	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::saveMatlab(const char * file_name){$/;"	f	class:EPAnalysis
+saveOtherData	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::saveOtherData(FILE * fid){$/;"	f	class:AEPAnalysis
+saveOtherData	Analysis/EPAnalysis.h	/^    virtual void saveOtherData(FILE * fid){};$/;"	f	class:EPAnalysis
+saveWav	data/RawDataFile.cpp	/^bool RawData::saveWav(const char * file_name){$/;"	f	class:RawData
+setData	data/RawData.cpp	/^void RawData::setData(int index,SOUND_DATA d){$/;"	f	class:RawData
+setFrameNum	data/RawData.cpp	/^bool RawData::setFrameNum(int f_num){$/;"	f	class:RawData
+silentTime	Analysis/EPAnalysis.h	/^    int silentTime; \/\/ don't find how many block$/;"	m	class:EPAnalysis
+size	Feature/Feature.h	/^    int size() const {$/;"	f	class:Feature
+smooth	Analysis/EPAnalysis.cpp	/^void EPAnalysis::smooth(){$/;"	f	class:EPAnalysis
+solution	main.cpp	/^void solution(){$/;"	f
+spec2cep	Matlab/rastamat/spec2cep.m	/^function [cep,dctm] = spec2cep(spec, ncep, type)$/;"	f
+speech	Analysis/EPAnalysis.h	/^    vector<char> speech;$/;"	m	class:EPAnalysis
+sqr	Feature/Feature.h	/^    Feature sqr(){$/;"	f	class:Feature
+storeFeas	pro2_demo.cpp	/^void storeFeas(const std::vector<Feature> & data, const char *filename) {$/;"	f
+storeMatrix	pro2_demo.cpp	/^void storeMatrix(const Matrix<T> &data, const char *filename) {$/;"	f
+storeVector	pro2_demo.cpp	/^void storeVector(const vector<T> &data, const char *filename) {$/;"	f
+stream	Capture/Capture.h	/^    PaStream * stream;$/;"	m	class:Capture
+stringFile	test/test.cpp	/^const char * stringFile(const char * a,const char * b,char *ab){$/;"	f
+userData	Capture/Capture.h	/^    void * userData;$/;"	m	class:Capture
+vec_file_read	Matlab/vec_file_read.m	/^function [y] = vec_file_read(filename)$/;"	f
+windowFFT	Feature/FeatureExtractor.cpp	/^std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \\$/;"	f	class:FeatureExtractor
+windowMul	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowMul(std::vector<double> &window, \\$/;"	f	class:FeatureExtractor
+windowing	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowing(Matrix<double> & out_windows, \\$/;"	f	class:FeatureExtractor
+~AEPAnalysis	Analysis/AEPAnalysis.h	/^    ~AEPAnalysis(){};$/;"	f	class:AEPAnalysis
+~AutoCapture	Capture/AutoCapture.h	/^    ~AutoCapture(){};$/;"	f	class:AutoCapture
+~BEPAnalysis	Analysis/BEPAnalysis.h	/^    ~BEPAnalysis(){};$/;"	f	class:BEPAnalysis
+~Capture	Capture/Capture.cpp	/^Capture::~Capture(){$/;"	f	class:Capture
+~DAEPAnalysis	Analysis/DAEPAnalysis.h	/^    ~DAEPAnalysis(){};$/;"	f	class:DAEPAnalysis
+~EPAnalysis	Analysis/EPAnalysis.h	/^    ~EPAnalysis(){};$/;"	f	class:EPAnalysis
+~FeatureExtractor	Feature/FeatureExtractor.h	/^    ~FeatureExtractor(){}$/;"	f	class:FeatureExtractor
+~RawData	data/RawData.cpp	/^RawData::~RawData(){$/;"	f	class:RawData

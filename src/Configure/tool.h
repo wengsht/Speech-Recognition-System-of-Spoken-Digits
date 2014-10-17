@@ -19,17 +19,13 @@
 /// Debug Tool
 ///
 
-const int TESTING = false;
-
-
+const int TESTING = true;
 
 void Tip(const char * msg,...);
-
+void Warn(const char * msg,...);
 void Log(const char * msg,...);
 void ErrorLog(const char *msg,...);
 void WarnLog(const char *msg,...);
-
-
 
 ///
 /// IO helper
@@ -37,8 +33,6 @@ void WarnLog(const char *msg,...);
 
 int getch();
 int getche();
-
-
 
 ////////////////////////////////////////////////////FILE
 void saveArray(FILE* fid ,const double * data, int len);
@@ -70,6 +64,10 @@ void saveArray(FILE* fid ,const int * data, int len);
 protected  :TYPE NAME; \
 public : virtual TYPE get##FUNC()const{return NAME;}
 
+#define CONST_REFERENCE_READ_ONLY_DECLARE(TYPE,NAME,FUNC) \
+protected  :TYPE NAME; \
+public : virtual const TYPE & get##FUNC()const{return NAME;}
+
 #define WRITE_ONLY_DECLARE(TYPE,NAME,FUNC) \
 protected  :TYPE NAME; \
 public :virtual void set##FUNC(TYPE name){this->NAME = name;}
@@ -84,9 +82,26 @@ protected  :TYPE NAME; \
 public :virtual TYPE get##FUNC()const{return NAME;} \
 public :virtual void init##FUNC(TYPE name){this->NAME = name;}
 
-#define SAFE_DELELE_POINTER(val) \
+#define SAFE_DELETE_POINTER(val) \
 do{if(val)delete val;}while(0)
 
+#define ERROR_CODE(DUMMY1, DUMMY2, DUMMY3) \
+    +1
+const int  SP_RESULT_CNT = 1
+#include "ErrorCode.def"
+;
+#undef ERROR_CODE
+enum ERROR_UIDS {
+    SP_SUCCESS
+#define ERROR_CODE(ERROR_UID, DUMMY1, DUMMY2) \
+    , ERROR_UID
+#include "ErrorCode.def"
+#undef ERROR_CODE
+};
 
+extern const char *SP_ERROR_CODE_GLOBAL[];
+
+typedef int SP_RESULT;
+const char * SP_ERROR_CODE(SP_RESULT );
 
 #endif

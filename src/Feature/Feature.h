@@ -32,11 +32,27 @@ public:
         
         return ret;
     }
+    void push_back(double d);
     
     Feature operator * (double c)const{
         Feature ret;
         
         return ret;
+    }
+    void resize(int s) {
+        data.resize(s);
+    }
+    const double &operator[] (int inx) const {
+        return data[inx];
+    }
+    double &operator[] (int inx) {
+        return data[inx];
+    }
+    double *rawData() {
+        return data.data();
+    }
+    int size() const {
+        return data.size();
     }
 };
 #endif /* defined(__SpeechRecongnitionSystem__Feature__) */

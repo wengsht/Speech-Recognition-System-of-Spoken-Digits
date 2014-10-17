@@ -8,9 +8,6 @@
 
 
 
-
-
-
 // 
 void solution(){
     BEPAnalysis b_ep;

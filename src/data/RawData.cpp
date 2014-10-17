@@ -36,7 +36,7 @@ RawData::RawData(const RawData& rawData){
 
 RawData::~RawData(){
     Log("Delete RawData");
-    SAFE_DELELE_POINTER(this->data);
+    SAFE_DELETE_POINTER(this->data);
     Log("Delete Safely");
 }
 
@@ -106,7 +106,7 @@ bool RawData::setFrameNum(int f_num){
                 f_num,SAMPLES_IN_EACH_FRAME);
     }
     this->frame_num = f_num /
-    SAMPLES_IN_EACH_FRAME *
-    SAMPLES_IN_EACH_FRAME;
+        SAMPLES_IN_EACH_FRAME *
+        SAMPLES_IN_EACH_FRAME;
     return true;
 }
