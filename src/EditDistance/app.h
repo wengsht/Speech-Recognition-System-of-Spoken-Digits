@@ -19,7 +19,7 @@ struct cmp_task_info
 	Path * p;
 };
 
-class APP{
+class APP {
 	//
 	WRITE_ONLY_DECLARE(bool ,fromFile,FromFile);
 	

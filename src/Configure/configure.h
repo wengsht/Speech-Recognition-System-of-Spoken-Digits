@@ -12,6 +12,7 @@
 #include "configure_capture.h"
 #include "configure_feature.h"
 #include "configure_basic.h"
+#include "configure_dtw.h"
 /// Sample : one point
 /// Frame : about 20ms
 /// Buffer : it don't matter, we just use it to save something

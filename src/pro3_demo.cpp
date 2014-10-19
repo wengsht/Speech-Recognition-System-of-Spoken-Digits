@@ -7,7 +7,7 @@
 #include <assert.h>
 #include "resource.h"
 #include "app.h"
-#include "Conf.h"
+#include "conf.h"
 using namespace std;
 
 int dealOpts(int argc,char ** argv);

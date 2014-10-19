@@ -5,6 +5,33 @@
 #include "mathtool.h"
 #include "ThreadPool.h"
 
+SP_RESULT FeatureExtractor::exFeatures(const RawData *data) {
+    return exFeatures(data, \
+            sampleRate,
+            preEmpFactor, \
+            winTime, \
+            stepTime, \
+            winFunc, \
+            minF, \
+            maxF, \
+            hz2melFunc, \
+            mel2hzFunc, \
+            nfilts, \
+            cepsNum);
+}
+
+SP_RESULT FeatureExtractor::exDoubleDeltaFeatures(const RawData *data) {
+    exFeatures(data);
+
+    doubleDelta(normalMelCeps);
+}
+void FeatureExtractor::doubleDelta(std::vector<Feature> & normalMelCeps) {
+    int idx, siz = normalMelCeps.size();
+
+    for(idx = 0; idx < siz; idx ++) 
+        normalMelCeps[idx].fillDoubleDelta();
+}
+
 SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \
         int sampleRate, \
         double preEmpFactor, \

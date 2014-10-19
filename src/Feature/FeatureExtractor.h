@@ -27,6 +27,21 @@ class FeatureExtractor{
 
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, melCeps, MelCepstrum);
     CONST_REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, normalMelCeps, NormalMelCepstrum);
+
+    READ_WRITE_DECLARE(int , sampleRate, SampleRate);
+    READ_WRITE_DECLARE(double , preEmpFactor, PreEmpFactor);
+    READ_WRITE_DECLARE(double, winTime, WinTime);
+    READ_WRITE_DECLARE(double, stepTime, StepTime);
+    READ_WRITE_DECLARE(double, minF, MinF);
+    READ_WRITE_DECLARE(double, maxF, MaxF);
+    READ_WRITE_DECLARE(int, nfilts, Nfilts);
+    READ_WRITE_DECLARE(int, cepsNum, CepsNum);
+
+private:
+    double (*winFunc)(int, int);
+    double (*hz2melFunc)(double);
+    double (*mel2hzFunc)(double);
+
 private:
     static void paddingTask(void *in);
     struct padding_task_info {
@@ -131,26 +146,58 @@ protected:
             double (*winFunc)(int, int) );
     
 public:
-    FeatureExtractor() :threadNum(DEFAULT_THREAD_NUM) {}
-    FeatureExtractor(int threadNum) : threadNum(threadNum) {}
+    FeatureExtractor() :threadNum(DEFAULT_THREAD_NUM), \
+            sampleRate(SAMPLE_RATE), \
+            preEmpFactor(SP_PREEMPH_FACTOR), \
+            winTime(WINTIME), \
+            stepTime(STEPTIME), \
+            winFunc(FeatureExtractor::hanning), \
+            minF(MIN_F), \
+            maxF(MAX_F), \
+            hz2melFunc(FeatureExtractor::hz2mel), \
+            mel2hzFunc(FeatureExtractor::mel2hz), \
+            nfilts(MEL_FILTER_NUM), \
+            cepsNum(CEPS_NUM) {}
+    FeatureExtractor(int threadNum) : threadNum(threadNum), \
+            sampleRate(SAMPLE_RATE), \
+            preEmpFactor(SP_PREEMPH_FACTOR), \
+            winTime(WINTIME), \
+            stepTime(STEPTIME), \
+            winFunc(FeatureExtractor::hanning), \
+            minF(MIN_F), \
+            maxF(MAX_F), \
+            hz2melFunc(FeatureExtractor::hz2mel), \
+            mel2hzFunc(FeatureExtractor::mel2hz), \
+            nfilts(MEL_FILTER_NUM), \
+            cepsNum(CEPS_NUM) {}
     ~FeatureExtractor() {}
+
+    void doubleDelta(std::vector<Feature> &normalMelCeps);
     
 //    void calcFeatures(const RawData* rd);
     
     SP_RESULT exFeatures(const RawData *data, \
-            int sampleRate = SAMPLE_RATE, \
-            double preEmpFactor = SP_PREEMPH_FACTOR, \
-            double winTime = WINTIME, \
-            double stepTime = STEPTIME, \
-            double (*winFunc)(int, int) = FeatureExtractor::hanning, \
-            double minF = MIN_F, \
-            double maxF = MAX_F, \
-            double (*hz2melFunc)(double) = FeatureExtractor::hz2mel, \
-            double (*mel2hzFunc)(double) = FeatureExtractor::mel2hz, \
-            int nfilts = MEL_FILTER_NUM, \
-            int cepsNum = CEPS_NUM);
+            int sampleRate, \
+            double preEmpFactor, \
+            double winTime, \
+            double stepTime, \
+            double (*winFunc)(int, int), \
+            double minF, \
+            double maxF, \
+            double (*hz2melFunc)(double), \
+            double (*mel2hzFunc)(double), \
+            int nfilts, \
+            int cepsNum);
+
+    // normalMelCeps will be 13 length
+    SP_RESULT exFeatures(const RawData *data);
+
+    // normalMelCeps will be 39 length vector now
+    //
+    SP_RESULT exDoubleDeltaFeatures(const RawData *data);
 
 private:
     int threadNum;
+
 };
 #endif /* defined(__SpeechRecongnitionSystem__FeatureExtractor__) */

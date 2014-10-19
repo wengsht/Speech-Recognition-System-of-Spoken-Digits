@@ -39,7 +39,6 @@ protected:
 public:
     Capture();
     ~Capture();
-    
     // 
     bool  capture(RawData *);
     bool  play(RawData *);

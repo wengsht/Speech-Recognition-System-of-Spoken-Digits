@@ -1,3 +1,4 @@
 
 
 ERROR_CODE(SP_RUNERROR, X, "Run Error")
+ERROR_CODE(SP_FEATURE_NOT_RAW, X, "Feature should be raw when apply this function")

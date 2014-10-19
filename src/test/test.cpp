@@ -101,7 +101,7 @@ void capture(const char *save_file_name, RawData &data, bool playback) {
 SP_RESULT load_calc(const char *load_file_name,
                const char *file_name,
                EPAnalysis& ep,
-               bool playback){
+               bool playback) {
     RawData data;
     Capture c;
     char fn_buffer [128]="";

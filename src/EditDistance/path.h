@@ -1,9 +1,9 @@
 #ifndef __PRO3__EDITDISTANCE__PATH__
 #define __PRO3__EDITDISTANCE__PATH__
-enum DIR{
+enum DIR {
     DELETE,INSERT,SAME,CHANGE
 };
-struct Path{
+struct Path {
     int len;
     // 右删词+1
     // 对角无消耗
