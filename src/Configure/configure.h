@@ -17,7 +17,7 @@
 /// Frame : about 20ms
 /// Buffer : it don't matter, we just use it to save something
 
-const int DEFAULT_THREAD_NUM = 2;
+const int DEFAULT_THREAD_NUM = 4;
 
 
 

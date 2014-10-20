@@ -14,16 +14,22 @@
 using namespace std;
 
 bool isBeam;
-double threshold;
+double threshold = DEFAULT_BEAM_THRESHOLD;
 
 int  threadNum = DEFAULT_THREAD_NUM;
 bool isCapture;
 char templateFileName[1000] = "";
 char inputFileName[1000] = "";
 
-char dirName[256] = TEMPLATES_DIR;
+char templateDirName[256] = TEMPLATES_DIR;
+char inputDirName[256] = INPUTS_DIR;
 
 bool dealOpts(int argc, char **argv);
+
+// -g 0(default 1-1)
+// -g 1(n-1)
+// -g 2(n-n)
+int demoType = 0;
 
 // ont-to-one demo
 void runDemo11();
@@ -31,13 +37,18 @@ void runDemo11();
 // N-to-one demo
 void runDemoN1();
 
+// N-to-N demo
+void runDemoNN();
+
 int main(int argc, char **argv) {
     if(! dealOpts(argc, argv))
         return 0;
 
-//    runDemo11();
+    if(0 == demoType)
+        runDemo11();
 
-    runDemoN1();
+    if(1 == demoType)
+        runDemoN1();
 
     return 0;
 }
@@ -85,7 +96,7 @@ void runDemoN1() {
     WordDtwRecognition recognition;
 
     RawData data;
-    recognition.loadTemplates(dirName);
+    recognition.loadTemplates(templateDirName);
 
     if(strlen(inputFileName) == 0) {
         Tip("[Capture an input!!]\n\n");
@@ -106,22 +117,61 @@ void runDemoN1() {
     if(isBeam)
         recognition.setOpType(WaveFeatureOP::Beam);
 
-    if(isBeam)
+    if(isBeam) {
+        recognition.setBeamThreshold(threshold);
         recognition.wordSynRecognition(inputFeature);
+    }
     else 
         recognition.wordAsynRecognition(inputFeature);
 
+    WaveFeatureOP * finalTemp = const_cast<WaveFeatureOP *>(recognition.getBestTemplate());
+
     recognition.dumpColorPath(cout);
+
+    cout << "The best template is : \n";
+    finalTemp->dumpColorPath(cout);
+}
+void runDemoNN() {
+    FeatureExtractor extractor(threadNum);
+    WordDtwRecognition recognition;
+
+    recognition.loadTemplates(templateDirName);
+
+    WaveFeatureOPSet inputs;
+    inputs.loadMfccs(inputDirName);
+
+    /*  
+    recognition.setDoRecordPath(true);
+
+    if(isBeam)
+        recognition.setOpType(WaveFeatureOP::Beam);
+
+    if(isBeam) {
+        recognition.setBeamThreshold(threshold);
+        recognition.wordSynRecognition(inputFeature);
+    }
+    else 
+        recognition.wordAsynRecognition(inputFeature);
+
+    WaveFeatureOP * finalTemp = const_cast<WaveFeatureOP *>(recognition.getBestTemplate());
+
+    recognition.dumpColorPath(cout);
+
+    cout << "The best template is : \n";
+    finalTemp->dumpColorPath(cout);
+    */
 }
 
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "B:hj:d:t:")) != -1) {
+    while((c = getopt(argc, argv, "g:bB:hj:d:t:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         filename example: abc\n \
                         -j threadNum \n \
+                        -g demoType : 0(1-1) 1(n-1) 2(n-n)\n \
+                        -b : 使用默认beam threshold\n \
                         -B bean_threshold : Set Beam mode \n \
                         -d input file name[capture if not set] \n \
                         -t template file name[capture if not set]\n");
@@ -131,6 +181,13 @@ bool dealOpts(int argc, char **argv) {
             case 'j':
                 threadNum = atoi(optarg);
                 break;
+            case 'g':
+                demoType = atoi(optarg);
+                break;
+            case 'b':
+                isBeam = true;
+                break;
+
             case 'B':
                 isBeam = true;
                 sscanf(optarg, "%lf", &threshold);

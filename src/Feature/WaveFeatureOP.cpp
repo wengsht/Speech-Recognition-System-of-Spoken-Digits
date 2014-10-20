@@ -128,6 +128,9 @@ double WaveFeatureOP::asynDtw(std::vector<Feature> * inputFeature, double addThr
 }
 
 SP_RESULT WaveFeatureOP::dumpColorPath(std::ostream & Out) {
+    if(!doRecordPath) 
+        return SP_PATH_NOT_EXIT;
+
     Out << "Template File Name: " << templateFileName << std::endl;
 
     Out << "Dtw Result: " ; //

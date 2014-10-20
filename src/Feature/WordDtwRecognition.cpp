@@ -17,7 +17,7 @@
 #include "WordDtwRecognition.h"
 #include "Feature.h"
 
-WordDtwRecognition::WordDtwRecognition() {}
+WordDtwRecognition::WordDtwRecognition() : doTrainThreshold(false) {}
 WordDtwRecognition::~WordDtwRecognition() {}
 SP_RESULT WordDtwRecognition::loadTemplates(char *templateDir) {
     return templates.loadMfccs(templateDir);
@@ -32,7 +32,7 @@ void WordDtwRecognition::setDoRecordPath(bool doRecord) {
 }
 
 SP_RESULT WordDtwRecognition::wordAsynRecognition(std::vector<Feature> &inputFeature) {
-    if(opType == WaveFeatureOP::Beam)
+    if(doTrainThreshold && opType == WaveFeatureOP::Beam)
         trainThreshold();
 
     WaveFeatureOPSet::iterator Itr = templates.begin();
@@ -46,7 +46,7 @@ SP_RESULT WordDtwRecognition::wordAsynRecognition(std::vector<Feature> &inputFea
 }
 
 SP_RESULT WordDtwRecognition::wordSynRecognition(std::vector<Feature> &inputFeature) {
-    if(opType == WaveFeatureOP::Beam)
+    if(doTrainThreshold && opType == WaveFeatureOP::Beam)
         trainThreshold();
 
     // init every template
