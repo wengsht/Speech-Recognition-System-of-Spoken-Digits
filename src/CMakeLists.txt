@@ -1,6 +1,9 @@
 cmake_minimum_required (VERSION 2.6)
 project (Speech)
 
+set (RAWDTW rawdtw)
+add_executable(${RAWDTW} ${RAWDTW}.cpp)
+
 set (PRO2_MAIN pro2_demo)
 add_executable(${PRO2_MAIN} ${PRO2_MAIN}.cpp)
 
@@ -81,3 +84,13 @@ target_link_libraries(${PRO4_MAIN_PART1} ${DATA})
 target_link_libraries(${PRO4_MAIN_PART1} ${FEATURE})
 target_link_libraries(${PRO4_MAIN_PART1} ${THREADPOOL})
 target_link_libraries(${PRO4_MAIN_PART1} portaudio)
+
+target_link_libraries(${RAWDTW} ${ANALYSIS})
+target_link_libraries(${RAWDTW} ${CAPTURE})
+target_link_libraries(${RAWDTW} ${TEST})
+target_link_libraries(${RAWDTW} ${CONFIGURE})
+target_link_libraries(${RAWDTW} ${READWAVE})
+target_link_libraries(${RAWDTW} ${DATA})
+target_link_libraries(${RAWDTW} ${FEATURE})
+target_link_libraries(${RAWDTW} ${THREADPOOL})
+target_link_libraries(${RAWDTW} portaudio)

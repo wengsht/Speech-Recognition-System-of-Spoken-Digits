@@ -1,6 +1,6 @@
 // =====================================================================================
 // 
-//       Filename:  WaveFeature.h
+//       Filename:  WaveFeatureOP.h
 // 
 //    Description:  
 // 
@@ -16,10 +16,12 @@
 #ifndef _AUTOGUARD_WaveFeature_H_
 #define _AUTOGUARD_WaveFeature_H_
 
+#include <iostream>
 #include <vector>
 #include "tool.h"
 #include "Feature.h"
 #include "configure_basic.h"
+#include <string>
 
 class WaveFeatureOP {
 public:
@@ -31,15 +33,20 @@ public:
 private:
 
     READ_WRITE_DECLARE(std::vector<Feature>, templateFeature, TemplateFeature);
+
+    // 边表 (-1 -  最优值列) | 边表 (-1 -  最优值列) |  边表 (-1 -  最优值列) ...
+    //
     READ_WRITE_DECLARE(std::vector <int>, path, Path);
 
     READ_WRITE_DECLARE(bool, doRecordPath, DoRecordPath);
 
+    READ_WRITE_DECLARE(std::string, templateFileName, FileName);
+
     READ_WRITE_DECLARE(WaveFeatureOP::OpType, opType, OpType);
 
+    READ_ONLY_DECLARE(double, bestValue, DtwResult);
 public:
-
-    WaveFeatureOP(const std::vector<Feature> &templateFeature);
+    WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName = "null");
     ~WaveFeatureOP() {}
 
     void synInit(std::vector<Feature> * inputFeature);
@@ -48,10 +55,12 @@ public:
     double forwardColumn(double threshold = 0.0);
 
     // asynchronization, return distance
-    double asynDtw(std::vector<Feature> *);
+    double asynDtw(std::vector<Feature> *, double addThreshold = -5.0);
 
     // length of template
     int getRowNum();
+
+    SP_RESULT dumpColorPath(std::ostream & Out);
 
 private:
     // 边表
@@ -88,14 +97,19 @@ private:
     inline int getRollIdx(int columnIdx) {
         return columnIdx & 1;
     }
-    void recordPath() {
+    void recordPath(int bestIdx) {
+        // the first idx save final idx
+        
         int currentRollIdx = getRollIdx(columnIdx);
 
         int rowIdx;
+        int cnt = 0;
         for(rowIdx = head[currentRollIdx]; rowIdx != -1; rowIdx = columnNxt[currentRollIdx][rowIdx]) {
+            cnt ++;
             path.push_back(rowIdx);
         }
-        path.push_back(PathSplitIdx);
+        if(cnt == 0) bestIdx = getRowNum();
+        path.push_back(PathSplitIdx - bestIdx);
     }
 };
 

@@ -19,8 +19,6 @@ void createNoise(const char * file_name){
     data.saveWav(file_name);
 }
 
-
-
 const char * stringFile(const char * a,const char * b,char *ab){
     ab[0] = '\0';
     strcpy(ab,SAVE_DATA_DIR);

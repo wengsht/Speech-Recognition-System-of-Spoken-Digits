@@ -59,6 +59,12 @@ void saveArray(FILE* fid ,const int * data, int len);
 #define LIGHT_GRAY   "\033[0;37m"
 #define WHITE        "\033[1;37m"
 
+#define RED_BACK "\033[7;31m"
+#define GREEN_BACK "\033[7;32m"
+#define BLUE_BACK "\033[7;34m"
+
+#define NONE_BACK "\033[0m"
+
 
 #define READ_ONLY_DECLARE(TYPE,NAME,FUNC) \
 protected  :TYPE NAME; \

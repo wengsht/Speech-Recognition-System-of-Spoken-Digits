@@ -19,5 +19,9 @@
 #define TEMPLATES_DIR "./templates"
 #define MFCC_DIR "./templates_mfcc"
 
+#define WORD_MAX_LEN 100
+#define USERNAME_MAX_LEN 100
+
+#define MAX_TEMPLATES_PER_WORD 100
 #endif
 

@@ -18,6 +18,7 @@ struct thread_info {
 };
 class ThreadPool {
     public:
+        static int thread_num;
         ThreadPool();
         ThreadPool(int threadNum);
         ~ThreadPool();

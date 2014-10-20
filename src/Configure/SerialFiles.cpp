@@ -60,16 +60,21 @@ char *SerialFiles::fullfill(int num) {
     }
     return tmp;
 }
-void SerialFiles::parseSerialFileName(char *fileName, int &seqNum, int prefixNum, ...) {
+
+void SerialFiles::parseSerialFileName(const char * const fileName, int &seqNum, int prefixNum, ...) {
     int idx, len = strlen(fileName);
     va_list pvar;
+
+    char * tmp = new char[len+1];
+    strcpy(tmp, tmp);
+
     va_start(pvar, prefixNum);
 
-    char *erase = strstr(fileName, ".");
+    char *erase = strstr(tmp, ".");
     if(erase) 
         erase[0] = NULL;
 
-    char *token = strtok(fileName, "_");
+    char *token = strtok(tmp, "_");
     while(prefixNum -- && token) {
         char *prefix = va_arg(pvar, char *);
 
@@ -83,4 +88,6 @@ void SerialFiles::parseSerialFileName(char *fileName, int &seqNum, int prefixNum
         seqNum = 1;
 
     va_end(pvar);
+
+    delete [] tmp;
 }

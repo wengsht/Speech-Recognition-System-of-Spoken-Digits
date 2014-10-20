@@ -19,6 +19,13 @@ protected:
 
 
 public:
+    // a > b
+    static bool better(double a, double b) {
+        if(b == Feature::IllegalDist || a != Feature::IllegalDist && a > b)
+            return true;
+
+        return false;
+    }
     const static double IllegalDist;
     enum FeatureType {
         Raw,

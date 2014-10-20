@@ -18,6 +18,15 @@
 #ifndef _AUTOGUARD_SerialFiles_H_
 #define _AUTOGUARD_SerialFiles_H_
 
+#include "unistd.h"
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <dirent.h>
+#include <cstring>
+#include <vector>
+#include <string>
+#include "configure_basic.h"
+
 class SerialFiles {
     public:
         SerialFiles();
@@ -29,8 +38,36 @@ class SerialFiles {
         void getSerialFileName(char * out, int seqNum, int prefixNum, ...);
 
         // prefix_0004.wav  --> prefix = "prefix" seqNum = 4
-        void parseSerialFileName(char *fileName, int &seqNum, int prefixNum, ...);
+        static void parseSerialFileName(const char * const fileName, int &seqNum, int prefixNum, ...);
 
+//        static void load
+
+        static bool isWavFile(char *fileName) {
+            char * wavDot = strstr(fileName, WAV_SUFFIX);
+            return wavDot && 0 == strcmp(wavDot, WAV_SUFFIX);
+        }
+        static std::string getMfccFileName(std::string wavFileName) {
+            int idx = wavFileName.find(WAV_SUFFIX);
+            if(idx == -1)
+                return "";
+
+            return wavFileName.replace(idx, wavFileName.length() - 1, MFCC_SUFFIX);
+        }
+        static void getWavFileNames(char *dir, std::vector<std::string> &wavFileNames) {
+            static char buf[1024];
+            DIR *dirp;
+            struct dirent *file;
+            struct stat fileStat;
+
+            dirp = opendir(dir);
+
+            while(NULL != (file = readdir(dirp))) {
+                if(isWavFile(file->d_name)) {
+                    wavFileNames.push_back(std::string(file->d_name));
+                }
+            }
+            closedir(dirp);
+        }
     private:
         char *fullfill(int num);
 

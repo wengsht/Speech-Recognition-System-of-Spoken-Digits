@@ -115,7 +115,9 @@ void captureRun(bool playback) {
 
                 serialGenerator.getSerialFileName(fileName, serialStart ++, 2, buf, user);
 
-                data.saveWav(stringFile(fileName, ".wav", fn_buffer));
+                cout << fileName << endl;
+
+                data.saveWav(stringFile(fileName, "wav", fn_buffer));
 
                 if(playback)
                     capture.play(&data);

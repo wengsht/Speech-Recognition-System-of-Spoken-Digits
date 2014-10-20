@@ -2,6 +2,7 @@
 #include "assert.h"
 #include "configure.h"
 
+int ThreadPool::thread_num = DEFAULT_THREAD_NUM;
 ThreadPool::ThreadPool() : idx(0), threadNum(DEFAULT_THREAD_NUM) {
     threadTasks.resize(threadNum);
 }

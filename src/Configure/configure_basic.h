@@ -9,6 +9,8 @@
 #ifndef SpeechRecongnitionSystem_configure_basic_h
 #define SpeechRecongnitionSystem_configure_basic_h
 
+#define WAV_SUFFIX ".wav"
+#define MFCC_SUFFIX ".mfcc"
 ///
 /// No very important configure, but don't change they for fun.
 ///

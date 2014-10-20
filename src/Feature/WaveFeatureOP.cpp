@@ -17,7 +17,12 @@
 #include "WaveFeatureOP.h"
 
 const int WaveFeatureOP::PathSplitIdx = -1;
-WaveFeatureOP::WaveFeatureOP(const std::vector<Feature> &templateFeature) : inputFeature(NULL), doRecordPath(false), columnIdx(-1), opType(Raw),templateFeature(templateFeature) {
+WaveFeatureOP::WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName) : inputFeature(NULL), \
+    doRecordPath(false), \
+    columnIdx(-1), \
+    opType(Raw), \
+    templateFeature(templateFeature),
+    templateFileName(fileName) {
 }
 
 void WaveFeatureOP::synInit(std::vector<Feature> *inputFeature) {
@@ -51,9 +56,11 @@ void WaveFeatureOP::synInit(std::vector<Feature> *inputFeature) {
 }
 
 double WaveFeatureOP::forwardColumn(double threshold) {
-    double bestValue = Feature::IllegalDist;
+    bestValue = Feature::IllegalDist;
+    int bestIdx = 0;
     int rowSiz = templateFeature.size();
-    if(columnIdx < 0 || columnIdx >= rowSiz) {
+    int columnSiz = inputFeature->size();
+    if(columnIdx < 0 || columnIdx >= columnSiz) {
         Warn("forward may not init or just finish\n");
         return 0.0;
     }
@@ -68,7 +75,7 @@ double WaveFeatureOP::forwardColumn(double threshold) {
     int preRowIdx = 0;
     for(preRowIdx = head[preIdx]; preRowIdx != -1; preRowIdx = columnNxt[preIdx][preRowIdx]) {
         if(opType == Beam) {
-            if(columnDtwRes[preIdx][preRowIdx] > threshold) 
+            if(columnDtwRes[preIdx][preRowIdx] < threshold) 
                 continue;
         }
 
@@ -77,22 +84,25 @@ double WaveFeatureOP::forwardColumn(double threshold) {
         // 对应三种扩展
         int addIdx;
         for(addIdx = 0; addIdx < 3; addIdx ++) {
-            int nxtpreRowIdx = addIdx + preRowIdx;
+            int nxtRowIdx = addIdx + preRowIdx;
 
-            if(nxtpreRowIdx >= rowSiz)
+            if(nxtRowIdx >= rowSiz)
                 break;
 
-            double newPathValue = pathValue + calDist(nxtpreRowIdx, columnIdx);
+            double newPathValue = pathValue + calDist(nxtRowIdx, columnIdx);
 
-            updateDtwNode(columnIdx, nxtpreRowIdx, newPathValue);
+            updateDtwNode(columnIdx, nxtRowIdx, newPathValue);
 
-            if(bestValue == Feature::IllegalDist || bestValue < newPathValue)
+            if(bestValue == Feature::IllegalDist || bestValue < newPathValue) {
                 bestValue = newPathValue;
+                bestIdx   = nxtRowIdx;
+            }
         }
     }
 
-    if(doRecordPath)
-        recordPath();
+    if(doRecordPath) {
+        recordPath(bestIdx);
+    }
 
     columnIdx ++;
 
@@ -102,10 +112,8 @@ double WaveFeatureOP::forwardColumn(double threshold) {
 int WaveFeatureOP::getRowNum() {
     return templateFeature.size();
 }
-double WaveFeatureOP::asynDtw(std::vector<Feature> * inputFeature) {
+double WaveFeatureOP::asynDtw(std::vector<Feature> * inputFeature, double addThreshold) {
     synInit(inputFeature);
-
-    opType = Raw;
 
     int idx;
 
@@ -113,8 +121,55 @@ double WaveFeatureOP::asynDtw(std::vector<Feature> * inputFeature) {
 
     double res = 0.0;
     for(idx = 0; idx < columnSiz; idx++) {
-        res = forwardColumn();
+        res = forwardColumn(res + addThreshold);
     }
 
     return res;
+}
+
+SP_RESULT WaveFeatureOP::dumpColorPath(std::ostream & Out) {
+    Out << "Template File Name: " << templateFileName << std::endl;
+
+    Out << "Dtw Result: " ; //
+    if(getDtwResult() == Feature::IllegalDist)
+        Out << "Illedge Value: " ; //
+    else 
+        Out << getDtwResult(); 
+    Out << std::endl;
+
+    int rowNum = getRowNum();
+    std::vector< std::vector<int> > pathImg(rowNum);
+    int idx = 0, siz = path.size(), column = 0;
+    int finalIdx;
+
+    while(idx < siz) {
+        if(pathImg[0].size() <= column) {
+            for(int j = 0;j < rowNum;j++) 
+                pathImg[j].push_back(0);
+        }
+
+        if(path[idx] < 0) {
+            int bestIdx = WaveFeatureOP::PathSplitIdx - path[idx];
+            if(bestIdx >= 0 && bestIdx < rowNum)
+                pathImg[rowNum - bestIdx - 1][column] = 2;
+
+            column ++;
+            idx ++;
+            continue;
+        }
+        pathImg[rowNum - path[idx] - 1][column] = 1;
+        idx ++;
+    }
+
+    for(int i = 0;i < rowNum;i++) {
+        for(int j = 0;j < pathImg[i].size(); j++) {
+            if(2 == pathImg[i][j]) Out << BLUE_BACK;
+            else if(1 == pathImg[i][j]) Out << GREEN_BACK;
+            else  Out << RED_BACK ;
+            Out << " ";
+        }
+        Out << std::endl;
+    }
+    Out << NONE_BACK << std::endl;
+    return SP_SUCCESS; 
 }
