@@ -40,13 +40,16 @@ protected:
 
 
 public:
-    static SP_RESULT load_wav_file(const char * const file_name, RawData &data) {
+    static SP_RESULT load_wav_file(const char * const file_name, RawData &data, bool playback = false) {
         DAEPAnalysis da_ep;
         Capture c;
         char fn_buffer[128] = "";
         data.loadWav(file_name);
         da_ep.Initial(&data);
         da_ep.reCalcAllData();
+
+        if(playback)
+            c.play(&data);
         //    da_ep.smooth();
         //    da_ep.cut();
 

@@ -31,8 +31,7 @@ public:
     };
     const static int PathSplitIdx;
 private:
-
-    READ_WRITE_DECLARE(std::vector<Feature>, templateFeature, TemplateFeature);
+    REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, templateFeature, TemplateFeature);
 
     // 边表 (-1 -  最优值列) | 边表 (-1 -  最优值列) |  边表 (-1 -  最优值列) ...
     //
@@ -42,11 +41,13 @@ private:
 
     READ_WRITE_DECLARE(std::string, templateFileName, FileName);
 
+    READ_WRITE_DECLARE(std::string, _word, Word);
+
     READ_WRITE_DECLARE(WaveFeatureOP::OpType, opType, OpType);
 
     READ_ONLY_DECLARE(double, bestValue, DtwResult);
 public:
-    WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName = "null");
+    WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName = "null", std::string word = "null");
     ~WaveFeatureOP() {}
 
     void synInit(std::vector<Feature> * inputFeature);
@@ -61,6 +62,9 @@ public:
     int getRowNum();
 
     SP_RESULT dumpColorPath(std::ostream & Out);
+
+    // 根据前缀名判断是不是同一个单词
+    bool operator == (const WaveFeatureOP & b);
 
 private:
     // 边表

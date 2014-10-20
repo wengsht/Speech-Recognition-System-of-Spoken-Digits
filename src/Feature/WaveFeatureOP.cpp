@@ -15,14 +15,16 @@
 // =====================================================================================
 
 #include "WaveFeatureOP.h"
+#include <iostream>
 
 const int WaveFeatureOP::PathSplitIdx = -1;
-WaveFeatureOP::WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName) : inputFeature(NULL), \
+WaveFeatureOP::WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName, std::string word) : inputFeature(NULL), \
     doRecordPath(false), \
     columnIdx(-1), \
     opType(Raw), \
     templateFeature(templateFeature),
-    templateFileName(fileName) {
+    templateFileName(fileName),
+    _word(word) {
 }
 
 void WaveFeatureOP::synInit(std::vector<Feature> *inputFeature) {
@@ -175,4 +177,8 @@ SP_RESULT WaveFeatureOP::dumpColorPath(std::ostream & Out) {
     }
     Out << NONE_BACK << std::endl;
     return SP_SUCCESS; 
+}
+
+bool WaveFeatureOP::operator==(const WaveFeatureOP & b) {
+    return _word == b.getWord();
 }

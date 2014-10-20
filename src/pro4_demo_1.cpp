@@ -50,6 +50,9 @@ int main(int argc, char **argv) {
     if(1 == demoType)
         runDemoN1();
 
+    if(2 == demoType)
+        runDemoNN();
+
     return 0;
 }
 void runDemo11() {
@@ -130,6 +133,10 @@ void runDemoN1() {
 
     cout << "The best template is : \n";
     finalTemp->dumpColorPath(cout);
+
+    string fileName = finalTemp->getFileName();
+
+    Capture::load_wav_file(fileName.c_str(), data, true);
 }
 void runDemoNN() {
     FeatureExtractor extractor(threadNum);
@@ -137,23 +144,38 @@ void runDemoNN() {
 
     recognition.loadTemplates(templateDirName);
 
-    WaveFeatureOPSet inputs;
-    inputs.loadMfccs(inputDirName);
-
-    /*  
-    recognition.setDoRecordPath(true);
-
     if(isBeam)
         recognition.setOpType(WaveFeatureOP::Beam);
 
-    if(isBeam) {
-        recognition.setBeamThreshold(threshold);
-        recognition.wordSynRecognition(inputFeature);
-    }
-    else 
-        recognition.wordAsynRecognition(inputFeature);
+    WaveFeatureOPSet inputs;
+    inputs.loadMfccs(inputDirName);
 
-    WaveFeatureOP * finalTemp = const_cast<WaveFeatureOP *>(recognition.getBestTemplate());
+    int allCnt = 0, correctCnt = 0;
+
+    WaveFeatureOPSet::iterator Itr = inputs.begin();
+    
+    for(; Itr != inputs.end(); Itr ++) {
+        allCnt ++;
+        recognition.setDoRecordPath(false);
+
+        if(isBeam) {
+            recognition.setBeamThreshold(threshold);
+            recognition.wordSynRecognition((*Itr)->getTemplateFeature());
+        }
+        else 
+            recognition.wordAsynRecognition((*Itr)->getTemplateFeature());
+
+        WaveFeatureOP * finalTemp = const_cast<WaveFeatureOP *>(recognition.getBestTemplate());
+
+        if((*finalTemp) == (*(*Itr)))
+            correctCnt ++;
+    }
+
+    system("clear");
+    cout << "Input " << allCnt << " wavs " << endl; 
+    cout << "Correct Counts: " << correctCnt << endl; 
+    /*  
+
 
     recognition.dumpColorPath(cout);
 

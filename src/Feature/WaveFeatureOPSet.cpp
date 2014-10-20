@@ -29,6 +29,7 @@
 int WaveFeatureOPSet::maxTemplatesPerWord = MAX_TEMPLATES_PER_WORD;
 
 WaveFeatureOPSet::WaveFeatureOPSet() {}
+
 WaveFeatureOPSet::~WaveFeatureOPSet() {}
 
 SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {
@@ -53,14 +54,13 @@ SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {
 
     saveMfcc2MfccFile(templateDir, fileName, extractor.getNormalMelCepstrum());
 
-    WaveFeatureOP dtwOP(extractor.getNormalMelCepstrum(), tmpName);
+    WaveFeatureOP dtwOP(extractor.getNormalMelCepstrum(), tmpName, word);
 
     addWaveMfcc(word, dtwOP);
 
     return SP_SUCCESS;
 }
 SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir) {
-
     std::vector<std::string> wavFileNames;
 
     SerialFiles::getWavFileNames(templateDir, wavFileNames);
@@ -68,27 +68,5 @@ SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir) {
     for(int i = 0;i < wavFileNames.size(); i++) {
         loadMfccs(templateDir, const_cast<char *>(wavFileNames[i].c_str()));
     }
-    /*  
-        SerialFiles::parseSerialFileName(const_cast<char *>(wavFileNames[i].c_str()), seqIdx, 2, word, user);
-
-        // 如果有缓存，不重复计算mfcc
-        if(loadMfccFromMfccFile(templateDir, const_cast<char *>(wavFileNames[i].c_str()), word))
-            continue;
-
-        std::string tmpName = templateDir;
-        tmpName += "/";
-        tmpName += wavFileNames[i];
-
-        Capture::load_wav_file(tmpName.c_str(), data);
-
-        extractor.exDoubleDeltaFeatures(&data);
-
-        saveMfcc2MfccFile(templateDir, const_cast<char *>(wavFileNames[i].c_str()), extractor.getNormalMelCepstrum());
-
-        WaveFeatureOP dtwOP(extractor.getNormalMelCepstrum(), tmpName);
-
-        addWaveMfcc(word, dtwOP);
-    }
-    */
     return SP_SUCCESS;
 }

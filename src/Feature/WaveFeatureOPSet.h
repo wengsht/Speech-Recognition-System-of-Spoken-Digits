@@ -35,6 +35,7 @@ class WaveFeatureOPSet {
         typedef std::map< std::string, std::vector<WaveFeatureOP> > dataSetType;
         class iterator {
             public:
+                iterator() : dataSet(NULL), vecIdx(-1) { }
                 iterator(dataSetType *dataSetPtr, dataSetType::iterator Itr, int idx) : dataSet(dataSetPtr), I(Itr), vecIdx(idx) {}
 
                 WaveFeatureOP * operator *() {
@@ -86,14 +87,15 @@ class WaveFeatureOPSet {
 
                 int vecIdx;
         };
+        // TODO better design for begin() and end() ?
         iterator begin() {
-            static iterator b(&dataSet, dataSet.begin(), 0);
-            return b;
+            _begin = iterator(&dataSet, dataSet.begin(), 0);
+            return _begin;
         }
         iterator end() {
-            static iterator e(&dataSet, dataSet.end(), -1);
+            _end = iterator(&dataSet, dataSet.end(), -1);
 
-            return e;
+            return _end;
         }
 
         SP_RESULT loadMfccs(char *templateDir);
@@ -102,6 +104,7 @@ class WaveFeatureOPSet {
         ~WaveFeatureOPSet();
 
 private:
+        iterator _begin, _end;
     bool loadMfccFromMfccFile(char * dir, char * wavFileName, char * word) {
         std::string mfccFileName;
 
@@ -136,7 +139,7 @@ private:
         tmpName += "/";
         tmpName += wavFileName;
 
-        WaveFeatureOP newOp(features, tmpName);
+        WaveFeatureOP newOp(features, tmpName, word);
         addWaveMfcc(word, newOp);
 
         FIN.close();
@@ -183,4 +186,3 @@ private:
 };
 
 #endif
-

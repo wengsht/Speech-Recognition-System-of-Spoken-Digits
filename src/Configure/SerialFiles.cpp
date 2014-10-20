@@ -66,7 +66,7 @@ void SerialFiles::parseSerialFileName(const char * const fileName, int &seqNum, 
     va_list pvar;
 
     char * tmp = new char[len+1];
-    strcpy(tmp, tmp);
+    strcpy(tmp, fileName);
 
     va_start(pvar, prefixNum);
 

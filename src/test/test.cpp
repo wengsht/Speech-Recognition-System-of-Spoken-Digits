@@ -55,7 +55,7 @@ void capture(const char * save_file_name,
         ep.cut();
         ep.saveMatlab(stringFile(file_name,"_cut.dat",fn_buffer));
         
-        if(playback)c.play(&data);
+        if(playback) c.play(&data);
         
         data.saveWav(stringFile(save_file_name,"_cut.wav",fn_buffer));
 
