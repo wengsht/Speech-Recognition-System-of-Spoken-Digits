@@ -76,6 +76,10 @@ public:
     // length of template
     int getRowNum();
 
+    // 模拟vector， 访问底层数据
+    Feature & operator[](int idx);
+    int size();
+
     // dump the color path into an ostream
     SP_RESULT dumpColorPath(std::ostream & Out);
 

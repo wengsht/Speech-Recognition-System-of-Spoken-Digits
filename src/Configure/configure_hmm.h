@@ -1,0 +1,2 @@
+#define AUTOMATON_STATE_NUM 5
+#define GAUSSIAN_NUM 4

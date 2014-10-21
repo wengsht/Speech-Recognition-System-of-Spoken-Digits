@@ -122,6 +122,14 @@ double WaveFeatureOP::forwardColumn(double threshold) {
 int WaveFeatureOP::getRowNum() {
     return templateFeature.size();
 }
+int WaveFeatureOP::size() {
+    return getRowNum();
+}
+
+Feature & WaveFeatureOP::operator[](int idx) {
+    return templateFeature[idx];
+}
+
 double WaveFeatureOP::asynDtw(std::vector<Feature> * inputFeature, double addThreshold) {
     synInit(inputFeature);
 

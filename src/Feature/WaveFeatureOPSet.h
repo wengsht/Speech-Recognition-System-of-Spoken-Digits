@@ -105,11 +105,11 @@ class WaveFeatureOPSet {
         }
 
         // add features from a directory 
-        SP_RESULT loadMfccs(char *templateDir);
+        virtual SP_RESULT loadMfccs(char *templateDir);
         // add features from a file
-        SP_RESULT loadMfccs(char *templateDir, char *fileName);
+        virtual SP_RESULT loadMfccs(char *templateDir, char *fileName);
         WaveFeatureOPSet();
-        ~WaveFeatureOPSet();
+        virtual ~WaveFeatureOPSet();
 
 private:
     iterator _begin, _end;
@@ -196,6 +196,7 @@ private:
         dataSet[wordStr].push_back(newOP);
     }
 
+protected:
     dataSetType dataSet;
 };
 

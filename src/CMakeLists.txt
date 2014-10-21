@@ -13,6 +13,9 @@ add_executable(${PRO3_MAIN} ${PRO3_MAIN}.cpp)
 set (PRO4_MAIN_PART1 pro4_demo_1)
 add_executable(${PRO4_MAIN_PART1} ${PRO4_MAIN_PART1}.cpp)
 
+set (HMM_DEMO hmm_demo)
+add_executable(${HMM_DEMO} ${HMM_DEMO}.cpp)
+
 set (RECOREDER recorder)
 add_executable(${RECOREDER} ${RECOREDER}.cpp)
 
@@ -94,3 +97,13 @@ target_link_libraries(${RAWDTW} ${DATA})
 target_link_libraries(${RAWDTW} ${FEATURE})
 target_link_libraries(${RAWDTW} ${THREADPOOL})
 target_link_libraries(${RAWDTW} portaudio)
+
+target_link_libraries(${HMM_DEMO} ${ANALYSIS})
+target_link_libraries(${HMM_DEMO} ${CAPTURE})
+target_link_libraries(${HMM_DEMO} ${TEST})
+target_link_libraries(${HMM_DEMO} ${CONFIGURE})
+target_link_libraries(${HMM_DEMO} ${READWAVE})
+target_link_libraries(${HMM_DEMO} ${DATA})
+target_link_libraries(${HMM_DEMO} ${FEATURE})
+target_link_libraries(${HMM_DEMO} ${THREADPOOL})
+target_link_libraries(${HMM_DEMO} portaudio)

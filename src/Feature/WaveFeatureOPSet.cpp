@@ -23,7 +23,6 @@
 #include "FeatureExtractor.h"
 #include "configure_dtw.h"
 #include "ThreadPool.h"
-#include "test.h"
 #include "Capture.h"
 
 int WaveFeatureOPSet::maxTemplatesPerWord = MAX_TEMPLATES_PER_WORD;
