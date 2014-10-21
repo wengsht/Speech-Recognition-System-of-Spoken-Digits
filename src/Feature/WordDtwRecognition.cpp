@@ -18,11 +18,14 @@
 #include "Feature.h"
 
 WordDtwRecognition::WordDtwRecognition() : doTrainThreshold(false) {}
+
 WordDtwRecognition::~WordDtwRecognition() {}
+
 SP_RESULT WordDtwRecognition::loadTemplates(char *templateDir) {
     return templates.loadMfccs(templateDir);
 }
 
+// 开启路径记录， 会把每一个底层的template都开启
 void WordDtwRecognition::setDoRecordPath(bool doRecord) {
     WaveFeatureOPSet::iterator Itr = templates.begin();
     
@@ -31,6 +34,7 @@ void WordDtwRecognition::setDoRecordPath(bool doRecord) {
     }
 }
 
+// 对整个模板库异步
 SP_RESULT WordDtwRecognition::wordAsynRecognition(std::vector<Feature> &inputFeature) {
     if(doTrainThreshold && opType == WaveFeatureOP::Beam)
         trainThreshold();
@@ -45,6 +49,7 @@ SP_RESULT WordDtwRecognition::wordAsynRecognition(std::vector<Feature> &inputFea
     return SP_SUCCESS;
 }
 
+// 对整个模板库同步
 SP_RESULT WordDtwRecognition::wordSynRecognition(std::vector<Feature> &inputFeature) {
     if(doTrainThreshold && opType == WaveFeatureOP::Beam)
         trainThreshold();
@@ -77,6 +82,7 @@ SP_RESULT WordDtwRecognition::wordSynRecognition(std::vector<Feature> &inputFeat
     return SP_SUCCESS;
 }
 
+// 返回结果
 const WaveFeatureOP * WordDtwRecognition::getBestTemplate() {
     double bestValue = Feature::IllegalDist;
 

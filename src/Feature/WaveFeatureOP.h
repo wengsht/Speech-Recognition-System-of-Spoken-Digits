@@ -2,7 +2,9 @@
 // 
 //       Filename:  WaveFeatureOP.h
 // 
-//    Description:  
+//    Description:  This CLASS store one template feature, and apply dtw on inputed data feature with the template 
+//
+//    This class also be used to store data feature when there are many inputed feature to computed, it is convenient to buffer them 
 // 
 //        Version:  0.01
 //        Created:  2014/10/19 15时54分38秒
@@ -29,27 +31,40 @@ public:
         Raw,
         Beam
     };
-    const static int PathSplitIdx;
 private:
+    // -1, only store the edge link list 
+    // use (-1 - BestRowNum) to seperate the column
+    const static int PathSplitIdx;
+    // 边表 (-1 -  最优值行) | 边表 (-1 -  最优值行) |  边表 (-1 -  最优值行) ...
+    std::vector<int> path;
+    //
+//    READ_WRITE_DECLARE(std::vector <int>, path, Path);
+
+    // Template feature, one object, one template
     REFERENCE_READ_ONLY_DECLARE(std::vector<Feature>, templateFeature, TemplateFeature);
 
-    // 边表 (-1 -  最优值列) | 边表 (-1 -  最优值列) |  边表 (-1 -  最优值列) ...
-    //
-    READ_WRITE_DECLARE(std::vector <int>, path, Path);
 
+    // doRecordPath = true for store the path 
     READ_WRITE_DECLARE(bool, doRecordPath, DoRecordPath);
 
+    // store the filename(完整路径) of this feature
     READ_WRITE_DECLARE(std::string, templateFileName, FileName);
 
+    // store the word of this feature
     READ_WRITE_DECLARE(std::string, _word, Word);
 
+    // Raw / Beam
     READ_WRITE_DECLARE(WaveFeatureOP::OpType, opType, OpType);
 
+    // Store the bestValue
+    // When Syn Dtw, It buffer the bestValue on the current column
     READ_ONLY_DECLARE(double, bestValue, DtwResult);
+
 public:
     WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName = "null", std::string word = "null");
     ~WaveFeatureOP() {}
 
+    // Before  Syn DTW, you have to past the input feature's pointer into this template, you should ensure the pointer is not be freed during the dtw process
     void synInit(std::vector<Feature> * inputFeature);
 
     // return best value every time
@@ -61,6 +76,7 @@ public:
     // length of template
     int getRowNum();
 
+    // dump the color path into an ostream
     SP_RESULT dumpColorPath(std::ostream & Out);
 
     // 根据前缀名判断是不是同一个单词
@@ -68,16 +84,16 @@ public:
 
 private:
     // 边表
+    int head[2];
     std::vector<int> columnNxt[2];
     // 当前列值， double
     std::vector<double> columnDtwRes[2];
-    // 最后计算了某一行值的idx， 防止边表存储两个实例
+    // 最后计算了某一行值的idx, 可以省掉memset的O(n)操作
     std::vector<int> lastUpdate;
-    int head[2];
     
     std::vector<Feature>* inputFeature;
+    // Syn Dtw, each forwardColumn() operation will incrase columnIdx by 1
     int columnIdx;
-
 private:
     // 计算 template 第rowidx个节点和data第columnidx个节点的距离
     // TODO tmp calculated values!
@@ -98,6 +114,7 @@ private:
             head[currentRollIdx] = rowIdx;
         }
     }
+    // 滚动数组的下标
     inline int getRollIdx(int columnIdx) {
         return columnIdx & 1;
     }

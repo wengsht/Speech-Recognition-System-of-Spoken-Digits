@@ -31,8 +31,14 @@
 
 class WaveFeatureOPSet {
     public:
+        // 控制变量， 每一个template用多少个实例做dtw
+        // 反应在了iterator的++上，当一个iterator在同一个模板的实例上迭代次数超过了这个值，就会跳到下一个template
         static int maxTemplatesPerWord;
+
+        // 底层存储是一个从 word到vector的map， 一个word有多个template实例
         typedef std::map< std::string, std::vector<WaveFeatureOP> > dataSetType;
+
+        // 用于遍历模板库，会先遍历一个word的所有instance，然后接下一个word
         class iterator {
             public:
                 iterator() : dataSet(NULL), vecIdx(-1) { }
@@ -98,13 +104,18 @@ class WaveFeatureOPSet {
             return _end;
         }
 
+        // add features from a directory 
         SP_RESULT loadMfccs(char *templateDir);
+        // add features from a file
         SP_RESULT loadMfccs(char *templateDir, char *fileName);
         WaveFeatureOPSet();
         ~WaveFeatureOPSet();
 
 private:
-        iterator _begin, _end;
+    iterator _begin, _end;
+
+    // 对于1.wav 尝试从1.mfcc 中load mfcc
+    //
     bool loadMfccFromMfccFile(char * dir, char * wavFileName, char * word) {
         std::string mfccFileName;
 
@@ -146,6 +157,8 @@ private:
 
         return true;
     }
+    // 如果有计算mfcc的过程，会把一个文件的mfcc buffer到对应的mfcc文件( 1.wav -> 1.mfcc)
+    // 下次再load这个文件的时候就直接读mfcc文件了
     void saveMfcc2MfccFile(char * dir, char * wavFileName, const std::vector<Feature> & features) {
         std::string mfccFileName;
 
@@ -173,6 +186,7 @@ private:
         FOUT.close();
     }
 private:
+    // 对于map<string, vector> 的统一处理
     void addWaveMfcc(char *word, WaveFeatureOP & newOP) {
         std::string wordStr = std::string(word);
 

@@ -18,6 +18,7 @@
 #include <iostream>
 
 const int WaveFeatureOP::PathSplitIdx = -1;
+
 WaveFeatureOP::WaveFeatureOP(const std::vector<Feature> &templateFeature, std::string fileName, std::string word) : inputFeature(NULL), \
     doRecordPath(false), \
     columnIdx(-1), \
@@ -27,18 +28,20 @@ WaveFeatureOP::WaveFeatureOP(const std::vector<Feature> &templateFeature, std::s
     _word(word) {
 }
 
+// 这一步要初始化滚动链表
+// 实际上asyn dtw 也是调用这一个init， 只不过forward的时候是串行的
 void WaveFeatureOP::synInit(std::vector<Feature> *inputFeature) {
+    // 初始化第-1列， 滚动链表还是很方便的
     int currentRollIdx = getRollIdx(-1);
     int &idx = currentRollIdx;
 
-    int rowSiz = templateFeature.size();
+    int rowSiz = getRowNum();
     head[idx ^ 1] = -1;
     head[idx] = -1;
     columnNxt[idx ^ 1].resize(rowSiz);
     columnNxt[idx].resize(rowSiz);
     columnDtwRes[idx ^ 1].resize(rowSiz);
     columnDtwRes[idx].resize(rowSiz);
-
 
     lastUpdate.resize(rowSiz);
     int i;
@@ -50,6 +53,7 @@ void WaveFeatureOP::synInit(std::vector<Feature> *inputFeature) {
     // 初始化第-1列
     columnDtwRes[idx][0] = 0.0;
     head[idx] = 0;
+
     columnNxt[idx][0] = -1;
 
     columnIdx = 0;
@@ -57,10 +61,12 @@ void WaveFeatureOP::synInit(std::vector<Feature> *inputFeature) {
     path.clear();
 }
 
+// 此处传的threashold 是 BestValue + add_threshold
+// 因为BestValue是全局的概念，所以在这个类里只能靠外部支持
 double WaveFeatureOP::forwardColumn(double threshold) {
     bestValue = Feature::IllegalDist;
     int bestIdx = 0;
-    int rowSiz = templateFeature.size();
+    int rowSiz = getRowNum();
     int columnSiz = inputFeature->size();
     if(columnIdx < 0 || columnIdx >= columnSiz) {
         Warn("forward may not init or just finish\n");
@@ -76,6 +82,7 @@ double WaveFeatureOP::forwardColumn(double threshold) {
 
     int preRowIdx = 0;
     for(preRowIdx = head[preIdx]; preRowIdx != -1; preRowIdx = columnNxt[preIdx][preRowIdx]) {
+        // Beam 
         if(opType == Beam) {
             if(columnDtwRes[preIdx][preRowIdx] < threshold) 
                 continue;
@@ -95,7 +102,8 @@ double WaveFeatureOP::forwardColumn(double threshold) {
 
             updateDtwNode(columnIdx, nxtRowIdx, newPathValue);
 
-            if(bestValue == Feature::IllegalDist || bestValue < newPathValue) {
+            if(Feature::better(newPathValue, bestValue)) {
+//            if(bestValue == Feature::IllegalDist || bestValue < newPathValue) {
                 bestValue = newPathValue;
                 bestIdx   = nxtRowIdx;
             }

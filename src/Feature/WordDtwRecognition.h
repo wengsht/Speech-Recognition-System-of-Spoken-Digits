@@ -4,6 +4,7 @@
 // 
 //    Description:  This class load templates and do recognition on word
 //                  Using simple MFCC Dtw algorithm
+//                  是个前端接口类
 // 
 //        Version:  0.01
 //        Created:  2014/10/19 22时35分15秒
@@ -61,6 +62,7 @@ class WordDtwRecognition {
 
     private:
 
+        // TODO: Train...
         void trainThreshold() {
             beamThreshold = DEFAULT_BEAM_THRESHOLD;
         }

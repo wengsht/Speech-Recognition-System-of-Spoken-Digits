@@ -52,14 +52,19 @@ SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {
 
     extractor.exDoubleDeltaFeatures(&data);
 
+    // 将结果存储到mfcc文件，节省下次计算的时间
     saveMfcc2MfccFile(templateDir, fileName, extractor.getNormalMelCepstrum());
 
+    // OP 实际上是存储feature的类, 注意要传入名字和文件名
+    // 不传也可以， 为了demo才需要正确性检测
     WaveFeatureOP dtwOP(extractor.getNormalMelCepstrum(), tmpName, word);
 
     addWaveMfcc(word, dtwOP);
 
     return SP_SUCCESS;
 }
+
+// 从目录load 所有的feature
 SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir) {
     std::vector<std::string> wavFileNames;
 
