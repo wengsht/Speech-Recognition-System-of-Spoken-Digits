@@ -1,0 +1,37 @@
+// =====================================================================================
+// 
+//       Filename:  DummyState.h
+// 
+//    Description:  
+// 
+//        Version:  0.01
+//        Created:  2014/10/23 00时12分24秒
+//       Revision:  none
+//       Compiler:  clang 3.5
+// 
+//         Author:  wengsht (SYSU-CMU), wengsht.sysu@gmail.com
+//        Company:  
+// 
+// =====================================================================================
+#ifndef _AUTOGUARD_DummyState_H_
+#define _AUTOGUARD_DummyState_H_
+
+#include "HMMState.h"
+#include "Feature.h"
+class DummyState : HMMState {
+    public:
+        DummyState() {}
+        ~DummyState() {}
+
+        void gaussianTrain(int gaussianNum) {
+
+        }
+        double nodeProbability(Feature *inputFeature) {
+            return Feature::IlledgeDist;
+        }
+
+    private:
+};
+
+#endif
+

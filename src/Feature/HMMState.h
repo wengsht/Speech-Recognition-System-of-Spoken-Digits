@@ -29,6 +29,7 @@ class HMMState {
             SOFT
         };
         HMMState(std::vector<WaveFeatureOP> *templates);
+        HMMState() : templates(NULL) {}
         virtual ~HMMState() {};
 
         virtual void gaussianTrain(int gaussianNum) = 0;
