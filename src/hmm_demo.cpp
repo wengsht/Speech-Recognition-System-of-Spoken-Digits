@@ -72,6 +72,8 @@ int main(int argc, char **argv) {
 
     string res = hmm.hmmRecognition(inputFeature);
 
+    hmm.close();
+
     cout << res << endl;
 
     return 0;
