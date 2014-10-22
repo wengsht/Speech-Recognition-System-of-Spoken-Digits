@@ -11,22 +11,21 @@
 
 #include <cmath>
 
-// 距离取的都是负数
-const double Feature::IllegalDist = 1.0;
+const double Feature::IllegalDist = 1e18;
 double Feature::operator -(const Feature & T) {
     double res = 0.0;
 
     if(size() != T.size()) {
         Warn("Operator - on Features should have same size\n");
 
-        return -1;
+        return Feature::IllegalDist;
     }
 
     int idx, siz = size();
     for(idx = 0; idx < siz; idx ++) {
         res += pow(data[idx] - T[idx], 2.0);
     }
-    res = - sqrt(res);
+    res = sqrt(res);
 
     return res;
 }

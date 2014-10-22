@@ -107,7 +107,7 @@ private:
     // 更新一次dp操作
     void updateDtwNode(int columnIdx, int rowIdx, double newPathDist) {
         int currentRollIdx = getRollIdx(columnIdx);
-        if(lastUpdate[rowIdx] != columnIdx || columnDtwRes[currentRollIdx][rowIdx] < newPathDist) 
+        if(lastUpdate[rowIdx] != columnIdx || Feature::better(newPathDist, columnDtwRes[currentRollIdx][rowIdx])) 
             columnDtwRes[currentRollIdx][rowIdx] = newPathDist;
 
         // 如果没有加入到链表过， 加入

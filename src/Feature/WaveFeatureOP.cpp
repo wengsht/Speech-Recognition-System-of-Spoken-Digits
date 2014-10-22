@@ -84,7 +84,7 @@ double WaveFeatureOP::forwardColumn(double threshold) {
     for(preRowIdx = head[preIdx]; preRowIdx != -1; preRowIdx = columnNxt[preIdx][preRowIdx]) {
         // Beam 
         if(opType == Beam) {
-            if(columnDtwRes[preIdx][preRowIdx] < threshold) 
+            if(Feature::better(threshold, columnDtwRes[preIdx][preRowIdx])) 
                 continue;
         }
 

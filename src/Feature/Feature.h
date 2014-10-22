@@ -19,9 +19,9 @@ protected:
 
 
 public:
-    // a > b
+    // a < b
     static bool better(double a, double b) {
-        if(b == Feature::IllegalDist || a != Feature::IllegalDist && a > b)
+        if(b == Feature::IllegalDist || a != Feature::IllegalDist && a < b)
             return true;
 
         return false;

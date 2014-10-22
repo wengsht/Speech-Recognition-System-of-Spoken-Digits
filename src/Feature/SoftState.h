@@ -32,6 +32,7 @@ class SoftState : public HMMState {
 
     private:
         // vector<WaveFeatureOP> 对应的node，处于这个state的概率
+        // probabilities[i][j] 第i个wav的第j个feature属于这个state的概率
         Matrix<double> probabilities;
 };
 
