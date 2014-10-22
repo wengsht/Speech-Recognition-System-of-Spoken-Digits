@@ -16,18 +16,21 @@
 
 #include "SoftState.h"
 
-SoftState::SoftState(std::vector<WaveFeatureOP> * features) : HMMState(features) {
-    probabilities.resize(features->size());
+SoftState::SoftState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {
+    probabilities.resize(templates->size());
 
     int idx;
-    for(idx = 0; idx < features->size(); idx ++) {
-        probabilities[idx].resize((*features)[idx].size());
+    for(idx = 0; idx < templates->size(); idx ++) {
+        probabilities[idx].resize((*templates)[idx].size());
     }
 }
 
 SoftState::~SoftState() {}
+
 void SoftState::gaussianTrain(int gaussianNum) {
     puts("Gaussian Train for soft state");
 }
-void SoftState::nodeCost(Feature *inputFeature) {
+
+double SoftState::nodeProbability(Feature *inputFeature) {
+    return 0.0;
 }

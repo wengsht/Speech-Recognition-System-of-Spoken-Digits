@@ -31,7 +31,7 @@ class HMMRecognition {
     READ_WRITE_DECLARE(HMMState::StateType, stateType, StateType);
 
     public:
-        HMMRecognition(int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM);
+        HMMRecognition(int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM, int trainTimes = MAX_TRAIN_TIMES);
         ~HMMRecognition();
 
         // add mfcc features into templates set
@@ -57,9 +57,15 @@ class HMMRecognition {
 
             automatons.setGaussNum(gaussNum);
         }
+        void setTrainTimes(int trainTimes) {
+            this->trainTimes = trainTimes;
+
+            automatons.setTrainTimes(trainTimes);
+        }
     private:
         int stateNum;
         int gaussNum;
+        int trainTimes;
 
         HMMAutomatonSet automatons;
 };

@@ -18,7 +18,7 @@
 #include "HMMRecognition.h"
 
 
-HMMRecognition::HMMRecognition(int stateNum, int gaussNum) : stateNum(stateNum), gaussNum(gaussNum), automatons(stateNum, gaussNum) {
+HMMRecognition::HMMRecognition(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes), automatons(stateNum, gaussNum, trainTimes) {
 }
 HMMRecognition::~HMMRecognition() {
 }

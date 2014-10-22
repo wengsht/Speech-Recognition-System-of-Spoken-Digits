@@ -24,11 +24,11 @@ class SoftState : public HMMState {
     public:
         friend class HMMSoftAutomaton;
         friend class HMMAutomaton;
-        SoftState(std::vector<WaveFeatureOP> * features);
+        SoftState(std::vector<WaveFeatureOP> * templates);
         ~SoftState();
 
         void gaussianTrain(int gaussianNum);
-        void nodeCost(Feature *inputFeature);
+        double nodeProbability(Feature *inputFeature);
 
     private:
         // vector<WaveFeatureOP> 对应的node，处于这个state的概率

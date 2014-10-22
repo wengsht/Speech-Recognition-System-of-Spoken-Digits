@@ -1,2 +1,5 @@
 #define AUTOMATON_STATE_NUM 5
 #define GAUSSIAN_NUM 4
+
+#define MAX_TRAIN_TIMES 100
+

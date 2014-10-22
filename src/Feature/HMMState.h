@@ -28,15 +28,15 @@ class HMMState {
             KMEAN,
             SOFT
         };
-        HMMState(std::vector<WaveFeatureOP> *features);
+        HMMState(std::vector<WaveFeatureOP> *templates);
         virtual ~HMMState() {};
 
         virtual void gaussianTrain(int gaussianNum) = 0;
 
-        virtual void nodeCost(Feature *inputFeature) = 0;
+        virtual double nodeProbability(Feature *inputFeature) = 0;
 
     protected:
-        std::vector<WaveFeatureOP> * features;
+        std::vector<WaveFeatureOP> * templates;
 };
 
 #endif

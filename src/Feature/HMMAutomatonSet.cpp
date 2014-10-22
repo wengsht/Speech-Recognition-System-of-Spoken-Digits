@@ -20,7 +20,7 @@
 #include <string>
 #include <iostream>
 
-HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum) : stateNum(stateNum), gaussNum(gaussNum) {
+HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {
 }
 HMMAutomatonSet::~HMMAutomatonSet() {
 }
@@ -38,9 +38,9 @@ SP_RESULT HMMAutomatonSet::train() {
             continue;
         // 新建自动机
         if(stateType == HMMState::KMEAN)
-            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), stateNum); 
+            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), stateNum, trainTimes); 
         else 
-            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum); 
+            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, trainTimes); 
 
         automatons[word]->hmmTrain();
                 

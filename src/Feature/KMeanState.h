@@ -24,13 +24,13 @@ class KMeanState : public HMMState {
         friend class HMMKMeanAutomaton;
         friend class HMMAutomaton;
 
-        KMeanState(std::vector<WaveFeatureOP> * features);
+        KMeanState(std::vector<WaveFeatureOP> * templates);
 
         ~KMeanState();
 
         void gaussianTrain(int gaussianNum);
 
-        void nodeCost(Feature *inputFeature);
+        double nodeProbability(Feature *inputFeature);
 
 
     private:

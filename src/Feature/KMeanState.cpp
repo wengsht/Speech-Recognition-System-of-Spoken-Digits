@@ -16,8 +16,8 @@
 
 #include "KMeanState.h"
 
-KMeanState::KMeanState(std::vector<WaveFeatureOP> * features) : HMMState(features) {
-    edgePoints.resize(features->size());
+KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {
+    edgePoints.resize(templates->size());
 }
 
 KMeanState::~KMeanState() {}
@@ -25,6 +25,8 @@ void KMeanState::gaussianTrain(int gaussianNum) {
     puts("Gaussian Train for kmean state");
 }
 
-void KMeanState::nodeCost(Feature *inputFeature) {
+double KMeanState::nodeProbability(Feature *inputFeature) {
+
+    return 0.0;
 }
 

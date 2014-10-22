@@ -17,7 +17,7 @@
 #include "HMMSoftAutomaton.h"
 #include "SoftState.h"
 
-HMMSoftAutomaton::HMMSoftAutomaton(std::vector<WaveFeatureOP> *features, int stateNum, int gaussNum) : HMMAutomaton(features, stateNum, gaussNum) {
+HMMSoftAutomaton::HMMSoftAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : HMMAutomaton(templates, stateNum, gaussNum, trainTimes) {
 }
 HMMSoftAutomaton::~HMMSoftAutomaton() {
 }
@@ -25,12 +25,12 @@ HMMSoftAutomaton::~HMMSoftAutomaton() {
 void HMMSoftAutomaton::hmmTrain() {
     states.clear();
 
-    std::vector<WaveFeatureOP> & datas = *features;
+    std::vector<WaveFeatureOP> & datas = *templates;
 
     int idx, idy, idz;
     // 初始化 几个states
     for(idx = 0;idx < stateNum;idx ++) {
-        states.push_back(SoftState(features));
+        states.push_back(SoftState(templates));
     }
 
     for(idx = 0; idx < datas.size(); idx++) {
@@ -43,4 +43,8 @@ void HMMSoftAutomaton::hmmTrain() {
     for(idx = 0;idx < stateNum;idx ++) {
         states[idx].gaussianTrain(gaussNum);
     }
+}
+double HMMSoftAutomaton::calcCost(WaveFeatureOP &input) {
+
+    return 1.0;
 }

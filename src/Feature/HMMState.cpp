@@ -16,4 +16,4 @@
 
 #include "HMMState.h"
 
-HMMState::HMMState(std::vector<WaveFeatureOP> *features) : features(features) {}
+HMMState::HMMState(std::vector<WaveFeatureOP> *templates) : templates(templates) {}

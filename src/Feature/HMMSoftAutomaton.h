@@ -24,10 +24,11 @@
 
 class HMMSoftAutomaton : public HMMAutomaton {
     public:
-        HMMSoftAutomaton(std::vector<WaveFeatureOP> *features, int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM);
+        HMMSoftAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM, int trainTimes = MAX_TRAIN_TIMES);
         ~HMMSoftAutomaton();
 
         void hmmTrain();
+        double calcCost(WaveFeatureOP &input);
     private:
         std::vector<SoftState> states;
 };

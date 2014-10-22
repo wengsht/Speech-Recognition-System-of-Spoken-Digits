@@ -27,8 +27,9 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
     READ_WRITE_DECLARE(HMMState::StateType, stateType, StateType);
     READ_WRITE_DECLARE(int, stateNum, StateNum);
     READ_WRITE_DECLARE(int, gaussNum, GaussNum);
+    READ_WRITE_DECLARE(int, trainTimes, TrainTimes);
     public:
-        HMMAutomatonSet(int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM);
+        HMMAutomatonSet(int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM, int trainTimes = MAX_TRAIN_TIMES);
         ~HMMAutomatonSet();
 
         SP_RESULT train();

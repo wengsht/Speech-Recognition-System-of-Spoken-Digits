@@ -16,6 +16,8 @@
 
 #include "HMMAutomaton.h"
 
-HMMAutomaton::HMMAutomaton(std::vector<WaveFeatureOP> *features, int stateNum, int gaussNum) : features(features), stateNum(stateNum), gaussNum(gaussNum) {
+HMMAutomaton::HMMAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : templates(templates), stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {
 
+    // 转移矩阵什么的开空间
+    Init();
 }
