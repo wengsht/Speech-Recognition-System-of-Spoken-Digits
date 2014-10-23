@@ -43,7 +43,6 @@ SP_RESULT HMMAutomatonSet::train() {
             automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, trainTimes); 
 
         automatons[word]->hmmTrain();
-                
     }
     return SP_SUCCESS;
 }
@@ -56,6 +55,9 @@ void HMMAutomatonSet::clear() {
     std::map< std::string, HMMAutomaton *>::iterator Itr;
 
     for(Itr = automatons.begin(); Itr != automatons.end(); Itr ++) {
+
+        (Itr->second)->close();
+
         delete (Itr->second);
     }
     automatons.clear();

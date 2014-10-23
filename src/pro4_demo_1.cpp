@@ -161,7 +161,7 @@ void runDemoNN() {
         if(isBeam) {
             recognition.setBeamThreshold(threshold);
             recognition.wordSynRecognition((*Itr)->getTemplateFeature());
-        }
+       }
         else 
             recognition.wordAsynRecognition((*Itr)->getTemplateFeature());
 
@@ -186,7 +186,7 @@ void runDemoNN() {
 
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "g:bB:hj:d:t:")) != -1) {
+    while((c = getopt(argc, argv, "g:bB:hj:d:t:D:T:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
@@ -195,6 +195,8 @@ bool dealOpts(int argc, char **argv) {
                         -g demoType : 0(1-1) 1(n-1) 2(n-n)\n \
                         -b : 使用默认beam threshold\n \
                         -B bean_threshold : Set Beam mode \n \
+                        -D input dir name \n \
+                        -T template dir name\n \
                         -d input file name[capture if not set] \n \
                         -t template file name[capture if not set]\n");
 
@@ -213,6 +215,12 @@ bool dealOpts(int argc, char **argv) {
             case 'B':
                 isBeam = true;
                 sscanf(optarg, "%lf", &threshold);
+                break;
+            case 'T':
+                strcpy(templateDirName, optarg);
+                break;
+            case 'D':
+                strcpy(inputDirName, optarg);
                 break;
             case 't':
                 strcpy(templateFileName, optarg);

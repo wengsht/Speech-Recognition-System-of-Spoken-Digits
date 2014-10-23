@@ -21,6 +21,7 @@
 
 class KMeanState : public HMMState {
     public:
+        const static std::pair<int, int> NullSeg ;
         friend class HMMKMeanAutomaton;
         friend class HMMAutomaton;
 

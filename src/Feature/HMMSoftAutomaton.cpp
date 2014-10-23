@@ -24,26 +24,28 @@ HMMSoftAutomaton::~HMMSoftAutomaton() {
 }
 
 void HMMSoftAutomaton::hmmTrain() {
-    states.clear();
+    clearStates();
 
     std::vector<WaveFeatureOP> & datas = *templates;
 
 //    states.push_back(DummyState(NULL));
     int idx, idy, idz;
+
+    states.push_back(new DummyState(NULL));
     // 初始化 几个states
     for(idx = 0;idx < stateNum;idx ++) {
-        states.push_back(SoftState(templates));
+        states.push_back(new SoftState(templates));
     }
 
     for(idx = 0; idx < datas.size(); idx++) {
         for(int idy = 0; idy < stateNum; idy ++) {
             for(int idz = 0; idz < datas[idx].size(); idz ++)
-                states[idy].probabilities[idx][idz] = 1.0 / stateNum;
+                getState(idy)->probabilities[idx][idz] = 1.0 / stateNum;
         }
     }
 
     for(idx = 0;idx < stateNum;idx ++) {
-        states[idx].gaussianTrain(gaussNum);
+        getState(idx)->gaussianTrain(gaussNum);
     }
 }
 double HMMSoftAutomaton::calcCost(WaveFeatureOP &input) {

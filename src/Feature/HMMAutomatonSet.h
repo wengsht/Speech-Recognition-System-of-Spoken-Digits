@@ -35,10 +35,10 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
         SP_RESULT train();
         std::string recognition(std::vector<Feature> & input);
 
+        // 清空自动机，释放空间
         void clear();
 
     private:
-        // 清空自动机，释放空间
         std::map< std::string, HMMAutomaton *> automatons;
 };
 

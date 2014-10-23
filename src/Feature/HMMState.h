@@ -20,15 +20,19 @@
 #include "WaveFeatureOP.h"
 #include "Feature.h"
 
+class DummyState;
+
 class HMMState {
     public:
-        friend class HMMAutomaton;
-
         enum StateType {
+            DUMMY,
             KMEAN,
             SOFT
         };
-        HMMState(std::vector<WaveFeatureOP> *templates);
+    public:
+        friend class HMMAutomaton;
+
+        HMMState(std::vector<WaveFeatureOP> *templates) : templates(templates) {}
         HMMState() : templates(NULL) {}
         virtual ~HMMState() {};
 

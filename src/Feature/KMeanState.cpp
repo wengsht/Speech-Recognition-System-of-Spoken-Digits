@@ -16,11 +16,14 @@
 
 #include "KMeanState.h"
 
+const std::pair<int, int> KMeanState::NullSeg = std::make_pair(0, -1);
+
 KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {
     edgePoints.resize(templates->size());
 }
 
-KMeanState::~KMeanState() {}
+KMeanState::~KMeanState() {
+}
 void KMeanState::gaussianTrain(int gaussianNum) {
     puts("Gaussian Train for kmean state");
 }

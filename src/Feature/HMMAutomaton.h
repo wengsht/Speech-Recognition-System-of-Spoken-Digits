@@ -18,6 +18,7 @@
 
 #include "WaveFeatureOP.h"
 #include "configure_basic.h"
+#include "mathtool.h"
 
 #include <vector>
 #include "tool.h"
@@ -36,15 +37,108 @@ public:
     virtual void hmmTrain() = 0;
     virtual double calcCost(WaveFeatureOP &input) = 0;
     
+    //  you should call this before you destroy this object
+    void close();
+
 protected:
-    // probability  to cost
-    double p2cost(double p) {
-        return - log(p);
+    enum dtwType {
+        Maximum, 
+        Sigma
+    };
+
+    Matrix<int> path;
+    std::vector<double> rollColumnCost[2];
+
+    void rollDtwInit(WaveFeatureOP &features, dtwType type) {
+        int idx;
+        for(idx = 0; idx < 2; idx ++)
+            if(rollColumnCost[idx].size() < stateNum+1)
+                rollColumnCost[idx].resize(stateNum + 1);
+
+        if(path.size() < features.size()) {
+            path.resize(features.size());
+
+            for(idx = 0; idx < path.size(); idx ++)
+                path[idx].resize(stateNum + 1);
+        }
+        int columnIdx = -1;
+        int rollIdx = getRollIdx(columnIdx);
+
+        rollColumnCost[rollIdx][0] = 0.0;
     }
-    // 因为自动机存储的时候从0开始。。又有个dummy 
-    inline int getStateIdx(int idx) {
-        return idx - 1;
+    // 滚动数组dtw
+    // return final state and cost
+    std::pair<int, double> rollDtw(WaveFeatureOP & features, dtwType type) {
+        rollDtwInit(features, type);
+
+        int columnIdx, rollIdx, preIdx, stateIdx;
+
+        int resIdx = -1;
+        double resValue;
+        for(columnIdx = 0; columnIdx < features.size(); columnIdx ++) {
+            rollIdx = getRollIdx(columnIdx);
+            preIdx  = rollIdx ^ 1;
+
+            for(stateIdx = 1; stateIdx <= stateNum; stateIdx ++) {
+
+                double nodeCost = states[stateIdx]->nodeCost(&features[columnIdx]);
+                rollColumnCost[rollIdx][stateIdx] = rollColumnCost[preIdx][stateIdx] + transferCost[stateIdx][stateIdx] + nodeCost;
+                // should record the path 
+                if(type == Maximum) {
+                    path[columnIdx][stateIdx] = stateIdx;
+                }
+
+                for(int i = 1; i < DTW_MAX_FORWARD;i++) {
+                    int preStateIdx = stateIdx - i;
+
+                    if(preStateIdx < 0) break;
+
+                    double mayPathCost = rollColumnCost[preIdx][preStateIdx] + transferCost[preStateIdx][stateIdx] + nodeCost;
+
+                    // should record the path 
+                    if(type == Maximum) {
+                        if(mayPathCost < rollColumnCost[rollIdx][stateIdx]) {
+                            rollColumnCost[rollIdx][stateIdx] = mayPathCost;
+
+                            path[columnIdx][stateIdx] = preStateIdx;
+                        }
+                    }
+                    // need not to record the path
+                    else if(type == Sigma) {
+                        rollColumnCost[rollIdx][stateIdx] = logInsideSum(path[columnIdx][stateIdx], mayPathCost);
+                    }
+                }
+            }
+
+
+
+
+            // 处于0的cost相当高= =
+            rollColumnCost[rollIdx][0] = Feature::IllegalDist;
+        }
+        columnIdx = features.size() - 1;
+        rollIdx = getRollIdx(columnIdx);
+
+        resValue = rollColumnCost[rollIdx][1];
+        resIdx   = 1;
+
+        for(int i = 2; i <= stateNum; i++) {
+            if(type == Maximum) {
+                if(Feature::better(rollColumnCost[rollIdx][i], resValue)) {
+                    resValue = rollColumnCost[rollIdx][i];
+
+                    resIdx = i;
+                }
+            }
+            else if(type == Sigma) {
+                resValue = logInsideSum(resValue, rollColumnCost[rollIdx][i]);
+            }
+        }
+
+        return std::make_pair(resIdx, resValue);
     }
+    // 释放自动机中的状态的空间
+    void clearStates();
     // 滚动数组的下标
     inline int getRollIdx(int columnIdx) {
         return columnIdx & 1;
@@ -56,17 +150,6 @@ protected:
         for(int i = 0;i < stateNum + 1; i++) {
             transferCost[i].resize(stateNum + 1);
         }
-
-        rollColumnCost[0].resize(stateNum + 1);
-        rollColumnCost[1].resize(stateNum + 1);
-    }
-    //  记录路径的dtw
-    void recordInit(WaveFeatureOP &input) {
-        if(path.size() >= input.size())
-            return ;
-        path.resize(input.size());
-        for(int i = 0;i < path.size(); i++) 
-            path[i].resize(stateNum + 1);
     }
     // WaveFeatureOP 存储一个template/input, 
     // use waveFeatureOP.size() and waveFeatureOP[idx] to iterate each wav's features
@@ -76,9 +159,7 @@ protected:
     // states之间转移概率
     // 0 = dummy state
     Matrix<double> transferCost;
-    Matrix<int> path;
-    std::vector<double> rollColumnCost[2];
 
-
+    std::vector<HMMState *> states;
 };
 #endif

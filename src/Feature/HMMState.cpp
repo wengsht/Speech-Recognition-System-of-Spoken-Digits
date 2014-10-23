@@ -16,6 +16,3 @@
 
 #include "HMMState.h"
 
-HMMState::HMMState(std::vector<WaveFeatureOP> *templates) : templates(templates) {
-
-}

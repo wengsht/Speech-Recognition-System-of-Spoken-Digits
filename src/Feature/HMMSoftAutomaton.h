@@ -30,7 +30,10 @@ class HMMSoftAutomaton : public HMMAutomaton {
         void hmmTrain();
         double calcCost(WaveFeatureOP &input);
     private:
-        std::vector<SoftState> states;
+        inline SoftState *getState(int idx) {
+            if(idx >= states.size()) return NULL;
+            return (SoftState *)(states[idx]);
+        }
 };
 
 #endif

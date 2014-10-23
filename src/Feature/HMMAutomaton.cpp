@@ -20,3 +20,17 @@ HMMAutomaton::HMMAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, 
     // 转移矩阵什么的开空间
     Init();
 }
+
+
+void HMMAutomaton::close() {
+    clearStates();
+}
+void HMMAutomaton::clearStates() {
+    int idx;
+    for(idx = 0; idx < states.size(); idx++)  {
+        delete states[idx];
+    }
+
+    states.clear();
+
+}

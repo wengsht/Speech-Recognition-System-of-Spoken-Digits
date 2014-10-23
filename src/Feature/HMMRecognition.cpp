@@ -30,6 +30,7 @@ SP_RESULT HMMRecognition::loadTemplates(char *templateDir) {
 
 SP_RESULT HMMRecognition::hmmTrain() {
     automatons.setStateType(stateType);
+
     automatons.train();
 
     return SP_SUCCESS;

@@ -18,15 +18,15 @@
 
 #include "HMMState.h"
 #include "Feature.h"
-class DummyState : HMMState {
+#include "WaveFeatureOP.h"
+class DummyState : public HMMState {
     public:
         DummyState(std::vector<WaveFeatureOP> *templates) : HMMState(templates) {}
         ~DummyState() {}
 
         void gaussianTrain(int gaussianNum) {
-
         }
-        double nodeProbability(Feature *inputFeature) {
+        double nodeCost(Feature *inputFeature) {
             return Feature::IllegalDist;
         }
 

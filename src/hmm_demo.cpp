@@ -80,13 +80,15 @@ int main(int argc, char **argv) {
 }
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "g:bB:hj:d:t:")) != -1) {
+    while((c = getopt(argc, argv, "g:bB:hj:d:t:D:T:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         filename example: abc\n \
                         -j threadNum \n \
                         -g demoType : 0(1-1) 1(n-1) 2(n-n)\n \
+                        -D input Dir name \n \
+                        -T template Dir name\n \
                         -d input file name[capture if not set] \n \
                         -t template file name[capture if not set]\n");
 
@@ -97,6 +99,12 @@ bool dealOpts(int argc, char **argv) {
                 break;
             case 'g':
                 demoType = atoi(optarg);
+                break;
+            case 'T':
+                strcpy(templateDirName, optarg);
+                break;
+            case 'D':
+                strcpy(inputDirName, optarg);
                 break;
             case 't':
                 strcpy(templateFileName, optarg);

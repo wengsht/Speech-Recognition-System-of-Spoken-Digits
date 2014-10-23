@@ -3,3 +3,4 @@
 
 #define MAX_TRAIN_TIMES 100
 
+#define DTW_MAX_FORWARD 3

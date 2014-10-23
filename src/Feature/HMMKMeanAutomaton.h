@@ -31,99 +31,123 @@ class HMMKMeanAutomaton : public HMMAutomaton {
         void hmmTrain();
 
         double calcCost(WaveFeatureOP &input);
+
     private:
-        double dtw(WaveFeatureOP &input, bool recordPath) {
-            /* 
-            if(recordPath)
-                recordInit();
-
-            int columnIdx = 0;
-            if(!input.size()) return Feature::IlledgeDist;
-
-            int rollIdx = getRollIdx(columnIdx);
-
-            int idx, idy;
-
-            // 第一列只从dummy扩展
-            for(idx = 1; idx <= stateNum; idx ++) {
-                int stateIdx = getStateIdx(idx);
-
-                rollColumnCost[rollIdx][stateIdx] = transferCost[0][idx] + states[stateIdx].nodeCost(&input[0]);
-            }
-
-            for(columnIdx = 1; columnIdx < input.size(); columnIdx = ) {
-
-            }
-            */
-
-
-            return 1.0;
+        inline KMeanState *getState(int idx) {
+            if(idx >= states.size()) return NULL;
+            return (KMeanState *)(states[idx]);
         }
-        int getBestRow(int columnIdx) {
-            int rollIdx = getRollIdx(columnIdx);
 
-            int res = 1;
-            for(int idx = 2; idx < stateNum; idx++) 
-                if(Feature::better(rollColumnCost[rollIdx][idx], rollColumnCost[rollIdx][res]))
-                    res = idx;
-
-            return res;
-        }
         // 利用path Matrix 更新这个template的分段
-        void updateSegmentation(int featureIdx) {
-            int bestRow = getBestRow(templates[featureIdx].size() - 1); // 得到最后处于哪个状态
+        // 对于第idx个template，已经做了dtw，现在更新他在每个state的分段信息
+        void updateSegmentation(int templateIdx, int bestFinalRowIdx) {
+            int stateIdx = stateNum;
+            int rowIdx = bestFinalRowIdx;
 
-            int idx = stateNum;
-            // 没有节点处于最后那些状态！！
-            while(idx > bestRow) {
-                int stateIdx = getStateIdx(idx);
-                states[stateIdx].edgePoints[featureIdx] = std::make_pair(0, -1);
-                idx --;
+            // init
+            while(stateIdx >= 1)  {
+                getState(stateIdx)->edgePoints[templateIdx] = KMeanState::NullSeg;
+                stateIdx --;
             }
 
-            int featureCnt = templates[featureIdx].size() - 1;
+            int featureIdx = (*templates)[templateIdx].size() - 1;
 
-            while(featureCnt >= 0) {
-                int stateIdx = getStateIdx(idx);
-                int endColumn = featureCnt;
-                
-                while(featureCnt && path[featureCnt][bestRow] == bestRow) {
-                    featureCnt --;
+            // 分配feature到各个state
+            while(featureIdx >= 0) {
+                int endIdx = featureIdx;
+                int startIdx = featureIdx;
+
+                // 处于统一状态的所有节点
+                while(startIdx > 0 && path[startIdx][rowIdx] == rowIdx) {
+                    startIdx --;
                 }
 
-                states[stateIdx].edgePoints[featureIdx] = std::make_pair(featureCnt, endColumn);
 
-                idx --;
-            }
+                getState(rowIdx)->edgePoints[templateIdx] = std::make_pair(startIdx, endIdx);
 
-            while(idx >= 1) {
-                int stateIdx = getStateIdx(idx);
-                states[stateIdx].edgePoints[featureIdx] = std::make_pair(0, -1);
-                idx --;
+                featureIdx = startIdx - 1;
+
+                rowIdx = path[startIdx][rowIdx];
             }
         }
-        void updateTransfer() {
 
+        // return true if big change
+        bool updateTransfer() {
+            double wholeChangeCost = 0.0;
+
+            for(int i = 1; i <= stateNum; i++) {
+                //  处于这个state的节点个数
+                int wholeCnt = 0;
+
+                int nxtCnt[DTW_MAX_FORWARD];
+                memset(nxtCnt, 0, sizeof(nxtCnt));
+
+                // 统计每个template处于这个状态的转移
+                for(int j = 0;j < templates->size(); j ++) {
+                    std::pair<int,int> seg = getState(i)->edgePoints[j];
+
+                    int numNode = seg.second - seg.first + 1;
+
+                    if(numNode == 0) continue;
+                    wholeCnt += numNode;
+
+                    nxtCnt[0] += numNode - 1;
+
+                    // 统计i会转移到i+k 的node的个数
+                    for(int k = 1; k < DTW_MAX_FORWARD; k++) {
+                        int nxtState = i + k;
+                        if(nxtState > stateNum) break;
+
+                        if(getState(nxtState)->edgePoints[j].first - 1 == getState(i)->edgePoints[j].second) {
+                            nxtCnt[k] ++;
+                            // 一个template只会贡献一个转移
+                            break;
+                        }
+                    }
+                }
+
+                if(wholeCnt == 0) return false;
+
+                for(int j = 0;j < DTW_MAX_FORWARD; j++) {
+                    double newCost = p2cost(1.0 * nxtCnt[j] / wholeCnt);
+
+                    wholeChangeCost = fabs(newCost - transferCost[i][i+j]);
+                    transferCost[i][i+j] = newCost;
+                }
+            }
+
+            // 每个transfer有0.01的变动 TODO
+            return isBigChange(wholeChangeCost);
+        }
+        bool isBigChange(bool wholeChangeCost) {
+            return wholeChangeCost >= 0.01 * stateNum * DTW_MAX_FORWARD;
         }
         // return false to stop training
         bool iterateTrain() {
-            int idx;
-            for(idx = 0; idx < templates->size(); idx++) {
-                dtw((*templates)[idx], true);
+            int idx, bestFinalRowIdx;
 
-                updateSegmentation(idx);
+            for(idx = 0; idx < templates->size(); idx++) {
+                bestFinalRowIdx = rollDtw((*templates)[idx], HMMAutomaton::Maximum).first;
+
+                // only one path matrix could be used, so update it ight after one dtw
+                updateSegmentation(idx, bestFinalRowIdx);
             }
+
+            double bigChange = updateTransfer();
 
             // 调整HMM 参数
             for(idx = 1;idx <= stateNum;idx++) {
-                int stateIdx = getStateIdx(idx);
-
-                states[stateIdx].gaussianTrain(gaussNum);
+                getState(idx)->gaussianTrain(gaussNum);
             }
-
-            updateTransfer();
+            // 
+            return bigChange;
         }
-        std::vector<KMeanState> states;
+
+        void clearTrainBuffer() {
+            path.clear();
+            rollColumnCost[0].clear();
+            rollColumnCost[1].clear();
+        }
 };
 
 #endif

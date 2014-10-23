@@ -11,6 +11,7 @@
 #include <assert.h>
 
 #include <iostream>
+#include "math.h"
 using namespace std;
 const int MAXN = 1000;
 // fft(a, n, 1) -- dft
@@ -74,4 +75,14 @@ void dct2(double *a, int n) {
     for(int i = 0;i < n;i++)
         a[i] = b[i] * sqrt(2.0/n) / sqrt(2.0);
     delete [] b;
+}
+
+// log(x+y)  a = log(x) b = log(y)
+double logInsideSum(double a, double b) {
+    return a + log(1.0 + pow(e, b-a));
+}
+
+// probability  to cost
+double p2cost(double p) {
+    return - log(p);
 }
