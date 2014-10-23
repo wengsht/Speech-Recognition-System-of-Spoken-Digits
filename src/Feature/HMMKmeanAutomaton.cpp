@@ -15,6 +15,8 @@
 // =====================================================================================
 
 #include "HMMKMeanAutomaton.h"
+#include "KMeanState.h"
+#include "DummyState.h"
 
 HMMKMeanAutomaton::HMMKMeanAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : HMMAutomaton(templates, stateNum, gaussNum, trainTimes) {
 }
@@ -30,7 +32,9 @@ void HMMKMeanAutomaton::hmmTrain() {
 
     int idx, idy;
     // 初始化 几个states
-    for(idx = 0;idx < stateNum;idx ++) {
+//    states.push_back(DummyState(NULL));
+
+    for(idx = 1;idx <= stateNum;idx ++) {
         states.push_back(KMeanState(templates));
     }
 

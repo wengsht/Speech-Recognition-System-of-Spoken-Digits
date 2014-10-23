@@ -30,7 +30,7 @@ class KMeanState : public HMMState {
 
         void gaussianTrain(int gaussianNum);
 
-        double nodeProbability(Feature *inputFeature);
+        double nodeCost(Feature *inputFeature);
 
 
     private:

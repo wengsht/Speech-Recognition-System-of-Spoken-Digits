@@ -31,6 +31,6 @@ void SoftState::gaussianTrain(int gaussianNum) {
     puts("Gaussian Train for soft state");
 }
 
-double SoftState::nodeProbability(Feature *inputFeature) {
+double SoftState::nodeCost(Feature *inputFeature) {
     return 0.0;
 }

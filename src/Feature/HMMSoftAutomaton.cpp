@@ -16,6 +16,7 @@
 
 #include "HMMSoftAutomaton.h"
 #include "SoftState.h"
+#include "DummyState.h"
 
 HMMSoftAutomaton::HMMSoftAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : HMMAutomaton(templates, stateNum, gaussNum, trainTimes) {
 }
@@ -27,6 +28,7 @@ void HMMSoftAutomaton::hmmTrain() {
 
     std::vector<WaveFeatureOP> & datas = *templates;
 
+//    states.push_back(DummyState(NULL));
     int idx, idy, idz;
     // 初始化 几个states
     for(idx = 0;idx < stateNum;idx ++) {

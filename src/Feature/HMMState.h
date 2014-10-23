@@ -33,8 +33,7 @@ class HMMState {
         virtual ~HMMState() {};
 
         virtual void gaussianTrain(int gaussianNum) = 0;
-
-        virtual double nodeProbability(Feature *inputFeature) = 0;
+        virtual double nodeCost(Feature *inputFeature) = 0;
 
     protected:
         std::vector<WaveFeatureOP> * templates;

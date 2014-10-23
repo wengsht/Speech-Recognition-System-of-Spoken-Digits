@@ -25,7 +25,7 @@ void KMeanState::gaussianTrain(int gaussianNum) {
     puts("Gaussian Train for kmean state");
 }
 
-double KMeanState::nodeProbability(Feature *inputFeature) {
+double KMeanState::nodeCost(Feature *inputFeature) {
 
     return 0.0;
 }

@@ -20,14 +20,14 @@
 #include "Feature.h"
 class DummyState : HMMState {
     public:
-        DummyState() {}
+        DummyState(std::vector<WaveFeatureOP> *templates) : HMMState(templates) {}
         ~DummyState() {}
 
         void gaussianTrain(int gaussianNum) {
 
         }
         double nodeProbability(Feature *inputFeature) {
-            return Feature::IlledgeDist;
+            return Feature::IllegalDist;
         }
 
     private:

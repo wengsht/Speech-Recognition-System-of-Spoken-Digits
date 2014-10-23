@@ -28,7 +28,7 @@ class SoftState : public HMMState {
         ~SoftState();
 
         void gaussianTrain(int gaussianNum);
-        double nodeProbability(Feature *inputFeature);
+        double nodeCost(Feature *inputFeature);
 
     private:
         // vector<WaveFeatureOP> 对应的node，处于这个state的概率
