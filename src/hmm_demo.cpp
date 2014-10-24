@@ -1,3 +1,7 @@
+/*  TODO 进度条 */
+
+
+
 // =====================================================================================
 // 
 //       Filename:  hmm_demo.cpp
@@ -65,8 +69,8 @@ int main(int argc, char **argv) {
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
     
-    hmm.setStateType(HMMState::KMEAN);
-//    hmm.setStateType(HMMState::SOFT);
+//    hmm.setStateType(HMMState::KMEAN);
+    hmm.setStateType(HMMState::SOFT);
 
     hmm.hmmTrain();
 

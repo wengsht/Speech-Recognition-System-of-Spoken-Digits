@@ -27,5 +27,7 @@ double logInsideSum(double a, double b);
 
 double p2cost(double p);
 
+double cost2p(double cost);
+
 #define e 2.718281828459
 #endif /* defined(__SpeechRecongnitionSystem__mathtool__) */

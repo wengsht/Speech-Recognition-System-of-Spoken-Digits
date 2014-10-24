@@ -1,6 +1,7 @@
 #include "resource.h"
 #include "srs.h"
 #include <cstdio>
+#include <iomanip>
 #include <iostream>
 #include <fstream>
 #include "FeatureExtractor.h"
@@ -169,6 +170,8 @@ void runDemoNN() {
 
         if((*finalTemp) == (*(*Itr)))
             correctCnt ++;
+
+        cout << "Template: " << left<< setw(10) << finalTemp->getWord() << " Input: " << (*Itr)->getWord() << endl;
     }
 
     system("clear");

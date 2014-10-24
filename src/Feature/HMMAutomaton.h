@@ -65,6 +65,8 @@ protected:
         int rollIdx = getRollIdx(columnIdx);
 
         rollColumnCost[rollIdx][0] = 0.0;
+        for(idx = 1; idx <= stateNum; idx++) 
+            rollColumnCost[rollIdx][idx] = Feature::IllegalDist;
     }
     // 滚动数组dtw
     // return final state and cost
@@ -109,9 +111,6 @@ protected:
                     }
                 }
             }
-
-
-
 
             // 处于0的cost相当高= =
             rollColumnCost[rollIdx][0] = Feature::IllegalDist;

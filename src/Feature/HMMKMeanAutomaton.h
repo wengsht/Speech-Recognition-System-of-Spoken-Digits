@@ -133,7 +133,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                 updateSegmentation(idx, bestFinalRowIdx);
             }
 
-            double bigChange = updateTransfer();
+            bool bigChange = updateTransfer();
 
             // 调整HMM 参数
             for(idx = 1;idx <= stateNum;idx++) {

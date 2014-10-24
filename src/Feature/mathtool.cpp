@@ -86,3 +86,7 @@ double logInsideSum(double a, double b) {
 double p2cost(double p) {
     return - log(p);
 }
+
+double cost2p(double cost) {
+    return pow(e, -cost);
+}
