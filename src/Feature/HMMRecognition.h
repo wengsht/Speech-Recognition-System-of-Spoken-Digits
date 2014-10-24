@@ -42,7 +42,7 @@ class HMMRecognition {
 
         // 返回recognition的单词
         //
-        std::string hmmRecognition(std::vector<Feature> & input);
+        std::string hmmRecognition(WaveFeatureOP & input);
 
         // You should call this function before you destroy this object!!
         void close();

@@ -47,8 +47,23 @@ SP_RESULT HMMAutomatonSet::train() {
     return SP_SUCCESS;
 }
 
-std::string HMMAutomatonSet::recognition(std::vector<Feature> & input) {
-    return "null2";
+std::string HMMAutomatonSet::recognition(WaveFeatureOP & input) {
+    std::map< std::string, HMMAutomaton *>::iterator Itr;
+    std::string res = "null2";
+    
+    double bestCost = Feature::IllegalDist;
+    for(Itr = automatons.begin(); Itr != automatons.end(); Itr ++) {
+        double tmpCost = Itr->second->calcCost(input);
+
+        // DEBUG
+
+        std::cout << Itr->first << " " << tmpCost << std::endl;
+        if(Feature::better(tmpCost, bestCost)) {
+            res = Itr->first;
+            bestCost = tmpCost;
+        }
+    }
+    return res;
 }
 
 void HMMAutomatonSet::clear() {

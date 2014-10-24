@@ -24,6 +24,7 @@
 #include <iostream>
 #include <fstream>
 #include "FeatureExtractor.h"
+#include "WaveFeatureOP.h"
 #include <unistd.h>
 #include "WaveFeatureOP.h"
 #include "WordDtwRecognition.h"
@@ -48,10 +49,22 @@ bool dealOpts(int argc, char **argv);
 // -g 2(n-n)
 int demoType = 0;
 
+void runNN();
+void runN1();
 int main(int argc, char **argv) {
     if(! dealOpts(argc, argv))
         return 0;
 
+    if(demoType == 0)
+        runN1();
+    if(demoType == 1) 
+        runNN();
+
+//    cout << res << endl;
+
+    return 0;
+}
+void runN1() {
     FeatureExtractor extractor(threadNum);
 
     RawData data;
@@ -69,18 +82,63 @@ int main(int argc, char **argv) {
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
     
-//    hmm.setStateType(HMMState::KMEAN);
-    hmm.setStateType(HMMState::SOFT);
+    hmm.setStateType(HMMState::KMEAN);
+//    hmm.setStateType(HMMState::SOFT);
 
     hmm.hmmTrain();
 
-    string res = hmm.hmmRecognition(inputFeature);
+    WaveFeatureOP op(inputFeature, "null");
+    string res = hmm.hmmRecognition(op);
+    
+    cout << res << endl;
+    hmm.close();
+
+}
+void runNN() {
+    FeatureExtractor extractor(threadNum);
+
+    RawData data;
+//    if(strlen(inputFileName) == 0) {
+//        Tip("[Capture an input!!]\n\n");
+//        capture("tmp", data, false);
+//    }
+//    else {
+//        Tip("[Load an input!!]\n\n");
+//        load_wav_file(inputFileName, data);
+//    }
+//    extractor.exDoubleDeltaFeatures(&data);
+//    vector<Feature> inputFeature = extractor.getNormalMelCepstrum();
+
+    HMMRecognition hmm;
+    hmm.loadTemplates(templateDirName);
+    
+    hmm.setStateType(HMMState::KMEAN);
+//    hmm.setStateType(HMMState::SOFT);
+
+    hmm.hmmTrain();
+    WaveFeatureOPSet inputs;
+    inputs.loadMfccs(inputDirName);
+
+//    WaveFeatureOP op(inputFeature, "null");
+//    string res = hmm.hmmRecognition(op);
+    
+    WaveFeatureOPSet::iterator Itr = inputs.begin();
+    
+    int allCnt=0, correctCnt=0;
+    for(; Itr != inputs.end(); Itr ++) {
+        allCnt ++;
+
+        string res = hmm.hmmRecognition(*(*Itr));
+        
+        if(res == (*Itr)->getWord())
+            correctCnt ++;
+    }
+    system("clear");
+    cout << "Input " << allCnt << " wavs " << endl; 
+    cout << "Correct Counts: " << correctCnt << endl; 
 
     hmm.close();
 
-    cout << res << endl;
-
-    return 0;
 }
 bool dealOpts(int argc, char **argv) {
     int c;

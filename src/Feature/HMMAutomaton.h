@@ -49,6 +49,7 @@ protected:
     Matrix<int> path;
     std::vector<double> rollColumnCost[2];
 
+    // dtw 初始化第-1列
     void rollDtwInit(WaveFeatureOP &features, dtwType type) {
         int idx;
         for(idx = 0; idx < 2; idx ++)
@@ -64,9 +65,11 @@ protected:
         int columnIdx = -1;
         int rollIdx = getRollIdx(columnIdx);
 
-        rollColumnCost[rollIdx][0] = 0.0;
-        for(idx = 1; idx <= stateNum; idx++) 
+        for(idx = 0; idx <= stateNum; idx++) {
             rollColumnCost[rollIdx][idx] = Feature::IllegalDist;
+            rollColumnCost[rollIdx ^ 1][idx] = Feature::IllegalDist;
+        }
+        rollColumnCost[rollIdx][0] = 0.0;
     }
     // 滚动数组dtw
     // return final state and cost
@@ -76,15 +79,20 @@ protected:
         int columnIdx, rollIdx, preIdx, stateIdx;
 
         int resIdx = -1;
-        double resValue;
+        double resValue = 0.0;
+
         for(columnIdx = 0; columnIdx < features.size(); columnIdx ++) {
             rollIdx = getRollIdx(columnIdx);
             preIdx  = rollIdx ^ 1;
 
             for(stateIdx = 1; stateIdx <= stateNum; stateIdx ++) {
-
                 double nodeCost = states[stateIdx]->nodeCost(&features[columnIdx]);
+
+//                if(stateIdx == 1 && type == Maximum && columnIdx == 0) 
+//                    printf("%lf\n", nodeCost);
+
                 rollColumnCost[rollIdx][stateIdx] = rollColumnCost[preIdx][stateIdx] + transferCost[stateIdx][stateIdx] + nodeCost;
+
                 // should record the path 
                 if(type == Maximum) {
                     path[columnIdx][stateIdx] = stateIdx;
@@ -97,9 +105,14 @@ protected:
 
                     double mayPathCost = rollColumnCost[preIdx][preStateIdx] + transferCost[preStateIdx][stateIdx] + nodeCost;
 
+//                if(stateIdx == 1 && type == Maximum && columnIdx == 0) 
+//                    printf("%lf\n", nodeCost);
+
+//                    printf("%lf %lf\n", mayPathCost, rollColumnCost[rollIdx][stateIdx]);
+//                    printf("%lf\n", rollColumnCost[rollIdx][stateIdx]);
                     // should record the path 
                     if(type == Maximum) {
-                        if(mayPathCost < rollColumnCost[rollIdx][stateIdx]) {
+                        if(Feature::better(mayPathCost, rollColumnCost[rollIdx][stateIdx])) {
                             rollColumnCost[rollIdx][stateIdx] = mayPathCost;
 
                             path[columnIdx][stateIdx] = preStateIdx;
@@ -107,14 +120,16 @@ protected:
                     }
                     // need not to record the path
                     else if(type == Sigma) {
-                        rollColumnCost[rollIdx][stateIdx] = logInsideSum(path[columnIdx][stateIdx], mayPathCost);
+                        rollColumnCost[rollIdx][stateIdx] = logInsideSum(rollColumnCost[rollIdx][stateIdx], mayPathCost);
                     }
                 }
+
             }
 
             // 处于0的cost相当高= =
             rollColumnCost[rollIdx][0] = Feature::IllegalDist;
         }
+
         columnIdx = features.size() - 1;
         rollIdx = getRollIdx(columnIdx);
 

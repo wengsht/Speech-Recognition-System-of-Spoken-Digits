@@ -22,6 +22,7 @@
 #include "HMMAutomaton.h"
 #include "KMeanState.h"
 #include "Feature.h"
+#include <cstring>
 
 class HMMKMeanAutomaton : public HMMAutomaton {
     public:
@@ -62,7 +63,6 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     startIdx --;
                 }
 
-
                 getState(rowIdx)->edgePoints[templateIdx] = std::make_pair(startIdx, endIdx);
 
                 featureIdx = startIdx - 1;
@@ -92,6 +92,8 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     wholeCnt += numNode;
 
                     nxtCnt[0] += numNode - 1;
+                    if(seg.second == (*templates)[j].size()-1)
+                        nxtCnt[0] = numNode;
 
                     // 统计i会转移到i+k 的node的个数
                     for(int k = 1; k < DTW_MAX_FORWARD; k++) {
@@ -106,12 +108,14 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     }
                 }
 
-                if(wholeCnt == 0) return false;
+                if(wholeCnt == 0) continue;
 
                 for(int j = 0;j < DTW_MAX_FORWARD; j++) {
+                    if(i+j > stateNum) break;
                     double newCost = p2cost(1.0 * nxtCnt[j] / wholeCnt);
 
                     wholeChangeCost = fabs(newCost - transferCost[i][i+j]);
+
                     transferCost[i][i+j] = newCost;
                 }
             }

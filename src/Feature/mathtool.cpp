@@ -12,6 +12,7 @@
 
 #include <iostream>
 #include "math.h"
+#include "Feature.h"
 using namespace std;
 const int MAXN = 1000;
 // fft(a, n, 1) -- dft
@@ -77,13 +78,16 @@ void dct2(double *a, int n) {
     delete [] b;
 }
 
-// log(x+y)  a = log(x) b = log(y)
+// -log(x+y)  a = -log(x) b = -log(y)
 double logInsideSum(double a, double b) {
-    return a + log(1.0 + pow(e, b-a));
+    if(a >= b) std::swap(a, b);
+//    printf("%lf %lf %lf\n", a, b,a - log(1.0 + pow(e, a-b)));
+    return a - log(1.0 + pow(e, a-b));
 }
 
 // probability  to cost
 double p2cost(double p) {
+    if(p <= 0) return Feature::IllegalDist;
     return - log(p);
 }
 

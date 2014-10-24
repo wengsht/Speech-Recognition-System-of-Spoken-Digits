@@ -36,7 +36,7 @@ SP_RESULT HMMRecognition::hmmTrain() {
     return SP_SUCCESS;
 }
 
-std::string HMMRecognition::hmmRecognition(std::vector<Feature> & input) {
+std::string HMMRecognition::hmmRecognition(WaveFeatureOP & input) {
     return automatons.recognition(input);
 }
 

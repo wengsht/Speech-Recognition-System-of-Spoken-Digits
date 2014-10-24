@@ -40,6 +40,11 @@ void HMMKMeanAutomaton::hmmTrain() {
         states.push_back(new KMeanState(templates));
     }
 
+    // 统计每个状态初始有多少个节点
+    std::vector<int> nodeCnt(stateNum + 1);
+    for(idx = 0; idx <= stateNum; idx++) 
+        nodeCnt[idx] = 0;
+
     // 初始化 平均分段
     for(idx = 0; idx < datas.size(); idx++) {
         int templatesSiz = datas[idx].size();
@@ -54,28 +59,33 @@ void HMMKMeanAutomaton::hmmTrain() {
 
             // 平均分段
             getState(idy)->edgePoints[idx] = std::make_pair(startSegIdx, endSegIdx);
+
+            nodeCnt[idy] += endSegIdx - startSegIdx + 1;
         }
     }
 
-    for(idx = 0; idx < stateNum + 1; idx ++) {
-        int forwardNum = std::min(DTW_MAX_FORWARD, stateNum - idx + 1);
+    for(idx = 0; idx <= stateNum; idx++) 
+        for(idy = 0; idy <= stateNum; idy++) 
+            transferCost[idx][idy] = Feature::IllegalDist;
 
-        for(idy = 0; idy < forwardNum && idx + idy <= stateNum; idy++) 
-                transferCost[idx][idx+idy] = p2cost(1.0 / forwardNum);
+    for(idx = 1; idx < stateNum; idx ++) {
+        transferCost[idx][idx] = p2cost(1.0 * (nodeCnt[idx] - datas.size()) / nodeCnt[idx]);
+        transferCost[idx][idx + 1] = p2cost(1.0 * datas.size() / nodeCnt[idx]);
     }
+
+    transferCost[stateNum][stateNum] = 0.0;
     // Dummy 只会走到1
-    int forwardNum = std::min(DTW_MAX_FORWARD, stateNum + 1);
-    for(idy = 0; idy < forwardNum; idy++) 
-        transferCost[0][0+idy] = Feature::IllegalDist;
     if(stateNum)
         transferCost[0][1] = 0.0;
+
 
     for(idx = 1; idx <= stateNum; idx ++) {
         states[idx]->gaussianTrain(gaussNum);
     }
 
-    for(idx = 0; idx < trainTimes; idx ++)
+    for(idx = 0; idx < trainTimes; idx ++) {
         if(! iterateTrain()) break;
+    }
 
     // 把train过程中开的vector什么的先释放掉
     clearTrainBuffer();

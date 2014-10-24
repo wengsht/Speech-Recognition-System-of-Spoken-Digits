@@ -38,6 +38,10 @@ class KMeanState : public HMMState {
         // 对于Kmean， 存储的时候属于这个state的线段 
         // 注意是和基类的vector<WaveFeatureOP> 一一对应的
         std::vector< std::pair<int, int> > edgePoints;
+
+        double u[39];
+        double sigma[39];
+
 };
 
 #endif
