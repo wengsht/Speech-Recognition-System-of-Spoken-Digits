@@ -22,8 +22,11 @@ void fft(cp *a,int n,int f);
 void dct(double *a,int n,int f);
 void dct2(double *a, int n);
 
-// log(x+y)  a = log(x) b = log(y)
+// -log(x+y)  a = -log(x) b = -log(y)
 double logInsideSum(double a, double b);
+
+// -log((abs(x-y))  a = -log(x) b = -log(y)
+double logInsideDist(double a, double b);
 
 double p2cost(double p);
 

@@ -85,6 +85,13 @@ double logInsideSum(double a, double b) {
     return a - log(1.0 + pow(e, a-b));
 }
 
+// -log((abs(x-y))  a = -log(x) b = -log(y)
+double logInsideDist(double a, double b) {
+    if(a >= b) std::swap(a, b);
+//    printf("%lf %lf %lf\n", a, b,a - log(1.0 + pow(e, a-b)));
+    return a - log(1.0 - pow(e, a-b));
+}
+
 // probability  to cost
 double p2cost(double p) {
     if(p <= 0) return Feature::IllegalDist;

@@ -57,7 +57,7 @@ std::string HMMAutomatonSet::recognition(WaveFeatureOP & input) {
 
         // DEBUG
 
-        std::cout << Itr->first << " " << tmpCost << std::endl;
+//        std::cout << Itr->first << " " << tmpCost << std::endl;
         if(Feature::better(tmpCost, bestCost)) {
             res = Itr->first;
             bestCost = tmpCost;

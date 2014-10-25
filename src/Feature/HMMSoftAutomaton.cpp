@@ -110,6 +110,7 @@ void HMMSoftAutomaton::hmmTrain() {
 
 
     for(idx = 0; idx < trainTimes; idx++)  {
+//        printf("%d\n", idx);
         if(! iterateTrain()) break;
     }
     /*  
@@ -195,16 +196,16 @@ void HMMSoftAutomaton::calcAlphaBeta(WaveFeatureOP & features) {
         for(stateIdx = 1; stateIdx <= stateNum; stateIdx ++) {
             // alpha = alpha * p[i][i] + nodeCost[i][j]
             //
-            alphaCost[stateIdx][alphaIdx] = alphaCost[stateIdx][alphaIdx - 1] + \
+            alphaCost[stateIdx][alphaIdx] = Feature::IllegalDist; //alphaCost[stateIdx][alphaIdx - 1] + \
                                             transferCost[stateIdx][stateIdx] + \
                                             nodeCostTmp[stateIdx][alphaIdx];
 
             // beta = beta * p[i][i] * nodeCost[i][j+1]
-            betaCost[stateIdx][betaIdx] = betaCost[stateIdx][betaIdx+1] + \
+            betaCost[stateIdx][betaIdx] = Feature::IllegalDist; //betaCost[stateIdx][betaIdx+1] + \
                                           transferCost[stateIdx][stateIdx] + \
                                           nodeCostTmp[stateIdx][betaIdx + 1];
 
-            for(dtwIdx = 1; dtwIdx < DTW_MAX_FORWARD; dtwIdx ++) {
+            for(dtwIdx = 0; dtwIdx < DTW_MAX_FORWARD; dtwIdx ++) {
                 alphaStatePreIdx = stateIdx - dtwIdx;
                 betaStateNxtIdx  = stateIdx + dtwIdx;
 
@@ -249,16 +250,27 @@ void HMMSoftAutomaton::initIterate() {
 bool HMMSoftAutomaton::updateTransfer() {
     int stateIdx1, stateIdx2, dtwIdx;
 
-    double totalChange = 0, tmp;
+    double totalChange = Feature::IllegalDist, tmp;
     for(stateIdx1 = 1; stateIdx1 <= stateNum; stateIdx1++) {
         for(dtwIdx = 0; dtwIdx < DTW_MAX_FORWARD; dtwIdx++) {
             stateIdx2 = stateIdx1 + dtwIdx;
             if(stateIdx2 > stateNum) break;
 
             tmp = transferCost[stateIdx1][stateIdx2];
+
             transferCost[stateIdx1][stateIdx2] = Ys2sNxtCost[stateIdx1][stateIdx2] - YustCost[stateIdx1];
 
-            totalChange += fabs(tmp - transferCost[stateIdx1][stateIdx2]);
+
+            // DEBUG
+            totalChange = logInsideSum(totalChange, logInsideDist(tmp , transferCost[stateIdx1][stateIdx2]));
+
+            /*  
+            if(logInsideDist(tmp, transferCost[stateIdx1][stateIdx2]) < 10) {
+                printf("xx %lf %lf\n", tmp, transferCost[stateIdx1][stateIdx2]);
+                printf("%lf \n", logInsideDist(tmp, transferCost[stateIdx1][stateIdx2]));
+                printf("%lf \n", cost2p(logInsideDist(tmp, transferCost[stateIdx1][stateIdx2])));
+            }
+            */
         }
     }
 
@@ -307,6 +319,7 @@ void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {
 
     for(tIdx = 0; tIdx < T - 1; tIdx ++) {
         tmpTotalCost = Feature::IllegalDist;
+
         for(stateIdx1 = 1; stateIdx1 <= stateNum; stateIdx1++) {
             // 只需要算dtw 3步 的转移， 
             for(dtwIdx = 0; dtwIdx < DTW_MAX_FORWARD; dtwIdx++) {
@@ -314,7 +327,10 @@ void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {
                 if(stateIdx2 > stateNum)
                     break;
 
-                s2sNxtCost[stateIdx1][stateIdx2] = alphaCost[stateIdx1][tIdx] + transferCost[stateIdx1][stateIdx2] + nodeCostTmp[stateIdx2][tIdx + 1] + betaCost[stateIdx2][tIdx + 1];
+                s2sNxtCost[stateIdx1][stateIdx2] = alphaCost[stateIdx1][tIdx] + \
+                                                   transferCost[stateIdx1][stateIdx2] + \
+                                                   nodeCostTmp[stateIdx2][tIdx + 1] + \
+                                                   betaCost[stateIdx2][tIdx + 1];
 
                 tmpTotalCost = logInsideSum(tmpTotalCost, s2sNxtCost[stateIdx1][stateIdx2]);
             }

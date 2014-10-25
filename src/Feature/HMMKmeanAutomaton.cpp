@@ -100,6 +100,7 @@ void HMMKMeanAutomaton::hmmTrain() {
     }
     */
     for(idx = 0; idx < trainTimes; idx ++) {
+//        printf("%d\n", idx);
         if(! iterateTrain()) break;
     }
 

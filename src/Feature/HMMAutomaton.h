@@ -49,8 +49,8 @@ protected:
     Matrix<int> path;
     std::vector<double> rollColumnCost[2];
 
-    bool isBigChange(bool change) {
-        return change >= 0.01 * stateNum * DTW_MAX_FORWARD;
+    bool isBigChange(double totalChangeCost) {
+        return cost2p(totalChangeCost) >= 0.0001 * stateNum * DTW_MAX_FORWARD;
     }
     // dtw 初始化第-1列
     void rollDtwInit(WaveFeatureOP &features, dtwType type) {

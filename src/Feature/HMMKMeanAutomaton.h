@@ -73,7 +73,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
 
         // return true if big change
         bool updateTransfer() {
-            double wholeChangeCost = 0.0;
+            double wholeChangeCost = Feature::IllegalDist;
 
             for(int i = 1; i <= stateNum; i++) {
                 //  处于这个state的节点个数
@@ -114,7 +114,8 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     if(i+j > stateNum) break;
                     double newCost = p2cost(1.0 * nxtCnt[j] / wholeCnt);
 
-                    wholeChangeCost = fabs(newCost - transferCost[i][i+j]);
+                    wholeChangeCost= logInsideSum(wholeChangeCost, logInsideDist(newCost, transferCost[i][i+j]));
+//                    wholeChangeCost = fabs(newCost - transferCost[i][i+j]);
 
                     transferCost[i][i+j] = newCost;
                 }
