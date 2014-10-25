@@ -8,6 +8,8 @@
 #include <unistd.h>
 #include "WaveFeatureOP.h"
 #include "WordDtwRecognition.h"
+#include "WaveFeatureOPSet.h"
+#include "ThreadPool.h"
 #include <vector>
 #include "tool.h"
 #include "configure_dtw.h"
@@ -15,6 +17,7 @@
 using namespace std;
 
 bool isBeam;
+int maxInstancePerTemplate = MAX_TEMPLATES_PER_WORD;
 double threshold = DEFAULT_BEAM_THRESHOLD;
 
 int  threadNum = DEFAULT_THREAD_NUM;
@@ -139,6 +142,7 @@ void runDemoN1() {
 
     Capture::load_wav_file(fileName.c_str(), data, true);
 }
+
 void runDemoNN() {
     FeatureExtractor extractor(threadNum);
     WordDtwRecognition recognition;
@@ -189,12 +193,13 @@ void runDemoNN() {
 
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "g:bB:hj:d:t:D:T:")) != -1) {
+    while((c = getopt(argc, argv, "p:g:bB:hj:d:t:D:T:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         filename example: abc\n \
                         -j threadNum \n \
+                        -p maxInstancePerTemplate\n \
                         -g demoType : 0(1-1) 1(n-1) 2(n-n)\n \
                         -b : 使用默认beam threshold\n \
                         -B bean_threshold : Set Beam mode \n \
@@ -207,9 +212,14 @@ bool dealOpts(int argc, char **argv) {
                 break;
             case 'j':
                 threadNum = atoi(optarg);
+                ThreadPool::thread_num = threadNum;
                 break;
             case 'g':
                 demoType = atoi(optarg);
+                break;
+            case 'p':
+                maxInstancePerTemplate = atoi(optarg);
+                WaveFeatureOPSet::maxTemplatesPerWord = maxInstancePerTemplate;
                 break;
             case 'b':
                 isBeam = true;

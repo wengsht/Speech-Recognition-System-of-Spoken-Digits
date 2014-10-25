@@ -68,12 +68,20 @@ void HMMKMeanAutomaton::hmmTrain() {
         for(idy = 0; idy <= stateNum; idy++) 
             transferCost[idx][idy] = Feature::IllegalDist;
 
+    for(idx = 1; idx <= stateNum; idx++) {
+        int nxtCnt = std::min(stateNum - idx + 1, DTW_MAX_FORWARD);
+
+        for(idy = 0; idy < nxtCnt; idy++) 
+            transferCost[idx][idx+idy] = p2cost(1.0/nxtCnt);
+    }
+    /*  
     for(idx = 1; idx < stateNum; idx ++) {
         transferCost[idx][idx] = p2cost(1.0 * (nodeCnt[idx] - datas.size()) / nodeCnt[idx]);
         transferCost[idx][idx + 1] = p2cost(1.0 * datas.size() / nodeCnt[idx]);
     }
 
     transferCost[stateNum][stateNum] = 0.0;
+    */
     // Dummy 只会走到1
     if(stateNum)
         transferCost[0][1] = 0.0;
@@ -83,9 +91,17 @@ void HMMKMeanAutomaton::hmmTrain() {
         states[idx]->gaussianTrain(gaussNum);
     }
 
+    /*  
+    for(idx = 0;idx <= stateNum; idx++) {
+        for(idy = 0; idy <= stateNum; idy++) 
+            printf("%lf ", transferCost[idx][idy]);
+        puts("");
+    }
+    */
     for(idx = 0; idx < trainTimes; idx ++) {
         if(! iterateTrain()) break;
     }
+
 
     // 把train过程中开的vector什么的先释放掉
     clearTrainBuffer();

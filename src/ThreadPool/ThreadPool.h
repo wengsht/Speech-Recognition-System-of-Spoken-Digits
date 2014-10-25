@@ -16,6 +16,7 @@ struct thread_info {
 
     pthread_t tid;
 };
+
 class ThreadPool {
     public:
         static int thread_num;

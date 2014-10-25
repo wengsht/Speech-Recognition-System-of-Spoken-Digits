@@ -74,6 +74,7 @@ protected:
         }
         rollColumnCost[rollIdx][0] = 0.0;
     }
+
     // 滚动数组dtw
     // return final state and cost
     std::pair<int, double> rollDtw(WaveFeatureOP & features, dtwType type) {

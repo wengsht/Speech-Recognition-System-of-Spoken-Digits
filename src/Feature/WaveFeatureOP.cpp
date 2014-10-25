@@ -103,7 +103,6 @@ double WaveFeatureOP::forwardColumn(double threshold) {
             updateDtwNode(columnIdx, nxtRowIdx, newPathValue);
 
             if(Feature::better(newPathValue, bestValue)) {
-//            if(bestValue == Feature::IllegalDist || bestValue < newPathValue) {
                 bestValue = newPathValue;
                 bestIdx   = nxtRowIdx;
             }

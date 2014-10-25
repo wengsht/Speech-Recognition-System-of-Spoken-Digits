@@ -80,12 +80,20 @@ void HMMSoftAutomaton::hmmTrain() {
         for(idy = 0; idy <= stateNum; idy++) 
             transferCost[idx][idy] = Feature::IllegalDist;
 
+    for(idx = 1; idx <= stateNum; idx++) {
+        int nxtCnt = std::min(stateNum - idx + 1, DTW_MAX_FORWARD);
+
+        for(idy = 0; idy < nxtCnt; idy++) 
+            transferCost[idx][idx+idy] = p2cost(1.0/nxtCnt);
+    }
+    /*
     for(idx = 1; idx < stateNum; idx ++) {
         transferCost[idx][idx] = p2cost(1.0 * (nodeCnt[idx] - datas.size()) / nodeCnt[idx]);
         transferCost[idx][idx + 1] = p2cost(1.0 * datas.size() / nodeCnt[idx]);
     }
 
     transferCost[stateNum][stateNum] = 0.0;
+    */
 
     /*  
     for(idx = 0; idx <= stateNum; idx++) {
@@ -104,6 +112,13 @@ void HMMSoftAutomaton::hmmTrain() {
     for(idx = 0; idx < trainTimes; idx++)  {
         if(! iterateTrain()) break;
     }
+    /*  
+    for(idx = 0; idx <= stateNum; idx++) {
+        for(idy = 0; idy <= stateNum; idy++)  
+            printf("%lf ", transferCost[idx][idy]);
+        puts("");
+    }
+    */
 
     clearTrainBuffer();
 }
@@ -234,7 +249,7 @@ void HMMSoftAutomaton::initIterate() {
 bool HMMSoftAutomaton::updateTransfer() {
     int stateIdx1, stateIdx2, dtwIdx;
 
-    double totalChange, tmp;
+    double totalChange = 0, tmp;
     for(stateIdx1 = 1; stateIdx1 <= stateNum; stateIdx1++) {
         for(dtwIdx = 0; dtwIdx < DTW_MAX_FORWARD; dtwIdx++) {
             stateIdx2 = stateIdx1 + dtwIdx;
@@ -258,6 +273,7 @@ void HMMSoftAutomaton::updateTemplateNode(int templateIdx) {
     std::vector<double> tmpCost;
     tmpCost.resize(stateNum + 1);
 
+    // 计算每个t处于每个状态的cost
     for(tIdx = 0; tIdx < T; tIdx ++) {
         double sigmaCost = Feature::IllegalDist;
         for(stateIdx = 1; stateIdx <= stateNum; stateIdx++) {
@@ -276,7 +292,6 @@ void HMMSoftAutomaton::updateTemplateNode(int templateIdx) {
             YustCost[stateIdx] = logInsideSum(YustCost[stateIdx], tmpCost[stateIdx]);
         }
     }
-
 }
 
 void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {

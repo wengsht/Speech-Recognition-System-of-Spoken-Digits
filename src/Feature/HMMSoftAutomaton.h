@@ -30,17 +30,20 @@ class HMMSoftAutomaton : public HMMAutomaton {
         void hmmTrain();
         double calcCost(WaveFeatureOP &input);
     private:
-        // alphaCost[s][t]  第s个状态, 第t个帧
-        Matrix<double> alphaCost, betaCost;
-
         inline SoftState *getState(int idx) {
             if(idx >= states.size()) return NULL;
             return (SoftState *)(states[idx]);
         }
-        // TODO 清楚训练过程中的buffer
+
+        // 清除训练过程中的buffer
         void clearTrainBuffer() {
             alphaCost.clear();
             betaCost.clear();
+
+            YustCost.clear();
+            Ys2sNxtCost.clear();
+
+            nodeCostTmp.clear();
         }
 
         // 计算alpha 和 beta 矩阵
@@ -60,6 +63,7 @@ class HMMSoftAutomaton : public HMMAutomaton {
         // 累加每个模板对transfer的贡献(cost)
         void updateTemplateTransfer(int templateIdx);
 
+    private:
         // 所有u，所有t处于s的Cost和
         std::vector<double> YustCost;
         // 所有u，t， s转移到sNxt的概率的总和
@@ -68,6 +72,9 @@ class HMMSoftAutomaton : public HMMAutomaton {
         // 每次alpha 和beta迭代之前算好 当前template所有node的点cost
         // nodeCostTmp[s][t] 
         Matrix<double> nodeCostTmp;
+
+        // alphaCost[s][t]  第s个状态, 第t个帧
+        Matrix<double> alphaCost, betaCost;
 };
 
 #endif
