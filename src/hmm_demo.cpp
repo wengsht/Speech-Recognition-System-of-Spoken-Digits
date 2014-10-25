@@ -44,6 +44,8 @@ char inputDirName[256] = INPUTS_DIR;
 
 bool dealOpts(int argc, char **argv);
 
+string algo = "kmean";
+
 // -g 0(default 1-1)
 // -g 1(n-1)
 // -g 2(n-n)
@@ -82,8 +84,10 @@ void runN1() {
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
     
-    hmm.setStateType(HMMState::KMEAN);
-//    hmm.setStateType(HMMState::SOFT);
+    if(algo == "kmean")
+        hmm.setStateType(HMMState::KMEAN);
+    else if(algo == "soft")
+        hmm.setStateType(HMMState::SOFT);
 
     hmm.hmmTrain();
 
@@ -112,8 +116,10 @@ void runNN() {
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
     
-    hmm.setStateType(HMMState::KMEAN);
-//    hmm.setStateType(HMMState::SOFT);
+    if(algo == "kmean")
+        hmm.setStateType(HMMState::KMEAN);
+    else if(algo == "soft")
+        hmm.setStateType(HMMState::SOFT);
 
     hmm.hmmTrain();
     WaveFeatureOPSet inputs;
@@ -142,13 +148,14 @@ void runNN() {
 }
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "g:bB:hj:d:t:D:T:")) != -1) {
+    while((c = getopt(argc, argv, "a:g:bB:hj:d:t:D:T:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         filename example: abc\n \
                         -j threadNum \n \
                         -g demoType : 0(1-1) 1(n-1) 2(n-n)\n \
+                        -a [kmean, soft] \n \
                         -D input Dir name \n \
                         -T template Dir name\n \
                         -d input file name[capture if not set] \n \
@@ -173,6 +180,9 @@ bool dealOpts(int argc, char **argv) {
                 break;
             case 'd':
                 strcpy(inputFileName, optarg);
+                break;
+            case 'a':
+                algo = string(optarg);
                 break;
             default:
                 break;

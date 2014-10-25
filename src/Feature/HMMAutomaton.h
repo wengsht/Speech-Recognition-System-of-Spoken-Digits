@@ -88,9 +88,6 @@ protected:
             for(stateIdx = 1; stateIdx <= stateNum; stateIdx ++) {
                 double nodeCost = states[stateIdx]->nodeCost(&features[columnIdx]);
 
-//                if(stateIdx == 1 && type == Maximum && columnIdx == 0) 
-//                    printf("%lf\n", nodeCost);
-
                 rollColumnCost[rollIdx][stateIdx] = rollColumnCost[preIdx][stateIdx] + transferCost[stateIdx][stateIdx] + nodeCost;
 
                 // should record the path 
@@ -123,7 +120,6 @@ protected:
                         rollColumnCost[rollIdx][stateIdx] = logInsideSum(rollColumnCost[rollIdx][stateIdx], mayPathCost);
                     }
                 }
-
             }
 
             // 处于0的cost相当高= =

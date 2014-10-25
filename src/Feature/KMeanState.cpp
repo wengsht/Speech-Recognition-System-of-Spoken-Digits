@@ -47,7 +47,6 @@ void KMeanState::gaussianTrain(int gaussianNum) {
     }
 
     for(int i = 0;i < 39;i++) {
-        double a = sigma[i];
         sigma[i] -= (u[i] * u[i]);
     }
 }
