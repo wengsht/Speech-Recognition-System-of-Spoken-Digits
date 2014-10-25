@@ -18,6 +18,7 @@
 #include "KMeanState.h"
 #include "DummyState.h"
 
+// 
 HMMKMeanAutomaton::HMMKMeanAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : HMMAutomaton(templates, stateNum, gaussNum, trainTimes) {
 }
 HMMKMeanAutomaton::~HMMKMeanAutomaton() {
