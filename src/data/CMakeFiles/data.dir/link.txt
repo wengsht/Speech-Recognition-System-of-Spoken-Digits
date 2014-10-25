@@ -1,0 +1,2 @@
+/usr/bin/ar cr libdata.a  CMakeFiles/data.dir/RawData.cpp.o CMakeFiles/data.dir/RawDataFile.cpp.o
+/usr/bin/ranlib libdata.a

@@ -1,0 +1,2 @@
+/usr/bin/ar cr libEditDistance.a  CMakeFiles/EditDistance.dir/calcDist.cpp.o CMakeFiles/EditDistance.dir/stringtool.cpp.o CMakeFiles/EditDistance.dir/app.cpp.o
+/usr/bin/ranlib libEditDistance.a

@@ -8,33 +8,57 @@ ADJUSTMENT	Configure/configure_capture.h	/^const double ADJUSTMENT = 0.01;      
 AEPAnalysis	Analysis/AEPAnalysis.h	/^    AEPAnalysis(){$/;"	f	class:AEPAnalysis
 AEPAnalysis	Analysis/AEPAnalysis.h	/^class AEPAnalysis:public EPAnalysis{$/;"	c
 ALPHA	Configure/configure_capture.h	/^const double ALPHA = 0.9;               \/\/small and slower(in speech)$/;"	v
+APP	EditDistance/app.cpp	/^APP::APP(){$/;"	f	class:APP
+APP	EditDistance/app.h	/^class APP {$/;"	c
+AUTOMATON_STATE_NUM	Configure/configure_hmm.h	1;"	d
 AutoCapture	Capture/AutoCapture.h	/^    AutoCapture(EPAnalysis * ep):ep(ep){};$/;"	f	class:AutoCapture
 AutoCapture	Capture/AutoCapture.h	/^class AutoCapture:public Capture{$/;"	c
 BEPAnalysis	Analysis/BEPAnalysis.h	/^    BEPAnalysis(){}$/;"	f	class:BEPAnalysis
 BEPAnalysis	Analysis/BEPAnalysis.h	/^class BEPAnalysis:public EPAnalysis{$/;"	c
 BLUE	Configure/tool.h	50;"	d
+BLUE_BACK	Configure/tool.h	64;"	d
 BROWN	Configure/tool.h	57;"	d
+Beam	Feature/WaveFeatureOP.h	/^        Beam$/;"	e	enum:WaveFeatureOP::OpType
 BytesPerSample	readwave/readwave.h	/^	short BytesPerSample;$/;"	m	struct:WavFileHead
 CEPS_NUM	Configure/configure_feature.h	/^const int    CEPS_NUM = 13;$/;"	v
+CHANGE	EditDistance/path.h	/^    DELETE,INSERT,SAME,CHANGE$/;"	e	enum:DIR
 CHECK_ERR	Capture/Capture.cpp	/^void CHECK_ERR(PaError err){$/;"	f
-CONST_REFERENCE_READ_ONLY_DECLARE	Configure/tool.h	67;"	d
+CONST_REFERENCE_READ_ONLY_DECLARE	Configure/tool.h	73;"	d
 CYAN	Configure/tool.h	53;"	d
 Capture	Capture/Capture.cpp	/^Capture::Capture(){$/;"	f	class:Capture
 Capture	Capture/Capture.h	/^class Capture{$/;"	c
+Conf	EditDistance/conf.h	/^class Conf{$/;"	c
+Container	EditDistance/tmp/container.h	/^	Container(){}$/;"	f	class:Container
+Container	EditDistance/tmp/container.h	/^	Container(T* items,int len){$/;"	f	class:Container
+Container	EditDistance/tmp/container.h	/^class Container{$/;"	c
+ContainerSet	EditDistance/tmp/containerset.h	/^class ContainerSet$/;"	c
+Count	EditDistance/path.h	/^	Count(){$/;"	f	struct:Count
+Count	EditDistance/path.h	/^struct Count{$/;"	s
 DAEPAnalysis	Analysis/DAEPAnalysis.h	/^    DAEPAnalysis(){};$/;"	f	class:DAEPAnalysis
 DAEPAnalysis	Analysis/DAEPAnalysis.h	/^class DAEPAnalysis:public EPAnalysis{$/;"	c
 DARY_GRAY	Configure/tool.h	52;"	d
-DATA_SILENCE	Configure/configure_basic.h	47;"	d
-DATA_SILENCE	Configure/configure_basic.h	52;"	d
-DATA_SILENCE	Configure/configure_basic.h	57;"	d
+DATA_SILENCE	Configure/configure_basic.h	49;"	d
+DATA_SILENCE	Configure/configure_basic.h	54;"	d
+DATA_SILENCE	Configure/configure_basic.h	59;"	d
+DEFAULT_BEAM_THRESHOLD	Configure/configure_dtw.h	27;"	d
+DEFAULT_SIZE_BIT	Configure/SerialFiles.cpp	23;"	d	file:
+DEFAULT_THREAD_NUM	Configure/configure.h	/^const int DEFAULT_THREAD_NUM = 4;$/;"	v
+DELETE	EditDistance/path.h	/^    DELETE,INSERT,SAME,CHANGE$/;"	e	enum:DIR
+DIR	EditDistance/path.h	/^enum DIR {$/;"	g
 DITHER_FLAG	Capture/Capture.cpp	11;"	d	file:
+DTW_MAX_FORWARD	Configure/configure_hmm.h	6;"	d
+DUMMY	Feature/HMMState.h	/^            DUMMY,$/;"	e	enum:HMMState::StateType
+Delta	Feature/Feature.h	/^        Delta,$/;"	e	enum:Feature::FeatureType
+DoubleDelta	Feature/Feature.h	/^        DoubleDelta$/;"	e	enum:Feature::FeatureType
+DummyState	Feature/DummyState.h	/^        DummyState(std::vector<WaveFeatureOP> *templates) : HMMState(templates) {}$/;"	f	class:DummyState
+DummyState	Feature/DummyState.h	/^class DummyState : public HMMState {$/;"	c
 EPAnalysis	Analysis/EPAnalysis.h	/^    EPAnalysis(){$/;"	f	class:EPAnalysis
 EPAnalysis	Analysis/EPAnalysis.h	/^class EPAnalysis{$/;"	c
-ERROR_CODE	Configure/tool.cpp	121;"	d	file:
-ERROR_CODE	Configure/tool.cpp	124;"	d	file:
-ERROR_CODE	Configure/tool.h	88;"	d
-ERROR_CODE	Configure/tool.h	93;"	d
-ERROR_CODE	Configure/tool.h	96;"	d
+ERROR_CODE	Configure/tool.cpp	134;"	d	file:
+ERROR_CODE	Configure/tool.cpp	137;"	d	file:
+ERROR_CODE	Configure/tool.h	104;"	d
+ERROR_CODE	Configure/tool.h	107;"	d
+ERROR_CODE	Configure/tool.h	110;"	d
 ERROR_CODE	Configure/tool.h	99;"	d
 ERROR_UIDS	Configure/tool.h	/^enum ERROR_UIDS {$/;"	g
 EXTENT_SPEECH	Configure/configure_capture.h	/^const double EXTENT_SPEECH = 250;  \/\/??? no use now$/;"	v
@@ -42,16 +66,42 @@ EXTENT_SPEECH_FRAMES	Configure/configure_capture.h	/^const int EXTENT_SPEECH_FRA
 ErrorLog	Configure/tool.cpp	/^void ErrorLog(const char *msg,...){$/;"	f
 FORGET_FACTOR	Configure/configure_capture.h	/^const double FORGET_FACTOR = 3;       \/\/ for bg , smaller and faster$/;"	v
 FRAME_PER_SECOND	Configure/configure_basic.h	/^const int FRAME_PER_SECOND = 40; \/\/don't change$/;"	v
+Feature	Feature/Feature.h	/^    Feature() {$/;"	f	class:Feature
 Feature	Feature/Feature.h	/^class Feature{$/;"	c
-FeatureExtractor	Feature/FeatureExtractor.h	/^    FeatureExtractor(){}$/;"	f	class:FeatureExtractor
 FeatureExtractor	Feature/FeatureExtractor.h	/^class FeatureExtractor{$/;"	c
+FeatureType	Feature/Feature.h	/^    enum FeatureType {$/;"	g	class:Feature
 FileLength	readwave/readwave.h	/^	int FileLength;$/;"	m	struct:WavFileHead
 FillWaveHeader	readwave/readwave.cpp	/^void FillWaveHeader(void *buffer, int raw_wave_len, int sampleRate)$/;"	f
 FormatCategory	readwave/readwave.h	/^	short FormatCategory;$/;"	m	struct:WavFileHead
+GAUSSIAN_NUM	Configure/configure_hmm.h	2;"	d
 GREEN	Configure/tool.h	48;"	d
+GREEN_BACK	Configure/tool.h	63;"	d
 GetWavHeader	readwave/readwave.cpp	/^void GetWavHeader(const char *wavFile, short *Bits, int *Rate,$/;"	f
+HMMAutomaton	Feature/HMMAutomaton.cpp	/^HMMAutomaton::HMMAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : templates(templates), stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {$/;"	f	class:HMMAutomaton
+HMMAutomaton	Feature/HMMAutomaton.h	/^class HMMAutomaton {$/;"	c
+HMMAutomatonSet	Feature/HMMAutomatonSet.cpp	/^HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {$/;"	f	class:HMMAutomatonSet
+HMMAutomatonSet	Feature/HMMAutomatonSet.h	/^class HMMAutomatonSet : public WaveFeatureOPSet {$/;"	c
+HMMKMeanAutomaton	Feature/HMMKMeanAutomaton.h	/^class HMMKMeanAutomaton : public HMMAutomaton {$/;"	c
+HMMKMeanAutomaton	Feature/HMMKmeanAutomaton.cpp	/^HMMKMeanAutomaton::HMMKMeanAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : HMMAutomaton(templates, stateNum, gaussNum, trainTimes) {$/;"	f	class:HMMKMeanAutomaton
+HMMRecognition	Feature/HMMRecognition.cpp	/^HMMRecognition::HMMRecognition(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes), automatons(stateNum, gaussNum, trainTimes) {$/;"	f	class:HMMRecognition
+HMMRecognition	Feature/HMMRecognition.h	/^class HMMRecognition {$/;"	c
+HMMSoftAutomaton	Feature/HMMSoftAutomaton.cpp	/^HMMSoftAutomaton::HMMSoftAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : HMMAutomaton(templates, stateNum, gaussNum, trainTimes) {$/;"	f	class:HMMSoftAutomaton
+HMMSoftAutomaton	Feature/HMMSoftAutomaton.h	/^class HMMSoftAutomaton : public HMMAutomaton {$/;"	c
+HMMState	Feature/HMMState.h	/^        HMMState() : templates(NULL) {}$/;"	f	class:HMMState
+HMMState	Feature/HMMState.h	/^        HMMState(std::vector<WaveFeatureOP> *templates) : templates(templates) {}$/;"	f	class:HMMState
+HMMState	Feature/HMMState.h	/^class HMMState {$/;"	c
+I	Feature/WaveFeatureOPSet.h	/^                dataSetType::iterator I;$/;"	m	class:WaveFeatureOPSet::iterator
+INPUTS_DIR	Configure/configure_dtw.h	20;"	d
+INSERT	EditDistance/path.h	/^    DELETE,INSERT,SAME,CHANGE$/;"	e	enum:DIR
+IllegalDist	Feature/Feature.cpp	/^const double Feature::IllegalDist = 1e18;$/;"	m	class:Feature	file:
+IllegalDist	Feature/Feature.h	/^    const static double IllegalDist;$/;"	m	class:Feature
+Init	Feature/HMMAutomaton.h	/^    void Init() {$/;"	f	class:HMMAutomaton
 Initial	Analysis/AEPAnalysis.h	/^    virtual void Initial(RawData * rawData){$/;"	f	class:AEPAnalysis
 Initial	Analysis/EPAnalysis.h	/^    virtual void Initial(RawData * rawData){$/;"	f	class:EPAnalysis
+KMEAN	Feature/HMMState.h	/^            KMEAN,$/;"	e	enum:HMMState::StateType
+KMeanState	Feature/KMeanState.cpp	/^KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {$/;"	f	class:KMeanState
+KMeanState	Feature/KMeanState.h	/^class KMeanState : public HMMState {$/;"	c
+Key	EditDistance/tmp/containerset.h	/^	vector <int> Key;$/;"	m	class:ContainerSet
 LEVEL_BG_THRESHOLD	Configure/configure_capture.h	/^const double LEVEL_BG_THRESHOLD = 10;$/;"	v
 LIGHT_BLUE	Configure/tool.h	51;"	d
 LIGHT_CYAN	Configure/tool.h	54;"	d
@@ -64,36 +114,54 @@ MAXN	Feature/mathtool.cpp	/^const int MAXN = 1000;$/;"	v
 MAX_BUFFER_SECOND	Configure/configure_basic.h	/^const int MAX_BUFFER_SECOND  = 120 ; \/\/ 2 minutes, don't too small$/;"	v
 MAX_F	Configure/configure_feature.h	/^const double MAX_F = 4000.0; \/\/(SAMPLE_RATE \/ 2.0);$/;"	v
 MAX_SIZE	Configure/configure_capture.h	/^const int MAX_SIZE =MAX_TOTAL_SAMPLE *NUM_CHANNELS;$/;"	v
+MAX_TEMPLATES_PER_WORD	Configure/configure_dtw.h	25;"	d
 MAX_TOTAL_SAMPLE	Configure/configure_capture.h	/^const int MAX_TOTAL_SAMPLE = MAX_BUFFER_SECOND *SAMPLE_RATE;$/;"	v
+MAX_TRAIN_TIMES	Configure/configure_hmm.h	4;"	d
 MEL_FILTER_NUM	Configure/configure_feature.h	/^const int    MEL_FILTER_NUM = 40;$/;"	v
+MFCC_SUFFIX	Configure/configure_basic.h	13;"	d
 MIN_F	Configure/configure_feature.h	/^const double MIN_F = 0.0;$/;"	v
 MIN_SILENT_FRAMES	Configure/configure_capture.h	/^const int MIN_SILENT_FRAMES = MIN_SILENT_TIME * FRAME_PER_SECOND \/ 1000;$/;"	v
 MIN_SILENT_TIME	Configure/configure_capture.h	/^const double MIN_SILENT_TIME = 100;$/;"	v
 MIN_SPEECH_FRAMES	Configure/configure_capture.h	/^const int MIN_SPEECH_FRAMES = MIN_SPEECH_TIME * FRAME_PER_SECOND \/1000;$/;"	v
 MIN_SPEECH_TIME	Configure/configure_capture.h	/^const double MIN_SPEECH_TIME = 200;$/;"	v
 MatrixMul01	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \\$/;"	f	class:FeatureExtractor
+Maximum	Feature/HMMAutomaton.h	/^        Maximum, $/;"	e	enum:HMMAutomaton::dtwType
 NBitsPersample	readwave/readwave.h	/^	short NBitsPersample;$/;"	m	struct:WavFileHead
 NChannels	readwave/readwave.h	/^	short NChannels;$/;"	m	struct:WavFileHead
 NONE	Configure/tool.h	45;"	d
+NONE_BACK	Configure/tool.h	66;"	d
 NUM_CHANNELS	Configure/configure_basic.h	/^const int NUM_CHANNELS = 1; \/\/don't change$/;"	v
+NullSeg	Feature/KMeanState.cpp	/^const std::pair<int, int> KMeanState::NullSeg = std::make_pair(0, -1);$/;"	m	class:KMeanState	file:
+NullSeg	Feature/KMeanState.h	/^        const static std::pair<int, int> NullSeg ;$/;"	m	class:KMeanState
 OFFSET_THRESHOLD	Configure/configure_capture.h	/^const double OFFSET_THRESHOLD = -2;     \/\/increase in noise environment$/;"	v
 ONSET_THRESHOLD	Configure/configure_capture.h	/^const double ONSET_THRESHOLD = 10;      \/\/decrease in noise environment$/;"	v
 OVERLAP_SIZE	Configure/configure_feature.h	/^const int OVERLAP_SIZE = OVERLAP_TIME\/1000.0 * SAMPLES_IN_EACH_FRAME;$/;"	v
 OVERLAP_TIME	Configure/configure_feature.h	/^const int OVERLAP_TIME = 15;$/;"	v
-PA_DATA_TYPE	Configure/configure_basic.h	45;"	d
-PA_DATA_TYPE	Configure/configure_basic.h	50;"	d
-PA_DATA_TYPE	Configure/configure_basic.h	55;"	d
+OpType	Feature/WaveFeatureOP.h	/^    enum OpType {$/;"	g	class:WaveFeatureOP
+PA_DATA_TYPE	Configure/configure_basic.h	47;"	d
+PA_DATA_TYPE	Configure/configure_basic.h	52;"	d
+PA_DATA_TYPE	Configure/configure_basic.h	57;"	d
 PI	Feature/mathtool.h	/^const double PI = std::acos(-1);$/;"	v
-PRINTF_S_FORMAT	Configure/configure_basic.h	48;"	d
-PRINTF_S_FORMAT	Configure/configure_basic.h	53;"	d
-PRINTF_S_FORMAT	Configure/configure_basic.h	58;"	d
+PRINTF_S_FORMAT	Configure/configure_basic.h	50;"	d
+PRINTF_S_FORMAT	Configure/configure_basic.h	55;"	d
+PRINTF_S_FORMAT	Configure/configure_basic.h	60;"	d
 PRINT_DEBUG_FRAME_INF	Configure/configure_basic.h	/^const bool PRINT_DEBUG_FRAME_INF = true; \/\/ print the block energy,bg,etc.$/;"	v
 PURPLE	Configure/tool.h	55;"	d
-READ_INIT_DECLARE	Configure/tool.h	80;"	d
-READ_ONLY_DECLARE	Configure/tool.h	63;"	d
-READ_WRITE_DECLARE	Configure/tool.h	75;"	d
+Path	EditDistance/path.h	/^	Path(){$/;"	f	struct:Path
+Path	EditDistance/path.h	/^    Path(int m){$/;"	f	struct:Path
+Path	EditDistance/path.h	/^struct Path {$/;"	s
+PathSplitIdx	Feature/WaveFeatureOP.cpp	/^const int WaveFeatureOP::PathSplitIdx = -1;$/;"	m	class:WaveFeatureOP	file:
+PathSplitIdx	Feature/WaveFeatureOP.h	/^    const static int PathSplitIdx;$/;"	m	class:WaveFeatureOP
+READ_INIT_DECLARE	Configure/tool.h	91;"	d
+READ_ONLY_DECLARE	Configure/tool.h	69;"	d
+READ_WRITE_DECLARE	Configure/tool.h	86;"	d
 RED	Configure/tool.h	46;"	d
+RED_BACK	Configure/tool.h	62;"	d
+REFERENCE_READ_ONLY_DECLARE	Configure/tool.h	77;"	d
 RIFF	readwave/readwave.h	/^	char RIFF[4];$/;"	m	struct:WavFileHead
+Raw	Feature/Feature.h	/^        Raw,$/;"	e	enum:Feature::FeatureType
+Raw	Feature/WaveFeatureOP.cpp	/^    opType(Raw), \\$/;"	v
+Raw	Feature/WaveFeatureOP.h	/^        Raw,$/;"	e	enum:WaveFeatureOP::OpType
 RawData	data/RawData.cpp	/^RawData::RawData()$/;"	f	class:RawData
 RawData	data/RawData.cpp	/^RawData::RawData(const RawData& rawData){$/;"	f	class:RawData
 RawData	data/RawData.h	/^class RawData{$/;"	c
@@ -101,7 +169,8 @@ RawDataFileLength	readwave/readwave.h	/^	int RawDataFileLength;$/;"	m	struct:Wav
 ReadWav	readwave/readwave.cpp	/^void ReadWav(const char *wavFile, short *waveData, int *numSamples, int *sampleRate)$/;"	f
 ReadWavFile	readwave/readwave.cpp	/^short *ReadWavFile(const char *wavFile, int *numSamples, int *sampleRate )$/;"	f
 ReadWave	readwave/readwave.cpp	/^short *ReadWave(const char *wavFile, int *numSamples, int *sampleRate ) $/;"	f
-SAFE_DELELE_POINTER	Configure/tool.h	85;"	d
+SAFE_DELETE_POINTER	Configure/tool.h	96;"	d
+SAME	EditDistance/path.h	/^    DELETE,INSERT,SAME,CHANGE$/;"	e	enum:DIR
 SAMPLE	Configure/configure_basic.h	/^typedef unsigned char SAMPLE;$/;"	t
 SAMPLES_IN_EACH_FRAME	Configure/configure_basic.h	/^const int SAMPLES_IN_EACH_FRAME = SAMPLE_RATE \/ FRAME_PER_SECOND;$/;"	v
 SAMPLE_RATE	Configure/configure_basic.h	/^const int SAMPLE_RATE = 44100;  \/\/don't change$/;"	v
@@ -109,6 +178,7 @@ SAVE_DATA_DIR	Configure/configure_basic.h	/^const char  SAVE_DATA_DIR[] = ".\/";
 SEGMENT_SIZE	Configure/configure_feature.h	/^const int SEGMENT_SIZE = SEGMENT_TIME\/1000.0 * SAMPLES_IN_EACH_FRAME;$/;"	v
 SEGMENT_TIME	Configure/configure_feature.h	/^const int SEGMENT_TIME = 25;$/;"	v
 SILENCE_ENERGY_THRESHOLD	Configure/configure_capture.h	/^const int  SILENCE_ENERGY_THRESHOLD  = 30;  \/\/ as lower as possible$/;"	v
+SOFT	Feature/HMMState.h	/^            SOFT$/;"	e	enum:HMMState::StateType
 SOUND_DATA	Configure/configure_basic.h	/^typedef char SOUND_DATA;$/;"	t
 SOUND_DATA	Configure/configure_basic.h	/^typedef short SOUND_DATA;$/;"	t
 SP_ERROR_CODE	Configure/tool.cpp	/^const char * SP_ERROR_CODE(SP_RESULT ERROR_UID) {$/;"	f
@@ -121,6 +191,11 @@ STEPTIME	Configure/configure_feature.h	/^const double STEPTIME = 0.010;$/;"	v
 STOP_IN_SECONDS	Configure/configure_basic.h	/^const double  STOP_IN_SECONDS = 1; \/\/ how many second to wait when in silent$/;"	v
 SampleBytes	readwave/readwave.h	/^	int SampleBytes;$/;"	m	struct:WavFileHead
 SampleRate	readwave/readwave.h	/^	int SampleRate;$/;"	m	struct:WavFileHead
+SerialFiles	Configure/SerialFiles.cpp	/^SerialFiles::SerialFiles() {$/;"	f	class:SerialFiles
+SerialFiles	Configure/SerialFiles.h	/^class SerialFiles {$/;"	c
+Sigma	Feature/HMMAutomaton.h	/^        Sigma$/;"	e	enum:HMMAutomaton::dtwType
+SoftState	Feature/SoftState.cpp	/^SoftState::SoftState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {$/;"	f	class:SoftState
+SoftState	Feature/SoftState.h	/^class SoftState : public HMMState {$/;"	c
 SpeechRecongnitionSystem_TimeCapture_h	Capture/AutoCapture.h	10;"	d
 SpeechRecongnitionSystem_common_h	Configure/resource.h	10;"	d
 SpeechRecongnitionSystem_configure_basic_h	Configure/configure_basic.h	10;"	d
@@ -129,18 +204,58 @@ SpeechRecongnitionSystem_configure_feature_h	Configure/configure_feature.h	10;"	
 SpeechRecongnitionSystem_configure_h	Configure/configure.h	10;"	d
 SpeechRecongnitionSystem_srs_h	Configure/srs.h	10;"	d
 SpeechRecongnitionSystem_tool_h	Configure/tool.h	10;"	d
-TESTING	Configure/tool.h	/^const int TESTING = false;$/;"	v
+StateType	Feature/HMMState.h	/^        enum StateType {$/;"	g	class:HMMState
+TASK_FUNC	ThreadPool/ThreadPool.h	/^typedef void (*TASK_FUNC)(void *) ;$/;"	t
+TEMPLATES_DIR	Configure/configure_dtw.h	19;"	d
+TESTING	Configure/tool.h	/^const int TESTING = true;$/;"	v
 TRACKING_FACTOR	Configure/configure_capture.h	/^const double TRACKING_FACTOR = 0.01;    \/\/ small and track quikly(in silent)$/;"	v
+Text	EditDistance/tmp/containerset.h	/^	set< Container<T> > Text;$/;"	m	class:ContainerSet
+ThreadPool	ThreadPool/ThreadPool.cpp	/^ThreadPool::ThreadPool() : idx(0), threadNum(DEFAULT_THREAD_NUM) {$/;"	f	class:ThreadPool
+ThreadPool	ThreadPool/ThreadPool.cpp	/^ThreadPool::ThreadPool(int threadNum) : idx(0), threadNum(threadNum) {$/;"	f	class:ThreadPool
+ThreadPool	ThreadPool/ThreadPool.h	/^class ThreadPool {$/;"	c
 Tip	Configure/tool.cpp	/^void Tip(const char * msg,...){$/;"	f
+USERNAME_MAX_LEN	Configure/configure_dtw.h	23;"	d
 WAVEfmt_	readwave/readwave.h	/^	char WAVEfmt_[8];$/;"	m	struct:WavFileHead
+WAV_SUFFIX	Configure/configure_basic.h	12;"	d
 WHITE	Configure/tool.h	60;"	d
 WINTIME	Configure/configure_feature.h	/^const double WINTIME = 0.025; \/\/ sec$/;"	v
-WRITE_ONLY_DECLARE	Configure/tool.h	71;"	d
+WORD_MAX_LEN	Configure/configure_dtw.h	22;"	d
+WRITE_ONLY_DECLARE	Configure/tool.h	82;"	d
+Warn	Configure/tool.cpp	/^void Warn(const char *msg,...){$/;"	f
 WarnLog	Configure/tool.cpp	/^void WarnLog(const char *msg,...){$/;"	f
 WavFileHead	readwave/readwave.h	/^struct WavFileHead$/;"	s
+WaveFeatureOP	Feature/WaveFeatureOP.h	/^class WaveFeatureOP {$/;"	c
+WaveFeatureOPSet	Feature/WaveFeatureOPSet.cpp	/^WaveFeatureOPSet::WaveFeatureOPSet() {}$/;"	f	class:WaveFeatureOPSet
+WaveFeatureOPSet	Feature/WaveFeatureOPSet.h	/^class WaveFeatureOPSet {$/;"	c
 WaveRewind	readwave/readwave.cpp	/^bool WaveRewind(FILE *wav_file, WavFileHead *wavFileHead)$/;"	f
+WordDtwRecognition	Feature/WordDtwRecognition.cpp	/^WordDtwRecognition::WordDtwRecognition() : doTrainThreshold(false) {}$/;"	f	class:WordDtwRecognition
+WordDtwRecognition	Feature/WordDtwRecognition.h	/^class WordDtwRecognition {$/;"	c
 WriteWave	readwave/readwave.cpp	/^void WriteWave(const char *wavFile, short *waveData, int numSamples, int sampleRate)$/;"	f
 YELLOW	Configure/tool.h	58;"	d
+Ys2sNxtCost	Feature/HMMSoftAutomaton.h	/^        Matrix<double> Ys2sNxtCost;$/;"	m	class:HMMSoftAutomaton
+YustCost	Feature/HMMSoftAutomaton.h	/^        std::vector<double> YustCost;$/;"	m	class:HMMSoftAutomaton
+_AUTOGUARD_CONFIGURE_DTW_H_	Configure/configure_dtw.h	17;"	d
+_AUTOGUARD_DummyState_H_	Feature/DummyState.h	17;"	d
+_AUTOGUARD_HMMAutomatonSet_H_	Feature/HMMAutomatonSet.h	17;"	d
+_AUTOGUARD_HMMAutomaton_H_	Feature/HMMAutomaton.h	17;"	d
+_AUTOGUARD_HMMKMeanAutomaton_H_	Feature/HMMKMeanAutomaton.h	17;"	d
+_AUTOGUARD_HMMRecognition_H_	Feature/HMMRecognition.h	20;"	d
+_AUTOGUARD_HMMSoftAutomaton_H_	Feature/HMMSoftAutomaton.h	17;"	d
+_AUTOGUARD_HMMState_H_	Feature/HMMState.h	17;"	d
+_AUTOGUARD_KMeanState_H_	Feature/KMeanState.h	17;"	d
+_AUTOGUARD_SerialFiles_H_	Configure/SerialFiles.h	19;"	d
+_AUTOGUARD_SoftState_H_	Feature/SoftState.h	17;"	d
+_AUTOGUARD_ThreadPool_H_	ThreadPool/ThreadPool.h	2;"	d
+_AUTOGUARD_WaveFeatureOPSet_H_	Feature/WaveFeatureOPSet.h	19;"	d
+_AUTOGUARD_WaveFeature_H_	Feature/WaveFeatureOP.h	19;"	d
+_AUTOGUARD_WordDtwRecognition_H_	Feature/WordDtwRecognition.h	19;"	d
+__PRO3__EDITDISTANCE__APP__	EditDistance/app.h	2;"	d
+__PRO3__EDITDISTANCE__CALC__	EditDistance/calcDist.h	2;"	d
+__PRO3__EDITDISTANCE__CONF__	EditDistance/conf.h	2;"	d
+__PRO3__EDITDISTANCE__CONTAINERSET__	EditDistance/tmp/containerset.h	2;"	d
+__PRO3__EDITDISTANCE__CONTAINER__	EditDistance/tmp/container.h	2;"	d
+__PRO3__EDITDISTANCE__PATH__	EditDistance/path.h	2;"	d
+__PRO3__EDITDISTANCE__WORDCONTAINER__	EditDistance/tmp/wordcontainer.h	2;"	d
 __SpeechRecongnitionSystem__AdaptiveEndPointAnalysis__	Analysis/AEPAnalysis.h	10;"	d
 __SpeechRecongnitionSystem__BEPAnalysis__	Analysis/BEPAnalysis.h	10;"	d
 __SpeechRecongnitionSystem__Capture__	Capture/Capture.h	10;"	d
@@ -149,14 +264,47 @@ __SpeechRecongnitionSystem__EndPointAnalysis__	Analysis/EPAnalysis.h	10;"	d
 __SpeechRecongnitionSystem__FeatureExtractor__	Feature/FeatureExtractor.h	10;"	d
 __SpeechRecongnitionSystem__Feature__	Feature/Feature.h	10;"	d
 __SpeechRecongnitionSystem__RawData__	data/RawData.h	10;"	d
+__SpeechRecongnitionSystem__StringTool__	EditDistance/tmp/stringtool.h	2;"	d
 __SpeechRecongnitionSystem__mathtool__	Feature/mathtool.h	10;"	d
 __SpeechRecongnitionSystem__test__	test/test.h	10;"	d
+_begin	Feature/WaveFeatureOPSet.h	/^    iterator _begin, _end;$/;"	m	class:WaveFeatureOPSet
+_end	Feature/WaveFeatureOPSet.h	/^    iterator _begin, _end;$/;"	m	class:WaveFeatureOPSet
+_word	Feature/WaveFeatureOP.cpp	/^    _word(word) {$/;"	f
+abs	EditDistance/calcDist.h	/^int abs(int a){$/;"	f
+add	EditDistance/path.h	/^    void add(DIR t){$/;"	f	struct:Path
+add	EditDistance/tmp/container.h	/^	void add(const T& t){items.push_back(t);}$/;"	f	class:Container
 addOneBlockDataWithEndFlag	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::addOneBlockDataWithEndFlag(const SOUND_DATA * src){$/;"	f	class:EPAnalysis
+addPath	EditDistance/path.h	/^	void addPath(const Path& p){$/;"	f	struct:Count
+addTask	ThreadPool/ThreadPool.cpp	/^void ThreadPool::addTask(struct sp_task & task) {$/;"	f	class:ThreadPool
+addWaveMfcc	Feature/WaveFeatureOPSet.h	/^    void addWaveMfcc(char *word, WaveFeatureOP & newOP) {$/;"	f	class:WaveFeatureOPSet
+alg	EditDistance/app.h	/^	int alg;$/;"	m	class:APP
+algo	hmm_demo.cpp	/^string algo = "kmean";$/;"	v
+alphaCost	Feature/HMMSoftAutomaton.h	/^        Matrix<double> alphaCost, betaCost;$/;"	m	class:HMMSoftAutomaton
+app	pro3_demo.cpp	/^APP app;$/;"	v
 appendBlockData	data/RawData.cpp	/^bool RawData::appendBlockData(const SOUND_DATA * src){$/;"	f	class:RawData
+articleSp	EditDistance/app.cpp	/^const char * articleSp = "\\n\\r";$/;"	v
+asynDtw	Feature/WaveFeatureOP.cpp	/^double WaveFeatureOP::asynDtw(std::vector<Feature> * inputFeature, double addThreshold) {$/;"	f	class:WaveFeatureOP
 audspec	Matlab/rastamat/audspec.m	/^function [aspectrum,wts] = audspec(pspectrum, sr, nfilts, fbtype, minfreq, maxfreq, sumpower, bwidth)$/;"	f
+automatons	Feature/HMMAutomatonSet.h	/^        std::map< std::string, HMMAutomaton *> automatons;$/;"	m	class:HMMAutomatonSet
+automatons	Feature/HMMRecognition.h	/^        HMMAutomatonSet automatons;$/;"	m	class:HMMRecognition
 background	Analysis/EPAnalysis.h	/^    vector<double> background;$/;"	m	class:EPAnalysis
 bark2hz	Matlab/rastamat/bark2hz.m	/^function hz=bark2hz(z)$/;"	f
+beam	EditDistance/conf.h	/^    static int beam;$/;"	m	class:Conf
+beam	pro3_demo.cpp	/^int Conf::beam = 3;$/;"	m	class:Conf	file:
+beforeAlphaBeta	Feature/HMMSoftAutomaton.cpp	/^void HMMSoftAutomaton::beforeAlphaBeta(WaveFeatureOP & features) {$/;"	f	class:HMMSoftAutomaton
+begin	Feature/WaveFeatureOPSet.h	/^        iterator begin() {$/;"	f	class:WaveFeatureOPSet
+betaCost	Feature/HMMSoftAutomaton.h	/^        Matrix<double> alphaCost, betaCost;$/;"	m	class:HMMSoftAutomaton
+better	EditDistance/app.h	/^	vector<int> better;$/;"	m	class:APP
+better	Feature/Feature.h	/^    static bool better(double a, double b) {$/;"	f	class:Feature
 block_num	Analysis/EPAnalysis.h	/^    int block_num ;$/;"	m	class:EPAnalysis
+cStory	EditDistance/app.h	/^	vector<string> cStory;$/;"	m	class:APP
+calDist	Feature/WaveFeatureOP.h	/^    double calDist(int rowIdx, int columnIdx) {$/;"	f	class:WaveFeatureOP
+calcAllWithThread	EditDistance/app.cpp	/^int APP::calcAllWithThread(){$/;"	f	class:APP
+calcAlphaBeta	Feature/HMMSoftAutomaton.cpp	/^void HMMSoftAutomaton::calcAlphaBeta(WaveFeatureOP & features) {$/;"	f	class:HMMSoftAutomaton
+calcCost	Feature/HMMKmeanAutomaton.cpp	/^double HMMKMeanAutomaton::calcCost(WaveFeatureOP &input) {$/;"	f	class:HMMKMeanAutomaton
+calcCost	Feature/HMMSoftAutomaton.cpp	/^double HMMSoftAutomaton::calcCost(WaveFeatureOP &input) {$/;"	f	class:HMMSoftAutomaton
+calcIndex	EditDistance/app.cpp	/^void APP::calcIndex(const vector<string>& org,$/;"	f	class:APP
+calcOne	EditDistance/app.cpp	/^int APP::calcOne(){$/;"	f	class:APP
 calcOneBlockBackground	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::calcOneBlockBackground(int index) {$/;"	f	class:AEPAnalysis
 calcOneBlockBackground	Analysis/BEPAnalysis.cpp	/^void BEPAnalysis::calcOneBlockBackground(int index){$/;"	f	class:BEPAnalysis
 calcOneBlockBackground	Analysis/DAEPAnalysis.cpp	/^void DAEPAnalysis::calcOneBlockBackground(int index){$/;"	f	class:DAEPAnalysis
@@ -167,17 +315,43 @@ calcOneBlockOtherData	Analysis/EPAnalysis.h	/^    virtual void calcOneBlockOther
 calcOneBlockSpeech	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::calcOneBlockSpeech(int index) {$/;"	f	class:AEPAnalysis
 calcOneBlockSpeech	Analysis/BEPAnalysis.cpp	/^void BEPAnalysis::calcOneBlockSpeech(int index){$/;"	f	class:BEPAnalysis
 calcOneBlockSpeech	Analysis/DAEPAnalysis.cpp	/^void DAEPAnalysis::calcOneBlockSpeech(int index){$/;"	f	class:DAEPAnalysis
+calcOneWithDic	EditDistance/app.cpp	/^int APP::calcOneWithDic(){$/;"	f	class:APP
 callback	Capture/Capture.h	/^    PaStreamCallback* callback;$/;"	m	class:Capture
 capture	Capture/Capture.cpp	/^bool Capture::capture(RawData * data){$/;"	f	class:Capture
 capture	test/test.cpp	/^void capture(const char * save_file_name,$/;"	f
+capture	test/test.cpp	/^void capture(const char *save_file_name, RawData &data, bool playback) {$/;"	f
 captureAction	Capture/AutoCapture.cpp	/^bool AutoCapture::captureAction(RawData * data){$/;"	f	class:AutoCapture
 captureAction	Capture/Capture.cpp	/^bool Capture::captureAction(RawData * data){$/;"	f	class:Capture
+captureRun	recorder.cpp	/^void captureRun(bool playback) {$/;"	f
 cep2spec	Matlab/rastamat/cep2spec.m	/^function [spec,idctm] = cep2spec(cep, nfreq, type)$/;"	f
+cepsNum	Feature/FeatureExtractor.h	/^            cepsNum(CEPS_NUM) {}$/;"	f	class:FeatureExtractor
+change	EditDistance/path.h	/^	int change;$/;"	m	struct:Count
 changeSilentSegmentIntoSpeech	Analysis/EPAnalysis.cpp	/^void EPAnalysis::changeSilentSegmentIntoSpeech(){$/;"	f	class:EPAnalysis
 changeSpeechSegmentIntoSilent	Analysis/EPAnalysis.cpp	/^void EPAnalysis::changeSpeechSegmentIntoSilent(){$/;"	f	class:EPAnalysis
+charInStr	EditDistance/stringtool.cpp	/^bool charInStr(const char& c, const char* str){$/;"	f
+check	EditDistance/tmp/container.h	/^	bool check(int i,const T& a)const{$/;"	f	class:Container
 checkContinue	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::checkContinue(){$/;"	f	class:EPAnalysis
 clean	data/RawData.cpp	/^void RawData::clean(){$/;"	f	class:RawData
+clear	Feature/HMMAutomatonSet.cpp	/^void HMMAutomatonSet::clear() {$/;"	f	class:HMMAutomatonSet
+clearStates	Feature/HMMAutomaton.cpp	/^void HMMAutomaton::clearStates() {$/;"	f	class:HMMAutomaton
+clearTrainBuffer	Feature/HMMKMeanAutomaton.h	/^        void clearTrainBuffer() {$/;"	f	class:HMMKMeanAutomaton
+clearTrainBuffer	Feature/HMMSoftAutomaton.h	/^        void clearTrainBuffer() {$/;"	f	class:HMMSoftAutomaton
+close	Feature/HMMAutomaton.cpp	/^void HMMAutomaton::close() {$/;"	f	class:HMMAutomaton
+close	Feature/HMMRecognition.cpp	/^void HMMRecognition::close() {$/;"	f	class:HMMRecognition
+cmp_task	EditDistance/app.cpp	/^void APP::cmp_task(void * in){$/;"	f	class:APP
+cmp_task_info	EditDistance/app.h	/^struct cmp_task_info$/;"	s
+columnDtwRes	Feature/WaveFeatureOP.h	/^    std::vector<double> columnDtwRes[2];$/;"	m	class:WaveFeatureOP
+columnIdx	Feature/WaveFeatureOP.h	/^    int columnIdx;$/;"	m	class:WaveFeatureOP
+columnNxt	Feature/WaveFeatureOP.h	/^    std::vector<int> columnNxt[2];$/;"	m	class:WaveFeatureOP
+compare	EditDistance/calcDist.h	/^static int compare(const T&  a,const T& b,Path* path = NULL){$/;"	f
+compare	EditDistance/calcDist.h	/^static int compare(const T&  a,const T& b,int max_val,Path * path = NULL){$/;"	f
+compareOneWithDict	EditDistance/calcDist.h	/^static int compareOneWithDict(const char * w,$/;"	f
+compareWithBeam	EditDistance/calcDist.h	/^static int compareWithBeam(const T&  a,const T& b,$/;"	f
+compareWithFixedThreshold	EditDistance/calcDist.h	/^static int compareWithFixedThreshold(const T&  a,const T& b,$/;"	f
 copyBlockData	data/RawData.cpp	/^void RawData::copyBlockData(int from,int to){$/;"	f	class:RawData
+corectWithBKTree	EditDistance/tmp/containerset.h	/^	virtual bool corectWithBKTree(const char * file_dic, $/;"	f	class:ContainerSet
+corectWithDic	EditDistance/tmp/containerset.h	/^	virtual bool corectWithDic(const char * file_name){$/;"	f	class:ContainerSet
+cost2p	Feature/mathtool.cpp	/^double cost2p(double cost) {$/;"	f
 cp	Feature/mathtool.h	/^typedef std::complex<double> cp;$/;"	t
 createNoise	test/test.cpp	/^void createNoise(const char * file_name){$/;"	f
 cut	Analysis/EPAnalysis.cpp	/^void EPAnalysis::cut(){$/;"	f	class:EPAnalysis
@@ -185,119 +359,388 @@ data	Analysis/EPAnalysis.h	/^    RawData * data() {$/;"	f	class:EPAnalysis
 data	Feature/Feature.h	/^    std::vector<double> data;$/;"	m	class:Feature
 data	data/RawData.h	/^    SOUND_DATA * data;$/;"	m	class:RawData
 data	readwave/readwave.h	/^	char data[4];$/;"	m	struct:WavFileHead
+dataSet	Feature/WaveFeatureOPSet.h	/^                dataSetType *dataSet;$/;"	m	class:WaveFeatureOPSet::iterator
+dataSet	Feature/WaveFeatureOPSet.h	/^    dataSetType dataSet;$/;"	m	class:WaveFeatureOPSet
+dataSetType	Feature/WaveFeatureOPSet.h	/^        typedef std::map< std::string, std::vector<WaveFeatureOP> > dataSetType;$/;"	t	class:WaveFeatureOPSet
 dct	Feature/mathtool.cpp	/^void dct(double *a,int n,int f)$/;"	f
 dct2	Feature/mathtool.cpp	/^void dct2(double *a, int n) {$/;"	f
+dealOpts	hmm_demo.cpp	/^bool dealOpts(int argc, char **argv) {$/;"	f
+dealOpts	pro2_demo.cpp	/^bool dealOpts(int argc, char **argv) {$/;"	f
+dealOpts	pro3_demo.cpp	/^int dealOpts(int argc,char ** argv){$/;"	f
+dealOpts	pro4_demo_1.cpp	/^bool dealOpts(int argc, char **argv) {$/;"	f
+dealOpts	rawdtw.cpp	/^bool dealOpts(int argc, char **argv) {$/;"	f
+dealOpts	recorder.cpp	/^bool dealOpts(int argc, char **argv) {$/;"	f
+debug	EditDistance/conf.h	/^    static int debug;$/;"	m	class:Conf
+debug	pro3_demo.cpp	/^int Conf::debug = 0;$/;"	m	class:Conf	file:
+del	EditDistance/path.h	/^	int del;$/;"	m	struct:Count
 deltas	Matlab/rastamat/deltas.m	/^function d = deltas(x, w)$/;"	f
+demoType	hmm_demo.cpp	/^int demoType = 0;$/;"	v
+demoType	pro4_demo_1.cpp	/^int demoType = 0;$/;"	v
 dft	Feature/mathtool.cpp	/^void dft(cp *a,int n,int f)$/;"	f
+dic	EditDistance/app.h	/^	vector<string> dic;$/;"	m	class:APP
+dict	EditDistance/app.h	/^	vector<string> * dict;$/;"	m	struct:cmp_task_info
+dir	EditDistance/path.h	/^    DIR * dir;$/;"	m	struct:Path
+dir	recorder.cpp	/^char dir[100] = TEMPLATES_DIR; \/\/".\/templates";$/;"	v
 dolpc	Matlab/rastamat/dolpc.m	/^function y = dolpc(x,modelorder)$/;"	f
+doubleDelta	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::doubleDelta(std::vector<Feature> & normalMelCeps) {$/;"	f	class:FeatureExtractor
+dtwType	Feature/HMMAutomaton.h	/^    enum dtwType {$/;"	g	class:HMMAutomaton
+dump	Feature/SoftState.h	/^        void dump() {$/;"	f	class:SoftState
+dumpColorPath	Feature/WaveFeatureOP.cpp	/^SP_RESULT WaveFeatureOP::dumpColorPath(std::ostream & Out) {$/;"	f	class:WaveFeatureOP
+dumpColorPath	Feature/WordDtwRecognition.cpp	/^void WordDtwRecognition::dumpColorPath(std::ostream &Out) {$/;"	f	class:WordDtwRecognition
+dumpDelta	Feature/Feature.h	/^    void dumpDelta(int from, int to, int siz) {$/;"	f	class:Feature
+e	Feature/mathtool.h	35;"	d
+edgePoints	Feature/KMeanState.h	/^        std::vector< std::pair<int, int> > edgePoints;$/;"	m	class:KMeanState
 end	Capture/Capture.cpp	/^bool Capture::end(){$/;"	f	class:Capture
+end	Feature/WaveFeatureOPSet.h	/^        iterator end() {$/;"	f	class:WaveFeatureOPSet
 energy	Analysis/EPAnalysis.h	/^    vector<double> energy;$/;"	m	class:EPAnalysis
 ep	Capture/AutoCapture.h	/^    EPAnalysis * ep;$/;"	m	class:AutoCapture
+exDoubleDeltaFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exDoubleDeltaFeatures(const RawData *data) {$/;"	f	class:FeatureExtractor
+exFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exFeatures(const RawData *data) {$/;"	f	class:FeatureExtractor
 exFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \\$/;"	f	class:FeatureExtractor
+false	Feature/WaveFeatureOP.cpp	/^    doRecordPath(false), \\$/;"	v
 fft	Feature/mathtool.cpp	/^void fft(cp *a,int n,int f)$/;"	f
 fft2MelLog	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \\$/;"	f	class:FeatureExtractor
 fft2barkmx	Matlab/rastamat/fft2barkmx.m	/^function wts = fft2barkmx(nfft, sr, nfilts, width, minfreq, maxfreq)$/;"	f
 fft2melmx	Matlab/rastamat/fft2melmx.m	/^function [wts,binfrqs] = fft2melmx(nfft, sr, nfilts, width, minfrq, maxfrq, htkmel, constamp)$/;"	f
 fftPadding	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::fftPadding(Matrix<double> & windows) {$/;"	f	class:FeatureExtractor
+fftTask	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::fftTask(void *in) {$/;"	f	class:FeatureExtractor
+fft_task_info	Feature/FeatureExtractor.h	/^    struct fft_task_info {$/;"	s	class:FeatureExtractor
+fillDelta	Feature/Feature.cpp	/^SP_RESULT Feature::fillDelta() {$/;"	f	class:Feature
+fillDoubleDelta	Feature/Feature.cpp	/^SP_RESULT Feature::fillDoubleDelta() {$/;"	f	class:Feature
+forwardColumn	Feature/WaveFeatureOP.cpp	/^double WaveFeatureOP::forwardColumn(double threshold) {$/;"	f	class:WaveFeatureOP
+fromFileJob	EditDistance/app.cpp	/^bool APP::fromFileJob(){$/;"	f	class:APP
+fullfill	Configure/SerialFiles.cpp	/^char *SerialFiles::fullfill(int num) {$/;"	f	class:SerialFiles
+func	ThreadPool/ThreadPool.h	/^    TASK_FUNC func;$/;"	m	struct:sp_task
+gaussNum	Feature/HMMRecognition.h	/^        int gaussNum;$/;"	m	class:HMMRecognition
+gaussianTrain	Feature/DummyState.h	/^        void gaussianTrain(int gaussianNum) {$/;"	f	class:DummyState
+gaussianTrain	Feature/KMeanState.cpp	/^void KMeanState::gaussianTrain(int gaussianNum) {$/;"	f	class:KMeanState
+gaussianTrain	Feature/SoftState.cpp	/^void SoftState::gaussianTrain(int gaussianNum) {$/;"	f	class:SoftState
+getBeginning	recorder.cpp	/^static int getBeginning(char *prefix) {$/;"	f	file:
+getBestTemplate	Feature/WordDtwRecognition.cpp	/^const WaveFeatureOP * WordDtwRecognition::getBestTemplate() {$/;"	f	class:WordDtwRecognition
 getBlockAveEnergy	data/RawData.cpp	/^double RawData::getBlockAveEnergy(int index){$/;"	f	class:RawData
 getDB	Feature/FeatureExtractor.h	/^    static double getDB(double pow) {$/;"	f	class:FeatureExtractor
 getData	data/RawData.cpp	/^const SOUND_DATA * RawData::getData()const{$/;"	f	class:RawData
-getMelLog	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::getMelLog(std::vector<double> & melLog, \\$/;"	f	class:FeatureExtractor
+getFeatureType	Feature/Feature.cpp	/^Feature::FeatureType Feature::getFeatureType() {$/;"	f	class:Feature
+getMfccFileName	Configure/SerialFiles.h	/^        static std::string getMfccFileName(std::string wavFileName) {$/;"	f	class:SerialFiles
+getRollIdx	Feature/HMMAutomaton.h	/^    inline int getRollIdx(int columnIdx) {$/;"	f	class:HMMAutomaton
+getRollIdx	Feature/WaveFeatureOP.h	/^    inline int getRollIdx(int columnIdx) {$/;"	f	class:WaveFeatureOP
+getRowNum	Feature/WaveFeatureOP.cpp	/^int WaveFeatureOP::getRowNum() {$/;"	f	class:WaveFeatureOP
+getSerialFileName	Configure/SerialFiles.cpp	/^void SerialFiles::getSerialFileName(char * out, int seqNum, int prefixNum, ...) {$/;"	f	class:SerialFiles
+getState	Feature/HMMKMeanAutomaton.h	/^        inline KMeanState *getState(int idx) {$/;"	f	class:HMMKMeanAutomaton
+getState	Feature/HMMSoftAutomaton.h	/^        inline SoftState *getState(int idx) {$/;"	f	class:HMMSoftAutomaton
+getStrsFromFile	EditDistance/stringtool.cpp	/^bool  getStrsFromFile($/;"	f
+getStrsFromFile	EditDistance/stringtool.cpp	/^string getStrsFromFile(const char *FileName)$/;"	f
+getWavFileNames	Configure/SerialFiles.h	/^        static void getWavFileNames(char *dir, std::vector<std::string> &wavFileNames) {$/;"	f	class:SerialFiles
 getWts	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::getWts(Matrix<double> &wts, \\$/;"	f	class:FeatureExtractor
 getch	Configure/tool.cpp	/^int getch() {$/;"	f
 getche	Configure/tool.cpp	/^int getche() {$/;"	f
 hanning	Feature/FeatureExtractor.h	/^    static double hanning(int n, int M) {$/;"	f	class:FeatureExtractor
+head	Feature/WaveFeatureOP.h	/^    int head[2];$/;"	m	class:WaveFeatureOP
+help	pro3_demo.cpp	/^const char * help = "\\$/;"	v
+hmmRecognition	Feature/HMMRecognition.cpp	/^std::string HMMRecognition::hmmRecognition(WaveFeatureOP & input) {$/;"	f	class:HMMRecognition
+hmmTrain	Feature/HMMKmeanAutomaton.cpp	/^void HMMKMeanAutomaton::hmmTrain() {$/;"	f	class:HMMKMeanAutomaton
+hmmTrain	Feature/HMMRecognition.cpp	/^SP_RESULT HMMRecognition::hmmTrain() {$/;"	f	class:HMMRecognition
+hmmTrain	Feature/HMMSoftAutomaton.cpp	/^void HMMSoftAutomaton::hmmTrain() {$/;"	f	class:HMMSoftAutomaton
+hmmTrainTask	Feature/HMMAutomatonSet.cpp	/^void HMMAutomatonSet::hmmTrainTask(void *in) {$/;"	f	class:HMMAutomatonSet
 hz2bark	Matlab/rastamat/fft2barkmx.m	/^function z = hz2bark(f)$/;"	f
 hz2bark	Matlab/rastamat/hz2bark.m	/^function z= hz2bark(f)$/;"	f
 hz2mel	Feature/FeatureExtractor.h	/^    static double hz2mel(double frequency) {$/;"	f	class:FeatureExtractor
 hz2mel	Matlab/rastamat/fft2melmx.m	/^function z = hz2mel(f,htk)$/;"	f
 hz2mel	Matlab/rastamat/hz2mel.m	/^function z = hz2mel(f,htk)$/;"	f
+hz2melFunc	Feature/FeatureExtractor.h	/^    double (*hz2melFunc)(double);$/;"	m	class:FeatureExtractor
+idx	ThreadPool/ThreadPool.h	/^        int idx;$/;"	m	class:ThreadPool
 in	Capture/Capture.h	/^    PaStreamParameters in;$/;"	m	class:Capture
+in	ThreadPool/ThreadPool.h	/^    void *in;$/;"	m	struct:sp_task
+increament	ThreadPool/ThreadPool.h	/^        void increament() {$/;"	f	class:ThreadPool
+index	EditDistance/app.h	/^	int index;$/;"	m	struct:cmp_task_info
+info	EditDistance/conf.h	/^	static int info;$/;"	m	class:Conf
+info	pro3_demo.cpp	/^int Conf::info = 0;$/;"	m	class:Conf	file:
 init	Capture/Capture.cpp	/^bool Capture::init(RawData * data,bool input){$/;"	f	class:Capture
+initIterate	Feature/HMMSoftAutomaton.cpp	/^void HMMSoftAutomaton::initIterate() {$/;"	f	class:HMMSoftAutomaton
 init_PA	Capture/Capture.cpp	/^bool Capture::init_PA(){$/;"	f	class:Capture
 init_callback	Capture/AutoCapture.cpp	/^bool AutoCapture::init_callback(RawData * data,bool input){$/;"	f	class:AutoCapture
 init_callback	Capture/Capture.cpp	/^bool Capture::init_callback(RawData * data,bool input){$/;"	f	class:Capture
 init_stream	Capture/Capture.cpp	/^bool Capture::init_stream(bool input){$/;"	f	class:Capture
 inital	Feature/FeatureExtractor.h	/^    void inital(){$/;"	f	class:FeatureExtractor
+inputDirName	hmm_demo.cpp	/^char inputDirName[256] = INPUTS_DIR;$/;"	v
+inputDirName	pro4_demo_1.cpp	/^char inputDirName[256] = INPUTS_DIR;$/;"	v
+inputFeature	Feature/WaveFeatureOP.h	/^    std::vector<Feature>* inputFeature;$/;"	m	class:WaveFeatureOP
+inputFileName	hmm_demo.cpp	/^char inputFileName[1000] = "";$/;"	v
+inputFileName	pro4_demo_1.cpp	/^char inputFileName[1000] = "";$/;"	v
+inputFileName	rawdtw.cpp	/^char inputFileName[1000] = "";$/;"	v
+inputJob	EditDistance/app.cpp	/^bool APP::inputJob(){$/;"	f	class:APP
+ins	EditDistance/path.h	/^	int ins;$/;"	m	struct:Count
 invaudspec	Matlab/rastamat/invaudspec.m	/^function [spec,wts,iwts] = invaudspec(aspectrum, sr, nfft, fbtype, minfreq, maxfreq, sumpower, bwidth)$/;"	f
 invmelfcc	Matlab/rastamat/invmelfcc.m	/^function [x,aspc,spec] = invmelfcc(cep, sr, varargin)$/;"	f
 invpostaud	Matlab/rastamat/invpostaud.m	/^function [x,eql] = invpostaud(y,fmax,fbtype,broaden)$/;"	f
 invpowspec	Matlab/rastamat/invpowspec.m	/^function x = invpowspec(y, sr, wintime, steptime, excit)$/;"	f
+isBigChange	Feature/HMMAutomaton.h	/^    bool isBigChange(double totalChangeCost) {$/;"	f	class:HMMAutomaton
+isCapture	pro2_demo.cpp	/^bool isCapture;$/;"	v
+isCapture	pro4_demo_1.cpp	/^bool isCapture;$/;"	v
+isWavFile	Configure/SerialFiles.h	/^        static bool isWavFile(char *fileName) {$/;"	f	class:SerialFiles
 ispecgram	Matlab/rastamat/ispecgram.m	/^function x = ispecgram(d, ftsize, sr, win, nov)$/;"	f
+items	EditDistance/tmp/container.h	/^	vector<T> items;$/;"	m	class:Container
+iterateTrain	Feature/HMMKMeanAutomaton.h	/^        bool iterateTrain() {$/;"	f	class:HMMKMeanAutomaton
+iterateTrain	Feature/HMMSoftAutomaton.cpp	/^bool HMMSoftAutomaton::iterateTrain() {$/;"	f	class:HMMSoftAutomaton
+iterator	Feature/WaveFeatureOPSet.h	/^                iterator() : dataSet(NULL), vecIdx(-1) { }$/;"	f	class:WaveFeatureOPSet::iterator
+iterator	Feature/WaveFeatureOPSet.h	/^                iterator(dataSetType *dataSetPtr, dataSetType::iterator Itr, int idx) : dataSet(dataSetPtr), I(Itr), vecIdx(idx) {}$/;"	f	class:WaveFeatureOPSet::iterator
+iterator	Feature/WaveFeatureOPSet.h	/^        class iterator {$/;"	c	class:WaveFeatureOPSet
+lastUpdate	Feature/WaveFeatureOP.h	/^    std::vector<int> lastUpdate;$/;"	m	class:WaveFeatureOP
+len	EditDistance/path.h	/^    int len;$/;"	m	struct:Path
+len	EditDistance/tmp/container.h	/^	int len()const{return items.size();}$/;"	f	class:Container
 level	Analysis/AEPAnalysis.h	/^    vector<double> level;$/;"	m	class:AEPAnalysis
 lifter	Matlab/rastamat/lifter.m	/^function y = lifter(x, lift, invs)$/;"	f
+loadMfccFromMfccFile	Feature/WaveFeatureOPSet.h	/^    bool loadMfccFromMfccFile(char * dir, char * wavFileName, char * word) {$/;"	f	class:WaveFeatureOPSet
+loadMfccs	Feature/WaveFeatureOPSet.cpp	/^SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir) {$/;"	f	class:WaveFeatureOPSet
+loadMfccs	Feature/WaveFeatureOPSet.cpp	/^SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {$/;"	f	class:WaveFeatureOPSet
+loadTemplates	Feature/HMMRecognition.cpp	/^SP_RESULT HMMRecognition::loadTemplates(char *templateDir) {$/;"	f	class:HMMRecognition
+loadTemplates	Feature/WordDtwRecognition.cpp	/^SP_RESULT WordDtwRecognition::loadTemplates(char *templateDir) {$/;"	f	class:WordDtwRecognition
 loadWav	data/RawDataFile.cpp	/^bool RawData::loadWav(const char * file_name){$/;"	f	class:RawData
 load_calc	test/test.cpp	/^SP_RESULT load_calc(const char *load_file_name,$/;"	f
+load_wav_file	Capture/Capture.h	/^    static SP_RESULT load_wav_file(const char * const file_name, RawData &data, bool playback = false) {$/;"	f	class:Capture
 load_wav_file	test/test.cpp	/^SP_RESULT load_wav_file(const char *file_name, RawData &data) {$/;"	f
+logInsideDist	Feature/mathtool.cpp	/^double logInsideDist(double a, double b) {$/;"	f
+logInsideSum	Feature/mathtool.cpp	/^double logInsideSum(double a, double b) {$/;"	f
 lpc2cep	Matlab/rastamat/lpc2cep.m	/^function features = lpc2cep(a,nout)$/;"	f
 lpc2spec	Matlab/rastamat/lpc2spec.m	/^function [features,F,M] = lpc2spec(lpcas, nout)$/;"	f
+main	hmm_demo.cpp	/^int main(int argc, char **argv) {$/;"	f
 main	main.cpp	/^int main()$/;"	f
-main	pro2_demo.cpp	/^int main() {$/;"	f
+main	pro2_demo.cpp	/^int main(int argc, char **argv) {$/;"	f
+main	pro3_demo.cpp	/^int main(int argc,char ** argv)$/;"	f
+main	pro4_demo_1.cpp	/^int main(int argc, char **argv) {$/;"	f
+main	rawdtw.cpp	/^int main(int argc, char **argv) {$/;"	f
+main	recorder.cpp	/^int main(int argc, char **argv) {$/;"	f
 matrix_file_read	Matlab/matrix_file_read.m	/^function [y] = matrix_file_read(filename)$/;"	f
+maxInstancePerTemplate	pro4_demo_1.cpp	/^int maxInstancePerTemplate = MAX_TEMPLATES_PER_WORD;$/;"	v
+maxSizeBit	Configure/SerialFiles.cpp	/^const int SerialFiles::maxSizeBit = 13;$/;"	m	class:SerialFiles	file:
+maxSizeBit	Configure/SerialFiles.h	/^        const static int maxSizeBit;$/;"	m	class:SerialFiles
+maxTemplatesPerWord	Feature/WaveFeatureOPSet.cpp	/^int WaveFeatureOPSet::maxTemplatesPerWord = MAX_TEMPLATES_PER_WORD;$/;"	m	class:WaveFeatureOPSet	file:
+maxTemplatesPerWord	Feature/WaveFeatureOPSet.h	/^        static int maxTemplatesPerWord;$/;"	m	class:WaveFeatureOPSet
 mel2dct	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum) {$/;"	f	class:FeatureExtractor
 mel2hz	Feature/FeatureExtractor.h	/^    static double mel2hz(double hz) {$/;"	f	class:FeatureExtractor
 mel2hz	Matlab/rastamat/fft2melmx.m	/^function f = mel2hz(z, htk)$/;"	f
 mel2hz	Matlab/rastamat/mel2hz.m	/^function f = mel2hz(z, htk)$/;"	f
+mel2hzFunc	Feature/FeatureExtractor.h	/^    double (*mel2hzFunc)(double);$/;"	m	class:FeatureExtractor
 melCepstrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \\$/;"	f	class:FeatureExtractor
+melLog	Feature/FeatureExtractor.h	/^        std::vector<double> *melLog;$/;"	m	struct:FeatureExtractor::mul_task_info
 melfcc	Matlab/rastamat/melfcc.m	/^function [cepstra,aspectrum,pspectrum] = melfcc(samples, sr, varargin)$/;"	f
 melfcc_demo	Matlab/rastamat/melfcc_demo.m	/^function [cepstra,aspectrum,pspectrum] = melfcc_demo(filename, varargin)$/;"	f
+min	EditDistance/calcDist.h	/^int min(int a,int b,int c){$/;"	f
+mode	EditDistance/app.h	/^	int mode;$/;"	m	class:APP
+mulTask	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::mulTask(void *in) {$/;"	f	class:FeatureExtractor
+mul_task_info	Feature/FeatureExtractor.h	/^    struct mul_task_info {$/;"	s	class:FeatureExtractor
+nextWord	Feature/WaveFeatureOPSet.h	/^                const iterator & nextWord() {$/;"	f	class:WaveFeatureOPSet::iterator
+nfft	Feature/FeatureExtractor.h	/^        int nfft;$/;"	m	struct:FeatureExtractor::padding_task_info
 noUse	readwave/readwave.h	/^	unsigned int noUse;$/;"	m	struct:WavFileHead
+nodeCost	Feature/DummyState.h	/^        double nodeCost(Feature *inputFeature) {$/;"	f	class:DummyState
+nodeCost	Feature/KMeanState.cpp	/^double KMeanState::nodeCost(Feature *inputFeature) {$/;"	f	class:KMeanState
+nodeCost	Feature/SoftState.cpp	/^double SoftState::nodeCost(Feature *inputFeature) {$/;"	f	class:SoftState
+nodeCostTmp	Feature/HMMSoftAutomaton.h	/^        Matrix<double> nodeCostTmp;$/;"	m	class:HMMSoftAutomaton
+normalization	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes) {$/;"	f	class:FeatureExtractor
+operator !=	Feature/WaveFeatureOPSet.h	/^                bool operator !=(const iterator & b) {$/;"	f	class:WaveFeatureOPSet::iterator
 operator *	Feature/Feature.h	/^    Feature operator * (const Feature & T)const{$/;"	f	class:Feature
 operator *	Feature/Feature.h	/^    Feature operator * (double c)const{$/;"	f	class:Feature
+operator *	Feature/WaveFeatureOPSet.h	/^                WaveFeatureOP * operator *() {$/;"	f	class:WaveFeatureOPSet::iterator
 operator +	Feature/Feature.h	/^    Feature operator + (const Feature & T)const{$/;"	f	class:Feature
+operator ++	Feature/WaveFeatureOPSet.h	/^                const iterator & operator ++() {$/;"	f	class:WaveFeatureOPSet::iterator
+operator ++	Feature/WaveFeatureOPSet.h	/^                const iterator & operator ++(int) {$/;"	f	class:WaveFeatureOPSet::iterator
+operator -	Feature/Feature.cpp	/^double Feature::operator -(const Feature & T) {$/;"	f	class:Feature
+operator <	EditDistance/tmp/container.h	/^	friend bool operator <($/;"	f	class:Container
+operator ==	EditDistance/tmp/container.h	/^	friend bool operator ==($/;"	f	class:Container
+operator ==	Feature/WaveFeatureOP.cpp	/^bool WaveFeatureOP::operator==(const WaveFeatureOP & b) {$/;"	f	class:WaveFeatureOP
+operator ==	Feature/WaveFeatureOPSet.h	/^                bool operator ==(const iterator & b) {$/;"	f	class:WaveFeatureOPSet::iterator
+operator []	EditDistance/tmp/container.h	/^	const T& operator [](int t)const{return items[t];}$/;"	f	class:Container
 operator []	Feature/Feature.h	/^    const double &operator[] (int inx) const {$/;"	f	class:Feature
 operator []	Feature/Feature.h	/^    double &operator[] (int inx) {$/;"	f	class:Feature
+operator []	Feature/WaveFeatureOP.cpp	/^Feature & WaveFeatureOP::operator[](int idx) {$/;"	f	class:WaveFeatureOP
 out	Capture/Capture.h	/^    PaStreamParameters out;$/;"	m	class:Capture
+p	EditDistance/app.h	/^	Path * p;$/;"	m	struct:cmp_task_info
+p2cost	Feature/mathtool.cpp	/^double p2cost(double p) {$/;"	f
+paddingTask	Feature/FeatureExtractor.cpp	/^void FeatureExtractor::paddingTask(void *in) {$/;"	f	class:FeatureExtractor
+padding_task_info	Feature/FeatureExtractor.h	/^    struct padding_task_info {$/;"	s	class:FeatureExtractor
+parseSerialFileName	Configure/SerialFiles.cpp	/^void SerialFiles::parseSerialFileName(const char * const fileName, int &seqNum, int prefixNum, ...) {$/;"	f	class:SerialFiles
 patestCallback	Capture/AutoCapture.cpp	/^static int patestCallback( const void *inputBuffer, void *outputBuffer,$/;"	f	file:
+path	Feature/HMMAutomaton.h	/^    Matrix<int> path;$/;"	m	class:HMMAutomaton
+path	Feature/WaveFeatureOP.h	/^    std::vector<int> path;$/;"	m	class:WaveFeatureOP
+paths	EditDistance/app.h	/^	vector<Path> paths;	$/;"	m	class:APP
 play	Capture/Capture.cpp	/^bool Capture::play(RawData * data){$/;"	f	class:Capture
 playAction	Capture/Capture.cpp	/^bool Capture::playAction(RawData * data){$/;"	f	class:Capture
+playback	recorder.cpp	/^bool playback = false;$/;"	v
 postaud	Matlab/rastamat/postaud.m	/^function [y,eql] = postaud(x,fmax,fbtype,broaden)$/;"	f
+powSpec	Feature/FeatureExtractor.h	/^        Matrix<double> * powSpec;$/;"	m	struct:FeatureExtractor::mul_task_info
 powSpectrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \\$/;"	f	class:FeatureExtractor
+powWinSpec	Feature/FeatureExtractor.h	/^        std::vector<double> * powWinSpec;$/;"	m	struct:FeatureExtractor::fft_task_info
 powspec	Matlab/rastamat/powspec.m	/^function [y,e] = powspec(x, sr, wintime, steptime, dither)$/;"	f
 preEmph	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::preEmph(\/* out *\/std::vector<double> &outs, \\$/;"	f	class:FeatureExtractor
+print	EditDistance/app.cpp	/^void APP::print(const vector<int>& index,const vector<string>& v,bool line)const{$/;"	f	class:APP
+print	EditDistance/app.cpp	/^void APP::print(const vector<string>& v,bool line)const{$/;"	f	class:APP
+print	EditDistance/path.h	/^	void print(){$/;"	f	struct:Count
+print	EditDistance/path.h	/^    void print(){$/;"	f	struct:Path
 printInf	Analysis/AEPAnalysis.cpp	/^int AEPAnalysis::printInf(int from,int end){$/;"	f	class:AEPAnalysis
 printInf	Analysis/EPAnalysis.cpp	/^int EPAnalysis::printInf(int from,int end){$/;"	f	class:EPAnalysis
+printInfo	EditDistance/app.cpp	/^void APP::printInfo(){$/;"	f	class:APP
+printMatrix	EditDistance/calcDist.h	/^static void printMatrix(const char * a,const char * b,const Path* path){$/;"	f
+printPath	EditDistance/calcDist.h	/^static void printPath(const T& a,const T& b,$/;"	f
+probabilities	Feature/SoftState.h	/^        Matrix<double> probabilities;$/;"	m	class:SoftState
+processThread	ThreadPool/ThreadPool.cpp	/^void *ThreadPool::processThread(void *param) {$/;"	f	class:ThreadPool
 process_options	Matlab/rastamat/process_options.m	/^function [varargout] = process_options(args, varargin)$/;"	f
 push_back	Feature/Feature.cpp	/^void Feature::push_back(double d) {$/;"	f	class:Feature
 rastafilt	Matlab/rastamat/rastafilt.m	/^function y = rastafilt(x)$/;"	f
 rastaplp	Matlab/rastamat/rastaplp.m	/^function [cepstra, spectra, pspectrum, lpcas, F, M] = rastaplp(samples, sr, dorasta, modelorder)$/;"	f
 rawData	Feature/Feature.h	/^    double *rawData() {$/;"	f	class:Feature
+rawDtw	rawdtw.cpp	/^void rawDtw(vector<Feature> a, vector<Feature> b) {$/;"	f
 reCalcAllData	Analysis/EPAnalysis.cpp	/^void EPAnalysis::reCalcAllData(){$/;"	f	class:EPAnalysis
+readFile	EditDistance/app.cpp	/^void APP::readFile(){$/;"	f	class:APP
+readFromKeyBoard	EditDistance/tmp/containerset.h	/^	virtual bool readFromKeyBoard(){$/;"	f	class:ContainerSet
 readhtk	Matlab/rastamat/readhtk.m	/^function [d,fp,dt,tc,t]=readhtk(file)$/;"	f
+readline	EditDistance/app.cpp	/^bool readline(vector<string>& v){$/;"	f
+recognition	Feature/HMMAutomatonSet.cpp	/^std::string HMMAutomatonSet::recognition(WaveFeatureOP & input) {$/;"	f	class:HMMAutomatonSet
+recordPath	Feature/WaveFeatureOP.h	/^    void recordPath(int bestIdx) {$/;"	f	class:WaveFeatureOP
+refresh	EditDistance/calcDist.h	/^static int refresh(int * pos,int * diff,int& cnt,int p,int val){$/;"	f
 reportMatlab	pro2_demo.cpp	/^void reportMatlab(FeatureExtractor &extractor) {$/;"	f
 resize	Feature/Feature.h	/^    void resize(int s) {$/;"	f	class:Feature
+result	EditDistance/app.h	/^	vector<int> * result;$/;"	m	struct:cmp_task_info
 riffRead	Matlab/riffRead.m	/^function [d, fs] = riffRead(filename)$/;"	f
+rollColumnCost	Feature/HMMAutomaton.h	/^    std::vector<double> rollColumnCost[2];$/;"	m	class:HMMAutomaton
+rollDtw	Feature/HMMAutomaton.h	/^    std::pair<int, double> rollDtw(WaveFeatureOP & features, dtwType type) {$/;"	f	class:HMMAutomaton
+rollDtwInit	Feature/HMMAutomaton.h	/^    void rollDtwInit(WaveFeatureOP &features, dtwType type) {$/;"	f	class:HMMAutomaton
+run	EditDistance/app.cpp	/^bool APP::run(){$/;"	f	class:APP
+run	ThreadPool/ThreadPool.cpp	/^void ThreadPool::run() {$/;"	f	class:ThreadPool
+run	pro3_demo.cpp	/^void run(){$/;"	f
+runDemo11	pro4_demo_1.cpp	/^void runDemo11() {$/;"	f
+runDemo11	rawdtw.cpp	/^void runDemo11() {$/;"	f
+runDemoN1	pro4_demo_1.cpp	/^void runDemoN1() {$/;"	f
+runDemoNN	pro4_demo_1.cpp	/^void runDemoNN() {$/;"	f
+runN1	hmm_demo.cpp	/^void runN1() {$/;"	f
+runNN	hmm_demo.cpp	/^void runNN() {$/;"	f
+same	EditDistance/path.h	/^	int same;$/;"	m	struct:Count
 saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const char * data, int len){$/;"	f
 saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const double * data, int len){$/;"	f
 saveArray	Configure/tool.cpp	/^void saveArray(FILE* fid ,const int * data, int len){$/;"	f
 saveMatlab	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::saveMatlab(const char * file_name){$/;"	f	class:EPAnalysis
+saveMfcc2MfccFile	Feature/WaveFeatureOPSet.h	/^    void saveMfcc2MfccFile(char * dir, char * wavFileName, const std::vector<Feature> & features) {$/;"	f	class:WaveFeatureOPSet
 saveOtherData	Analysis/AEPAnalysis.cpp	/^void AEPAnalysis::saveOtherData(FILE * fid){$/;"	f	class:AEPAnalysis
 saveOtherData	Analysis/EPAnalysis.h	/^    virtual void saveOtherData(FILE * fid){};$/;"	f	class:EPAnalysis
+saveStrsToFile	EditDistance/stringtool.cpp	/^void saveStrsToFile(const char *FileName,const vector<int> ind,$/;"	f
 saveWav	data/RawDataFile.cpp	/^bool RawData::saveWav(const char * file_name){$/;"	f	class:RawData
+sentenceSp	EditDistance/app.cpp	/^const char * sentenceSp = wordSp;$/;"	v
+serialGenerator	recorder.cpp	/^SerialFiles serialGenerator;$/;"	v
+setAlg	EditDistance/app.cpp	/^bool APP::setAlg(int t){$/;"	f	class:APP
 setData	data/RawData.cpp	/^void RawData::setData(int index,SOUND_DATA d){$/;"	f	class:RawData
+setDoRecordPath	Feature/WordDtwRecognition.cpp	/^void WordDtwRecognition::setDoRecordPath(bool doRecord) {$/;"	f	class:WordDtwRecognition
+setFeatureType	Feature/Feature.cpp	/^Feature::FeatureType Feature::setFeatureType(Feature::FeatureType type) {$/;"	f	class:Feature
 setFrameNum	data/RawData.cpp	/^bool RawData::setFrameNum(int f_num){$/;"	f	class:RawData
+setGaussNum	Feature/HMMRecognition.h	/^        void setGaussNum(int gaussNum) {$/;"	f	class:HMMRecognition
+setMaxLen	EditDistance/path.h	/^    void setMaxLen(int m){$/;"	f	struct:Path
+setMode	EditDistance/app.cpp	/^bool APP::setMode(int t){$/;"	f	class:APP
+setSizeBit	Configure/SerialFiles.cpp	/^void SerialFiles::setSizeBit(int sizeBit) {$/;"	f	class:SerialFiles
+setStateNum	Feature/HMMRecognition.h	/^        void setStateNum(int stateNum) {$/;"	f	class:HMMRecognition
+setTrainTimes	Feature/HMMRecognition.h	/^        void setTrainTimes(int trainTimes) {$/;"	f	class:HMMRecognition
+sigma	Feature/KMeanState.h	/^        double sigma[39];$/;"	m	class:KMeanState
+sigma	Feature/SoftState.h	/^        double sigma[39];$/;"	m	class:SoftState
 silentTime	Analysis/EPAnalysis.h	/^    int silentTime; \/\/ don't find how many block$/;"	m	class:EPAnalysis
+size	EditDistance/calcDist.h	/^int size(const char * t){$/;"	f
+size	EditDistance/calcDist.h	/^int size(const vector<T>& v){$/;"	f
 size	Feature/Feature.h	/^    int size() const {$/;"	f	class:Feature
+size	Feature/WaveFeatureOP.cpp	/^int WaveFeatureOP::size() {$/;"	f	class:WaveFeatureOP
+sizeBit	Configure/SerialFiles.h	/^        int sizeBit;$/;"	m	class:SerialFiles
 smooth	Analysis/EPAnalysis.cpp	/^void EPAnalysis::smooth(){$/;"	f	class:EPAnalysis
 solution	main.cpp	/^void solution(){$/;"	f
+sp_task	ThreadPool/ThreadPool.h	/^struct sp_task {$/;"	s
 spec2cep	Matlab/rastamat/spec2cep.m	/^function [cep,dctm] = spec2cep(spec, ncep, type)$/;"	f
 speech	Analysis/EPAnalysis.h	/^    vector<char> speech;$/;"	m	class:EPAnalysis
 sqr	Feature/Feature.h	/^    Feature sqr(){$/;"	f	class:Feature
+stateNum	Feature/HMMRecognition.h	/^        int stateNum;$/;"	m	class:HMMRecognition
+states	Feature/HMMAutomaton.h	/^    std::vector<HMMState *> states;$/;"	m	class:HMMAutomaton
 storeFeas	pro2_demo.cpp	/^void storeFeas(const std::vector<Feature> & data, const char *filename) {$/;"	f
+storeFeas	pro4_demo_1.cpp	/^void storeFeas(const std::vector<Feature> & data, const char *filename) {$/;"	f
 storeMatrix	pro2_demo.cpp	/^void storeMatrix(const Matrix<T> &data, const char *filename) {$/;"	f
 storeVector	pro2_demo.cpp	/^void storeVector(const vector<T> &data, const char *filename) {$/;"	f
+story	EditDistance/app.h	/^	vector<string> story;$/;"	m	class:APP
+storyIndex	EditDistance/app.h	/^	vector<int> storyIndex; \/\/index[i] = -1，则单词未出现过，否则与index[i]相同$/;"	m	class:APP
 stream	Capture/Capture.h	/^    PaStream * stream;$/;"	m	class:Capture
+stringFile	recorder.cpp	/^const char * stringFile(const char * a,const char * b,char *ab){$/;"	f
 stringFile	test/test.cpp	/^const char * stringFile(const char * a,const char * b,char *ab){$/;"	f
+synInit	Feature/WaveFeatureOP.cpp	/^void WaveFeatureOP::synInit(std::vector<Feature> *inputFeature) {$/;"	f	class:WaveFeatureOP
+tasks	ThreadPool/ThreadPool.h	/^    std::vector<sp_task> tasks;$/;"	m	struct:thread_info
+templateDirName	hmm_demo.cpp	/^char templateDirName[256] = TEMPLATES_DIR;$/;"	v
+templateDirName	pro4_demo_1.cpp	/^char templateDirName[256] = TEMPLATES_DIR;$/;"	v
+templateFileName	hmm_demo.cpp	/^char templateFileName[1000] = "";$/;"	v
+templateFileName	pro4_demo_1.cpp	/^char templateFileName[1000] = "";$/;"	v
+templateFileName	rawdtw.cpp	/^char templateFileName[1000] = "";$/;"	v
+templates	Feature/HMMAutomaton.h	/^    std::vector<WaveFeatureOP> * templates;$/;"	m	class:HMMAutomaton
+templates	Feature/HMMState.h	/^        std::vector<WaveFeatureOP> * templates;$/;"	m	class:HMMState
+templates	Feature/WordDtwRecognition.h	/^        WaveFeatureOPSet templates;$/;"	m	class:WordDtwRecognition
+threadNum	Feature/FeatureExtractor.h	/^    int threadNum;$/;"	m	class:FeatureExtractor
+threadNum	ThreadPool/ThreadPool.h	/^        int threadNum;$/;"	m	class:ThreadPool
+threadNum	hmm_demo.cpp	/^int  threadNum = DEFAULT_THREAD_NUM;$/;"	v
+threadNum	pro2_demo.cpp	/^int  threadNum = DEFAULT_THREAD_NUM;$/;"	v
+threadNum	pro4_demo_1.cpp	/^int  threadNum = DEFAULT_THREAD_NUM;$/;"	v
+threadNum	rawdtw.cpp	/^int  threadNum = DEFAULT_THREAD_NUM;$/;"	v
+threadTasks	ThreadPool/ThreadPool.h	/^        std::vector< thread_info > threadTasks;$/;"	m	class:ThreadPool
+thread_info	ThreadPool/ThreadPool.h	/^struct thread_info {$/;"	s
+thread_num	EditDistance/app.h	/^const int thread_num = 4;$/;"	v
+thread_num	ThreadPool/ThreadPool.cpp	/^int ThreadPool::thread_num = DEFAULT_THREAD_NUM;$/;"	m	class:ThreadPool	file:
+thread_num	ThreadPool/ThreadPool.h	/^        static int thread_num;$/;"	m	class:ThreadPool
+threshold	EditDistance/conf.h	/^    static int threshold;$/;"	m	class:Conf
+threshold	pro3_demo.cpp	/^int Conf::threshold = 3;$/;"	m	class:Conf	file:
+threshold	pro4_demo_1.cpp	/^double threshold = DEFAULT_BEAM_THRESHOLD;$/;"	v
+threshold	rawdtw.cpp	/^double threshold;$/;"	v
+tid	ThreadPool/ThreadPool.h	/^    pthread_t tid;$/;"	m	struct:thread_info
+train	Feature/HMMAutomatonSet.cpp	/^SP_RESULT HMMAutomatonSet::train() {$/;"	f	class:HMMAutomatonSet
+trainThreshold	Feature/WordDtwRecognition.h	/^        void trainThreshold() {$/;"	f	class:WordDtwRecognition
+trainTimes	Feature/HMMRecognition.h	/^        int trainTimes;$/;"	m	class:HMMRecognition
+transferCost	Feature/HMMAutomaton.h	/^    Matrix<double> transferCost;$/;"	m	class:HMMAutomaton
+type	EditDistance/app.h	/^	int type;$/;"	m	struct:cmp_task_info
+type	Feature/Feature.h	/^    FeatureType type;$/;"	m	class:Feature
+u	Feature/KMeanState.h	/^        double u[39];$/;"	m	class:KMeanState
+u	Feature/SoftState.h	/^        double u[39];$/;"	m	class:SoftState
+update	EditDistance/calcDist.h	/^void update(Path * path,int * val,DIR * p,int a_l,int b_l,int ret, int w){$/;"	f
+updateDtwNode	Feature/WaveFeatureOP.h	/^    void updateDtwNode(int columnIdx, int rowIdx, double newPathDist) {$/;"	f	class:WaveFeatureOP
+updateSegmentation	Feature/HMMKMeanAutomaton.h	/^        void updateSegmentation(int templateIdx, int bestFinalRowIdx) {$/;"	f	class:HMMKMeanAutomaton
+updateTemplateNode	Feature/HMMSoftAutomaton.cpp	/^void HMMSoftAutomaton::updateTemplateNode(int templateIdx) {$/;"	f	class:HMMSoftAutomaton
+updateTemplateTransfer	Feature/HMMSoftAutomaton.cpp	/^void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {$/;"	f	class:HMMSoftAutomaton
+updateTransfer	Feature/HMMKMeanAutomaton.h	/^        bool updateTransfer() {$/;"	f	class:HMMKMeanAutomaton
+updateTransfer	Feature/HMMSoftAutomaton.cpp	/^bool HMMSoftAutomaton::updateTransfer() {$/;"	f	class:HMMSoftAutomaton
+user	recorder.cpp	/^char user[100] = "anony";$/;"	v
 userData	Capture/Capture.h	/^    void * userData;$/;"	m	class:Capture
+val	EditDistance/path.h	/^    int * val;$/;"	m	struct:Path
+vecIdx	Feature/WaveFeatureOPSet.h	/^                int vecIdx;$/;"	m	class:WaveFeatureOPSet::iterator
 vec_file_read	Matlab/vec_file_read.m	/^function [y] = vec_file_read(filename)$/;"	f
+w	EditDistance/app.h	/^	const char * w;$/;"	m	struct:cmp_task_info
+wavFileName	pro2_demo.cpp	/^char wavFileName[1024] = "\\0";$/;"	v
+winFunc	Feature/FeatureExtractor.h	/^    double (*winFunc)(int, int);$/;"	m	class:FeatureExtractor
+window	Feature/FeatureExtractor.h	/^        std::vector<double> * window;$/;"	m	struct:FeatureExtractor::fft_task_info
+window	Feature/FeatureExtractor.h	/^        std::vector<double> * window;$/;"	m	struct:FeatureExtractor::padding_task_info
 windowFFT	Feature/FeatureExtractor.cpp	/^std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \\$/;"	f	class:FeatureExtractor
 windowMul	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowMul(std::vector<double> &window, \\$/;"	f	class:FeatureExtractor
 windowing	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::windowing(Matrix<double> & out_windows, \\$/;"	f	class:FeatureExtractor
+wordAsynRecognition	Feature/WordDtwRecognition.cpp	/^SP_RESULT WordDtwRecognition::wordAsynRecognition(std::vector<Feature> &inputFeature) {$/;"	f	class:WordDtwRecognition
+wordSp	EditDistance/app.cpp	/^const char * wordSp = ".,:!?\\"\\t\\n\\r ";$/;"	v
+wordSynRecognition	Feature/WordDtwRecognition.cpp	/^SP_RESULT WordDtwRecognition::wordSynRecognition(std::vector<Feature> &inputFeature) {$/;"	f	class:WordDtwRecognition
+wts	Feature/FeatureExtractor.h	/^        std::vector<double> * wts;$/;"	m	struct:FeatureExtractor::mul_task_info
 ~AEPAnalysis	Analysis/AEPAnalysis.h	/^    ~AEPAnalysis(){};$/;"	f	class:AEPAnalysis
+~APP	EditDistance/app.cpp	/^APP::~APP(){}$/;"	f	class:APP
 ~AutoCapture	Capture/AutoCapture.h	/^    ~AutoCapture(){};$/;"	f	class:AutoCapture
 ~BEPAnalysis	Analysis/BEPAnalysis.h	/^    ~BEPAnalysis(){};$/;"	f	class:BEPAnalysis
 ~Capture	Capture/Capture.cpp	/^Capture::~Capture(){$/;"	f	class:Capture
+~Container	EditDistance/tmp/container.h	/^	~Container(){}$/;"	f	class:Container
 ~DAEPAnalysis	Analysis/DAEPAnalysis.h	/^    ~DAEPAnalysis(){};$/;"	f	class:DAEPAnalysis
+~DummyState	Feature/DummyState.h	/^        ~DummyState() {}$/;"	f	class:DummyState
 ~EPAnalysis	Analysis/EPAnalysis.h	/^    ~EPAnalysis(){};$/;"	f	class:EPAnalysis
-~FeatureExtractor	Feature/FeatureExtractor.h	/^    ~FeatureExtractor(){}$/;"	f	class:FeatureExtractor
+~FeatureExtractor	Feature/FeatureExtractor.h	/^    ~FeatureExtractor() {}$/;"	f	class:FeatureExtractor
+~HMMAutomaton	Feature/HMMAutomaton.h	/^    virtual ~HMMAutomaton() {};$/;"	f	class:HMMAutomaton
+~HMMAutomatonSet	Feature/HMMAutomatonSet.cpp	/^HMMAutomatonSet::~HMMAutomatonSet() {$/;"	f	class:HMMAutomatonSet
+~HMMKMeanAutomaton	Feature/HMMKmeanAutomaton.cpp	/^HMMKMeanAutomaton::~HMMKMeanAutomaton() {$/;"	f	class:HMMKMeanAutomaton
+~HMMRecognition	Feature/HMMRecognition.cpp	/^HMMRecognition::~HMMRecognition() {$/;"	f	class:HMMRecognition
+~HMMSoftAutomaton	Feature/HMMSoftAutomaton.cpp	/^HMMSoftAutomaton::~HMMSoftAutomaton() {$/;"	f	class:HMMSoftAutomaton
+~HMMState	Feature/HMMState.h	/^        virtual ~HMMState() {};$/;"	f	class:HMMState
+~KMeanState	Feature/KMeanState.cpp	/^KMeanState::~KMeanState() {$/;"	f	class:KMeanState
+~Path	EditDistance/path.h	/^    ~Path(){$/;"	f	struct:Path
 ~RawData	data/RawData.cpp	/^RawData::~RawData(){$/;"	f	class:RawData
+~SerialFiles	Configure/SerialFiles.cpp	/^SerialFiles::~SerialFiles() {$/;"	f	class:SerialFiles
+~SoftState	Feature/SoftState.cpp	/^SoftState::~SoftState() {}$/;"	f	class:SoftState
+~ThreadPool	ThreadPool/ThreadPool.cpp	/^ThreadPool::~ThreadPool() {$/;"	f	class:ThreadPool
+~WaveFeatureOP	Feature/WaveFeatureOP.h	/^    ~WaveFeatureOP() {}$/;"	f	class:WaveFeatureOP
+~WaveFeatureOPSet	Feature/WaveFeatureOPSet.cpp	/^WaveFeatureOPSet::~WaveFeatureOPSet() {}$/;"	f	class:WaveFeatureOPSet
+~WordDtwRecognition	Feature/WordDtwRecognition.cpp	/^WordDtwRecognition::~WordDtwRecognition() {}$/;"	f	class:WordDtwRecognition
