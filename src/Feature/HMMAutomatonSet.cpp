@@ -19,6 +19,7 @@
 #include "HMMSoftAutomaton.h"
 #include <string>
 #include <iostream>
+#include "ThreadPool.h"
 
 HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {
 }
@@ -26,11 +27,18 @@ HMMAutomatonSet::~HMMAutomatonSet() {
 }
 
 
+void HMMAutomatonSet::hmmTrainTask(void *in) {
+    HMMAutomaton * automaton = (HMMAutomaton *) in;
+
+    automaton->hmmTrain();
+}
+
 SP_RESULT HMMAutomatonSet::train() {
     clear();
 
     dataSetType::iterator templateItr;
 
+    ThreadPool threadPool(ThreadPool::thread_num);
     for(templateItr = dataSet.begin(); templateItr != dataSet.end(); templateItr ++) {
         std::string word = templateItr->first;
 
@@ -42,8 +50,16 @@ SP_RESULT HMMAutomatonSet::train() {
         else 
             automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, trainTimes); 
 
-        automatons[word]->hmmTrain();
+        sp_task task;
+
+        task.func = hmmTrainTask;
+        task.in   = (void *)(automatons[word]);
+
+        threadPool.addTask(task);
+
+//        automatons[word]->hmmTrain();
     }
+    threadPool.run();
     return SP_SUCCESS;
 }
 

@@ -32,6 +32,7 @@
 #include "tool.h"
 #include "configure_dtw.h"
 #include "HMMRecognition.h"
+#include "ThreadPool.h"
 
 using namespace std;
 
@@ -165,6 +166,7 @@ bool dealOpts(int argc, char **argv) {
                 break;
             case 'j':
                 threadNum = atoi(optarg);
+                ThreadPool::thread_num = threadNum;
                 break;
             case 'g':
                 demoType = atoi(optarg);
