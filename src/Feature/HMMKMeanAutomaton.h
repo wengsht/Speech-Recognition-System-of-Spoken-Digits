@@ -123,9 +123,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
             // 每个transfer有0.01的变动 TODO
             return isBigChange(wholeChangeCost);
         }
-        bool isBigChange(bool wholeChangeCost) {
-            return wholeChangeCost >= 0.01 * stateNum * DTW_MAX_FORWARD;
-        }
+        //
         // return false to stop training
         bool iterateTrain() {
             int idx, bestFinalRowIdx;

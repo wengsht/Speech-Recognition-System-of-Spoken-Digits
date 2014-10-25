@@ -60,10 +60,10 @@ class HMMSoftAutomaton : public HMMAutomaton {
         // 累加每个模板对transfer的贡献(cost)
         void updateTemplateTransfer(int templateIdx);
 
-        // 所有u，所有t处于s的概率和
-        std::vector<double> YustProb;
+        // 所有u，所有t处于s的Cost和
+        std::vector<double> YustCost;
         // 所有u，t， s转移到sNxt的概率的总和
-        Matrix<double> Ys2sNxtProb;
+        Matrix<double> Ys2sNxtCost;
 
         // 每次alpha 和beta迭代之前算好 当前template所有node的点cost
         // nodeCostTmp[s][t] 

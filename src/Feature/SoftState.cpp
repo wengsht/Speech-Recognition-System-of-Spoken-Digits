@@ -33,8 +33,7 @@ void SoftState::gaussianTrain(int gaussianNum) {
         u[i] = sigma[i] = 0;
         double cnt = 0;
         for(int j = 0;j < templates->size(); j++) {
-            for(int k = 0; k < (*templates)[j][k][i]; k++) {
-
+            for(int k = 0; k < (*templates)[j].size(); k++) {
                 u[i] += (*templates)[j][k][i] * probabilities[j][k];
                 sigma[i] += probabilities[j][k] * pow((*templates)[j][k][i], 2.0);
 
@@ -66,5 +65,4 @@ double SoftState::nodeCost(Feature *inputFeature) {
     b *= 0.5;
 
     return a+b; //p2cost(a+b);
-    return 0.0;
 }

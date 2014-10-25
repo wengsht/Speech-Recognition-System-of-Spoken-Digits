@@ -39,6 +39,11 @@ void HMMSoftAutomaton::hmmTrain() {
         states.push_back(new SoftState(templates));
     }
 
+    // 统计每个状态初始有多少个节点
+    std::vector<int> nodeCnt(stateNum + 1);
+    for(idx = 0; idx <= stateNum; idx++) 
+        nodeCnt[idx] = 0;
+
     for(idx = 0; idx < datas.size();idx ++) 
         for(idy = 1; idy <=stateNum; idy ++)
             for(idz = 0; idz < datas[idx].size(); idz ++) 
@@ -55,15 +60,46 @@ void HMMSoftAutomaton::hmmTrain() {
             int itr;
             for(itr = 0; itr < featurePerState; itr ++) {
                 getState(idy)->probabilities[idx][idz+itr] = 1.0;
+
+                nodeCnt[idy] ++;
             }
             idz += itr;
+
         }
     }
 
-    // first Train
     for(idx = 1;idx <= stateNum;idx ++) {
         getState(idx)->gaussianTrain(gaussNum);
+
+//        printf("%d\n", idx);
+//        getState(idx)->dump();
     }
+
+    // init transferCost
+    for(idx = 0; idx <= stateNum; idx++) 
+        for(idy = 0; idy <= stateNum; idy++) 
+            transferCost[idx][idy] = Feature::IllegalDist;
+
+    for(idx = 1; idx < stateNum; idx ++) {
+        transferCost[idx][idx] = p2cost(1.0 * (nodeCnt[idx] - datas.size()) / nodeCnt[idx]);
+        transferCost[idx][idx + 1] = p2cost(1.0 * datas.size() / nodeCnt[idx]);
+    }
+
+    transferCost[stateNum][stateNum] = 0.0;
+
+    /*  
+    for(idx = 0; idx <= stateNum; idx++) {
+        for(idy = 0; idy <= stateNum; idy++)  
+            printf("%lf ", transferCost[idx][idy]);
+        puts("");
+    }
+    */
+
+
+    // Dummy 只会走到1
+    if(stateNum)
+        transferCost[0][1] = 0.0;
+
 
     for(idx = 0; idx < trainTimes; idx++)  {
         if(! iterateTrain()) break;
@@ -77,7 +113,7 @@ double HMMSoftAutomaton::calcCost(WaveFeatureOP &input) {
 }
 
 void HMMSoftAutomaton::beforeAlphaBeta(WaveFeatureOP & features) {
-    if(features.size() <= 0 || stateNum <= 0) 
+    if(features.size() <= 0 || stateNum <= 0)
         return ;
 
     int T = features.size();
@@ -96,17 +132,21 @@ void HMMSoftAutomaton::beforeAlphaBeta(WaveFeatureOP & features) {
         for(int tIdx = 0; tIdx < T; tIdx++) 
             nodeCostTmp[stateIdx][tIdx] = getState(stateIdx)->nodeCost(&features[tIdx]);
 
+//    if(nodeCostTmp[1][0] < Feature::IllegalDist)
+//        printf("%lf\n", nodeCostTmp[1][0]);
+
     int idx, idy;
     if(alphaCost.size() < stateNum + 1) {
         alphaCost.resize(stateNum + 1);
-
     }
     for(idx = 0;idx <= stateNum ; idx++) 
         if(alphaCost[idx].size() < T)
             alphaCost[idx].resize(T);
+
     if(betaCost.size() < stateNum + 1) {
         betaCost.resize(stateNum + 1);
     }
+
     for(idx = 0;idx <= stateNum; idx++) 
         if(betaCost[idx].size() < T)
             betaCost[idx].resize(T);
@@ -117,7 +157,8 @@ void HMMSoftAutomaton::beforeAlphaBeta(WaveFeatureOP & features) {
         alphaCost[idx][0] = Feature::IllegalDist;
         betaCost[idx][T-1] = 0.0;
     }
-    alphaCost[1][0] = getState(1)->nodeCost(&(features[0]));
+    alphaCost[1][0] = nodeCostTmp[1][0]; //getState(1)->nodeCost(&(features[0]));
+
     // 处于0状态非法
     betaCost[0][T-1] = Feature::IllegalDist;
 }
@@ -171,21 +212,21 @@ void HMMSoftAutomaton::calcAlphaBeta(WaveFeatureOP & features) {
 
 void HMMSoftAutomaton::initIterate() {
     int idx, idy;
-    if(YustProb.size() < stateNum + 1) 
-        YustProb.resize(stateNum + 1);
+    if(YustCost.size() < stateNum + 1) 
+        YustCost.resize(stateNum + 1);
 
-    if(Ys2sNxtProb.size() < stateNum + 1) {
-        Ys2sNxtProb.resize(stateNum + 1);
+    if(Ys2sNxtCost.size() < stateNum + 1) {
+        Ys2sNxtCost.resize(stateNum + 1);
     }
-    for(idx = 0;idx < stateNum + 1; idx ++) 
-        Ys2sNxtProb[idx].resize(stateNum + 1);
+    for(idx = 0;idx <= stateNum; idx ++) 
+        Ys2sNxtCost[idx].resize(stateNum + 1);
 
     for(idx = 0; idx <= stateNum; idx ++) {
-        YustProb[idx] = 0;
+        YustCost[idx] = Feature::IllegalDist;
 
         for(idy = 0; idy < DTW_MAX_FORWARD; idy ++) {
             if(idx + idy <= stateNum)
-                Ys2sNxtProb[idx][idx + idy] = 0.0;
+                Ys2sNxtCost[idx][idx + idy] = Feature::IllegalDist;
         }
     }
 }
@@ -193,36 +234,49 @@ void HMMSoftAutomaton::initIterate() {
 bool HMMSoftAutomaton::updateTransfer() {
     int stateIdx1, stateIdx2, dtwIdx;
 
+    double totalChange, tmp;
     for(stateIdx1 = 1; stateIdx1 <= stateNum; stateIdx1++) {
         for(dtwIdx = 0; dtwIdx < DTW_MAX_FORWARD; dtwIdx++) {
             stateIdx2 = stateIdx1 + dtwIdx;
             if(stateIdx2 > stateNum) break;
 
-            transferCost[stateIdx1][stateIdx2] = p2cost( Ys2sNxtProb[stateIdx1][stateIdx2] / YustProb[stateIdx1] );
+            tmp = transferCost[stateIdx1][stateIdx2];
+            transferCost[stateIdx1][stateIdx2] = Ys2sNxtCost[stateIdx1][stateIdx2] - YustCost[stateIdx1];
+
+            totalChange += fabs(tmp - transferCost[stateIdx1][stateIdx2]);
         }
     }
 
-    return true;
+    return isBigChange(totalChange);
 }
 
 void HMMSoftAutomaton::updateTemplateNode(int templateIdx) {
     int stateIdx, tIdx;
     int T = (*templates)[templateIdx].size();
-    double tmpCost, tmpProb;
+    double tmpProb;
 
-    for(stateIdx = 1; stateIdx <= stateNum; stateIdx ++) {
-        for(tIdx = 0; tIdx < T; tIdx ++) {
-            // 这个就是节点的cost
-            tmpCost = alphaCost[stateIdx][tIdx] + betaCost[stateIdx][tIdx];
+    std::vector<double> tmpCost;
+    tmpCost.resize(stateNum + 1);
 
-            //  节点的概率
-            tmpProb = cost2p(tmpCost);
+    for(tIdx = 0; tIdx < T; tIdx ++) {
+        double sigmaCost = Feature::IllegalDist;
+        for(stateIdx = 1; stateIdx <= stateNum; stateIdx++) {
+            tmpCost[stateIdx] = alphaCost[stateIdx][tIdx] + betaCost[stateIdx][tIdx];
+
+            sigmaCost = logInsideSum(sigmaCost, tmpCost[stateIdx]);
+        }
+
+        for(stateIdx = 1; stateIdx <= stateNum; stateIdx++) {
+            tmpCost[stateIdx] -= sigmaCost;
+
+            tmpProb = cost2p(tmpCost[stateIdx]);
 
             getState(stateIdx)->probabilities[templateIdx][tIdx] = tmpProb;
 
-            YustProb[stateIdx] += tmpProb;
+            YustCost[stateIdx] = logInsideSum(YustCost[stateIdx], tmpCost[stateIdx]);
         }
     }
+
 }
 
 void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {
@@ -237,7 +291,7 @@ void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {
         s2sNxtCost[idx].resize(stateNum + 1);
 
     for(tIdx = 0; tIdx < T - 1; tIdx ++) {
-        bool first = true;
+        tmpTotalCost = Feature::IllegalDist;
         for(stateIdx1 = 1; stateIdx1 <= stateNum; stateIdx1++) {
             // 只需要算dtw 3步 的转移， 
             for(dtwIdx = 0; dtwIdx < DTW_MAX_FORWARD; dtwIdx++) {
@@ -247,13 +301,7 @@ void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {
 
                 s2sNxtCost[stateIdx1][stateIdx2] = alphaCost[stateIdx1][tIdx] + transferCost[stateIdx1][stateIdx2] + nodeCostTmp[stateIdx2][tIdx + 1] + betaCost[stateIdx2][tIdx + 1];
 
-                if(first) {
-                    tmpTotalCost = s2sNxtCost[stateIdx1][stateIdx2];
-                    first = false;
-                }
-                else {
-                    tmpTotalCost = logInsideSum(tmpTotalCost, s2sNxtCost[stateIdx1][stateIdx2]);
-                }
+                tmpTotalCost = logInsideSum(tmpTotalCost, s2sNxtCost[stateIdx1][stateIdx2]);
             }
         }
         // 把值累加到全局的s->sNxt 的转移概率中
@@ -267,11 +315,12 @@ void HMMSoftAutomaton::updateTemplateTransfer(int templateIdx) {
 
                 double tmpCost = s2sNxtCost[stateIdx1][stateIdx2] - tmpTotalCost;
 
-                Ys2sNxtProb[stateIdx1][stateIdx2] += cost2p(tmpCost);
+                Ys2sNxtCost[stateIdx1][stateIdx2] = logInsideSum(Ys2sNxtCost[stateIdx1][stateIdx2], tmpCost);
             }
         }
     }
 }
+
 bool HMMSoftAutomaton::iterateTrain() {
     int idx, idy;
     initIterate();
@@ -289,6 +338,14 @@ bool HMMSoftAutomaton::iterateTrain() {
 
     bool bigChange = updateTransfer();
 
+    /*  
+    for(int i = 1;i <= stateNum; i++) {
+        for(int j = 1;j <= stateNum; j++) {
+            printf("%lf ", transferCost[i][j]);
+        }
+        puts("");
+    }
+*/
     for(idx = 1; idx <= stateNum; idx++) {
         getState(idx)->gaussianTrain(gaussNum);
     }

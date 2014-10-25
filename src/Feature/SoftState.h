@@ -30,6 +30,11 @@ class SoftState : public HMMState {
         void gaussianTrain(int gaussianNum);
         double nodeCost(Feature *inputFeature);
 
+        void dump() {
+            for(int i  =0;i < 39;i++) 
+                printf("%lf %lf\n", u[i], sigma[i]);
+            puts("");
+        }
     private:
         // vector<WaveFeatureOP> 对应的node，处于这个state的概率
         // probabilities[i][j] 第i个wav的第j个feature属于这个state的概率
