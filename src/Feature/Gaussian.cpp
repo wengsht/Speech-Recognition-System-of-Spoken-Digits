@@ -52,7 +52,7 @@ void Gaussian::print(){
 	}puts("]");
 }
 bool Gaussian::done(){
-	double ep = 0.1;
+	double ep = 0.0001;
 	bool converge = true;
 	if(sampleNum == 0){
 		flag = false;

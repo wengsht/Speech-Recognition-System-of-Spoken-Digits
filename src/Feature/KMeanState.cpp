@@ -39,7 +39,7 @@ void KMeanState::clearGaussian(){
 }
 
 void KMeanState::gaussianTrain(int gaussianNum) {
-	gaussianNum = 4;
+	gaussianNum = 3;
 	//printf("start train ~~  gaussian num:%d\n",gaussianNum);
 	initTrain(gaussianNum);
 	this->KMeanTrain();
@@ -143,7 +143,7 @@ void KMeanState::initTrain(int gaussianNum){
 	int featureSize = points[0]->size();
 	for(int i = 0;i<gaussianNum;i++){
 		Gaussian * g = new  Gaussian(featureSize);
-		g->setMean(points[i*step]);
+		g->setMean(points[PointNum-1-i*step]);
 		g->setCVar(3);
 		weight.push_back(1.0/gaussianNum);
 		GaussianSet.push_back(g);
@@ -189,7 +189,7 @@ void KMeanState::KMeanTrain()
 		for(int i = 0;i<GaussianSet.size();i++){
 			double wi = count[i] / (double)PointNum;
 			converge &= GaussianSet[i]->done();
-			if(fabs(wi-weight[i])>0.1){
+			if(fabs(wi-weight[i])>0.0001){
 				converge = false;
 			}
 			weight[i] = wi;
