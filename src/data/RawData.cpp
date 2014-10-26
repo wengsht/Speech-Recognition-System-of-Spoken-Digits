@@ -73,6 +73,7 @@ void RawData::copyBlockData(int from,int to){
     to = to *SAMPLES_IN_EACH_FRAME;
     if(from >= frame_num)return;
     if(to>=frame_num)return;
+	if(from == to) return;
     for(int i = 0;i<SAMPLES_IN_EACH_FRAME;i++){
         data[to+i] = data[from+i];
     }

@@ -10,6 +10,22 @@ AEPAnalysis	Analysis/AEPAnalysis.h	/^class AEPAnalysis:public EPAnalysis{$/;"	c
 ALPHA	Configure/configure_capture.h	/^const double ALPHA = 0.9;               \/\/small and slower(in speech)$/;"	v
 APP	EditDistance/app.cpp	/^APP::APP(){$/;"	f	class:APP
 APP	EditDistance/app.h	/^class APP {$/;"	c
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	326;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	329;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	332;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	335;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	338;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	341;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	344;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	348;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	319;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	322;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	325;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	328;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	331;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	334;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	337;"	d	file:
+ARCHITECTURE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	341;"	d	file:
 AUTOMATON_STATE_NUM	Configure/configure_hmm.h	1;"	d
 AutoCapture	Capture/AutoCapture.h	/^    AutoCapture(EPAnalysis * ep):ep(ep){};$/;"	f	class:AutoCapture
 AutoCapture	Capture/AutoCapture.h	/^class AutoCapture:public Capture{$/;"	c
@@ -23,6 +39,214 @@ BytesPerSample	readwave/readwave.h	/^	short BytesPerSample;$/;"	m	struct:WavFile
 CEPS_NUM	Configure/configure_feature.h	/^const int    CEPS_NUM = 13;$/;"	v
 CHANGE	EditDistance/path.h	/^    DELETE,INSERT,SAME,CHANGE$/;"	e	enum:DIR
 CHECK_ERR	Capture/Capture.cpp	/^void CHECK_ERR(PaError err){$/;"	f
+CMAKE_BINARY_DIR	Analysis/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	Capture/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	Configure/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	EditDistance/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	Feature/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	ThreadPool/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	data/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	readwave/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_BINARY_DIR	test/Makefile	/^CMAKE_BINARY_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_COMMAND	Analysis/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	Capture/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	Configure/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	EditDistance/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	Feature/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	ThreadPool/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	data/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	readwave/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_COMMAND	test/Makefile	/^CMAKE_COMMAND = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake$/;"	m
+CMAKE_SOURCE_DIR	Analysis/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	Capture/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	Configure/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	EditDistance/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	Feature/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	ThreadPool/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	data/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	readwave/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+CMAKE_SOURCE_DIR	test/Makefile	/^CMAKE_SOURCE_DIR = \/Users\/admin\/Project\/speech\/src$/;"	m
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	106;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	109;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	111;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	120;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	128;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	133;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	13;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	140;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	143;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	146;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	154;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	173;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	181;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	186;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	191;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	198;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	215;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	218;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	221;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	34;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	43;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	46;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	59;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	65;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	71;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	77;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	91;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	98;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	103;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	111;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	114;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	116;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	125;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	12;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	133;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	138;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	145;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	148;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	156;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	175;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	183;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	188;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	18;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	191;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	208;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	211;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	214;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	39;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	48;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	51;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	64;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	70;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	76;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	82;"	d	file:
+COMPILER_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	96;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	100;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	114;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	121;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	129;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	135;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	147;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	156;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	15;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	175;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	193;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	201;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	206;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	35;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	48;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	60;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	67;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	73;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	80;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	85;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	93;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	105;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	119;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	126;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	134;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	140;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	149;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	14;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	158;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	177;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	194;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	199;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	20;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	40;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	53;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	65;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	72;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	78;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	85;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	90;"	d	file:
+COMPILER_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	98;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	101;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	115;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	122;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	130;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	136;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	148;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	157;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	16;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	176;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	194;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	202;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	207;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	36;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	49;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	61;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	68;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	74;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	81;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	86;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	94;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	106;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	120;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	127;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	135;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	141;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	150;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	159;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	15;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	178;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	195;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	200;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	21;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	41;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	54;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	66;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	73;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	79;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	86;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	91;"	d	file:
+COMPILER_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	99;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	102;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	116;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	124;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	137;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	150;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	161;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	164;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	177;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	18;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	195;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	203;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	208;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	20;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	38;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	50;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	62;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	82;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	87;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	95;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	100;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	107;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	121;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	129;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	142;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	152;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	163;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	166;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	179;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	196;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	201;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	23;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	25;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	43;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	55;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	67;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	87;"	d	file:
+COMPILER_VERSION_PATCH	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	92;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	168;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	24;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	44;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	170;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	29;"	d	file:
+COMPILER_VERSION_TWEAK	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	49;"	d	file:
 CONST_REFERENCE_READ_ONLY_DECLARE	Configure/tool.h	73;"	d
 CYAN	Configure/tool.h	53;"	d
 Capture	Capture/Capture.cpp	/^Capture::Capture(){$/;"	f	class:Capture
@@ -40,6 +264,8 @@ DARY_GRAY	Configure/tool.h	52;"	d
 DATA_SILENCE	Configure/configure_basic.h	49;"	d
 DATA_SILENCE	Configure/configure_basic.h	54;"	d
 DATA_SILENCE	Configure/configure_basic.h	59;"	d
+DEC	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	352;"	d	file:
+DEC	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	345;"	d	file:
 DEFAULT_BEAM_THRESHOLD	Configure/configure_dtw.h	27;"	d
 DEFAULT_SIZE_BIT	Configure/SerialFiles.cpp	23;"	d	file:
 DEFAULT_THREAD_NUM	Configure/configure.h	/^const int DEFAULT_THREAD_NUM = 4;$/;"	v
@@ -54,6 +280,16 @@ DummyState	Feature/DummyState.h	/^        DummyState(std::vector<WaveFeatureOP> 
 DummyState	Feature/DummyState.h	/^class DummyState : public HMMState {$/;"	c
 EPAnalysis	Analysis/EPAnalysis.h	/^    EPAnalysis(){$/;"	f	class:EPAnalysis
 EPAnalysis	Analysis/EPAnalysis.h	/^class EPAnalysis{$/;"	c
+EQUALS	Analysis/Makefile	/^EQUALS = =$/;"	m
+EQUALS	Capture/Makefile	/^EQUALS = =$/;"	m
+EQUALS	Configure/Makefile	/^EQUALS = =$/;"	m
+EQUALS	EditDistance/Makefile	/^EQUALS = =$/;"	m
+EQUALS	Feature/Makefile	/^EQUALS = =$/;"	m
+EQUALS	Makefile	/^EQUALS = =$/;"	m
+EQUALS	ThreadPool/Makefile	/^EQUALS = =$/;"	m
+EQUALS	data/Makefile	/^EQUALS = =$/;"	m
+EQUALS	readwave/Makefile	/^EQUALS = =$/;"	m
+EQUALS	test/Makefile	/^EQUALS = =$/;"	m
 ERROR_CODE	Configure/tool.cpp	134;"	d	file:
 ERROR_CODE	Configure/tool.cpp	137;"	d	file:
 ERROR_CODE	Configure/tool.h	104;"	d
@@ -76,7 +312,11 @@ FormatCategory	readwave/readwave.h	/^	short FormatCategory;$/;"	m	struct:WavFile
 GAUSSIAN_NUM	Configure/configure_hmm.h	2;"	d
 GREEN	Configure/tool.h	48;"	d
 GREEN_BACK	Configure/tool.h	63;"	d
+Gaussian	Feature/Gaussian.h	/^class Gaussian{$/;"	c
+GaussianSet	Feature/KMeanState.h	/^		vector<Gaussian*> GaussianSet;$/;"	m	class:KMeanState
 GetWavHeader	readwave/readwave.cpp	/^void GetWavHeader(const char *wavFile, short *Bits, int *Rate,$/;"	f
+HEX	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	363;"	d	file:
+HEX	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	356;"	d	file:
 HMMAutomaton	Feature/HMMAutomaton.cpp	/^HMMAutomaton::HMMAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum, int gaussNum, int trainTimes) : templates(templates), stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {$/;"	f	class:HMMAutomaton
 HMMAutomaton	Feature/HMMAutomaton.h	/^class HMMAutomaton {$/;"	c
 HMMAutomatonSet	Feature/HMMAutomatonSet.cpp	/^HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {$/;"	f	class:HMMAutomatonSet
@@ -91,6 +331,7 @@ HMMState	Feature/HMMState.h	/^        HMMState() : templates(NULL) {}$/;"	f	clas
 HMMState	Feature/HMMState.h	/^        HMMState(std::vector<WaveFeatureOP> *templates) : templates(templates) {}$/;"	f	class:HMMState
 HMMState	Feature/HMMState.h	/^class HMMState {$/;"	c
 I	Feature/WaveFeatureOPSet.h	/^                dataSetType::iterator I;$/;"	m	class:WaveFeatureOPSet::iterator
+ID_VOID_MAIN	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	9;"	d	file:
 INPUTS_DIR	Configure/configure_dtw.h	20;"	d
 INSERT	EditDistance/path.h	/^    DELETE,INSERT,SAME,CHANGE$/;"	e	enum:DIR
 IllegalDist	Feature/Feature.cpp	/^const double Feature::IllegalDist = 1e18;$/;"	m	class:Feature	file:
@@ -101,6 +342,7 @@ Initial	Analysis/EPAnalysis.h	/^    virtual void Initial(RawData * rawData){$/;"
 KMEAN	Feature/HMMState.h	/^            KMEAN,$/;"	e	enum:HMMState::StateType
 KMeanState	Feature/KMeanState.cpp	/^KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {$/;"	f	class:KMeanState
 KMeanState	Feature/KMeanState.h	/^class KMeanState : public HMMState {$/;"	c
+KMeanTrain	Feature/KMeanState.cpp	/^void KMeanState::KMeanTrain()$/;"	f	class:KMeanState
 Key	EditDistance/tmp/containerset.h	/^	vector <int> Key;$/;"	m	class:ContainerSet
 LEVEL_BG_THRESHOLD	Configure/configure_capture.h	/^const double LEVEL_BG_THRESHOLD = 10;$/;"	v
 LIGHT_BLUE	Configure/tool.h	51;"	d
@@ -142,6 +384,58 @@ PA_DATA_TYPE	Configure/configure_basic.h	47;"	d
 PA_DATA_TYPE	Configure/configure_basic.h	52;"	d
 PA_DATA_TYPE	Configure/configure_basic.h	57;"	d
 PI	Feature/mathtool.h	/^const double PI = std::acos(-1);$/;"	v
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	240;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	243;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	246;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	249;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	252;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	255;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	258;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	261;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	264;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	267;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	270;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	273;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	276;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	279;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	282;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	285;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	288;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	291;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	294;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	297;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	300;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	303;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	306;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	309;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	312;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	315;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	233;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	236;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	239;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	242;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	245;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	248;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	251;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	254;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	257;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	260;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	263;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	266;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	269;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	272;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	275;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	278;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	281;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	284;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	287;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	290;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	293;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	296;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	299;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	302;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	305;"	d	file:
+PLATFORM_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	308;"	d	file:
 PRINTF_S_FORMAT	Configure/configure_basic.h	50;"	d
 PRINTF_S_FORMAT	Configure/configure_basic.h	55;"	d
 PRINTF_S_FORMAT	Configure/configure_basic.h	60;"	d
@@ -152,6 +446,7 @@ Path	EditDistance/path.h	/^    Path(int m){$/;"	f	struct:Path
 Path	EditDistance/path.h	/^struct Path {$/;"	s
 PathSplitIdx	Feature/WaveFeatureOP.cpp	/^const int WaveFeatureOP::PathSplitIdx = -1;$/;"	m	class:WaveFeatureOP	file:
 PathSplitIdx	Feature/WaveFeatureOP.h	/^    const static int PathSplitIdx;$/;"	m	class:WaveFeatureOP
+PointNum	Feature/KMeanState.h	/^		int PointNum;$/;"	m	class:KMeanState
 READ_INIT_DECLARE	Configure/tool.h	91;"	d
 READ_ONLY_DECLARE	Configure/tool.h	69;"	d
 READ_WRITE_DECLARE	Configure/tool.h	86;"	d
@@ -159,6 +454,16 @@ RED	Configure/tool.h	46;"	d
 RED_BACK	Configure/tool.h	62;"	d
 REFERENCE_READ_ONLY_DECLARE	Configure/tool.h	77;"	d
 RIFF	readwave/readwave.h	/^	char RIFF[4];$/;"	m	struct:WavFileHead
+RM	Analysis/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	Capture/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	Configure/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	EditDistance/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	Feature/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	ThreadPool/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	data/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	readwave/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
+RM	test/Makefile	/^RM = \/usr\/local\/Cellar\/cmake\/3.0.1\/bin\/cmake -E remove -f$/;"	m
 Raw	Feature/Feature.h	/^        Raw,$/;"	e	enum:Feature::FeatureType
 Raw	Feature/WaveFeatureOP.cpp	/^    opType(Raw), \\$/;"	v
 Raw	Feature/WaveFeatureOP.h	/^        Raw,$/;"	e	enum:WaveFeatureOP::OpType
@@ -177,7 +482,29 @@ SAMPLE_RATE	Configure/configure_basic.h	/^const int SAMPLE_RATE = 44100;  \/\/do
 SAVE_DATA_DIR	Configure/configure_basic.h	/^const char  SAVE_DATA_DIR[] = ".\/";$/;"	v
 SEGMENT_SIZE	Configure/configure_feature.h	/^const int SEGMENT_SIZE = SEGMENT_TIME\/1000.0 * SAMPLES_IN_EACH_FRAME;$/;"	v
 SEGMENT_TIME	Configure/configure_feature.h	/^const int SEGMENT_TIME = 25;$/;"	v
+SHELL	Analysis/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	Capture/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	Configure/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	EditDistance/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	Feature/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	ThreadPool/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	data/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	readwave/Makefile	/^SHELL = \/bin\/sh$/;"	m
+SHELL	test/Makefile	/^SHELL = \/bin\/sh$/;"	m
 SILENCE_ENERGY_THRESHOLD	Configure/configure_capture.h	/^const int  SILENCE_ENERGY_THRESHOLD  = 30;  \/\/ as lower as possible$/;"	v
+SIMULATE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	27;"	d	file:
+SIMULATE_ID	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	52;"	d	file:
+SIMULATE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	32;"	d	file:
+SIMULATE_ID	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	57;"	d	file:
+SIMULATE_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	29;"	d	file:
+SIMULATE_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	54;"	d	file:
+SIMULATE_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	34;"	d	file:
+SIMULATE_VERSION_MAJOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	59;"	d	file:
+SIMULATE_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	30;"	d	file:
+SIMULATE_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	55;"	d	file:
+SIMULATE_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	35;"	d	file:
+SIMULATE_VERSION_MINOR	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	60;"	d	file:
 SOFT	Feature/HMMState.h	/^            SOFT$/;"	e	enum:HMMState::StateType
 SOUND_DATA	Configure/configure_basic.h	/^typedef char SOUND_DATA;$/;"	t
 SOUND_DATA	Configure/configure_basic.h	/^typedef short SOUND_DATA;$/;"	t
@@ -189,6 +516,16 @@ SP_RESULT_CNT	Configure/tool.h	/^const int  SP_RESULT_CNT = 1$/;"	v
 SP_SUCCESS	Configure/tool.h	/^    SP_SUCCESS$/;"	e	enum:ERROR_UIDS
 STEPTIME	Configure/configure_feature.h	/^const double STEPTIME = 0.010;$/;"	v
 STOP_IN_SECONDS	Configure/configure_basic.h	/^const double  STOP_IN_SECONDS = 1; \/\/ how many second to wait when in silent$/;"	v
+SUFFIXES	Analysis/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	Capture/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	Configure/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	EditDistance/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	Feature/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	ThreadPool/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	data/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	readwave/Makefile	/^SUFFIXES =$/;"	m
+SUFFIXES	test/Makefile	/^SUFFIXES =$/;"	m
 SampleBytes	readwave/readwave.h	/^	int SampleBytes;$/;"	m	struct:WavFileHead
 SampleRate	readwave/readwave.h	/^	int SampleRate;$/;"	m	struct:WavFileHead
 SerialFiles	Configure/SerialFiles.cpp	/^SerialFiles::SerialFiles() {$/;"	f	class:SerialFiles
@@ -236,6 +573,7 @@ Ys2sNxtCost	Feature/HMMSoftAutomaton.h	/^        Matrix<double> Ys2sNxtCost;$/;"
 YustCost	Feature/HMMSoftAutomaton.h	/^        std::vector<double> YustCost;$/;"	m	class:HMMSoftAutomaton
 _AUTOGUARD_CONFIGURE_DTW_H_	Configure/configure_dtw.h	17;"	d
 _AUTOGUARD_DummyState_H_	Feature/DummyState.h	17;"	d
+_AUTOGUARD_Gaussian_H_	Feature/Gaussian.h	2;"	d
 _AUTOGUARD_HMMAutomatonSet_H_	Feature/HMMAutomatonSet.h	17;"	d
 _AUTOGUARD_HMMAutomaton_H_	Feature/HMMAutomaton.h	17;"	d
 _AUTOGUARD_HMMKMeanAutomaton_H_	Feature/HMMKMeanAutomaton.h	17;"	d
@@ -333,6 +671,7 @@ check	EditDistance/tmp/container.h	/^	bool check(int i,const T& a)const{$/;"	f	c
 checkContinue	Analysis/EPAnalysis.cpp	/^bool EPAnalysis::checkContinue(){$/;"	f	class:EPAnalysis
 clean	data/RawData.cpp	/^void RawData::clean(){$/;"	f	class:RawData
 clear	Feature/HMMAutomatonSet.cpp	/^void HMMAutomatonSet::clear() {$/;"	f	class:HMMAutomatonSet
+clearGuassian	Feature/KMeanState.cpp	/^void KMeanState::clearGuassian(){$/;"	f	class:KMeanState
 clearStates	Feature/HMMAutomaton.cpp	/^void HMMAutomaton::clearStates() {$/;"	f	class:HMMAutomaton
 clearTrainBuffer	Feature/HMMKMeanAutomaton.h	/^        void clearTrainBuffer() {$/;"	f	class:HMMKMeanAutomaton
 clearTrainBuffer	Feature/HMMSoftAutomaton.h	/^        void clearTrainBuffer() {$/;"	f	class:HMMSoftAutomaton
@@ -355,6 +694,7 @@ cost2p	Feature/mathtool.cpp	/^double cost2p(double cost) {$/;"	f
 cp	Feature/mathtool.h	/^typedef std::complex<double> cp;$/;"	t
 createNoise	test/test.cpp	/^void createNoise(const char * file_name){$/;"	f
 cut	Analysis/EPAnalysis.cpp	/^void EPAnalysis::cut(){$/;"	f	class:EPAnalysis
+cvar	Feature/Gaussian.h	/^	double*  cvar;$/;"	m	class:Gaussian
 data	Analysis/EPAnalysis.h	/^    RawData * data() {$/;"	f	class:EPAnalysis
 data	Feature/Feature.h	/^    std::vector<double> data;$/;"	m	class:Feature
 data	data/RawData.h	/^    SOUND_DATA * data;$/;"	m	class:RawData
@@ -398,6 +738,7 @@ exDoubleDeltaFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor:
 exFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exFeatures(const RawData *data) {$/;"	f	class:FeatureExtractor
 exFeatures	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::exFeatures(const RawData *data, \\$/;"	f	class:FeatureExtractor
 false	Feature/WaveFeatureOP.cpp	/^    doRecordPath(false), \\$/;"	v
+featureSize	Feature/Gaussian.h	/^	int featureSize;$/;"	m	class:Gaussian
 fft	Feature/mathtool.cpp	/^void fft(cp *a,int n,int f)$/;"	f
 fft2MelLog	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \\$/;"	f	class:FeatureExtractor
 fft2barkmx	Matlab/rastamat/fft2barkmx.m	/^function wts = fft2barkmx(nfft, sr, nfilts, width, minfreq, maxfreq)$/;"	f
@@ -415,6 +756,7 @@ gaussNum	Feature/HMMRecognition.h	/^        int gaussNum;$/;"	m	class:HMMRecogni
 gaussianTrain	Feature/DummyState.h	/^        void gaussianTrain(int gaussianNum) {$/;"	f	class:DummyState
 gaussianTrain	Feature/KMeanState.cpp	/^void KMeanState::gaussianTrain(int gaussianNum) {$/;"	f	class:KMeanState
 gaussianTrain	Feature/SoftState.cpp	/^void SoftState::gaussianTrain(int gaussianNum) {$/;"	f	class:SoftState
+gaussianTrainTest	Feature/KMeanState.cpp	/^void KMeanState::gaussianTrainTest(int gaussianNum) {$/;"	f	class:KMeanState
 getBeginning	recorder.cpp	/^static int getBeginning(char *prefix) {$/;"	f	file:
 getBestTemplate	Feature/WordDtwRecognition.cpp	/^const WaveFeatureOP * WordDtwRecognition::getBestTemplate() {$/;"	f	class:WordDtwRecognition
 getBlockAveEnergy	data/RawData.cpp	/^double RawData::getBlockAveEnergy(int index){$/;"	f	class:RawData
@@ -455,8 +797,21 @@ increament	ThreadPool/ThreadPool.h	/^        void increament() {$/;"	f	class:Thr
 index	EditDistance/app.h	/^	int index;$/;"	m	struct:cmp_task_info
 info	EditDistance/conf.h	/^	static int info;$/;"	m	class:Conf
 info	pro3_demo.cpp	/^int Conf::info = 0;$/;"	m	class:Conf	file:
+info_arch	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_arch	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_arch = "INFO" ":" "arch[" ARCHITECTURE_ID "]";$/;"	v
+info_compiler	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_compiler	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_compiler = "INFO" ":" "compiler[" COMPILER_ID "]";$/;"	v
+info_platform	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_platform	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_platform = "INFO" ":" "platform[" PLATFORM_ID "]";$/;"	v
+info_simulate	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* info_simulate = "INFO" ":" "simulate[" SIMULATE_ID "]";$/;"	v
+info_simulate_version	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^char const info_simulate_version[] = {$/;"	v
+info_simulate_version	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_simulate_version[] = {$/;"	v
+info_version	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^char const info_version[] = {$/;"	v
+info_version	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const info_version[] = {$/;"	v
 init	Capture/Capture.cpp	/^bool Capture::init(RawData * data,bool input){$/;"	f	class:Capture
 initIterate	Feature/HMMSoftAutomaton.cpp	/^void HMMSoftAutomaton::initIterate() {$/;"	f	class:HMMSoftAutomaton
+initTrain	Feature/KMeanState.cpp	/^void KMeanState::initTrain(int gaussianNum){$/;"	f	class:KMeanState
 init_PA	Capture/Capture.cpp	/^bool Capture::init_PA(){$/;"	f	class:Capture
 init_callback	Capture/AutoCapture.cpp	/^bool AutoCapture::init_callback(RawData * data,bool input){$/;"	f	class:AutoCapture
 init_callback	Capture/Capture.cpp	/^bool Capture::init_callback(RawData * data,bool input){$/;"	f	class:Capture
@@ -503,6 +858,9 @@ logInsideDist	Feature/mathtool.cpp	/^double logInsideDist(double a, double b) {$
 logInsideSum	Feature/mathtool.cpp	/^double logInsideSum(double a, double b) {$/;"	f
 lpc2cep	Matlab/rastamat/lpc2cep.m	/^function features = lpc2cep(a,nout)$/;"	f
 lpc2spec	Matlab/rastamat/lpc2spec.m	/^function [features,F,M] = lpc2spec(lpcas, nout)$/;"	f
+main	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^int main(int argc, char* argv[])$/;"	f
+main	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^void main() {}$/;"	f
+main	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^int main(int argc, char* argv[])$/;"	f
 main	hmm_demo.cpp	/^int main(int argc, char **argv) {$/;"	f
 main	main.cpp	/^int main()$/;"	f
 main	pro2_demo.cpp	/^int main(int argc, char **argv) {$/;"	f
@@ -516,6 +874,7 @@ maxSizeBit	Configure/SerialFiles.cpp	/^const int SerialFiles::maxSizeBit = 13;$/
 maxSizeBit	Configure/SerialFiles.h	/^        const static int maxSizeBit;$/;"	m	class:SerialFiles
 maxTemplatesPerWord	Feature/WaveFeatureOPSet.cpp	/^int WaveFeatureOPSet::maxTemplatesPerWord = MAX_TEMPLATES_PER_WORD;$/;"	m	class:WaveFeatureOPSet	file:
 maxTemplatesPerWord	Feature/WaveFeatureOPSet.h	/^        static int maxTemplatesPerWord;$/;"	m	class:WaveFeatureOPSet
+mean	Feature/Gaussian.h	/^	double*  mean;$/;"	m	class:Gaussian
 mel2dct	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::mel2dct(Feature & feature, std::vector<double> melLog, int cepsNum) {$/;"	f	class:FeatureExtractor
 mel2hz	Feature/FeatureExtractor.h	/^    static double mel2hz(double hz) {$/;"	f	class:FeatureExtractor
 mel2hz	Matlab/rastamat/fft2melmx.m	/^function f = mel2hz(z, htk)$/;"	f
@@ -535,6 +894,7 @@ noUse	readwave/readwave.h	/^	unsigned int noUse;$/;"	m	struct:WavFileHead
 nodeCost	Feature/DummyState.h	/^        double nodeCost(Feature *inputFeature) {$/;"	f	class:DummyState
 nodeCost	Feature/KMeanState.cpp	/^double KMeanState::nodeCost(Feature *inputFeature) {$/;"	f	class:KMeanState
 nodeCost	Feature/SoftState.cpp	/^double SoftState::nodeCost(Feature *inputFeature) {$/;"	f	class:SoftState
+nodeCostTest	Feature/KMeanState.cpp	/^double KMeanState::nodeCostTest(Feature *inputFeature) {$/;"	f	class:KMeanState
 nodeCostTmp	Feature/HMMSoftAutomaton.h	/^        Matrix<double> nodeCostTmp;$/;"	m	class:HMMSoftAutomaton
 normalization	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::normalization(std::vector<Feature> &normalMels, const std::vector<Feature> & melFes) {$/;"	f	class:FeatureExtractor
 operator !=	Feature/WaveFeatureOPSet.h	/^                bool operator !=(const iterator & b) {$/;"	f	class:WaveFeatureOPSet::iterator
@@ -566,6 +926,7 @@ paths	EditDistance/app.h	/^	vector<Path> paths;	$/;"	m	class:APP
 play	Capture/Capture.cpp	/^bool Capture::play(RawData * data){$/;"	f	class:Capture
 playAction	Capture/Capture.cpp	/^bool Capture::playAction(RawData * data){$/;"	f	class:Capture
 playback	recorder.cpp	/^bool playback = false;$/;"	v
+points	Feature/KMeanState.h	/^		Feature ** points;$/;"	m	class:KMeanState
 postaud	Matlab/rastamat/postaud.m	/^function [y,eql] = postaud(x,fmax,fbtype,broaden)$/;"	f
 powSpec	Feature/FeatureExtractor.h	/^        Matrix<double> * powSpec;$/;"	m	struct:FeatureExtractor::mul_task_info
 powSpectrum	Feature/FeatureExtractor.cpp	/^SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \\$/;"	f	class:FeatureExtractor
@@ -585,6 +946,8 @@ probabilities	Feature/SoftState.h	/^        Matrix<double> probabilities;$/;"	m	
 processThread	ThreadPool/ThreadPool.cpp	/^void *ThreadPool::processThread(void *param) {$/;"	f	class:ThreadPool
 process_options	Matlab/rastamat/process_options.m	/^function [varargout] = process_options(args, varargin)$/;"	f
 push_back	Feature/Feature.cpp	/^void Feature::push_back(double d) {$/;"	f	class:Feature
+qnxnto	CMakeFiles/3.0.1/CompilerIdC/CMakeCCompilerId.c	/^char const* qnxnto = "INFO" ":" "qnxnto";$/;"	v
+qnxnto	CMakeFiles/3.0.1/CompilerIdCXX/CMakeCXXCompilerId.cpp	/^char const* qnxnto = "INFO" ":" "qnxnto";$/;"	v
 rastafilt	Matlab/rastamat/rastafilt.m	/^function y = rastafilt(x)$/;"	f
 rastaplp	Matlab/rastamat/rastaplp.m	/^function [cepstra, spectra, pspectrum, lpcas, F, M] = rastaplp(samples, sr, dorasta, modelorder)$/;"	f
 rawData	Feature/Feature.h	/^    double *rawData() {$/;"	f	class:Feature
@@ -687,6 +1050,8 @@ threshold	pro3_demo.cpp	/^int Conf::threshold = 3;$/;"	m	class:Conf	file:
 threshold	pro4_demo_1.cpp	/^double threshold = DEFAULT_BEAM_THRESHOLD;$/;"	v
 threshold	rawdtw.cpp	/^double threshold;$/;"	v
 tid	ThreadPool/ThreadPool.h	/^    pthread_t tid;$/;"	m	struct:thread_info
+tmp_mean	Feature/Gaussian.h	/^	double* tmp_mean;$/;"	m	class:Gaussian
+tmp_mean2	Feature/Gaussian.h	/^	double* tmp_mean2;$/;"	m	class:Gaussian
 train	Feature/HMMAutomatonSet.cpp	/^SP_RESULT HMMAutomatonSet::train() {$/;"	f	class:HMMAutomatonSet
 trainThreshold	Feature/WordDtwRecognition.h	/^        void trainThreshold() {$/;"	f	class:WordDtwRecognition
 trainTimes	Feature/HMMRecognition.h	/^        int trainTimes;$/;"	m	class:HMMRecognition
@@ -709,6 +1074,7 @@ vecIdx	Feature/WaveFeatureOPSet.h	/^                int vecIdx;$/;"	m	class:Wave
 vec_file_read	Matlab/vec_file_read.m	/^function [y] = vec_file_read(filename)$/;"	f
 w	EditDistance/app.h	/^	const char * w;$/;"	m	struct:cmp_task_info
 wavFileName	pro2_demo.cpp	/^char wavFileName[1024] = "\\0";$/;"	v
+weight	Feature/KMeanState.h	/^		vector<double> weight;$/;"	m	class:KMeanState
 winFunc	Feature/FeatureExtractor.h	/^    double (*winFunc)(int, int);$/;"	m	class:FeatureExtractor
 window	Feature/FeatureExtractor.h	/^        std::vector<double> * window;$/;"	m	struct:FeatureExtractor::fft_task_info
 window	Feature/FeatureExtractor.h	/^        std::vector<double> * window;$/;"	m	struct:FeatureExtractor::padding_task_info

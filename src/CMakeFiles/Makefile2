@@ -53,258 +53,14 @@ CMAKE_SOURCE_DIR = /Users/admin/Project/speech/src
 CMAKE_BINARY_DIR = /Users/admin/Project/speech/src
 
 #=============================================================================
-# Target rules for target CMakeFiles/hmm_demo.dir
-
-# All Build rule for target.
-CMakeFiles/hmm_demo.dir/all: test/CMakeFiles/test.dir/all
-CMakeFiles/hmm_demo.dir/all: Feature/CMakeFiles/Feature.dir/all
-CMakeFiles/hmm_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
-CMakeFiles/hmm_demo.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/hmm_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/hmm_demo.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/hmm_demo.dir/all: data/CMakeFiles/data.dir/all
-CMakeFiles/hmm_demo.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
-	$(MAKE) -f CMakeFiles/hmm_demo.dir/build.make CMakeFiles/hmm_demo.dir/depend
-	$(MAKE) -f CMakeFiles/hmm_demo.dir/build.make CMakeFiles/hmm_demo.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  29
-	@echo "Built target hmm_demo"
-.PHONY : CMakeFiles/hmm_demo.dir/all
-
-# Include target in all.
-all: CMakeFiles/hmm_demo.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/hmm_demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 28
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/hmm_demo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : CMakeFiles/hmm_demo.dir/rule
-
-# Convenience name for target.
-hmm_demo: CMakeFiles/hmm_demo.dir/rule
-.PHONY : hmm_demo
-
-# clean rule for target.
-CMakeFiles/hmm_demo.dir/clean:
-	$(MAKE) -f CMakeFiles/hmm_demo.dir/build.make CMakeFiles/hmm_demo.dir/clean
-.PHONY : CMakeFiles/hmm_demo.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/hmm_demo.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/pro2_demo.dir
-
-# All Build rule for target.
-CMakeFiles/pro2_demo.dir/all: test/CMakeFiles/test.dir/all
-CMakeFiles/pro2_demo.dir/all: Feature/CMakeFiles/Feature.dir/all
-CMakeFiles/pro2_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
-CMakeFiles/pro2_demo.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/pro2_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/pro2_demo.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/pro2_demo.dir/all: data/CMakeFiles/data.dir/all
-CMakeFiles/pro2_demo.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
-	$(MAKE) -f CMakeFiles/pro2_demo.dir/build.make CMakeFiles/pro2_demo.dir/depend
-	$(MAKE) -f CMakeFiles/pro2_demo.dir/build.make CMakeFiles/pro2_demo.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  30
-	@echo "Built target pro2_demo"
-.PHONY : CMakeFiles/pro2_demo.dir/all
-
-# Include target in all.
-all: CMakeFiles/pro2_demo.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/pro2_demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 28
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pro2_demo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : CMakeFiles/pro2_demo.dir/rule
-
-# Convenience name for target.
-pro2_demo: CMakeFiles/pro2_demo.dir/rule
-.PHONY : pro2_demo
-
-# clean rule for target.
-CMakeFiles/pro2_demo.dir/clean:
-	$(MAKE) -f CMakeFiles/pro2_demo.dir/build.make CMakeFiles/pro2_demo.dir/clean
-.PHONY : CMakeFiles/pro2_demo.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/pro2_demo.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/pro3_demo.dir
-
-# All Build rule for target.
-CMakeFiles/pro3_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/pro3_demo.dir/all: EditDistance/CMakeFiles/EditDistance.dir/all
-CMakeFiles/pro3_demo.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
-	$(MAKE) -f CMakeFiles/pro3_demo.dir/build.make CMakeFiles/pro3_demo.dir/depend
-	$(MAKE) -f CMakeFiles/pro3_demo.dir/build.make CMakeFiles/pro3_demo.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  31
-	@echo "Built target pro3_demo"
-.PHONY : CMakeFiles/pro3_demo.dir/all
-
-# Include target in all.
-all: CMakeFiles/pro3_demo.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/pro3_demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 7
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pro3_demo.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : CMakeFiles/pro3_demo.dir/rule
-
-# Convenience name for target.
-pro3_demo: CMakeFiles/pro3_demo.dir/rule
-.PHONY : pro3_demo
-
-# clean rule for target.
-CMakeFiles/pro3_demo.dir/clean:
-	$(MAKE) -f CMakeFiles/pro3_demo.dir/build.make CMakeFiles/pro3_demo.dir/clean
-.PHONY : CMakeFiles/pro3_demo.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/pro3_demo.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/pro4_demo_1.dir
-
-# All Build rule for target.
-CMakeFiles/pro4_demo_1.dir/all: test/CMakeFiles/test.dir/all
-CMakeFiles/pro4_demo_1.dir/all: Feature/CMakeFiles/Feature.dir/all
-CMakeFiles/pro4_demo_1.dir/all: Analysis/CMakeFiles/Analysis.dir/all
-CMakeFiles/pro4_demo_1.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/pro4_demo_1.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/pro4_demo_1.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/pro4_demo_1.dir/all: data/CMakeFiles/data.dir/all
-CMakeFiles/pro4_demo_1.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
-	$(MAKE) -f CMakeFiles/pro4_demo_1.dir/build.make CMakeFiles/pro4_demo_1.dir/depend
-	$(MAKE) -f CMakeFiles/pro4_demo_1.dir/build.make CMakeFiles/pro4_demo_1.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  32
-	@echo "Built target pro4_demo_1"
-.PHONY : CMakeFiles/pro4_demo_1.dir/all
-
-# Include target in all.
-all: CMakeFiles/pro4_demo_1.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/pro4_demo_1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 28
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pro4_demo_1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : CMakeFiles/pro4_demo_1.dir/rule
-
-# Convenience name for target.
-pro4_demo_1: CMakeFiles/pro4_demo_1.dir/rule
-.PHONY : pro4_demo_1
-
-# clean rule for target.
-CMakeFiles/pro4_demo_1.dir/clean:
-	$(MAKE) -f CMakeFiles/pro4_demo_1.dir/build.make CMakeFiles/pro4_demo_1.dir/clean
-.PHONY : CMakeFiles/pro4_demo_1.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/pro4_demo_1.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/rawdtw.dir
-
-# All Build rule for target.
-CMakeFiles/rawdtw.dir/all: test/CMakeFiles/test.dir/all
-CMakeFiles/rawdtw.dir/all: Feature/CMakeFiles/Feature.dir/all
-CMakeFiles/rawdtw.dir/all: Analysis/CMakeFiles/Analysis.dir/all
-CMakeFiles/rawdtw.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/rawdtw.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/rawdtw.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/rawdtw.dir/all: data/CMakeFiles/data.dir/all
-CMakeFiles/rawdtw.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
-	$(MAKE) -f CMakeFiles/rawdtw.dir/build.make CMakeFiles/rawdtw.dir/depend
-	$(MAKE) -f CMakeFiles/rawdtw.dir/build.make CMakeFiles/rawdtw.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  33
-	@echo "Built target rawdtw"
-.PHONY : CMakeFiles/rawdtw.dir/all
-
-# Include target in all.
-all: CMakeFiles/rawdtw.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/rawdtw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 28
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/rawdtw.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : CMakeFiles/rawdtw.dir/rule
-
-# Convenience name for target.
-rawdtw: CMakeFiles/rawdtw.dir/rule
-.PHONY : rawdtw
-
-# clean rule for target.
-CMakeFiles/rawdtw.dir/clean:
-	$(MAKE) -f CMakeFiles/rawdtw.dir/build.make CMakeFiles/rawdtw.dir/clean
-.PHONY : CMakeFiles/rawdtw.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/rawdtw.dir/clean
-.PHONY : clean
-
-#=============================================================================
-# Target rules for target CMakeFiles/recorder.dir
-
-# All Build rule for target.
-CMakeFiles/recorder.dir/all: Analysis/CMakeFiles/Analysis.dir/all
-CMakeFiles/recorder.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/recorder.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/recorder.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/recorder.dir/all: data/CMakeFiles/data.dir/all
-	$(MAKE) -f CMakeFiles/recorder.dir/build.make CMakeFiles/recorder.dir/depend
-	$(MAKE) -f CMakeFiles/recorder.dir/build.make CMakeFiles/recorder.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  35
-	@echo "Built target recorder"
-.PHONY : CMakeFiles/recorder.dir/all
-
-# Include target in all.
-all: CMakeFiles/recorder.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/recorder.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 12
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/recorder.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : CMakeFiles/recorder.dir/rule
-
-# Convenience name for target.
-recorder: CMakeFiles/recorder.dir/rule
-.PHONY : recorder
-
-# clean rule for target.
-CMakeFiles/recorder.dir/clean:
-	$(MAKE) -f CMakeFiles/recorder.dir/build.make CMakeFiles/recorder.dir/clean
-.PHONY : CMakeFiles/recorder.dir/clean
-
-# clean rule for target.
-clean: CMakeFiles/recorder.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory test
 
 # Convenience name for "all" pass in the directory.
-test/all: test/CMakeFiles/test.dir/all
+test/all:
 .PHONY : test/all
 
 # Convenience name for "clean" pass in the directory.
-test/clean: test/CMakeFiles/test.dir/clean
+test/clean:
 .PHONY : test/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -312,49 +68,14 @@ test/preinstall:
 .PHONY : test/preinstall
 
 #=============================================================================
-# Target rules for target test/CMakeFiles/test.dir
-
-# All Build rule for target.
-test/CMakeFiles/test.dir/all:
-	$(MAKE) -f test/CMakeFiles/test.dir/build.make test/CMakeFiles/test.dir/depend
-	$(MAKE) -f test/CMakeFiles/test.dir/build.make test/CMakeFiles/test.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  36
-	@echo "Built target test"
-.PHONY : test/CMakeFiles/test.dir/all
-
-# Include target in all.
-all: test/CMakeFiles/test.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-test/CMakeFiles/test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 test/CMakeFiles/test.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : test/CMakeFiles/test.dir/rule
-
-# Convenience name for target.
-test: test/CMakeFiles/test.dir/rule
-.PHONY : test
-
-# clean rule for target.
-test/CMakeFiles/test.dir/clean:
-	$(MAKE) -f test/CMakeFiles/test.dir/build.make test/CMakeFiles/test.dir/clean
-.PHONY : test/CMakeFiles/test.dir/clean
-
-# clean rule for target.
-clean: test/CMakeFiles/test.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory Feature
 
 # Convenience name for "all" pass in the directory.
-Feature/all: Feature/CMakeFiles/Feature.dir/all
+Feature/all:
 .PHONY : Feature/all
 
 # Convenience name for "clean" pass in the directory.
-Feature/clean: Feature/CMakeFiles/Feature.dir/clean
+Feature/clean:
 .PHONY : Feature/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -362,49 +83,14 @@ Feature/preinstall:
 .PHONY : Feature/preinstall
 
 #=============================================================================
-# Target rules for target Feature/CMakeFiles/Feature.dir
-
-# All Build rule for target.
-Feature/CMakeFiles/Feature.dir/all:
-	$(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/depend
-	$(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  12 13 14 15 16 17 18 19 20 21 22 23 24 25
-	@echo "Built target Feature"
-.PHONY : Feature/CMakeFiles/Feature.dir/all
-
-# Include target in all.
-all: Feature/CMakeFiles/Feature.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-Feature/CMakeFiles/Feature.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 14
-	$(MAKE) -f CMakeFiles/Makefile2 Feature/CMakeFiles/Feature.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : Feature/CMakeFiles/Feature.dir/rule
-
-# Convenience name for target.
-Feature: Feature/CMakeFiles/Feature.dir/rule
-.PHONY : Feature
-
-# clean rule for target.
-Feature/CMakeFiles/Feature.dir/clean:
-	$(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/clean
-.PHONY : Feature/CMakeFiles/Feature.dir/clean
-
-# clean rule for target.
-clean: Feature/CMakeFiles/Feature.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory Capture
 
 # Convenience name for "all" pass in the directory.
-Capture/all: Capture/CMakeFiles/Capture.dir/all
+Capture/all:
 .PHONY : Capture/all
 
 # Convenience name for "clean" pass in the directory.
-Capture/clean: Capture/CMakeFiles/Capture.dir/clean
+Capture/clean:
 .PHONY : Capture/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -412,49 +98,14 @@ Capture/preinstall:
 .PHONY : Capture/preinstall
 
 #=============================================================================
-# Target rules for target Capture/CMakeFiles/Capture.dir
-
-# All Build rule for target.
-Capture/CMakeFiles/Capture.dir/all:
-	$(MAKE) -f Capture/CMakeFiles/Capture.dir/build.make Capture/CMakeFiles/Capture.dir/depend
-	$(MAKE) -f Capture/CMakeFiles/Capture.dir/build.make Capture/CMakeFiles/Capture.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  5 6
-	@echo "Built target Capture"
-.PHONY : Capture/CMakeFiles/Capture.dir/all
-
-# Include target in all.
-all: Capture/CMakeFiles/Capture.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-Capture/CMakeFiles/Capture.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 Capture/CMakeFiles/Capture.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : Capture/CMakeFiles/Capture.dir/rule
-
-# Convenience name for target.
-Capture: Capture/CMakeFiles/Capture.dir/rule
-.PHONY : Capture
-
-# clean rule for target.
-Capture/CMakeFiles/Capture.dir/clean:
-	$(MAKE) -f Capture/CMakeFiles/Capture.dir/build.make Capture/CMakeFiles/Capture.dir/clean
-.PHONY : Capture/CMakeFiles/Capture.dir/clean
-
-# clean rule for target.
-clean: Capture/CMakeFiles/Capture.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory Analysis
 
 # Convenience name for "all" pass in the directory.
-Analysis/all: Analysis/CMakeFiles/Analysis.dir/all
+Analysis/all:
 .PHONY : Analysis/all
 
 # Convenience name for "clean" pass in the directory.
-Analysis/clean: Analysis/CMakeFiles/Analysis.dir/clean
+Analysis/clean:
 .PHONY : Analysis/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -462,49 +113,14 @@ Analysis/preinstall:
 .PHONY : Analysis/preinstall
 
 #=============================================================================
-# Target rules for target Analysis/CMakeFiles/Analysis.dir
-
-# All Build rule for target.
-Analysis/CMakeFiles/Analysis.dir/all:
-	$(MAKE) -f Analysis/CMakeFiles/Analysis.dir/build.make Analysis/CMakeFiles/Analysis.dir/depend
-	$(MAKE) -f Analysis/CMakeFiles/Analysis.dir/build.make Analysis/CMakeFiles/Analysis.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  1 2 3 4
-	@echo "Built target Analysis"
-.PHONY : Analysis/CMakeFiles/Analysis.dir/all
-
-# Include target in all.
-all: Analysis/CMakeFiles/Analysis.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-Analysis/CMakeFiles/Analysis.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 4
-	$(MAKE) -f CMakeFiles/Makefile2 Analysis/CMakeFiles/Analysis.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : Analysis/CMakeFiles/Analysis.dir/rule
-
-# Convenience name for target.
-Analysis: Analysis/CMakeFiles/Analysis.dir/rule
-.PHONY : Analysis
-
-# clean rule for target.
-Analysis/CMakeFiles/Analysis.dir/clean:
-	$(MAKE) -f Analysis/CMakeFiles/Analysis.dir/build.make Analysis/CMakeFiles/Analysis.dir/clean
-.PHONY : Analysis/CMakeFiles/Analysis.dir/clean
-
-# clean rule for target.
-clean: Analysis/CMakeFiles/Analysis.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory Configure
 
 # Convenience name for "all" pass in the directory.
-Configure/all: Configure/CMakeFiles/Configure.dir/all
+Configure/all:
 .PHONY : Configure/all
 
 # Convenience name for "clean" pass in the directory.
-Configure/clean: Configure/CMakeFiles/Configure.dir/clean
+Configure/clean:
 .PHONY : Configure/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -512,49 +128,14 @@ Configure/preinstall:
 .PHONY : Configure/preinstall
 
 #=============================================================================
-# Target rules for target Configure/CMakeFiles/Configure.dir
-
-# All Build rule for target.
-Configure/CMakeFiles/Configure.dir/all:
-	$(MAKE) -f Configure/CMakeFiles/Configure.dir/build.make Configure/CMakeFiles/Configure.dir/depend
-	$(MAKE) -f Configure/CMakeFiles/Configure.dir/build.make Configure/CMakeFiles/Configure.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  7 8
-	@echo "Built target Configure"
-.PHONY : Configure/CMakeFiles/Configure.dir/all
-
-# Include target in all.
-all: Configure/CMakeFiles/Configure.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-Configure/CMakeFiles/Configure.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 Configure/CMakeFiles/Configure.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : Configure/CMakeFiles/Configure.dir/rule
-
-# Convenience name for target.
-Configure: Configure/CMakeFiles/Configure.dir/rule
-.PHONY : Configure
-
-# clean rule for target.
-Configure/CMakeFiles/Configure.dir/clean:
-	$(MAKE) -f Configure/CMakeFiles/Configure.dir/build.make Configure/CMakeFiles/Configure.dir/clean
-.PHONY : Configure/CMakeFiles/Configure.dir/clean
-
-# clean rule for target.
-clean: Configure/CMakeFiles/Configure.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory readwave
 
 # Convenience name for "all" pass in the directory.
-readwave/all: readwave/CMakeFiles/readwave.dir/all
+readwave/all:
 .PHONY : readwave/all
 
 # Convenience name for "clean" pass in the directory.
-readwave/clean: readwave/CMakeFiles/readwave.dir/clean
+readwave/clean:
 .PHONY : readwave/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -562,49 +143,14 @@ readwave/preinstall:
 .PHONY : readwave/preinstall
 
 #=============================================================================
-# Target rules for target readwave/CMakeFiles/readwave.dir
-
-# All Build rule for target.
-readwave/CMakeFiles/readwave.dir/all:
-	$(MAKE) -f readwave/CMakeFiles/readwave.dir/build.make readwave/CMakeFiles/readwave.dir/depend
-	$(MAKE) -f readwave/CMakeFiles/readwave.dir/build.make readwave/CMakeFiles/readwave.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  34
-	@echo "Built target readwave"
-.PHONY : readwave/CMakeFiles/readwave.dir/all
-
-# Include target in all.
-all: readwave/CMakeFiles/readwave.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-readwave/CMakeFiles/readwave.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 readwave/CMakeFiles/readwave.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : readwave/CMakeFiles/readwave.dir/rule
-
-# Convenience name for target.
-readwave: readwave/CMakeFiles/readwave.dir/rule
-.PHONY : readwave
-
-# clean rule for target.
-readwave/CMakeFiles/readwave.dir/clean:
-	$(MAKE) -f readwave/CMakeFiles/readwave.dir/build.make readwave/CMakeFiles/readwave.dir/clean
-.PHONY : readwave/CMakeFiles/readwave.dir/clean
-
-# clean rule for target.
-clean: readwave/CMakeFiles/readwave.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory data
 
 # Convenience name for "all" pass in the directory.
-data/all: data/CMakeFiles/data.dir/all
+data/all:
 .PHONY : data/all
 
 # Convenience name for "clean" pass in the directory.
-data/clean: data/CMakeFiles/data.dir/clean
+data/clean:
 .PHONY : data/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -612,49 +158,14 @@ data/preinstall:
 .PHONY : data/preinstall
 
 #=============================================================================
-# Target rules for target data/CMakeFiles/data.dir
-
-# All Build rule for target.
-data/CMakeFiles/data.dir/all:
-	$(MAKE) -f data/CMakeFiles/data.dir/build.make data/CMakeFiles/data.dir/depend
-	$(MAKE) -f data/CMakeFiles/data.dir/build.make data/CMakeFiles/data.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  27 28
-	@echo "Built target data"
-.PHONY : data/CMakeFiles/data.dir/all
-
-# Include target in all.
-all: data/CMakeFiles/data.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-data/CMakeFiles/data.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 data/CMakeFiles/data.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : data/CMakeFiles/data.dir/rule
-
-# Convenience name for target.
-data: data/CMakeFiles/data.dir/rule
-.PHONY : data
-
-# clean rule for target.
-data/CMakeFiles/data.dir/clean:
-	$(MAKE) -f data/CMakeFiles/data.dir/build.make data/CMakeFiles/data.dir/clean
-.PHONY : data/CMakeFiles/data.dir/clean
-
-# clean rule for target.
-clean: data/CMakeFiles/data.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory EditDistance
 
 # Convenience name for "all" pass in the directory.
-EditDistance/all: EditDistance/CMakeFiles/EditDistance.dir/all
+EditDistance/all:
 .PHONY : EditDistance/all
 
 # Convenience name for "clean" pass in the directory.
-EditDistance/clean: EditDistance/CMakeFiles/EditDistance.dir/clean
+EditDistance/clean:
 .PHONY : EditDistance/clean
 
 # Convenience name for "preinstall" pass in the directory.
@@ -662,89 +173,19 @@ EditDistance/preinstall:
 .PHONY : EditDistance/preinstall
 
 #=============================================================================
-# Target rules for target EditDistance/CMakeFiles/EditDistance.dir
-
-# All Build rule for target.
-EditDistance/CMakeFiles/EditDistance.dir/all:
-	$(MAKE) -f EditDistance/CMakeFiles/EditDistance.dir/build.make EditDistance/CMakeFiles/EditDistance.dir/depend
-	$(MAKE) -f EditDistance/CMakeFiles/EditDistance.dir/build.make EditDistance/CMakeFiles/EditDistance.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  9 10 11
-	@echo "Built target EditDistance"
-.PHONY : EditDistance/CMakeFiles/EditDistance.dir/all
-
-# Include target in all.
-all: EditDistance/CMakeFiles/EditDistance.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-EditDistance/CMakeFiles/EditDistance.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 3
-	$(MAKE) -f CMakeFiles/Makefile2 EditDistance/CMakeFiles/EditDistance.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : EditDistance/CMakeFiles/EditDistance.dir/rule
-
-# Convenience name for target.
-EditDistance: EditDistance/CMakeFiles/EditDistance.dir/rule
-.PHONY : EditDistance
-
-# clean rule for target.
-EditDistance/CMakeFiles/EditDistance.dir/clean:
-	$(MAKE) -f EditDistance/CMakeFiles/EditDistance.dir/build.make EditDistance/CMakeFiles/EditDistance.dir/clean
-.PHONY : EditDistance/CMakeFiles/EditDistance.dir/clean
-
-# clean rule for target.
-clean: EditDistance/CMakeFiles/EditDistance.dir/clean
-.PHONY : clean
-
-#=============================================================================
 # Directory level rules for directory ThreadPool
 
 # Convenience name for "all" pass in the directory.
-ThreadPool/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
+ThreadPool/all:
 .PHONY : ThreadPool/all
 
 # Convenience name for "clean" pass in the directory.
-ThreadPool/clean: ThreadPool/CMakeFiles/ThreadPool.dir/clean
+ThreadPool/clean:
 .PHONY : ThreadPool/clean
 
 # Convenience name for "preinstall" pass in the directory.
 ThreadPool/preinstall:
 .PHONY : ThreadPool/preinstall
-
-#=============================================================================
-# Target rules for target ThreadPool/CMakeFiles/ThreadPool.dir
-
-# All Build rule for target.
-ThreadPool/CMakeFiles/ThreadPool.dir/all:
-	$(MAKE) -f ThreadPool/CMakeFiles/ThreadPool.dir/build.make ThreadPool/CMakeFiles/ThreadPool.dir/depend
-	$(MAKE) -f ThreadPool/CMakeFiles/ThreadPool.dir/build.make ThreadPool/CMakeFiles/ThreadPool.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  26
-	@echo "Built target ThreadPool"
-.PHONY : ThreadPool/CMakeFiles/ThreadPool.dir/all
-
-# Include target in all.
-all: ThreadPool/CMakeFiles/ThreadPool.dir/all
-.PHONY : all
-
-# Build rule for subdir invocation for target.
-ThreadPool/CMakeFiles/ThreadPool.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 1
-	$(MAKE) -f CMakeFiles/Makefile2 ThreadPool/CMakeFiles/ThreadPool.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/admin/Project/speech/src/CMakeFiles 0
-.PHONY : ThreadPool/CMakeFiles/ThreadPool.dir/rule
-
-# Convenience name for target.
-ThreadPool: ThreadPool/CMakeFiles/ThreadPool.dir/rule
-.PHONY : ThreadPool
-
-# clean rule for target.
-ThreadPool/CMakeFiles/ThreadPool.dir/clean:
-	$(MAKE) -f ThreadPool/CMakeFiles/ThreadPool.dir/build.make ThreadPool/CMakeFiles/ThreadPool.dir/clean
-.PHONY : ThreadPool/CMakeFiles/ThreadPool.dir/clean
-
-# clean rule for target.
-clean: ThreadPool/CMakeFiles/ThreadPool.dir/clean
-.PHONY : clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -8,4 +8,5 @@ add_library(${FEATURE} Feature.cpp FeatureExtractor.cpp mathtool.cpp WaveFeature
     KMeanState.cpp
     SoftState.cpp
     HMMState.cpp
-    )
+	Gaussian.cpp
+	)
