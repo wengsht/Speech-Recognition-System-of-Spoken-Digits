@@ -50,7 +50,7 @@ protected:
     std::vector<double> rollColumnCost[2];
 
     bool isBigChange(double totalChangeCost) {
-        return cost2p(totalChangeCost) >= 0.0001 * stateNum * DTW_MAX_FORWARD;
+        return cost2p(totalChangeCost) >= 0.001 * stateNum * DTW_MAX_FORWARD;
     }
     // dtw 初始化第-1列
     void rollDtwInit(WaveFeatureOP &features, dtwType type) {

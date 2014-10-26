@@ -1,0 +1,15 @@
+/Users/admin/Project/speech/src/Analysis/CMakeFiles/Analysis.dir
+/Users/admin/Project/speech/src/Capture/CMakeFiles/Capture.dir
+/Users/admin/Project/speech/src/Configure/CMakeFiles/Configure.dir
+/Users/admin/Project/speech/src/EditDistance/CMakeFiles/EditDistance.dir
+/Users/admin/Project/speech/src/Feature/CMakeFiles/Feature.dir
+/Users/admin/Project/speech/src/ThreadPool/CMakeFiles/ThreadPool.dir
+/Users/admin/Project/speech/src/data/CMakeFiles/data.dir
+/Users/admin/Project/speech/src/CMakeFiles/hmm_demo.dir
+/Users/admin/Project/speech/src/CMakeFiles/pro2_demo.dir
+/Users/admin/Project/speech/src/CMakeFiles/pro3_demo.dir
+/Users/admin/Project/speech/src/CMakeFiles/pro4_demo_1.dir
+/Users/admin/Project/speech/src/CMakeFiles/rawdtw.dir
+/Users/admin/Project/speech/src/readwave/CMakeFiles/readwave.dir
+/Users/admin/Project/speech/src/CMakeFiles/recorder.dir
+/Users/admin/Project/speech/src/test/CMakeFiles/test.dir

@@ -1,0 +1,1 @@
+/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/pro3_demo.dir/pro3_demo.cpp.o  -o pro3_demo  Configure/libConfigure.a EditDistance/libEditDistance.a ThreadPool/libThreadPool.a -lpthread 

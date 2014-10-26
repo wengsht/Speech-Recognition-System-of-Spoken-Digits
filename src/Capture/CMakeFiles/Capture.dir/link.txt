@@ -1,0 +1,2 @@
+/usr/bin/ar cr libCapture.a  CMakeFiles/Capture.dir/AutoCapture.cpp.o CMakeFiles/Capture.dir/Capture.cpp.o
+/usr/bin/ranlib libCapture.a

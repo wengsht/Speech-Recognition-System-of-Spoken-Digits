@@ -1,0 +1,2 @@
+/usr/bin/ar cr libConfigure.a  CMakeFiles/Configure.dir/tool.cpp.o CMakeFiles/Configure.dir/SerialFiles.cpp.o
+/usr/bin/ranlib libConfigure.a

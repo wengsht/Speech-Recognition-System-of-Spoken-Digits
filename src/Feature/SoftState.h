@@ -19,16 +19,21 @@
 #include "HMMState.h"
 #include "configure_basic.h"
 #include "WaveFeatureOP.h"
+#include "Gaussian.h"
 
 class SoftState : public HMMState {
     public:
         friend class HMMSoftAutomaton;
         friend class HMMAutomaton;
+
         SoftState(std::vector<WaveFeatureOP> * templates);
         ~SoftState();
 
         void gaussianTrain(int gaussianNum);
         double nodeCost(Feature *inputFeature);
+
+        void gaussianTrainTest(int gaussianNum);
+        double nodeCostTest(Feature *inputFeature);
 
         void dump() {
             for(int i  =0;i < 39;i++) 
@@ -40,6 +45,19 @@ class SoftState : public HMMState {
         // probabilities[i][j] 第i个wav的第j个feature属于这个state的概率
         Matrix<double> probabilities;
 
+        void initTrain(int gaussianNum);
+
+        void SoftTrain();
+        double SoftNodeCost(Feature *f);
+
+        std::vector<Gaussian *> GaussianSet;
+        std::vector<double> weight;
+
+        void clearGaussian();
+
+        int Point2Clusters(int templateIdx, int featureIdx);
+
+        double totalProbability;
         double u[39];
         double sigma[39];
 };

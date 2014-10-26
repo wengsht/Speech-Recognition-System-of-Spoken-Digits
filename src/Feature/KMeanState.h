@@ -18,7 +18,7 @@
 
 #include "HMMState.h"
 #include <vector> 
-
+#include "Gaussian.h"
 class KMeanState : public HMMState {
     public:
         const static std::pair<int, int> NullSeg ;
@@ -30,13 +30,35 @@ class KMeanState : public HMMState {
         ~KMeanState();
 
         void gaussianTrain(int gaussianNum);
-
         double nodeCost(Feature *inputFeature);
+
+		// lz:老的单高斯版本，用于测试
+        void gaussianTrainTest(int gaussianNum);
+        double nodeCostTest(Feature *inputFeature);
 
     private:
         // 对于Kmean， 存储的时候属于这个state的线段 
         // 注意是和基类的vector<WaveFeatureOP> 一一对应的
         std::vector< std::pair<int, int> > edgePoints;
+		
+		//lz:将该state内所有feature合并到points，
+		//lz:并初始化gaussian参数
+		void initTrain(int gaussianNum);
+		//lz:
+		Feature ** points;
+		//lz: size of points
+		int PointNum;
+		//lz: 
+		void KMeanTrain();
+		double KMeanNodeCost(Feature * f);
+        void generateInitFeature(Feature &initFeature);
+		//lz
+		std::vector<Gaussian*> GaussianSet;
+		std::vector<double> weight;
+		//lz: 释放高斯模型空间，清空weight和GaussianSet
+		void clearGaussian();
+		//lz: 计算第pid点最近的高斯模型编号
+		int Point2Clusters(int pid);
 
         double u[39];
         double sigma[39];
