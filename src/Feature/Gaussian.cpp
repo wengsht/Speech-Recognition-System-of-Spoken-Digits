@@ -44,7 +44,7 @@ void Gaussian::setCVar(double v){
 }
 
 void Gaussian::setRandCVar(){
-	for(int i =0;i<featureSize;i++) cvar[i] = (rand()%10000);
+	for(int i =0;i<featureSize;i++) cvar[i] = (rand()%1000/100000.0);
 	flag = true;
 }
 
