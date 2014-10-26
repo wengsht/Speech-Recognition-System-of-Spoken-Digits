@@ -49,6 +49,8 @@ string getBanner(string word);
 
 string algo = "kmean";
 
+int gaussNum = GAUSSIAN_NUM;
+
 // -g 0(default 1-1)
 // -g 1(n-1)
 // -g 2(n-n)
@@ -86,6 +88,7 @@ void runN1() {
 
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
+    hmm.setGaussNum(gaussNum);
     
     if(algo == "kmean")
         hmm.setStateType(HMMState::KMEAN);
@@ -108,6 +111,7 @@ void runNN() {
 
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
+    hmm.setGaussNum(gaussNum);
     
     if(algo == "kmean")
         hmm.setStateType(HMMState::KMEAN);
@@ -141,13 +145,14 @@ void runNN() {
 
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "a:g:bB:hj:d:t:D:T:")) != -1) {
+    while((c = getopt(argc, argv, "k:a:g:bB:hj:d:t:D:T:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         filename example: abc\n \
                         -j threadNum \n \
                         -g demoType : 0(1-1) 1(n-1) 2(n-n)\n \
+                        -k gaussNum \n \
                         -a [kmean, soft] \n \
                         -D input Dir name \n \
                         -T template Dir name\n \
@@ -162,6 +167,9 @@ bool dealOpts(int argc, char **argv) {
                 break;
             case 'g':
                 demoType = atoi(optarg);
+                break;
+            case 'k':
+                gaussNum = atoi(optarg);
                 break;
             case 'T':
                 strcpy(templateDirName, optarg);
