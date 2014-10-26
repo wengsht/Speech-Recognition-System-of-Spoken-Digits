@@ -33,7 +33,6 @@ class KMeanState : public HMMState {
 
         double nodeCost(Feature *inputFeature);
 
-
     private:
         // 对于Kmean， 存储的时候属于这个state的线段 
         // 注意是和基类的vector<WaveFeatureOP> 一一对应的

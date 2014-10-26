@@ -70,7 +70,6 @@ void HMMSoftAutomaton::hmmTrain() {
 
     for(idx = 1;idx <= stateNum;idx ++) {
         getState(idx)->gaussianTrain(gaussNum);
-
 //        printf("%d\n", idx);
 //        getState(idx)->dump();
     }

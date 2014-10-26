@@ -106,3 +106,7 @@ void WordDtwRecognition::dumpColorPath(std::ostream &Out) {
         (*Itr)->dumpColorPath(Out);
     }
 }
+
+void WordDtwRecognition::setMaxInstancePerWord(int maxInstancePer) {
+    templates.setMaxInstancePerWord(maxInstancePer);
+}

@@ -105,16 +105,6 @@ void runNN() {
     FeatureExtractor extractor(threadNum);
 
     RawData data;
-//    if(strlen(inputFileName) == 0) {
-//        Tip("[Capture an input!!]\n\n");
-//        capture("tmp", data, false);
-//    }
-//    else {
-//        Tip("[Load an input!!]\n\n");
-//        load_wav_file(inputFileName, data);
-//    }
-//    extractor.exDoubleDeltaFeatures(&data);
-//    vector<Feature> inputFeature = extractor.getNormalMelCepstrum();
 
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
@@ -147,8 +137,8 @@ void runNN() {
     cout << "Correct Counts: " << correctCnt << endl; 
 
     hmm.close();
-
 }
+
 bool dealOpts(int argc, char **argv) {
     int c;
     while((c = getopt(argc, argv, "a:g:bB:hj:d:t:D:T:")) != -1) {

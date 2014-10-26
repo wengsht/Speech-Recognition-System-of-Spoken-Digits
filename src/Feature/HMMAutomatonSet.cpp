@@ -44,11 +44,12 @@ SP_RESULT HMMAutomatonSet::train() {
 
         if(automatons.count(word))
             continue;
+
         // 新建自动机
         if(stateType == HMMState::KMEAN)
-            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), stateNum, trainTimes); 
+            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
         else 
-            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, trainTimes); 
+            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
 
         sp_task task;
 

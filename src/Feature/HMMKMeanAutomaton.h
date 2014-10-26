@@ -64,7 +64,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                 }
 
                 getState(rowIdx)->edgePoints[templateIdx] = std::make_pair(startIdx, endIdx);
-
+                
                 featureIdx = startIdx - 1;
 
                 rowIdx = path[startIdx][rowIdx];

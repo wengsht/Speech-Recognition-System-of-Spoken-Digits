@@ -26,6 +26,7 @@ KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templa
 
 KMeanState::~KMeanState() {
 }
+
 void KMeanState::gaussianTrain(int gaussianNum) {
     for(int i = 0;i < 39;i++) {
         u[i] = sigma[i] = 0;
