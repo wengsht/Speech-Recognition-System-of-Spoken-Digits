@@ -6,6 +6,7 @@
 #include <vector>
 
 typedef void (*TASK_FUNC)(void *) ;
+
 struct sp_task {
     /*  func should be responsible for the free of in */
     TASK_FUNC func;

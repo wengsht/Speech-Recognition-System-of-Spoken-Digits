@@ -28,21 +28,24 @@
 
 #include "WaveFeatureOP.h"
 #include "SerialFiles.h"
+#include "configure_dtw.h"
 
 class WaveFeatureOPSet {
+    READ_WRITE_DECLARE(int, maxInstancePer, MaxInstancePerWord);
     public:
         // 控制变量， 每一个template用多少个实例做dtw
         // 反应在了iterator的++上，当一个iterator在同一个模板的实例上迭代次数超过了这个值，就会跳到下一个template
-        static int maxTemplatesPerWord;
 
         // 底层存储是一个从 word到vector的map， 一个word有多个template实例
         typedef std::map< std::string, std::vector<WaveFeatureOP> > dataSetType;
 
         // 用于遍历模板库，会先遍历一个word的所有instance，然后接下一个word
         class iterator {
+            private:
+                int maxTemplatesPerWord;
             public:
-                iterator() : dataSet(NULL), vecIdx(-1) { }
-                iterator(dataSetType *dataSetPtr, dataSetType::iterator Itr, int idx) : dataSet(dataSetPtr), I(Itr), vecIdx(idx) {}
+                iterator(int maxInstancePer = MAX_TEMPLATES_PER_WORD) : dataSet(NULL), vecIdx(-1), maxTemplatesPerWord(maxInstancePer) { }
+                iterator(dataSetType *dataSetPtr, dataSetType::iterator Itr, int idx, int maxInstancePer = MAX_TEMPLATES_PER_WORD) : dataSet(dataSetPtr), I(Itr), vecIdx(idx), maxTemplatesPerWord(maxInstancePer) {}
 
                 WaveFeatureOP * operator *() {
                     std::vector<WaveFeatureOP> & tmpVec = I->second;
@@ -95,7 +98,7 @@ class WaveFeatureOPSet {
         };
         // TODO better design for begin() and end() ?
         iterator begin() {
-            _begin = iterator(&dataSet, dataSet.begin(), 0);
+            _begin = iterator(&dataSet, dataSet.begin(), 0, maxInstancePer);
             return _begin;
         }
         iterator end() {
@@ -108,10 +111,11 @@ class WaveFeatureOPSet {
         virtual SP_RESULT loadMfccs(char *templateDir);
         // add features from a file
         virtual SP_RESULT loadMfccs(char *templateDir, char *fileName);
-        WaveFeatureOPSet();
+        WaveFeatureOPSet(int maxInstancePer = MAX_TEMPLATES_PER_WORD);
         virtual ~WaveFeatureOPSet();
 
 private:
+
     iterator _begin, _end;
 
     // 对于1.wav 尝试从1.mfcc 中load mfcc

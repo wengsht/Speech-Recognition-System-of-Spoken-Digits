@@ -13,6 +13,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/Feature.dir/KMeanState.cpp.o"
   "CMakeFiles/Feature.dir/SoftState.cpp.o"
   "CMakeFiles/Feature.dir/HMMState.cpp.o"
+  "CMakeFiles/Feature.dir/Gaussian.cpp.o"
   "libFeature.pdb"
   "libFeature.a"
 )

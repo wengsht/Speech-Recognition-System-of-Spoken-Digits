@@ -45,7 +45,11 @@ char inputDirName[256] = INPUTS_DIR;
 
 bool dealOpts(int argc, char **argv);
 
+string getBanner(string word);
+
 string algo = "kmean";
+
+int gaussNum = GAUSSIAN_NUM;
 
 // -g 0(default 1-1)
 // -g 1(n-1)
@@ -84,6 +88,7 @@ void runN1() {
 
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
+    hmm.setGaussNum(gaussNum);
     
     if(algo == "kmean")
         hmm.setStateType(HMMState::KMEAN);
@@ -95,7 +100,7 @@ void runN1() {
     WaveFeatureOP op(inputFeature, "null");
     string res = hmm.hmmRecognition(op);
     
-    cout << res << endl;
+    cout << getBanner(res) << endl;
     hmm.close();
 
 }
@@ -103,19 +108,10 @@ void runNN() {
     FeatureExtractor extractor(threadNum);
 
     RawData data;
-//    if(strlen(inputFileName) == 0) {
-//        Tip("[Capture an input!!]\n\n");
-//        capture("tmp", data, false);
-//    }
-//    else {
-//        Tip("[Load an input!!]\n\n");
-//        load_wav_file(inputFileName, data);
-//    }
-//    extractor.exDoubleDeltaFeatures(&data);
-//    vector<Feature> inputFeature = extractor.getNormalMelCepstrum();
 
     HMMRecognition hmm;
     hmm.loadTemplates(templateDirName);
+    hmm.setGaussNum(gaussNum);
     
     if(algo == "kmean")
         hmm.setStateType(HMMState::KMEAN);
@@ -145,17 +141,18 @@ void runNN() {
     cout << "Correct Counts: " << correctCnt << endl; 
 
     hmm.close();
-
 }
+
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "a:g:bB:hj:d:t:D:T:")) != -1) {
+    while((c = getopt(argc, argv, "k:a:g:bB:hj:d:t:D:T:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         filename example: abc\n \
                         -j threadNum \n \
                         -g demoType : 0(1-1) 1(n-1) 2(n-n)\n \
+                        -k gaussNum \n \
                         -a [kmean, soft] \n \
                         -D input Dir name \n \
                         -T template Dir name\n \
@@ -170,6 +167,9 @@ bool dealOpts(int argc, char **argv) {
                 break;
             case 'g':
                 demoType = atoi(optarg);
+                break;
+            case 'k':
+                gaussNum = atoi(optarg);
                 break;
             case 'T':
                 strcpy(templateDirName, optarg);
@@ -191,4 +191,169 @@ bool dealOpts(int argc, char **argv) {
         }
     }
     return true;
+}
+
+string getBanner(string word) {
+
+if("zero" == word) return " \n \
+ ########   .####:    ##.####   .####.  \n \
+ ########  .######:   #######  .######. \n \
+     :##:  ##:  :##   ###.     ###  ###  \n \
+    :##:   ########   ##       ##.  .##  \n \
+   :##:    ########   ##       ##    ## \n \
+  :##:     ##         ##       ##.  .## \n \
+ :##:      ###.  :#   ##       ###  ### \n \
+ ########  .#######   ##       .######. \n \
+ ########   .#####:   ##        .####.  \n ";
+                              
+if("one" == word) return "  \n \
+  .####.   ##.####    .####:  \n \
+ .######.  #######   .######: \n \
+ ###  ###  ###  :##  ##:  :##  \n \
+ ##.  .##  ##    ##  ########  \n \
+ ##    ##  ##    ##  ######## \n \
+ ##.  .##  ##    ##  ##       \n \
+ ###  ###  ##    ##  ###.  :# \n \
+ .######.  ##    ##  .####### \n \
+  .####.   ##    ##   .#####: \n ";
+                              
+if("two" == word) return "  \n \
+   ##                         \n \
+   ##                         \n \
+ #######  ##      ##  .####.   \n \
+ #######  ##.    .## .######.  \n \
+   ##      #: ## :#  ###  ### \n \
+   ##     :#:.##.:#: ##.  .## \n \
+   ##      # :##:##  ##    ## \n \
+   ##      ## ## ##  ##.  .## \n \
+   ##.     ###::##   ###  ### \n \
+   #####   :##..##:  .######. \n \
+   .####   .##  ##    .####.  \n ";
+                              
+                              
+                              
+                              
+                                                  
+                                                  
+if("three" == word) return "  \n \
+           ##                                     \n \
+   ##      ##                                     \n \
+   ##      ##                                      \n \
+ #######   ##.####    ##.####   .####:    .####:   \n \
+ #######   #######    #######  .######:  .######: \n \
+   ##      ###  :##   ###.     ##:  :##  ##:  :## \n \
+   ##      ##    ##   ##       ########  ######## \n \
+   ##      ##    ##   ##       ########  ######## \n \
+   ##      ##    ##   ##       ##        ##       \n \
+   ##.     ##    ##   ##       ###.  :#  ###.  :# \n \
+   #####   ##    ##   ##       .#######  .####### \n \
+   .####   ##    ##   ##        .#####:   .#####: \n ";
+
+if("four" == word) return "  \n \
+   :####                                \n \
+   #####                                \n \
+   ##                                    \n \
+ #######    .####.   ##    ##   ##.####  \n \
+ #######   .######.  ##    ##   ####### \n \
+   ##      ###  ###  ##    ##   ###.    \n \
+   ##      ##.  .##  ##    ##   ##      \n \
+   ##      ##    ##  ##    ##   ##      \n \
+   ##      ##.  .##  ##    ##   ##      \n \
+   ##      ###  ###  ##:  ###   ##      \n \
+   ##      .######.   #######   ##      \n \
+   ##       .####.     ###.##   ##      \n ";
+                                        
+if("five" == word) return "  \n \
+              ##                        \n \
+   :####      ##                        \n \
+   #####      ##                         \n \
+   ##                                    \n \
+ #######    ####     ##:  :##   .####:  \n \
+ #######    ####      ##  ##   .######: \n \
+   ##         ##     :##  ##:  ##:  :## \n \
+   ##         ##      ##..##   ######## \n \
+   ##         ##      ##::##   ######## \n \
+   ##         ##      :####:   ##       \n \
+   ##         ##       ####    ###.  :# \n \
+   ##      ########    ####    .####### \n \
+   ##      ########    :##:     .#####: \n ";
+                              
+if("six" == word) return "  \n \
+              ##              \n \
+              ##              \n \
+              ##               \n \
+                               \n \
+  :#####.   ####     ###  ### \n \
+ ########   ####      ##::##  \n \
+ ##:  .:#     ##      :####:  \n \
+ ##### .      ##       ####   \n \
+ .######:     ##       :##:   \n \
+    .: ##     ##       ####   \n \
+ #:.  :##     ##      :####:  \n \
+ ########  ########   ##::##  \n \
+ . ####    ########  ###  ### \n ";
+                                                  
+if("seven" == word) return "  \n \
+  :#####.   .####:   ##:  :##   .####:   ##.####  \n \
+ ########  .######:   ##  ##   .######:  #######  \n \
+ ##:  .:#  ##:  :##  :##  ##:  ##:  :##  ###  :##  \n \
+ ##### .   ########   ##..##   ########  ##    ##  \n \
+ .######:  ########   ##::##   ########  ##    ## \n \
+    .: ##  ##         :####:   ##        ##    ## \n \
+ #:.  :##  ###.  :#    ####    ###.  :#  ##    ## \n \
+ ########  .#######    ####    .#######  ##    ## \n \
+ . ####     .#####:    :##:     .#####:  ##    ## \n ";
+                                                  
+                                                  
+                                                  
+                                                  
+                                                  
+if("eight" == word) return "  \n \
+              ##                                  \n \
+              ##               ##                 \n \
+              ##               ##          ##      \n \
+                               ##          ##      \n \
+  .####:    ####      :###:##  ##.####   #######  \n \
+ .######:   ####     .#######  #######   #######  \n \
+ ##:  :##     ##     ###  ###  ###  :##    ##     \n \
+ ########     ##     ##.  .##  ##    ##    ##     \n \
+ ########     ##     ##    ##  ##    ##    ##     \n \
+ ##           ##     ##.  .##  ##    ##    ##     \n \
+ ###.  :#     ##     ###  ###  ##    ##    ##.    \n \
+ .#######  ########  .#######  ##    ##    #####  \n \
+  .#####:  ########   :###:##  ##    ##    .####  \n \
+                      #.  :##                     \n \
+                      ######                      \n \
+                      :####:                      \n ";
+                                                  
+                                        
+if("nine" == word) return "  \n \
+              ##                        \n \
+              ##                        \n \
+              ##                         \n \
+                                         \n \
+ ##.####    ####     ##.####    .####:  \n \
+ #######    ####     #######   .######: \n \
+ ###  :##     ##     ###  :##  ##:  :## \n \
+ ##    ##     ##     ##    ##  ######## \n \
+ ##    ##     ##     ##    ##  ######## \n \
+ ##    ##     ##     ##    ##  ##       \n \
+ ##    ##     ##     ##    ##  ###.  :# \n \
+ ##    ##  ########  ##    ##  .####### \n \
+ ##    ##  ########  ##    ##   .#####: \n";
+
+if("ten" == word) return "  \n \
+   ##                         \n \
+   ##                         \n \
+ #######    .####:   ##.####   \n \
+ #######   .######:  #######   \n \
+   ##      ##:  :##  ###  :## \n \
+   ##      ########  ##    ## \n \
+   ##      ########  ##    ## \n \
+   ##      ##        ##    ## \n \
+   ##.     ###.  :#  ##    ## \n \
+   #####   .#######  ##    ## \n \
+   .####    .#####:  ##    ## \n ";
+
+return "null2";
 }

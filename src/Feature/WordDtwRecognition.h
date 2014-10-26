@@ -60,6 +60,8 @@ class WordDtwRecognition {
         // 如果要记录路径记得先设置
         void setDoRecordPath(bool doRecord);
 
+        void setMaxInstancePerWord(int maxInstancePer);
+
     private:
 
         // TODO: Train...

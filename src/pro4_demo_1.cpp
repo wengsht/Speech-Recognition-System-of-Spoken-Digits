@@ -17,7 +17,7 @@
 using namespace std;
 
 bool isBeam;
-int maxInstancePerTemplate = MAX_TEMPLATES_PER_WORD;
+int maxInstancePer = MAX_TEMPLATES_PER_WORD;
 double threshold = DEFAULT_BEAM_THRESHOLD;
 
 int  threadNum = DEFAULT_THREAD_NUM;
@@ -120,6 +120,7 @@ void runDemoN1() {
 
     // recore Path for demo
     recognition.setDoRecordPath(true);
+    recognition.setMaxInstancePerWord(maxInstancePer);
 
     if(isBeam)
         recognition.setOpType(WaveFeatureOP::Beam);
@@ -148,6 +149,7 @@ void runDemoNN() {
     WordDtwRecognition recognition;
 
     recognition.loadTemplates(templateDirName);
+    recognition.setMaxInstancePerWord(maxInstancePer);
 
     if(isBeam)
         recognition.setOpType(WaveFeatureOP::Beam);
@@ -218,8 +220,7 @@ bool dealOpts(int argc, char **argv) {
                 demoType = atoi(optarg);
                 break;
             case 'p':
-                maxInstancePerTemplate = atoi(optarg);
-                WaveFeatureOPSet::maxTemplatesPerWord = maxInstancePerTemplate;
+                maxInstancePer = atoi(optarg);
                 break;
             case 'b':
                 isBeam = true;

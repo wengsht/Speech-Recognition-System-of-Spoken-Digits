@@ -371,6 +371,29 @@ Feature/CMakeFiles/Feature.dir/HMMState.cpp.o.provides: Feature/CMakeFiles/Featu
 
 Feature/CMakeFiles/Feature.dir/HMMState.cpp.o.provides.build: Feature/CMakeFiles/Feature.dir/HMMState.cpp.o
 
+Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o: Feature/CMakeFiles/Feature.dir/flags.make
+Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o: Feature/Gaussian.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles $(CMAKE_PROGRESS_15)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o"
+	cd /Users/admin/Project/speech/src/Feature && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/Feature.dir/Gaussian.cpp.o -c /Users/admin/Project/speech/src/Feature/Gaussian.cpp
+
+Feature/CMakeFiles/Feature.dir/Gaussian.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Feature.dir/Gaussian.cpp.i"
+	cd /Users/admin/Project/speech/src/Feature && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /Users/admin/Project/speech/src/Feature/Gaussian.cpp > CMakeFiles/Feature.dir/Gaussian.cpp.i
+
+Feature/CMakeFiles/Feature.dir/Gaussian.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Feature.dir/Gaussian.cpp.s"
+	cd /Users/admin/Project/speech/src/Feature && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /Users/admin/Project/speech/src/Feature/Gaussian.cpp -o CMakeFiles/Feature.dir/Gaussian.cpp.s
+
+Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.requires:
+.PHONY : Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.requires
+
+Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.provides: Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.requires
+	$(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.provides.build
+.PHONY : Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.provides
+
+Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.provides.build: Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o
+
 # Object files for target Feature
 Feature_OBJECTS = \
 "CMakeFiles/Feature.dir/Feature.cpp.o" \
@@ -386,7 +409,8 @@ Feature_OBJECTS = \
 "CMakeFiles/Feature.dir/HMMAutomaton.cpp.o" \
 "CMakeFiles/Feature.dir/KMeanState.cpp.o" \
 "CMakeFiles/Feature.dir/SoftState.cpp.o" \
-"CMakeFiles/Feature.dir/HMMState.cpp.o"
+"CMakeFiles/Feature.dir/HMMState.cpp.o" \
+"CMakeFiles/Feature.dir/Gaussian.cpp.o"
 
 # External object files for target Feature
 Feature_EXTERNAL_OBJECTS =
@@ -405,6 +429,7 @@ Feature/libFeature.a: Feature/CMakeFiles/Feature.dir/HMMAutomaton.cpp.o
 Feature/libFeature.a: Feature/CMakeFiles/Feature.dir/KMeanState.cpp.o
 Feature/libFeature.a: Feature/CMakeFiles/Feature.dir/SoftState.cpp.o
 Feature/libFeature.a: Feature/CMakeFiles/Feature.dir/HMMState.cpp.o
+Feature/libFeature.a: Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o
 Feature/libFeature.a: Feature/CMakeFiles/Feature.dir/build.make
 Feature/libFeature.a: Feature/CMakeFiles/Feature.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX static library libFeature.a"
@@ -429,6 +454,7 @@ Feature/CMakeFiles/Feature.dir/requires: Feature/CMakeFiles/Feature.dir/HMMAutom
 Feature/CMakeFiles/Feature.dir/requires: Feature/CMakeFiles/Feature.dir/KMeanState.cpp.o.requires
 Feature/CMakeFiles/Feature.dir/requires: Feature/CMakeFiles/Feature.dir/SoftState.cpp.o.requires
 Feature/CMakeFiles/Feature.dir/requires: Feature/CMakeFiles/Feature.dir/HMMState.cpp.o.requires
+Feature/CMakeFiles/Feature.dir/requires: Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o.requires
 .PHONY : Feature/CMakeFiles/Feature.dir/requires
 
 Feature/CMakeFiles/Feature.dir/clean:

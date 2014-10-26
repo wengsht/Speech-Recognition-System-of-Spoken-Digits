@@ -25,9 +25,7 @@
 #include "ThreadPool.h"
 #include "Capture.h"
 
-int WaveFeatureOPSet::maxTemplatesPerWord = MAX_TEMPLATES_PER_WORD;
-
-WaveFeatureOPSet::WaveFeatureOPSet() {}
+WaveFeatureOPSet::WaveFeatureOPSet(int maxInstancePer) : maxInstancePer(maxInstancePer) {}
 
 WaveFeatureOPSet::~WaveFeatureOPSet() {}
 

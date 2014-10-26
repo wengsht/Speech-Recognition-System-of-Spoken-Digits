@@ -1,7 +1,8 @@
 #include "Gaussian.h"
 #include "mathtool.h"
+#include <cmath>
 
-Gaussian::Gaussian(){
+Gaussian::Gaussian() {
 	this->mean = NULL;
 	this->cvar = NULL;
 	this->tmp_mean = NULL;
@@ -28,7 +29,7 @@ Gaussian::~Gaussian(){
 	if(mean)delete mean;
 	if(cvar)delete cvar;
 }
-
+int Gaussian::getflag(){return flag;}
 void Gaussian::setMean(Feature * f){
 	Feature & p = *f;
 	for(int i = 0;i<featureSize;i++){
@@ -41,6 +42,20 @@ void Gaussian::setCVar(double v){
 	for(int i =0;i<featureSize;i++) cvar[i] = v;
 	flag = true;
 }
+
+void Gaussian::setRandCVar(){
+	for(int i =0;i<featureSize;i++) cvar[i] = (rand()%10000);
+	flag = true;
+}
+
+double Gaussian::getCVar(){
+	double ret = 0;
+	for(int i =0;i<featureSize;i++){
+		ret+=cvar[i];
+	}
+	return ret;
+}
+
 void Gaussian::print(){
 	printf("mean=[");
 	for(int i = 0;i<featureSize;i++){
@@ -52,7 +67,7 @@ void Gaussian::print(){
 	}puts("]");
 }
 bool Gaussian::done(){
-	double ep = 0.0001;
+	double ep = 1e-12;
 	bool converge = true;
 	if(sampleNum == 0){
 		flag = false;
@@ -79,11 +94,11 @@ bool Gaussian::done(){
 	return converge;
 }
 
-void Gaussian::addFeature(Feature * f){
+void Gaussian::addFeature(Feature * f, double probability) {
 	Feature & p = *f;
 	for(int i = 0;i<featureSize;i++){
-		tmp_mean[i] += p[i];
-		tmp_mean2[i] += p[i] *p[i];
+		tmp_mean[i] += p[i] * probability;
+		tmp_mean2[i] += p[i] *p[i] * probability;
 	}
 	sampleNum ++;
 }
@@ -100,6 +115,8 @@ double Gaussian::minuLogP(Feature* f){
 	if(flag == false){
 		return Feature::IllegalDist;
 	}
+ //   if(cvar[0]  < 0) 
+  //      return euDist(f);
 	Feature & p = *f;
 	double ret=0;
 	double v,v2;
@@ -114,4 +131,14 @@ double Gaussian::minuLogP(Feature* f){
 	return ret;
 }
 
-
+// 与均值的欧式距离
+double Gaussian::euDist(Feature* f){
+	if(flag == false){
+		return Feature::IllegalDist;
+	}
+    double ret = 0;
+	for(int i = 0;i<featureSize;i++){
+		ret += pow((*f)[i] - mean[i], 2.0);
+	}
+	return sqrt(ret);
+}
