@@ -237,10 +237,12 @@ void KMeanState::KMeanTrain()
 		
 		}
 
+        /*  
         for(int i = 0;i < 4;i++) {
             printf("%lf ", weight[i]);
         }
         puts("");
+        */
 
 	}
 /*	printf("\n\nfinally -----------------------\n");
