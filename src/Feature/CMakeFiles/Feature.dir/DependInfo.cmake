@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/Users/admin/Project/speech/src/Feature/Feature.cpp" "/Users/admin/Project/speech/src/Feature/CMakeFiles/Feature.dir/Feature.cpp.o"
   "/Users/admin/Project/speech/src/Feature/FeatureExtractor.cpp" "/Users/admin/Project/speech/src/Feature/CMakeFiles/Feature.dir/FeatureExtractor.cpp.o"
+  "/Users/admin/Project/speech/src/Feature/Gaussian.cpp" "/Users/admin/Project/speech/src/Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o"
   "/Users/admin/Project/speech/src/Feature/HMMAutomaton.cpp" "/Users/admin/Project/speech/src/Feature/CMakeFiles/Feature.dir/HMMAutomaton.cpp.o"
   "/Users/admin/Project/speech/src/Feature/HMMAutomatonSet.cpp" "/Users/admin/Project/speech/src/Feature/CMakeFiles/Feature.dir/HMMAutomatonSet.cpp.o"
   "/Users/admin/Project/speech/src/Feature/HMMKMeanAutomaton.cpp" "/Users/admin/Project/speech/src/Feature/CMakeFiles/Feature.dir/HMMKMeanAutomaton.cpp.o"

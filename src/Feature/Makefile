@@ -164,6 +164,30 @@ FeatureExtractor.cpp.s:
 	cd /Users/admin/Project/speech/src && $(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/FeatureExtractor.cpp.s
 .PHONY : FeatureExtractor.cpp.s
 
+Gaussian.o: Gaussian.cpp.o
+.PHONY : Gaussian.o
+
+# target to build an object file
+Gaussian.cpp.o:
+	cd /Users/admin/Project/speech/src && $(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/Gaussian.cpp.o
+.PHONY : Gaussian.cpp.o
+
+Gaussian.i: Gaussian.cpp.i
+.PHONY : Gaussian.i
+
+# target to preprocess a source file
+Gaussian.cpp.i:
+	cd /Users/admin/Project/speech/src && $(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/Gaussian.cpp.i
+.PHONY : Gaussian.cpp.i
+
+Gaussian.s: Gaussian.cpp.s
+.PHONY : Gaussian.s
+
+# target to generate assembly for a file
+Gaussian.cpp.s:
+	cd /Users/admin/Project/speech/src && $(MAKE) -f Feature/CMakeFiles/Feature.dir/build.make Feature/CMakeFiles/Feature.dir/Gaussian.cpp.s
+.PHONY : Gaussian.cpp.s
+
 HMMAutomaton.o: HMMAutomaton.cpp.o
 .PHONY : HMMAutomaton.o
 
@@ -467,6 +491,9 @@ help:
 	@echo "... FeatureExtractor.o"
 	@echo "... FeatureExtractor.i"
 	@echo "... FeatureExtractor.s"
+	@echo "... Gaussian.o"
+	@echo "... Gaussian.i"
+	@echo "... Gaussian.s"
 	@echo "... HMMAutomaton.o"
 	@echo "... HMMAutomaton.i"
 	@echo "... HMMAutomaton.s"

@@ -29,7 +29,7 @@ Gaussian::~Gaussian(){
 	if(mean)delete mean;
 	if(cvar)delete cvar;
 }
-
+int Gaussian::getflag(){return flag;}
 void Gaussian::setMean(Feature * f){
 	Feature & p = *f;
 	for(int i = 0;i<featureSize;i++){
@@ -42,6 +42,20 @@ void Gaussian::setCVar(double v){
 	for(int i =0;i<featureSize;i++) cvar[i] = v;
 	flag = true;
 }
+
+void Gaussian::setRandCVar(){
+	for(int i =0;i<featureSize;i++) cvar[i] = (rand()%10000);
+	flag = true;
+}
+
+double Gaussian::getCVar(){
+	double ret = 0;
+	for(int i =0;i<featureSize;i++){
+		ret+=cvar[i];
+	}
+	return ret;
+}
+
 void Gaussian::print(){
 	printf("mean=[");
 	for(int i = 0;i<featureSize;i++){
@@ -53,7 +67,7 @@ void Gaussian::print(){
 	}puts("]");
 }
 bool Gaussian::done(){
-	double ep = 0.1;
+	double ep = 1e-12;
 	bool converge = true;
 	if(sampleNum == 0){
 		flag = false;
@@ -86,7 +100,7 @@ void Gaussian::addFeature(Feature * f, double probability) {
 		tmp_mean[i] += p[i] * probability;
 		tmp_mean2[i] += p[i] *p[i] * probability;
 	}
-	sampleNum ++;
+	sampleNum += probability;
 }
 /*
 const double eps = 1e-13;

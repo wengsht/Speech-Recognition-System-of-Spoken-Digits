@@ -15,9 +15,10 @@ private:
 	//临时变量用于存储
 	double* tmp_mean;
 	double* tmp_mean2;
-	int sampleNum;
+	double sampleNum;
 	int flag;
 public:
+	int getflag();
 	Gaussian();
 	Gaussian(int featureSize);
 	~Gaussian();
@@ -36,6 +37,9 @@ public:
 	void setMean(Feature *f);
 	//初始化协方差cvar，将cvar的对角线设为v
 	void setCVar(double v);
+	void setRandCVar();
+	//获得协方差的总和
+	double getCVar();
 };
 
 #endif

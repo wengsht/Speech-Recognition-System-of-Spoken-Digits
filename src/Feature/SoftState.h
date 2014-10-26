@@ -53,11 +53,14 @@ class SoftState : public HMMState {
         std::vector<Gaussian *> GaussianSet;
         std::vector<double> weight;
 
+        void generateInit( Feature & feature);
+
         void clearGaussian();
 
         int Point2Clusters(int templateIdx, int featureIdx);
 
         double totalProbability;
+        double maxProbability;
         double u[39];
         double sigma[39];
 };

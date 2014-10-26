@@ -48,13 +48,24 @@ class KMeanState : public HMMState {
 		Feature ** points;
 		//lz: size of points
 		int PointNum;
+		int trainTime;
+		int betterTime;
 		//lz: 
 		void KMeanTrain();
+
+
 		double KMeanNodeCost(Feature * f);
         void generateInitFeature(Feature &initFeature);
 		//lz
+		//真正的模型
+		std::vector<Gaussian*> GaussianModel;
+		//临时的模型
 		std::vector<Gaussian*> GaussianSet;
+		double checkBetter(double);
+		//临时的权重
 		std::vector<double> weight;
+		//真正的权重
+		std::vector<double> w;	
 		//lz: 释放高斯模型空间，清空weight和GaussianSet
 		void clearGaussian();
 		//lz: 计算第pid点最近的高斯模型编号
