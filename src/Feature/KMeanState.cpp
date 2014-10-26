@@ -206,7 +206,7 @@ void KMeanState::KMeanTrain()
 	if(GaussianSet.size()==0)return;
 	bool converge = false;
 	
-	while(!converge){
+	while(!converge) {
 		vector<int> count;
 	
 		for(int i = 0;i<GaussianSet.size();i++) {
@@ -233,7 +233,7 @@ void KMeanState::KMeanTrain()
 		//	printf("G%d ---------\n",i);
 		//	printf("wi = %lf\n",wi);
 		//	GaussianSet[i]->print();
-//			char c;scanf("%c",&c);
+    //char c;scanf("%c",&c);
 		
 		}
 
