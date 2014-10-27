@@ -25,6 +25,7 @@
 #include "configure_hmm.h"
 #include "HMMState.h"
 #include "math.h"
+#include <sstream>
 
 class HMMAutomaton {
     READ_WRITE_DECLARE(int , stateNum, StateNum);
@@ -40,6 +41,9 @@ public:
     //  you should call this before you destroy this object
     void close();
 
+    virtual void load(std::stringstream &in) = 0;
+    void store(std::stringstream &out);
+
 protected:
     enum dtwType {
         Maximum, 
@@ -50,7 +54,7 @@ protected:
     std::vector<double> rollColumnCost[2];
 
     bool isBigChange(double totalChangeCost) {
-        return cost2p(totalChangeCost) >= 0.001 * stateNum * DTW_MAX_FORWARD;
+        return cost2p(totalChangeCost) >= 0.005 * stateNum * DTW_MAX_FORWARD;
     }
     // dtw 初始化第-1列
     void rollDtwInit(WaveFeatureOP &features, dtwType type) {

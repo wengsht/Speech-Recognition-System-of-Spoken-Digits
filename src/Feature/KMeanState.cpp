@@ -53,20 +53,21 @@ double KMeanState::checkBetter(double best){
 	if(GaussianSet.size()==0){
 		return best;	
 	}
-
+	//printf("%lf ",best);
 	//printf("no zero\n");
-	if(best >=0){
+	
 		for(int i = 0;i<GaussianSet.size();i++){
 			if(GaussianSet[i]->getflag()){
 				gn++;
-				now_var+=GaussianSet[i]->getCVar();
+//				printf("-------------now_var %lf\n",now_var);
+				now_var+=weight[i]*GaussianSet[i]->getCVar();
 			}
 		}
 		//assert(gn!=0);
-		now_var/=gn;
+		//now_var/=gn;
 		
-		if(now_var>=best)return best;
-	}
+		if(best>=0 && now_var>=best)return best;
+	
 	//printf("clear\n");
 	for(int i =0;i<GaussianModel.size();i++){
 		if(GaussianModel[i])delete GaussianModel[i];	
@@ -83,7 +84,9 @@ double KMeanState::checkBetter(double best){
 		GaussianModel[i] = GaussianSet[i];
 		GaussianSet[i] = NULL;
 		w[i] = weight[i];
+//		printf(" w%d %lf ",i,w[i]);
 	}
+	//puts("");
 
 	best = now_var;
 	//printf("CheckOver\n");
@@ -91,7 +94,7 @@ double KMeanState::checkBetter(double best){
 }
 
 void KMeanState::gaussianTrain(int gaussianNum) {
-	//printf("start train ~~  gaussian num:%d\n",gaussianNum);
+//	printf("start train ~~  gaussian num:%d\n",gaussianNum);
 	
 	// 计算该状态内Feature(Point)总数
 	PointNum = 0;
@@ -102,7 +105,7 @@ void KMeanState::gaussianTrain(int gaussianNum) {
 		}
 	}
 	
-	//printf("PointNum : %d\n",PointNum);	
+//	printf("PointNum : %d\n",PointNum);	
 	// 重新将feature(point)提取到points,方便访问
 	if(points)delete [] points;
 	points = new Feature*[PointNum];
@@ -114,14 +117,17 @@ void KMeanState::gaussianTrain(int gaussianNum) {
 			points[cnt++] = &((*templates)[i][j]);
 		}
 	}
-
-	int time = 10;
+//	printf("gaussianNum %d\n",gaussianNum);
+	int time = 30;
 	double best = -1;
 	while(time--){
 		initTrain(gaussianNum);
 		this->KMeanTrain();
+	//	printf("start check %lf\n",best);
 		best = checkBetter(best);
+	//	printf("%lf ",best);
 	};
+//	printf("\n");
 	//this->gaussianTrainTest(gaussianNum);
 }
 
@@ -167,17 +173,16 @@ void KMeanState::initTrain(int gaussianNum){
 		Gaussian * g = new Gaussian(featureSize);
         
    //     generateInitFeature(initFeature);
+       generateInitFeature(initFeature);
 
-		g->setMean(points[rand()%step+i*step]);
+		//g->setMean(points[rand()%step+i*step]);
+		//g->setMean(points[rand()%PointNum]);
 		
-		//g->setMean(&initFeature);
-//		g->setRandCVar();
-		g->setCVar(rand()%10000);
-//		g->setCVar(-1);
+		g->setMean(&initFeature);
+		g->setRandCVar();
+		g->setCVar(rand()%1000/100000.0);
 		weight[i] = (1.0/gaussianNum);
 		GaussianSet[i] = g;
-//		printf("G%d ---------\n",i);
-//		GaussianSet[i]->print();
 	}
 }
 void KMeanState::generateInitFeature(Feature &initFeature) {
@@ -240,14 +245,16 @@ void KMeanState::KMeanTrain()
 			GaussianSet[gid]->addFeature(points[i]);
 			count[gid] ++;
 		}
-
-		// 更新参数并计算是否已经收敛
+		weight.clear();
+		weight.resize(GaussianSet.size());
+		// 更新参数并计算是否已经收敛i
 		for(int i = 0;i<GaussianSet.size();i++){
+			assert(PointNum!=0);
 			double wi = count[i] / (double)PointNum;
 			converge &= GaussianSet[i]->done();
-			if(fabs(wi-weight[i])>0.0001){
-				converge = false;
-			}
+		//	if(fabs(wi-weight[i])>0.0001){
+		//		converge = false;
+		//	}
 			weight[i] = wi;
 			
 		//	printf("G%d ---------\n",i);
@@ -257,22 +264,19 @@ void KMeanState::KMeanTrain()
 		
 		}
 
-        /*  
-        for(int i = 0;i < 4;i++) {
-            printf("%lf ", weight[i]);
-        }
-        puts("");
-        */
+         
+        
 
 	}
-/*	printf("\n\nfinally -----------------------\n");
+	/*
+	printf("\n\nfinally -----------------------\n");
 	for(int i = 0;i<GaussianSet.size();i++){
 		printf("G %d --------:",i);
 		printf("wi = %lf\n",weight[i]);
 		GaussianSet[i]->print();
 		printf("\n\n");
-	}*/
-//	printf("trainover\n");
+	}
+	*/
 }
 
 
@@ -284,18 +288,15 @@ double KMeanState::KMeanNodeCost(Feature *f){
 	const double eps = 1e-13;
 	for(int i = 0;i<GaussianModel.size();i++){
 		if(fabs(w[i])<eps)continue;
-//		printf("calc g %d\n",i);
 		double t = GaussianModel[i]->minuLogP(f);
 		t -= log(w[i]);
 		if(ret == Feature::IllegalDist){
 			ret = t;
 		}
 		else{
-//			printf("ret : %lf t:%lf\n",ret,t);
 			ret = logInsideSum(ret,t);
 		}
 	}
-//	printf("over");
 	return ret;
 }
 
@@ -354,3 +355,25 @@ double KMeanState::nodeCostTest(Feature *inputFeature) {
 
     return a+b; //p2cost(a+b);
 }
+
+void KMeanState::load(std::stringstream &in, int gaussNum) {
+    clearGaussian();
+    if(templates->size() <= 0)
+        return ;
+    int featureSize = (*templates)[0][0].size();
+    w.resize(gaussNum);
+    for(int i = 0;i < gaussNum; i++) {
+        Gaussian * g = new  Gaussian(featureSize);
+        in >> w[i];
+        g->load(in);
+        GaussianModel.push_back(g);
+    }
+}
+void KMeanState::store(std::stringstream &out) {
+    for(int i = 0;i < GaussianModel.size(); i++) {
+        out << " " << w[i];
+
+        GaussianModel[i]->store(out);
+    }
+}
+

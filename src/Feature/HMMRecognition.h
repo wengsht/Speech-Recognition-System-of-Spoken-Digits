@@ -25,6 +25,9 @@
 #include "configure.h"
 #include "Feature.h"
 #include <vector>
+#include <string>
+#include <fstream>
+using namespace std;
 
 class HMMRecognition {
     // KMEAN / SOFT
@@ -52,22 +55,29 @@ class HMMRecognition {
 
             automatons.setStateNum(stateNum);
         }
+
         void setGaussNum(int gaussNum) {
             this->gaussNum = gaussNum;
 
             automatons.setGaussNum(gaussNum);
         }
+
         void setTrainTimes(int trainTimes) {
             this->trainTimes = trainTimes;
 
             automatons.setTrainTimes(trainTimes);
         }
     private:
+        bool loadHMMModel();
+        void storeHMMModel();
+        string generateHMMFileName();
+    private:
         int stateNum;
         int gaussNum;
         int trainTimes;
 
         HMMAutomatonSet automatons;
+        string templateDir;
 };
 
 #endif

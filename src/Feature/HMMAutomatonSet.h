@@ -22,6 +22,8 @@
 #include <string>
 #include "HMMState.h"
 #include <vector>
+#include <fstream>
+#include <sstream>
 
 class HMMAutomatonSet : public WaveFeatureOPSet {
     READ_WRITE_DECLARE(HMMState::StateType, stateType, StateType);
@@ -41,6 +43,9 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
 
     private:
         static void hmmTrainTask(void *in);
+    public:
+        void load(std::ifstream &in);
+        void store(std::ofstream &out);
     private:
         std::map< std::string, HMMAutomaton *> automatons;
 };

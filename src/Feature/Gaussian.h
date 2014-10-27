@@ -2,6 +2,7 @@
 #define _AUTOGUARD_Gaussian_H_
 #include <vector>
 #include "Feature.h"
+#include <sstream>
 
 class Gaussian{
 private:
@@ -18,6 +19,9 @@ private:
 	double sampleNum;
 	int flag;
 public:
+    void load(std::stringstream &in);
+    void store(std::stringstream &out);
+
 	int getflag();
 	Gaussian();
 	Gaussian(int featureSize);

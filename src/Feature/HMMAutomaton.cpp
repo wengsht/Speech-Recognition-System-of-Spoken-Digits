@@ -34,3 +34,14 @@ void HMMAutomaton::clearStates() {
     states.clear();
 
 }
+
+void HMMAutomaton::store(std::stringstream &out) {
+    for(int i = 1;i <= stateNum ;i++) 
+        for(int j = 1; j <= stateNum ;j++)
+            out << " " << transferCost[i][j];
+
+    for(int i = 1;i < states.size(); i++) {
+        states[i]->store(out);
+    }
+
+}

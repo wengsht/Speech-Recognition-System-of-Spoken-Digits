@@ -94,3 +94,45 @@ void HMMAutomatonSet::clear() {
     }
     automatons.clear();
 }
+
+void HMMAutomatonSet::load(std::ifstream &in) {
+    dataSetType::iterator templateItr;
+    std::string word;
+
+    for(templateItr = dataSet.begin(); templateItr != dataSet.end(); templateItr ++) {
+        std::string word = templateItr->first;
+
+        if(automatons.count(word))
+            continue;
+
+        // 新建自动机
+        if(stateType == HMMState::KMEAN)
+            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
+        else 
+            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
+    }
+
+    std::string tmp;
+    while(getline(in, tmp)) {
+        std::stringstream sin(tmp);
+
+        sin >> word;
+
+        // 新建自动机
+
+        automatons[word]->load(sin);
+    }
+}
+
+void HMMAutomatonSet::store(std::ofstream &out) {
+    std::map< std::string, HMMAutomaton *>::iterator Itr;
+    for(Itr = automatons.begin(); Itr != automatons.end(); Itr ++) {
+        std::string tmp("");
+        std::stringstream sout(tmp);
+        sout << Itr->first << " ";
+
+        (Itr->second)->store(sout);
+
+        out << sout.str() << std::endl;
+    }
+}

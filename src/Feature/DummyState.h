@@ -29,6 +29,12 @@ class DummyState : public HMMState {
         double nodeCost(Feature *inputFeature) {
             return Feature::IllegalDist;
         }
+        void load(std::stringstream &in, int gaussNum) {
+
+        }
+        void store(std::stringstream &out) {
+
+        }
 
     private:
 };

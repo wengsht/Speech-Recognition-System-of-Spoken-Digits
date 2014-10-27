@@ -232,3 +232,24 @@ double SoftState::SoftNodeCost(Feature *f) {
 	}
 	return ret;
 }
+
+void SoftState::load(std::stringstream &in, int gaussNum) {
+    clearGaussian();
+    if(templates->size() <= 0)
+        return ;
+    int featureSize = (*templates)[0][0].size();
+    weight.resize(gaussNum);
+    for(int i = 0;i < gaussNum; i++) {
+        Gaussian * g = new Gaussian(featureSize);
+        in >> weight[i];
+        g->load(in);
+        GaussianSet.push_back(g);
+    }
+}
+void SoftState::store(std::stringstream &out) {
+    for(int i = 0;i < GaussianSet.size(); i++) {
+        out << " " << weight[i];
+
+        GaussianSet[i]->store(out);
+    }
+}

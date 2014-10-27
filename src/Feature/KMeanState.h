@@ -36,6 +36,8 @@ class KMeanState : public HMMState {
         void gaussianTrainTest(int gaussianNum);
         double nodeCostTest(Feature *inputFeature);
 
+        void load(std::stringstream &in, int gaussNum);
+        void store(std::stringstream &out);
     private:
         // 对于Kmean， 存储的时候属于这个state的线段 
         // 注意是和基类的vector<WaveFeatureOP> 一一对应的
@@ -73,7 +75,6 @@ class KMeanState : public HMMState {
 
         double u[39];
         double sigma[39];
-
 };
 
 #endif
