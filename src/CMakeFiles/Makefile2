@@ -56,14 +56,14 @@ CMAKE_BINARY_DIR = /Users/admin/Project/speech/src
 # Target rules for target CMakeFiles/hmm_demo.dir
 
 # All Build rule for target.
-CMakeFiles/hmm_demo.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/hmm_demo.dir/all: Feature/CMakeFiles/Feature.dir/all
+CMakeFiles/hmm_demo.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/hmm_demo.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/hmm_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/hmm_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
+CMakeFiles/hmm_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/hmm_demo.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/hmm_demo.dir/all: data/CMakeFiles/data.dir/all
 CMakeFiles/hmm_demo.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
+CMakeFiles/hmm_demo.dir/all: data/CMakeFiles/data.dir/all
 	$(MAKE) -f CMakeFiles/hmm_demo.dir/build.make CMakeFiles/hmm_demo.dir/depend
 	$(MAKE) -f CMakeFiles/hmm_demo.dir/build.make CMakeFiles/hmm_demo.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  30
@@ -98,14 +98,14 @@ clean: CMakeFiles/hmm_demo.dir/clean
 # Target rules for target CMakeFiles/pro2_demo.dir
 
 # All Build rule for target.
-CMakeFiles/pro2_demo.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/pro2_demo.dir/all: Feature/CMakeFiles/Feature.dir/all
+CMakeFiles/pro2_demo.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/pro2_demo.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/pro2_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/pro2_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
+CMakeFiles/pro2_demo.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/pro2_demo.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/pro2_demo.dir/all: data/CMakeFiles/data.dir/all
 CMakeFiles/pro2_demo.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
+CMakeFiles/pro2_demo.dir/all: data/CMakeFiles/data.dir/all
 	$(MAKE) -f CMakeFiles/pro2_demo.dir/build.make CMakeFiles/pro2_demo.dir/depend
 	$(MAKE) -f CMakeFiles/pro2_demo.dir/build.make CMakeFiles/pro2_demo.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  31
@@ -141,8 +141,8 @@ clean: CMakeFiles/pro2_demo.dir/clean
 
 # All Build rule for target.
 CMakeFiles/pro3_demo.dir/all: Configure/CMakeFiles/Configure.dir/all
-CMakeFiles/pro3_demo.dir/all: EditDistance/CMakeFiles/EditDistance.dir/all
 CMakeFiles/pro3_demo.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
+CMakeFiles/pro3_demo.dir/all: EditDistance/CMakeFiles/EditDistance.dir/all
 	$(MAKE) -f CMakeFiles/pro3_demo.dir/build.make CMakeFiles/pro3_demo.dir/depend
 	$(MAKE) -f CMakeFiles/pro3_demo.dir/build.make CMakeFiles/pro3_demo.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  32
@@ -177,14 +177,14 @@ clean: CMakeFiles/pro3_demo.dir/clean
 # Target rules for target CMakeFiles/pro4_demo_1.dir
 
 # All Build rule for target.
-CMakeFiles/pro4_demo_1.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/pro4_demo_1.dir/all: Feature/CMakeFiles/Feature.dir/all
+CMakeFiles/pro4_demo_1.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/pro4_demo_1.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/pro4_demo_1.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/pro4_demo_1.dir/all: Configure/CMakeFiles/Configure.dir/all
+CMakeFiles/pro4_demo_1.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/pro4_demo_1.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/pro4_demo_1.dir/all: data/CMakeFiles/data.dir/all
 CMakeFiles/pro4_demo_1.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
+CMakeFiles/pro4_demo_1.dir/all: data/CMakeFiles/data.dir/all
 	$(MAKE) -f CMakeFiles/pro4_demo_1.dir/build.make CMakeFiles/pro4_demo_1.dir/depend
 	$(MAKE) -f CMakeFiles/pro4_demo_1.dir/build.make CMakeFiles/pro4_demo_1.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  33
@@ -219,14 +219,14 @@ clean: CMakeFiles/pro4_demo_1.dir/clean
 # Target rules for target CMakeFiles/rawdtw.dir
 
 # All Build rule for target.
-CMakeFiles/rawdtw.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/rawdtw.dir/all: Feature/CMakeFiles/Feature.dir/all
+CMakeFiles/rawdtw.dir/all: test/CMakeFiles/test.dir/all
 CMakeFiles/rawdtw.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/rawdtw.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/rawdtw.dir/all: Configure/CMakeFiles/Configure.dir/all
+CMakeFiles/rawdtw.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/rawdtw.dir/all: readwave/CMakeFiles/readwave.dir/all
-CMakeFiles/rawdtw.dir/all: data/CMakeFiles/data.dir/all
 CMakeFiles/rawdtw.dir/all: ThreadPool/CMakeFiles/ThreadPool.dir/all
+CMakeFiles/rawdtw.dir/all: data/CMakeFiles/data.dir/all
 	$(MAKE) -f CMakeFiles/rawdtw.dir/build.make CMakeFiles/rawdtw.dir/depend
 	$(MAKE) -f CMakeFiles/rawdtw.dir/build.make CMakeFiles/rawdtw.dir/build
 	$(CMAKE_COMMAND) -E cmake_progress_report /Users/admin/Project/speech/src/CMakeFiles  34
@@ -262,8 +262,8 @@ clean: CMakeFiles/rawdtw.dir/clean
 
 # All Build rule for target.
 CMakeFiles/recorder.dir/all: Capture/CMakeFiles/Capture.dir/all
-CMakeFiles/recorder.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/recorder.dir/all: Configure/CMakeFiles/Configure.dir/all
+CMakeFiles/recorder.dir/all: Analysis/CMakeFiles/Analysis.dir/all
 CMakeFiles/recorder.dir/all: readwave/CMakeFiles/readwave.dir/all
 CMakeFiles/recorder.dir/all: data/CMakeFiles/data.dir/all
 	$(MAKE) -f CMakeFiles/recorder.dir/build.make CMakeFiles/recorder.dir/depend
