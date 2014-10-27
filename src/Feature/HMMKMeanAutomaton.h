@@ -73,7 +73,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                 int endIdx = featureIdx;
                 int startIdx = featureIdx;
 
-                // 处于统一状态的所有节点
+                // 处于同一状态的所有节点
                 while(startIdx > 0 && path[startIdx][rowIdx] == rowIdx) {
                     startIdx --;
                 }
@@ -108,7 +108,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
 
                     nxtCnt[0] += numNode - 1;
                     if(seg.second == (*templates)[j].size()-1)
-                        nxtCnt[0] = numNode;
+                        nxtCnt[0] += 1;
 
                     // 统计i会转移到i+k 的node的个数
                     for(int k = 1; k < DTW_MAX_FORWARD; k++) {

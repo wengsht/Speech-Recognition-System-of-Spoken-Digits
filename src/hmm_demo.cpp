@@ -19,6 +19,7 @@
 // =====================================================================================
 
 #include "resource.h"
+#include <iomanip>
 #include "srs.h"
 #include <cstdio>
 #include <iostream>
@@ -146,7 +147,7 @@ void runNN() {
         if(res == (*Itr)->getWord()) 
             correctCnt ++;
         else 
-        cout << res << " " << (*Itr)->getWord() << endl;
+        cout << setw(20) << left<< "Template : " << res << " " <<  " Input: " <<  (*Itr)->getWord() << endl;
     }
     system("clear");
     cout << "Input " << allCnt << " wavs " << endl; 

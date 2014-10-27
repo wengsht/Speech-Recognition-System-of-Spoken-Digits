@@ -46,11 +46,17 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
 
     private:
         static void hmmTrainTask(void *in);
+
+        void reGenerateAutomaton();
+        int getSpecificStateNum( std::string &word );
+        void loadSpecStateNum();
     public:
         void load(std::ifstream &in);
         void store(std::ofstream &out);
     private:
         std::map< std::string, HMMAutomaton *> automatons;
+
+        std::map< std::string, int> specStateNums;
 };
 
 #endif

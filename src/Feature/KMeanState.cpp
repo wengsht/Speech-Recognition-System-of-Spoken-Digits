@@ -369,6 +369,7 @@ void KMeanState::load(std::stringstream &in, int gaussNum) {
         GaussianModel.push_back(g);
     }
 }
+
 void KMeanState::store(std::stringstream &out) {
     for(int i = 0;i < GaussianModel.size(); i++) {
         out << " " << w[i];

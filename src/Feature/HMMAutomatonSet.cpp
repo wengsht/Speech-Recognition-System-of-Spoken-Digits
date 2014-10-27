@@ -22,8 +22,16 @@
 #include "ThreadPool.h"
 
 HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {
+    loadSpecStateNum();
 }
 HMMAutomatonSet::~HMMAutomatonSet() {
+
+}
+void HMMAutomatonSet::loadSpecStateNum() {
+#define SpecificStateNum(word, num) \
+    specStateNums[word] = num;
+#include "SpecificStateNum.def"
+#undef  SpecificStateNum
 }
 
 
@@ -33,28 +41,40 @@ void HMMAutomatonSet::hmmTrainTask(void *in) {
     automaton->hmmTrain();
 }
 
-SP_RESULT HMMAutomatonSet::train() {
-    clear();
+int HMMAutomatonSet::getSpecificStateNum( std::string &word ) {
+    if(specStateNums.count(word))
+        return specStateNums[word];
 
+    return stateNum;
+}
+
+void HMMAutomatonSet::reGenerateAutomaton() {
     dataSetType::iterator templateItr;
-
-    ThreadPool threadPool(ThreadPool::thread_num);
     for(templateItr = dataSet.begin(); templateItr != dataSet.end(); templateItr ++) {
         std::string word = templateItr->first;
 
         if(automatons.count(word))
             continue;
 
+        int specificStateNum = getSpecificStateNum( word );
         // 新建自动机
         if(stateType == HMMState::KMEAN)
-            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
+            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), specificStateNum, gaussNum, trainTimes); 
         else 
-            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
+            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), specificStateNum, gaussNum, trainTimes); 
+    }
+}
+SP_RESULT HMMAutomatonSet::train() {
+    reGenerateAutomaton();
 
+    ThreadPool threadPool(ThreadPool::thread_num);
+    std::map< std::string, HMMAutomaton *>::iterator Itr;
+    for(Itr = automatons.begin(); Itr != automatons.end(); Itr++) {
+        std::string word = Itr->first;
         sp_task task;
 
         task.func = hmmTrainTask;
-        task.in   = (void *)(automatons[word]);
+        task.in   = (void *)(Itr->second);
 
         threadPool.addTask(task);
 
@@ -96,29 +116,14 @@ void HMMAutomatonSet::clear() {
 }
 
 void HMMAutomatonSet::load(std::ifstream &in) {
-    dataSetType::iterator templateItr;
+    reGenerateAutomaton();
     std::string word;
-
-    for(templateItr = dataSet.begin(); templateItr != dataSet.end(); templateItr ++) {
-        std::string word = templateItr->first;
-
-        if(automatons.count(word))
-            continue;
-
-        // 新建自动机
-        if(stateType == HMMState::KMEAN)
-            automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
-        else 
-            automatons[word] = new HMMSoftAutomaton(&(templateItr->second), stateNum, gaussNum, trainTimes); 
-    }
 
     std::string tmp;
     while(getline(in, tmp)) {
         std::stringstream sin(tmp);
 
         sin >> word;
-
-        // 新建自动机
 
         automatons[word]->load(sin);
     }
