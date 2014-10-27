@@ -23,7 +23,6 @@ public:
     void store(std::stringstream &out);
 
 	int getflag();
-	Gaussian();
 	Gaussian(int featureSize);
 	~Gaussian();
 	void print();	

@@ -144,11 +144,19 @@ void runNN() {
 
         string res = hmm.hmmRecognition(*(*Itr));
         
+<<<<<<< HEAD
         if(res == (*Itr)->getWord()) 
             correctCnt ++;
         else 
         cout << setw(20) << left<< "Template : " << res << " " <<  " Input: " <<  (*Itr)->getWord() << endl;
+=======
         //cout << res << " " << (*Itr)->getWord() << endl;
+        if(res == (*Itr)->getWord()){ 
+            correctCnt ++;
+		}else{
+			cout << res << " ans : " << (*Itr)->getWord() << endl;
+		}
+>>>>>>> origin/liuzhi_split
     }
     system("clear");
     cout << "Input " << allCnt << " wavs " << endl; 

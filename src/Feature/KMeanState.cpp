@@ -28,167 +28,271 @@ const std::pair<int, int> KMeanState::NullSeg = std::make_pair(0, -1);
 
 KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {
     edgePoints.resize(templates->size());
-	points = NULL;
-
     srand(time(0));
+	ClusterSet.clear();
 }
 
-KMeanState::~KMeanState() {
+KMeanState::~KMeanState() 
+{
 	clearGaussian();
+	clearCluster();
 }
-void KMeanState::clearGaussian(){
-	for(int i = 0;i<GaussianSet.size();i++){
-		if(GaussianSet[i])delete GaussianSet[i];
+
+//清空高斯模型（包括w）
+void KMeanState::clearGaussian()
+{
+	for(int i = 0;i<GaussianModel.size();i++){
 		if(GaussianModel[i])delete GaussianModel[i];
 	}	
-	GaussianSet.clear();
-	GaussianModel.clear();
-	weight.clear();
-}
-double KMeanState::checkBetter(double best){
-	double now_var = 0;
-//	printf("check better\n");
-	int gn = 0;
-	
-	if(GaussianSet.size()==0){
-		return best;	
-	}
-	//printf("%lf ",best);
-	//printf("no zero\n");
-	
-		for(int i = 0;i<GaussianSet.size();i++){
-			if(GaussianSet[i]->getflag()){
-				gn++;
-//				printf("-------------now_var %lf\n",now_var);
-				now_var+=weight[i]*GaussianSet[i]->getCVar();
-			}
-		}
-		//assert(gn!=0);
-		//now_var/=gn;
-		
-		if(best>=0 && now_var>=best)return best;
-	
-	//printf("clear\n");
-	for(int i =0;i<GaussianModel.size();i++){
-		if(GaussianModel[i])delete GaussianModel[i];	
-		GaussianModel[i] = NULL;
-	}
-	int mn = GaussianSet.size();
-
 	GaussianModel.clear();
 	w.clear();
-	GaussianModel.resize(mn);
-	w.resize(mn);
-	//printf("repalce\n");
-	for(int i=0;i<mn;i++){
-		GaussianModel[i] = GaussianSet[i];
-		GaussianSet[i] = NULL;
-		w[i] = weight[i];
-//		printf(" w%d %lf ",i,w[i]);
-	}
-	//puts("");
-
-	best = now_var;
-	//printf("CheckOver\n");
-	return best;
 }
 
-void KMeanState::gaussianTrain(int gaussianNum) {
-//	printf("start train ~~  gaussian num:%d\n",gaussianNum);
+//释放空间，
+//但不一定释放高斯g，
+//因为可能已经转移到GaussianModel
+//此时一定记得将g设为NULL
+void KMeanState::clearCluster(){
+	int s = ClusterSet.size();
+	for(int i = 0;i<s;i++){
+		if(ClusterSet[i]->g) delete ClusterSet[i]->g;
+		delete ClusterSet[i];
+	}
+	ClusterSet.clear();
+}
+
+// gaussianNum 为期望高斯数目，如果点不够，将会变少。
+void KMeanState::gaussianTrain(int gaussianNum)
+{
+	int time = 1; //20;
+	double best = -1;
 	
-	// 计算该状态内Feature(Point)总数
-	PointNum = 0;
-	for(int i = 0;i<edgePoints.size();i++){
-		int tmp = edgePoints[i].second - edgePoints[i].first;
-		if(tmp>=0){
-			PointNum += tmp+1;
+	clearGaussian();
+	clearCluster();
+
+	while(time--){
+		//printf("Gaussian Train time %d\n",time);
+		if(KMeanTrain(gaussianNum)==false)return;
+		double tmp  = sumCV();
+
+		if(best ==-1 || tmp < best){
+			best = tmp;
+			//使用完后本轮ClusterSet作废
+			saveGaussianModel();
+//			printf("%lf-->",best);
 		}
+		clearCluster();
+	}	
+//	for(int i = 0;i<GaussianModel.size();i++){
+//		printf(" %lf ",w[i]);
+//	}
+//	printf("\n");
+}
+
+//一轮训练
+//0个节点返回false
+//必然训练出大于等于1个的高斯模型，返回true
+bool KMeanState::KMeanTrain(int gaussianNum)
+{
+	int pointNum = calcFirstCluster();
+//	printf("Point Num : %d\n",pointNum);
+
+	if(pointNum == 0) return false;
+	if(pointNum<gaussianNum){
+		gaussianNum = pointNum;
+	}
+
+	//只有一个高斯模型时
+	if(gaussianNum == 1) {
+		ClusterSet[0]->w = 1.0;
+		Gaussian * g = new Gaussian(ClusterSet[0]->points[0]->size());
+		
+		vector<Feature*> &f = ClusterSet[0]->points;
+		
+		for(int i = 0;i<f.size();i++){
+			g->addFeature(f[i]);
+		}
+		g->done();
+		
+		ClusterSet[0]->g = g;
+		return true;
+	}
+
+	for(int i = 1;i<gaussianNum;i++){
+		Cluster* c = findBigCluster();
+		double w = c->w;
+		
+		while(addTwoCluster(c->points,c->w)==false);
+		deleteCluster(c);
 	}
 	
-//	printf("PointNum : %d\n",PointNum);	
-	// 重新将feature(point)提取到points,方便访问
-	if(points)delete [] points;
-	points = new Feature*[PointNum];
-	int cnt = 0;
+	return true;	
+}
+
+//找最大权值的Cluster 用于Split
+//确保Cluster数目大于0
+Cluster* KMeanState::findBigCluster()
+{
+	int s = ClusterSet.size();
+	double maxw = ClusterSet[0]->w; 
+	int index = 0;
+	for(int i = 1;i<s;i++){
+		if(maxw < ClusterSet[i]->w){
+			index = i;
+			maxw = ClusterSet[i]->w;
+		}
+	}
+	return ClusterSet[index];
+}
+
+//不包括w，仅仅是方差和均值
+//保证p个数大于0
+Gaussian * KMeanState::initRandGaussian(const vector<Feature*>& p)const
+{
+	Gaussian * g = new Gaussian(p[0]->size());	
+    //Feature initFeature;
+
+	//generateInitFeature(initFeature,p);
+	g->setMean(p[rand()%(p.size())]);
+	//g->setMean(&initFeature);
+	g->setRandCVar();
+
+	return g;
+}
+
+//将点集合p分成两个新的Cluster,用kmean找出2个Gaussian分布g1,g2和w1,w2
+//w1 = wt*w1 w2 = wt*w2
+//并存放在ClusterSet里
+//点集合也被分开
+//返回false: 收敛到一个高斯而不是2个，需要重做
+bool KMeanState::addTwoCluster(const vector<Feature*> & p,double wt)
+{
+	Gaussian * g1 = initRandGaussian(p);
+	Gaussian * g2 = initRandGaussian(p);
+	int w1 = 0;
+	int w2 = 0;
+	Cluster* c1 = new Cluster();
+	Cluster* c2 = new Cluster();
+	//printf("%d = ",p.size());	
+	while(true){
+		//每点分配到一个模型
+		for(int i = 0;i<p.size();i++){
+			double d1 = g1->minuLogP(p[i]);
+			double d2 = g2->minuLogP(p[i]);
+			if(d1<d2){
+				c1->points.push_back(p[i]);
+				w1++;
+				g1->addFeature(p[i]);
+			}
+			else{
+				c2->points.push_back(p[i]);
+				w2++;
+				g2->addFeature(p[i]);
+			}
+		}
+		//重新计算mean 和 cvar，并判断是否收敛
+		if(g1->done() && g2->done()) break;
+	//	g1->print();
+	//	g2->print();
+		//为收敛准备重做
+		c1->points.clear();c2->points.clear();
+		w1 = w2 = 0;
+	}
+	//printf("%d+%d ---%lf\n",w1,w2,wt);
+	if(w1==0 || w2==0){
+		if(c1)delete c1;
+		if(c2)delete c2;
+		if(g1)delete g1;
+		if(g2)delete g2;
+		return false;
+	}
+
+	double w = (double)p.size();
+	c1->w = w1/w*wt; c1->g=g1;
+	c2->w = w2/w*wt; c2->g=g2;
+	ClusterSet.push_back(c1);
+	ClusterSet.push_back(c2);
+	return true;
+}
+
+
+//从vector中删除，释放高斯，释放c空间
+void KMeanState::deleteCluster(Cluster * c)
+{
+	if(c==NULL)return;
+	if(c->g)delete (c->g);
+	vector<Cluster *>::iterator pos;
+	pos = find(ClusterSet.begin(),ClusterSet.end(),c);
+	if(pos != ClusterSet.end()){
+		ClusterSet.erase(pos);
+	}
+	delete c;
+}
+
+
+//所有cluster中g的加权w方差和
+double KMeanState::sumCV()
+{
+	//double w = -1;
+	double w = 0;
+	int s= ClusterSet.size();
+	
+	for(int i =0;i<s;i++){
+		w+= (ClusterSet[i]->w) * (ClusterSet[i]->g->getCVar());				
+		//double t = (ClusterSet[i]->w) * (ClusterSet[i]->g->getCVar());			
+		//if(w<0 || w> t){w=t;}
+	}
+
+	return w;
+}
+
+//将ClusterSet中的混合模型保存到真正的模型和!!权重
+//将Cluster设置为NULL!!
+void KMeanState::saveGaussianModel()
+{
+	clearGaussian();
+	int s = ClusterSet.size();
+	for(int i = 0;i<s;i++){
+		GaussianModel.push_back(ClusterSet[i]->g);
+		w.push_back(ClusterSet[i]->w);
+		ClusterSet[i]->g = NULL;
+	}
+}
+
+//new出第一个Cluster 并将p,w=1,g=NULL设置好
+//ok
+int KMeanState::calcFirstCluster(){
+	Cluster* c = NULL;
+
 	for(int i = 0;i<edgePoints.size();i++){
 		int st = edgePoints[i].first;
 		int ed = edgePoints[i].second;
 		for(int j = st;j<=ed;j++){
-			points[cnt++] = &((*templates)[i][j]);
+			if(c==NULL){	
+				c = new Cluster();
+				c->w = 1;
+				c->g = NULL;
+			}
+			(c->points).push_back( &((*templates)[i][j]));
 		}
 	}
-//	printf("gaussianNum %d\n",gaussianNum);
-	int time = 30;
-	double best = -1;
-	while(time--){
-		initTrain(gaussianNum);
-		this->KMeanTrain();
-	//	printf("start check %lf\n",best);
-		best = checkBetter(best);
-	//	printf("%lf ",best);
-	};
-//	printf("\n");
-	//this->gaussianTrainTest(gaussianNum);
+	if(c!=NULL){
+		ClusterSet.push_back(c);
+		return (c->points).size();
+	}
+	return 0;
 }
 
-double KMeanState::nodeCost(Feature *inputFeature) {
-	return this->KMeanNodeCost(inputFeature);
-}
 
-void KMeanState::initTrain(int gaussianNum){
-//	printf("init\n");
-	//初始化高斯模型
-	// - 清空高斯集合
-	// - 以随机一个point作为第i个高斯的均值（每隔step选一个point）
-	// - 所有高斯初始方差相等，权重相等
 
-//	printf("delete\n");
-	for(int i = 0;i<GaussianSet.size();i++){
-		if(GaussianSet[i])delete GaussianSet[i];
-		GaussianSet[i] = NULL;
-	}
-
-	GaussianSet.clear();
-//	puts("weight");
-	//GaussianSet.clear();
-	weight.clear();
-	
-//	puts("checkNum");	
-	if(PointNum<gaussianNum){
-		gaussianNum = 1;
-	}
-//	puts("=0");
-	if(PointNum == 0){
-		gaussianNum = 0;
-		return;
-	}
-
-//	printf("init Gaussian\n");
-	int step = PointNum / gaussianNum;
-	int featureSize = points[0]->size();
-    Feature initFeature;
-	GaussianSet.resize(gaussianNum);
-	weight.resize(gaussianNum);
-	for(int i = 0;i<gaussianNum;i++){
-		Gaussian * g = new Gaussian(featureSize);
-        
-   //     generateInitFeature(initFeature);
-       generateInitFeature(initFeature);
-
-		//g->setMean(points[rand()%step+i*step]);
-		//g->setMean(points[rand()%PointNum]);
-		
-		g->setMean(&initFeature);
-		g->setRandCVar();
-		g->setCVar(rand()%1000/100000.0);
-		weight[i] = (1.0/gaussianNum);
-		GaussianSet[i] = g;
-	}
-}
-void KMeanState::generateInitFeature(Feature &initFeature) {
-    if(PointNum <= 0) return ;
+void KMeanState::generateInitFeature(Feature &initFeature,
+					const vector<Feature*>& points)const 
+{
+	int PointNum = points.size();
+	if(PointNum==0)return;
 
     int featureSiz = points[0]->size();
+
     initFeature.resize(featureSiz);
 
     double *minD = new double[featureSiz];
@@ -197,6 +301,7 @@ void KMeanState::generateInitFeature(Feature &initFeature) {
     for(int j = 0;j < featureSiz; j++) {
         minD[j] = maxD[j] = (*(points[0]))[j];
     }
+
     for(int j = 0;j < initFeature.size(); j++) {
         for(int i = 1;i < PointNum; i++) {
             minD[j] = fmin(minD[j], (*(points[i]))[j]);
@@ -205,155 +310,37 @@ void KMeanState::generateInitFeature(Feature &initFeature) {
     }
 
     for(int j = 0;j < initFeature.size(); j++) {
-        initFeature[j] = minD[j] + (maxD[j] - minD[j]) * (1.0 *(rand() % 10000) / 10000);
+        initFeature[j] = 
+			minD[j] + (maxD[j] - minD[j]) * 
+			(1.0 *(rand() % 10000) / 10000);
     }
 
     delete []minD;
     delete []maxD;
 }
+////////////////////////////////////////////////////////////////over
 
-int KMeanState::Point2Clusters(int pid){
-	double mindist = GaussianSet[0]->minuLogP(points[pid]);
-	int gid = 0;
-	for(int i = 1;i<GaussianSet.size();i++){
-		double mlp = GaussianSet[i]->minuLogP(points[pid]);
-		if(mlp < mindist ){
-			mindist = mlp;
-			gid  = i;
-		}
-	}
-	return gid;
+
+//////////////////////////////////////////////////////////////////
+
+//返回该模型的NodeCost
+double KMeanState::nodeCost(Feature *inputFeature) {
+	return this->KMeanNodeCost(inputFeature);
 }
-
-void KMeanState::KMeanTrain()
-{
-//	puts("set size==0?");
-	if(GaussianSet.size()==0)return;
-	bool converge = false;
-//	printf("--train\n");
-	while(!converge){
-		vector<int> count;
-	
-		for(int i = 0;i<GaussianSet.size();i++) {
-			count.push_back(0);
-		}
-
-		converge = true;
-		// 计算每一点属于哪个gaussian，并统计数据
-		for(int i = 0;i<PointNum;i++){
-			int gid = Point2Clusters(i);
-			GaussianSet[gid]->addFeature(points[i]);
-			count[gid] ++;
-		}
-		weight.clear();
-		weight.resize(GaussianSet.size());
-		// 更新参数并计算是否已经收敛i
-		for(int i = 0;i<GaussianSet.size();i++){
-			assert(PointNum!=0);
-			double wi = count[i] / (double)PointNum;
-			converge &= GaussianSet[i]->done();
-		//	if(fabs(wi-weight[i])>0.0001){
-		//		converge = false;
-		//	}
-			weight[i] = wi;
-			
-		//	printf("G%d ---------\n",i);
-		//	printf("wi = %lf\n",wi);
-		//	GaussianSet[i]->print();
-    //char c;scanf("%c",&c);
-		
-		}
-
-         
-        
-
-	}
-	/*
-	printf("\n\nfinally -----------------------\n");
-	for(int i = 0;i<GaussianSet.size();i++){
-		printf("G %d --------:",i);
-		printf("wi = %lf\n",weight[i]);
-		GaussianSet[i]->print();
-		printf("\n\n");
-	}
-	*/
-}
-
-
 double KMeanState::KMeanNodeCost(Feature *f){
-//	puts("calc cost");
-	if(GaussianModel.size()==0)return Feature::IllegalDist;
-//	puts("more");
+	int gn = GaussianModel.size();
+	if(gn==0)return Feature::IllegalDist;
+	
 	double ret = Feature::IllegalDist;
 	const double eps = 1e-13;
+	
 	for(int i = 0;i<GaussianModel.size();i++){
 		if(fabs(w[i])<eps)continue;
-		double t = GaussianModel[i]->minuLogP(f);
-		t -= log(w[i]);
-		if(ret == Feature::IllegalDist){
-			ret = t;
-		}
-		else{
-			ret = logInsideSum(ret,t);
-		}
+		double t = GaussianModel[i]->minuLogP(f) - log(w[i]);
+		if(ret == Feature::IllegalDist){ret = t;}
+		else{ret = logInsideSum(ret,t);}
 	}
 	return ret;
-}
-
-
-/////////////////////////////////////////////////////////////////////
-
-
-void KMeanState::gaussianTrainTest(int gaussianNum) {
-    for(int i = 0;i < 39;i++) {
-        u[i] = sigma[i] = 0;
-        int cnt = 0;
-        for(int j = 0;j < templates->size(); j++) {
-            int kst = edgePoints[j].first, ked = edgePoints[j].second;
-            for(int k = kst; k <= ked; k++) {
-
-                u[i] += (*templates)[j][k][i];
-                sigma[i] += pow((*templates)[j][k][i], 2.0);
-
-                cnt ++;
-            }
-        }
-        if(cnt) {
-            u[i] /= cnt;
-            sigma[i] /= cnt;
-        }
-    }
-
-    for(int i = 0;i < 39;i++) {
-        sigma[i] -= (u[i] * u[i]);
-    }
-/*
-	for(int i = 0;i<39;i++){
-		printf("%lf ",u[i]);
-	}puts("");
-
-	for(int i=0;i<39;i++){
-		printf("%lf ",sigma[i]);
-	}puts("");
-	char c;scanf("%c",&c);	
-*/
-}
-
-
-double KMeanState::nodeCostTest(Feature *inputFeature) {
-    if(u[0] == 0.0)
-        return Feature::IllegalDist;
-
-    double a = 0.0, b = 0.0;
-    for(int i = 0;i < 39;i++) {
-        a += log(2*3.1415926*sigma[i]);
-
-        b += pow((*inputFeature)[i] - u[i], 2.0) / sigma[i];
-    }
-    a *= 0.5;
-    b *= 0.5;
-
-    return a+b; //p2cost(a+b);
 }
 
 void KMeanState::load(std::stringstream &in, int gaussNum) {
@@ -377,4 +364,3 @@ void KMeanState::store(std::stringstream &out) {
         GaussianModel[i]->store(out);
     }
 }
-
