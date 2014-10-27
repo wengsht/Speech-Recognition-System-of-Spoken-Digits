@@ -118,15 +118,24 @@ void KMeanState::gaussianTrain(int gaussianNum) {
 		}
 	}
 //	printf("gaussianNum %d\n",gaussianNum);
-	int time = 10;
+	int time = 20;
 	double best = -1;
-	while(time--){
+	int c = 0;
+
+	while(time--){	
+	//	gaussianNum = rand()%4+1;
 		initTrain(gaussianNum);
 		this->KMeanTrain();
 	//	printf("start check %lf\n",best);
 		best = checkBetter(best);
+		if(c==0){
+	//		printf("%lf",best);
+			c++;
+		}
 	//	printf("%lf ",best);
 	};
+	//printf("finally g = %d\n",GaussianModel.size());
+	//printf(" --> %lf\n",best);
 //	printf("\n");
 	//this->gaussianTrainTest(gaussianNum);
 }
@@ -179,7 +188,8 @@ void KMeanState::initTrain(int gaussianNum){
 		
 		g->setMean(&initFeature);
 		g->setRandCVar();
-		g->setCVar(rand()%1000/100000.0);
+		//g->setCVar(rand()%10/1000.0);
+		//g->setCVar(0.1);
 		weight[i] = (1.0/gaussianNum);
 		GaussianSet[i] = g;
 	}

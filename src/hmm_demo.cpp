@@ -133,8 +133,11 @@ void runNN() {
 
         string res = hmm.hmmRecognition(*(*Itr));
         
-        if(res == (*Itr)->getWord())
+        if(res == (*Itr)->getWord()){
             correctCnt ++;
+		}else{
+			cout << res << " ans : " << (*Itr)->getWord() << endl;
+		}
     }
     system("clear");
     cout << "Input " << allCnt << " wavs " << endl; 
