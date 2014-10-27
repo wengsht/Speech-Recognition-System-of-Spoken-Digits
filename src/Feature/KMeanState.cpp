@@ -53,20 +53,17 @@ double KMeanState::checkBetter(double best){
 	if(GaussianSet.size()==0){
 		return best;	
 	}
-	//printf("%lf ",best);
-	//printf("no zero\n");
 	
-		for(int i = 0;i<GaussianSet.size();i++){
-			if(GaussianSet[i]->getflag()){
-				gn++;
-//				printf("-------------now_var %lf\n",now_var);
-				now_var+=weight[i]*GaussianSet[i]->getCVar();
-			}
+	for(int i = 0;i<GaussianSet.size();i++){
+		if(GaussianSet[i]->getflag()){
+			gn++;
+			now_var+=weight[i]*GaussianSet[i]->getCVar();
 		}
-		//assert(gn!=0);
-		//now_var/=gn;
+	}
+	//assert(gn!=0);
+	//now_var/=gn;
 		
-		if(best>=0 && now_var>=best)return best;
+	if(best>=0 && now_var>=best)return best;
 	
 	//printf("clear\n");
 	for(int i =0;i<GaussianModel.size();i++){
@@ -117,26 +114,18 @@ void KMeanState::gaussianTrain(int gaussianNum) {
 			points[cnt++] = &((*templates)[i][j]);
 		}
 	}
-//	printf("gaussianNum %d\n",gaussianNum);
-	int time = 20;
+	int time = 70;
 	double best = -1;
 	int c = 0;
 
 	while(time--){	
-	//	gaussianNum = rand()%4+1;
 		initTrain(gaussianNum);
 		this->KMeanTrain();
-	//	printf("start check %lf\n",best);
 		best = checkBetter(best);
 		if(c==0){
-	//		printf("%lf",best);
 			c++;
 		}
-	//	printf("%lf ",best);
 	};
-	//printf("finally g = %d\n",GaussianModel.size());
-	//printf(" --> %lf\n",best);
-//	printf("\n");
 	//this->gaussianTrainTest(gaussianNum);
 }
 
@@ -163,9 +152,9 @@ void KMeanState::initTrain(int gaussianNum){
 	weight.clear();
 	
 //	puts("checkNum");	
-	if(PointNum<gaussianNum){
-		gaussianNum = 1;
-	}
+//	if(PointNum<gaussianNum){
+//		gaussianNum = 1;
+//	}
 //	puts("=0");
 	if(PointNum == 0){
 		gaussianNum = 0;
@@ -181,15 +170,16 @@ void KMeanState::initTrain(int gaussianNum){
 	for(int i = 0;i<gaussianNum;i++){
 		Gaussian * g = new Gaussian(featureSize);
         
-       generateInitFeature(initFeature);
+        generateInitFeature(initFeature);
+  //     generateInitFeature(initFeature);
 
 		//g->setMean(points[rand()%step+i*step]);
-		//g->setMean(points[rand()%PointNum]);
+		g->setMean(points[rand()%PointNum]);
 		
 		g->setMean(&initFeature);
 		g->setRandCVar();
-		//g->setCVar(rand()%10/1000.0);
-		//g->setCVar(0.1);
+		//g->setCVar(rand()%1000/1000.0);
+	//	g->setCVar(0.1);
 		weight[i] = (1.0/gaussianNum);
 		GaussianSet[i] = g;
 	}
@@ -265,6 +255,11 @@ void KMeanState::KMeanTrain()
 		//		converge = false;
 		//	}
 			weight[i] = wi;
+			
+		//	printf("G%d ---------\n",i);
+		//	printf("wi = %lf\n",wi);
+		//	GaussianSet[i]->print();
+    //char c;scanf("%c",&c);
 		
 		}
 
@@ -359,3 +354,25 @@ double KMeanState::nodeCostTest(Feature *inputFeature) {
 
     return a+b; //p2cost(a+b);
 }
+
+void KMeanState::load(std::stringstream &in, int gaussNum) {
+    clearGaussian();
+    if(templates->size() <= 0)
+        return ;
+    int featureSize = (*templates)[0][0].size();
+    w.resize(gaussNum);
+    for(int i = 0;i < gaussNum; i++) {
+        Gaussian * g = new  Gaussian(featureSize);
+        in >> w[i];
+        g->load(in);
+        GaussianModel.push_back(g);
+    }
+}
+void KMeanState::store(std::stringstream &out) {
+    for(int i = 0;i < GaussianModel.size(); i++) {
+        out << " " << w[i];
+
+        GaussianModel[i]->store(out);
+    }
+}
+

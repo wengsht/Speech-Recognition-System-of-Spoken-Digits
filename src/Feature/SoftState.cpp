@@ -31,6 +31,7 @@ SoftState::SoftState(std::vector<WaveFeatureOP> * templates) : HMMState(template
 }
 
 SoftState::~SoftState() {
+
     clearGaussian();
 }
 
@@ -85,9 +86,12 @@ void SoftState::initTrain(int gaussianNum) {
     totalProbability = 0.0;
     int pointCnt = 0;
 
+    maxProbability = 0.0;
+
     for(int i = 0;i < probabilities.size(); i++) {
         for(int j = 0; j <  probabilities[i].size(); j++) {
-            totalProbability += probabilities[i].size();
+            totalProbability += probabilities[i][j];
+            maxProbability = fmax(maxProbability, probabilities[i][j]);
             if(probabilities[i][j] > 0.0)
                 pointCnt ++;
         }
@@ -104,25 +108,64 @@ void SoftState::initTrain(int gaussianNum) {
 
     int featureSize = (*templates)[0][0].size();
 
+    Feature initFeature;
     for(int i = 0;i < gaussianNum; i++) {
 		Gaussian * g = new  Gaussian(featureSize);
         // TODO init?
-        int temIdx = rand() % (*templates).size();
-        int feaIdx = rand() % (*templates)[temIdx].size();
-		g->setMean(&((*templates)[temIdx][feaIdx]));
-		g->setCVar(3);
+//        int temIdx = rand() % (*templates).size();
+//        int feaIdx = rand() % (*templates)[temIdx].size();
+        generateInit(initFeature);
+		g->setMean( &initFeature ); //&((*templates)[temIdx][feaIdx]));
+		g->setCVar(-1);
 		weight.push_back(1.0/gaussianNum);
 		GaussianSet.push_back(g);
     }
 }
 
+void SoftState::generateInit( Feature & feature) {
+    if(templates->size() < 0) 
+        return ;
+    int featureSiz = (*templates)[0][0].size();
+    feature.resize(featureSiz);
+
+    double *minD = new double[featureSiz];
+    double *maxD = new double[featureSiz];
+
+    for(int i = 0;i < featureSiz;i++) {
+        minD[i] = Feature::IllegalDist;
+        maxD[i] = - Feature::IllegalDist;
+    }
+
+    for(int k = 0;k < featureSiz; k++) {
+        for(int i = 0;i < templates->size(); i++) {
+            for(int j = 0; j < (*templates)[i].size(); j++) {
+
+                if(probabilities[i][j] > 4.0/5 * maxProbability) {
+                    minD[k] = fmin(minD[k], ((*templates)[i][j][k]));
+                    maxD[k] = fmax(maxD[k], ((*templates)[i][j][k]));
+                }
+            }
+        }
+    }
+
+    for(int j = 0;j < featureSiz; j++) {
+        feature[j] = minD[j] + (maxD[j] - minD[j]) * (1.0 *(rand() % 10000) / 10000);
+    }
+
+    delete []minD;
+    delete []maxD;
+}
+
 void SoftState::gaussianTrain(int gaussianNum) {
+//    gaussianTrainTest(gaussianNum);
+//    return ;
     initTrain(gaussianNum);
 
     this->SoftTrain();
 }
 
 double SoftState::nodeCost(Feature *inputFeature) {
+//    return nodeCostTest(inputFeature);
     return this->SoftNodeCost(inputFeature);
 }
 
@@ -156,7 +199,8 @@ void SoftState::SoftTrain() {
         for(int templateIdx = 0; templateIdx < templates->size(); templateIdx++) {
             for(int featureIdx = 0; featureIdx < (*templates)[templateIdx].size(); featureIdx ++) {
 			    int gid = Point2Clusters(templateIdx, featureIdx);
-			    GaussianSet[gid]->addFeature(&((*templates)[templateIdx][featureIdx]));
+//                printf("%d\n", gid);
+			    GaussianSet[gid]->addFeature(&((*templates)[templateIdx][featureIdx]), probabilities[templateIdx][featureIdx]);
 			    count[gid] += probabilities[templateIdx][featureIdx];
             }
         }
@@ -187,4 +231,25 @@ double SoftState::SoftNodeCost(Feature *f) {
 		ret = logInsideSum(ret,t);
 	}
 	return ret;
+}
+
+void SoftState::load(std::stringstream &in, int gaussNum) {
+    clearGaussian();
+    if(templates->size() <= 0)
+        return ;
+    int featureSize = (*templates)[0][0].size();
+    weight.resize(gaussNum);
+    for(int i = 0;i < gaussNum; i++) {
+        Gaussian * g = new Gaussian(featureSize);
+        in >> weight[i];
+        g->load(in);
+        GaussianSet.push_back(g);
+    }
+}
+void SoftState::store(std::stringstream &out) {
+    for(int i = 0;i < GaussianSet.size(); i++) {
+        out << " " << weight[i];
+
+        GaussianSet[i]->store(out);
+    }
 }

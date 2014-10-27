@@ -21,11 +21,26 @@
 #include "configure_hmm.h"
 #include "HMMAutomaton.h"
 #include "SoftState.h"
+#include "DummyState.h"
 
 class HMMSoftAutomaton : public HMMAutomaton {
     public:
         HMMSoftAutomaton(std::vector<WaveFeatureOP> *templates, int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM, int trainTimes = MAX_TRAIN_TIMES);
         ~HMMSoftAutomaton();
+
+        void load(std::stringstream &in) {
+            for(int i = 1;i <= stateNum ;i++) 
+                for(int j = 1; j <= stateNum ;j++)
+                    in >> transferCost[i][j];
+
+            clearStates();
+
+            states.push_back(new DummyState(templates));
+            for(int idx = 1;idx <= stateNum;idx ++) {
+                states.push_back(new SoftState(templates));
+                states[idx]->load(in, gaussNum);
+            }
+        }
 
         void hmmTrain();
         double calcCost(WaveFeatureOP &input);

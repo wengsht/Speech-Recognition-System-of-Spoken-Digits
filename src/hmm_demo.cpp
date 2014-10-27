@@ -77,7 +77,7 @@ void runN1() {
     RawData data;
     if(strlen(inputFileName) == 0) {
         Tip("[Capture an input!!]\n\n");
-        capture("tmp", data, false);
+        capture("tmp", data, true);
     }
     else {
         Tip("[Load an input!!]\n\n");
@@ -133,7 +133,8 @@ void runNN() {
 
         string res = hmm.hmmRecognition(*(*Itr));
         
-        if(res == (*Itr)->getWord()){
+        //cout << res << " " << (*Itr)->getWord() << endl;
+        if(res == (*Itr)->getWord()){ 
             correctCnt ++;
 		}else{
 			cout << res << " ans : " << (*Itr)->getWord() << endl;

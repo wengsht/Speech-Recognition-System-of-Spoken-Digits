@@ -35,6 +35,9 @@ class SoftState : public HMMState {
         void gaussianTrainTest(int gaussianNum);
         double nodeCostTest(Feature *inputFeature);
 
+        void load(std::stringstream &in, int gaussNum);
+        void store(std::stringstream &out);
+
         void dump() {
             for(int i  =0;i < 39;i++) 
                 printf("%lf %lf\n", u[i], sigma[i]);
@@ -53,11 +56,14 @@ class SoftState : public HMMState {
         std::vector<Gaussian *> GaussianSet;
         std::vector<double> weight;
 
+        void generateInit( Feature & feature);
+
         void clearGaussian();
 
         int Point2Clusters(int templateIdx, int featureIdx);
 
         double totalProbability;
+        double maxProbability;
         double u[39];
         double sigma[39];
 };

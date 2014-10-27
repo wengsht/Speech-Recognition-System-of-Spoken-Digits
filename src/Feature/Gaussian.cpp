@@ -100,7 +100,7 @@ void Gaussian::addFeature(Feature * f, double probability) {
 		tmp_mean[i] += p[i] * probability;
 		tmp_mean2[i] += p[i] *p[i] * probability;
 	}
-	sampleNum ++;
+	sampleNum += probability;
 }
 /*
 const double eps = 1e-13;
@@ -115,8 +115,8 @@ double Gaussian::minuLogP(Feature* f){
 	if(flag == false){
 		return Feature::IllegalDist;
 	}
- //   if(cvar[0]  < 0) 
-  //      return euDist(f);
+    if(cvar[0]  < 0) 
+        return euDist(f);
 	Feature & p = *f;
 	double ret=0;
 	double v,v2;
@@ -141,4 +141,19 @@ double Gaussian::euDist(Feature* f){
 		ret += pow((*f)[i] - mean[i], 2.0);
 	}
 	return sqrt(ret);
+}
+
+void Gaussian::load(std::stringstream &in) {
+    for(int i = 0;i < featureSize; i ++) {
+        in >> mean[i];
+        in >> cvar[i];
+    }
+    in >> flag;
+}
+void Gaussian::store(std::stringstream &out) {
+    for(int i = 0;i < featureSize; i ++) {
+        out << " " << mean[i];
+        out << " " << cvar[i];
+    }
+    out << " " << flag;
 }

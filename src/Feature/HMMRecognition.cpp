@@ -25,13 +25,60 @@ HMMRecognition::~HMMRecognition() {
 SP_RESULT HMMRecognition::loadTemplates(char *templateDir) {
     automatons.loadMfccs(templateDir);
 
+    this->templateDir = string(templateDir);
+
     return SP_SUCCESS;
+}
+
+string HMMRecognition::generateHMMFileName() {
+    static char buf[1024];
+    static std::string algo;
+
+    if(stateType == HMMState::KMEAN)
+        algo = "kmean";
+    else 
+        algo = "soft";
+
+    sprintf(buf, "%s/%s_%d_%d_%d.hmm",  templateDir.c_str(),algo.c_str(), stateNum, gaussNum, stateNum);
+
+    return string(buf);
+//    res += string(stateNum);
+//
+}
+bool HMMRecognition::loadHMMModel() {
+    string fileName = generateHMMFileName();
+    ifstream in;
+
+    in.open(fileName, std::ios::in);
+    if(in.fail() == true)
+        return false;
+    
+    automatons.load(in);
+
+    in.close();
+
+//    return false;
+    return true;
+}
+
+void HMMRecognition::storeHMMModel() {
+    string fileName = generateHMMFileName();
+    ofstream out(fileName);
+
+    automatons.store(out);
+
+    out.close();
 }
 
 SP_RESULT HMMRecognition::hmmTrain() {
     automatons.setStateType(stateType);
 
-    automatons.train();
+    // load the model from buffer
+    if(loadHMMModel()) ;
+    else { 
+        automatons.train();
+        storeHMMModel();
+    }
 
     return SP_SUCCESS;
 }

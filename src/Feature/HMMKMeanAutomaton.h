@@ -23,6 +23,7 @@
 #include "KMeanState.h"
 #include "Feature.h"
 #include <cstring>
+#include "DummyState.h"
 
 class HMMKMeanAutomaton : public HMMAutomaton {
     public:
@@ -37,6 +38,20 @@ class HMMKMeanAutomaton : public HMMAutomaton {
         inline KMeanState *getState(int idx) {
             if(idx >= states.size()) return NULL;
             return (KMeanState *)(states[idx]);
+        }
+
+        void load(std::stringstream &in) {
+            for(int i = 1;i <= stateNum ;i++) 
+                for(int j = 1; j <= stateNum ;j++)
+                    in >> transferCost[i][j];
+
+            clearStates();
+
+            states.push_back(new DummyState(templates));
+            for(int idx = 1;idx <= stateNum;idx ++) {
+                states.push_back(new KMeanState(templates));
+                states[idx]->load(in, gaussNum);
+            }
         }
 
         // 利用path Matrix 更新这个template的分段
@@ -64,7 +79,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                 }
 
                 getState(rowIdx)->edgePoints[templateIdx] = std::make_pair(startIdx, endIdx);
-                
+
                 featureIdx = startIdx - 1;
 
                 rowIdx = path[startIdx][rowIdx];
@@ -115,7 +130,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     double newCost = p2cost(1.0 * nxtCnt[j] / wholeCnt);
 
                     wholeChangeCost= logInsideSum(wholeChangeCost, logInsideDist(newCost, transferCost[i][i+j]));
-//                    wholeChangeCost = fabs(newCost - transferCost[i][i+j]);
+                    //                    wholeChangeCost = fabs(newCost - transferCost[i][i+j]);
 
                     transferCost[i][i+j] = newCost;
                 }
