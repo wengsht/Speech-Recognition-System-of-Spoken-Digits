@@ -97,6 +97,11 @@ void runN1() {
 
     hmm.hmmTrain();
 
+    ofstream dotOut("1.dot");
+    hmm.dumpAutomaton(dotOut);
+    dotOut.close();
+
+
     WaveFeatureOP op(inputFeature, "null");
     string res = hmm.hmmRecognition(op);
     
@@ -119,6 +124,11 @@ void runNN() {
         hmm.setStateType(HMMState::SOFT);
 
     hmm.hmmTrain();
+
+    ofstream dotOut("1.dot");
+    hmm.dumpAutomaton(dotOut);
+    dotOut.close();
+
     WaveFeatureOPSet inputs;
     inputs.loadMfccs(inputDirName);
 
@@ -133,9 +143,10 @@ void runNN() {
 
         string res = hmm.hmmRecognition(*(*Itr));
         
-        cout << res << " " << (*Itr)->getWord() << endl;
         if(res == (*Itr)->getWord()) 
             correctCnt ++;
+        else 
+        cout << res << " " << (*Itr)->getWord() << endl;
     }
     system("clear");
     cout << "Input " << allCnt << " wavs " << endl; 

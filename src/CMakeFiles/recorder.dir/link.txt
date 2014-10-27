@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/recorder.dir/recorder.cpp.o  -o recorder  Capture/libCapture.a Analysis/libAnalysis.a data/libdata.a Configure/libConfigure.a readwave/libreadwave.a -lportaudio -lpthread 

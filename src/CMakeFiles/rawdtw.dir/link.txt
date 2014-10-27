@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/rawdtw.dir/rawdtw.cpp.o  -o rawdtw  Feature/libFeature.a test/libtest.a Capture/libCapture.a Analysis/libAnalysis.a data/libdata.a Configure/libConfigure.a ThreadPool/libThreadPool.a readwave/libreadwave.a -lportaudio -lpthread 

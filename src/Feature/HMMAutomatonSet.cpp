@@ -136,3 +136,12 @@ void HMMAutomatonSet::store(std::ofstream &out) {
         out << sout.str() << std::endl;
     }
 }
+void HMMAutomatonSet::dumpAutomaton(std::ostream & out) {
+    std::map< std::string, HMMAutomaton *>::iterator Itr;
+    for(Itr = automatons.begin(); Itr != automatons.end(); Itr ++) {
+        out << "digraph {\n";
+        out << Itr->first << ";\n";
+        (Itr->second)->dumpTransfer(out);
+        out << "}\n";
+    }
+}

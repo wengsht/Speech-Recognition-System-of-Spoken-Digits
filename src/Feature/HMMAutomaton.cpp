@@ -45,3 +45,13 @@ void HMMAutomaton::store(std::stringstream &out) {
     }
 
 }
+
+void HMMAutomaton::dumpTransfer(std::ostream & out) {
+    for(int i = 1;i < transferCost.size(); i++) {
+        for(int j = 1;j < transferCost[i].size(); j++) {
+            double p = cost2p(transferCost[i][j]);
+            if(i <= j && i+2 >= j)
+                out << i << " -> " << j << "[label=\"" << p << "\", weight=\"" << p << "\"]\n" ;
+        }
+    }
+}

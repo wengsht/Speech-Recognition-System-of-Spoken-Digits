@@ -67,6 +67,9 @@ class HMMRecognition {
 
             automatons.setTrainTimes(trainTimes);
         }
+
+        // 
+        void dumpAutomaton(std::ostream & out);
     private:
         bool loadHMMModel();
         void storeHMMModel();

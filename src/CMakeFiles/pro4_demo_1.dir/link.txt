@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/pro4_demo_1.dir/pro4_demo_1.cpp.o  -o pro4_demo_1  test/libtest.a Feature/libFeature.a Capture/libCapture.a Analysis/libAnalysis.a data/libdata.a Configure/libConfigure.a ThreadPool/libThreadPool.a readwave/libreadwave.a -lportaudio -lpthread 

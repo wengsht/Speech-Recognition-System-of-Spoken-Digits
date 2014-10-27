@@ -83,6 +83,10 @@ SP_RESULT HMMRecognition::hmmTrain() {
     return SP_SUCCESS;
 }
 
+void HMMRecognition::dumpAutomaton(std::ostream & out) {
+    automatons.dumpAutomaton(out);
+}
+
 std::string HMMRecognition::hmmRecognition(WaveFeatureOP & input) {
     return automatons.recognition(input);
 }

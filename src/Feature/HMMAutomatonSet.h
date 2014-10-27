@@ -41,6 +41,9 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
         // 清空自动机，释放空间
         void clear();
 
+        void dumpAutomaton(std::ostream & out);
+
+
     private:
         static void hmmTrainTask(void *in);
     public:

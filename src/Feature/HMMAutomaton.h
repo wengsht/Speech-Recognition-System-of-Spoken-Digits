@@ -43,6 +43,7 @@ public:
 
     virtual void load(std::stringstream &in) = 0;
     void store(std::stringstream &out);
+    void dumpTransfer(std::ostream & out);
 
 protected:
     enum dtwType {
