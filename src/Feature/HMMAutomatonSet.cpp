@@ -42,7 +42,7 @@ void HMMAutomatonSet::hmmTrainTask(void *in) {
 }
 
 int HMMAutomatonSet::getSpecificStateNum( std::string &word ) {
-//    return stateNum;
+    return stateNum;
     if(specStateNums.count(word))
         return specStateNums[word];
 
