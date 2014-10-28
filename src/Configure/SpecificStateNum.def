@@ -1,15 +1,13 @@
-
-
 SpecificStateNum("zero",5)
 SpecificStateNum("one", 5)
-SpecificStateNum("two", 3)
-SpecificStateNum("three", 3)
+SpecificStateNum("two", 5)
+SpecificStateNum("three", 5)
 SpecificStateNum("four", 5)
-SpecificStateNum("five", 4)
-SpecificStateNum("six", 8)
-SpecificStateNum("seven", 3)
-SpecificStateNum("eight", 4)
-SpecificStateNum("nine", 4)
-SpecificStateNum("ten", 3)
+SpecificStateNum("five", 5)
+SpecificStateNum("six", 5)
+SpecificStateNum("seven", 5)
+SpecificStateNum("eight", 5)
+SpecificStateNum("nine", 5)
+SpecificStateNum("ten", 5)
 
 
