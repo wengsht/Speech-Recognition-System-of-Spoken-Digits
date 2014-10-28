@@ -40,6 +40,18 @@ public:
 	void setMean(Feature *f);
 	//初始化协方差cvar，将cvar的对角线设为v
 	void setCVar(double v);
+	void copy(Gaussian * g, double dt){
+		for(int i = 0;i<featureSize;i++){
+			mean[i] = g->getm(i)+dt;
+			cvar[i] = g->getv(i);
+		}
+	}
+
+	double P(Feature*);
+	bool update(std::vector<double>& u,std::vector<double> & v);
+
+	double getm(int i){return mean[i];};
+	double getv(int i){return cvar[i];};
 	void setRandCVar();
 	//获得协方差的总和
 	double getCVar();

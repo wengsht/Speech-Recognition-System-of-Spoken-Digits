@@ -96,7 +96,7 @@ void Gaussian::addFeature(Feature * f, double probability) {
 double Gaussian::minuLogP(Feature* f){
 	Feature & p = *f;
 	double ret=0;
-	double v,v2;
+	double v;
 	double d;
 	for(int i = 0;i<featureSize;i++){
 		v = cvar[i];
@@ -107,6 +107,42 @@ double Gaussian::minuLogP(Feature* f){
 	ret = ret * 0.5;
 	return ret;
 }
+
+double Gaussian::P(Feature *f){
+	Feature &p = *f;
+	double a = 1;
+	double r = 0;
+	for(int i =0;i<featureSize;i++){
+		double v=cvar[i];
+		double d=p[i]-mean[i];	
+		a *= v;
+		r += d*d/v;
+	}
+
+	r*=-0.5;
+	a=1.0/sqrt(2*PI*a);
+	return a*pow(e,r);
+}
+
+
+bool Gaussian::update(std::vector<double>& u,std::vector<double> & v)
+{
+	const double eps = 1e-10;
+	double sumu = 0;
+	double sumv= 0;
+	for(int i = 0;i<featureSize;i++){
+		sumu += fabs(mean[i]-u[i]);
+		sumv += fabs(cvar[i]-v[i]);
+		mean[i] = u[i];
+		cvar[i] = v[i];
+	}
+	//printf("u = %.12lf v = %.12lf\n",sumu,sumv);
+	if(sumu<=eps && sumv<=eps){
+		return true;
+	}
+	return false;
+}
+
 
 // 与均值的欧式距离
 double Gaussian::euDist(Feature* f){

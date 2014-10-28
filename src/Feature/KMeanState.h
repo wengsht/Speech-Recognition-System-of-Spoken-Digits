@@ -57,10 +57,11 @@ class KMeanState : public HMMState {
 		//真正的权重
 		std::vector<double> w;	
 		
-        
+		std::vector<Feature*> points; 
 
 
 	private: //方法
+		void printw();
 		void clearGaussian();
 		void clearCluster();
 		// 一次训练
@@ -72,7 +73,7 @@ class KMeanState : public HMMState {
 		void deleteCluster(Cluster*c);
 
 		//split 函数
-		bool addTwoCluster(const std::vector<Feature*> & p,double wt);
+		bool addTwoCluster(const Cluster* c);
 
 		
 		Gaussian * initRandGaussian(const std::vector<Feature*>& p)const;
@@ -84,7 +85,8 @@ class KMeanState : public HMMState {
 		void generateInitFeature(Feature &initFeature,
 						const std::vector<Feature*>& points)const;
 		double KMeanNodeCost(Feature * f);
-
+		
+		void EM(int g);
 };
 
 
