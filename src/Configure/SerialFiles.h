@@ -26,6 +26,7 @@
 #include <vector>
 #include <string>
 #include "configure_basic.h"
+#include <map>
 
 class SerialFiles {
     public:
@@ -73,9 +74,15 @@ class SerialFiles {
 
         const static int maxSizeBit;
 
+        // "1" ----> "one"
+        static const char * inAlias(char * in);
+        // "one" ---> "1"
+        static const char * outAlias(char * out);
+
         // e.g fileName_xxxx.type 
         // sizeBit = 4
         int sizeBit;
+
 };
 
 #endif

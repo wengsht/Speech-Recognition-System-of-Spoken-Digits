@@ -32,7 +32,7 @@ const char  SAVE_DATA_DIR[] = "./";
 /// or you can't user some file that made by these configure
 /// and you also need to change other configures to make the algorithm work well.
 ///
-const int SAMPLE_RATE = 44100;  //don't change
+const int SAMPLE_RATE = 16000; // 44100;  //don't change
 const int NUM_CHANNELS = 1; //don't change
 
 const int SAMPLES_IN_EACH_FRAME = SAMPLE_RATE / FRAME_PER_SECOND;

@@ -15,6 +15,7 @@ char dir[100] = TEMPLATES_DIR; //"./templates";
 
 bool dealOpts(int argc, char **argv);
 void captureRun(bool);
+
 SerialFiles serialGenerator;
 
 char user[100] = "anony";
@@ -71,7 +72,7 @@ static int getBeginning(char *prefix) {
     char parseUser[100];
     while(NULL != (file = readdir(dirp))) {
         if(strncmp(prefix, file->d_name, strlen(prefix)) == 0) {
-            serialGenerator.parseSerialFileName(file->d_name, parseValue, 2, buf, parseUser);
+            serialGenerator.parseSerialFileName(file->d_name, parseValue, 2,parseUser, buf);
             if(strcmp(buf, prefix) == 0 && strcmp(user, parseUser) == 0 && res < parseValue)
                 res = parseValue;
         }
@@ -113,7 +114,7 @@ void captureRun(bool playback) {
                 ep.smooth();
                 ep.cut();
 
-                serialGenerator.getSerialFileName(fileName, serialStart ++, 2, buf, user);
+                serialGenerator.getSerialFileName(fileName, serialStart ++, 2, user, buf);
 
                 cout << fileName << endl;
 

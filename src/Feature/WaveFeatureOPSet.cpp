@@ -35,7 +35,7 @@ SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {
     char word[WORD_MAX_LEN];
     char user[USERNAME_MAX_LEN];
     int seqIdx;
-    SerialFiles::parseSerialFileName(fileName, seqIdx, 2, word, user);
+    SerialFiles::parseSerialFileName(fileName, seqIdx, 2, user, word);
 
     // 如果有缓存，不重复计算mfcc
     if(loadMfccFromMfccFile(templateDir, fileName, word))

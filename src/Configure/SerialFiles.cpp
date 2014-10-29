@@ -20,18 +20,45 @@
 #include <cstdlib>
 #include <stdarg.h>
 
-#define DEFAULT_SIZE_BIT 8
+#define DEFAULT_SIZE_BIT 2
 
 const int SerialFiles::maxSizeBit = 13;
+
+
 SerialFiles::SerialFiles() {
     sizeBit = DEFAULT_SIZE_BIT;
+
+//    printf("%d\n", inAlise.size());
+
+//    loadAlise();
 }
+
 SerialFiles::~SerialFiles() {
 }
 
 void SerialFiles::setSizeBit(int sizeBit) {
     this->sizeBit = sizeBit;
 }
+
+// "1" ----> "one"
+const char * SerialFiles::inAlias(char * in) {
+#define ALISE(a,b) \
+    if(strcmp(in, a) == 0) \
+        return b;
+#include "alias.def"
+#undef ALISE
+    return in;
+}
+// "one" ---> "1"
+const char * SerialFiles::outAlias(char * out) {
+#define ALISE(a,b) \
+    if(strcmp(out, b) == 0) \
+        return a;
+#include "alias.def"
+#undef ALISE
+    return out;
+}
+
 void SerialFiles::getSerialFileName(char * out, int seqNum, int prefixNum, ...) {
     va_list pvar;
     va_start(pvar, prefixNum);
@@ -40,7 +67,8 @@ void SerialFiles::getSerialFileName(char * out, int seqNum, int prefixNum, ...) 
         if(out[0]) 
             strcat(out, "_");
 
-        char * prefix = va_arg(pvar, char *);
+        const char * prefix = outAlias(va_arg(pvar, char *));
+
         strcat(out, prefix);
     }
     va_end(pvar);
@@ -48,6 +76,7 @@ void SerialFiles::getSerialFileName(char * out, int seqNum, int prefixNum, ...) 
     strcat(out, "_");
     strcat(out, fullfill(seqNum));
 }
+
 char *SerialFiles::fullfill(int num) {
     static char tmp[maxSizeBit];
     int idx = sizeBit - 1;
@@ -78,7 +107,9 @@ void SerialFiles::parseSerialFileName(const char * const fileName, int &seqNum, 
     while(prefixNum -- && token) {
         char *prefix = va_arg(pvar, char *);
 
-        strcpy(prefix, token);
+        const char *tmp = inAlias(token);
+
+        strcpy(prefix, tmp);
 
         token = strtok(NULL, "_");
     }
