@@ -69,15 +69,17 @@ class SerialFiles {
             }
             closedir(dirp);
         }
-    private:
-        char *fullfill(int num);
-
-        const static int maxSizeBit;
 
         // "1" ----> "one"
         static const char * inAlias(char * in);
         // "one" ---> "1"
         static const char * outAlias(char * out);
+
+    private:
+        char *fullfill(int num);
+
+        const static int maxSizeBit;
+
 
         // e.g fileName_xxxx.type 
         // sizeBit = 4

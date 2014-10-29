@@ -71,11 +71,9 @@ static int getBeginning(char *prefix) {
     int parseValue;
     char parseUser[100];
     while(NULL != (file = readdir(dirp))) {
-        if(strncmp(prefix, file->d_name, strlen(prefix)) == 0) {
-            serialGenerator.parseSerialFileName(file->d_name, parseValue, 2,parseUser, buf);
-            if(strcmp(buf, prefix) == 0 && strcmp(user, parseUser) == 0 && res < parseValue)
-                res = parseValue;
-        }
+        serialGenerator.parseSerialFileName(file->d_name, parseValue, 2,parseUser, buf);
+        if((strcmp(buf, prefix) == 0 || strcmp(buf, SerialFiles::inAlias(prefix)) == 0 ) && strcmp(user, parseUser) == 0 && res < parseValue)
+            res = parseValue;
     }
     closedir(dirp);
 
