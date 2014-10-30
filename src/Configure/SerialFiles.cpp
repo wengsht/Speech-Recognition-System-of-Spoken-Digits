@@ -49,6 +49,7 @@ const char * SerialFiles::inAlias(char * in) {
 #undef ALISE
     return in;
 }
+
 // "one" ---> "1"
 const char * SerialFiles::outAlias(char * out) {
 #define ALISE(a,b) \
