@@ -107,8 +107,8 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     wholeCnt += numNode;
 
                     nxtCnt[0] += numNode - 1;
-                    if(seg.second == (*templates)[j].size()-1)
-                        nxtCnt[0] += 1;
+//                    if(seg.second == (*templates)[j].size()-1)
+//                        nxtCnt[0] += 1;
 
                     // 统计i会转移到i+k 的node的个数
                     for(int k = 1; k < DTW_MAX_FORWARD; k++) {
