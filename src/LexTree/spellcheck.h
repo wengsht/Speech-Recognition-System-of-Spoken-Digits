@@ -86,11 +86,6 @@ struct Path{
 		}
 		else path.push_back(std::make_pair(pre[now][preNode],preNode));
 		
-	//	printf("-----------\n");
-	//	for(int i = 0;i<path.size();i++){
-	//		printf("%d  %d\n",i,path[i].first);
-	//	}		
-	//	printf("----------- end path\n");
 		now^=1;
 	}
 
@@ -104,9 +99,10 @@ struct Path{
 		}
 		//printf("~~\n");
 			
-		for(int i = words.size()-1;i>=0;i--){
+		for(int i = words.size()-1;i>0;i--){
 			printf("%s ",(*tree)[words[i]]->getWord());
-		}printf("\n");
+		}
+		printf("\n");
 	}
 };
 
@@ -260,6 +256,7 @@ public:
 					now_min_val = val[nid].val;
 					now_min_index = nid;
 				}*/
+
 				Node * node = (*tree)[nid];
 				Node *old_node = (*tree)[now_min_index];
 				if(val[nid].val<now_min_val ||
@@ -309,7 +306,7 @@ public:
 	void setBeam(int b){beam = b;}
 	SpellChecker();
 	~SpellChecker();
-	int check(const char * word,bool one = false,bool use_path=true);
+	int check(const char * word,bool one = true,bool use_path=true);
 	void showInfo(){
 		tree.showInfo();
 	}

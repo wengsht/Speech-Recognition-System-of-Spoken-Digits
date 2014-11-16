@@ -30,10 +30,7 @@ int SpellChecker::check(const char * word,bool one,bool use_path){
 	int len = strlen(word);
 	for(int i = 0;i<len;i++){
 		refreshLink(word[i],list[now],list[now^1],one);
-//		printf("end;\n");
-//		printf("----------------- %c\n",word[i]);
 //		list[now^1].print();
-//		printf("~~~~~~~~~~~\n");
 		list[now].clear();
 		now ^=1;
 		path.update();
@@ -49,10 +46,8 @@ int SpellChecker::check(const char * word,bool one,bool use_path){
 		path.update();
 	}
 
-//	printf("\nval %d\n",val);
-	/// !!!
 	ansy = index;
-//	if(one)printf("%s ",getWord(index));
+	if(one)printf("%s ",getWord(index));
 	delete [] list;
 	return index;
 }
