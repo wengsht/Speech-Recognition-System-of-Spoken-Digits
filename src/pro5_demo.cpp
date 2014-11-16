@@ -102,18 +102,15 @@ int dealOpts(int argc,char ** argv){
 }
 
 void test(){
-	//LexTree t;
-	//	t.buildTree("mydict.txt");
-	//t.buildTree("dict_1.txt");
 	//t.showInfo();
-//	SpellChecker sp("mydict.txt",3);
-	SpellChecker sp("dict_2.txt",3);
+//	SpellChecker sp("mydict.txt",100);
+	SpellChecker sp("dict_2.txt",100);
 //	sp.showInfo();
 	char c[1024] ;//= "daklashdfkjasdhfkjehwui";
 	while(cin >> c){
-		sp.check(c);
+		sp.check(c,false,true);
+		//sp.check(c);
 		sp.printAns();
-//		printf(" ");
 //		printf("%d %s\n",tid,sp.getWord(tid));
 	}
 	printf("\n");
