@@ -5,16 +5,35 @@
 
 const int INF = 0x3f3f3f3f;
 
-
-struct PathNode{
-	
-};
-
 struct Path{
-	
+	std::map<int,int> path;
+	int size;
+	bool use ;
+	Path(){
+//		use = false;
+	}
+	void init(int size){
+//		this->size = size;
+//		use = true;
+//		path.clear();
+	}
+	void create(int x,int y,int px,int py){
+//		if(use==false)return;		
+	}	
+	void print(int x,int y){
+//		if(use==false)return;
+	}
 };
 
 //typedef map<int,int> Link;
+
+struct LinkNode{
+	int val;
+	int next;
+	LinkNode(){
+		next = -1;
+	}
+};
 
 class Link{
 private:
@@ -24,16 +43,33 @@ private:
 	int now_min_val;
 	int now_min_index;
 
-	std::map<int,int> val;
+	//std::map<int,int> val;
+	
+	LinkNode * val;
+	int firstNode;
+	int lastNode;
+	int size;
 
 public:
 	Link(){
+		val = NULL;
 		clear();
 	}
 	~Link(){
+		if(val)delete [] val;
+		val = NULL;
 	}
 	void clear(){
-		val.clear();
+		//val.clear();
+		if(val){
+			for(int i = 0;i<size;i++){
+				val[i].val = INF;
+				val[i].next = -1;
+			}
+		}
+
+		firstNode = -1;
+		lastNode = -1;
 		now_min_val = INF;
 		now_min_index = -1;
 	}
@@ -42,110 +78,95 @@ public:
 	void init(LexTree * tree,int beam){
 		this->beam = beam;
 		this->tree = tree;
+		size = tree->getNodeSize();
+		if(val)delete [] val;val=NULL;
+		val = new LinkNode [size];
 		clear();
 	}
 
 	// 根据单词c与节点的编辑距离设置Link的值
 	void setFirstLink(){
-		int size = tree->getNodeSize();
-		val[0]=0;
+		val[0].val=0;
+		
+		firstNode = 0;
+		lastNode = 0;
+
 		now_min_val = 0;
 		now_min_index = 0;
+
 		for(int i = 1;i<size;i++){
 			int pid = (*tree)[i]->getParent()->getNid();
-		//	printf("%d parent = %d\n",i,pid);
-			std::map<int,int>::iterator it;
-			if((it=val.find(pid))!=val.end()){
-				int v = it->second+1;
-				if (v>beam)continue;
-				val[i] = v;
-			}
+			int v = val[pid].val+1;
+			if(v>beam)continue;
+			val[i].val=v;
+			val[lastNode].next = i;
+			lastNode = i;
 		}					
 	}
 
 	// 获得一个值，判断是否更新 !!
 	// 并设置next
-	void accept(int nid,int v){
-		if(v>now_min_val+beam) return;
-
-		std::map<int,int>::iterator it;
-		it = val.find(nid);
-		if(it!=val.end()){
-			if(it->second>v)it->second = v;	
-		}
-		else{	
-			val[nid] = v;
-		}
-
+	bool accept(int nid,int v){
+		if(v>now_min_val+beam) return false;
 		if(v<now_min_val){
 			now_min_val = v;
 			now_min_index  = nid;
 		}
+
+		if(val[nid].val==INF){
+			val[nid].val = v;
+			
+			if(lastNode == -1){
+				firstNode = nid;
+			}
+			else{
+				val[lastNode].next=nid;
+			}
+
+			lastNode = nid;	
+			return true;
+		}
+		else{
+			if(val[nid].val>v){
+				val[nid].val=v;
+				return true;
+			}
+		}
+		return false;
 	}
 
 	void print(){
 //		printf("\n|||||\n");
-		std::map<int,int>::iterator it;
-		for (it = val.begin();it!=val.end();it++){
-			printf("%d %s %d\n",it->first,(*tree)[it->first]->getWord(),it->second);
-		}
-		printf("min index = %d, min val = %d\n",now_min_index,now_min_val);
+//		std::map<int,int>::iterator it;
+//		for (it = val.begin();it!=val.end();it++){
+//			printf("%d %s %d\n",it->first,(*tree)[it->first]->getWord(),it->second);
+//		}
+//		printf("min index = %d, min val = %d\n",now_min_index,now_min_val);
 //		printf("|||||\n\n");
 
 	}
 
-	// 纵向更新，同时做beam
-	void checkSelf(bool last = false){
-		std::map<int,int>::iterator it;
-		for(it = val.begin();it!=val.end();it++){
-			if(it->second<now_min_val){
-				now_min_val=it->second;
-				now_min_index=it->first;
-			}
-			
-			if(it->second+1>beam)continue;
-			Node * p = (*tree)[it->first];
-			int size = p->getSonSize();
-			for(int i = 0;i<size;i++){
-				// insert the letter
-				accept(p->getSon(i)->getNid(),it->second+1);
-			}
-		}
-	
-			
-		
-		it = val.begin();
-		std::map<int,int>::iterator end = val.end();
-		std::map<int,int>::iterator tmp;
-		int max = now_min_val+beam;
-		//printf("max : %d last:%d\n",max,last);
-		if(last){
-			now_min_val = INF;
-			now_min_index = -1;
-		}
-		while(it!=end){
-			if(last){
-				if(it->second<now_min_val && (*tree)[it->first]->isLeaf()){
-					now_min_val = it->second;
-					now_min_index = it->first;
-				}
-				it++;
-			}
-			else if(it->second>max){
-				tmp = it;
-				it++;
-				val.erase(tmp);
-		//		printf("do erase");
-				end = val.end();
-			}
-			else it++;
+	// 纵向更新
+	void checkSelf(){
+		now_min_val = INF;
+		now_min_index = -1;
+		for(int nid = firstNode;nid!=-1;nid=val[nid].next){
+			//!!!
+			if(val[nid].val<now_min_val && (*tree)[nid]->isLeaf()){
+				now_min_val = val[nid].val;
+				now_min_index = nid;
+			}	
 		}
 	}
 
 	///////////////////////////////////////////////////
-	std::map<int,int>& getMap(){
-		return val;
+	int getFirst(){
+		return firstNode;
 	} 
+	LinkNode * getVal(){
+		return val;
+	}	
+	
 	int getMin(int& index){
 		index = now_min_index;
 		return now_min_val;
@@ -156,10 +177,13 @@ public:
 class SpellChecker
 {
 private:
+	bool one;
+	Path path;
 	LexTree tree;
+	int ansx,ansy;
 protected:
 	Link * initLink();
-	void refreshLink(char next_c,Link& nowLink,Link& nextLink,bool last=false);
+	void refreshLink(char next_c,Link& nowLink,Link& nextLink);
 	int beam;
 public:
 	SpellChecker(const char * dicFileName,int beam){	
@@ -172,10 +196,13 @@ public:
 	void setBeam(int b){beam = b;}
 	SpellChecker();
 	~SpellChecker();
-	int checkOneWord(const char * word);
+	int check(const char * word,bool one = false,bool use_path=true);
 	void showInfo(){
 		tree.showInfo();
-	}	
+	}
+	void printAns(){
+		
+	}
 };
 
 #endif

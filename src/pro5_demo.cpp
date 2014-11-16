@@ -108,10 +108,12 @@ void test(){
 	//t.showInfo();
 //	SpellChecker sp("mydict.txt",3);
 	SpellChecker sp("dict_2.txt",3);
-
+//	sp.showInfo();
 	char c[1024] ;//= "daklashdfkjasdhfkjehwui";
 	while(cin >> c){
-		sp.checkOneWord(c);
+		sp.check(c);
+		sp.printAns();
+//		printf(" ");
 //		printf("%d %s\n",tid,sp.getWord(tid));
 	}
 	printf("\n");

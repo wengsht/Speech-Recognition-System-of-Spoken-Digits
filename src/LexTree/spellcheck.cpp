@@ -12,21 +12,33 @@ SpellChecker::~SpellChecker(){
 	
 }
 
-int SpellChecker::checkOneWord(const char * word){
+int SpellChecker::check(const char * word,bool one,bool use_path){
+	this->one = one;
+
+//	if(use_path){
+//		this->path.init(tree.getNodeSize());
+//	}
+//	else{
+//		path.use = false;
+//	}
 	Link * list = initLink();
 	int now = 0;
+	ansx = 0;
 	int len = strlen(word);
 	for(int i = 0;i<len;i++){
-		refreshLink(word[i],list[now],list[now^1],i==(len-1));
+		refreshLink(word[i],list[now],list[now^1]);
+		
 		list[now].clear();
 		now ^=1;
-//		printf("after %d update: \n",i);
-//		list[now].print();
-	//	printf("list size = %lu\n\n",list[now].getMap().size());
+		ansx++;
 	}
+
+	list[now].checkSelf();
+	
 	int index,val;
 	val = list[now].getMin(index);
-//	printf("min_val=%d,  word:%s, find word=%s\n",val,word,getWord(index));	
+	/// !!!
+	ansy = index;
 	printf("%s ",getWord(index));
 	delete [] list;
 	return index;
@@ -38,7 +50,6 @@ Link * SpellChecker::initLink(){
 	list[0].init(&tree,beam);
 	list[1].init(&tree,beam);
 	//list[0].print();
-	//!!!
 	list[0].setFirstLink();
 //	list[0].print();
 	return list;
@@ -48,19 +59,25 @@ Link * SpellChecker::initLink(){
 //update next link, and next link update itself (remove node with beam)
 void SpellChecker::refreshLink(char next_c,
 								Link& nowLink,
-								Link& nextLink,
-								bool last )
+								Link& nextLink
+								)
 {
-	map<int ,int>::iterator it;
-	map<int,int> now_map = nowLink.getMap();
-	for(it = now_map.begin();it!=now_map.end();it++){
-		int node_val = it->second;
-		int old_nid = it->first;
+	int tmp;
+	LinkNode * nowVal = ((nowLink.getVal()));
+	LinkNode * nextVal = ((nextLink.getVal()));
 
-		// delete the letter
-		// !!!
-		nextLink.accept(old_nid,node_val+1);
+	for(int nid = nowLink.getFirst();nid!=-1;nid=nowVal[nid].next){
+		int node_val = nowVal[nid].val;
+		int old_nid = nid;
+
+		int max = nowLink.getMin(tmp)+beam;
 		
+		if(node_val>max)continue;
+		// delete the letter
+		
+		bool f=nextLink.accept(old_nid,node_val+1);
+		if(f)path.create(ansx+1,old_nid,ansx,old_nid);
+
 		Node * node = tree[old_nid];
 
 		int size = node->getSonSize();
@@ -70,22 +87,32 @@ void SpellChecker::refreshLink(char next_c,
 			int new_nid = son->getNid();
 
 			if(next_c==son->getC()){// match the letter
-				nextLink.accept(new_nid,node_val);		
+				f=nextLink.accept(new_nid,node_val);		
 			}
 			else{// change the letter
-				nextLink.accept(new_nid,node_val+1);		
+				f=nextLink.accept(new_nid,node_val+1);		
 			}
+
+			if(f)path.create(ansx+1,new_nid,ansx,old_nid);
 		}
 		
 	}
-	//!!!
-	nextLink.checkSelf(last);
+
+	//map<int,int>& next_map = nextLink.getMap();
+	for(int nid =nextLink.getFirst();nid!=-1;nid=nextVal[nid].next){
+	//for(it=next_map.begin();it!=next_map.end();it++){
+		int tmp;
+		int min_val = nextLink.getMin(tmp);
+		int v = nextVal[nid].val+1;
+		if(v>min_val+beam)continue;
+		Node* p = tree[nid];
+		int size = p->getSonSize();
+		for(int i = 0;i<size;i++){
+			int son_id = p->getSon(i)->getNid();
+			bool f=nextLink.accept(son_id,v);
+			if(f)path.create(ansx+1,son_id,ansx+1,nid);
+		}
+	}
+
 }
 
-/*
-// for check a Text
-int checkText(const string& text)
-{
-	
-}
-*/
