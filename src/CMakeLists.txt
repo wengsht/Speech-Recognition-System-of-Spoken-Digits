@@ -10,6 +10,9 @@ add_executable(${PRO2_MAIN} ${PRO2_MAIN}.cpp)
 set (PRO3_MAIN pro3_demo)
 add_executable(${PRO3_MAIN} ${PRO3_MAIN}.cpp)
 
+set (PRO5_MAIN pro5_demo)
+add_executable(${PRO5_MAIN} ${PRO5_MAIN}.cpp)
+
 set (PRO4_MAIN_PART1 pro4_demo_1)
 add_executable(${PRO4_MAIN_PART1} ${PRO4_MAIN_PART1}.cpp)
 
@@ -28,6 +31,7 @@ set(READWAVE readwave)
 set(DATA data)
 set(THREADPOOL ThreadPool)
 set(EDITDISTANCE EditDistance)
+set(LEXTREE LexTree)
 
 ADD_DEFINITIONS(
     -std=c++11
@@ -42,6 +46,7 @@ include_directories ("${PROJECT_SOURCE_DIR}/${READWAVE}")
 include_directories ("${PROJECT_SOURCE_DIR}/${DATA}")
 include_directories ("${PROJECT_SOURCE_DIR}/${EDITDISTANCE}")
 include_directories ("${PROJECT_SOURCE_DIR}/${THREADPOOL}")
+include_directories ("${PROJECT_SOURCE_DIR}/${LEXTREE}")
 
 add_subdirectory (${TEST})
 add_subdirectory (${FEATURE})
@@ -52,6 +57,7 @@ add_subdirectory (${READWAVE})
 add_subdirectory (${DATA})
 add_subdirectory (${EDITDISTANCE})
 add_subdirectory (${THREADPOOL})
+add_subdirectory (${LEXTREE})
 
 target_link_libraries(${PRO2_MAIN} ${FEATURE})
 target_link_libraries(${PRO2_MAIN} ${TEST})
@@ -65,17 +71,16 @@ target_link_libraries(${PRO2_MAIN} portaudio)
 target_link_libraries(${PRO2_MAIN} pthread)
 
 
-#target_link_libraries(${PRO3_MAIN} ${ANALYSIS})
-#target_link_libraries(${PRO3_MAIN} ${CAPTURE})
-#target_link_libraries(${PRO3_MAIN} ${FEATURE})
-#target_link_libraries(${PRO3_MAIN} ${TEST})
 target_link_libraries(${PRO3_MAIN} ${CONFIGURE})
-#target_link_libraries(${PRO3_MAIN} ${READWAVE})
-#target_link_libraries(${PRO3_MAIN} ${DATA})
 target_link_libraries(${PRO3_MAIN} ${EDITDISTANCE})
-#target_link_libraries(${PRO3_MAIN} portaudio)
 target_link_libraries(${PRO3_MAIN} ${THREADPOOL})
 target_link_libraries(${PRO3_MAIN} pthread)
+
+target_link_libraries(${PRO5_MAIN} ${CONFIGURE})
+target_link_libraries(${PRO5_MAIN} ${LEXTREE})
+target_link_libraries(${PRO5_MAIN} ${THREADPOOL})
+target_link_libraries(${PRO5_MAIN} ${EDITDISTANCE})
+target_link_libraries(${PRO5_MAIN} pthread)
 
 target_link_libraries(${RECOREDER} ${CAPTURE})
 target_link_libraries(${RECOREDER} ${ANALYSIS})

@@ -9,7 +9,7 @@
 using namespace std;
 
  //各种模式分割符
-const char * wordSp = ".,:;!?\"\t\n\r ";
+const char * wordSp = ".,:!?\"\t\n\r ";
 const char * sentenceSp = wordSp;
 const char * articleSp = "\n\r";
 

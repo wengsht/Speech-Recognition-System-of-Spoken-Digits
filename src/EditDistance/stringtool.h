@@ -1,6 +1,8 @@
 #include <vector>
 #include <string>
 
+std::string getStrsFromFile(const char *FileName);
+
 void saveStrsToFile(const char *FileName,
 						const std::vector<int> ind,
 						const std::vector<std::string>& v,

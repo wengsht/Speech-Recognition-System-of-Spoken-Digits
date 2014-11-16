@@ -97,7 +97,7 @@ int dealOpts(int argc,char ** argv){
 				app.setMode(3);
 				break;
             case 'h':
-        		Tip("%s",help); 
+                printf("%s",help);
                 return false;
 				break;
 			case 'A':
