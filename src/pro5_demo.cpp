@@ -41,9 +41,10 @@ usage : ./pro3_demo \n\
 -d use a dictionay to compare.\n\
 -i output more information(for debug).\n\
 -m deal with multi words without blank.\n\
+-c blank cost(default = 0)\n\
 \n\
 example:\n\
-./pro5_demo -d dict_2.txt -m -b 5 < unsegmented0.txt\n\
+./pro5_demo -d dict_2.txt -m -b 5 -c 1 < unsegmented0.txt\n\
 ";
 
 ///
@@ -53,6 +54,7 @@ char txtFile[1024];
 char correctFile[1024];
 int beam;
 int one;
+int blank_cost;
 
 int dealOpts(int argc,char ** argv){
 	//	app.setFromFile(false);
@@ -62,8 +64,8 @@ int dealOpts(int argc,char ** argv){
 	txtFile[0]='\0';
 	correctFile[0]='\0';
 	one = true;
-
-	while((c = getopt(argc, argv,"id:hb:mf:")) != -1) 
+	blank_cost = 0;
+	while((c = getopt(argc, argv,"id:hb:mf:c:")) != -1) 
 	{
 		//printf("%d\n",c);
 		switch(c) {
@@ -99,10 +101,9 @@ int dealOpts(int argc,char ** argv){
 //				//app.setFromFile(true);
 //				//app.setStory(optarg);
 //				break;
-//			case 'c':
-//				//app.setFromFile(true);
-//				//app.setCStory(optarg);
-//				break;
+			case 'c':
+				blank_cost = atoi(optarg);
+				break;
 			default:
 				return false;
 				break;
@@ -112,7 +113,7 @@ int dealOpts(int argc,char ** argv){
 	//	app.setAlg(1);
 	return true;	
 }
-
+/*
 void test(){
 	//t.showInfo();
 //	SpellChecker sp("mydict.txt",100);
@@ -127,13 +128,14 @@ void test(){
 	}
 	printf("\n");
 }
+*/
 
 void run(){
 	//app.setAlg(1);
 	//app.setMode(1);
 	//app.run();
 //	test();
-	SpellChecker sp(dictFile,beam);
+	SpellChecker sp(dictFile,blank_cost,beam);
 	char c[1024];
 	while(cin>>c){
 		sp.check(c,one);

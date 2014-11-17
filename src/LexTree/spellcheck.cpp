@@ -72,9 +72,9 @@ void SpellChecker::refreshLink(char next_c,
 								bool one)
 {
 	int tmp;
+	bool is_equal = false;
 	LinkNode * nowVal = ((nowLink.getVal()));
 	LinkNode * nextVal = ((nextLink.getVal()));
-//	printf("refresh\n");
 	for(int nid = nowLink.getFirst();nid!=-1;nid=nowVal[nid].next){
 		int node_val = nowVal[nid].val;
 		int old_nid = nid;
@@ -87,7 +87,7 @@ void SpellChecker::refreshLink(char next_c,
 		bool f;
 		//往右边更新
 		if(old_nid>0 || one){
-			f=nextLink.accept(old_nid,node_val+1,ansx);
+			f=nextLink.accept(old_nid,node_val+1,ansx,is_equal);
 			if(f)path.create(ansx+1,old_nid,ansx,old_nid);
 		}
 		else{
@@ -103,10 +103,10 @@ void SpellChecker::refreshLink(char next_c,
 			int new_nid = son->getNid();
 
 			if(next_c==son->getC()){// match the letter
-				f=nextLink.accept(new_nid,node_val,ansx);		
+				f=nextLink.accept(new_nid,node_val,ansx,is_equal);		
 			}
 			else{// change the letter
-				f=nextLink.accept(new_nid,node_val+1,ansx);		
+				f=nextLink.accept(new_nid,node_val+1,ansx,is_equal);		
 			}
 			if(f)path.create(ansx+1,new_nid,ansx,old_nid);
 		}
@@ -114,7 +114,6 @@ void SpellChecker::refreshLink(char next_c,
 	}
 
 	//往子结点更新
-	//map<int,int>& next_map = nextLink.getMap();
 	for(int nid =nextLink.getFirst();nid!=-1;nid=nextVal[nid].next){
 		if( (!one)&&(nid==0))continue;
 		int tmp;
@@ -127,19 +126,25 @@ void SpellChecker::refreshLink(char next_c,
 			v = nextVal[nid].val+1;
 			
 			int son_id = node->getNid();
-			bool f=nextLink.accept(son_id,v,ansx);
+			bool f=nextLink.accept(son_id,v,ansx,is_equal);
 //			printf("work %d to %d with %d\n",son_id,nid,v);
 			if(f)path.create(ansx+1,son_id,ansx+1,nid);	
 		}
 	}
 	// update 最下方
 	if(!one){
+		int min_leaf = INF;
 		for(int nid =nextLink.getFirst();nid!=-1;nid=nextVal[nid].next){
 			Node* node = tree[nid];	
 			if( (node->isLeaf())){
-				int node_val = nextVal[nid].val;
-				 bool f=nextLink.accept(0,node_val,ansx);
-				 if(f)path.create(ansx+1,0,ansx+1,nid);
+				//!!!
+				int node_val = nextVal[nid].val+blank_cost;
+				bool f=nextLink.accept(0,node_val,ansx,is_equal);
+				//if(f)path.create(ansx+1,0,ansx+1,nid);	
+				if(f || (is_equal && (nid<min_leaf))){
+					path.create(ansx+1,0,ansx+1,nid);
+					min_leaf = nid;	
+				}
 			}
 		}
 	}

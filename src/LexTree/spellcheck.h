@@ -39,7 +39,6 @@ struct Path{
 		pre[1] = new int[size];
 		use = true;
 		path.clear();
-//		path.push_back(std::make_pair(-1,-1));
 		now = 0;
 		pre[0][0] = 0;
 		preNode = -1;
@@ -47,10 +46,8 @@ struct Path{
 
 	void create(int x,int y,int px,int py){
 		if(use == false)return;
-	//	printf("%d %d -> %d %d\n",x,y,px,py);
 		if(px == x){
 			if(y==0){
-				//pre[now][y] = path.size();
 				preNode = py;
 			}
 			else{
@@ -69,18 +66,6 @@ struct Path{
 
 	void update(){
 		if(use == false)return;
-	//	printf("\nupdate:\n");
-	//	printf("now:\n");
-//		for(int i = 0;i<size;i++){
-//			printf("%d\n",pre[now][i]);
-//		}
-///*
-//		printf("now^1:\n");
-//		for(int i = 0;i<size;i++){
-//			printf("%d\n",pre[now^1][i]);
-//		}
-		//printf("preNode = %d\n",preNode);
-//*/
 		if(preNode == -1){
 			path.push_back(std::make_pair(-1,-1));
 		}
@@ -94,19 +79,16 @@ struct Path{
 		std::vector<int> words;
 		
 		for(int i = path.size()-1;path[i].second!=-1;i=path[i].first){
-	//		printf("%d ",i);
 			words.push_back(path[i].second);
 		}
-		//printf("~~\n");
 			
-		for(int i = words.size()-1;i>0;i--){
+		for(int i = words.size()-1;i>=0;i--){
 			printf("%s ",(*tree)[words[i]]->getWord());
 		}
 		printf("\n");
 	}
 };
 
-//typedef map<int,int> Link;
 
 struct LinkNode{
 	int val;
@@ -199,7 +181,8 @@ public:
 
 	// 获得一个值，判断是否更新 !!
 	// 并设置next
-	bool accept(int nid,int v,int now_col){
+	bool accept(int nid,int v,int now_col,bool & is_equal ){
+		is_equal = false;
 		if(v>now_min_val+beam) return false;
 		if(v<now_min_val){
 			now_min_val = v;
@@ -225,23 +208,18 @@ public:
 			if(val[nid].val>v){
 				val[nid].val=v;
 				return true;
+			}else if(val[nid].val == v){
+				is_equal = true;
+				return false;
 			}
 		}
 		return false;
 	}
 
 	void print(){
-//		printf("\n|||||\n");
-//		std::map<int,int>::iterator it;
 		for (int nid = firstNode;nid!=-1;nid=val[nid].next){
 			printf("%d %d\n",nid,val[nid].val);
 		}
-
-//			printf("%d %s %d\n",it->first,(*tree)[it->first]->getWord(),it->second);
-//		}
-//		printf("min index = %d, min val = %d\n",now_min_index,now_min_val);
-//		printf("|||||\n\n");
-
 	}
 
 	// 纵向更新
@@ -291,14 +269,16 @@ private:
 	Path path;
 	LexTree tree;
 	int ansx,ansy;
+	int blank_cost;
 protected:
 	Link * initLink();
 	void refreshLink(char next_c,Link& nowLink,Link& nextLink,bool one);
 	int beam;
 public:
-	SpellChecker(const char * dicFileName,int beam){	
+	SpellChecker(const char * dicFileName,int blank_cost,int beam){	
 		tree.buildTree(dicFileName);
 		this->beam = beam;
+		this->blank_cost =blank_cost;
 	}
 	char * getWord(int index){
 		return tree[index]->getWord();
