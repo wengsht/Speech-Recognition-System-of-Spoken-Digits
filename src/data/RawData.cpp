@@ -102,9 +102,11 @@ double RawData::getBlockAveEnergy(int index){
 
 bool RawData::setFrameNum(int f_num){
     if(f_num % SAMPLES_IN_EACH_FRAME != 0 ){
+        /*  
         WarnLog("The frame_num of RawData %d is not a mutiple of \
                 SAMPLES_IN_EACH_FRAME(%d)\n",
                 f_num,SAMPLES_IN_EACH_FRAME);
+                */
     }
     this->frame_num = f_num /
         SAMPLES_IN_EACH_FRAME *

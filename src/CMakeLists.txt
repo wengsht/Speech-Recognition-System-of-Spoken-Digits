@@ -32,6 +32,7 @@ set(DATA data)
 set(THREADPOOL ThreadPool)
 set(EDITDISTANCE EditDistance)
 set(LEXTREE LexTree)
+set(GRAPH Graph)
 
 ADD_DEFINITIONS(
     -std=c++11
@@ -58,6 +59,7 @@ add_subdirectory (${DATA})
 add_subdirectory (${EDITDISTANCE})
 add_subdirectory (${THREADPOOL})
 add_subdirectory (${LEXTREE})
+add_subdirectory (${GRAPH})
 
 target_link_libraries(${PRO2_MAIN} ${FEATURE})
 target_link_libraries(${PRO2_MAIN} ${TEST})

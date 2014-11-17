@@ -37,9 +37,14 @@ public:
     virtual ~HMMAutomaton() {};
     virtual void hmmTrain() = 0;
     virtual double calcCost(WaveFeatureOP &input) = 0;
-    
+
     //  you should call this before you destroy this object
     void close();
+
+    // 
+    // give skipping a floor probability
+    //
+    void adjustSkippingTransfer();
 
     virtual void load(std::stringstream &in) = 0;
     void store(std::stringstream &out);

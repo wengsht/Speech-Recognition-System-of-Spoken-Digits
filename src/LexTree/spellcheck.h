@@ -30,8 +30,10 @@ struct Path{
 struct LinkNode{
 	int val;
 	int next;
-	LinkNode(){
+    int lastUpdate;
+	LinkNode() {
 		next = -1;
+        lastUpdate = -1;
 	}
 };
 
@@ -47,7 +49,6 @@ private:
 	
 	LinkNode * val;
 	int firstNode;
-	int lastNode;
 	int size;
 
 public:
@@ -55,21 +56,21 @@ public:
 		val = NULL;
 		clear();
 	}
+
 	~Link(){
 		if(val)delete [] val;
 		val = NULL;
 	}
+
 	void clear(){
 		//val.clear();
-		if(val){
-			for(int i = 0;i<size;i++){
-				val[i].val = INF;
-				val[i].next = -1;
-			}
-		}
+//		if(val) {
+//			for(int i = 0;i<size;i++){
+//				val[i].next = -1;
+//			}
+//		}
 
 		firstNode = -1;
-		lastNode = -1;
 		now_min_val = INF;
 		now_min_index = -1;
 	}
@@ -79,7 +80,7 @@ public:
 		this->beam = beam;
 		this->tree = tree;
 		size = tree->getNodeSize();
-		if(val)delete [] val;val=NULL;
+		if(val) delete [] val;val=NULL;
 		val = new LinkNode [size];
 		clear();
 	}
@@ -88,8 +89,8 @@ public:
 	void setFirstLink(){
 		val[0].val=0;
 		
+        val[0].next = firstNode;
 		firstNode = 0;
-		lastNode = 0;
 
 		now_min_val = 0;
 		now_min_index = 0;
@@ -99,34 +100,32 @@ public:
 			int v = val[pid].val+1;
 			if(v>beam)continue;
 			val[i].val=v;
-			val[lastNode].next = i;
-			lastNode = i;
+			val[i].next = firstNode;
+			firstNode = i;
 		}					
 	}
 
 	// 获得一个值，判断是否更新 !!
 	// 并设置next
-	bool accept(int nid,int v){
+	bool accept(int nid,int v, int column) {
 		if(v>now_min_val+beam) return false;
 		if(v<now_min_val){
 			now_min_val = v;
 			now_min_index  = nid;
 		}
 
-		if(val[nid].val==INF){
+		if(val[nid].lastUpdate != column){
 			val[nid].val = v;
+            val[nid].lastUpdate = column;
 			
-			if(lastNode == -1){
-				firstNode = nid;
-			}
-			else{
-				val[lastNode].next=nid;
-			}
 
-			lastNode = nid;	
+            val[nid].next = firstNode;
+            firstNode = nid;
+
 			return true;
 		}
-		else{
+
+		else {
 			if(val[nid].val>v){
 				val[nid].val=v;
 				return true;
@@ -183,7 +182,7 @@ private:
 	int ansx,ansy;
 protected:
 	Link * initLink();
-	void refreshLink(char next_c,Link& nowLink,Link& nextLink);
+	void refreshLink(char next_c,Link& nowLink,Link& nextLink, int);
 	int beam;
 public:
 	SpellChecker(const char * dicFileName,int beam){	
@@ -193,6 +192,7 @@ public:
 	char * getWord(int index){
 		return tree[index]->getWord();
 	}	
+
 	void setBeam(int b){beam = b;}
 	SpellChecker();
 	~SpellChecker();
@@ -203,6 +203,7 @@ public:
 	void printAns(){
 		
 	}
+    Link list[2];
 };
 
 #endif

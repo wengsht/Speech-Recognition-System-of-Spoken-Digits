@@ -134,6 +134,8 @@ class HMMKMeanAutomaton : public HMMAutomaton {
 
                     transferCost[i][i+j] = newCost;
                 }
+
+                adjustSkippingTransfer();
             }
 
             // 每个transfer有0.01的变动 TODO

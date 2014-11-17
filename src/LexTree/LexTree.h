@@ -17,6 +17,7 @@ private:
 	int nid;
 	char * word;
 public:
+
 	Node(){
 		pnt = NULL;
 		is_leaf = false;

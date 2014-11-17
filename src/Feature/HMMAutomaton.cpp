@@ -55,3 +55,16 @@ void HMMAutomaton::dumpTransfer(std::ostream & out) {
         }
     }
 }
+
+void HMMAutomaton::adjustSkippingTransfer() {
+    int siz = transferCost.size();
+    if(siz <= 0) return ;
+
+    for(int i = 0;i < siz-2;i++) {
+        if(cost2p(transferCost[i][i]) > FLOOR_TRANSITION_PROBABILITY) {
+            transferCost[i][i+2] = p2cost(cost2p(transferCost[i][i+2]) + FLOOR_TRANSITION_PROBABILITY);
+
+            transferCost[i][i] = p2cost(cost2p(transferCost[i][i]) - FLOOR_TRANSITION_PROBABILITY);
+        }
+    }
+}

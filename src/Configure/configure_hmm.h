@@ -4,3 +4,6 @@
 #define MAX_TRAIN_TIMES 100
 
 #define DTW_MAX_FORWARD 3
+
+// skip transition probability floor
+#define FLOOR_TRANSITION_PROBABILITY 1e-24

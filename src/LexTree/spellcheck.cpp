@@ -9,7 +9,8 @@ SpellChecker::SpellChecker(){
 }
 
 SpellChecker::~SpellChecker(){
-	
+//    delete [] list;
+
 }
 
 int SpellChecker::check(const char * word,bool one,bool use_path){
@@ -21,12 +22,14 @@ int SpellChecker::check(const char * word,bool one,bool use_path){
 //	else{
 //		path.use = false;
 //	}
-	Link * list = initLink();
+
+	initLink();
+
 	int now = 0;
 	ansx = 0;
 	int len = strlen(word);
 	for(int i = 0;i<len;i++){
-		refreshLink(word[i],list[now],list[now^1]);
+		refreshLink(word[i],list[now],list[now^1], i);
 		
 		list[now].clear();
 		now ^=1;
@@ -40,13 +43,15 @@ int SpellChecker::check(const char * word,bool one,bool use_path){
 	/// !!!
 	ansy = index;
 	printf("%s ",getWord(index));
-	delete [] list;
+//	delete [] list;
 	return index;
 }
 
 // for check one word
 Link * SpellChecker::initLink(){
-	Link * list = new Link[2];
+//    if(list) return list;
+
+//	Link * list2 = new Link[2];
 	list[0].init(&tree,beam);
 	list[1].init(&tree,beam);
 	//list[0].print();
@@ -60,6 +65,7 @@ Link * SpellChecker::initLink(){
 void SpellChecker::refreshLink(char next_c,
 								Link& nowLink,
 								Link& nextLink
+                                , int column
 								)
 {
 	int tmp;
@@ -75,7 +81,7 @@ void SpellChecker::refreshLink(char next_c,
 		if(node_val>max)continue;
 		// delete the letter
 		
-		bool f=nextLink.accept(old_nid,node_val+1);
+		bool f=nextLink.accept(old_nid,node_val+1, column);
 		if(f)path.create(ansx+1,old_nid,ansx,old_nid);
 
 		Node * node = tree[old_nid];
@@ -87,10 +93,10 @@ void SpellChecker::refreshLink(char next_c,
 			int new_nid = son->getNid();
 
 			if(next_c==son->getC()){// match the letter
-				f=nextLink.accept(new_nid,node_val);		
+				f=nextLink.accept(new_nid,node_val, column);		
 			}
 			else{// change the letter
-				f=nextLink.accept(new_nid,node_val+1);		
+				f=nextLink.accept(new_nid,node_val+1, column);		
 			}
 
 			if(f)path.create(ansx+1,new_nid,ansx,old_nid);
@@ -109,10 +115,8 @@ void SpellChecker::refreshLink(char next_c,
 		int size = p->getSonSize();
 		for(int i = 0;i<size;i++){
 			int son_id = p->getSon(i)->getNid();
-			bool f=nextLink.accept(son_id,v);
+			bool f=nextLink.accept(son_id,v, column);
 			if(f)path.create(ansx+1,son_id,ansx+1,nid);
 		}
 	}
-
 }
-
