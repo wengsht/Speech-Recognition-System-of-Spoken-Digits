@@ -24,7 +24,7 @@ HMMKMeanAutomaton::HMMKMeanAutomaton(std::vector<WaveFeatureOP> *templates, int 
 HMMKMeanAutomaton::~HMMKMeanAutomaton() {
 }
 
-void HMMKMeanAutomaton::hmmTrain() {
+void HMMKMeanAutomaton::hmmInitilize() {
     Init();
 
     clearStates();
@@ -92,15 +92,14 @@ void HMMKMeanAutomaton::hmmTrain() {
         states[idx]->gaussianTrain(gaussNum);
     }
 
-    /*  
-    for(idx = 0;idx <= stateNum; idx++) {
-        for(idy = 0; idy <= stateNum; idy++) 
-            printf("%lf ", transferCost[idx][idy]);
-        puts("");
-    }
-    */
+}
+void HMMKMeanAutomaton::hmmTrain() {
+    int idx;
+
+    hmmInitilize();
+
+
     for(idx = 0; idx < trainTimes; idx ++) {
-//        printf("%d\n", idx);
         if(! iterateTrain()) break;
     }
 

@@ -35,7 +35,7 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
 
         ~HMMAutomatonSet();
 
-        SP_RESULT train();
+        SP_RESULT train(HMMAutomaton::TRAIN_TYPE type = HMMAutomaton::SEG);
         std::string recognition(WaveFeatureOP & input);
 
         // 清空自动机，释放空间
@@ -43,8 +43,14 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
 
         void dumpAutomaton(std::ostream & out);
 
+        virtual void hmmFirstItr() {
+
+        }
 
     private:
+        SP_RESULT segTrain();
+        SP_RESULT seqTrain();
+
         static void hmmTrainTask(void *in);
 
         void reGenerateAutomaton();
@@ -53,8 +59,14 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
     public:
         void load(std::ifstream &in);
         void store(std::ofstream &out);
+
+        std::map< std::string, HMMAutomaton *> & getAutomatons() {
+            return automatons;
+        }
     private:
         std::map< std::string, HMMAutomaton *> automatons;
+
+        std::vector< WaveFeatureOP * > mixedWavs;
 
         std::map< std::string, int> specStateNums;
 };

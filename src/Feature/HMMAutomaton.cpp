@@ -36,8 +36,8 @@ void HMMAutomaton::clearStates() {
 }
 
 void HMMAutomaton::store(std::stringstream &out) {
-    for(int i = 1;i <= stateNum ;i++) 
-        for(int j = 1; j <= stateNum ;j++)
+    for(int i = 0;i <= stateNum ;i++) 
+        for(int j = 0; j <= stateNum ;j++)
             out << " " << transferCost[i][j];
 
     for(int i = 1;i < states.size(); i++) {
@@ -47,20 +47,44 @@ void HMMAutomaton::store(std::stringstream &out) {
 }
 
 void HMMAutomaton::dumpTransfer(std::ostream & out) {
-    for(int i = 1;i < transferCost.size(); i++) {
-        for(int j = 1;j < transferCost[i].size(); j++) {
+    int siz = transferCost.size();
+    if(!siz) return ;
+
+    for(int i = 0;i < transferCost.size(); i++) {
+        for(int j = 0;j < transferCost[i].size(); j++) {
             double p = cost2p(transferCost[i][j]);
             if(i <= j && i+2 >= j)
                 out << i << " -> " << j << "[label=\"" << p << "\", weight=\"" << p << "\"]\n" ;
         }
     }
+
+    double p1 = enddingProbability(siz-2); //1.0-cost2p(transferCost[siz-2][siz-2]) -cost2p(transferCost[siz-2][siz-1]);
+
+    double p2 = enddingProbability(siz-1); //1.0-cost2p(transferCost[siz-1][siz-1]);
+
+    out << siz-2 << " -> " << "dummy_end" << "[label=\"" << p1 <<  "\", weight=\"" << p1 << "\"]\n" ;
+
+    out << siz-1 << " -> " << "dummy_end" << "[label=\"" << p2 <<  "\", weight=\"" << p2 << "\"]\n" ;
+
+
+}
+
+double HMMAutomaton::enddingProbability(int stateID) {
+    assert(stateID <= stateNum);
+
+    double res = 1.0;
+    res -= cost2p(transferCost[stateID][stateID]);
+    if(stateID < stateNum)
+        res -= cost2p(transferCost[stateID][stateID + 1]);
+
+    return res;
 }
 
 void HMMAutomaton::adjustSkippingTransfer() {
     int siz = transferCost.size();
     if(siz <= 0) return ;
 
-    for(int i = 0;i < siz-2;i++) {
+    for(int i = 1;i < siz-2;i++) {
         if(cost2p(transferCost[i][i]) > FLOOR_TRANSITION_PROBABILITY) {
             transferCost[i][i+2] = p2cost(cost2p(transferCost[i][i+2]) + FLOOR_TRANSITION_PROBABILITY);
 

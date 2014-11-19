@@ -34,6 +34,8 @@ class HMMKMeanAutomaton : public HMMAutomaton {
 
         double calcCost(WaveFeatureOP &input);
 
+        void hmmInitilize();
+
     private:
         inline KMeanState *getState(int idx) {
             if(idx >= states.size()) return NULL;
@@ -41,8 +43,8 @@ class HMMKMeanAutomaton : public HMMAutomaton {
         }
 
         void load(std::stringstream &in) {
-            for(int i = 1;i <= stateNum ;i++) 
-                for(int j = 1; j <= stateNum ;j++)
+            for(int i = 0;i <= stateNum ;i++) 
+                for(int j = 0; j <= stateNum ;j++)
                     in >> transferCost[i][j];
 
             clearStates();
@@ -135,8 +137,10 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     transferCost[i][i+j] = newCost;
                 }
 
-                adjustSkippingTransfer();
+
             }
+
+            adjustSkippingTransfer();
 
             // 每个transfer有0.01的变动 TODO
             return isBigChange(wholeChangeCost);

@@ -35,20 +35,20 @@ class HMMRecognition {
 
     public:
         HMMRecognition(int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM, int trainTimes = MAX_TRAIN_TIMES);
-        ~HMMRecognition();
+        virtual ~HMMRecognition();
 
         // add mfcc features into templates set
         SP_RESULT loadTemplates(char *templateDir);
 
         // hmm Train 
-        SP_RESULT hmmTrain();
+        SP_RESULT hmmTrain(HMMAutomaton::TRAIN_TYPE type = HMMAutomaton::SEG);
 
         // 返回recognition的单词
         //
-        std::string hmmRecognition(WaveFeatureOP & input);
+        virtual std::string hmmRecognition(WaveFeatureOP & input);
 
         // You should call this function before you destroy this object!!
-        void close();
+        virtual void close();
 
         void setStateNum(int stateNum) {
             this->stateNum = stateNum;
@@ -70,17 +70,18 @@ class HMMRecognition {
 
         // 
         void dumpAutomaton(std::ostream & out);
-    private:
+    protected:
         bool loadHMMModel();
         void storeHMMModel();
         string generateHMMFileName();
-    private:
+
         int stateNum;
         int gaussNum;
         int trainTimes;
 
-        HMMAutomatonSet automatons;
         string templateDir;
+
+        HMMAutomatonSet automatons;
 };
 
 #endif

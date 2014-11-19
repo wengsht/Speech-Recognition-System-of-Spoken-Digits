@@ -28,7 +28,8 @@ class HMMState {
         enum StateType {
             DUMMY,
             KMEAN,
-            SOFT
+            SOFT,
+            UNEMIT
         };
     public:
         friend class HMMAutomaton;

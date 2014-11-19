@@ -1,0 +1,6 @@
+#ifdef GRAPH_PARAS
+GRAPH_PARAS(int, N_States)
+GRAPH_PARAS(int, Start_State)
+GRAPH_PARAS(int, Terminal_States)
+#undef GRAPH_PARAS
+#endif

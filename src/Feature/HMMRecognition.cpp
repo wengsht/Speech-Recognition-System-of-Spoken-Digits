@@ -70,13 +70,14 @@ void HMMRecognition::storeHMMModel() {
     out.close();
 }
 
-SP_RESULT HMMRecognition::hmmTrain() {
+SP_RESULT HMMRecognition::hmmTrain(HMMAutomaton::TRAIN_TYPE type) {
     automatons.setStateType(stateType);
 
     // load the model from buffer
     if(loadHMMModel()) ;
     else { 
-        automatons.train();
+        automatons.train(type);
+
         storeHMMModel();
     }
 

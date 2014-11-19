@@ -32,6 +32,12 @@ class HMMAutomaton {
     READ_WRITE_DECLARE(int , gaussNum, GaussNum);
     READ_WRITE_DECLARE(int , trainTimes, TrainTimes);
 public:
+    friend class SeqModel;
+    enum TRAIN_TYPE {
+        SEG,
+        SEQ
+    };
+
     HMMAutomaton(std::vector<WaveFeatureOP> *feature, int stateNum = AUTOMATON_STATE_NUM, int gaussNum = GAUSSIAN_NUM, int trainTimes = MAX_TRAIN_TIMES);
 
     virtual ~HMMAutomaton() {};
@@ -50,6 +56,9 @@ public:
     void store(std::stringstream &out);
     void dumpTransfer(std::ostream & out);
 
+    // return probability that stateID transfer to dummy ending
+
+    double enddingProbability(int stateID);
 protected:
     enum dtwType {
         Maximum, 
@@ -116,11 +125,11 @@ protected:
 
                     double mayPathCost = rollColumnCost[preIdx][preStateIdx] + transferCost[preStateIdx][stateIdx] + nodeCost;
 
-//                if(stateIdx == 1 && type == Maximum && columnIdx == 0) 
-//                    printf("%lf\n", nodeCost);
+                    //                if(stateIdx == 1 && type == Maximum && columnIdx == 0) 
+                    //                    printf("%lf\n", nodeCost);
 
-//                    printf("%lf %lf\n", mayPathCost, rollColumnCost[rollIdx][stateIdx]);
-//                    printf("%lf\n", rollColumnCost[rollIdx][stateIdx]);
+                    //                    printf("%lf %lf\n", mayPathCost, rollColumnCost[rollIdx][stateIdx]);
+                    //                    printf("%lf\n", rollColumnCost[rollIdx][stateIdx]);
                     // should record the path 
                     if(type == Maximum) {
                         if(Feature::better(mayPathCost, rollColumnCost[rollIdx][stateIdx])) {

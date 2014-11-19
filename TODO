@@ -1,2 +1,13 @@
-1. Transition skip floor 
-2. 
+1. Transition skip floor  #
+2. 连续语音树的Dtw， 记录bestPath 或者 BackPtr 两个版本
+
+BestPath可以用来做训练用。 
+
+train 的基本思路：
+用pro6做的bestpath dtw
+
+在graph里面存<string, hmm> 
+
+每次跑完所有自动机的dtw， 直接align所有的自动机， 并且调用iteratorTrain
+
+reGenerateAutomaton 有问题！！ 需要需要方便的所有的hmmkmeanautomaton 拥有所有的utter，的方法
