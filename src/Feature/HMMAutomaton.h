@@ -91,7 +91,10 @@ protected:
             rollColumnCost[rollIdx][idx] = Feature::IllegalDist;
             rollColumnCost[rollIdx ^ 1][idx] = Feature::IllegalDist;
         }
-        rollColumnCost[rollIdx][0] = 0.0;
+
+        rollColumnCost[rollIdx][0] = transferCost[0][1];
+        rollColumnCost[rollIdx][2] = transferCost[0][2];
+
     }
 
     // 滚动数组dtw

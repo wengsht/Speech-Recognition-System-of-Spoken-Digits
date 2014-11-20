@@ -65,8 +65,6 @@ void HMMAutomaton::dumpTransfer(std::ostream & out) {
     out << siz-2 << " -> " << "dummy_end" << "[label=\"" << p1 <<  "\", weight=\"" << p1 << "\"]\n" ;
 
     out << siz-1 << " -> " << "dummy_end" << "[label=\"" << p2 <<  "\", weight=\"" << p2 << "\"]\n" ;
-
-
 }
 
 double HMMAutomaton::enddingProbability(int stateID) {
@@ -84,11 +82,15 @@ void HMMAutomaton::adjustSkippingTransfer() {
     int siz = transferCost.size();
     if(siz <= 0) return ;
 
-    for(int i = 1;i < siz-2;i++) {
-        if(cost2p(transferCost[i][i]) > FLOOR_TRANSITION_PROBABILITY) {
+    for(int i = 0;i < siz-2;i++) {
+        if(cost2p(transferCost[i][i+2]) < FLOOR_TRANSITION_PROBABILITY) {
             transferCost[i][i+2] = p2cost(cost2p(transferCost[i][i+2]) + FLOOR_TRANSITION_PROBABILITY);
 
-            transferCost[i][i] = p2cost(cost2p(transferCost[i][i]) - FLOOR_TRANSITION_PROBABILITY);
+            if(i)
+                transferCost[i][i] = p2cost(cost2p(transferCost[i][i]) - FLOOR_TRANSITION_PROBABILITY);
+            else {
+                transferCost[i][i+1] = p2cost(cost2p(transferCost[i][i+1]) - FLOOR_TRANSITION_PROBABILITY);
+            }
         }
     }
 }

@@ -29,8 +29,8 @@ class HMMSoftAutomaton : public HMMAutomaton {
         ~HMMSoftAutomaton();
 
         void load(std::stringstream &in) {
-            for(int i = 1;i <= stateNum ;i++) 
-                for(int j = 1; j <= stateNum ;j++)
+            for(int i = 0;i <= stateNum ;i++) 
+                for(int j = 0; j <= stateNum ;j++)
                     in >> transferCost[i][j];
 
             clearStates();

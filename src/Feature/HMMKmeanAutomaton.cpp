@@ -83,9 +83,11 @@ void HMMKMeanAutomaton::hmmInitilize() {
 
     transferCost[stateNum][stateNum] = 0.0;
     */
-    // Dummy 只会走到1
-    if(stateNum)
-        transferCost[0][1] = 0.0;
+    // train出允许skip的状态
+    if(stateNum) {
+        transferCost[0][1] = p2cost(INIT_KMEAN_0_1);
+        transferCost[0][2] = p2cost(INIT_KMEAN_0_2);
+    }
 
 
     for(idx = 1; idx <= stateNum; idx ++) {
@@ -93,6 +95,7 @@ void HMMKMeanAutomaton::hmmInitilize() {
     }
 
 }
+
 void HMMKMeanAutomaton::hmmTrain() {
     int idx;
 

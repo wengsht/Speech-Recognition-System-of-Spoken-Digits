@@ -26,12 +26,6 @@ void SeqModel::buildModel(const ParseGraph & graph, std::map< std::string, HMMAu
     initNOEmitStates( graph );
 
     refreshEdges( graph, automatons );
-
-    /*  
-    for(int idx = 0; idx < graph.size(); idx++) {
-        addEdge( graph[idx], automatons );
-    }
-    */
 }
 
 void SeqModel::refreshEdges( const ParseGraph & graph, std::map< std::string, HMMAutomaton *> & automatons) {
@@ -47,9 +41,11 @@ void SeqModel::refreshEdges( const ParseGraph & graph, std::map< std::string, HM
 void SeqModel::initNOEmitStates( const ParseGraph & graph ) {
     close();
 
-    N_States = graph.getN_States();
-    Start_State = graph.getStart_State();
-    
+#define GRAPH_PARAS(type, para) \
+    para = graph.get ## para();
+#include "graphParas.def"
+#undef GRAPH_PARAS
+
     for(int idx = 0; idx < graph.getN_States(); idx ++) {
         SeqState noEmit;
         noEmit.hmmState = new NoEmitState();
@@ -89,7 +85,6 @@ void SeqModel::refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, 
                 idy = idx + idz;
                 if(idy > automaton.getStateNum())
                     break;
-
                 //
                 // dont add self-edge on no-emit state
                 //
@@ -101,6 +96,7 @@ void SeqModel::refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, 
                 if(0 == idy) b_to   = from;
 
                 double cost = automaton.transferCost[idx][idy];
+                //
                 // 0->  要加上单词间的penalty
                 //
                 if(!idx) 
@@ -155,7 +151,7 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
 
         // if from and to are all non emit state, add to non emit table
         if(from < N_States && to < N_States) 
-            head = &(states[from].emitHead);
+            head = &(states[from].noEmitHead);
         else 
             head = &(states[from].head);
 
@@ -170,8 +166,105 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
     edge.cost = cost;
 }
 
-void SeqModel::recognition(WaveFeatureOP & input, std::vector<std::string> & res) {
-    // TODO 
+void SeqModel::recognition(WaveFeatureOP & input, std::vector<std::string> & res, SEQ_DTW_PATH_TYPE path_type) {
+    // TO = BACK_PTRDO 
+
+    dtw( input, path_type );
+
+    collectRes(res, path_type, input.size());
+}
+
+void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz) {
+    // check graphParas.def to see define of Termial_States
+
+    if(wavSiz <= 0) return ;
+
+    std::vector< int > path;
+
+    collectBestPath( path, wavSiz );
+
+    assert(path.size() >= wavSiz);
+
+    int stateID = path[0];
+    int preStateID = stateID;
+
+    int wavIdx;
+    res.push_back( std::string(states[stateID].word ));
+
+    for(wavIdx = 1; wavIdx < wavSiz; wavIdx ++, preStateID = stateID) {
+        stateID = path[wavIdx];
+
+        if(0 != strcmp(states[stateID].word, states[preStateID].word)) {
+            // new word
+            res.push_back( std::string(states[stateID].word ));
+        }
+    }
+}
+void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
+    int endState = Terminal_States;
+    int backPtrIdx = backPtrs.size() - 1;
+
+    while(backPtrIdx >= 0 && backPtrs[backPtrIdx].stateID != endState) {
+        backPtrIdx --;
+    }
+
+    assert(backPtrIdx >= 0);
+
+    int *path = new int[backPtrs.size()];
+    int wordCnt = 0;
+
+    for(; backPtrIdx >= 0; backPtrIdx = backPtrs[backPtrIdx].prePtr)
+        path[wordCnt ++] = backPtrIdx;
+
+    int idx;
+
+    for(idx = 0;idx < wordCnt; idx++) {
+        res.push_back( std::string(backPtrs[idx]. word ));
+    }
+
+    delete [] path;
+}
+
+void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
+    int endState = Terminal_States; 
+    int beginState = Start_State; 
+
+    if(path.size() < wavSiz)
+        path.resize( wavSiz );
+
+    if(wavSiz <= 0) 
+        return ;
+
+
+    assert( fullPath.size() >= wavSiz );
+    assert( fullPath[0].size() >= states.size() );
+
+    int wavIdx = wavSiz - 1;
+    int stateID = endState;
+
+    while(!isEmit(stateID) ) 
+        stateID = fullPath[wavIdx][stateID];
+
+    for(wavIdx = wavSiz - 1; wavIdx >= 0; wavIdx --) {
+        path[wavIdx] = stateID;
+
+        stateID = fullPath[wavIdx][stateID];
+        while(!isEmit(stateID) ) 
+            stateID = fullPath[wavIdx][stateID];
+    }
+}
+
+void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_type, int wavSiz) {
+    res.clear();
+
+    switch(path_type) {
+        case FULL_PATH:
+            collectResFromFullPath(res, wavSiz);
+            break;
+        case BACK_PTR:
+            collectResFromBackPtr(res);
+            break;
+    }
 }
 
 void SeqModel::close() {
@@ -211,8 +304,9 @@ void SeqModel::dumpDot(std::ostream &out) {
         if(states[i].leafForwardIdx != NIL_FORWARD)
             out << i << " -> " << states[i].leafForwardIdx << "[label=\"" << cost2p(states[i].forwardCost) << "\"]\n";
     }
+
     for(int i = 0;i < N_States; i++) {
-        for(int ei = states[i].emitHead; ei != NIL_EDGE; ei = nonEmitEdges[ei].next) {
+        for(int ei = states[i].noEmitHead; ei != NIL_EDGE; ei = nonEmitEdges[ei].next) {
             out << i << " -> " << nonEmitEdges[ei].to << "[label=\"" << cost2p(nonEmitEdges[ei].cost) << "\"]\n";
         }
 
@@ -223,6 +317,10 @@ void SeqModel::dumpDot(std::ostream &out) {
 
 // BEAM BACKPTR PATH
 void SeqModel::dtw(WaveFeatureOP & wav, SEQ_DTW_PATH_TYPE path_type) {
+    setPathType(path_type);
+
+    preparePathRecord(wav); 
+
     Dtw_Column_Link link[2];
     int idx;
     int wavSize = wav.size();
@@ -233,16 +331,161 @@ void SeqModel::dtw(WaveFeatureOP & wav, SEQ_DTW_PATH_TYPE path_type) {
 
     int columnIdx = -1;
     int rollIdx = getRollIdx(columnIdx);
+    int nextIdx;
 
     link[rollIdx].head = NIL_EDGE;
-    // set init todo
+    link[rollIdx].nodes[0].cost = 0;
+    link[rollIdx].addColumnNode(0);
+    link[rollIdx].nodes[0].preIdx = NIL_BACK_PTR;
 
     double bestVal = Feature::IllegalDist;
 
     for(columnIdx = 0; columnIdx < wavSize; columnIdx ++) {
-
+        bestVal = forwardColumn(link, wav, columnIdx, bestVal + beamThr);
     }
 
     delete [] link[0].nodes;
     delete [] link[1].nodes;
+}
+
+void SeqModel::preparePathRecord(WaveFeatureOP & wav) {
+    int idx;
+    if(path_type == FULL_PATH) {
+        // fullpath[wavSize][stateSize]
+        if(fullPath.size() < wav.size()) 
+            fullPath.resize(wav.size());
+
+        for(idx = 0; idx < wav.size(); idx ++) {
+            if(fullPath[idx].size() < states.size()) 
+                fullPath[idx].resize( states.size() );
+        }
+    }
+
+    else if(path_type == BACK_PTR) {
+        backPtrs.clear();
+    }
+}
+
+double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int columnIdx, double threshold) {
+    double bestVal = Feature::IllegalDist;
+    assert(columnIdx < wav.size());
+    int rollIdx = getRollIdx( columnIdx );
+    int preIdx = rollIdx ^ 1;
+    
+    int nextStateID;
+
+    link[rollIdx].clear();
+
+    for(int preStateID = link[preIdx].head; preStateID != NIL_EDGE; preStateID = link[preIdx].nodes[preStateID].next) {
+        // beam
+        Dtw_Column_Node & dtw_node = link[preIdx].nodes[preStateID];
+
+        double preCost = dtw_node.cost;
+        double nextCost;
+        if(doBeam && Feature::better(threshold, preCost))
+            continue;
+
+        // preStateID --- edges[eID] ---> nextStateID
+        for(int eID = states[preStateID].head; eID != NIL_EDGE; eID = edges[eID].next) {
+            nextStateID = edges[eID].to;
+
+            nextCost = preCost + edges[eID].cost;
+
+            nextCost += states[nextStateID].hmmState->nodeCost( &(wav[columnIdx]) );
+
+            if(Feature::better(nextCost, bestVal)) 
+                bestVal = nextCost;
+
+            tryUpdate(link, columnIdx, preStateID, nextStateID, nextCost);
+        }
+    }
+
+    //
+    // non-emit state inner forward
+    //
+    for(int noEmitStateID = 0; noEmitStateID < N_States; noEmitStateID ++) {
+        Dtw_Column_Node & dtw_node = link[rollIdx].nodes[noEmitStateID];
+
+        double preCost = dtw_node.cost;
+        double nextCost;
+
+        // preStateID --- edges[eID] ---> nextStateID
+        for(int eID = states[noEmitStateID].noEmitHead; eID != NIL_EDGE; eID = nonEmitEdges[eID].next) {
+            nextStateID = nonEmitEdges[eID].to;
+
+            // penalty
+            nextCost = preCost + edges[eID].cost;
+
+            tryUpdate(link, columnIdx, noEmitStateID, nextStateID, nextCost);
+        }
+
+    }
+
+    return bestVal;
+}
+
+void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, int stateID, double newCost) {
+    int rollIdx = getRollIdx(columnIdx);
+    int preIdx = rollIdx ^ 1;
+
+    Dtw_Column_Node & dtw_node = link[rollIdx].nodes[stateID];
+
+    double updateFlag = false;
+
+    // new node!!
+    if(dtw_node.lastUpdate != columnIdx) {
+        link[rollIdx].addColumnNode( stateID );
+
+        updateFlag = true;
+    }
+    else if(Feature::better(newCost, dtw_node.cost)) 
+        updateFlag = true;
+
+    if(updateFlag) {
+        dtw_node.cost = newCost;
+
+        tryForwardToStar( link, columnIdx, stateID, newCost );
+
+        // record path 
+        if(path_type == FULL_PATH) {
+            fullPath[columnIdx][stateID] = preStateID;
+        }
+        else if(path_type == BACK_PTR) {
+            if(isEmit(preStateID) && isEmit(stateID)) {
+                dtw_node.preIdx = link[preIdx].nodes[preStateID].preIdx;
+            }
+            else if(!isEmit(preStateID) && !isEmit(stateID) ) {
+                dtw_node.preIdx = link[rollIdx].nodes[preStateID].backPtr;
+            }
+            else if(!isEmit(preStateID) && isEmit(stateID) ) {
+                dtw_node.preIdx = link[preIdx].nodes[preStateID].backPtr;
+            }
+            else if(isEmit(preStateID) && ! isEmit(stateID) ) {
+                // new back ptr
+                // should be forwarding
+
+                // same column, same rollIdx , forwarding
+
+                dtw_node.preIdx = link[rollIdx].nodes[preStateID].preIdx;
+
+                if(dtw_node.backPtr == NIL_BACK_PTR) {
+                    backPtrs.push_back( BackPtr() );
+                    dtw_node.backPtr = backPtrs.size() - 1;
+                }
+
+                backPtrs[dtw_node.backPtr].word = states[preStateID].word;
+                backPtrs[dtw_node.backPtr].prePtr = dtw_node.preIdx;
+                backPtrs[dtw_node.backPtr].stateID = stateID;
+            }
+        }
+    }
+}
+
+void SeqModel::tryForwardToStar( Dtw_Column_Link *link, int columnIdx, int stateID, double preCost) {
+    if( states[stateID].leafForwardIdx == NIL_FORWARD ) 
+        return ;
+
+    double newCost = preCost + states[stateID].forwardCost;
+
+    tryUpdate(link, columnIdx, stateID, states[stateID].leafForwardIdx, newCost);
 }

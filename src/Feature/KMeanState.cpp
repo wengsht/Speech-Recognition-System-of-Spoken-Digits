@@ -75,9 +75,10 @@ void KMeanState::gaussianTrain(int gaussianNum)
 	clearGaussian();
 	clearCluster();
 
-	while(time--){
+	while(time--) {
 		//printf("Gaussian Train time %d\n",time);
 		if(KMeanTrain(gaussianNum)==false)return;
+
 		double tmp  = sumCV();
 
 		if(best ==-1 || tmp < best){
@@ -90,6 +91,7 @@ void KMeanState::gaussianTrain(int gaussianNum)
 		}
 		clearCluster();
 	}
+
 	EM(gaussianNum);
 //	printf("new:");printw();
 //	printf("\n");
@@ -98,14 +100,15 @@ void KMeanState::gaussianTrain(int gaussianNum)
 //一轮训练
 //0个节点返回false
 //必然训练出大于等于1个的高斯模型，返回true
-bool KMeanState::KMeanTrain(int gaussianNum)
+bool KMeanState::KMeanTrain(int &gaussianNum)
 {
 	int pointNum = calcFirstCluster();
 //	printf("Point Num : %d\n",pointNum);
 
 	if(pointNum == 0) return false;
-	if(pointNum<gaussianNum){
-		gaussianNum = pointNum;
+
+	if(pointNum < gaussianNum) {
+		gaussianNum = 1; //pointNum;
 	}
 
 	//只有一个高斯模型时
@@ -118,6 +121,7 @@ bool KMeanState::KMeanTrain(int gaussianNum)
 	for(int i = 0;i<f.size();i++){
 		g->addFeature(f[i]);
 	}
+
 	g->done();	
 		
 	ClusterSet[0]->g = g;
@@ -129,11 +133,13 @@ bool KMeanState::KMeanTrain(int gaussianNum)
 		Cluster* c = findBigCluster();
 		double w = c->w;
 		
-		while(addTwoCluster(c)==false);
+        double smallNum = 1;
+		while(addTwoCluster(c, smallNum)==false) {
+            smallNum /= 2.0;
+        }
 	
 		deleteCluster(c);
 	}
-
 	
 	return true;	
 }
@@ -170,7 +176,8 @@ void KMeanState::EM(int g)
 			double 	sumi = 0;
 //			printf("N = %d\n",i);
 			for(int j=0;j<g;j++){
-				p[i][j] = w[j]*GaussianModel[j]->P(points[i]);
+				p[i][j] = w[j] * GaussianModel[j]->P(points[i]);
+
 				sumi += p[i][j]; 
 			}
 			for(int j=0;j<g;j++){
@@ -263,8 +270,10 @@ Gaussian * KMeanState::initRandGaussian(const vector<Feature*>& p)const
 //并存放在ClusterSet里
 //点集合也被分开
 //返回false: 收敛到一个高斯而不是2个，需要重做
-bool KMeanState::addTwoCluster(const Cluster * c)
+bool KMeanState::addTwoCluster(const Cluster * c, double smallNum)
 {
+    const static double eps = 1e-5;
+
 	const vector<Feature*>& p = c->points;
 	const double wt = c->w;
 
@@ -273,25 +282,27 @@ bool KMeanState::addTwoCluster(const Cluster * c)
 	
 	Gaussian * g1 = new Gaussian(p[0]->size());
 	Gaussian * g2 = new Gaussian(p[0]->size());
-	g1->copy(c->g, rand()%100/200.0);
-	g2->copy(c->g,-rand()%100/200.0);
+
+	g1->copy(c->g, smallNum); //rand()%100/200.0);
+	g2->copy(c->g, smallNum); //-rand()%100/200.0);
 
 	int w1 = 0;
 	int w2 = 0;
 	Cluster* c1 = new Cluster();
 	Cluster* c2 = new Cluster();
 	//printf("%d = ",p.size());	
-	while(true){
+	while(true) {
 		//每点分配到一个模型
 		for(int i = 0;i<p.size();i++){
 			double d1 = g1->minuLogP(p[i]);
 			double d2 = g2->minuLogP(p[i]);
-			if(d1<d2){
+
+			if(smallNum < eps && i || smallNum >= eps && d1<d2){
 				c1->points.push_back(p[i]);
 				w1++;
 				g1->addFeature(p[i]);
 			}
-			else{
+			else {
 				c2->points.push_back(p[i]);
 				w2++;
 				g2->addFeature(p[i]);
@@ -305,12 +316,14 @@ bool KMeanState::addTwoCluster(const Cluster * c)
 		c1->points.clear();c2->points.clear();
 		w1 = w2 = 0;
 	}
+
 	//printf("%d+%d ---%lf\n",w1,w2,wt);
 	if(w1==0 || w2==0){
 		if(c1)delete c1;
 		if(c2)delete c2;
 		if(g1)delete g1;
 		if(g2)delete g2;
+
 		return false;
 	}
 
@@ -374,6 +387,9 @@ int KMeanState::calcFirstCluster(){
 	for(int i = 0;i<edgePoints.size();i++){
 		int st = edgePoints[i].first;
 		int ed = edgePoints[i].second;
+
+        if(edgePoints[i] == NullSeg) continue;
+
 		for(int j = st;j<=ed;j++){
 			if(c==NULL){	
 				c = new Cluster();
@@ -385,6 +401,7 @@ int KMeanState::calcFirstCluster(){
 			points.push_back(f);
 		}
 	}
+
 	if(c!=NULL){
 		ClusterSet.push_back(c);
 		return (c->points).size();

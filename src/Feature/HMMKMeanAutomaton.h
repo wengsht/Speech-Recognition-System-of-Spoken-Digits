@@ -125,7 +125,9 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                     }
                 }
 
-                if(wholeCnt == 0) continue;
+                if(wholeCnt == 0) {
+                    continue;
+                }
 
                 for(int j = 0;j < DTW_MAX_FORWARD; j++) {
                     if(i+j > stateNum) break;
@@ -136,8 +138,19 @@ class HMMKMeanAutomaton : public HMMAutomaton {
 
                     transferCost[i][i+j] = newCost;
                 }
+            }
 
+            if(stateNum >= 2) {
+                int beginSkipCnt = 0;
+                for(int j = 0; j < templates->size(); j++) {
+                    std::pair<int,int> seg = getState(1)->edgePoints[j];
+                    int numNode = seg.second - seg.first + 1;
 
+                    if(numNode == 0) beginSkipCnt ++;
+                }
+
+                transferCost[0][1] = p2cost(1.0 * (templates->size() - beginSkipCnt) / templates->size());
+                transferCost[0][2] = p2cost(1.0 * (beginSkipCnt) / templates->size());
             }
 
             adjustSkippingTransfer();
@@ -163,6 +176,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
             for(idx = 1;idx <= stateNum;idx++) {
                 getState(idx)->gaussianTrain(gaussNum);
             }
+
             // 
             return bigChange;
         }

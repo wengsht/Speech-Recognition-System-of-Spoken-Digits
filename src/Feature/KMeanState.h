@@ -65,7 +65,7 @@ class KMeanState : public HMMState {
 		void clearGaussian();
 		void clearCluster();
 		// 一次训练
-		bool KMeanTrain(int gaussianNum);
+		bool KMeanTrain(int &gaussianNum);
 
 		double sumCV();
 		
@@ -73,7 +73,7 @@ class KMeanState : public HMMState {
 		void deleteCluster(Cluster*c);
 
 		//split 函数
-		bool addTwoCluster(const Cluster* c);
+		bool addTwoCluster(const Cluster* c, double smallNum);
 
 		
 		Gaussian * initRandGaussian(const std::vector<Feature*>& p)const;
