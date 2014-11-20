@@ -37,6 +37,8 @@ class HMMSeqRecognition : public HMMRecognition {
 
         void recognition(WaveFeatureOP & input, std::vector<std::string> & res);
 
+        void setBeam( double beam );
+
         void close();
 
     private:

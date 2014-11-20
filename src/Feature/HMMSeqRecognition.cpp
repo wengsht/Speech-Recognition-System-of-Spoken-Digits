@@ -48,6 +48,10 @@ void HMMSeqRecognition::buildSeqModel() {
     out.close();
 }
 
+void HMMSeqRecognition::setBeam( double beam ) {
+    seqModel.setBeam( beam );
+}
+
 void HMMSeqRecognition::recognition(WaveFeatureOP & input, std::vector<std::string> & res) {
     seqModel.recognition(input, res);
 }

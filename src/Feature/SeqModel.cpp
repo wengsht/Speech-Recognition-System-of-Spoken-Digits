@@ -169,7 +169,7 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
 void SeqModel::recognition(WaveFeatureOP & input, std::vector<std::string> & res, SEQ_DTW_PATH_TYPE path_type) {
     // TO = BACK_PTRDO 
 
-    dtw( input, path_type );
+    dtw( input, FULL_PATH) ; //path_type );
 
     collectRes(res, path_type, input.size());
 }
@@ -200,6 +200,7 @@ void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz)
         }
     }
 }
+
 void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
     int endState = Terminal_States;
     int backPtrIdx = backPtrs.size() - 1;
@@ -208,7 +209,12 @@ void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
         backPtrIdx --;
     }
 
-    assert(backPtrIdx >= 0);
+//    assert(backPtrIdx >= 0);
+
+    if(backPtrIdx < 0) {
+        Log("No model was found!! Try set bigger beam thres");
+        return ;
+    }
 
     int *path = new int[backPtrs.size()];
     int wordCnt = 0;
@@ -368,6 +374,7 @@ void SeqModel::preparePathRecord(WaveFeatureOP & wav) {
 
 double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int columnIdx, double threshold) {
     double bestVal = Feature::IllegalDist;
+
     assert(columnIdx < wav.size());
     int rollIdx = getRollIdx( columnIdx );
     int preIdx = rollIdx ^ 1;

@@ -120,7 +120,7 @@ void runNN() {
     RawData data;
 
     HMMRecognition hmm;
-    hmm.loadTemplates(templateDirName);
+//    hmm.loadTemplates(templateDirName);
     hmm.setGaussNum(gaussNum);
     
     if(algo == "kmean")
@@ -128,7 +128,12 @@ void runNN() {
     else if(algo == "soft")
         hmm.setStateType(HMMState::SOFT);
 
-    hmm.hmmTrain();
+    if(hmm.hmmTryLoad(templateDirName) == SP_SUCCESS) ;
+    else {
+        hmm.loadTemplates(templateDirName);
+        hmm.hmmTrain();
+    }
+//    hmm.hmmTrain();
 
     ofstream dotOut("1.dot");
     hmm.dumpAutomaton(dotOut);

@@ -40,8 +40,15 @@ int main(int argc, char **argv) {
 
     recognition.setStateType(HMMState::KMEAN);
 
-    recognition.loadTemplates(tempDir);
-    recognition.hmmSegTrain();
+    if(recognition.hmmTryLoad(tempDir) == SP_SUCCESS) ;
+    else {
+        recognition.loadTemplates(tempDir);
+        recognition.hmmSegTrain();
+    }
+
+//    recognition.loadTemplates(tempDir);
+
+//    recognition.hmmSegTrain();
 
     recognition.loadGraph("./Graph/phone_number.graph");
 
@@ -62,6 +69,7 @@ int main(int argc, char **argv) {
     WaveFeatureOP op(inputFeature, "null");
     vector<string> res;
 
+//    recognition.setBeam(1000);
     recognition.recognition(op, res);
 
     recognition.close();

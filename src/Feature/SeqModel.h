@@ -106,6 +106,8 @@ class SeqModel {
         void close();
 
         void dumpDot(std::ostream &out);
+
+        void setBeam(double thr);
     private:
         // build or refresh an edge ( one edge means one hmm model here!!)
         void refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, HMMAutomaton *> &automatons, int &edgeCnt, int &stateCnt, int &nonEmitEdgeCnt);
@@ -124,7 +126,6 @@ class SeqModel {
 
         // main process
         void dtw(WaveFeatureOP & wav, SEQ_DTW_PATH_TYPE path_type);
-        void setBeam(double thr);
 
         int getRollIdx(int columnIdx) {
             return (columnIdx & 1);

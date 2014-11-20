@@ -168,7 +168,6 @@ void HMMAutomatonSet::clear() {
 }
 
 void HMMAutomatonSet::load(std::ifstream &in) {
-
     reGenerateAutomaton();
 
     std::string word;
