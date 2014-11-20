@@ -16,14 +16,16 @@
 //
 
 #include "HMMRecognition.h"
+#include "WaveFeatureOP.h"
+#include "WaveFeatureOPSet.h"
 
 
 HMMRecognition::HMMRecognition(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes), automatons(stateNum, gaussNum, trainTimes) {
 }
 HMMRecognition::~HMMRecognition() {
 }
-SP_RESULT HMMRecognition::loadTemplates(char *templateDir) {
-    automatons.loadMfccs(templateDir);
+SP_RESULT HMMRecognition::loadTemplates(char *templateDir, WaveFeatureOP::LOAD_TYPE loadType) {
+    automatons.loadMfccs(templateDir, loadType);
 
     this->templateDir = string(templateDir);
 
@@ -47,6 +49,7 @@ string HMMRecognition::generateHMMFileName() {
 }
 bool HMMRecognition::loadHMMModel() {
     string fileName = generateHMMFileName();
+
     ifstream in;
 
     in.open(fileName, std::ios::in);
@@ -68,6 +71,21 @@ void HMMRecognition::storeHMMModel() {
     automatons.store(out);
 
     out.close();
+}
+ 
+
+SP_RESULT HMMRecognition::hmmTryLoad(char *templateDir) {
+    this->templateDir = string(templateDir);
+
+    automatons.setStateType(stateType);
+
+    loadTemplates(templateDir, WaveFeatureOP::ONLY_FILE_NAME);
+
+    if(loadHMMModel()) {
+        return SP_SUCCESS;
+    }
+
+    return SP_LOAD_FAIL;
 }
 
 SP_RESULT HMMRecognition::hmmTrain(HMMAutomaton::TRAIN_TYPE type) {

@@ -88,15 +88,19 @@ void runN1() {
     vector<Feature> inputFeature = extractor.getNormalMelCepstrum();
 
     HMMRecognition hmm;
-    hmm.loadTemplates(templateDirName);
     hmm.setGaussNum(gaussNum);
     
+
     if(algo == "kmean")
         hmm.setStateType(HMMState::KMEAN);
     else if(algo == "soft")
         hmm.setStateType(HMMState::SOFT);
 
-    hmm.hmmTrain();
+    if(hmm.hmmTryLoad(templateDirName) == SP_SUCCESS) ;
+    else {
+        hmm.loadTemplates(templateDirName);
+        hmm.hmmTrain();
+    }
 
     ofstream dotOut("1.dot");
     hmm.dumpAutomaton(dotOut);

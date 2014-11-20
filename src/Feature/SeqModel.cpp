@@ -269,10 +269,10 @@ void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_
 
 void SeqModel::close() {
     for(int i = 0;i < states.size(); i++) {
-        NoEmitState * tmp = dynamic_cast<NoEmitState *> (states[i].hmmState);
+        // emit state is manage by hmm model
+        if(! isEmit(i))
+            delete states[i].hmmState;
 
-        if(tmp) 
-            delete tmp;
         else break;
     }
     states.clear();
@@ -435,6 +435,8 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
     // new node!!
     if(dtw_node.lastUpdate != columnIdx) {
         link[rollIdx].addColumnNode( stateID );
+
+        dtw_node.lastUpdate = columnIdx;
 
         updateFlag = true;
     }

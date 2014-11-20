@@ -22,6 +22,7 @@
 #include <cmath>
 #include <ctime>
 #include <vector>
+#include "configure_feature.h"
 using namespace std;
 
 const std::pair<int, int> KMeanState::NullSeg = std::make_pair(0, -1);
@@ -471,9 +472,14 @@ double KMeanState::KMeanNodeCost(Feature *f){
 
 void KMeanState::load(std::stringstream &in, int gaussNum) {
     clearGaussian();
-    if(templates->size() <= 0)
-        return ;
-    int featureSize = (*templates)[0][0].size();
+//    if(templates->size() <= 0)
+//        return ;
+
+//    int featureSize = (*templates)[0][0].size();
+    // some time it will not load mfcc into memory(because hmm model is read from file!!)
+
+    int featureSize = CEPS_NUM * (DELTA_TIMES + 1);
+
     w.resize(gaussNum);
     for(int i = 0;i < gaussNum; i++) {
         Gaussian * g = new  Gaussian(featureSize);

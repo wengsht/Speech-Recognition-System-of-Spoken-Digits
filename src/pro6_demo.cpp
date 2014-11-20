@@ -61,6 +61,7 @@ int main(int argc, char **argv) {
     vector<Feature> inputFeature = extractor.getNormalMelCepstrum();
     WaveFeatureOP op(inputFeature, "null");
     vector<string> res;
+
     recognition.recognition(op, res);
 
     recognition.close();
@@ -77,14 +78,17 @@ int main(int argc, char **argv) {
 
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "h")) != -1) {
+    while((c = getopt(argc, argv, "hd:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
-                        -h \n ");
+                        -h \n \
+                        -d inputwav \n");
 
                 return false;
                 break;
+            case 'd':
+                strcpy(inputFileName, optarg);
             default:
                 break;
         }

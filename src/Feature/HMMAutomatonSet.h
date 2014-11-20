@@ -11,7 +11,6 @@
 // 
 //         Author:  wengsht (SYSU-CMU), wengsht.sysu@gmail.com
 //        Company:  
-// 
 // =====================================================================================
 #ifndef _AUTOGUARD_HMMAutomatonSet_H_
 #define _AUTOGUARD_HMMAutomatonSet_H_

@@ -108,9 +108,9 @@ class WaveFeatureOPSet {
         }
 
         // add features from a directory 
-        virtual SP_RESULT loadMfccs(char *templateDir);
+        virtual SP_RESULT loadMfccs(char *templateDir, WaveFeatureOP::LOAD_TYPE loadType = WaveFeatureOP::FULL_LOAD);
         // add features from a file
-        virtual SP_RESULT loadMfccs(char *templateDir, char *fileName);
+        virtual SP_RESULT loadMfccs(char *templateDir, char *fileName, WaveFeatureOP::LOAD_TYPE loadType = WaveFeatureOP::FULL_LOAD);
         WaveFeatureOPSet(int maxInstancePer = MAX_TEMPLATES_PER_WORD);
         virtual ~WaveFeatureOPSet();
 

@@ -21,5 +21,7 @@ const int    MEL_FILTER_NUM = 40;
 const double MIN_F = 0.0;
 const double MAX_F = 4000.0; //(SAMPLE_RATE / 2.0);
 const int    CEPS_NUM = 13;
+// so the feature will be 13*(2+1)
+const int    DELTA_TIMES = 2;
 
 #endif

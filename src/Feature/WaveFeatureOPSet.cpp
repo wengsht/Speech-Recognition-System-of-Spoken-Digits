@@ -29,7 +29,7 @@ WaveFeatureOPSet::WaveFeatureOPSet(int maxInstancePer) : maxInstancePer(maxInsta
 
 WaveFeatureOPSet::~WaveFeatureOPSet() {}
 
-SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {
+SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName, WaveFeatureOP::LOAD_TYPE loadType) {
     static FeatureExtractor extractor(ThreadPool::thread_num);
     static RawData data;
     char word[WORD_MAX_LEN];
@@ -37,6 +37,19 @@ SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {
     int seqIdx;
     SerialFiles::parseSerialFileName(fileName, seqIdx, 2, user, word);
 
+
+    // don't load the file, but just store its name
+    // this function will be very useful if we load hmm 
+    // from file, we don't need wav !!
+    if(loadType == WaveFeatureOP::ONLY_FILE_NAME) {
+        std::vector<Feature> features;
+
+        WaveFeatureOP newOp(features, std::string(fileName), word);
+
+        addWaveMfcc( word, newOp );
+
+        return SP_SUCCESS;
+    }
     // 如果有缓存，不重复计算mfcc
     if(loadMfccFromMfccFile(templateDir, fileName, word))
         return SP_SUCCESS;
@@ -62,13 +75,13 @@ SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName) {
 }
 
 // 从目录load 所有的feature
-SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir) {
+SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, WaveFeatureOP::LOAD_TYPE loadType) {
     std::vector<std::string> wavFileNames;
 
     SerialFiles::getWavFileNames(templateDir, wavFileNames);
 
     for(int i = 0;i < wavFileNames.size(); i++) {
-        loadMfccs(templateDir, const_cast<char *>(wavFileNames[i].c_str()));
+        loadMfccs(templateDir, const_cast<char *>(wavFileNames[i].c_str()), loadType);
     }
     return SP_SUCCESS;
 }

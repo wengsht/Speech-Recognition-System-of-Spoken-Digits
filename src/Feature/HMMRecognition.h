@@ -38,10 +38,12 @@ class HMMRecognition {
         virtual ~HMMRecognition();
 
         // add mfcc features into templates set
-        SP_RESULT loadTemplates(char *templateDir);
+        SP_RESULT loadTemplates(char *templateDir, WaveFeatureOP::LOAD_TYPE loadType = WaveFeatureOP::FULL_LOAD);
 
         // hmm Train 
         SP_RESULT hmmTrain(HMMAutomaton::TRAIN_TYPE type = HMMAutomaton::SEG);
+
+        SP_RESULT hmmTryLoad(char *templateDir);;
 
         // 返回recognition的单词
         //

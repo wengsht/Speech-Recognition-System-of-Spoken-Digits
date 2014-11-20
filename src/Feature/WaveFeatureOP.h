@@ -31,6 +31,10 @@ public:
         Raw,
         Beam
     };
+    enum LOAD_TYPE {
+        ONLY_FILE_NAME,
+        FULL_LOAD
+    };
 private:
     // -1, only store the edge link list 
     // use (-1 - BestRowNum) to seperate the column
