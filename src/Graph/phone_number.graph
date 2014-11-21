@@ -28,7 +28,7 @@ Edge 1 2 "9"   1.0
 
 # 2->3
 
-Edge 0 3 "#penalty"   1.0
+Edge 0 3 "#penalty" 0.1   
 Edge 2 3 "0"   1.0
 Edge 2 3 "1"   1.0
 Edge 2 3 "2"   1.0
@@ -39,7 +39,7 @@ Edge 2 3 "6"   1.0
 Edge 2 3 "7"   1.0
 Edge 2 3 "8"   1.0
 Edge 2 3 "9"   1.0
-Edge 3 3 "#silence"   1.0
+Edge 3 3 "#silence"   0.1
 
 Edge 3 4 "0"   1.0
 Edge 3 4 "1"   1.0

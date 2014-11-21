@@ -169,7 +169,8 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
 void SeqModel::recognition(WaveFeatureOP & input, std::vector<std::string> & res, SEQ_DTW_PATH_TYPE path_type) {
     // TO = BACK_PTRDO 
 
-    dtw( input, FULL_PATH) ; //path_type );
+//    path_type = FULL_PATH;
+    dtw( input, path_type );
 
     collectRes(res, path_type, input.size());
 }
@@ -199,6 +200,7 @@ void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz)
             res.push_back( std::string(states[stateID].word ));
         }
     }
+    puts("");
 }
 
 void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
@@ -248,15 +250,21 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
     int wavIdx = wavSiz - 1;
     int stateID = endState;
 
-    while(!isEmit(stateID) ) 
-        stateID = fullPath[wavIdx][stateID];
-
     for(wavIdx = wavSiz - 1; wavIdx >= 0; wavIdx --) {
+        while(!isEmit(stateID) )  {
+//            printf ("%d %d\n", stateID, wavIdx);
+            stateID = fullPath[wavIdx][stateID];
+        }
+
         path[wavIdx] = stateID;
 
         stateID = fullPath[wavIdx][stateID];
-        while(!isEmit(stateID) ) 
-            stateID = fullPath[wavIdx][stateID];
+
+        /*  
+        stateID = fullPath[wavIdx][stateID];
+        while(wavIdx >= 1 && !isEmit(stateID) ) 
+            stateID = fullPath[wavIdx-1][stateID];
+            */
     }
 }
 
@@ -383,17 +391,23 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
 
     link[rollIdx].clear();
 
-    for(int preStateID = link[preIdx].head; preStateID != NIL_EDGE; preStateID = link[preIdx].nodes[preStateID].next) {
+    for(int preStateID = link[preIdx].head; \
+            preStateID != NIL_EDGE; \
+            preStateID = link[preIdx].nodes[preStateID].next) {
         // beam
         Dtw_Column_Node & dtw_node = link[preIdx].nodes[preStateID];
 
         double preCost = dtw_node.cost;
         double nextCost;
+
+        // don't forward from beam-thr limitted nodes
         if(doBeam && Feature::better(threshold, preCost))
             continue;
 
         // preStateID --- edges[eID] ---> nextStateID
-        for(int eID = states[preStateID].head; eID != NIL_EDGE; eID = edges[eID].next) {
+        for(int eID = states[preStateID].head; \
+                eID != NIL_EDGE; \
+                eID = edges[eID].next) {
             nextStateID = edges[eID].to;
 
             nextCost = preCost + edges[eID].cost;
@@ -410,18 +424,30 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
     //
     // non-emit state inner forward
     //
+    // it is a columnIdx -> columnIdx forward
+    //
+    // TODO : should i flood fill ?
+
+    for(int noEmitStateID = 0; noEmitStateID < N_States; noEmitStateID ++) {
+        link[preIdx].nodes[noEmitStateID] = link[rollIdx].nodes[noEmitStateID];
+    }
+
     for(int noEmitStateID = 0; noEmitStateID < N_States; noEmitStateID ++) {
         Dtw_Column_Node & dtw_node = link[rollIdx].nodes[noEmitStateID];
+
+        // dont forward from non-value state
+        if(dtw_node.lastUpdate < columnIdx)
+            continue;
 
         double preCost = dtw_node.cost;
         double nextCost;
 
-        // preStateID --- edges[eID] ---> nextStateID
+        // preStateID --- nonEmitEdges[eID] ---> nextStateID
         for(int eID = states[noEmitStateID].noEmitHead; eID != NIL_EDGE; eID = nonEmitEdges[eID].next) {
             nextStateID = nonEmitEdges[eID].to;
 
             // penalty
-            nextCost = preCost + edges[eID].cost;
+            nextCost = preCost + nonEmitEdges[eID].cost;
 
             tryUpdate(link, columnIdx, noEmitStateID, nextStateID, nextCost);
         }
