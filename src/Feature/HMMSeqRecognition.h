@@ -21,6 +21,7 @@
 #include "HMMAutomaton.h"
 #include "parseGraph.h"
 #include "SeqModel.h"
+#include <fstream>
 #include <vector>
 
 class HMMSeqRecognition : public HMMRecognition {
@@ -38,6 +39,8 @@ class HMMSeqRecognition : public HMMRecognition {
         void recognition(WaveFeatureOP & input, std::vector<std::string> & res, SeqModel::SEQ_DTW_PATH_TYPE pathType = SeqModel::BACK_PTR);
 
         void setBeam( double beam );
+
+        void dumpDot(std::ofstream &out);
 
         void close();
 

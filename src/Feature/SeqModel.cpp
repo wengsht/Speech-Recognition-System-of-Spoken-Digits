@@ -19,6 +19,7 @@
 #include "mathtool.h"
 #include <iostream>
 #include "Feature.h"
+#include "KMeanState.h"
 
 void SeqModel::buildModel(const ParseGraph & graph, std::map< std::string, HMMAutomaton *> & automatons) {
 //    graph.dump(std::cout);
@@ -179,6 +180,37 @@ void SeqModel::recognition(WaveFeatureOP & input, std::vector<std::string> & res
     dtw( input, path_type );
 
     collectRes(res, path_type, input.size());
+}
+
+void SeqModel::reSegment(WaveFeatureOP & input, int templateIdx) {
+    dtw( input, FULL_PATH );
+
+    std::vector< int > path;
+    collectBestPath( path, input.size() );
+    if(path.size() <= 0) return ;
+
+    int pathIdx;
+
+    int preState = path[0];
+    int stateID;
+    int startI = 0;
+
+    KMeanState *state;
+    for(pathIdx = 1; pathIdx < path.size(); pathIdx ++) {
+        stateID = path[pathIdx];
+        if(stateID != preState) {
+            // no support soft yet..
+            state = (KMeanState *)(states[preState].hmmState);
+
+            state->edgePoints[templateIdx] = std::make_pair(startI, pathIdx - 1);
+
+            preState = stateID;
+            startI = pathIdx;
+        }
+    }
+    state = (KMeanState *)(states[preState].hmmState);
+
+    state->edgePoints[templateIdx] = std::make_pair(startI, path.size() - 1);
 }
 
 void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz) {
@@ -383,6 +415,7 @@ void SeqModel::dtw(WaveFeatureOP & wav, SEQ_DTW_PATH_TYPE path_type) {
         link[rollIdx].addColumnNode(nextStateID);
         link[rollIdx].nodes[nextStateID].preIdx = NIL_BACK_PTR; // first backPtr is actually -1(don't exist)
     }
+
 
     double bestVal = Feature::IllegalDist;
 

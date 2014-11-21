@@ -57,7 +57,10 @@ void HMMAutomatonSet::reGenerateAutomaton() {
     dataSetType::iterator templateItr;
 
     for(templateItr = dataSet.begin(); templateItr != dataSet.end(); templateItr ++) {
-        char * words = const_cast<char *>(templateItr->first.c_str());
+        char *words = new char[templateItr->first.length() + 1];
+//        char * words = const_cast<char *>(templateItr->first.c_str());
+        strcpy(words, templateItr->first.c_str());
+
         char *tmp = strtok(words, LINK_WORD);
 
         for(; tmp; tmp = strtok(NULL, LINK_WORD)) {
@@ -76,6 +79,8 @@ void HMMAutomatonSet::reGenerateAutomaton() {
             else 
                 automatons[word] = new HMMSoftAutomaton(&(templateItr->second), specificStateNum, gaussNum, trainTimes); 
         }
+
+        delete []words;
     }
 }
 
@@ -113,15 +118,17 @@ SP_RESULT HMMAutomatonSet::seqTrain() {
     //
     // you dont need to malloc or clean this result map ( created by reGenerateAutomaton() and clear by close())
     
-    HMMSeqTrainer * seqTrainer;
+    HMMSeqTrainer * seqTrainer = NULL;
     if(stateType == HMMState::KMEAN)
         seqTrainer = new HMMSeqKMeanTrainer();
     else  { // TODO 
     }
 
+    assert(seqTrainer);
+
     seqTrainer->buildModels(dataSet, automatons, mixedWavs);
 
-    seqTrainer->hmmSeqTrain();
+//    seqTrainer->hmmSeqTrain();
 
     delete seqTrainer;
 

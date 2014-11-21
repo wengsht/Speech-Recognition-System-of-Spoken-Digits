@@ -32,6 +32,8 @@ class ParseGraph {
         ParseGraph() {}
         ~ParseGraph() {}
 
+        static void dumpSeqStr2Vec(const std::string & seqStr, std::vector<std::string> & res);
+
         void parseGraph(const char * filename);
 
         // parse from "1+2+6+5" 
@@ -45,6 +47,7 @@ class ParseGraph {
         const GraphEdge & operator [] (int idx) const {
             return edges[idx];
         }
+
 #define GRAPH_PARAS(type, para) \
         type get ## para() const { \
             return para; \

@@ -38,6 +38,8 @@ class SoftState : public HMMState {
         void load(std::stringstream &in, int &gaussNum);
         void store(std::stringstream &out);
 
+        void setTemplates(std::vector<WaveFeatureOP> * newTemps);
+
         void dump() {
             for(int i  =0;i < 39;i++) 
                 printf("%lf %lf\n", u[i], sigma[i]);

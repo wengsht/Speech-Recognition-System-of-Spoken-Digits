@@ -34,6 +34,13 @@ KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templa
     srand(time(0));
 	ClusterSet.clear();
 }
+void KMeanState::setTemplates(std::vector<WaveFeatureOP> * newTemps) {
+    templates = newTemps;
+
+    if(templates)
+        edgePoints.resize(templates->size());
+}
+
 
 KMeanState::~KMeanState() 
 {
@@ -150,6 +157,7 @@ bool KMeanState::KMeanTrain(int &gaussianNum)
 //更新gussianModel 和w
 void KMeanState::EM(int g)
 {	
+    if(g <= 1) return ;
 	bool converge = false;
 	
 	int N = points.size();
@@ -505,7 +513,6 @@ void KMeanState::store(std::stringstream &out) {
 
     for(int i = 0;i < GaussianModel.size(); i++) {
         out << " " << w[i];
-//        std::cout << w[i] << " ";
 
         GaussianModel[i]->store(out);
     }

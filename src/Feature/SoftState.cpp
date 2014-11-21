@@ -30,6 +30,15 @@ SoftState::SoftState(std::vector<WaveFeatureOP> * templates) : HMMState(template
     }
 }
 
+void SoftState::setTemplates(std::vector<WaveFeatureOP> * newTemps) {
+    templates = newTemps;
+
+    int idx;
+    for(idx = 0; idx < templates->size(); idx ++) {
+        probabilities[idx].resize((*templates)[idx].size());
+    }
+}
+
 SoftState::~SoftState() {
 
     clearGaussian();
@@ -123,7 +132,7 @@ void SoftState::initTrain(int gaussianNum) {
 }
 
 void SoftState::generateInit( Feature & feature) {
-    if(templates->size() < 0) 
+    if(templates->size() <= 0) 
         return ;
     int featureSiz = (*templates)[0][0].size();
     feature.resize(featureSiz);
@@ -253,3 +262,4 @@ void SoftState::store(std::stringstream &out) {
         GaussianSet[i]->store(out);
     }
 }
+

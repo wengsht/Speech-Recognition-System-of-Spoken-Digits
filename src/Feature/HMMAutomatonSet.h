@@ -67,7 +67,7 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
     private:
         std::map< std::string, HMMAutomaton *> automatons;
 
-        std::vector< WaveFeatureOP * > mixedWavs;
+        std::vector< WaveFeatureOP > mixedWavs;
 
         std::map< std::string, int> specStateNums;
 };

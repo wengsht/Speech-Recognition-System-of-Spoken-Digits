@@ -41,11 +41,10 @@ void HMMSeqRecognition::loadGraph(const char *filename) {
 
 void HMMSeqRecognition::buildSeqModel() {
     seqModel.buildModel( graph, automatons.getAutomatons());
+}
 
-    std::ofstream out;
-    out.open("./model.dot");
+void HMMSeqRecognition::dumpDot(std::ofstream &out) {
     seqModel.dumpDot(out);
-    out.close();
 }
 
 void HMMSeqRecognition::setBeam( double beam ) {

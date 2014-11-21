@@ -31,6 +31,7 @@ class HMMAutomaton {
     READ_WRITE_DECLARE(int , stateNum, StateNum);
     READ_WRITE_DECLARE(int , gaussNum, GaussNum);
     READ_WRITE_DECLARE(int , trainTimes, TrainTimes);
+
 public:
     friend class SeqModel;
     enum TRAIN_TYPE {
@@ -59,6 +60,16 @@ public:
     // return probability that stateID transfer to dummy ending
 
     double enddingProbability(int stateID);
+
+    void setTemplates(std::vector<WaveFeatureOP> * newTemps) {
+        templates = newTemps;
+
+        /*  
+        for(int i = 1; i <= stateNum; i++) {
+            states[i]->setTemplates(newTemps);
+        }
+        */
+    }
 protected:
     enum dtwType {
         Maximum, 

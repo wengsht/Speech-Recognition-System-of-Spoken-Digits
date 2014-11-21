@@ -24,7 +24,8 @@
 #include "HMMAutomaton.h"
 
 struct SeqWav {
-    SeqWav(WaveFeatureOP * wav, SeqModel * model) : wav(wav), model(model) {}
+//    SeqWav(WaveFeatureOP * wav, SeqModel * model) : wav(wav), model(model) {}
+
     WaveFeatureOP * wav;
     SeqModel* model;
 };
@@ -33,16 +34,26 @@ class HMMSeqTrainer {
         HMMSeqTrainer();
         virtual ~HMMSeqTrainer();
 
-        void hmmSeqTrain();
 
         // 对dataSet每一个单词序列建Graph， 并把所有wavs dump搭配mixedWavs, 同时维护mixedWavs 到graph的映射
-        void buildModels(WaveFeatureOPSet::dataSetType & dataSet, std::map<std::string, HMMAutomaton *> &automatons, std::vector<WaveFeatureOP *> &mixedWavs);
+        void buildModels(WaveFeatureOPSet::dataSetType & dataSet, std::map<std::string, HMMAutomaton *> &automatons, std::vector<WaveFeatureOP> &mixedWavs);
 
     private:
         void pushNewModel(const std::string &seqStr,std::map<std::string, HMMAutomaton *> &automatons, std::vector<SeqModel> &models);
 
-    private:
+        virtual void hmmSeqTrain() = 0;
+
+    protected:
+        void refreshModels();
+        void buildModels();
+    protected:
+        std::map<std::string, HMMAutomaton *> *automatons;
+        std::vector< HMMAutomaton *> automatonVec;
+
+        std::vector<WaveFeatureOP> * mixedWavs;
+
         std::vector<SeqModel> trainModels;
+        std::vector<ParseGraph> graphs;
 
         std::vector<SeqWav> trainWavs;
 };

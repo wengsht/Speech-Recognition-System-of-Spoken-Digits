@@ -19,9 +19,49 @@
 #include <sstream>
 #include "SerialFiles.h"
 #include <string>
+#include "configure_hmm.h"
+#include <iostream>
 
+
+void ParseGraph::dumpSeqStr2Vec(const std::string & seqStr, std::vector<std::string> & res) {
+    char * words = new char[seqStr.length() + 1];
+
+    strcpy(words, seqStr.c_str());
+
+    char *word;
+
+    for(word = strtok(words, LINK_WORD); word; word = strtok(NULL, LINK_WORD)) {
+        res.push_back(std::string( SerialFiles::inAlias(word) ));
+    }
+
+    delete [] words;
+}
 void ParseGraph::parseSeqStr(const std::string & seqStr) {
     edges.clear();
+
+    std::vector< std::string > words;
+    ParseGraph::dumpSeqStr2Vec(seqStr, words);
+
+//    char * words = new char[seqStr.length() + 1];
+//    strcpy(words, seqStr.c_str());
+
+//    char *word;
+
+    int node;
+    for(node = 0; node < words.size(); node ++) {
+        GraphEdge newEdge;
+
+        newEdge.from = node;
+        newEdge.to   = node + 1;
+        newEdge.word = words[node];
+        newEdge.probability = TRAIN_INNER_PENALTY;
+
+        edges.push_back(newEdge);
+    }
+
+    N_States = node + 1;
+    Start_State = 0;
+    Terminal_States = node;
 
     // TODO
 }

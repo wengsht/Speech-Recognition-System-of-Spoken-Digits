@@ -31,6 +31,7 @@
 
 struct SeqState {
     SeqState() : hmmState(NULL), head(NIL_EDGE), leafForwardIdx(NIL_FORWARD), noEmitHead(-1), word(NULL) {
+
     }
 
     HMMState * hmmState;
@@ -100,7 +101,12 @@ class SeqModel {
 
         void buildModel(const ParseGraph & graph, std::map< std::string, HMMAutomaton *> & automatons);
 
+        // build or refresh based on a graph, it will call refreshEdge(GraphEdge, ...) on all of the hmm edge 
+        void refreshEdges( const ParseGraph & graph, std::map< std::string, HMMAutomaton *> & automatons);
+
         void recognition(WaveFeatureOP & input, std::vector<std::string> & res, SEQ_DTW_PATH_TYPE path_type = BACK_PTR);
+
+        void reSegment(WaveFeatureOP & input, int templateIdx);
 
 
         void close();
@@ -115,8 +121,6 @@ class SeqModel {
         // build or refresh an edge( one edge means really edge in the "trie tree", 
         void refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double cost, int &edgeCnt);
 
-        // build or refresh based on a graph, it will call refreshEdge(GraphEdge, ...) on all of the hmm edge 
-        void refreshEdges( const ParseGraph & graph, std::map< std::string, HMMAutomaton *> & automatons);
 
         // build or refresh a state node(emit or non-emit)
         int refreshNode( const HMMAutomaton & automaton, int stateID, int &stateCnt, const std::string & word);

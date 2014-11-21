@@ -32,6 +32,7 @@ class KMeanState : public HMMState {
         const static std::pair<int, int> NullSeg ;
         friend class HMMKMeanAutomaton;
         friend class HMMAutomaton;
+        friend class SeqModel;
 
         KMeanState(std::vector<WaveFeatureOP> * templates);
 
@@ -42,13 +43,12 @@ class KMeanState : public HMMState {
 
         void load(std::stringstream &in, int &gaussNum);
         void store(std::stringstream &out);
+        void setTemplates(std::vector<WaveFeatureOP> * newTemps);
     private:
         // 对于Kmean， 存储的时候属于这个state的线段 
         // 注意是和基类的vector<WaveFeatureOP> 一一对应的
         std::vector< std::pair<int, int> > edgePoints;
 		
-
-	
 		//所有的Cluster，一个Cluster一个高斯模型，仅用于split过程
 		//完成后抛弃所有points，将w和g分别存入到真正的权重和模型
 		std::vector<Cluster*> ClusterSet;

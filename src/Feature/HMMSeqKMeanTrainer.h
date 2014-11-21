@@ -21,7 +21,14 @@ class HMMSeqKMeanTrainer : public HMMSeqTrainer {
     public:
         HMMSeqKMeanTrainer();
         ~HMMSeqKMeanTrainer();
+
     private:
+        void hmmSeqTrain();
+
+        void initHMMTrain();
+
+        // return true to stop iterate
+        bool iteratorSeqTrain();
 };
 
 #endif
