@@ -35,7 +35,7 @@ class HMMSeqRecognition : public HMMRecognition {
 
         void loadGraph(const char *filename);
 
-        void recognition(WaveFeatureOP & input, std::vector<std::string> & res);
+        void recognition(WaveFeatureOP & input, std::vector<std::string> & res, SeqModel::SEQ_DTW_PATH_TYPE pathType = SeqModel::BACK_PTR);
 
         void setBeam( double beam );
 

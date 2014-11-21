@@ -44,19 +44,19 @@ struct SeqState {
 };
 
 struct Dtw_Column_Node {
-    Dtw_Column_Node() : lastUpdate(NONE_UPDATE), preIdx(NIL_BACK_PTR), backPtr(NIL_BACK_PTR) {
+    Dtw_Column_Node() : lastUpdate(NONE_UPDATE), preIdx(NIL_BACK_PTR) { // , backPtr(NIL_BACK_PTR) {
 
     }
 
     int preIdx; // used by backPtr search
                 // for full path, use a matrix to store
-                // link to pre backPtr
+                // this variable also buffer a ptr to preState, this is used by non-emit forward to non-emit
                 
     double cost;
     int lastUpdate;
     int next;
 
-    int backPtr; // link to this-state's backPtr, for no emit state
+//    int backPtr; // link to this-state's backPtr, for no emit state
 };
 
 // for beam, should be a link

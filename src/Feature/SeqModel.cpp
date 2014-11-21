@@ -220,14 +220,14 @@ void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
 
     int *path = new int[backPtrs.size()];
     int wordCnt = 0;
-
-    for(; backPtrIdx >= 0; backPtrIdx = backPtrs[backPtrIdx].prePtr)
+ 
+    for(; backPtrIdx >= 0; backPtrIdx = backPtrs[backPtrIdx].prePtr) 
         path[wordCnt ++] = backPtrIdx;
 
     int idx;
 
     for(idx = 0;idx < wordCnt; idx++) {
-        res.push_back( std::string(backPtrs[idx]. word ));
+        res.push_back( std::string(backPtrs[ path[idx] ].word ));
     }
 
     delete [] path;
@@ -255,6 +255,7 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
 //            printf ("%d %d\n", stateID, wavIdx);
             stateID = fullPath[wavIdx][stateID];
         }
+//        printf("%d ", stateID);
 
         path[wavIdx] = stateID;
 
@@ -266,6 +267,7 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
             stateID = fullPath[wavIdx-1][stateID];
             */
     }
+    puts("");
 }
 
 void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_type, int wavSiz) {
@@ -350,7 +352,7 @@ void SeqModel::dtw(WaveFeatureOP & wav, SEQ_DTW_PATH_TYPE path_type) {
     link[rollIdx].head = NIL_EDGE;
     link[rollIdx].nodes[0].cost = 0;
     link[rollIdx].addColumnNode(0);
-    link[rollIdx].nodes[0].preIdx = NIL_BACK_PTR;
+    link[rollIdx].nodes[0].preIdx = NIL_BACK_PTR; // first backPtr is actually -1(don't exist)
 
     double bestVal = Feature::IllegalDist;
 
@@ -428,12 +430,14 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
     //
     // TODO : should i flood fill ?
 
+    // 这里因为non-emit之间的forward只能用旧值，不能用nonemit forward过来的值去更新另一个non-emit， 因此要用另一个link存旧值
+    // 但本质上是 同一时间t的forward操作
     for(int noEmitStateID = 0; noEmitStateID < N_States; noEmitStateID ++) {
         link[preIdx].nodes[noEmitStateID] = link[rollIdx].nodes[noEmitStateID];
     }
 
     for(int noEmitStateID = 0; noEmitStateID < N_States; noEmitStateID ++) {
-        Dtw_Column_Node & dtw_node = link[rollIdx].nodes[noEmitStateID];
+        Dtw_Column_Node & dtw_node = link[preIdx].nodes[noEmitStateID];
 
         // dont forward from non-value state
         if(dtw_node.lastUpdate < columnIdx)
@@ -451,7 +455,6 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
 
             tryUpdate(link, columnIdx, noEmitStateID, nextStateID, nextCost);
         }
-
     }
 
     return bestVal;
@@ -471,6 +474,10 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
 
         dtw_node.lastUpdate = columnIdx;
 
+        // new nodes' backPtr should be inited to -1
+        // This complex logic.. is a tradeoff for high efficiency beam search
+        dtw_node.preIdx = NIL_BACK_PTR;
+
         updateFlag = true;
     }
     else if(Feature::better(newCost, dtw_node.cost)) 
@@ -479,21 +486,31 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
     if(updateFlag) {
         dtw_node.cost = newCost;
 
-        tryForwardToStar( link, columnIdx, stateID, newCost );
 
         // record path 
         if(path_type == FULL_PATH) {
+            // 如果从一个nonemit 过来的， 则path指向nonemit指向的单词就可以了
+            // 虽然nonemit到nonemit是同一个列之间的forward，但编码时候是从前一列
+            // forward过来的，这样可以避免用新的值更新
+            //
+            if(! isEmit(preStateID) )
+                preStateID = link[preIdx].nodes[preStateID].preIdx;
+
             fullPath[columnIdx][stateID] = preStateID;
+
+            dtw_node.preIdx = preStateID;
         }
+
         else if(path_type == BACK_PTR) {
             if(isEmit(preStateID) && isEmit(stateID)) {
                 dtw_node.preIdx = link[preIdx].nodes[preStateID].preIdx;
             }
             else if(!isEmit(preStateID) && !isEmit(stateID) ) {
-                dtw_node.preIdx = link[rollIdx].nodes[preStateID].backPtr;
+                // preIdx !!  it is a trans inner a t, however i copy old value to preIdx.
+                dtw_node.preIdx = link[preIdx].nodes[preStateID].preIdx;
             }
             else if(!isEmit(preStateID) && isEmit(stateID) ) {
-                dtw_node.preIdx = link[preIdx].nodes[preStateID].backPtr;
+                dtw_node.preIdx = link[preIdx].nodes[preStateID].preIdx;
             }
             else if(isEmit(preStateID) && ! isEmit(stateID) ) {
                 // new back ptr
@@ -501,18 +518,19 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
 
                 // same column, same rollIdx , forwarding
 
-                dtw_node.preIdx = link[rollIdx].nodes[preStateID].preIdx;
-
-                if(dtw_node.backPtr == NIL_BACK_PTR) {
+                if(dtw_node.preIdx == NIL_BACK_PTR) {
                     backPtrs.push_back( BackPtr() );
-                    dtw_node.backPtr = backPtrs.size() - 1;
+                    dtw_node.preIdx = backPtrs.size() - 1;
                 }
 
-                backPtrs[dtw_node.backPtr].word = states[preStateID].word;
-                backPtrs[dtw_node.backPtr].prePtr = dtw_node.preIdx;
-                backPtrs[dtw_node.backPtr].stateID = stateID;
+                backPtrs[dtw_node.preIdx].word = states[preStateID].word;
+
+                backPtrs[dtw_node.preIdx].prePtr = link[rollIdx].nodes[preStateID].preIdx; //dtw_node.preIdx;
+                backPtrs[dtw_node.preIdx].stateID = stateID;
             }
         }
+
+        tryForwardToStar( link, columnIdx, stateID, newCost );
     }
 }
 

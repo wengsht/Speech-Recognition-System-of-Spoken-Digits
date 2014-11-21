@@ -52,8 +52,8 @@ void HMMSeqRecognition::setBeam( double beam ) {
     seqModel.setBeam( beam );
 }
 
-void HMMSeqRecognition::recognition(WaveFeatureOP & input, std::vector<std::string> & res) {
-    seqModel.recognition(input, res);
+void HMMSeqRecognition::recognition(WaveFeatureOP & input, std::vector<std::string> & res, SeqModel::SEQ_DTW_PATH_TYPE pathType) {
+    seqModel.recognition(input, res, pathType);
 }
 
 void HMMSeqRecognition::close() {

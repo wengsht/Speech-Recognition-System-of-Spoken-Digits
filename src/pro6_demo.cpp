@@ -23,6 +23,7 @@
 #include "ThreadPool.h"
 #include "test.h"
 #include "Capture.h"
+#include "SeqModel.h"
 
 using namespace std;
 
@@ -31,6 +32,8 @@ bool dealOpts(int argc, char **argv);
 char tempDir[100] = "./combine";
 char inputFileName[100] = "";
 int threadNum = 4;
+
+SeqModel::SEQ_DTW_PATH_TYPE pathType = SeqModel::BACK_PTR;
 
 int main(int argc, char **argv) {
     if(! dealOpts(argc, argv))
@@ -70,7 +73,7 @@ int main(int argc, char **argv) {
     vector<string> res;
 
 //    recognition.setBeam(1000);
-    recognition.recognition(op, res);
+    recognition.recognition(op, res, pathType);
 
     recognition.close();
 
@@ -86,17 +89,27 @@ int main(int argc, char **argv) {
 
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "hd:")) != -1) {
+    while((c = getopt(argc, argv, "hd:p:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         -h \n \
-                        -d inputwav \n");
+                        -d inputwav \n\
+                        -p backptr/full : backPtr/fullPath\n");
 
                 return false;
                 break;
             case 'd':
                 strcpy(inputFileName, optarg);
+                break;
+            case 'p':
+                if(0 == strcmp(optarg, "backptr"))
+                    pathType = SeqModel::BACK_PTR;
+                else if(0 == strcmp(optarg, "full"))
+                    pathType = SeqModel::FULL_PATH;
+
+                break;
+
             default:
                 break;
         }
