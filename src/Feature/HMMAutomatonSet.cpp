@@ -55,6 +55,7 @@ int HMMAutomatonSet::getSpecificStateNum( std::string &word ) {
 
 void HMMAutomatonSet::reGenerateAutomaton() {
     dataSetType::iterator templateItr;
+
     for(templateItr = dataSet.begin(); templateItr != dataSet.end(); templateItr ++) {
         char * words = const_cast<char *>(templateItr->first.c_str());
         char *tmp = strtok(words, LINK_WORD);
@@ -81,7 +82,7 @@ void HMMAutomatonSet::reGenerateAutomaton() {
 SP_RESULT HMMAutomatonSet::segTrain() {
     reGenerateAutomaton();
 
-    ThreadPool threadPool(ThreadPool::thread_num);
+    ThreadPool threadPool(1); // ThreadPool::thread_num);
     std::map< std::string, HMMAutomaton *>::iterator Itr;
     for(Itr = automatons.begin(); Itr != automatons.end(); Itr++) {
         std::string word = Itr->first;
@@ -168,7 +169,7 @@ void HMMAutomatonSet::clear() {
 }
 
 void HMMAutomatonSet::load(std::ifstream &in) {
-    reGenerateAutomaton();
+    //reGenerateAutomaton();
 
     std::string word;
 
@@ -179,6 +180,14 @@ void HMMAutomatonSet::load(std::ifstream &in) {
 
         sin >> word;
 
+        if(!automatons.count(word)) {
+            int specificStateNum = getSpecificStateNum( word );
+
+            if(stateType == HMMState::KMEAN)
+                automatons[word] = new HMMKMeanAutomaton(NULL, specificStateNum, gaussNum, trainTimes); 
+            else 
+                automatons[word] = new HMMSoftAutomaton(NULL, specificStateNum, gaussNum, trainTimes); 
+        }
         automatons[word]->load(sin);
     }
 }

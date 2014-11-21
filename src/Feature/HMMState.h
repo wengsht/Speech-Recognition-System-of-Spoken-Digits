@@ -41,7 +41,7 @@ class HMMState {
         virtual void gaussianTrain(int gaussianNum) = 0;
         virtual double nodeCost(Feature *inputFeature) = 0;
 
-        virtual void load(std::stringstream &in, int gaussNum) = 0;
+        virtual void load(std::stringstream &in, int &gaussNum) = 0;
         virtual void store(std::stringstream &out) = 0;
 
     protected:

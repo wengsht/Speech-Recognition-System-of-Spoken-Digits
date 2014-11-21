@@ -40,7 +40,7 @@ class KMeanState : public HMMState {
         void gaussianTrain(int gaussianNum);
         double nodeCost(Feature *inputFeature);
 
-        void load(std::stringstream &in, int gaussNum);
+        void load(std::stringstream &in, int &gaussNum);
         void store(std::stringstream &out);
     private:
         // 对于Kmean， 存储的时候属于这个state的线段 

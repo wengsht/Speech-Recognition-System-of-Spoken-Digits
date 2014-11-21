@@ -1,4 +1,17 @@
 #ifdef SpecificStateNum
+
+SpecificStateNum("zero",12)
+SpecificStateNum("one", 9)
+SpecificStateNum("two", 6)
+SpecificStateNum("three", 9)
+SpecificStateNum("four", 9)
+SpecificStateNum("five", 9)
+SpecificStateNum("six", 9)
+SpecificStateNum("seven", 15)
+SpecificStateNum("eight", 6)
+SpecificStateNum("nine", 6)
+SpecificStateNum(TROPE TROPE_SILENCE, 2)
+/*
 SpecificStateNum("zero",5)
 SpecificStateNum("one", 5)
 SpecificStateNum("two", 5)
@@ -9,9 +22,8 @@ SpecificStateNum("six", 5)
 SpecificStateNum("seven", 5)
 SpecificStateNum("eight", 5)
 SpecificStateNum("nine", 5)
-SpecificStateNum("ten", 5)
-SpecificStateNum("#silence", 5)
-SpecificStateNum(TROPE TROPE_SILENCE, 2)
+*/
+
 #undef SpecificStateNum
 #endif
 

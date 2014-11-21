@@ -94,7 +94,6 @@ protected:
 
         rollColumnCost[rollIdx][0] = transferCost[0][1];
         rollColumnCost[rollIdx][2] = transferCost[0][2];
-
     }
 
     // 滚动数组dtw
@@ -155,10 +154,11 @@ protected:
         columnIdx = features.size() - 1;
         rollIdx = getRollIdx(columnIdx);
 
-        resValue = rollColumnCost[rollIdx][1];
-        resIdx   = 1;
+        resValue = Feature::IllegalDist; // rollColumnCost[rollIdx][1];
+        resIdx   = -1;
 
-        for(int i = 2; i <= stateNum; i++) {
+//        for(int i = 1; i <= stateNum; i++) {
+        for(int i = stateNum - DTW_MAX_FORWARD + 2; i <= stateNum; i++) {
             if(type == Maximum) {
                 if(Feature::better(rollColumnCost[rollIdx][i], resValue)) {
                     resValue = rollColumnCost[rollIdx][i];

@@ -52,6 +52,8 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
 
         static void hmmTrainTask(void *in);
 
+        // 新建自动机， 只有需要train的时候才调用此函数
+        // load 不需要
         void reGenerateAutomaton();
         int getSpecificStateNum( std::string &word );
         void loadSpecStateNum();

@@ -79,9 +79,8 @@ SP_RESULT HMMRecognition::hmmTryLoad(char *templateDir) {
 
     automatons.setStateType(stateType);
 
-    loadTemplates(templateDir, WaveFeatureOP::ONLY_FILE_NAME);
-
     if(loadHMMModel()) {
+//        loadTemplates(templateDir, WaveFeatureOP::ONLY_FILE_NAME);
         return SP_SUCCESS;
     }
 

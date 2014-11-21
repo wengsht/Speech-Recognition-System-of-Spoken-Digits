@@ -89,7 +89,6 @@ void runN1() {
 
     HMMRecognition hmm;
     hmm.setGaussNum(gaussNum);
-    
 
     if(algo == "kmean")
         hmm.setStateType(HMMState::KMEAN);
@@ -156,7 +155,7 @@ void runNN() {
         if(res == (*Itr)->getWord()) 
             correctCnt ++;
         else 
-        cout << setw(20) << left<< "Template : " << res << " " <<  " Input: " <<  (*Itr)->getWord() << endl;
+        cout << setw(20) << left<< "Template : " << res << " " <<  " Input: " <<  (*Itr)->getWord() <<  " " << (*Itr)->getFileName() << endl;
         //cout << res << " " << (*Itr)->getWord() << endl;
     }
     system("clear");

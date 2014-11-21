@@ -88,6 +88,7 @@ class HMMKMeanAutomaton : public HMMAutomaton {
             }
         }
 
+
         // return true if big change
         bool updateTransfer() {
             double wholeChangeCost = Feature::IllegalDist;
@@ -124,6 +125,16 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                         }
                     }
                 }
+
+                int remain = wholeCnt;
+                for(int idz = 0;idz < DTW_MAX_FORWARD;idz++) {
+                    if(idz+i > stateNum) break;
+                    remain -= nxtCnt[idz];
+                }
+                int addTo = i + DTW_MAX_FORWARD - 1;
+
+                if(addTo <= stateNum)
+                    nxtCnt[addTo] += remain;
 
                 if(wholeCnt == 0) {
                     continue;

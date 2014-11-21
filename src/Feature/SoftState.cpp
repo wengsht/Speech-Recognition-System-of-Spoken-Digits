@@ -233,7 +233,7 @@ double SoftState::SoftNodeCost(Feature *f) {
 	return ret;
 }
 
-void SoftState::load(std::stringstream &in, int gaussNum) {
+void SoftState::load(std::stringstream &in, int &gaussNum) {
     clearGaussian();
     if(templates->size() <= 0)
         return ;

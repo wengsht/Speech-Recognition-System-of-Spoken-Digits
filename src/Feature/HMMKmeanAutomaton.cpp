@@ -101,11 +101,9 @@ void HMMKMeanAutomaton::hmmTrain() {
 
     hmmInitilize();
 
-
     for(idx = 0; idx < trainTimes; idx ++) {
         if(! iterateTrain()) break;
     }
-
 
     // 把train过程中开的vector什么的先释放掉
     clearTrainBuffer();

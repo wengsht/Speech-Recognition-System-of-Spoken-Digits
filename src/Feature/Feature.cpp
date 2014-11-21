@@ -38,6 +38,8 @@ Feature::FeatureType Feature::getFeatureType() {
 }
 Feature::FeatureType Feature::setFeatureType(Feature::FeatureType type) {
     this->type = type;
+
+    return type;
 }
 
 SP_RESULT Feature::fillDelta() {

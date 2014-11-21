@@ -28,7 +28,9 @@ using namespace std;
 const std::pair<int, int> KMeanState::NullSeg = std::make_pair(0, -1);
 
 KMeanState::KMeanState(std::vector<WaveFeatureOP> * templates) : HMMState(templates) {
-    edgePoints.resize(templates->size());
+    if(templates)
+        edgePoints.resize(templates->size());
+
     srand(time(0));
 	ClusterSet.clear();
 }
@@ -129,13 +131,13 @@ bool KMeanState::KMeanTrain(int &gaussianNum)
 	
 	if(gaussianNum == 1)return true;
 	
-
 	for(int i = 1;i<gaussianNum;i++){
 		Cluster* c = findBigCluster();
 		double w = c->w;
 		
         double smallNum = 1;
 		while(addTwoCluster(c, smallNum)==false) {
+//            printf("%lf\n", smallNum);
             smallNum /= 2.0;
         }
 	
@@ -287,6 +289,7 @@ bool KMeanState::addTwoCluster(const Cluster * c, double smallNum)
 	g1->copy(c->g, smallNum); //rand()%100/200.0);
 	g2->copy(c->g, smallNum); //-rand()%100/200.0);
 
+//    printf("%lf\n", smallNum);
 	int w1 = 0;
 	int w2 = 0;
 	Cluster* c1 = new Cluster();
@@ -298,7 +301,7 @@ bool KMeanState::addTwoCluster(const Cluster * c, double smallNum)
 			double d1 = g1->minuLogP(p[i]);
 			double d2 = g2->minuLogP(p[i]);
 
-			if(smallNum < eps && i || smallNum >= eps && d1<d2){
+			if((smallNum < eps && (i&1)) || (smallNum >= eps && d1<d2)) {
 				c1->points.push_back(p[i]);
 				w1++;
 				g1->addFeature(p[i]);
@@ -311,19 +314,23 @@ bool KMeanState::addTwoCluster(const Cluster * c, double smallNum)
 		}
 		//重新计算mean 和 cvar，并判断是否收敛
 		if(g1->done() && g2->done()) break;
+        break;
+//        if(smallNum < eps) break;
 	//	g1->print();
 	//	g2->print();
 		//为收敛准备重做
 		c1->points.clear();c2->points.clear();
 		w1 = w2 = 0;
+
 	}
 
-	//printf("%d+%d ---%lf\n",w1,w2,wt);
+//	printf("%d+%d ---%lf\n",w1,w2,wt);
 	if(w1==0 || w2==0){
 		if(c1)delete c1;
 		if(c2)delete c2;
 		if(g1)delete g1;
 		if(g2)delete g2;
+//	printf("%d+%d ---%lf\n",w1,w2,wt);
 
 		return false;
 	}
@@ -470,7 +477,7 @@ double KMeanState::KMeanNodeCost(Feature *f){
 	return ret;
 }
 
-void KMeanState::load(std::stringstream &in, int gaussNum) {
+void KMeanState::load(std::stringstream &in, int &gaussNum) {
     clearGaussian();
 //    if(templates->size() <= 0)
 //        return ;
@@ -480,18 +487,27 @@ void KMeanState::load(std::stringstream &in, int gaussNum) {
 
     int featureSize = CEPS_NUM * (DELTA_TIMES + 1);
 
+    in >> gaussNum;
     w.resize(gaussNum);
+
     for(int i = 0;i < gaussNum; i++) {
         Gaussian * g = new  Gaussian(featureSize);
         in >> w[i];
+
         g->load(in);
         GaussianModel.push_back(g);
     }
+//    puts("");
 }
+
 void KMeanState::store(std::stringstream &out) {
+    out << " " << GaussianModel.size();
+
     for(int i = 0;i < GaussianModel.size(); i++) {
         out << " " << w[i];
+//        std::cout << w[i] << " ";
 
         GaussianModel[i]->store(out);
     }
+//    puts("");
 }

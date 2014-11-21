@@ -24,14 +24,18 @@
 #include "test.h"
 #include "Capture.h"
 #include "SeqModel.h"
+#include "configure_hmm.h"
 
 using namespace std;
 
 bool dealOpts(int argc, char **argv);
 
-char tempDir[100] = "./combine";
+//char tempDir[100] = "./combine";
+char tempDir[100] = "./wengsht";
 char inputFileName[100] = "";
 int threadNum = 4;
+
+int gaussNum = GAUSSIAN_NUM;
 
 SeqModel::SEQ_DTW_PATH_TYPE pathType = SeqModel::BACK_PTR;
 
@@ -42,12 +46,14 @@ int main(int argc, char **argv) {
     HMMSeqRecognition recognition;
 
     recognition.setStateType(HMMState::KMEAN);
+    recognition.setGaussNum(gaussNum);
 
     if(recognition.hmmTryLoad(tempDir) == SP_SUCCESS) ;
     else {
         recognition.loadTemplates(tempDir);
         recognition.hmmSegTrain();
     }
+
 
 //    recognition.loadTemplates(tempDir);
 
@@ -72,15 +78,16 @@ int main(int argc, char **argv) {
     WaveFeatureOP op(inputFeature, "null");
     vector<string> res;
 
-//    recognition.setBeam(1000);
+//    recognition.setBeam(100);
     recognition.recognition(op, res, pathType);
 
     recognition.close();
 
     for(int i = 0;i < res.size(); i++) {
-        cout << res[i] << " " ;
+        cout << RED << res[i] << " " ;
     }
     puts("");
+    cout << NONE;
 
 //    cout << res << endl;
 
@@ -89,18 +96,22 @@ int main(int argc, char **argv) {
 
 bool dealOpts(int argc, char **argv) {
     int c;
-    while((c = getopt(argc, argv, "hd:p:")) != -1) {
+    while((c = getopt(argc, argv, "hd:p:g:")) != -1) {
         switch(c) {
             case 'h':
                 printf("usage: \n \
                         -h \n \
                         -d inputwav \n\
+                        -g gaussNum \n\
                         -p backptr/full : backPtr/fullPath\n");
 
                 return false;
                 break;
             case 'd':
                 strcpy(inputFileName, optarg);
+                break;
+            case 'g':
+                gaussNum = atoi( optarg );
                 break;
             case 'p':
                 if(0 == strcmp(optarg, "backptr"))

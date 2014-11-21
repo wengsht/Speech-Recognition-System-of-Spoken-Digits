@@ -110,7 +110,12 @@ void SeqModel::refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, 
         // hmm-to-end
 
         for(int idx = automaton.getStateNum() - DTW_MAX_FORWARD + 2; idx <= automaton.getStateNum(); idx ++) {
-            double cost = p2cost(automaton.enddingProbability(idx));
+//        for(int idx = 0; idx <= automaton.getStateNum(); idx ++) {
+            double p = automaton.enddingProbability(idx);
+            if(p < FLOOR_TRANSITION_PROBABILITY)
+                continue;
+
+            double cost = p2cost(p);
 
             b_from = idx + baseEsp;
             b_to   = to;
@@ -156,6 +161,7 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
             head = &(states[from].head);
 
         edges[edges.size() - 1].next = *head;
+
         *head = edges.size() - 1;
     }
 
@@ -190,12 +196,18 @@ void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz)
     int preStateID = stateID;
 
     int wavIdx;
-    res.push_back( std::string(states[stateID].word ));
+
+    if(states[stateID].leafForwardIdx != NIL_FORWARD)
+        res.push_back( std::string(states[stateID].word ));
 
     for(wavIdx = 1; wavIdx < wavSiz; wavIdx ++, preStateID = stateID) {
         stateID = path[wavIdx];
 
-        if(0 != strcmp(states[stateID].word, states[preStateID].word)) {
+        // only essential leaf (forwarded value) add a word
+        if(states[stateID].leafForwardIdx != states[preStateID].leafForwardIdx && \
+           states[stateID].leafForwardIdx != NIL_FORWARD) {
+//            printf("%d\n", stateID);
+//        if(states[stateID].word != states[preStateID].word) {
             // new word
             res.push_back( std::string(states[stateID].word ));
         }
@@ -226,9 +238,11 @@ void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
 
     int idx;
 
-    for(idx = 0;idx < wordCnt; idx++) {
+    for(idx = wordCnt - 1;idx >= 0; idx--) {
+//        printf("%d ", backPtrs[path[idx]].stateID);
         res.push_back( std::string(backPtrs[ path[idx] ].word ));
     }
+//    puts("");
 
     delete [] path;
 }
@@ -267,7 +281,7 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
             stateID = fullPath[wavIdx-1][stateID];
             */
     }
-    puts("");
+//    puts("");
 }
 
 void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_type, int wavSiz) {
@@ -279,6 +293,8 @@ void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_
             break;
         case BACK_PTR:
             collectResFromBackPtr(res);
+            break;
+        default:
             break;
     }
 }
@@ -341,24 +357,44 @@ void SeqModel::dtw(WaveFeatureOP & wav, SEQ_DTW_PATH_TYPE path_type) {
     int idx;
     int wavSize = wav.size();
     int stateSiz = states.size();
+    int start = Start_State;
 
     link[0].nodes = new Dtw_Column_Node[stateSiz];
     link[1].nodes = new Dtw_Column_Node[stateSiz];
 
     int columnIdx = -1;
     int rollIdx = getRollIdx(columnIdx);
-    int nextIdx;
 
     link[rollIdx].head = NIL_EDGE;
-    link[rollIdx].nodes[0].cost = 0;
-    link[rollIdx].addColumnNode(0);
-    link[rollIdx].nodes[0].preIdx = NIL_BACK_PTR; // first backPtr is actually -1(don't exist)
+
+    link[rollIdx].nodes[start].cost = 0;
+    link[rollIdx].addColumnNode(start);
+    link[rollIdx].nodes[start].preIdx = NIL_BACK_PTR; // first backPtr is actually -1(don't exist)
+
+    // forward start state to non-emit states if needed
+    for(int eID = states[start].noEmitHead; eID != NIL_EDGE; eID = nonEmitEdges[eID].next) {
+        int nextStateID = nonEmitEdges[eID].to;
+        if(nextStateID == start) 
+            continue;
+
+        double nextCost = link[rollIdx].nodes[start].cost + nonEmitEdges[eID].cost;
+
+        link[rollIdx].nodes[nextStateID].cost = nextCost;
+        link[rollIdx].addColumnNode(nextStateID);
+        link[rollIdx].nodes[nextStateID].preIdx = NIL_BACK_PTR; // first backPtr is actually -1(don't exist)
+    }
 
     double bestVal = Feature::IllegalDist;
 
     for(columnIdx = 0; columnIdx < wavSize; columnIdx ++) {
         bestVal = forwardColumn(link, wav, columnIdx, bestVal + beamThr);
+        /*  
+        if(link[getRollIdx(columnIdx)].nodes[7].lastUpdate == columnIdx)
+            printf(RED "%d %d\n", columnIdx, link[getRollIdx(columnIdx)].nodes[7].preIdx);
+            */
     }
+
+    Log(BLUE "Best Cost: %lf\n" NONE, link[getRollIdx(wavSize - 1)].nodes[Terminal_States].cost);
 
     delete [] link[0].nodes;
     delete [] link[1].nodes;
@@ -388,7 +424,7 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
     assert(columnIdx < wav.size());
     int rollIdx = getRollIdx( columnIdx );
     int preIdx = rollIdx ^ 1;
-    
+
     int nextStateID;
 
     link[rollIdx].clear();
@@ -396,13 +432,12 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
     for(int preStateID = link[preIdx].head; \
             preStateID != NIL_EDGE; \
             preStateID = link[preIdx].nodes[preStateID].next) {
-        // beam
         Dtw_Column_Node & dtw_node = link[preIdx].nodes[preStateID];
 
         double preCost = dtw_node.cost;
         double nextCost;
 
-        // don't forward from beam-thr limitted nodes
+        // beam
         if(doBeam && Feature::better(threshold, preCost))
             continue;
 
@@ -411,6 +446,9 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
                 eID != NIL_EDGE; \
                 eID = edges[eID].next) {
             nextStateID = edges[eID].to;
+
+//            if(columnIdx == 0 && preStateID == 3) 
+//                printf("%d\n", nextStateID);
 
             nextCost = preCost + edges[eID].cost;
 
@@ -486,14 +524,13 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
     if(updateFlag) {
         dtw_node.cost = newCost;
 
-
         // record path 
         if(path_type == FULL_PATH) {
             // 如果从一个nonemit 过来的， 则path指向nonemit指向的单词就可以了
             // 虽然nonemit到nonemit是同一个列之间的forward，但编码时候是从前一列
             // forward过来的，这样可以避免用新的值更新
             //
-            if(! isEmit(preStateID) )
+            while(preStateID >= 0 && ! isEmit(preStateID) )
                 preStateID = link[preIdx].nodes[preStateID].preIdx;
 
             fullPath[columnIdx][stateID] = preStateID;
@@ -506,6 +543,7 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
                 dtw_node.preIdx = link[preIdx].nodes[preStateID].preIdx;
             }
             else if(!isEmit(preStateID) && !isEmit(stateID) ) {
+//                printf("%d %d\n", preStateID, stateID);
                 // preIdx !!  it is a trans inner a t, however i copy old value to preIdx.
                 dtw_node.preIdx = link[preIdx].nodes[preStateID].preIdx;
             }

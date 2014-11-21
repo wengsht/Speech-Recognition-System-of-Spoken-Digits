@@ -28,7 +28,7 @@ class NoEmitState : public HMMState {
             return 0;
         }
 
-        void load(std::stringstream &in, int gaussNum) {}
+        void load(std::stringstream &in, int &gaussNum) {}
         void store(std::stringstream &out){}
     private:
 };

@@ -35,7 +35,7 @@ class SoftState : public HMMState {
         void gaussianTrainTest(int gaussianNum);
         double nodeCostTest(Feature *inputFeature);
 
-        void load(std::stringstream &in, int gaussNum);
+        void load(std::stringstream &in, int &gaussNum);
         void store(std::stringstream &out);
 
         void dump() {
