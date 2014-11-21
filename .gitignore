@@ -4,3 +4,4 @@ build/
 *.swo
 /src/tags
 .DS_Store
+tags
