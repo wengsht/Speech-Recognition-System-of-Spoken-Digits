@@ -34,7 +34,8 @@ void Gaussian::setCVar(double v){
 }
 
 void Gaussian::setRandCVar(){
-	for(int i =0;i<featureSize;i++) cvar[i] = (rand()%1000/100000.0);
+	for(int i =0;i<featureSize;i++) 
+        cvar[i] = (rand()%1000/100000.0);
 }
 
 double Gaussian::getCVar(){
@@ -72,6 +73,7 @@ bool Gaussian::done(){
 		if(fabs(v-cvar[i])>ep || fabs(m-mean[i])>ep){
 			converge = false;
 		}
+
 		cvar[i] = v;
 		mean[i] = m;
 	}
@@ -112,7 +114,8 @@ double Gaussian::minuLogP(Feature* f){
         }
            
 		ret += log(2*PI*v)+(d*d/v);
-        /*  
+
+        /* 
         if(!(ret >= 0 ) && !(ret <= 0))
             printf("%lf\n", v);
             */
@@ -124,6 +127,7 @@ double Gaussian::minuLogP(Feature* f){
 double Gaussian::P(Feature *f){
     return cost2p(minuLogP(f));
 
+    /* 
 	Feature &p = *f;
 	double a = 1;
 	double r = 0;
@@ -147,6 +151,7 @@ double Gaussian::P(Feature *f){
 	r*=-0.5;
 	a=1.0/sqrt(2*PI*a);
 	return a*pow(e,r);
+    */
 }
 
 
@@ -159,6 +164,10 @@ bool Gaussian::update(std::vector<double>& u,std::vector<double> & v)
 		sumu += fabs(mean[i]-u[i]);
 		sumv += fabs(cvar[i]-v[i]);
 		mean[i] = u[i];
+        /*  
+        if(!(v[i] >= 0 ) && !(v[i] <= 0))
+            printf("%lf\n", v[i]);
+            */
 		cvar[i] = v[i];
 	}
 	//printf("u = %.12lf v = %.12lf\n",sumu,sumv);

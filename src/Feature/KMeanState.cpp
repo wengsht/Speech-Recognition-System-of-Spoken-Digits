@@ -54,6 +54,7 @@ void KMeanState::clearGaussian()
 	for(int i = 0;i<GaussianModel.size();i++){
 		if(GaussianModel[i])delete GaussianModel[i];
 	}	
+
 	GaussianModel.clear();
 	w.clear();
 }
@@ -77,8 +78,7 @@ void KMeanState::printw(){
 	printf("\n");
 }
 // gaussianNum 为期望高斯数目，如果点不够，将会变少。
-void KMeanState::gaussianTrain(int gaussianNum)
-{
+void KMeanState::gaussianTrain(int gaussianNum) {
 //    printf("2 %d\n", gaussianNum);
 	int time = 1;
 	double best = -1;
@@ -90,10 +90,11 @@ void KMeanState::gaussianTrain(int gaussianNum)
 		//printf("Gaussian Train time %d\n",time);
 		if(KMeanTrain(gaussianNum)==false) return;
 //        printf("%d\n", points.size());
-
+//        if(gaussianNum >= 4)
+//printf("%lf\n", ClusterSet[3]->w);
 		double tmp  = sumCV();
 
-		if(best ==-1 || tmp < best){
+		if(best == -1 || tmp < best){
 			best = tmp;
 			//使用完后本轮ClusterSet作废
 			saveGaussianModel();
@@ -104,7 +105,9 @@ void KMeanState::gaussianTrain(int gaussianNum)
 		clearCluster();
 	}
 
+//    printf("%lf\n", w[1]);
 //    printf("%d\n", points.size());
+//    printf("%d\n", gaussianNum);
 	EM(gaussianNum);
 //	printf("new:");printw();
 //	printf("\n");
@@ -113,8 +116,7 @@ void KMeanState::gaussianTrain(int gaussianNum)
 //一轮训练
 //0个节点返回false
 //必然训练出大于等于1个的高斯模型，返回true
-bool KMeanState::KMeanTrain(int &gaussianNum)
-{
+bool KMeanState::KMeanTrain(int &gaussianNum) {
 	int pointNum = calcFirstCluster();
 //    printf("%d\n", pointNum);
 //	printf("Point Num : %d\n",pointNum);
@@ -126,7 +128,6 @@ bool KMeanState::KMeanTrain(int &gaussianNum)
 	}
 
 	//只有一个高斯模型时
-	//if(gaussianNum == 1){
 	ClusterSet[0]->w = 1.0;
 	Gaussian * g = new Gaussian(ClusterSet[0]->points[0]->size());
 		
@@ -143,7 +144,7 @@ bool KMeanState::KMeanTrain(int &gaussianNum)
 	if(gaussianNum == 1) 
         return true;
 	
-	for(int i = 1;i<gaussianNum;i++){
+	for(int i = 1;i<gaussianNum;i++) {
 		Cluster* c = findBigCluster();
 		double w = c->w;
 		
@@ -156,12 +157,13 @@ bool KMeanState::KMeanTrain(int &gaussianNum)
 		deleteCluster(c);
 	}
 	
+//    printf("%lf\n", ClusterSet[1]->w);
 	return true;	
 }
 
 //更新gussianModel 和w
-void KMeanState::EM(int g)
-{	
+void KMeanState::EM(int g) {	
+//    printf("%lf\n", w[1]);
     if(g <= 1) return ;
 	bool converge = false;
 	
@@ -171,37 +173,95 @@ void KMeanState::EM(int g)
 
 	int fsize = points[0]->size();
 //	printf("EM %d %d %d\n",g,N,fsize);
-	vector<double> * u = new vector<double>[g];
+    Matrix<double> u, v,p;
+    Matrix<double> tmpCost;
+    u.resize(g); v.resize(g); p.resize(N);
+    tmpCost.resize(N);
+
+    /*  
+	vector<double> *u = new vector<double>[g];
 	vector<double> *v = new vector<double>[g];
 	vector<double> *p = new vector<double>[N]; //p[i][j]第i点属于j模型的概率
+    */
 	double *pg = new double[g]; //属于第g个模型的p总和。
 
-	for(int i = 0;i<N;i++) p[i].resize(g);
+	for(int i = 0;i<N;i++) {
+        p[i].resize(g);
+        tmpCost[i].resize(g);
+    }
 	for(int i = 0;i<g;i++) {
 		u[i].resize(fsize);
 		v[i].resize(fsize);
 	}
 
 	int cnt = 300;
+
 	while( (!converge) && cnt-- ) {
-//		printf("one time\n");
 		//初始化
 		converge = true;
-		for(int i = 0;i<g;i++)pg[i] = 0;
+		for(int i = 0;i<g;i++)
+            pg[i] = 0;
 		
 		//计算pij,pg
 //		puts("calc pij");
 		for(int i = 0;i<N;i++){
-			double 	sumi = 0;
+			double 	sumCost = Feature::IllegalDist;
 //			printf("N = %d\n",i);
-			for(int j=0;j<g;j++){
-				p[i][j] = w[j] * GaussianModel[j]->P(points[i]);
 
-				sumi += p[i][j]; 
-			}
+            /*  
 			for(int j=0;j<g;j++){
-				p[i][j]/=sumi;
+                if( !(w[j] >= 0) && !(w[j] <= 0)) {
+                    printf("%d %lf\n", cnt, w[j]);
+                    getchar();
+                }
+            }
+            */
+
+			for(int j=0;j<g;j++){
+                tmpCost[i][j] = p2cost(w[j]) + GaussianModel[j]->minuLogP(points[i]);
+//				p[i][j] = w[j] * GaussianModel[j]->P(points[i]);
+
+
+                /*  
+                if(!(p[i][j] >= 0) && !(p[i][j] <= 0)) {
+                    printf("%lf\n", w[j]);
+                    printf("%lf\n", GaussianModel[j]->P(points[i]));
+                    getchar();
+                }
+                */
+                sumCost = logInsideSum(sumCost, tmpCost[i][j]);
+//				sumi += p[i][j]; 
+			}
+
+            /*  
+            if(sumi <= 1e-24) {
+                for(int j = 0;j < g;j++) 
+                    printf("%lf ", p[i][j]);
+                puts("");
+            }
+            */
+
+			for(int j=0;j<g;j++) {
+                tmpCost[i][j] -= sumCost;
+                p[i][j] = cost2p(tmpCost[i][j]);
+//				p[i][j]/=sumi;
 				pg[j] += p[i][j];
+
+                /*  
+                if( !(pg[j] >= 0) && !(pg[j] <= 0)) {
+                    printf("%d %lf \n", sumi, pg[j]);
+                    for(int k = 0;k < g;k++)
+                        printf("%lf\n", w[k]);
+
+                    getchar();
+                }
+                */
+
+                /*  
+                if(!(pg[j] >= 0) && !(pg[j] <= 0)) {
+                    printf("o\n");
+                }
+                */
 			}
 		}
 
@@ -212,10 +272,17 @@ void KMeanState::EM(int g)
 			//计算wi
 			tmp = 1.0/N * pg[j];
 			//printf("w = %.12lf ",fabs(w[j]-tmp));
-			if(fabs(w[j]-tmp)>1e-10)converge = false;
+			if(fabs(w[j]-tmp)>1e-10) converge = false;
 
 			w[j] = tmp;
+
 			
+            /*  
+            if(!(tmp >= 0) && !(tmp <= 0)) {
+                printf("%d %lf\n", N, pg[j]);
+                getchar();
+            }
+            */
 //			printf("w = %lf\n",w[j]);
 
 			for(int k = 0;k<fsize;k++){
@@ -228,18 +295,39 @@ void KMeanState::EM(int g)
 			for(int k=0;k<fsize;k++){
 				for(int i = 0;i<N;i++){
 					u[j][k]+=(*points[i])[k] * p[i][j];
+
+                    /*  
+            if(!(u[j][k]>= 0) && !(u[j][k]<= 0)) {
+                printf("%lf %lf\n", (*points[i])[k], pg[j]);
+                getchar();
+            }
+            */
 				}
 				u[j][k] /= pg[j];
+
+                /*  
+            if(!(u[j][k]>= 0) && !(u[j][k]<= 0)) {
+                printf("%d %lf\n", N, pg[j]);
+                getchar();
+            }
+            */
 			}
 
 //			puts("calc v");
 			//计算v new
-			for(int k = 0;k<fsize;k++){
-				for(int i = 0;i<N;i++){
+			for(int k = 0;k<fsize;k++) {
+				for(int i = 0;i<N;i++) {
 					tmp = ((*points[i])[k] - u[j][k]);
 					v[j][k] += tmp*tmp*p[i][j];
 				}
 				v[j][k] /= pg[j];
+
+                /*  
+                if(!(v[j][k] >= 0) && !(v[j][k] <= 0)) {
+                    printf("%lf\n", pg[j]);
+                    getchar();
+                }
+                */
 			}
 			
 			converge &= GaussianModel[j]->update(u[j],v[j]);
@@ -247,9 +335,12 @@ void KMeanState::EM(int g)
 	}
 	//printf("cnt = %d\n",cnt);
 //	puts("over");
+    /*  
+
 	delete [] u;
 	delete [] v;
 	delete [] p;
+    */
 	delete [] pg;
 }
 
@@ -351,9 +442,12 @@ bool KMeanState::addTwoCluster(const Cluster * c, double smallNum)
 		return false;
 	}
 
-	double w = (double)p.size();
+	double w = (double)(p.size());
+
 	c1->w = w1/w*wt; c1->g=g1;
 	c2->w = w2/w*wt; c2->g=g2;
+
+//    printf("%lf\n", c1->w);
 	ClusterSet.push_back(c1);
 	ClusterSet.push_back(c2);
 	return true;
@@ -399,6 +493,7 @@ void KMeanState::saveGaussianModel()
 	for(int i = 0;i<s;i++){
 		GaussianModel.push_back(ClusterSet[i]->g);
 		w.push_back(ClusterSet[i]->w);
+//        printf("%lf\n", ClusterSet[i]->w);
 		ClusterSet[i]->g = NULL;
 	}
 }
@@ -515,8 +610,8 @@ double KMeanState::KMeanNodeCost(Feature *f){
 		if(fabs(w[i]) < eps) continue;
 		double t = GaussianModel[i]->minuLogP(f) - log(w[i]);
 		if(ret == Feature::IllegalDist) {
-//            if(!(t<=0) && !(t>=0))
-//                printf("%lf\n", log(w[i]));
+//            if(!(t<=0) && !(t>=0) && w[i] == 0)
+//                printf("%lf %lf\n", log(w[i]), w[i]);
 
             ret = t;
         }
