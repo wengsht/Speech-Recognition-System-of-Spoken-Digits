@@ -78,6 +78,7 @@ void HMMAutomatonSet::reGenerateAutomaton() {
                 automatons[word] = new HMMKMeanAutomaton(&(templateItr->second), specificStateNum, gaussNum, trainTimes); 
             else 
                 automatons[word] = new HMMSoftAutomaton(&(templateItr->second), specificStateNum, gaussNum, trainTimes); 
+
         }
 
         delete []words;

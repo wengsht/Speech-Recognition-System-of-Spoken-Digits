@@ -35,7 +35,7 @@ void Tip(const char * msg,...){
 //	printf("Tip: ");
     toupper(Buffer[0]);
 	printf ("%s", Buffer);
-	printf("\n");
+	printf(NONE "\n");
 }
 
 void Log(const char * msg,...){
@@ -48,7 +48,7 @@ void Log(const char * msg,...){
     toupper(Buffer[0]);
 	printf("Log: ");
 	printf ("%s", Buffer);
-	printf("\n");
+	printf(NONE "\n");
 }
 
 void ErrorLog(const char *msg,...){

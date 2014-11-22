@@ -48,6 +48,7 @@ class HMMSeqTrainer {
         void buildModels();
     protected:
         std::map<std::string, HMMAutomaton *> *automatons;
+
         std::vector< HMMAutomaton *> automatonVec;
 
         std::vector<WaveFeatureOP> * mixedWavs;

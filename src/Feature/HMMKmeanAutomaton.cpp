@@ -149,7 +149,7 @@ bool HMMKMeanAutomaton::updateTransfer() {
 
             int numNode = seg.second - seg.first + 1;
 
-            if(numNode == 0) continue;
+            if(numNode <= 0) continue;
             wholeCnt += numNode;
 
             nxtCnt[0] += numNode - 1;
@@ -174,9 +174,9 @@ bool HMMKMeanAutomaton::updateTransfer() {
             if(idz+i > stateNum) break;
             remain -= nxtCnt[idz];
         }
-        int addTo = i + DTW_MAX_FORWARD - 1;
+        int addTo = DTW_MAX_FORWARD - 1;
 
-        if(addTo <= stateNum)
+        if(addTo + i <= stateNum)
             nxtCnt[addTo] += remain;
 
         if(wholeCnt == 0) {
@@ -193,6 +193,7 @@ bool HMMKMeanAutomaton::updateTransfer() {
             transferCost[i][i+j] = newCost;
         }
     }
+
 
     if(stateNum >= 2) {
         int beginSkipCnt = 0;

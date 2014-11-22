@@ -57,6 +57,7 @@ void SeqModel::initNOEmitStates( const ParseGraph & graph ) {
 void SeqModel::refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, HMMAutomaton *> & automatons, int &edgeCnt, int &stateCnt, int &nonEmitEdgeCnt) {
     const int &from = simpleEdge.from;
     const int &to   = simpleEdge.to;
+//    printf("%d %d\n", from, to);
     const double &probability = simpleEdge.probability;
     const std::string &word = simpleEdge.word;
 
@@ -166,7 +167,7 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
         *head = edges.size() - 1;
     }
 
-    assert(edgeCnt == edges.size() - 1);
+    assert(edgeCnt < edges.size());
 
     SeqEdge &edge = edges[edgeCnt++];
 
@@ -184,6 +185,7 @@ void SeqModel::recognition(WaveFeatureOP & input, std::vector<std::string> & res
 
 void SeqModel::reSegment(WaveFeatureOP & input, int templateIdx) {
     dtw( input, FULL_PATH );
+//    printf("%p\n", this);
 
     std::vector< int > path;
     collectBestPath( path, input.size() );
@@ -198,11 +200,15 @@ void SeqModel::reSegment(WaveFeatureOP & input, int templateIdx) {
     KMeanState *state;
     for(pathIdx = 1; pathIdx < path.size(); pathIdx ++) {
         stateID = path[pathIdx];
+//        Log("%d->%d : %d ", preState, stateID, pathIdx);
+
         if(stateID != preState) {
             // no support soft yet..
             state = (KMeanState *)(states[preState].hmmState);
 
+//            Log("State %d: %d->%d\n", preState, startI, pathIdx - 1);
             state->edgePoints[templateIdx] = std::make_pair(startI, pathIdx - 1);
+
 
             preState = stateID;
             startI = pathIdx;
@@ -210,7 +216,10 @@ void SeqModel::reSegment(WaveFeatureOP & input, int templateIdx) {
     }
     state = (KMeanState *)(states[preState].hmmState);
 
-    state->edgePoints[templateIdx] = std::make_pair(startI, path.size() - 1);
+//    Log("State %d: %d->%d\n", preState, startI, input.size()- 1);
+    state->edgePoints[templateIdx] = std::make_pair(startI, input.size() - 1);
+
+//        printf("xxoo %d\n", ((KMeanState *)(states[15].hmmState))->points.size());
 }
 
 void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz) {
@@ -289,7 +298,6 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
     if(wavSiz <= 0) 
         return ;
 
-
     assert( fullPath.size() >= wavSiz );
     assert( fullPath[0].size() >= states.size() );
 
@@ -298,22 +306,13 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
 
     for(wavIdx = wavSiz - 1; wavIdx >= 0; wavIdx --) {
         while(!isEmit(stateID) )  {
-//            printf ("%d %d\n", stateID, wavIdx);
             stateID = fullPath[wavIdx][stateID];
         }
-//        printf("%d ", stateID);
 
         path[wavIdx] = stateID;
 
         stateID = fullPath[wavIdx][stateID];
-
-        /*  
-        stateID = fullPath[wavIdx][stateID];
-        while(wavIdx >= 1 && !isEmit(stateID) ) 
-            stateID = fullPath[wavIdx-1][stateID];
-            */
     }
-//    puts("");
 }
 
 void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_type, int wavSiz) {
@@ -420,14 +419,20 @@ void SeqModel::dtw(WaveFeatureOP & wav, SEQ_DTW_PATH_TYPE path_type) {
     double bestVal = Feature::IllegalDist;
 
     for(columnIdx = 0; columnIdx < wavSize; columnIdx ++) {
+//        Log(GREEN "Forwarding column [%d]\n", columnIdx);
+
         bestVal = forwardColumn(link, wav, columnIdx, bestVal + beamThr);
+
+//        printf("%d %lf\n", columnIdx, bestVal);
+
+//        Log("RED %lf", link[getRollIdx(columnIdx)].nodes[Terminal_States].cost);
         /*  
         if(link[getRollIdx(columnIdx)].nodes[7].lastUpdate == columnIdx)
             printf(RED "%d %d\n", columnIdx, link[getRollIdx(columnIdx)].nodes[7].preIdx);
             */
     }
 
-    Log(BLUE "Best Cost: %lf\n" NONE, link[getRollIdx(wavSize - 1)].nodes[Terminal_States].cost);
+    Tip(BLUE "Best Cost: %lf\n" , link[getRollIdx(wavSize - 1)].nodes[Terminal_States].cost);
 
     delete [] link[0].nodes;
     delete [] link[1].nodes;
@@ -454,7 +459,12 @@ void SeqModel::preparePathRecord(WaveFeatureOP & wav) {
 double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int columnIdx, double threshold) {
     double bestVal = Feature::IllegalDist;
 
-    assert(columnIdx < wav.size());
+//    assert(columnIdx < wav.size());
+    if(columnIdx >= wav.size()) {
+        Warn("Forwarding a columnIdx larger than wav SIZE!");
+        return bestVal;
+    }
+
     int rollIdx = getRollIdx( columnIdx );
     int preIdx = rollIdx ^ 1;
 
@@ -465,14 +475,18 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
     for(int preStateID = link[preIdx].head; \
             preStateID != NIL_EDGE; \
             preStateID = link[preIdx].nodes[preStateID].next) {
+
         Dtw_Column_Node & dtw_node = link[preIdx].nodes[preStateID];
 
         double preCost = dtw_node.cost;
         double nextCost;
 
+
         // beam
-        if(doBeam && Feature::better(threshold, preCost))
+        if(doBeam && Feature::better(threshold, preCost)) {
+//            Log("beam %lf", threshold);
             continue;
+        }
 
         // preStateID --- edges[eID] ---> nextStateID
         for(int eID = states[preStateID].head; \
@@ -480,12 +494,25 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
                 eID = edges[eID].next) {
             nextStateID = edges[eID].to;
 
-//            if(columnIdx == 0 && preStateID == 3) 
-//                printf("%d\n", nextStateID);
+//            Log("Edge Cost: %lf\n", edges[eID].cost);
 
             nextCost = preCost + edges[eID].cost;
 
-            nextCost += states[nextStateID].hmmState->nodeCost( &(wav[columnIdx]) );
+            /*  
+        if(!(nextCost>= 0) && !(nextCost<= 0)) {
+                printf("%lf %lf %lf\n", nextCost,preCost, edges[eID].cost);
+                getchar();
+        }
+        */
+
+
+            KMeanState * state = (KMeanState *)(states[nextStateID].hmmState);
+            double nodeCost = state->nodeCost( &(wav[columnIdx]) );
+
+            nextCost += nodeCost;
+
+//            Log("Node Cost: %lf\n", nodeCost);
+//            Log("Cost: %lf\n", nextCost);
 
             if(Feature::better(nextCost, bestVal)) 
                 bestVal = nextCost;
@@ -537,7 +564,17 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
 
     Dtw_Column_Node & dtw_node = link[rollIdx].nodes[stateID];
 
-    double updateFlag = false;
+//    printf("ddx %d %d %lf\n", preStateID, stateID, newCost);
+
+    /*
+        if(!(newCost>= 0) && !(newCost<= 0)) {
+            printf("%lf\n", newCost);
+            printf("%d %d\n", preStateID, stateID);
+                getchar();
+        }
+        */
+
+    bool updateFlag = false;
 
     // new node!!
     if(dtw_node.lastUpdate != columnIdx) {
@@ -555,6 +592,8 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
         updateFlag = true;
 
     if(updateFlag) {
+//        printf("new \n");
+//        if(newCost > Feature::IllegalDist) 
         dtw_node.cost = newCost;
 
         // record path 
@@ -601,6 +640,13 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
             }
         }
 
+        /*  
+        if(!(newCost>= 0) && !(newCost<= 0)) {
+            printf("Star %lf %lf %lf\n", 1.0, states[stateID].forwardCost,  newCost);
+            getchar();
+        }
+        */
+
         tryForwardToStar( link, columnIdx, stateID, newCost );
     }
 }
@@ -611,5 +657,16 @@ void SeqModel::tryForwardToStar( Dtw_Column_Link *link, int columnIdx, int state
 
     double newCost = preCost + states[stateID].forwardCost;
 
+//    if(states[stateID].leafForwardIdx == 1)
+//        printf("xxd %lf\n", newCost);
+
     tryUpdate(link, columnIdx, stateID, states[stateID].leafForwardIdx, newCost);
+
+    /*  
+        if(!(newCost>= 0) && !(newCost<= 0)) {
+            printf("Star %lf %lf %lf\n", preCost, states[stateID].forwardCost,  newCost);
+                getchar();
+        }
+        */
+
 }

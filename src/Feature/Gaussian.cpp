@@ -95,20 +95,35 @@ void Gaussian::addFeature(Feature * f, double probability) {
 
 double Gaussian::minuLogP(Feature* f){
 	Feature & p = *f;
-	double ret=0;
+	double ret = 0;
 	double v;
 	double d;
 	for(int i = 0;i<featureSize;i++){
 		v = cvar[i];
 		//v2 = v*v;
 		d = p[i] - mean[i];
-		ret+= log(2*PI*v)+(d*d/v);
+        if(v == 0.0) {
+            if(d == 0) 
+                ret += 0.0;
+            else 
+                ret += Feature::IllegalDist;
+
+            continue;
+        }
+           
+		ret += log(2*PI*v)+(d*d/v);
+        /*  
+        if(!(ret >= 0 ) && !(ret <= 0))
+            printf("%lf\n", v);
+            */
 	}
 	ret = ret * 0.5;
 	return ret;
 }
 
 double Gaussian::P(Feature *f){
+    return cost2p(minuLogP(f));
+
 	Feature &p = *f;
 	double a = 1;
 	double r = 0;
@@ -116,6 +131,16 @@ double Gaussian::P(Feature *f){
 		double v=cvar[i];
 		double d=p[i]-mean[i];	
 		a *= v;
+//        if(v == 0)
+//        printf("var %lf\n", v);
+        if(v == 0.0) {
+            if(d == 0) 
+                r += 0.0;
+            else 
+                r += Feature::IllegalDist;
+
+            continue;
+        }
 		r += d*d/v;
 	}
 

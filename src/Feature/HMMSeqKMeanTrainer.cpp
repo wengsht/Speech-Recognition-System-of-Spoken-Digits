@@ -40,6 +40,12 @@ void HMMSeqKMeanTrainer::hmmSeqTrain() {
         if(! iteratorSeqTrain())
             break;
     }
+
+    /*  
+    std::ofstream out("3.dot");
+    (trainWavs[2].model)->dumpDot(out);
+    out.close();
+    */
 }
 
 bool HMMSeqKMeanTrainer::iteratorSeqTrain() {
@@ -55,11 +61,6 @@ bool HMMSeqKMeanTrainer::iteratorSeqTrain() {
         automaton->allEmptyStateSegment();
     }
 
-//    printf("%p\n", &((*this->mixedWavs)[0]));
-//    printf("%d\n", (*this->mixedWavs)[0].size());
-//    printf("%p\n", (trainWavs[0].wav));
-//    printf("%d\n", (trainWavs[0].wav)->size());
-
     // do dtw to search best path
     for(wavIdx = 0; wavIdx < trainWavs.size(); wavIdx ++) {
         (trainWavs[wavIdx].model)->reSegment( *(trainWavs[wavIdx].wav), wavIdx );
@@ -70,8 +71,9 @@ bool HMMSeqKMeanTrainer::iteratorSeqTrain() {
         HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *)(automatonVec[autoIdx]);
 
         // update parameters!!
-        bigChange |= automaton[autoIdx].updateTransfer();
-        automaton[autoIdx].iterateGauss();
+        bigChange |= automaton->updateTransfer();
+
+        automaton->iterateGauss();
     }
 
     refreshModels();
