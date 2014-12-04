@@ -1,0 +1,248 @@
+\hypertarget{class_h_m_m_automaton_set}{\section{H\+M\+M\+Automaton\+Set Class Reference}
+\label{class_h_m_m_automaton_set}\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+}
+
+
+{\ttfamily \#include $<$H\+M\+M\+Automaton\+Set.\+h$>$}
+
+Inheritance diagram for H\+M\+M\+Automaton\+Set\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_h_m_m_automaton_set}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_h_m_m_automaton_set_afa2bb2913d8c0db8342ddd8bd7e1bb04}{H\+M\+M\+Automaton\+Set} (int state\+Num=\hyperlink{configure__hmm_8h_aa9cc71cb42394379957677c761aae79e}{A\+U\+T\+O\+M\+A\+T\+O\+N\+\_\+\+S\+T\+A\+T\+E\+\_\+\+N\+U\+M}, int \hyperlink{pro6__demo_8cpp_a923ffcfa3c56ccdba17bc4e700247d54}{gauss\+Num}=\hyperlink{configure__hmm_8h_a8f9db0624fff0b17f641785bb8d66a82}{G\+A\+U\+S\+S\+I\+A\+N\+\_\+\+N\+U\+M}, int train\+Times=\hyperlink{configure__hmm_8h_a52e22519b5a37e58632e9183d5197b86}{M\+A\+X\+\_\+\+T\+R\+A\+I\+N\+\_\+\+T\+I\+M\+E\+S})
+\item 
+\hyperlink{class_h_m_m_automaton_set_a41a4e5d534568262a640a9237c73926d}{$\sim$\+H\+M\+M\+Automaton\+Set} ()
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_h_m_m_automaton_set_a686a1c4d3346935b3d8eec625b82510e}{train} (\hyperlink{class_h_m_m_automaton_aa3476c86db5e0791de6f07076f220348}{H\+M\+M\+Automaton\+::\+T\+R\+A\+I\+N\+\_\+\+T\+Y\+P\+E} \hyperlink{readhtk_8m_ac7798f4aec24aa6076b2b222bd91d4fd}{type}=\hyperlink{class_h_m_m_automaton_aa3476c86db5e0791de6f07076f220348a725fd42edf8b8e4b515b6296a7d67bb3}{H\+M\+M\+Automaton\+::\+S\+E\+G})
+\item 
+std\+::string \hyperlink{class_h_m_m_automaton_set_a382c05997febb1e859618f5bf9467b47}{recognition} (\hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} \&input)
+\item 
+void \hyperlink{class_h_m_m_automaton_set_ad505e5de6b64837fa67e4873fcfc1e64}{clear} ()
+\item 
+void \hyperlink{class_h_m_m_automaton_set_a377877b860bba5582aa9a6d620e4263a}{dump\+Automaton} (std\+::ostream \&out)
+\item 
+virtual void \hyperlink{class_h_m_m_automaton_set_a2d3881f6b36d59a8f9ef7b5fd08a22c0}{hmm\+First\+Itr} ()
+\item 
+void \hyperlink{class_h_m_m_automaton_set_a9b4e5a865ebbf115c5a59790ec906730}{load} (std\+::ifstream \&in)
+\item 
+void \hyperlink{class_h_m_m_automaton_set_a42f527337ed25942fed703b4afde8ea4}{store} (std\+::ofstream \&out)
+\item 
+std\+::map$<$ std\+::string, \\*
+\hyperlink{class_h_m_m_automaton}{H\+M\+M\+Automaton} $\ast$ $>$ \& \hyperlink{class_h_m_m_automaton_set_a4b9e182c8d99965bf8356153a9751c1e}{get\+Automatons} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_h_m_m_automaton_set_a9bf2f84215b32d9f06c01842281f3456}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (\hyperlink{class_h_m_m_state_a35d2a059c2410a52110329b637940046}{H\+M\+M\+State\+::\+State\+Type}, state\+Type, State\+Type)
+\item 
+\hyperlink{class_h_m_m_automaton_set_a5e94ca0c9729d121d3d71f5c138545c5}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (int, state\+Num, State\+Num)
+\item 
+\hyperlink{class_h_m_m_automaton_set_a8a9ab8c64dbcb951066c136e594a3264}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (int, \hyperlink{pro6__demo_8cpp_a923ffcfa3c56ccdba17bc4e700247d54}{gauss\+Num}, Gauss\+Num)
+\item 
+\hyperlink{class_h_m_m_automaton_set_a3dd92ba92d23d98952e0aea2cdbaef62}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (int, train\+Times, Train\+Times)
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_h_m_m_automaton_set_a616de9df965bbe999c765dcba59462c2}{seg\+Train} ()
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_h_m_m_automaton_set_a29d9294858a9b964c9a906a8ed3cdee9}{seq\+Train} ()
+\item 
+void \hyperlink{class_h_m_m_automaton_set_a7130ce49809a0619d22ea31c8c35d3a6}{re\+Generate\+Automaton} ()
+\item 
+int \hyperlink{class_h_m_m_automaton_set_a6dd647c4d4e12f8b59be24b0d1aecd92}{get\+Specific\+State\+Num} (std\+::string \&word)
+\item 
+void \hyperlink{class_h_m_m_automaton_set_a44d6f56952334fe1c94751e7db25f65e}{load\+Spec\+State\+Num} ()
+\end{DoxyCompactItemize}
+\subsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_h_m_m_automaton_set_a57dd811742567de33a326709435b15bd}{hmm\+Train\+Task} (void $\ast$in)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::map$<$ std\+::string, \\*
+\hyperlink{class_h_m_m_automaton}{H\+M\+M\+Automaton} $\ast$ $>$ \hyperlink{class_h_m_m_automaton_set_ae35f541c8b78e3cdca06f20df905aeda}{automatons}
+\item 
+std\+::vector$<$ \hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} $>$ \hyperlink{class_h_m_m_automaton_set_a255954d8bebfd64588f72f8b1fa13b1b}{mixed\+Wavs}
+\item 
+std\+::map$<$ std\+::string, int $>$ \hyperlink{class_h_m_m_automaton_set_a331349a05f8ada38dc5704a214ecb044}{spec\+State\+Nums}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_h_m_m_automaton_set_afa2bb2913d8c0db8342ddd8bd7e1bb04}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{H\+M\+M\+Automaton\+Set}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Automaton\+Set\+::\+H\+M\+M\+Automaton\+Set (
+\begin{DoxyParamCaption}
+\item[{int}]{state\+Num = {\ttfamily {\bf A\+U\+T\+O\+M\+A\+T\+O\+N\+\_\+\+S\+T\+A\+T\+E\+\_\+\+N\+U\+M}}, }
+\item[{int}]{gauss\+Num = {\ttfamily {\bf G\+A\+U\+S\+S\+I\+A\+N\+\_\+\+N\+U\+M}}, }
+\item[{int}]{train\+Times = {\ttfamily {\bf M\+A\+X\+\_\+\+T\+R\+A\+I\+N\+\_\+\+T\+I\+M\+E\+S}}}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_afa2bb2913d8c0db8342ddd8bd7e1bb04}
+\hypertarget{class_h_m_m_automaton_set_a41a4e5d534568262a640a9237c73926d}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!````~H\+M\+M\+Automaton\+Set@{$\sim$\+H\+M\+M\+Automaton\+Set}}
+\index{````~H\+M\+M\+Automaton\+Set@{$\sim$\+H\+M\+M\+Automaton\+Set}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{$\sim$\+H\+M\+M\+Automaton\+Set}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Automaton\+Set\+::$\sim$\+H\+M\+M\+Automaton\+Set (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_a41a4e5d534568262a640a9237c73926d}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_h_m_m_automaton_set_ad505e5de6b64837fa67e4873fcfc1e64}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!clear@{clear}}
+\index{clear@{clear}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{clear}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Automaton\+Set\+::clear (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_ad505e5de6b64837fa67e4873fcfc1e64}
+\hypertarget{class_h_m_m_automaton_set_a377877b860bba5582aa9a6d620e4263a}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!dump\+Automaton@{dump\+Automaton}}
+\index{dump\+Automaton@{dump\+Automaton}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{dump\+Automaton}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Automaton\+Set\+::dump\+Automaton (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{out}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_a377877b860bba5582aa9a6d620e4263a}
+\hypertarget{class_h_m_m_automaton_set_a4b9e182c8d99965bf8356153a9751c1e}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!get\+Automatons@{get\+Automatons}}
+\index{get\+Automatons@{get\+Automatons}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{get\+Automatons}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$ std\+::string, {\bf H\+M\+M\+Automaton} $\ast$$>$\& H\+M\+M\+Automaton\+Set\+::get\+Automatons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_h_m_m_automaton_set_a4b9e182c8d99965bf8356153a9751c1e}
+\hypertarget{class_h_m_m_automaton_set_a6dd647c4d4e12f8b59be24b0d1aecd92}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!get\+Specific\+State\+Num@{get\+Specific\+State\+Num}}
+\index{get\+Specific\+State\+Num@{get\+Specific\+State\+Num}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{get\+Specific\+State\+Num}]{\setlength{\rightskip}{0pt plus 5cm}int H\+M\+M\+Automaton\+Set\+::get\+Specific\+State\+Num (
+\begin{DoxyParamCaption}
+\item[{std\+::string \&}]{word}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a6dd647c4d4e12f8b59be24b0d1aecd92}
+\hypertarget{class_h_m_m_automaton_set_a2d3881f6b36d59a8f9ef7b5fd08a22c0}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!hmm\+First\+Itr@{hmm\+First\+Itr}}
+\index{hmm\+First\+Itr@{hmm\+First\+Itr}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{hmm\+First\+Itr}]{\setlength{\rightskip}{0pt plus 5cm}virtual void H\+M\+M\+Automaton\+Set\+::hmm\+First\+Itr (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_h_m_m_automaton_set_a2d3881f6b36d59a8f9ef7b5fd08a22c0}
+\hypertarget{class_h_m_m_automaton_set_a57dd811742567de33a326709435b15bd}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!hmm\+Train\+Task@{hmm\+Train\+Task}}
+\index{hmm\+Train\+Task@{hmm\+Train\+Task}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{hmm\+Train\+Task}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Automaton\+Set\+::hmm\+Train\+Task (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a57dd811742567de33a326709435b15bd}
+\hypertarget{class_h_m_m_automaton_set_a9b4e5a865ebbf115c5a59790ec906730}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!load@{load}}
+\index{load@{load}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Automaton\+Set\+::load (
+\begin{DoxyParamCaption}
+\item[{std\+::ifstream \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_a9b4e5a865ebbf115c5a59790ec906730}
+\hypertarget{class_h_m_m_automaton_set_a44d6f56952334fe1c94751e7db25f65e}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!load\+Spec\+State\+Num@{load\+Spec\+State\+Num}}
+\index{load\+Spec\+State\+Num@{load\+Spec\+State\+Num}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{load\+Spec\+State\+Num}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Automaton\+Set\+::load\+Spec\+State\+Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a44d6f56952334fe1c94751e7db25f65e}
+\hypertarget{class_h_m_m_automaton_set_a9bf2f84215b32d9f06c01842281f3456}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Automaton\+Set\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{{\bf H\+M\+M\+State\+::\+State\+Type}}]{, }
+\item[{state\+Type}]{, }
+\item[{State\+Type}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a9bf2f84215b32d9f06c01842281f3456}
+\hypertarget{class_h_m_m_automaton_set_a5e94ca0c9729d121d3d71f5c138545c5}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Automaton\+Set\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{int}]{, }
+\item[{state\+Num}]{, }
+\item[{State\+Num}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a5e94ca0c9729d121d3d71f5c138545c5}
+\hypertarget{class_h_m_m_automaton_set_a8a9ab8c64dbcb951066c136e594a3264}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Automaton\+Set\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{int}]{, }
+\item[{{\bf gauss\+Num}}]{, }
+\item[{Gauss\+Num}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a8a9ab8c64dbcb951066c136e594a3264}
+\hypertarget{class_h_m_m_automaton_set_a3dd92ba92d23d98952e0aea2cdbaef62}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Automaton\+Set\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{int}]{, }
+\item[{train\+Times}]{, }
+\item[{Train\+Times}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a3dd92ba92d23d98952e0aea2cdbaef62}
+\hypertarget{class_h_m_m_automaton_set_a382c05997febb1e859618f5bf9467b47}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!recognition@{recognition}}
+\index{recognition@{recognition}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{recognition}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string H\+M\+M\+Automaton\+Set\+::recognition (
+\begin{DoxyParamCaption}
+\item[{{\bf Wave\+Feature\+O\+P} \&}]{input}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_a382c05997febb1e859618f5bf9467b47}
+\hypertarget{class_h_m_m_automaton_set_a7130ce49809a0619d22ea31c8c35d3a6}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!re\+Generate\+Automaton@{re\+Generate\+Automaton}}
+\index{re\+Generate\+Automaton@{re\+Generate\+Automaton}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{re\+Generate\+Automaton}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Automaton\+Set\+::re\+Generate\+Automaton (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a7130ce49809a0619d22ea31c8c35d3a6}
+\hypertarget{class_h_m_m_automaton_set_a616de9df965bbe999c765dcba59462c2}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!seg\+Train@{seg\+Train}}
+\index{seg\+Train@{seg\+Train}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{seg\+Train}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} H\+M\+M\+Automaton\+Set\+::seg\+Train (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a616de9df965bbe999c765dcba59462c2}
+\hypertarget{class_h_m_m_automaton_set_a29d9294858a9b964c9a906a8ed3cdee9}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!seq\+Train@{seq\+Train}}
+\index{seq\+Train@{seq\+Train}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{seq\+Train}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} H\+M\+M\+Automaton\+Set\+::seq\+Train (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a29d9294858a9b964c9a906a8ed3cdee9}
+\hypertarget{class_h_m_m_automaton_set_a42f527337ed25942fed703b4afde8ea4}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!store@{store}}
+\index{store@{store}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{store}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Automaton\+Set\+::store (
+\begin{DoxyParamCaption}
+\item[{std\+::ofstream \&}]{out}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_a42f527337ed25942fed703b4afde8ea4}
+\hypertarget{class_h_m_m_automaton_set_a686a1c4d3346935b3d8eec625b82510e}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!train@{train}}
+\index{train@{train}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{train}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} H\+M\+M\+Automaton\+Set\+::train (
+\begin{DoxyParamCaption}
+\item[{{\bf H\+M\+M\+Automaton\+::\+T\+R\+A\+I\+N\+\_\+\+T\+Y\+P\+E}}]{type = {\ttfamily {\bf H\+M\+M\+Automaton\+::\+S\+E\+G}}}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_automaton_set_a686a1c4d3346935b3d8eec625b82510e}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_h_m_m_automaton_set_ae35f541c8b78e3cdca06f20df905aeda}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!automatons@{automatons}}
+\index{automatons@{automatons}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{automatons}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$ std\+::string, {\bf H\+M\+M\+Automaton} $\ast$$>$ H\+M\+M\+Automaton\+Set\+::automatons\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_ae35f541c8b78e3cdca06f20df905aeda}
+\hypertarget{class_h_m_m_automaton_set_a255954d8bebfd64588f72f8b1fa13b1b}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!mixed\+Wavs@{mixed\+Wavs}}
+\index{mixed\+Wavs@{mixed\+Wavs}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{mixed\+Wavs}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf Wave\+Feature\+O\+P} $>$ H\+M\+M\+Automaton\+Set\+::mixed\+Wavs\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a255954d8bebfd64588f72f8b1fa13b1b}
+\hypertarget{class_h_m_m_automaton_set_a331349a05f8ada38dc5704a214ecb044}{\index{H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}!spec\+State\+Nums@{spec\+State\+Nums}}
+\index{spec\+State\+Nums@{spec\+State\+Nums}!H\+M\+M\+Automaton\+Set@{H\+M\+M\+Automaton\+Set}}
+\subsubsection[{spec\+State\+Nums}]{\setlength{\rightskip}{0pt plus 5cm}std\+::map$<$ std\+::string, int$>$ H\+M\+M\+Automaton\+Set\+::spec\+State\+Nums\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_automaton_set_a331349a05f8ada38dc5704a214ecb044}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Feature/\hyperlink{_h_m_m_automaton_set_8h}{H\+M\+M\+Automaton\+Set.\+h}\item 
+src/\+Feature/\hyperlink{_h_m_m_automaton_set_8cpp}{H\+M\+M\+Automaton\+Set.\+cpp}\end{DoxyCompactItemize}

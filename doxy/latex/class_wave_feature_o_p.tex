@@ -1,0 +1,310 @@
+\hypertarget{class_wave_feature_o_p}{\section{Wave\+Feature\+O\+P Class Reference}
+\label{class_wave_feature_o_p}\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+}
+
+
+{\ttfamily \#include $<$Wave\+Feature\+O\+P.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500}{Op\+Type} \{ \hyperlink{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500a60db933490e2134e59c4c2e1fb30ea66}{Raw}, 
+\hyperlink{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500a2aede4353c0fdb16edbc21db4085191e}{Beam}
+ \}
+\item 
+enum \hyperlink{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84}{L\+O\+A\+D\+\_\+\+T\+Y\+P\+E} \{ \hyperlink{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84a56cb938408d6c1cfc350438fe83bb1a0}{O\+N\+L\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+M\+E}, 
+\hyperlink{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84a1b64a07dfde0c2d4132bc343f4475856}{F\+U\+L\+L\+\_\+\+L\+O\+A\+D}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_wave_feature_o_p_a706b21be0839ad0693d98a39aa1be7f0}{Wave\+Feature\+O\+P} (const std\+::vector$<$ \hyperlink{class_feature}{Feature} $>$ \&template\+Feature, std\+::string file\+Name=\char`\"{}null\char`\"{}, std\+::string word=\char`\"{}null\char`\"{})
+\item 
+\hyperlink{class_wave_feature_o_p_ad046b3e250106abe16d9125a029bedc2}{$\sim$\+Wave\+Feature\+O\+P} ()
+\item 
+void \hyperlink{class_wave_feature_o_p_a39443a329cc706eaceefb28c598b297f}{syn\+Init} (std\+::vector$<$ \hyperlink{class_feature}{Feature} $>$ $\ast$\hyperlink{class_wave_feature_o_p_a2e67fe9dc06889453b70fe6efa19554f}{input\+Feature})
+\item 
+double \hyperlink{class_wave_feature_o_p_aa71ceac341c47742cb1ebe09bda1294a}{forward\+Column} (double \hyperlink{rawdtw_8cpp_afcfbedec6ebde62c6a091ce335836ef1}{threshold}=0.\+0)
+\item 
+double \hyperlink{class_wave_feature_o_p_a3a8dd15d19899586e5953886c7ee6de4}{asyn\+Dtw} (std\+::vector$<$ \hyperlink{class_feature}{Feature} $>$ $\ast$, double add\+Threshold=-\/5.\+0)
+\item 
+int \hyperlink{class_wave_feature_o_p_a44bed4fe2d42a232cd9f3e9d812ad240}{get\+Row\+Num} ()
+\item 
+\hyperlink{class_feature}{Feature} \& \hyperlink{class_wave_feature_o_p_a6a165bd04bb4f29e9b408981cca66328}{operator\mbox{[}$\,$\mbox{]}} (int idx)
+\item 
+int \hyperlink{class_wave_feature_o_p_a039099d115a4fa490ddb3296441a81e0}{size} ()
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_wave_feature_o_p_aed6ce75f665daf168b5782672f89096a}{dump\+Color\+Path} (std\+::ostream \&Out)
+\item 
+bool \hyperlink{class_wave_feature_o_p_a124a8caab52ea00e1cf0165aa1d071c9}{operator==} (const \hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} \&b)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_wave_feature_o_p_a2f106221542839a8cc7bf7289242ba73}{R\+E\+F\+E\+R\+E\+N\+C\+E\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E} (std\+::vector$<$ \hyperlink{class_feature}{Feature} $>$, template\+Feature, Template\+Feature)
+\item 
+\hyperlink{class_wave_feature_o_p_a7fd393cae6541e5e5a4d341eca41e06f}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (bool, do\+Record\+Path, Do\+Record\+Path)
+\item 
+\hyperlink{class_wave_feature_o_p_ab0a54a0e86eaa4a0c21f990f7280e6bd}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (std\+::string, \hyperlink{rawdtw_8cpp_a7171b31127817befcc9fc0fb8f368a54}{template\+File\+Name}, File\+Name)
+\item 
+\hyperlink{class_wave_feature_o_p_a8c2271f6b26948fd6f4b8eb83ee72ed0}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (std\+::string, \+\_\+word, Word)
+\item 
+\hyperlink{class_wave_feature_o_p_aa379ff8e29b7d67eb154ca1fd9b698f4}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (\hyperlink{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500}{Wave\+Feature\+O\+P\+::\+Op\+Type}, op\+Type, \hyperlink{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500}{Op\+Type})
+\item 
+\hyperlink{class_wave_feature_o_p_a2851a010753b408b00e4077df2a8e1ce}{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E} (double, best\+Value, Dtw\+Result)
+\item 
+double \hyperlink{class_wave_feature_o_p_af586ac7dda241f1fd7def8a8a09a2181}{cal\+Dist} (int row\+Idx, int \hyperlink{class_wave_feature_o_p_a506bd025079326383412704dd93c402d}{column\+Idx})
+\item 
+void \hyperlink{class_wave_feature_o_p_a18142ce4be84ca4663c8ea8e208f5a02}{update\+Dtw\+Node} (int \hyperlink{class_wave_feature_o_p_a506bd025079326383412704dd93c402d}{column\+Idx}, int row\+Idx, double new\+Path\+Dist)
+\item 
+int \hyperlink{class_wave_feature_o_p_ac9c6eec84457d28e34b8002e364cecbc}{get\+Roll\+Idx} (int \hyperlink{class_wave_feature_o_p_a506bd025079326383412704dd93c402d}{column\+Idx})
+\item 
+void \hyperlink{class_wave_feature_o_p_a7568c3f771218b5e58988963a77e68da}{record\+Path} (int best\+Idx)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \hyperlink{class_wave_feature_o_p_a7e91a4de4afa4703c7e2e77e2ad6b73d}{path}
+\item 
+int \hyperlink{class_wave_feature_o_p_ad46053ff42554d848423b0caabeea87f}{head} \mbox{[}2\mbox{]}
+\item 
+std\+::vector$<$ int $>$ \hyperlink{class_wave_feature_o_p_ad14d7d2758bef1c990adda645f1a1d34}{column\+Nxt} \mbox{[}2\mbox{]}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_wave_feature_o_p_a8341cc94705d4f96a53e61b397e26641}{column\+Dtw\+Res} \mbox{[}2\mbox{]}
+\item 
+std\+::vector$<$ int $>$ \hyperlink{class_wave_feature_o_p_abb3904a95a48013acf81a589a73983c0}{last\+Update}
+\item 
+std\+::vector$<$ \hyperlink{class_feature}{Feature} $>$ $\ast$ \hyperlink{class_wave_feature_o_p_a2e67fe9dc06889453b70fe6efa19554f}{input\+Feature}
+\item 
+int \hyperlink{class_wave_feature_o_p_a506bd025079326383412704dd93c402d}{column\+Idx}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{class_wave_feature_o_p_ad4482e96f3bca81925861baa598d01ed}{Path\+Split\+Idx} = -\/1
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!L\+O\+A\+D\+\_\+\+T\+Y\+P\+E@{L\+O\+A\+D\+\_\+\+T\+Y\+P\+E}}
+\index{L\+O\+A\+D\+\_\+\+T\+Y\+P\+E@{L\+O\+A\+D\+\_\+\+T\+Y\+P\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{L\+O\+A\+D\+\_\+\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Wave\+Feature\+O\+P\+::\+L\+O\+A\+D\+\_\+\+T\+Y\+P\+E}}}\label{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{O\+N\+L\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+M\+E@{O\+N\+L\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+M\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!O\+N\+L\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+M\+E@{O\+N\+L\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+M\+E}}\item[{\em 
+\hypertarget{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84a56cb938408d6c1cfc350438fe83bb1a0}{O\+N\+L\+Y\+\_\+\+F\+I\+L\+E\+\_\+\+N\+A\+M\+E}\label{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84a56cb938408d6c1cfc350438fe83bb1a0}
+}]\index{F\+U\+L\+L\+\_\+\+L\+O\+A\+D@{F\+U\+L\+L\+\_\+\+L\+O\+A\+D}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!F\+U\+L\+L\+\_\+\+L\+O\+A\+D@{F\+U\+L\+L\+\_\+\+L\+O\+A\+D}}\item[{\em 
+\hypertarget{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84a1b64a07dfde0c2d4132bc343f4475856}{F\+U\+L\+L\+\_\+\+L\+O\+A\+D}\label{class_wave_feature_o_p_abd93c85d1ed5fbc148d41b7f32fc1d84a1b64a07dfde0c2d4132bc343f4475856}
+}]\end{description}
+\end{Desc}
+\hypertarget{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!Op\+Type@{Op\+Type}}
+\index{Op\+Type@{Op\+Type}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{Op\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Wave\+Feature\+O\+P\+::\+Op\+Type}}}\label{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Raw@{Raw}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!Raw@{Raw}}\item[{\em 
+\hypertarget{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500a60db933490e2134e59c4c2e1fb30ea66}{Raw}\label{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500a60db933490e2134e59c4c2e1fb30ea66}
+}]\index{Beam@{Beam}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!Beam@{Beam}}\item[{\em 
+\hypertarget{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500a2aede4353c0fdb16edbc21db4085191e}{Beam}\label{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500a2aede4353c0fdb16edbc21db4085191e}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_wave_feature_o_p_a706b21be0839ad0693d98a39aa1be7f0}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{Wave\+Feature\+O\+P}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::\+Wave\+Feature\+O\+P (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ {\bf Feature} $>$ \&}]{template\+Feature, }
+\item[{std\+::string}]{file\+Name = {\ttfamily \char`\"{}null\char`\"{}}, }
+\item[{std\+::string}]{word = {\ttfamily \char`\"{}null\char`\"{}}}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_a706b21be0839ad0693d98a39aa1be7f0}
+\hypertarget{class_wave_feature_o_p_ad046b3e250106abe16d9125a029bedc2}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!````~Wave\+Feature\+O\+P@{$\sim$\+Wave\+Feature\+O\+P}}
+\index{````~Wave\+Feature\+O\+P@{$\sim$\+Wave\+Feature\+O\+P}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{$\sim$\+Wave\+Feature\+O\+P}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::$\sim$\+Wave\+Feature\+O\+P (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_wave_feature_o_p_ad046b3e250106abe16d9125a029bedc2}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_wave_feature_o_p_a3a8dd15d19899586e5953886c7ee6de4}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!asyn\+Dtw@{asyn\+Dtw}}
+\index{asyn\+Dtw@{asyn\+Dtw}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{asyn\+Dtw}]{\setlength{\rightskip}{0pt plus 5cm}double Wave\+Feature\+O\+P\+::asyn\+Dtw (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Feature} $>$ $\ast$}]{input\+Feature, }
+\item[{double}]{add\+Threshold = {\ttfamily -\/5.0}}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_a3a8dd15d19899586e5953886c7ee6de4}
+\hypertarget{class_wave_feature_o_p_af586ac7dda241f1fd7def8a8a09a2181}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!cal\+Dist@{cal\+Dist}}
+\index{cal\+Dist@{cal\+Dist}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{cal\+Dist}]{\setlength{\rightskip}{0pt plus 5cm}double Wave\+Feature\+O\+P\+::cal\+Dist (
+\begin{DoxyParamCaption}
+\item[{int}]{row\+Idx, }
+\item[{int}]{column\+Idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_wave_feature_o_p_af586ac7dda241f1fd7def8a8a09a2181}
+\hypertarget{class_wave_feature_o_p_aed6ce75f665daf168b5782672f89096a}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!dump\+Color\+Path@{dump\+Color\+Path}}
+\index{dump\+Color\+Path@{dump\+Color\+Path}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{dump\+Color\+Path}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} Wave\+Feature\+O\+P\+::dump\+Color\+Path (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{Out}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_aed6ce75f665daf168b5782672f89096a}
+\hypertarget{class_wave_feature_o_p_aa71ceac341c47742cb1ebe09bda1294a}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!forward\+Column@{forward\+Column}}
+\index{forward\+Column@{forward\+Column}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{forward\+Column}]{\setlength{\rightskip}{0pt plus 5cm}double Wave\+Feature\+O\+P\+::forward\+Column (
+\begin{DoxyParamCaption}
+\item[{double}]{threshold = {\ttfamily 0.0}}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_aa71ceac341c47742cb1ebe09bda1294a}
+\hypertarget{class_wave_feature_o_p_ac9c6eec84457d28e34b8002e364cecbc}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!get\+Roll\+Idx@{get\+Roll\+Idx}}
+\index{get\+Roll\+Idx@{get\+Roll\+Idx}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{get\+Roll\+Idx}]{\setlength{\rightskip}{0pt plus 5cm}int Wave\+Feature\+O\+P\+::get\+Roll\+Idx (
+\begin{DoxyParamCaption}
+\item[{int}]{column\+Idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_wave_feature_o_p_ac9c6eec84457d28e34b8002e364cecbc}
+\hypertarget{class_wave_feature_o_p_a44bed4fe2d42a232cd9f3e9d812ad240}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!get\+Row\+Num@{get\+Row\+Num}}
+\index{get\+Row\+Num@{get\+Row\+Num}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{get\+Row\+Num}]{\setlength{\rightskip}{0pt plus 5cm}int Wave\+Feature\+O\+P\+::get\+Row\+Num (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_a44bed4fe2d42a232cd9f3e9d812ad240}
+\hypertarget{class_wave_feature_o_p_a124a8caab52ea00e1cf0165aa1d071c9}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!operator==@{operator==}}
+\index{operator==@{operator==}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool Wave\+Feature\+O\+P\+::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Wave\+Feature\+O\+P} \&}]{b}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_a124a8caab52ea00e1cf0165aa1d071c9}
+\hypertarget{class_wave_feature_o_p_a6a165bd04bb4f29e9b408981cca66328}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature} \& Wave\+Feature\+O\+P\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_a6a165bd04bb4f29e9b408981cca66328}
+\hypertarget{class_wave_feature_o_p_a2851a010753b408b00e4077df2a8e1ce}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{double}]{, }
+\item[{best\+Value}]{, }
+\item[{Dtw\+Result}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a2851a010753b408b00e4077df2a8e1ce}
+\hypertarget{class_wave_feature_o_p_a7fd393cae6541e5e5a4d341eca41e06f}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{bool}]{, }
+\item[{do\+Record\+Path}]{, }
+\item[{Do\+Record\+Path}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a7fd393cae6541e5e5a4d341eca41e06f}
+\hypertarget{class_wave_feature_o_p_ab0a54a0e86eaa4a0c21f990f7280e6bd}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{, }
+\item[{{\bf template\+File\+Name}}]{, }
+\item[{File\+Name}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_ab0a54a0e86eaa4a0c21f990f7280e6bd}
+\hypertarget{class_wave_feature_o_p_a8c2271f6b26948fd6f4b8eb83ee72ed0}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{, }
+\item[{\+\_\+word}]{, }
+\item[{Word}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a8c2271f6b26948fd6f4b8eb83ee72ed0}
+\hypertarget{class_wave_feature_o_p_aa379ff8e29b7d67eb154ca1fd9b698f4}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{{\bf Wave\+Feature\+O\+P\+::\+Op\+Type}}]{, }
+\item[{op\+Type}]{, }
+\item[{{\bf Op\+Type}}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_aa379ff8e29b7d67eb154ca1fd9b698f4}
+\hypertarget{class_wave_feature_o_p_a7568c3f771218b5e58988963a77e68da}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!record\+Path@{record\+Path}}
+\index{record\+Path@{record\+Path}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{record\+Path}]{\setlength{\rightskip}{0pt plus 5cm}void Wave\+Feature\+O\+P\+::record\+Path (
+\begin{DoxyParamCaption}
+\item[{int}]{best\+Idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_wave_feature_o_p_a7568c3f771218b5e58988963a77e68da}
+\hypertarget{class_wave_feature_o_p_a2f106221542839a8cc7bf7289242ba73}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!R\+E\+F\+E\+R\+E\+N\+C\+E\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+F\+E\+R\+E\+N\+C\+E\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+F\+E\+R\+E\+N\+C\+E\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+F\+E\+R\+E\+N\+C\+E\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{R\+E\+F\+E\+R\+E\+N\+C\+E\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Wave\+Feature\+O\+P\+::\+R\+E\+F\+E\+R\+E\+N\+C\+E\+\_\+\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Feature} $>$}]{, }
+\item[{template\+Feature}]{, }
+\item[{Template\+Feature}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a2f106221542839a8cc7bf7289242ba73}
+\hypertarget{class_wave_feature_o_p_a039099d115a4fa490ddb3296441a81e0}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!size@{size}}
+\index{size@{size}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int Wave\+Feature\+O\+P\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_a039099d115a4fa490ddb3296441a81e0}
+\hypertarget{class_wave_feature_o_p_a39443a329cc706eaceefb28c598b297f}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!syn\+Init@{syn\+Init}}
+\index{syn\+Init@{syn\+Init}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{syn\+Init}]{\setlength{\rightskip}{0pt plus 5cm}void Wave\+Feature\+O\+P\+::syn\+Init (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Feature} $>$ $\ast$}]{input\+Feature}
+\end{DoxyParamCaption}
+)}}\label{class_wave_feature_o_p_a39443a329cc706eaceefb28c598b297f}
+\hypertarget{class_wave_feature_o_p_a18142ce4be84ca4663c8ea8e208f5a02}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!update\+Dtw\+Node@{update\+Dtw\+Node}}
+\index{update\+Dtw\+Node@{update\+Dtw\+Node}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{update\+Dtw\+Node}]{\setlength{\rightskip}{0pt plus 5cm}void Wave\+Feature\+O\+P\+::update\+Dtw\+Node (
+\begin{DoxyParamCaption}
+\item[{int}]{column\+Idx, }
+\item[{int}]{row\+Idx, }
+\item[{double}]{new\+Path\+Dist}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_wave_feature_o_p_a18142ce4be84ca4663c8ea8e208f5a02}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_wave_feature_o_p_a8341cc94705d4f96a53e61b397e26641}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!column\+Dtw\+Res@{column\+Dtw\+Res}}
+\index{column\+Dtw\+Res@{column\+Dtw\+Res}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{column\+Dtw\+Res}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Wave\+Feature\+O\+P\+::column\+Dtw\+Res\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a8341cc94705d4f96a53e61b397e26641}
+\hypertarget{class_wave_feature_o_p_a506bd025079326383412704dd93c402d}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!column\+Idx@{column\+Idx}}
+\index{column\+Idx@{column\+Idx}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{column\+Idx}]{\setlength{\rightskip}{0pt plus 5cm}int Wave\+Feature\+O\+P\+::column\+Idx\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a506bd025079326383412704dd93c402d}
+\hypertarget{class_wave_feature_o_p_ad14d7d2758bef1c990adda645f1a1d34}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!column\+Nxt@{column\+Nxt}}
+\index{column\+Nxt@{column\+Nxt}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{column\+Nxt}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Wave\+Feature\+O\+P\+::column\+Nxt\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_ad14d7d2758bef1c990adda645f1a1d34}
+\hypertarget{class_wave_feature_o_p_ad46053ff42554d848423b0caabeea87f}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!head@{head}}
+\index{head@{head}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{head}]{\setlength{\rightskip}{0pt plus 5cm}int Wave\+Feature\+O\+P\+::head\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_ad46053ff42554d848423b0caabeea87f}
+\hypertarget{class_wave_feature_o_p_a2e67fe9dc06889453b70fe6efa19554f}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!input\+Feature@{input\+Feature}}
+\index{input\+Feature@{input\+Feature}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{input\+Feature}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Feature}$>$$\ast$ Wave\+Feature\+O\+P\+::input\+Feature\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a2e67fe9dc06889453b70fe6efa19554f}
+\hypertarget{class_wave_feature_o_p_abb3904a95a48013acf81a589a73983c0}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!last\+Update@{last\+Update}}
+\index{last\+Update@{last\+Update}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{last\+Update}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Wave\+Feature\+O\+P\+::last\+Update\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_abb3904a95a48013acf81a589a73983c0}
+\hypertarget{class_wave_feature_o_p_a7e91a4de4afa4703c7e2e77e2ad6b73d}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!path@{path}}
+\index{path@{path}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{path}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$int$>$ Wave\+Feature\+O\+P\+::path\hspace{0.3cm}{\ttfamily [private]}}}\label{class_wave_feature_o_p_a7e91a4de4afa4703c7e2e77e2ad6b73d}
+\hypertarget{class_wave_feature_o_p_ad4482e96f3bca81925861baa598d01ed}{\index{Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}!Path\+Split\+Idx@{Path\+Split\+Idx}}
+\index{Path\+Split\+Idx@{Path\+Split\+Idx}!Wave\+Feature\+O\+P@{Wave\+Feature\+O\+P}}
+\subsubsection[{Path\+Split\+Idx}]{\setlength{\rightskip}{0pt plus 5cm}const int Wave\+Feature\+O\+P\+::\+Path\+Split\+Idx = -\/1\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{class_wave_feature_o_p_ad4482e96f3bca81925861baa598d01ed}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Feature/\hyperlink{_wave_feature_o_p_8h}{Wave\+Feature\+O\+P.\+h}\item 
+src/\+Feature/\hyperlink{_wave_feature_o_p_8cpp}{Wave\+Feature\+O\+P.\+cpp}\end{DoxyCompactItemize}

@@ -12,8 +12,9 @@
 #include <termios.h>
 #include <unistd.h>
 #include "tool.h"
+#include <stdlib.h>
 
-void Warn(const char *msg,...){
+void Warn(const char *msg, ...){
     //if(! TESTING) return;
 	char Buffer[128];
 	va_list ArgList;
@@ -34,6 +35,21 @@ void Tip(const char * msg,...){
 	va_end (ArgList);
 //	printf("Tip: ");
     toupper(Buffer[0]);
+	printf ("%s", Buffer);
+	printf(NONE "\n");
+}
+
+void Log(const char *filename, const int line_no, const char * msg,...){
+    if(! TESTING) return;
+
+	char Buffer[128];
+	va_list ArgList;
+	va_start (ArgList, msg);
+	vsprintf (Buffer, msg, ArgList);
+	va_end (ArgList);
+    toupper(Buffer[0]);
+	printf("Log: ");
+    printf("File[%s] line[%d]: ", filename, line_no);
 	printf ("%s", Buffer);
 	printf(NONE "\n");
 }

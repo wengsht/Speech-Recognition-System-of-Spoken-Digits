@@ -39,7 +39,15 @@ Edge 2 3 "6"   1.0
 Edge 2 3 "7"   1.0
 Edge 2 3 "8"   1.0
 Edge 2 3 "9"   1.0
-Edge 3 3 "#silence"   0.1
+#Edge 3 3 "#silence"   1.0 
+Edge 0 0 "#silence"   1.0 
+Edge 1 1 "#silence"   1.0 
+Edge 2 2 "#silence"   1.0 
+Edge 3 3 "#silence"   1.0 
+Edge 4 4 "#silence"   1.0 
+Edge 5 5 "#silence"   1.0 
+Edge 6 6 "#silence"   1.0 
+Edge 7 7 "#silence"   1.0 
 
 Edge 3 4 "0"   1.0
 Edge 3 4 "1"   1.0

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['e',['e',['../mathtool_8h.html#a270b1ecf56619755ce62f6970dfabc91',1,'mathtool.h']]],
+  ['edge',['EDGE',['../parse_graph_8h.html#ac243bfa96aa2c28014159ff098bd2324',1,'parseGraph.h']]],
+  ['edgepoints',['edgePoints',['../class_k_mean_state.html#a4cfe086303bf1f39b038e48126dd007d',1,'KMeanState']]],
+  ['edges',['edges',['../class_seq_model.html#ab293b1600e51e35d49bc33a45f74dd9d',1,'SeqModel::edges()'],['../class_parse_graph.html#a65a7410819c36f48c0c5ebf787f57afb',1,'ParseGraph::edges()']]],
+  ['elseif',['elseif',['../process__options_8m.html#aebcba63350ded1ea17c929b1b14ade7a',1,'process_options.m']]],
+  ['em',['EM',['../class_k_mean_state.html#af990dd8b5857c29cb921e5b9248b44bf',1,'KMeanState']]],
+  ['end',['end',['../class_capture.html#a3ed2fabc0ab88e8b0dd9dc8b108cf0fb',1,'Capture::end()'],['../class_wave_feature_o_p_set.html#a7df62d3222f8896143b8a0c336ccbb18',1,'WaveFeatureOPSet::end()'],['../deltas_8m.html#a358bd73ea8cdd8cc2274b2b2e840bbc2',1,'end():&#160;deltas.m'],['../lpc2spec_8m.html#a75a3ccc1a712583b6c4b21b94514a7b9',1,'end():&#160;lpc2spec.m']]],
+  ['enddingprobability',['enddingProbability',['../class_h_m_m_automaton.html#a8e3043723eb18068bb5cb9840f844647',1,'HMMAutomaton']]],
+  ['energy',['energy',['../class_e_p_analysis.html#a16d60a56e47c6fd90658dd564badfad3',1,'EPAnalysis']]],
+  ['ep',['ep',['../class_auto_capture.html#a7527bcbfe6636e4e34b3b0724d22ab5c',1,'AutoCapture']]],
+  ['epanalysis',['EPAnalysis',['../class_e_p_analysis.html',1,'EPAnalysis'],['../class_e_p_analysis.html#a0b65e06f79424966ef106c1f39cdc2dc',1,'EPAnalysis::EPAnalysis()']]],
+  ['epanalysis_2ecpp',['EPAnalysis.cpp',['../_e_p_analysis_8cpp.html',1,'']]],
+  ['epanalysis_2eh',['EPAnalysis.h',['../_e_p_analysis_8h.html',1,'']]],
+  ['error_5fcode',['ERROR_CODE',['../tool_8cpp.html#ae1afd9e1b985668b0f39cd7155f709ef',1,'ERROR_CODE():&#160;tool.cpp'],['../tool_8h.html#a6c868e19041df50177697f9e9e735313',1,'ERROR_CODE():&#160;tool.h'],['../tool_8h.html#a252e65574de62742ec8c4068d5547c30',1,'ERROR_CODE():&#160;tool.h']]],
+  ['error_5fuids',['ERROR_UIDS',['../tool_8h.html#a2008cab7bb7e48a2ce80855899ae2a5c',1,'tool.h']]],
+  ['errorlog',['ErrorLog',['../tool_8cpp.html#a2c7e8db404a34561430e08ed3034fb26',1,'ErrorLog(const char *msg,...):&#160;tool.cpp'],['../tool_8h.html#a2c7e8db404a34561430e08ed3034fb26',1,'ErrorLog(const char *msg,...):&#160;tool.cpp']]],
+  ['eudist',['euDist',['../class_gaussian.html#a7bb91c9ad1d8a6c0bf0f70e034743890',1,'Gaussian']]],
+  ['examples',['Examples',['../process__options_8m.html#a8b2e3e547565a5591023ed6a3c8a1e8b',1,'process_options.m']]],
+  ['exdoubledeltafeatures',['exDoubleDeltaFeatures',['../class_feature_extractor.html#a2f27ab3cfa02a3fc61ea42159403fab4',1,'FeatureExtractor']]],
+  ['exfeatures',['exFeatures',['../class_feature_extractor.html#acf639361d18956ff91eb60d6f68b8df3',1,'FeatureExtractor::exFeatures(const RawData *data, int sampleRate, double preEmpFactor, double winTime, double stepTime, double(*winFunc)(int, int), double minF, double maxF, double(*hz2melFunc)(double), double(*mel2hzFunc)(double), int nfilts, int cepsNum)'],['../class_feature_extractor.html#ab5596f318628ea56a652086ab89a709d',1,'FeatureExtractor::exFeatures(const RawData *data)']]],
+  ['extent_5fspeech',['EXTENT_SPEECH',['../configure__capture_8h.html#a0ac1714dfa0eecdd66893fb67c4d0f99',1,'configure_capture.h']]],
+  ['extent_5fspeech_5fframes',['EXTENT_SPEECH_FRAMES',['../configure__capture_8h.html#a690ea4258cbd11ef121fd92c72aff96e',1,'configure_capture.h']]]
+];

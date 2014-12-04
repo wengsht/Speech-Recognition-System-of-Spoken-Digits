@@ -153,6 +153,7 @@ void FeatureExtractor::fftTask(void *in) {
 
     delete task_info;
 }
+
 SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
         Matrix<double> &windows) {
     if(windows.size() == 0) return SP_SUCCESS;

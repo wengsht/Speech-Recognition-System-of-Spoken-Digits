@@ -1,0 +1,32 @@
+\hypertarget{ispecgram_8m}{\section{src/\+Matlab/rastamat/ispecgram.m File Reference}
+\label{ispecgram_8m}\index{src/\+Matlab/rastamat/ispecgram.\+m@{src/\+Matlab/rastamat/ispecgram.\+m}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{ispecgram_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{rastaplp_8m_a244f7e31df5f74475fb2dd1a6a2392db}{sr} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} \hyperlink{ispecgram_8m_a37baf09c16300b0033d902f8ae97546f}{ignored}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{rastaplp_8m_a244f7e31df5f74475fb2dd1a6a2392db}{sr} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} nov defaults \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \\*
+ftsize dpwe after \hyperlink{ispecgram_8m_aec872af31a1b4c4890e668e644356d81}{istft} \mbox{[}nspec, \hyperlink{lpc2cep_8m_a2299586db3286feb8bf00ec5c8016a23}{ncol}\mbox{]} = \hyperlink{rastafilt_8m_a777f01fd1c8394e2fbac19f36c7d2f92}{size}(\hyperlink{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{d})
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{ispecgram_8m_a37baf09c16300b0033d902f8ae97546f}{\index{ispecgram.\+m@{ispecgram.\+m}!ignored@{ignored}}
+\index{ignored@{ignored}!ispecgram.\+m@{ispecgram.\+m}}
+\subsubsection[{ignored}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} {\bf sr} {\bf is} ignored}}\label{ispecgram_8m_a37baf09c16300b0033d902f8ae97546f}
+\hypertarget{ispecgram_8m_aec872af31a1b4c4890e668e644356d81}{\index{ispecgram.\+m@{ispecgram.\+m}!istft@{istft}}
+\index{istft@{istft}!ispecgram.\+m@{ispecgram.\+m}}
+\subsubsection[{istft}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} {\bf sr} {\bf is} nov defaults {\bf to} ftsize dpwe after istft\mbox{[}nspec, {\bf ncol}\mbox{]} = {\bf size}({\bf d})}}\label{ispecgram_8m_aec872af31a1b4c4890e668e644356d81}
+\hypertarget{ispecgram_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{\index{ispecgram.\+m@{ispecgram.\+m}!x@{x}}
+\index{x@{x}!ispecgram.\+m@{ispecgram.\+m}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} x}}\label{ispecgram_8m_aa7e1944a3c91c1d7032edca3d14aefb9}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= ispecgram(\hyperlink{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{d}, ftsize, \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr}, \hyperlink{deltas_8m_a3b51c79a7f111d2be9d347ac9bfe3abd}{win}, nov)
+% X = ispecgram(D, \hyperlink{lpc2spec_8m_a1fd406685cbdee605d0a7bebed56fdb0}{F}, SR, WIN, NOV)           Inverse specgram
+%    Overlap-add the inverse of the output of specgram
+%    ftsize \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} implied by sizeof \hyperlink{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{d}
+\end{DoxyCode}

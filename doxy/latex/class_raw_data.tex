@@ -1,0 +1,158 @@
+\hypertarget{class_raw_data}{\section{Raw\+Data Class Reference}
+\label{class_raw_data}\index{Raw\+Data@{Raw\+Data}}
+}
+
+
+{\ttfamily \#include $<$Raw\+Data.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_raw_data_a583cd50c06a9fbaebdaaf44621401552}{Raw\+Data} ()
+\item 
+\hyperlink{class_raw_data_a9ebfa3736a2e278a34b169549d5efa3d}{Raw\+Data} (const \hyperlink{class_raw_data}{Raw\+Data} \&raw\+Data)
+\item 
+\hyperlink{class_raw_data_a214d10a81d07c892cb7b35653772e4e4}{$\sim$\+Raw\+Data} ()
+\item 
+void \hyperlink{class_raw_data_af1ad52746f7569118ece4f16fc8516d6}{clean} ()
+\item 
+bool \hyperlink{class_raw_data_a18c4c868312e7d850de4ff386e8698a0}{set\+Frame\+Num} (int f\+\_\+num)
+\item 
+const \hyperlink{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$ \hyperlink{class_raw_data_a166b59a84c19851aa2cd694d120d560f}{get\+Data} () const 
+\item 
+void \hyperlink{class_raw_data_a69101a0023281a035cd811f6858fea81}{set\+Data} (int index, \hyperlink{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} \hyperlink{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{d})
+\item 
+bool \hyperlink{class_raw_data_af028c01fa2921829ff2f4a5e2c23da64}{append\+Block\+Data} (const \hyperlink{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$src)
+\item 
+void \hyperlink{class_raw_data_a003878d4445eed6fe8c21cb0d373e232}{copy\+Block\+Data} (int from, int \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to})
+\item 
+double \hyperlink{class_raw_data_a2a72d20d0fe44c15779f21d2b6f8baa9}{get\+Block\+Ave\+Energy} (int index)
+\item 
+bool \hyperlink{class_raw_data_a9459fcb81d0dd49a2ce8f0c164b1ffdc}{save\+Wav} (const char $\ast$file\+\_\+name)
+\item 
+bool \hyperlink{class_raw_data_ac6ec33dca034b3ae714f626bab48ac4a}{load\+Wav} (const char $\ast$file\+\_\+name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$ \hyperlink{class_raw_data_aa59dfb6368c8d9ed49234ed129f1ed0a}{data}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_raw_data_aceacd6f3691e39fd73de8d774581e87c}{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E} (int, frame\+\_\+num, Frame\+Num)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_raw_data_a583cd50c06a9fbaebdaaf44621401552}{\index{Raw\+Data@{Raw\+Data}!Raw\+Data@{Raw\+Data}}
+\index{Raw\+Data@{Raw\+Data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{Raw\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Raw\+Data\+::\+Raw\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a583cd50c06a9fbaebdaaf44621401552}
+\hypertarget{class_raw_data_a9ebfa3736a2e278a34b169549d5efa3d}{\index{Raw\+Data@{Raw\+Data}!Raw\+Data@{Raw\+Data}}
+\index{Raw\+Data@{Raw\+Data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{Raw\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Raw\+Data\+::\+Raw\+Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Raw\+Data} \&}]{raw\+Data}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a9ebfa3736a2e278a34b169549d5efa3d}
+\hypertarget{class_raw_data_a214d10a81d07c892cb7b35653772e4e4}{\index{Raw\+Data@{Raw\+Data}!````~Raw\+Data@{$\sim$\+Raw\+Data}}
+\index{````~Raw\+Data@{$\sim$\+Raw\+Data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{$\sim$\+Raw\+Data}]{\setlength{\rightskip}{0pt plus 5cm}Raw\+Data\+::$\sim$\+Raw\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a214d10a81d07c892cb7b35653772e4e4}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_raw_data_af028c01fa2921829ff2f4a5e2c23da64}{\index{Raw\+Data@{Raw\+Data}!append\+Block\+Data@{append\+Block\+Data}}
+\index{append\+Block\+Data@{append\+Block\+Data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{append\+Block\+Data}]{\setlength{\rightskip}{0pt plus 5cm}bool Raw\+Data\+::append\+Block\+Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$}]{src}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_af028c01fa2921829ff2f4a5e2c23da64}
+\hypertarget{class_raw_data_af1ad52746f7569118ece4f16fc8516d6}{\index{Raw\+Data@{Raw\+Data}!clean@{clean}}
+\index{clean@{clean}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{clean}]{\setlength{\rightskip}{0pt plus 5cm}void Raw\+Data\+::clean (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_af1ad52746f7569118ece4f16fc8516d6}
+\hypertarget{class_raw_data_a003878d4445eed6fe8c21cb0d373e232}{\index{Raw\+Data@{Raw\+Data}!copy\+Block\+Data@{copy\+Block\+Data}}
+\index{copy\+Block\+Data@{copy\+Block\+Data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{copy\+Block\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void Raw\+Data\+::copy\+Block\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{from, }
+\item[{int}]{to}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a003878d4445eed6fe8c21cb0d373e232}
+\hypertarget{class_raw_data_a2a72d20d0fe44c15779f21d2b6f8baa9}{\index{Raw\+Data@{Raw\+Data}!get\+Block\+Ave\+Energy@{get\+Block\+Ave\+Energy}}
+\index{get\+Block\+Ave\+Energy@{get\+Block\+Ave\+Energy}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{get\+Block\+Ave\+Energy}]{\setlength{\rightskip}{0pt plus 5cm}double Raw\+Data\+::get\+Block\+Ave\+Energy (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a2a72d20d0fe44c15779f21d2b6f8baa9}
+\hypertarget{class_raw_data_a166b59a84c19851aa2cd694d120d560f}{\index{Raw\+Data@{Raw\+Data}!get\+Data@{get\+Data}}
+\index{get\+Data@{get\+Data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{get\+Data}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$ Raw\+Data\+::get\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_raw_data_a166b59a84c19851aa2cd694d120d560f}
+\hypertarget{class_raw_data_ac6ec33dca034b3ae714f626bab48ac4a}{\index{Raw\+Data@{Raw\+Data}!load\+Wav@{load\+Wav}}
+\index{load\+Wav@{load\+Wav}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{load\+Wav}]{\setlength{\rightskip}{0pt plus 5cm}bool Raw\+Data\+::load\+Wav (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_ac6ec33dca034b3ae714f626bab48ac4a}
+\hypertarget{class_raw_data_aceacd6f3691e39fd73de8d774581e87c}{\index{Raw\+Data@{Raw\+Data}!R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Raw\+Data\+::\+R\+E\+A\+D\+\_\+\+O\+N\+L\+Y\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{int}]{, }
+\item[{frame\+\_\+num}]{, }
+\item[{Frame\+Num}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_raw_data_aceacd6f3691e39fd73de8d774581e87c}
+\hypertarget{class_raw_data_a9459fcb81d0dd49a2ce8f0c164b1ffdc}{\index{Raw\+Data@{Raw\+Data}!save\+Wav@{save\+Wav}}
+\index{save\+Wav@{save\+Wav}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{save\+Wav}]{\setlength{\rightskip}{0pt plus 5cm}bool Raw\+Data\+::save\+Wav (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a9459fcb81d0dd49a2ce8f0c164b1ffdc}
+\hypertarget{class_raw_data_a69101a0023281a035cd811f6858fea81}{\index{Raw\+Data@{Raw\+Data}!set\+Data@{set\+Data}}
+\index{set\+Data@{set\+Data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{set\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void Raw\+Data\+::set\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{index, }
+\item[{{\bf S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A}}]{d}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a69101a0023281a035cd811f6858fea81}
+\hypertarget{class_raw_data_a18c4c868312e7d850de4ff386e8698a0}{\index{Raw\+Data@{Raw\+Data}!set\+Frame\+Num@{set\+Frame\+Num}}
+\index{set\+Frame\+Num@{set\+Frame\+Num}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{set\+Frame\+Num}]{\setlength{\rightskip}{0pt plus 5cm}bool Raw\+Data\+::set\+Frame\+Num (
+\begin{DoxyParamCaption}
+\item[{int}]{f\+\_\+num}
+\end{DoxyParamCaption}
+)}}\label{class_raw_data_a18c4c868312e7d850de4ff386e8698a0}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_raw_data_aa59dfb6368c8d9ed49234ed129f1ed0a}{\index{Raw\+Data@{Raw\+Data}!data@{data}}
+\index{data@{data}!Raw\+Data@{Raw\+Data}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A}$\ast$ Raw\+Data\+::data\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_raw_data_aa59dfb6368c8d9ed49234ed129f1ed0a}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/data/\hyperlink{_raw_data_8h}{Raw\+Data.\+h}\item 
+src/data/\hyperlink{_raw_data_8cpp}{Raw\+Data.\+cpp}\item 
+src/data/\hyperlink{_raw_data_file_8cpp}{Raw\+Data\+File.\+cpp}\end{DoxyCompactItemize}

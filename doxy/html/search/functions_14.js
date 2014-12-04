@@ -1,0 +1,17 @@
+var searchData=
+[
+  ['warn',['Warn',['../tool_8cpp.html#a4139e4920a971e621fdc8e963e75144f',1,'Warn(const char *msg,...):&#160;tool.cpp'],['../tool_8h.html#a4139e4920a971e621fdc8e963e75144f',1,'Warn(const char *msg,...):&#160;tool.cpp']]],
+  ['warnlog',['WarnLog',['../tool_8cpp.html#adb630615969edfa8ef5f9658c275435b',1,'WarnLog(const char *msg,...):&#160;tool.cpp'],['../tool_8h.html#adb630615969edfa8ef5f9658c275435b',1,'WarnLog(const char *msg,...):&#160;tool.cpp']]],
+  ['wavefeatureop',['WaveFeatureOP',['../class_wave_feature_o_p.html#a706b21be0839ad0693d98a39aa1be7f0',1,'WaveFeatureOP']]],
+  ['wavefeatureopset',['WaveFeatureOPSet',['../class_wave_feature_o_p_set.html#abc2105d69e5f9b1cad09b83de86a4d00',1,'WaveFeatureOPSet']]],
+  ['waveform',['waveform',['../invmelfcc_8m.html#aef9f3e6b9ba9fd73abd43d6c65f74069',1,'invmelfcc.m']]],
+  ['waverewind',['WaveRewind',['../readwave_8cpp.html#a636ab74fd404b4def35d8a47b2cc4842',1,'WaveRewind(FILE *wav_file, WavFileHead *wavFileHead):&#160;readwave.cpp'],['../readwave_8h.html#a636ab74fd404b4def35d8a47b2cc4842',1,'WaveRewind(FILE *wav_file, WavFileHead *wavFileHead):&#160;readwave.cpp']]],
+  ['windowfft',['windowFFT',['../class_feature_extractor.html#a4405d4256511c032ddc1a6bbd165d2d1',1,'FeatureExtractor']]],
+  ['windowing',['windowing',['../class_feature_extractor.html#a9a64eef33f089421f19dac46fae05fdf',1,'FeatureExtractor']]],
+  ['windowmul',['windowMul',['../class_feature_extractor.html#a901ad6b1c962bea9ee1da0d1e19615a8',1,'FeatureExtractor']]],
+  ['wordasynrecognition',['wordAsynRecognition',['../class_word_dtw_recognition.html#aa62bb713b6017a1dc4784a5d5561ea75',1,'WordDtwRecognition']]],
+  ['worddtwrecognition',['WordDtwRecognition',['../class_word_dtw_recognition.html#a653a1287b88f956d3ebfa1f82d445671',1,'WordDtwRecognition']]],
+  ['wordsynrecognition',['wordSynRecognition',['../class_word_dtw_recognition.html#ab3f2061dc9d728f7ca887b936881303a',1,'WordDtwRecognition']]],
+  ['write_5fonly_5fdeclare',['WRITE_ONLY_DECLARE',['../class_a_p_p.html#a93969636f8cee0d293fc8817843532f2',1,'APP::WRITE_ONLY_DECLARE(bool, fromFile, FromFile)'],['../class_a_p_p.html#a6395700a096545c9cb93ed220324efee',1,'APP::WRITE_ONLY_DECLARE(char *, dictFile, Dict)'],['../class_a_p_p.html#af01ec83f01316bfff6a546ea193bd78d',1,'APP::WRITE_ONLY_DECLARE(char *, betterStoryFile, BStory)'],['../class_a_p_p.html#adf8e3638cc483b9f8835f22c3cefa1d8',1,'APP::WRITE_ONLY_DECLARE(char *, storyFile, Story)'],['../class_a_p_p.html#a3f492a4caa57a2cb5d2d8ef4b2171a26',1,'APP::WRITE_ONLY_DECLARE(char *, cStoryFile, CStory)'],['../class_a_p_p.html#a93969636f8cee0d293fc8817843532f2',1,'APP::WRITE_ONLY_DECLARE(bool, fromFile, FromFile)'],['../class_a_p_p.html#a6395700a096545c9cb93ed220324efee',1,'APP::WRITE_ONLY_DECLARE(char *, dictFile, Dict)'],['../class_a_p_p.html#af01ec83f01316bfff6a546ea193bd78d',1,'APP::WRITE_ONLY_DECLARE(char *, betterStoryFile, BStory)'],['../class_a_p_p.html#adf8e3638cc483b9f8835f22c3cefa1d8',1,'APP::WRITE_ONLY_DECLARE(char *, storyFile, Story)'],['../class_a_p_p.html#a3f492a4caa57a2cb5d2d8ef4b2171a26',1,'APP::WRITE_ONLY_DECLARE(char *, cStoryFile, CStory)']]],
+  ['writewave',['WriteWave',['../readwave_8cpp.html#ac445692c2e84bd72a5d46c742ecf401f',1,'WriteWave(const char *wavFile, short *waveData, int numSamples, int sampleRate):&#160;readwave.cpp'],['../readwave_8h.html#ac445692c2e84bd72a5d46c742ecf401f',1,'WriteWave(const char *wavFile, short *waveData, int numSamples, int sampleRate):&#160;readwave.cpp']]]
+];

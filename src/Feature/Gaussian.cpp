@@ -10,10 +10,13 @@ Gaussian::Gaussian(int featureSize){
 	
 	this->tmp_mean = new double [featureSize];
 	this->tmp_mean2 = new double [featureSize];
+
 	for(int i = 0;i<featureSize;i++){
 		this->tmp_mean[i] = this->tmp_mean2[i] = 0;
 	}
-	sampleNum = 0;
+
+	sampleNum = 0.0;
+
 	flag = true;
 }
 
@@ -21,7 +24,11 @@ Gaussian::~Gaussian(){
 	if(mean)delete mean;
 	if(cvar)delete cvar;
 }
-int Gaussian::getflag(){return flag;}
+
+int Gaussian::getflag() {
+    return flag;
+}
+
 void Gaussian::setMean(Feature * f){
 	Feature & p = *f;
 	for(int i = 0;i<featureSize;i++){
@@ -56,17 +63,17 @@ void Gaussian::print(){
 		printf("%lf ",cvar[i]);
 	}puts("]");
 }
-bool Gaussian::done(){
-	double ep = 1e-12;
+bool Gaussian::done() {
+	const static double ep = 1e-12;
 	bool converge = true;
 	
-	if(sampleNum == 0){
+	if(sampleNum == 0) {
 		return true;
 	}
 
-	for(int i = 0;i<featureSize;i++){
+	for(int i = 0;i<featureSize;i++) {
 		tmp_mean[i] /= sampleNum;
-		tmp_mean2[i]/= sampleNum;
+		tmp_mean2[i] /= sampleNum;
 		
 		double v = tmp_mean2[i] - tmp_mean[i] * tmp_mean[i];
 		double m = tmp_mean[i];
@@ -95,7 +102,7 @@ void Gaussian::addFeature(Feature * f, double probability) {
 	sampleNum += probability;
 }
 
-double Gaussian::minuLogP(Feature* f){
+double Gaussian::minuLogP(Feature* f) {
 	Feature & p = *f;
 	double ret = 0;
 	double v;
@@ -104,21 +111,19 @@ double Gaussian::minuLogP(Feature* f){
 		v = cvar[i];
 		//v2 = v*v;
 		d = p[i] - mean[i];
-        if(v == 0.0) {
-            if(d == 0) 
+        if(Gaussian::equal(v, 0.0)) {
+            if(Gaussian::equal(d, 0.0)) 
                 ret += 0.0;
             else 
                 ret += Feature::IllegalDist;
 
             continue;
         }
-           
+
 		ret += log(2*PI*v)+(d*d/v);
 
-        /* 
-        if(!(ret >= 0 ) && !(ret <= 0))
-            printf("%lf\n", v);
-            */
+//        if(!(ret >= 0 ) && !(ret <= 0))
+//            printf("= = %lf %lf %lf\n", ret, v , (d*d/v));
 	}
 	ret = ret * 0.5;
 	return ret;
@@ -194,6 +199,7 @@ void Gaussian::load(std::stringstream &in) {
     }
     in >> flag;
 }
+
 void Gaussian::store(std::stringstream &out) {
     for(int i = 0;i < featureSize; i ++) {
         out << " " << mean[i];

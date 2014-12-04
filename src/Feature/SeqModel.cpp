@@ -70,6 +70,8 @@ void SeqModel::refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, 
     std::map< std::string, HMMAutomaton *>::iterator Itr;
     Itr = automatons.find(word);
 
+//    int edgeUUID = edgeCnt;
+
     // hmm edge
     if(Itr != automatons.end()) {
         HMMAutomaton & automaton = *(Itr->second);
@@ -157,7 +159,8 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
         int *head;
 
         // if from and to are all non emit state, add to non emit table
-        if(from < N_States && to < N_States) 
+        if(! isEmit(from) && ! isEmit(to))
+//        if(from < N_States && to < N_States) 
             head = &(states[from].noEmitHead);
         else 
             head = &(states[from].head);
@@ -175,8 +178,6 @@ void SeqModel::refreshEdge(std::vector<SeqEdge> &edges, int from, int to, double
 }
 
 void SeqModel::recognition(WaveFeatureOP & input, std::vector<std::string> & res, SEQ_DTW_PATH_TYPE path_type) {
-    // TO = BACK_PTRDO 
-
 //    path_type = FULL_PATH;
     dtw( input, path_type );
 
@@ -189,7 +190,10 @@ void SeqModel::reSegment(WaveFeatureOP & input, int templateIdx) {
 
     std::vector< int > path;
     collectBestPath( path, input.size() );
-    if(path.size() <= 0) return ;
+    if(path.size() <= 0) {
+        Warn("Don't try to train a empty file!");
+        return ;
+    }
 
     int pathIdx;
 
@@ -234,29 +238,36 @@ void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz)
     assert(path.size() >= wavSiz);
 
     int stateID = path[0];
-    int preStateID = stateID;
 
     int wavIdx;
 
-    if(states[stateID].leafForwardIdx != NIL_FORWARD)
+    /*  
+    if(states[stateID].leafForwardIdx != NIL_FORWARD) {
         res.push_back( std::string(states[stateID].word ));
+    }
+    */
 
-    for(wavIdx = 1; wavIdx < wavSiz; wavIdx ++, preStateID = stateID) {
+//    puts("");
+//        printf("%d ", stateID);
+    for(wavIdx = 0; wavIdx < wavSiz; wavIdx ++) {
         stateID = path[wavIdx];
 
+//        printf("%d ", stateID);
         // only essential leaf (forwarded value) add a word
-        if(states[stateID].leafForwardIdx != states[preStateID].leafForwardIdx && \
+//        if(states[stateID].UUID != states[preWordUUID].UUID && \
            states[stateID].leafForwardIdx != NIL_FORWARD) {
-//            printf("%d\n", stateID);
 //        if(states[stateID].word != states[preStateID].word) {
             // new word
+               if(stateID != NIL_EDGE) {
             res.push_back( std::string(states[stateID].word ));
+
+//            preWordUUID = stateID;
         }
     }
-    puts("");
+//    puts("");
 }
 
-void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
+void SeqModel::collectResFromBackPtr(std::vector<std::string> &res) {
     int endState = Terminal_States;
     int backPtrIdx = backPtrs.size() - 1;
 
@@ -288,7 +299,7 @@ void SeqModel::collectResFromBackPtr(std::vector<std::string> &res){
     delete [] path;
 }
 
-void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
+void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz , bool eliminateDuplicate) {
     int endState = Terminal_States; 
     int beginState = Start_State; 
 
@@ -304,15 +315,25 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz ) {
     int wavIdx = wavSiz - 1;
     int stateID = endState;
 
+    bool newWord = true;
     for(wavIdx = wavSiz - 1; wavIdx >= 0; wavIdx --) {
         while(!isEmit(stateID) )  {
             stateID = fullPath[wavIdx][stateID];
+
+            newWord = true;
         }
 
         path[wavIdx] = stateID;
 
+        if(eliminateDuplicate && !newWord)
+            path[wavIdx] = NIL_EDGE;
+
+        newWord = false;
+//        printf("%d ",stateID);
+
         stateID = fullPath[wavIdx][stateID];
     }
+//    puts("");
 }
 
 void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_type, int wavSiz) {
@@ -598,12 +619,12 @@ void SeqModel::tryUpdate(Dtw_Column_Link * link, int columnIdx, int preStateID, 
 
         // record path 
         if(path_type == FULL_PATH) {
-            // 如果从一个nonemit 过来的， 则path指向nonemit指向的单词就可以了
+            // bug 如果从一个nonemit 过来的， 则path指向nonemit指向的单词就可以了
             // 虽然nonemit到nonemit是同一个列之间的forward，但编码时候是从前一列
             // forward过来的，这样可以避免用新的值更新
             //
-            while(preStateID >= 0 && ! isEmit(preStateID) )
-                preStateID = link[preIdx].nodes[preStateID].preIdx;
+//            while(preStateID >= 0 && ! isEmit(preStateID) )
+//                preStateID = link[preIdx].nodes[preStateID].preIdx;
 
             fullPath[columnIdx][stateID] = preStateID;
 

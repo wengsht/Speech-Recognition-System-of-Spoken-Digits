@@ -1,0 +1,62 @@
+\hypertarget{_seq_model_8h}{\section{src/\+Feature/\+Seq\+Model.h File Reference}
+\label{_seq_model_8h}\index{src/\+Feature/\+Seq\+Model.\+h@{src/\+Feature/\+Seq\+Model.\+h}}
+}
+{\ttfamily \#include \char`\"{}parse\+Graph.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include \char`\"{}H\+M\+M\+Automaton.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}H\+M\+M\+State.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include \char`\"{}graph\+Paras.\+def\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_seq_state}{Seq\+State}
+\item 
+struct \hyperlink{struct_dtw___column___node}{Dtw\+\_\+\+Column\+\_\+\+Node}
+\item 
+struct \hyperlink{struct_dtw___column___link}{Dtw\+\_\+\+Column\+\_\+\+Link}
+\item 
+struct \hyperlink{struct_seq_edge}{Seq\+Edge}
+\item 
+struct \hyperlink{struct_back_ptr}{Back\+Ptr}
+\item 
+class \hyperlink{class_seq_model}{Seq\+Model}
+\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_seq_model_8h_a0ea0968a9882d159eab2313b8dbd0e5c}{N\+I\+L\+\_\+\+E\+D\+G\+E}~-\/1
+\item 
+\#define \hyperlink{_seq_model_8h_a7760c6d1b52502bb1773151d919603aa}{N\+I\+L\+\_\+\+F\+O\+R\+W\+A\+R\+D}~-\/1
+\item 
+\#define \hyperlink{_seq_model_8h_ae253216236513f1926e531f935d62019}{N\+O\+N\+E\+\_\+\+U\+P\+D\+A\+T\+E}~-\/1
+\item 
+\#define \hyperlink{_seq_model_8h_a68e4ca464d664b4889d150c3090a8bc1}{N\+I\+L\+\_\+\+B\+A\+C\+K\+\_\+\+P\+T\+R}~-\/1
+\item 
+\#define \hyperlink{_seq_model_8h_aee3753003c9949f9251e562a924030c2}{G\+R\+A\+P\+H\+\_\+\+P\+A\+R\+A\+S}(\hyperlink{readhtk_8m_ac7798f4aec24aa6076b2b222bd91d4fd}{type}, para)~\hyperlink{readhtk_8m_ac7798f4aec24aa6076b2b222bd91d4fd}{type} para;
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_seq_model_8h_aee3753003c9949f9251e562a924030c2}{\index{Seq\+Model.\+h@{Seq\+Model.\+h}!G\+R\+A\+P\+H\+\_\+\+P\+A\+R\+A\+S@{G\+R\+A\+P\+H\+\_\+\+P\+A\+R\+A\+S}}
+\index{G\+R\+A\+P\+H\+\_\+\+P\+A\+R\+A\+S@{G\+R\+A\+P\+H\+\_\+\+P\+A\+R\+A\+S}!Seq\+Model.\+h@{Seq\+Model.\+h}}
+\subsubsection[{G\+R\+A\+P\+H\+\_\+\+P\+A\+R\+A\+S}]{\setlength{\rightskip}{0pt plus 5cm}\#define G\+R\+A\+P\+H\+\_\+\+P\+A\+R\+A\+S(
+\begin{DoxyParamCaption}
+\item[{}]{{\bf type}, }
+\item[{}]{para}
+\end{DoxyParamCaption}
+)~{\bf type} para;}}\label{_seq_model_8h_aee3753003c9949f9251e562a924030c2}
+\hypertarget{_seq_model_8h_a68e4ca464d664b4889d150c3090a8bc1}{\index{Seq\+Model.\+h@{Seq\+Model.\+h}!N\+I\+L\+\_\+\+B\+A\+C\+K\+\_\+\+P\+T\+R@{N\+I\+L\+\_\+\+B\+A\+C\+K\+\_\+\+P\+T\+R}}
+\index{N\+I\+L\+\_\+\+B\+A\+C\+K\+\_\+\+P\+T\+R@{N\+I\+L\+\_\+\+B\+A\+C\+K\+\_\+\+P\+T\+R}!Seq\+Model.\+h@{Seq\+Model.\+h}}
+\subsubsection[{N\+I\+L\+\_\+\+B\+A\+C\+K\+\_\+\+P\+T\+R}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+I\+L\+\_\+\+B\+A\+C\+K\+\_\+\+P\+T\+R~-\/1}}\label{_seq_model_8h_a68e4ca464d664b4889d150c3090a8bc1}
+\hypertarget{_seq_model_8h_a0ea0968a9882d159eab2313b8dbd0e5c}{\index{Seq\+Model.\+h@{Seq\+Model.\+h}!N\+I\+L\+\_\+\+E\+D\+G\+E@{N\+I\+L\+\_\+\+E\+D\+G\+E}}
+\index{N\+I\+L\+\_\+\+E\+D\+G\+E@{N\+I\+L\+\_\+\+E\+D\+G\+E}!Seq\+Model.\+h@{Seq\+Model.\+h}}
+\subsubsection[{N\+I\+L\+\_\+\+E\+D\+G\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+I\+L\+\_\+\+E\+D\+G\+E~-\/1}}\label{_seq_model_8h_a0ea0968a9882d159eab2313b8dbd0e5c}
+\hypertarget{_seq_model_8h_a7760c6d1b52502bb1773151d919603aa}{\index{Seq\+Model.\+h@{Seq\+Model.\+h}!N\+I\+L\+\_\+\+F\+O\+R\+W\+A\+R\+D@{N\+I\+L\+\_\+\+F\+O\+R\+W\+A\+R\+D}}
+\index{N\+I\+L\+\_\+\+F\+O\+R\+W\+A\+R\+D@{N\+I\+L\+\_\+\+F\+O\+R\+W\+A\+R\+D}!Seq\+Model.\+h@{Seq\+Model.\+h}}
+\subsubsection[{N\+I\+L\+\_\+\+F\+O\+R\+W\+A\+R\+D}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+I\+L\+\_\+\+F\+O\+R\+W\+A\+R\+D~-\/1}}\label{_seq_model_8h_a7760c6d1b52502bb1773151d919603aa}
+\hypertarget{_seq_model_8h_ae253216236513f1926e531f935d62019}{\index{Seq\+Model.\+h@{Seq\+Model.\+h}!N\+O\+N\+E\+\_\+\+U\+P\+D\+A\+T\+E@{N\+O\+N\+E\+\_\+\+U\+P\+D\+A\+T\+E}}
+\index{N\+O\+N\+E\+\_\+\+U\+P\+D\+A\+T\+E@{N\+O\+N\+E\+\_\+\+U\+P\+D\+A\+T\+E}!Seq\+Model.\+h@{Seq\+Model.\+h}}
+\subsubsection[{N\+O\+N\+E\+\_\+\+U\+P\+D\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define N\+O\+N\+E\+\_\+\+U\+P\+D\+A\+T\+E~-\/1}}\label{_seq_model_8h_ae253216236513f1926e531f935d62019}

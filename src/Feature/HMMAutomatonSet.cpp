@@ -88,7 +88,7 @@ void HMMAutomatonSet::reGenerateAutomaton() {
 SP_RESULT HMMAutomatonSet::segTrain() {
     reGenerateAutomaton();
 
-    ThreadPool threadPool(1); // ThreadPool::thread_num);
+    ThreadPool threadPool(ThreadPool::thread_num);
     std::map< std::string, HMMAutomaton *>::iterator Itr;
     for(Itr = automatons.begin(); Itr != automatons.end(); Itr++) {
         std::string word = Itr->first;

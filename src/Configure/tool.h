@@ -24,6 +24,7 @@ const int TESTING = true;
 void Tip(const char * msg,...);
 void Warn(const char * msg,...);
 void Log(const char * msg,...);
+void Log(const char *filename, const int line_no, const char * msg,...);
 void ErrorLog(const char *msg,...);
 void WarnLog(const char *msg,...);
 

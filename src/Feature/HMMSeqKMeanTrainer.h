@@ -17,18 +17,40 @@
 #define _AUTOGUARD_HMMSeqKMeanTrainer_H_
 
 #include "HMMSeqTrainer.h"
+#include "HMMKMeanAutomaton.h"
+#include <pthread.h>
+#include <vector>
+
 class HMMSeqKMeanTrainer : public HMMSeqTrainer {
     public:
         HMMSeqKMeanTrainer();
         ~HMMSeqKMeanTrainer();
 
     private:
+        struct segTaskInfo {
+            int threadID;
+            int threadNum;
+            std::vector<SeqWav> *trainWavs;
+        };
+        struct updateTaskInfo {
+            bool *bigChange;
+            HMMKMeanAutomaton * automaton;
+        };
+
+        static int addressTag(void * address, int range);
+
         void hmmSeqTrain();
 
         void initHMMTrain();
 
+        static void segmentTask( void * in);
+        static void updateParaTask( void * in);
+        static void initParaTask( void * in);
+
         // return true to stop iterate
         bool iteratorSeqTrain();
+
+        static pthread_mutex_t lock;
 };
 
 #endif

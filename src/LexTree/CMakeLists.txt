@@ -1,3 +1,3 @@
 
-add_library(${LEXTREE} lextree.cpp spellcheck.cpp)
+add_library(${LEXTREE} LexTree.cpp spellcheck.cpp)
 

@@ -1,0 +1,123 @@
+\hypertarget{class_container}{\section{Container$<$ T $>$ Class Template Reference}
+\label{class_container}\index{Container$<$ T $>$@{Container$<$ T $>$}}
+}
+
+
+{\ttfamily \#include $<$container.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_container_ab17ce1f67243b28abcd4c8113a72524c}{Container} ()
+\item 
+\hyperlink{class_container_a3588c5096f50a0a6020403bc5a5ca68b}{Container} (T $\ast$\hyperlink{class_container_adf060dcd6dfb12774aced955881149d8}{items}, int \hyperlink{class_container_a28ddede70f4d2c63b8571291b714d6ff}{len})
+\item 
+\hyperlink{class_container_a5b3440c3177017d2d6a190724e7078ec}{$\sim$\+Container} ()
+\item 
+bool \hyperlink{class_container_a2e97d3b9786e4b6ae9404a9f18ffe2fb}{check} (int \hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}, const T \&a) const 
+\item 
+int \hyperlink{class_container_a28ddede70f4d2c63b8571291b714d6ff}{len} () const 
+\item 
+void \hyperlink{class_container_afb84989fc3eaa501fab06c148facd5e3}{add} (const T \&\hyperlink{readhtk_8m_aaccc9105df5383111407fd5b41255e23}{t})
+\item 
+const T \& \hyperlink{class_container_acbf6c7d4dbebe662467b35c7b0f48487}{operator\mbox{[}$\,$\mbox{]}} (int \hyperlink{readhtk_8m_aaccc9105df5383111407fd5b41255e23}{t}) const 
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ T $>$ \hyperlink{class_container_adf060dcd6dfb12774aced955881149d8}{items}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_container_a5f79f5574a200f0de7733d28852ddb99}{operator$<$} (const \hyperlink{class_container}{Container}$<$ T $>$ \&a, const \hyperlink{class_container}{Container}$<$ T $>$ \&b)
+\item 
+bool \hyperlink{class_container_a21fc06e1d8b2414882e2c0e65464c42b}{operator==} (const \hyperlink{class_container}{Container}$<$ T $>$ \&a, const \hyperlink{class_container}{Container}$<$ T $>$ \&b)
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_container_ab17ce1f67243b28abcd4c8113a72524c}{\index{Container@{Container}!Container@{Container}}
+\index{Container@{Container}!Container@{Container}}
+\subsubsection[{Container}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Container}$<$ T $>$\+::{\bf Container} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_container_ab17ce1f67243b28abcd4c8113a72524c}
+\hypertarget{class_container_a3588c5096f50a0a6020403bc5a5ca68b}{\index{Container@{Container}!Container@{Container}}
+\index{Container@{Container}!Container@{Container}}
+\subsubsection[{Container}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Container}$<$ T $>$\+::{\bf Container} (
+\begin{DoxyParamCaption}
+\item[{T $\ast$}]{items, }
+\item[{int}]{len}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_container_a3588c5096f50a0a6020403bc5a5ca68b}
+\hypertarget{class_container_a5b3440c3177017d2d6a190724e7078ec}{\index{Container@{Container}!````~Container@{$\sim$\+Container}}
+\index{````~Container@{$\sim$\+Container}!Container@{Container}}
+\subsubsection[{$\sim$\+Container}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Container}$<$ T $>$\+::$\sim${\bf Container} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_container_a5b3440c3177017d2d6a190724e7078ec}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_container_afb84989fc3eaa501fab06c148facd5e3}{\index{Container@{Container}!add@{add}}
+\index{add@{add}!Container@{Container}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Container}$<$ T $>$\+::add (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_container_afb84989fc3eaa501fab06c148facd5e3}
+\hypertarget{class_container_a2e97d3b9786e4b6ae9404a9f18ffe2fb}{\index{Container@{Container}!check@{check}}
+\index{check@{check}!Container@{Container}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Container}$<$ T $>$\+::check (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{const T \&}]{a}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_container_a2e97d3b9786e4b6ae9404a9f18ffe2fb}
+\hypertarget{class_container_a28ddede70f4d2c63b8571291b714d6ff}{\index{Container@{Container}!len@{len}}
+\index{len@{len}!Container@{Container}}
+\subsubsection[{len}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ int {\bf Container}$<$ T $>$\+::len (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_container_a28ddede70f4d2c63b8571291b714d6ff}
+\hypertarget{class_container_acbf6c7d4dbebe662467b35c7b0f48487}{\index{Container@{Container}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Container@{Container}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T\& {\bf Container}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{t}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_container_acbf6c7d4dbebe662467b35c7b0f48487}
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{class_container_a5f79f5574a200f0de7733d28852ddb99}{\index{Container@{Container}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Container@{Container}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Container}$<$ T $>$ \&}]{a, }
+\item[{const {\bf Container}$<$ T $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_container_a5f79f5574a200f0de7733d28852ddb99}
+\hypertarget{class_container_a21fc06e1d8b2414882e2c0e65464c42b}{\index{Container@{Container}!operator==@{operator==}}
+\index{operator==@{operator==}!Container@{Container}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Container}$<$ T $>$ \&}]{a, }
+\item[{const {\bf Container}$<$ T $>$ \&}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{class_container_a21fc06e1d8b2414882e2c0e65464c42b}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_container_adf060dcd6dfb12774aced955881149d8}{\index{Container@{Container}!items@{items}}
+\index{items@{items}!Container@{Container}}
+\subsubsection[{items}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ vector$<$T$>$ {\bf Container}$<$ T $>$\+::items\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_container_adf060dcd6dfb12774aced955881149d8}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Edit\+Distance/tmp/\hyperlink{container_8h}{container.\+h}\end{DoxyCompactItemize}

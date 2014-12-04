@@ -1,0 +1,153 @@
+\hypertarget{lpc2spec_8m}{\section{src/\+Matlab/rastamat/lpc2spec.m File Reference}
+\label{lpc2spec_8m}\index{src/\+Matlab/rastamat/lpc2spec.\+m@{src/\+Matlab/rastamat/lpc2spec.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{lpc2spec_8m_af4a04cb5ecdfd53041f3ce812cd7cfc8}{default} (i.\+e.\+for 8 k\+Hz)\%2003-\/04-\/11 dpwe @ee.\+columbia.\+edu part of rastamat \hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{spec2cep_8m_a0f36f89762390de6548ef01cf1aec807}{nargin}$<$ 2 \hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout}
+\item 
+id \hyperlink{lpc2spec_8m_a621f04b47100dd7295392c471283bcd7}{polyvals\+:} ((-\/\hyperlink{process__options_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} $\ast$\mbox{[}0\+:(\hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout}-\/1)\mbox{]}'$\ast$pi/(\hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout}-\/1))$\ast$\mbox{[}0\+:\hyperlink{lpc2spec_8m_a9f4e8630516f3da89537313b4c828759}{order}\mbox{]} exp)
+\item 
+Actual in \hyperlink{lpc2spec_8m_a11acd983a1f1e312816beefa7c1a8178}{power} (mag$^\wedge$2) \hyperlink{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}{features}
+\item 
+\hyperlink{lpc2spec_8m_a77ab63ea9c0155bc659285683a52d6df}{size} (\hyperlink{lpc2spec_8m_aece926d8c0356205276a45266d361161}{ff})\%size(\hyperlink{lpc2spec_8m_a0b4e7a0e5fe84ad35fb5f95b9ceeac79}{aaa}) zz
+\item 
+\hyperlink{lpc2spec_8m_ac21c8b0c2d98b1d274d9dc016c794ca3}{F} (\hyperlink{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}{c}, 1\+:\hyperlink{process__options_8m_aafa2a13275cfe1212352c22787c957ea}{length}(\hyperlink{lpc2spec_8m_ae933556a4a64dba6dc33be1422196177}{ix}))
+\item 
+\hyperlink{lpc2spec_8m_acdf5138e4a86bbc5f2b1c6f8f7bac5b5}{M} (\hyperlink{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}{c}, 1\+:\hyperlink{process__options_8m_aafa2a13275cfe1212352c22787c957ea}{length}(\hyperlink{lpc2spec_8m_ae933556a4a64dba6dc33be1422196177}{ix}))
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{lpc2spec_8m_ac1f4bffa0fc327969a2c9c81f3079b33}{function} \mbox{[}\hyperlink{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}{features}, \hyperlink{lpc2spec_8m_ac21c8b0c2d98b1d274d9dc016c794ca3}{F}, \hyperlink{lpc2spec_8m_acdf5138e4a86bbc5f2b1c6f8f7bac5b5}{M}\mbox{]}
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \mbox{[}rows, cols\mbox{]} = \hyperlink{rastafilt_8m_a777f01fd1c8394e2fbac19f36c7d2f92}{size}(\hyperlink{melfcc_8m_a1029cb7d3ad99b223581d31e082cb037}{lpcas})
+\item 
+\hyperlink{lpc2spec_8m_a9f4e8630516f3da89537313b4c828759}{order} = rows -\/ 1
+\item 
+\hyperlink{lpc2spec_8m_ac1ebb4933e06ce5617483f665e26627c}{gg} = \hyperlink{melfcc_8m_a1029cb7d3ad99b223581d31e082cb037}{lpcas}(1,\+:)
+\item 
+\hyperlink{lpc2spec_8m_a74b87337454200d4d33f80c4663dc5e5}{aa} = lpcas./repmat(\hyperlink{lpc2spec_8m_ac1ebb4933e06ce5617483f665e26627c}{gg},rows,1)
+\item 
+Actual \hyperlink{lpc2spec_8m_a8d8be13c1258e6f0f6f39a0982315475}{polyvals}
+\item 
+\hyperlink{lpc2spec_8m_a1fd406685cbdee605d0a7bebed56fdb0}{F} = zeros(cols, floor(rows/2))
+\item 
+\hyperlink{lpc2spec_8m_aad05f78187c942f9dd521605fa81f1ba}{M} = \hyperlink{lpc2spec_8m_ac21c8b0c2d98b1d274d9dc016c794ca3}{F}
+\item 
+for \hyperlink{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}{c} = 1\+:cols
+\item 
+\hyperlink{lpc2spec_8m_a0b4e7a0e5fe84ad35fb5f95b9ceeac79}{aaa} = \hyperlink{lpc2spec_8m_a74b87337454200d4d33f80c4663dc5e5}{aa}(\+:,\hyperlink{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}{c})
+\item 
+\hyperlink{lpc2spec_8m_aeb9279982226a42afdf2860dbdc29b45}{rr} = roots(\hyperlink{lpc2spec_8m_a0b4e7a0e5fe84ad35fb5f95b9ceeac79}{aaa}')
+\item 
+\hyperlink{lpc2spec_8m_aece926d8c0356205276a45266d361161}{ff} = angle(\hyperlink{lpc2spec_8m_aeb9279982226a42afdf2860dbdc29b45}{rr}')
+\item 
+\hyperlink{lpc2spec_8m_a576bd985504869429e051f986f8c747f}{mags} = sqrt(((1./\hyperlink{calc_dist_8h_aa80441bd92270f050b0796561243f410}{abs}(zz$\ast$\hyperlink{lpc2spec_8m_a0b4e7a0e5fe84ad35fb5f95b9ceeac79}{aaa})).$^\wedge$2)/\hyperlink{lpc2spec_8m_ac1ebb4933e06ce5617483f665e26627c}{gg}(\hyperlink{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}{c}))'
+\item 
+\hyperlink{lpc2spec_8m_aa6e3dfe729e3efdf117eeb1059051f77}{keep} = \hyperlink{lpc2spec_8m_aece926d8c0356205276a45266d361161}{ff}(\hyperlink{lpc2spec_8m_ae933556a4a64dba6dc33be1422196177}{ix}) $>$ 0
+\item 
+\hyperlink{lpc2spec_8m_ae933556a4a64dba6dc33be1422196177}{ix} = ix(\hyperlink{lpc2spec_8m_aa6e3dfe729e3efdf117eeb1059051f77}{keep})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lpc2spec_8m_af4a04cb5ecdfd53041f3ce812cd7cfc8}{\index{lpc2spec.\+m@{lpc2spec.\+m}!default@{default}}
+\index{default@{default}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{default}]{\setlength{\rightskip}{0pt plus 5cm}default (
+\begin{DoxyParamCaption}
+\item[{i.\+e.\+for 8}]{k\+Hz}
+\end{DoxyParamCaption}
+)}}\label{lpc2spec_8m_af4a04cb5ecdfd53041f3ce812cd7cfc8}
+\hypertarget{lpc2spec_8m_ac21c8b0c2d98b1d274d9dc016c794ca3}{\index{lpc2spec.\+m@{lpc2spec.\+m}!F@{F}}
+\index{F@{F}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{F}]{\setlength{\rightskip}{0pt plus 5cm}F (
+\begin{DoxyParamCaption}
+\item[{{\bf c}}]{, }
+\item[{1\+:}]{lengthix}
+\end{DoxyParamCaption}
+)}}\label{lpc2spec_8m_ac21c8b0c2d98b1d274d9dc016c794ca3}
+\hypertarget{lpc2spec_8m_acdf5138e4a86bbc5f2b1c6f8f7bac5b5}{\index{lpc2spec.\+m@{lpc2spec.\+m}!M@{M}}
+\index{M@{M}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{M}]{\setlength{\rightskip}{0pt plus 5cm}M (
+\begin{DoxyParamCaption}
+\item[{{\bf c}}]{, }
+\item[{1\+:}]{lengthix}
+\end{DoxyParamCaption}
+)}}\label{lpc2spec_8m_acdf5138e4a86bbc5f2b1c6f8f7bac5b5}
+\hypertarget{lpc2spec_8m_a621f04b47100dd7295392c471283bcd7}{\index{lpc2spec.\+m@{lpc2spec.\+m}!polyvals\+:@{polyvals\+:}}
+\index{polyvals\+:@{polyvals\+:}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{polyvals\+:}]{\setlength{\rightskip}{0pt plus 5cm}id polyvals\+: (
+\begin{DoxyParamCaption}
+\item[{(-\/{\bf j} $\ast$\mbox{[}0\+:({\bf nout}-\/1)\mbox{]}'$\ast$pi/({\bf nout}-\/1))$\ast$}]{exp\mbox{[}0\+:order\mbox{]}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{lpc2spec_8m_a621f04b47100dd7295392c471283bcd7}
+\hypertarget{lpc2spec_8m_a11acd983a1f1e312816beefa7c1a8178}{\index{lpc2spec.\+m@{lpc2spec.\+m}!power@{power}}
+\index{power@{power}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{power}]{\setlength{\rightskip}{0pt plus 5cm}Actual in power (
+\begin{DoxyParamCaption}
+\item[{mag$^\wedge$}]{2}
+\end{DoxyParamCaption}
+)}}\label{lpc2spec_8m_a11acd983a1f1e312816beefa7c1a8178}
+\hypertarget{lpc2spec_8m_a77ab63ea9c0155bc659285683a52d6df}{\index{lpc2spec.\+m@{lpc2spec.\+m}!size@{size}}
+\index{size@{size}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}size (
+\begin{DoxyParamCaption}
+\item[{{\bf ff}}]{}
+\end{DoxyParamCaption}
+)}}\label{lpc2spec_8m_a77ab63ea9c0155bc659285683a52d6df}
+
+
+\subsection{Variable Documentation}
+\hypertarget{lpc2spec_8m_a74b87337454200d4d33f80c4663dc5e5}{\index{lpc2spec.\+m@{lpc2spec.\+m}!aa@{aa}}
+\index{aa@{aa}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{aa}]{\setlength{\rightskip}{0pt plus 5cm}aa = lpcas./repmat({\bf gg},rows,1)}}\label{lpc2spec_8m_a74b87337454200d4d33f80c4663dc5e5}
+\hypertarget{lpc2spec_8m_a0b4e7a0e5fe84ad35fb5f95b9ceeac79}{\index{lpc2spec.\+m@{lpc2spec.\+m}!aaa@{aaa}}
+\index{aaa@{aaa}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{aaa}]{\setlength{\rightskip}{0pt plus 5cm}aaa = {\bf aa}(\+:,{\bf c})}}\label{lpc2spec_8m_a0b4e7a0e5fe84ad35fb5f95b9ceeac79}
+\hypertarget{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}{\index{lpc2spec.\+m@{lpc2spec.\+m}!c@{c}}
+\index{c@{c}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{c}]{\setlength{\rightskip}{0pt plus 5cm}for c = 1\+:cols}}\label{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}
+\hypertarget{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{\index{lpc2spec.\+m@{lpc2spec.\+m}!end@{end}}
+\index{end@{end}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}end\mbox{[}rows, cols\mbox{]} = {\bf size}({\bf lpcas})}}\label{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}
+\hypertarget{lpc2spec_8m_a1fd406685cbdee605d0a7bebed56fdb0}{\index{lpc2spec.\+m@{lpc2spec.\+m}!F@{F}}
+\index{F@{F}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{F}]{\setlength{\rightskip}{0pt plus 5cm}F = zeros(cols, floor(rows/2))}}\label{lpc2spec_8m_a1fd406685cbdee605d0a7bebed56fdb0}
+\hypertarget{lpc2spec_8m_aece926d8c0356205276a45266d361161}{\index{lpc2spec.\+m@{lpc2spec.\+m}!ff@{ff}}
+\index{ff@{ff}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{ff}]{\setlength{\rightskip}{0pt plus 5cm}ff = angle({\bf rr}')}}\label{lpc2spec_8m_aece926d8c0356205276a45266d361161}
+\hypertarget{lpc2spec_8m_ac1f4bffa0fc327969a2c9c81f3079b33}{\index{lpc2spec.\+m@{lpc2spec.\+m}!function@{function}}
+\index{function@{function}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}function\mbox{[}{\bf features}, {\bf F}, {\bf M}\mbox{]}}}\label{lpc2spec_8m_ac1f4bffa0fc327969a2c9c81f3079b33}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= lpc2spec(\hyperlink{melfcc_8m_a1029cb7d3ad99b223581d31e082cb037}{lpcas}, \hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout})
+% [features,F,M] = lpc2spec(\hyperlink{melfcc_8m_a1029cb7d3ad99b223581d31e082cb037}{lpcas},\hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout})
+%    Convert LPC coeffs back into spectra
+%    \hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} number of freq channels
+\end{DoxyCode}
+\hypertarget{lpc2spec_8m_ac1ebb4933e06ce5617483f665e26627c}{\index{lpc2spec.\+m@{lpc2spec.\+m}!gg@{gg}}
+\index{gg@{gg}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{gg}]{\setlength{\rightskip}{0pt plus 5cm}gg = {\bf lpcas}(1,\+:)}}\label{lpc2spec_8m_ac1ebb4933e06ce5617483f665e26627c}
+\hypertarget{lpc2spec_8m_ae933556a4a64dba6dc33be1422196177}{\index{lpc2spec.\+m@{lpc2spec.\+m}!ix@{ix}}
+\index{ix@{ix}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{ix}]{\setlength{\rightskip}{0pt plus 5cm}ix = ix({\bf keep})}}\label{lpc2spec_8m_ae933556a4a64dba6dc33be1422196177}
+\hypertarget{lpc2spec_8m_aa6e3dfe729e3efdf117eeb1059051f77}{\index{lpc2spec.\+m@{lpc2spec.\+m}!keep@{keep}}
+\index{keep@{keep}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{keep}]{\setlength{\rightskip}{0pt plus 5cm}keep = {\bf ff}({\bf ix}) $>$ 0}}\label{lpc2spec_8m_aa6e3dfe729e3efdf117eeb1059051f77}
+\hypertarget{lpc2spec_8m_aad05f78187c942f9dd521605fa81f1ba}{\index{lpc2spec.\+m@{lpc2spec.\+m}!M@{M}}
+\index{M@{M}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{M}]{\setlength{\rightskip}{0pt plus 5cm}M = {\bf F}}}\label{lpc2spec_8m_aad05f78187c942f9dd521605fa81f1ba}
+\hypertarget{lpc2spec_8m_a576bd985504869429e051f986f8c747f}{\index{lpc2spec.\+m@{lpc2spec.\+m}!mags@{mags}}
+\index{mags@{mags}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{mags}]{\setlength{\rightskip}{0pt plus 5cm}mags = sqrt(((1./{\bf abs}(zz$\ast${\bf aaa})).$^\wedge$2)/{\bf gg}({\bf c}))'}}\label{lpc2spec_8m_a576bd985504869429e051f986f8c747f}
+\hypertarget{lpc2spec_8m_a9f4e8630516f3da89537313b4c828759}{\index{lpc2spec.\+m@{lpc2spec.\+m}!order@{order}}
+\index{order@{order}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{order}]{\setlength{\rightskip}{0pt plus 5cm}order = rows -\/ 1}}\label{lpc2spec_8m_a9f4e8630516f3da89537313b4c828759}
+\hypertarget{lpc2spec_8m_a8d8be13c1258e6f0f6f39a0982315475}{\index{lpc2spec.\+m@{lpc2spec.\+m}!polyvals@{polyvals}}
+\index{polyvals@{polyvals}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{polyvals}]{\setlength{\rightskip}{0pt plus 5cm}Actual polyvals}}\label{lpc2spec_8m_a8d8be13c1258e6f0f6f39a0982315475}
+\hypertarget{lpc2spec_8m_aeb9279982226a42afdf2860dbdc29b45}{\index{lpc2spec.\+m@{lpc2spec.\+m}!rr@{rr}}
+\index{rr@{rr}!lpc2spec.\+m@{lpc2spec.\+m}}
+\subsubsection[{rr}]{\setlength{\rightskip}{0pt plus 5cm}rr = roots({\bf aaa}')}}\label{lpc2spec_8m_aeb9279982226a42afdf2860dbdc29b45}

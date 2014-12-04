@@ -1,0 +1,119 @@
+\hypertarget{invmelfcc_8m}{\section{src/\+Matlab/rastamat/invmelfcc.m File Reference}
+\label{invmelfcc_8m}\index{src/\+Matlab/rastamat/invmelfcc.\+m@{src/\+Matlab/rastamat/invmelfcc.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+varargin, 'wintime', \\*
+0.\+025, 'hoptime', \\*
+0.\+010,... 'numcep', \\*
+13, 'lifterexp', \\*
+0.\+6, 'sumpower', 1, '\hyperlink{melfcc_8m_a12faaff530c4ea6641491652ab241fce}{preemph}', \\*
+0.\+97,... 'dither', 0, 'minfreq', \\*
+0, 'maxfreq', 4000,... 'nbands', \\*
+40, 'bwidth', 1.\+0, 'dcttype', \\*
+2,... 'fbtype', 'mel', 'usecmp', \\*
+0, 'modelorder', 0, 'broaden',...\+0, \\*
+'excitation',\mbox{[}$\,$\mbox{]} \hyperlink{invmelfcc_8m_abb69d0b8808f6d39491410cda9a2b5ef}{process\+\_\+options} ()
+\item 
+arg nonzero means undo \\*
+liftering Need \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} reconstruct \\*
+the two extra flanking bands \\*
+for invpostaud \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{invmelfcc_8m_a56317093c2c5ca9b68a4a24bd5932e93}{delete} (\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} we're doing usecmp) pspc
+\item 
+\hyperlink{invmelfcc_8m_a3952649ca74192194cf26da6960d3758}{if} (usecmp) \hyperlink{invmelfcc_8m_a0d7c01c3ee29829e9cfe246256bf5ca5}{aspc}
+\item 
+Back \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{invmelfcc_8m_aef9f3e6b9ba9fd73abd43d6c65f74069}{waveform} (modulate white noise, \hyperlink{readhtk_8m_a58781a13256e170574b13bb2170e928e}{or} specified excitation) \hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{invmelfcc_8m_a3242f8ab347bca80577248b191109dae}{function} \mbox{[}\hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x}, \hyperlink{invmelfcc_8m_a0d7c01c3ee29829e9cfe246256bf5ca5}{aspc}, \hyperlink{invmelfcc_8m_a3f339bf7bf75cbe1bd8892606b034798}{spec}\mbox{]}
+\item 
+\hyperlink{invmelfcc_8m_a0d7c01c3ee29829e9cfe246256bf5ca5}{aspc} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} the auditory \hyperlink{invmelfcc_8m_abdc133b04325921144ac0b76900a4cf3}{spectrogram}
+\item 
+\hyperlink{invmelfcc_8m_a324ea66aaeb7f91e01ee6df8dc705261}{winpts} = round(wintime$\ast$\hyperlink{rastaplp_8m_a244f7e31df5f74475fb2dd1a6a2392db}{sr})
+\item 
+\hyperlink{invmelfcc_8m_a17a91041294876559d1e2d22ae55612f}{nfft} = 2$^\wedge$(ceil(log(\hyperlink{invmelfcc_8m_a324ea66aaeb7f91e01ee6df8dc705261}{winpts})/log(2)))
+\item 
+\hyperlink{invmelfcc_8m_aa6f5a931726c3db771db99e063e8b3dd}{cep} = lifter(cep, lifterexp, 1)
+\item 
+else \hyperlink{invmelfcc_8m_a0d7c01c3ee29829e9cfe246256bf5ca5}{aspc} = pspc
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} Undo the auditory \hyperlink{melfcc__demo_8m_ab742b4e27ea2df1006e65e791a1fdae0}{spectrum} \hyperlink{invmelfcc_8m_a3f339bf7bf75cbe1bd8892606b034798}{spec} = invaudspec(\hyperlink{invmelfcc_8m_a0d7c01c3ee29829e9cfe246256bf5ca5}{aspc}, \hyperlink{rastaplp_8m_a244f7e31df5f74475fb2dd1a6a2392db}{sr}, \hyperlink{invmelfcc_8m_a17a91041294876559d1e2d22ae55612f}{nfft}, fbtype, minfreq, maxfreq, sumpower, bwidth)
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{invmelfcc_8m_a12faaff530c4ea6641491652ab241fce}{preemph}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{invmelfcc_8m_a56317093c2c5ca9b68a4a24bd5932e93}{\index{invmelfcc.\+m@{invmelfcc.\+m}!delete@{delete}}
+\index{delete@{delete}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{delete}]{\setlength{\rightskip}{0pt plus 5cm}arg nonzero means undo liftering Need {\bf to} reconstruct the two extra flanking bands for invpostaud {\bf to} delete (
+\begin{DoxyParamCaption}
+\item[{{\bf if} we're doing}]{usecmp}
+\end{DoxyParamCaption}
+)}}\label{invmelfcc_8m_a56317093c2c5ca9b68a4a24bd5932e93}
+\hypertarget{invmelfcc_8m_a3952649ca74192194cf26da6960d3758}{\index{invmelfcc.\+m@{invmelfcc.\+m}!if@{if}}
+\index{if@{if}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{if}]{\setlength{\rightskip}{0pt plus 5cm}if (
+\begin{DoxyParamCaption}
+\item[{usecmp}]{}
+\end{DoxyParamCaption}
+)}}\label{invmelfcc_8m_a3952649ca74192194cf26da6960d3758}
+\hypertarget{invmelfcc_8m_abb69d0b8808f6d39491410cda9a2b5ef}{\index{invmelfcc.\+m@{invmelfcc.\+m}!process\+\_\+options@{process\+\_\+options}}
+\index{process\+\_\+options@{process\+\_\+options}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{process\+\_\+options}]{\setlength{\rightskip}{0pt plus 5cm}varargin, 'wintime', 0.\+025, 'hoptime', 0.\+010, ... 'numcep', 13, 'lifterexp', 0.\+6, 'sumpower', 1, '{\bf preemph}', 0.\+97, ... 'dither', 0, 'minfreq', 0, 'maxfreq', 4000, ... 'nbands', 40, 'bwidth', 1.\+0, 'dcttype', 2, ... 'fbtype', 'mel', 'usecmp', 0, 'modelorder', 0, 'broaden', ... 0, 'excitation', \mbox{[}$\,$\mbox{]} process\+\_\+options (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{invmelfcc_8m_abb69d0b8808f6d39491410cda9a2b5ef}
+\hypertarget{invmelfcc_8m_aef9f3e6b9ba9fd73abd43d6c65f74069}{\index{invmelfcc.\+m@{invmelfcc.\+m}!waveform@{waveform}}
+\index{waveform@{waveform}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{waveform}]{\setlength{\rightskip}{0pt plus 5cm}Back {\bf to} waveform (
+\begin{DoxyParamCaption}
+\item[{modulate white}]{noise, }
+\item[{{\bf or} specified}]{excitation}
+\end{DoxyParamCaption}
+)}}\label{invmelfcc_8m_aef9f3e6b9ba9fd73abd43d6c65f74069}
+
+
+\subsection{Variable Documentation}
+\hypertarget{invmelfcc_8m_a0d7c01c3ee29829e9cfe246256bf5ca5}{\index{invmelfcc.\+m@{invmelfcc.\+m}!aspc@{aspc}}
+\index{aspc@{aspc}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{aspc}]{\setlength{\rightskip}{0pt plus 5cm}else aspc = pspc}}\label{invmelfcc_8m_a0d7c01c3ee29829e9cfe246256bf5ca5}
+\hypertarget{invmelfcc_8m_aa6f5a931726c3db771db99e063e8b3dd}{\index{invmelfcc.\+m@{invmelfcc.\+m}!cep@{cep}}
+\index{cep@{cep}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{cep}]{\setlength{\rightskip}{0pt plus 5cm}cep = lifter(cep, lifterexp, 1)}}\label{invmelfcc_8m_aa6f5a931726c3db771db99e063e8b3dd}
+\hypertarget{invmelfcc_8m_a3242f8ab347bca80577248b191109dae}{\index{invmelfcc.\+m@{invmelfcc.\+m}!function@{function}}
+\index{function@{function}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}function\mbox{[}{\bf x}, {\bf aspc}, {\bf spec}\mbox{]}}}\label{invmelfcc_8m_a3242f8ab347bca80577248b191109dae}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= invmelfcc(\hyperlink{invmelfcc_8m_aa6f5a931726c3db771db99e063e8b3dd}{cep}, \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr}, varargin)
+% [x,aspc,spec] = invmelfcc(\hyperlink{invmelfcc_8m_aa6f5a931726c3db771db99e063e8b3dd}{cep}, \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr}[, opts ...])
+%    Attempt \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} invert plp \hyperlink{melfcc_8m_ad0f1a7920e6f39da3864c784a1cc361c}{cepstra} back \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} a full \hyperlink{melfcc_8m_aaacc6f4351729d66b24c7c064d9c2b0d}{spectrum}
+%    and even a \hyperlink{invmelfcc_8m_aef9f3e6b9ba9fd73abd43d6c65f74069}{waveform}.  Takes all the same options as melfcc.
+%    \hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} (noise-excited) time domain \hyperlink{invmelfcc_8m_aef9f3e6b9ba9fd73abd43d6c65f74069}{waveform}
+\end{DoxyCode}
+\hypertarget{invmelfcc_8m_a17a91041294876559d1e2d22ae55612f}{\index{invmelfcc.\+m@{invmelfcc.\+m}!nfft@{nfft}}
+\index{nfft@{nfft}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{nfft}]{\setlength{\rightskip}{0pt plus 5cm}nfft = 2$^\wedge$(ceil(log({\bf winpts})/log(2)))}}\label{invmelfcc_8m_a17a91041294876559d1e2d22ae55612f}
+\hypertarget{invmelfcc_8m_a12faaff530c4ea6641491652ab241fce}{\index{invmelfcc.\+m@{invmelfcc.\+m}!preemph@{preemph}}
+\index{preemph@{preemph}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{preemph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} preemph}}\label{invmelfcc_8m_a12faaff530c4ea6641491652ab241fce}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= 0
+  % Undo the original preemphasis
+  \hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x} = \hyperlink{rastafilt_8m_ae982e7fdf6081c2350fe3c2b615d995e}{filter}(1, [1 -\hyperlink{invmelfcc_8m_a12faaff530c4ea6641491652ab241fce}{preemph}], \hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x})
+\end{DoxyCode}
+\hypertarget{invmelfcc_8m_a3f339bf7bf75cbe1bd8892606b034798}{\index{invmelfcc.\+m@{invmelfcc.\+m}!spec@{spec}}
+\index{spec@{spec}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{spec}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} Undo the auditory {\bf spectrum} spec = invaudspec({\bf aspc}, {\bf sr}, {\bf nfft}, fbtype, minfreq, maxfreq, sumpower, bwidth)}}\label{invmelfcc_8m_a3f339bf7bf75cbe1bd8892606b034798}
+\hypertarget{invmelfcc_8m_abdc133b04325921144ac0b76900a4cf3}{\index{invmelfcc.\+m@{invmelfcc.\+m}!spectrogram@{spectrogram}}
+\index{spectrogram@{spectrogram}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{spectrogram}]{\setlength{\rightskip}{0pt plus 5cm}{\bf aspc} {\bf is} the auditory spectrogram}}\label{invmelfcc_8m_abdc133b04325921144ac0b76900a4cf3}
+\hypertarget{invmelfcc_8m_a324ea66aaeb7f91e01ee6df8dc705261}{\index{invmelfcc.\+m@{invmelfcc.\+m}!winpts@{winpts}}
+\index{winpts@{winpts}!invmelfcc.\+m@{invmelfcc.\+m}}
+\subsubsection[{winpts}]{\setlength{\rightskip}{0pt plus 5cm}winpts = round(wintime$\ast${\bf sr})}}\label{invmelfcc_8m_a324ea66aaeb7f91e01ee6df8dc705261}

@@ -1,0 +1,185 @@
+\hypertarget{class_capture}{\section{Capture Class Reference}
+\label{class_capture}\index{Capture@{Capture}}
+}
+
+
+{\ttfamily \#include $<$Capture.\+h$>$}
+
+Inheritance diagram for Capture\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_capture}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_capture_a97036b5d271238bd4852da79a0091b57}{Capture} ()
+\item 
+\hyperlink{class_capture_ab5b3fac467fa47592126d782f9375250}{$\sim$\+Capture} ()
+\item 
+bool \hyperlink{class_capture_a3093205d35063cabcc642f2f1974298e}{capture} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$)
+\item 
+bool \hyperlink{class_capture_a255daf1ddd78a6593b0e4850b39a9ec9}{play} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_capture_a45364e6153b09910c64006b4dee2e3ba}{load\+\_\+wav\+\_\+file} (const char $\ast$const file\+\_\+name, \hyperlink{class_raw_data}{Raw\+Data} \&\hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data}, bool \hyperlink{recorder_8cpp_afca07e4c3b4c5d94f98ac43562d19215}{playback}=false)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_capture_ae88010511b90a237a8a17ad2a70e5432}{init\+\_\+stream} (bool input)
+\item 
+bool \hyperlink{class_capture_ae3ad177c3bd753d8ec633ac545f9b929}{init\+\_\+\+P\+A} ()
+\item 
+bool \hyperlink{class_capture_a30365cdef1c06d2e1f8cf7abba00b21f}{init} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$\hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data}, bool input)
+\item 
+bool \hyperlink{class_capture_a3ed2fabc0ab88e8b0dd9dc8b108cf0fb}{end} ()
+\item 
+virtual bool \hyperlink{class_capture_afbd312bfcb81305f9bc542c56e83d64c}{capture\+Action} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$\hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data})
+\item 
+virtual bool \hyperlink{class_capture_a4dea1091e735509dd97e0b14e054f77f}{play\+Action} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$\hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data})
+\item 
+virtual bool \hyperlink{class_capture_a646039c1a6c861683f547dd894ef4b27}{init\+\_\+callback} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$\hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data}, bool input)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Pa\+Stream\+Parameters \hyperlink{class_capture_a84320acc014a2d81574a876e6d693108}{in}
+\item 
+Pa\+Stream\+Parameters \hyperlink{class_capture_ad9e4da58dead277ef3b387fd4080d12b}{out}
+\item 
+Pa\+Stream $\ast$ \hyperlink{class_capture_abc592c61bc547b65c395b8a43c5cf1ad}{stream}
+\item 
+Pa\+Stream\+Callback $\ast$ \hyperlink{class_capture_a8011f682b8e253387a717134b454c2d4}{callback}
+\item 
+void $\ast$ \hyperlink{class_capture_a0253ca7959f1e3a550502c33612e3c2e}{user\+Data}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_capture_a97036b5d271238bd4852da79a0091b57}{\index{Capture@{Capture}!Capture@{Capture}}
+\index{Capture@{Capture}!Capture@{Capture}}
+\subsubsection[{Capture}]{\setlength{\rightskip}{0pt plus 5cm}Capture\+::\+Capture (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_capture_a97036b5d271238bd4852da79a0091b57}
+\hypertarget{class_capture_ab5b3fac467fa47592126d782f9375250}{\index{Capture@{Capture}!````~Capture@{$\sim$\+Capture}}
+\index{````~Capture@{$\sim$\+Capture}!Capture@{Capture}}
+\subsubsection[{$\sim$\+Capture}]{\setlength{\rightskip}{0pt plus 5cm}Capture\+::$\sim$\+Capture (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_capture_ab5b3fac467fa47592126d782f9375250}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_capture_a3093205d35063cabcc642f2f1974298e}{\index{Capture@{Capture}!capture@{capture}}
+\index{capture@{capture}!Capture@{Capture}}
+\subsubsection[{capture}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::capture (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_capture_a3093205d35063cabcc642f2f1974298e}
+\hypertarget{class_capture_afbd312bfcb81305f9bc542c56e83d64c}{\index{Capture@{Capture}!capture\+Action@{capture\+Action}}
+\index{capture\+Action@{capture\+Action}!Capture@{Capture}}
+\subsubsection[{capture\+Action}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::capture\+Action (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_capture_afbd312bfcb81305f9bc542c56e83d64c}
+
+
+Reimplemented in \hyperlink{class_auto_capture_ab5dc241ceb0226dcb2a17a3b56646210}{Auto\+Capture}.
+
+\hypertarget{class_capture_a3ed2fabc0ab88e8b0dd9dc8b108cf0fb}{\index{Capture@{Capture}!end@{end}}
+\index{end@{end}!Capture@{Capture}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_a3ed2fabc0ab88e8b0dd9dc8b108cf0fb}
+\hypertarget{class_capture_a30365cdef1c06d2e1f8cf7abba00b21f}{\index{Capture@{Capture}!init@{init}}
+\index{init@{init}!Capture@{Capture}}
+\subsubsection[{init}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::init (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{data, }
+\item[{bool}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_a30365cdef1c06d2e1f8cf7abba00b21f}
+\hypertarget{class_capture_a646039c1a6c861683f547dd894ef4b27}{\index{Capture@{Capture}!init\+\_\+callback@{init\+\_\+callback}}
+\index{init\+\_\+callback@{init\+\_\+callback}!Capture@{Capture}}
+\subsubsection[{init\+\_\+callback}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::init\+\_\+callback (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{data, }
+\item[{bool}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_capture_a646039c1a6c861683f547dd894ef4b27}
+
+
+Reimplemented in \hyperlink{class_auto_capture_a39edd9a81495af7491701ef7b491a2bc}{Auto\+Capture}.
+
+\hypertarget{class_capture_ae3ad177c3bd753d8ec633ac545f9b929}{\index{Capture@{Capture}!init\+\_\+\+P\+A@{init\+\_\+\+P\+A}}
+\index{init\+\_\+\+P\+A@{init\+\_\+\+P\+A}!Capture@{Capture}}
+\subsubsection[{init\+\_\+\+P\+A}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::init\+\_\+\+P\+A (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_ae3ad177c3bd753d8ec633ac545f9b929}
+\hypertarget{class_capture_ae88010511b90a237a8a17ad2a70e5432}{\index{Capture@{Capture}!init\+\_\+stream@{init\+\_\+stream}}
+\index{init\+\_\+stream@{init\+\_\+stream}!Capture@{Capture}}
+\subsubsection[{init\+\_\+stream}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::init\+\_\+stream (
+\begin{DoxyParamCaption}
+\item[{bool}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_ae88010511b90a237a8a17ad2a70e5432}
+\hypertarget{class_capture_a45364e6153b09910c64006b4dee2e3ba}{\index{Capture@{Capture}!load\+\_\+wav\+\_\+file@{load\+\_\+wav\+\_\+file}}
+\index{load\+\_\+wav\+\_\+file@{load\+\_\+wav\+\_\+file}!Capture@{Capture}}
+\subsubsection[{load\+\_\+wav\+\_\+file}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} Capture\+::load\+\_\+wav\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{file\+\_\+name, }
+\item[{{\bf Raw\+Data} \&}]{data, }
+\item[{bool}]{playback = {\ttfamily false}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_capture_a45364e6153b09910c64006b4dee2e3ba}
+\hypertarget{class_capture_a255daf1ddd78a6593b0e4850b39a9ec9}{\index{Capture@{Capture}!play@{play}}
+\index{play@{play}!Capture@{Capture}}
+\subsubsection[{play}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::play (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_capture_a255daf1ddd78a6593b0e4850b39a9ec9}
+\hypertarget{class_capture_a4dea1091e735509dd97e0b14e054f77f}{\index{Capture@{Capture}!play\+Action@{play\+Action}}
+\index{play\+Action@{play\+Action}!Capture@{Capture}}
+\subsubsection[{play\+Action}]{\setlength{\rightskip}{0pt plus 5cm}bool Capture\+::play\+Action (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_capture_a4dea1091e735509dd97e0b14e054f77f}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_capture_a8011f682b8e253387a717134b454c2d4}{\index{Capture@{Capture}!callback@{callback}}
+\index{callback@{callback}!Capture@{Capture}}
+\subsubsection[{callback}]{\setlength{\rightskip}{0pt plus 5cm}Pa\+Stream\+Callback$\ast$ Capture\+::callback\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_a8011f682b8e253387a717134b454c2d4}
+\hypertarget{class_capture_a84320acc014a2d81574a876e6d693108}{\index{Capture@{Capture}!in@{in}}
+\index{in@{in}!Capture@{Capture}}
+\subsubsection[{in}]{\setlength{\rightskip}{0pt plus 5cm}Pa\+Stream\+Parameters Capture\+::in\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_a84320acc014a2d81574a876e6d693108}
+\hypertarget{class_capture_ad9e4da58dead277ef3b387fd4080d12b}{\index{Capture@{Capture}!out@{out}}
+\index{out@{out}!Capture@{Capture}}
+\subsubsection[{out}]{\setlength{\rightskip}{0pt plus 5cm}Pa\+Stream\+Parameters Capture\+::out\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_ad9e4da58dead277ef3b387fd4080d12b}
+\hypertarget{class_capture_abc592c61bc547b65c395b8a43c5cf1ad}{\index{Capture@{Capture}!stream@{stream}}
+\index{stream@{stream}!Capture@{Capture}}
+\subsubsection[{stream}]{\setlength{\rightskip}{0pt plus 5cm}Pa\+Stream$\ast$ Capture\+::stream\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_abc592c61bc547b65c395b8a43c5cf1ad}
+\hypertarget{class_capture_a0253ca7959f1e3a550502c33612e3c2e}{\index{Capture@{Capture}!user\+Data@{user\+Data}}
+\index{user\+Data@{user\+Data}!Capture@{Capture}}
+\subsubsection[{user\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void$\ast$ Capture\+::user\+Data\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_capture_a0253ca7959f1e3a550502c33612e3c2e}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Capture/\hyperlink{_capture_8h}{Capture.\+h}\item 
+src/\+Capture/\hyperlink{_capture_8cpp}{Capture.\+cpp}\end{DoxyCompactItemize}

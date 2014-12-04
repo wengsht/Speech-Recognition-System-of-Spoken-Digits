@@ -44,7 +44,22 @@ class HMMSeqTrainer {
         virtual void hmmSeqTrain() = 0;
 
     protected:
+        struct RefreshInfo {
+            SeqModel * model;
+            ParseGraph * graph;
+            std::map<std::string, HMMAutomaton *> * automatons;
+        };
+        struct BuildInfo {
+            SeqModel * model;
+            ParseGraph * graph;
+            std::map<std::string, HMMAutomaton *> * automatons;
+        };
+
+        static void refreshModelTask(void *in);
+        static void buildModelTask(void *in);
+
         void refreshModels();
+
         void buildModels();
     protected:
         std::map<std::string, HMMAutomaton *> *automatons;
@@ -54,6 +69,7 @@ class HMMSeqTrainer {
         std::vector<WaveFeatureOP> * mixedWavs;
 
         std::vector<SeqModel> trainModels;
+
         std::vector<ParseGraph> graphs;
 
         std::vector<SeqWav> trainWavs;

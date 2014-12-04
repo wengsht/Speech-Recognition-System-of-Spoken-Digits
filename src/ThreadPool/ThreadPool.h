@@ -27,6 +27,8 @@ class ThreadPool {
 
         void run();
 
+        void clear();
+
         void addTask(struct sp_task & task);
 
     private:

@@ -1,0 +1,30 @@
+\hypertarget{cep2spec_8m}{\section{src/\+Matlab/rastamat/cep2spec.m File Reference}
+\label{cep2spec_8m}\index{src/\+Matlab/rastamat/cep2spec.\+m@{src/\+Matlab/rastamat/cep2spec.\+m}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{cep2spec_8m_a36988db0de1b344f52d637d087c7320b}{function} \mbox{[}\hyperlink{invmelfcc_8m_a3f339bf7bf75cbe1bd8892606b034798}{spec}, idctm\mbox{]}
+\item 
+\hyperlink{cep2spec_8m_a8b79cd09b896a7292c5ca03fd4d01cf1}{nfreq} = 21
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{cep2spec_8m_a36988db0de1b344f52d637d087c7320b}{\index{cep2spec.\+m@{cep2spec.\+m}!function@{function}}
+\index{function@{function}!cep2spec.\+m@{cep2spec.\+m}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}function\mbox{[}{\bf spec}, idctm\mbox{]}}}\label{cep2spec_8m_a36988db0de1b344f52d637d087c7320b}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= cep2spec(\hyperlink{invmelfcc_8m_aa6f5a931726c3db771db99e063e8b3dd}{cep}, \hyperlink{cep2spec_8m_a8b79cd09b896a7292c5ca03fd4d01cf1}{nfreq}, \hyperlink{readhtk_8m_ac7798f4aec24aa6076b2b222bd91d4fd}{type})
+% \hyperlink{invmelfcc_8m_a3f339bf7bf75cbe1bd8892606b034798}{spec} = cep2spec(\hyperlink{invmelfcc_8m_aa6f5a931726c3db771db99e063e8b3dd}{cep}, \hyperlink{cep2spec_8m_a8b79cd09b896a7292c5ca03fd4d01cf1}{nfreq}, \hyperlink{readhtk_8m_ac7798f4aec24aa6076b2b222bd91d4fd}{type})
+%   Reverse the cepstrum \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} recover a \hyperlink{melfcc_8m_aaacc6f4351729d66b24c7c064d9c2b0d}{spectrum}.
+%   \hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}.e. converse of spec2cep
+%   \hyperlink{cep2spec_8m_a8b79cd09b896a7292c5ca03fd4d01cf1}{nfreq} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} how many points \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} reconstruct in \hyperlink{invmelfcc_8m_a3f339bf7bf75cbe1bd8892606b034798}{spec}
+% 2005-05-15 dpwe@ee.columbia.edu
+
+\hyperlink{rastaplp_8m_a00308daf8d15cb44ae2b111746c10e5c}{if} \hyperlink{fft2barkmx_8m_a0f36f89762390de6548ef01cf1aec807}{nargin} < 2
+\end{DoxyCode}
+\hypertarget{cep2spec_8m_a8b79cd09b896a7292c5ca03fd4d01cf1}{\index{cep2spec.\+m@{cep2spec.\+m}!nfreq@{nfreq}}
+\index{nfreq@{nfreq}!cep2spec.\+m@{cep2spec.\+m}}
+\subsubsection[{nfreq}]{\setlength{\rightskip}{0pt plus 5cm}nfreq = 21}}\label{cep2spec_8m_a8b79cd09b896a7292c5ca03fd4d01cf1}

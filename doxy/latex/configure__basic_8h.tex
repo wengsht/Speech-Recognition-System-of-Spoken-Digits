@@ -1,0 +1,98 @@
+\hypertarget{configure__basic_8h}{\section{src/\+Configure/configure\+\_\+basic.h File Reference}
+\label{configure__basic_8h}\index{src/\+Configure/configure\+\_\+basic.\+h@{src/\+Configure/configure\+\_\+basic.\+h}}
+}
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{configure__basic_8h_a1644f162b6e952c94a19861c6c1e0961}{W\+A\+V\+\_\+\+S\+U\+F\+F\+I\+X}~\char`\"{}.wav\char`\"{}
+\item 
+\#define \hyperlink{configure__basic_8h_a617e42089db52f973fdd4633e8e1f560}{M\+F\+C\+C\+\_\+\+S\+U\+F\+F\+I\+X}~\char`\"{}.mfcc\char`\"{}
+\item 
+\#define \hyperlink{configure__basic_8h_a36e3582f30a6536dce2b1428492aa871}{P\+A\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E}~pa\+Int16
+\item 
+\#define \hyperlink{configure__basic_8h_a55918e48b779879322fb440108745a73}{D\+A\+T\+A\+\_\+\+S\+I\+L\+E\+N\+C\+E}~(0)
+\item 
+\#define \hyperlink{configure__basic_8h_afa608810761d45850a5a954e8eda94c7}{P\+R\+I\+N\+T\+F\+\_\+\+S\+\_\+\+F\+O\+R\+M\+A\+T}~\char`\"{}\%d\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef short \hyperlink{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A}
+\item 
+{\footnotesize template$<$class T $>$ }\\using \hyperlink{configure__basic_8h_a566a006016cf65b1b01bd2bc633e1c12}{Matrix} = std\+::vector$<$ std\+::vector$<$ T $>$ $>$
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \hyperlink{configure__basic_8h_a37c3273949db5ea19eda6385b4125488}{S\+T\+O\+P\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+N\+D\+S} = 1
+\item 
+const int \hyperlink{configure__basic_8h_a4cef5d7442d90ef90fc036a7d15664a4}{M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D} = 120
+\item 
+const int \hyperlink{configure__basic_8h_a5e54f82ef4a1989f493db00a2ae02e68}{F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D} = 40
+\item 
+const bool \hyperlink{configure__basic_8h_a097f9b1ce9e4a7c13aabb3304774d86a}{P\+R\+I\+N\+T\+\_\+\+D\+E\+B\+U\+G\+\_\+\+F\+R\+A\+M\+E\+\_\+\+I\+N\+F} = true
+\item 
+const char \hyperlink{configure__basic_8h_a2968947995630394efc7b3e8d23ba34b}{S\+A\+V\+E\+\_\+\+D\+A\+T\+A\+\_\+\+D\+I\+R} \mbox{[}$\,$\mbox{]} = \char`\"{}./\char`\"{}
+\item 
+const int \hyperlink{configure__basic_8h_a7edeabaed4688e071a2c360f4d42dd89}{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E} = 8000
+\item 
+const int \hyperlink{configure__basic_8h_a3657e370f881023af5fae3cad20a08a5}{N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S} = 1
+\item 
+const int \hyperlink{configure__basic_8h_abf0863350094d7ad6188c0c84dba6b9c}{S\+A\+M\+P\+L\+E\+S\+\_\+\+I\+N\+\_\+\+E\+A\+C\+H\+\_\+\+F\+R\+A\+M\+E} = \hyperlink{configure__basic_8h_a7edeabaed4688e071a2c360f4d42dd89}{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E} / \hyperlink{configure__basic_8h_a5e54f82ef4a1989f493db00a2ae02e68}{F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{configure__basic_8h_a55918e48b779879322fb440108745a73}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!D\+A\+T\+A\+\_\+\+S\+I\+L\+E\+N\+C\+E@{D\+A\+T\+A\+\_\+\+S\+I\+L\+E\+N\+C\+E}}
+\index{D\+A\+T\+A\+\_\+\+S\+I\+L\+E\+N\+C\+E@{D\+A\+T\+A\+\_\+\+S\+I\+L\+E\+N\+C\+E}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{D\+A\+T\+A\+\_\+\+S\+I\+L\+E\+N\+C\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define D\+A\+T\+A\+\_\+\+S\+I\+L\+E\+N\+C\+E~(0)}}\label{configure__basic_8h_a55918e48b779879322fb440108745a73}
+\hypertarget{configure__basic_8h_a617e42089db52f973fdd4633e8e1f560}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!M\+F\+C\+C\+\_\+\+S\+U\+F\+F\+I\+X@{M\+F\+C\+C\+\_\+\+S\+U\+F\+F\+I\+X}}
+\index{M\+F\+C\+C\+\_\+\+S\+U\+F\+F\+I\+X@{M\+F\+C\+C\+\_\+\+S\+U\+F\+F\+I\+X}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{M\+F\+C\+C\+\_\+\+S\+U\+F\+F\+I\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+F\+C\+C\+\_\+\+S\+U\+F\+F\+I\+X~\char`\"{}.mfcc\char`\"{}}}\label{configure__basic_8h_a617e42089db52f973fdd4633e8e1f560}
+\hypertarget{configure__basic_8h_a36e3582f30a6536dce2b1428492aa871}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!P\+A\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E@{P\+A\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E}}
+\index{P\+A\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E@{P\+A\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{P\+A\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+A\+\_\+\+D\+A\+T\+A\+\_\+\+T\+Y\+P\+E~pa\+Int16}}\label{configure__basic_8h_a36e3582f30a6536dce2b1428492aa871}
+\hypertarget{configure__basic_8h_afa608810761d45850a5a954e8eda94c7}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!P\+R\+I\+N\+T\+F\+\_\+\+S\+\_\+\+F\+O\+R\+M\+A\+T@{P\+R\+I\+N\+T\+F\+\_\+\+S\+\_\+\+F\+O\+R\+M\+A\+T}}
+\index{P\+R\+I\+N\+T\+F\+\_\+\+S\+\_\+\+F\+O\+R\+M\+A\+T@{P\+R\+I\+N\+T\+F\+\_\+\+S\+\_\+\+F\+O\+R\+M\+A\+T}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{P\+R\+I\+N\+T\+F\+\_\+\+S\+\_\+\+F\+O\+R\+M\+A\+T}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+R\+I\+N\+T\+F\+\_\+\+S\+\_\+\+F\+O\+R\+M\+A\+T~\char`\"{}\%d\char`\"{}}}\label{configure__basic_8h_afa608810761d45850a5a954e8eda94c7}
+\hypertarget{configure__basic_8h_a1644f162b6e952c94a19861c6c1e0961}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!W\+A\+V\+\_\+\+S\+U\+F\+F\+I\+X@{W\+A\+V\+\_\+\+S\+U\+F\+F\+I\+X}}
+\index{W\+A\+V\+\_\+\+S\+U\+F\+F\+I\+X@{W\+A\+V\+\_\+\+S\+U\+F\+F\+I\+X}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{W\+A\+V\+\_\+\+S\+U\+F\+F\+I\+X}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+A\+V\+\_\+\+S\+U\+F\+F\+I\+X~\char`\"{}.wav\char`\"{}}}\label{configure__basic_8h_a1644f162b6e952c94a19861c6c1e0961}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{configure__basic_8h_a566a006016cf65b1b01bd2bc633e1c12}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ using {\bf Matrix} =  std\+::vector$<$ std\+::vector$<$T$>$ $>$}}\label{configure__basic_8h_a566a006016cf65b1b01bd2bc633e1c12}
+\hypertarget{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A@{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A}}
+\index{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A@{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A}]{\setlength{\rightskip}{0pt plus 5cm}typedef short {\bf S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A}}}\label{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}
+
+
+\subsection{Variable Documentation}
+\hypertarget{configure__basic_8h_a5e54f82ef4a1989f493db00a2ae02e68}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D@{F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}}
+\index{F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D@{F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}const int F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D = 40}}\label{configure__basic_8h_a5e54f82ef4a1989f493db00a2ae02e68}
+\hypertarget{configure__basic_8h_a4cef5d7442d90ef90fc036a7d15664a4}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D@{M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}}
+\index{M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D@{M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}]{\setlength{\rightskip}{0pt plus 5cm}const int M\+A\+X\+\_\+\+B\+U\+F\+F\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D = 120}}\label{configure__basic_8h_a4cef5d7442d90ef90fc036a7d15664a4}
+\hypertarget{configure__basic_8h_a3657e370f881023af5fae3cad20a08a5}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S@{N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S}}
+\index{N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S@{N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S}]{\setlength{\rightskip}{0pt plus 5cm}const int N\+U\+M\+\_\+\+C\+H\+A\+N\+N\+E\+L\+S = 1}}\label{configure__basic_8h_a3657e370f881023af5fae3cad20a08a5}
+\hypertarget{configure__basic_8h_a097f9b1ce9e4a7c13aabb3304774d86a}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!P\+R\+I\+N\+T\+\_\+\+D\+E\+B\+U\+G\+\_\+\+F\+R\+A\+M\+E\+\_\+\+I\+N\+F@{P\+R\+I\+N\+T\+\_\+\+D\+E\+B\+U\+G\+\_\+\+F\+R\+A\+M\+E\+\_\+\+I\+N\+F}}
+\index{P\+R\+I\+N\+T\+\_\+\+D\+E\+B\+U\+G\+\_\+\+F\+R\+A\+M\+E\+\_\+\+I\+N\+F@{P\+R\+I\+N\+T\+\_\+\+D\+E\+B\+U\+G\+\_\+\+F\+R\+A\+M\+E\+\_\+\+I\+N\+F}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{P\+R\+I\+N\+T\+\_\+\+D\+E\+B\+U\+G\+\_\+\+F\+R\+A\+M\+E\+\_\+\+I\+N\+F}]{\setlength{\rightskip}{0pt plus 5cm}const bool P\+R\+I\+N\+T\+\_\+\+D\+E\+B\+U\+G\+\_\+\+F\+R\+A\+M\+E\+\_\+\+I\+N\+F = true}}\label{configure__basic_8h_a097f9b1ce9e4a7c13aabb3304774d86a}
+performance configure \hypertarget{configure__basic_8h_a7edeabaed4688e071a2c360f4d42dd89}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E@{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E}}
+\index{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E@{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E = 8000}}\label{configure__basic_8h_a7edeabaed4688e071a2c360f4d42dd89}
+don't change this configure for fun, or you can't user some file that made by these configure and you also need to change other configures to make the algorithm work well. \hypertarget{configure__basic_8h_abf0863350094d7ad6188c0c84dba6b9c}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!S\+A\+M\+P\+L\+E\+S\+\_\+\+I\+N\+\_\+\+E\+A\+C\+H\+\_\+\+F\+R\+A\+M\+E@{S\+A\+M\+P\+L\+E\+S\+\_\+\+I\+N\+\_\+\+E\+A\+C\+H\+\_\+\+F\+R\+A\+M\+E}}
+\index{S\+A\+M\+P\+L\+E\+S\+\_\+\+I\+N\+\_\+\+E\+A\+C\+H\+\_\+\+F\+R\+A\+M\+E@{S\+A\+M\+P\+L\+E\+S\+\_\+\+I\+N\+\_\+\+E\+A\+C\+H\+\_\+\+F\+R\+A\+M\+E}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{S\+A\+M\+P\+L\+E\+S\+\_\+\+I\+N\+\_\+\+E\+A\+C\+H\+\_\+\+F\+R\+A\+M\+E}]{\setlength{\rightskip}{0pt plus 5cm}const int S\+A\+M\+P\+L\+E\+S\+\_\+\+I\+N\+\_\+\+E\+A\+C\+H\+\_\+\+F\+R\+A\+M\+E = {\bf S\+A\+M\+P\+L\+E\+\_\+\+R\+A\+T\+E} / {\bf F\+R\+A\+M\+E\+\_\+\+P\+E\+R\+\_\+\+S\+E\+C\+O\+N\+D}}}\label{configure__basic_8h_abf0863350094d7ad6188c0c84dba6b9c}
+\hypertarget{configure__basic_8h_a2968947995630394efc7b3e8d23ba34b}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!S\+A\+V\+E\+\_\+\+D\+A\+T\+A\+\_\+\+D\+I\+R@{S\+A\+V\+E\+\_\+\+D\+A\+T\+A\+\_\+\+D\+I\+R}}
+\index{S\+A\+V\+E\+\_\+\+D\+A\+T\+A\+\_\+\+D\+I\+R@{S\+A\+V\+E\+\_\+\+D\+A\+T\+A\+\_\+\+D\+I\+R}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{S\+A\+V\+E\+\_\+\+D\+A\+T\+A\+\_\+\+D\+I\+R}]{\setlength{\rightskip}{0pt plus 5cm}const char S\+A\+V\+E\+\_\+\+D\+A\+T\+A\+\_\+\+D\+I\+R\mbox{[}$\,$\mbox{]} = \char`\"{}./\char`\"{}}}\label{configure__basic_8h_a2968947995630394efc7b3e8d23ba34b}
+\hypertarget{configure__basic_8h_a37c3273949db5ea19eda6385b4125488}{\index{configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}!S\+T\+O\+P\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+N\+D\+S@{S\+T\+O\+P\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+N\+D\+S}}
+\index{S\+T\+O\+P\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+N\+D\+S@{S\+T\+O\+P\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+N\+D\+S}!configure\+\_\+basic.\+h@{configure\+\_\+basic.\+h}}
+\subsubsection[{S\+T\+O\+P\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+N\+D\+S}]{\setlength{\rightskip}{0pt plus 5cm}const double S\+T\+O\+P\+\_\+\+I\+N\+\_\+\+S\+E\+C\+O\+N\+D\+S = 1}}\label{configure__basic_8h_a37c3273949db5ea19eda6385b4125488}
+No very important configure, but don't change they for fun. 

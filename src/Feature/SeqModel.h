@@ -157,7 +157,9 @@ class SeqModel {
         void preparePathRecord(WaveFeatureOP &wav);
 
         // should be called only after in FULL_PATH mode
-        void collectBestPath( std::vector<int> &path, int wavSiz );
+        /// \param eliminateDuplicate if true, then path only collect one node for one word. used for full-path recognition
+        ///  simply set -1 for other nodes.
+        void collectBestPath( std::vector<int> &path, int wavSiz, bool eliminateDuplicate = false);
 
         // path_type = FULL_PATH -->   dump result from full_path into res
         // path_type = BACK_PTR  -->   dump result from back ptr

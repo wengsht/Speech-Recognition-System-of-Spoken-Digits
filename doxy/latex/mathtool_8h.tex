@@ -1,0 +1,125 @@
+\hypertarget{mathtool_8h}{\section{src/\+Feature/mathtool.h File Reference}
+\label{mathtool_8h}\index{src/\+Feature/mathtool.\+h@{src/\+Feature/mathtool.\+h}}
+}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$complex$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{mathtool_8h_a270b1ecf56619755ce62f6970dfabc91}{e}~2.\+718281828459
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::complex$<$ double $>$ \hyperlink{mathtool_8h_a7ccab6437d1cb97c0b762c823d58035f}{cp}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{mathtool_8h_aa971b49e060e0b3b8f0ffff7c5b9c551}{dft} (\hyperlink{mathtool_8h_a7ccab6437d1cb97c0b762c823d58035f}{cp} $\ast$a, int n, int \hyperlink{mel2hz_8m_a09113e60f6e326656763bae1603c0eb5}{f})
+\item 
+void \hyperlink{mathtool_8h_a49a1bc18ebac546fb15ed90d8dfa9650}{fft} (\hyperlink{mathtool_8h_a7ccab6437d1cb97c0b762c823d58035f}{cp} $\ast$a, int n, int \hyperlink{mel2hz_8m_a09113e60f6e326656763bae1603c0eb5}{f})
+\item 
+void \hyperlink{mathtool_8h_af9ca40715654c85c177930b1500f3f9b}{dct} (double $\ast$a, int n, int \hyperlink{mel2hz_8m_a09113e60f6e326656763bae1603c0eb5}{f})
+\item 
+void \hyperlink{mathtool_8h_a9c58ef41f0355795350d3fadd30fd003}{dct2} (double $\ast$a, int n)
+\item 
+double \hyperlink{mathtool_8h_aa9eabaedcebd36ef1169b3d7b68372b8}{log\+Inside\+Sum} (double a, double b)
+\item 
+double \hyperlink{mathtool_8h_a301f45067f32151c261e967b0579af84}{log\+Inside\+Dist} (double a, double b)
+\item 
+double \hyperlink{mathtool_8h_a90302e55dad1baa5a40788572c4e1b4c}{p2cost} (double \hyperlink{_lex_tree_8cpp_a38b7c48bd51c4e6c004edc7cb91782b9}{p})
+\item 
+double \hyperlink{mathtool_8h_afdfd24e422bfca166cde2117872c106e}{cost2p} (double cost)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \hyperlink{mathtool_8h_a952eac791b596a61bba0a133a3bb439f}{P\+I} = std\+::acos(-\/1)
+\end{DoxyCompactItemize}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{mathtool_8h_a270b1ecf56619755ce62f6970dfabc91}{\index{mathtool.\+h@{mathtool.\+h}!e@{e}}
+\index{e@{e}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{e}]{\setlength{\rightskip}{0pt plus 5cm}\#define e~2.\+718281828459}}\label{mathtool_8h_a270b1ecf56619755ce62f6970dfabc91}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{mathtool_8h_a7ccab6437d1cb97c0b762c823d58035f}{\index{mathtool.\+h@{mathtool.\+h}!cp@{cp}}
+\index{cp@{cp}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{cp}]{\setlength{\rightskip}{0pt plus 5cm}typedef std\+::complex$<$double$>$ {\bf cp}}}\label{mathtool_8h_a7ccab6437d1cb97c0b762c823d58035f}
+
+
+\subsection{Function Documentation}
+\hypertarget{mathtool_8h_afdfd24e422bfca166cde2117872c106e}{\index{mathtool.\+h@{mathtool.\+h}!cost2p@{cost2p}}
+\index{cost2p@{cost2p}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{cost2p}]{\setlength{\rightskip}{0pt plus 5cm}double cost2p (
+\begin{DoxyParamCaption}
+\item[{double}]{cost}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_afdfd24e422bfca166cde2117872c106e}
+\hypertarget{mathtool_8h_af9ca40715654c85c177930b1500f3f9b}{\index{mathtool.\+h@{mathtool.\+h}!dct@{dct}}
+\index{dct@{dct}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{dct}]{\setlength{\rightskip}{0pt plus 5cm}void dct (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{a, }
+\item[{int}]{n, }
+\item[{int}]{f}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_af9ca40715654c85c177930b1500f3f9b}
+\hypertarget{mathtool_8h_a9c58ef41f0355795350d3fadd30fd003}{\index{mathtool.\+h@{mathtool.\+h}!dct2@{dct2}}
+\index{dct2@{dct2}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{dct2}]{\setlength{\rightskip}{0pt plus 5cm}void dct2 (
+\begin{DoxyParamCaption}
+\item[{double $\ast$}]{a, }
+\item[{int}]{n}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_a9c58ef41f0355795350d3fadd30fd003}
+\hypertarget{mathtool_8h_aa971b49e060e0b3b8f0ffff7c5b9c551}{\index{mathtool.\+h@{mathtool.\+h}!dft@{dft}}
+\index{dft@{dft}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{dft}]{\setlength{\rightskip}{0pt plus 5cm}void dft (
+\begin{DoxyParamCaption}
+\item[{{\bf cp} $\ast$}]{a, }
+\item[{int}]{n, }
+\item[{int}]{f}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_aa971b49e060e0b3b8f0ffff7c5b9c551}
+\hypertarget{mathtool_8h_a49a1bc18ebac546fb15ed90d8dfa9650}{\index{mathtool.\+h@{mathtool.\+h}!fft@{fft}}
+\index{fft@{fft}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{fft}]{\setlength{\rightskip}{0pt plus 5cm}void fft (
+\begin{DoxyParamCaption}
+\item[{{\bf cp} $\ast$}]{a, }
+\item[{int}]{n, }
+\item[{int}]{f}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_a49a1bc18ebac546fb15ed90d8dfa9650}
+\hypertarget{mathtool_8h_a301f45067f32151c261e967b0579af84}{\index{mathtool.\+h@{mathtool.\+h}!log\+Inside\+Dist@{log\+Inside\+Dist}}
+\index{log\+Inside\+Dist@{log\+Inside\+Dist}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{log\+Inside\+Dist}]{\setlength{\rightskip}{0pt plus 5cm}double log\+Inside\+Dist (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double}]{b}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_a301f45067f32151c261e967b0579af84}
+\hypertarget{mathtool_8h_aa9eabaedcebd36ef1169b3d7b68372b8}{\index{mathtool.\+h@{mathtool.\+h}!log\+Inside\+Sum@{log\+Inside\+Sum}}
+\index{log\+Inside\+Sum@{log\+Inside\+Sum}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{log\+Inside\+Sum}]{\setlength{\rightskip}{0pt plus 5cm}double log\+Inside\+Sum (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double}]{b}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_aa9eabaedcebd36ef1169b3d7b68372b8}
+\hypertarget{mathtool_8h_a90302e55dad1baa5a40788572c4e1b4c}{\index{mathtool.\+h@{mathtool.\+h}!p2cost@{p2cost}}
+\index{p2cost@{p2cost}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{p2cost}]{\setlength{\rightskip}{0pt plus 5cm}double p2cost (
+\begin{DoxyParamCaption}
+\item[{double}]{p}
+\end{DoxyParamCaption}
+)}}\label{mathtool_8h_a90302e55dad1baa5a40788572c4e1b4c}
+
+
+\subsection{Variable Documentation}
+\hypertarget{mathtool_8h_a952eac791b596a61bba0a133a3bb439f}{\index{mathtool.\+h@{mathtool.\+h}!P\+I@{P\+I}}
+\index{P\+I@{P\+I}!mathtool.\+h@{mathtool.\+h}}
+\subsubsection[{P\+I}]{\setlength{\rightskip}{0pt plus 5cm}const double P\+I = std\+::acos(-\/1)}}\label{mathtool_8h_a952eac791b596a61bba0a133a3bb439f}

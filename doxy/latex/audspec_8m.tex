@@ -1,0 +1,29 @@
+\hypertarget{audspec_8m}{\section{src/\+Matlab/rastamat/audspec.m File Reference}
+\label{audspec_8m}\index{src/\+Matlab/rastamat/audspec.\+m@{src/\+Matlab/rastamat/audspec.\+m}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{audspec_8m_acf7e0171884b244ce463bfdffc9629c8}{function} \mbox{[}\hyperlink{melfcc_8m_a4504584cb074a6042ff7eb98ef12dfc4}{aspectrum}, \hyperlink{fft2barkmx_8m_a20d38221d81b101c1f5221dc27d2b38b}{wts}\mbox{]}
+\item 
+\hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr} = 16000
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{audspec_8m_acf7e0171884b244ce463bfdffc9629c8}{\index{audspec.\+m@{audspec.\+m}!function@{function}}
+\index{function@{function}!audspec.\+m@{audspec.\+m}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}function\mbox{[}{\bf aspectrum}, {\bf wts}\mbox{]}}}\label{audspec_8m_acf7e0171884b244ce463bfdffc9629c8}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= audspec(pspectrum, \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr}, \hyperlink{fft2barkmx_8m_a1000a3e6abd44974a7db7c36740ffa11}{nfilts}, fbtype, minfreq, maxfreq, sumpower, bwidth)
+%[aspectrum,wts] = audspec(pspectrum, \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr}, \hyperlink{fft2barkmx_8m_a1000a3e6abd44974a7db7c36740ffa11}{nfilts}, fbtype, minfreq, maxfreq, sumpower, bwidth)
+%
+% perform critical \hyperlink{rastafilt_8m_a936945c048820259957e89d9a54ba34a}{band} analysis (see PLP)
+% takes \hyperlink{lpc2spec_8m_a11acd983a1f1e312816beefa7c1a8178}{power} \hyperlink{invmelfcc_8m_abdc133b04325921144ac0b76900a4cf3}{spectrogram} as input
+
+\textcolor{keywordflow}{if} \hyperlink{fft2barkmx_8m_a0f36f89762390de6548ef01cf1aec807}{nargin} < 2
+\end{DoxyCode}
+\hypertarget{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{\index{audspec.\+m@{audspec.\+m}!sr@{sr}}
+\index{sr@{sr}!audspec.\+m@{audspec.\+m}}
+\subsubsection[{sr}]{\setlength{\rightskip}{0pt plus 5cm}sr = 16000}}\label{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}

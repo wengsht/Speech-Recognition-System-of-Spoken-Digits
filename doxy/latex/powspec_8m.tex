@@ -1,0 +1,54 @@
+\hypertarget{powspec_8m}{\section{src/\+Matlab/rastamat/powspec.m File Reference}
+\label{powspec_8m}\index{src/\+Matlab/rastamat/powspec.\+m@{src/\+Matlab/rastamat/powspec.\+m}}
+}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{powspec_8m_acab89a101f59ab28ffc584077f495fee}{function} \mbox{[}\hyperlink{rastafilt_8m_a86d95dcd476896268e6f41d4bcc8c2fc}{y}, \hyperlink{mathtool_8h_a270b1ecf56619755ce62f6970dfabc91}{e}\mbox{]}
+\item 
+v \hyperlink{powspec_8m_ae7eb1381b407653c59ce14216b279d94}{\+\_\+\+\_\+pad0\+\_\+\+\_\+}
+\item 
+\hyperlink{powspec_8m_a533679fa2f89be06942c8d0e482c749e}{N\+O\+V\+E\+R\+L\+A\+P} = 120
+\item 
+\hyperlink{powspec_8m_a859aac22c06995edd0d5f0df6bc0f7f0}{S\+A\+M\+P\+R\+A\+T\+E} = 8000
+\item 
+\hyperlink{powspec_8m_a5233c989a91a39f8630900f1d3c23ba5}{W\+I\+N\+D\+O\+W} = hamming(200)
+\end{DoxyCompactItemize}
+
+
+\subsection{Variable Documentation}
+\hypertarget{powspec_8m_ae7eb1381b407653c59ce14216b279d94}{\index{powspec.\+m@{powspec.\+m}!\+\_\+\+\_\+pad0\+\_\+\+\_\+@{\+\_\+\+\_\+pad0\+\_\+\+\_\+}}
+\index{\+\_\+\+\_\+pad0\+\_\+\+\_\+@{\+\_\+\+\_\+pad0\+\_\+\+\_\+}!powspec.\+m@{powspec.\+m}}
+\subsubsection[{\+\_\+\+\_\+pad0\+\_\+\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}v \+\_\+\+\_\+pad0\+\_\+\+\_\+}}\label{powspec_8m_ae7eb1381b407653c59ce14216b279d94}
+\hypertarget{powspec_8m_acab89a101f59ab28ffc584077f495fee}{\index{powspec.\+m@{powspec.\+m}!function@{function}}
+\index{function@{function}!powspec.\+m@{powspec.\+m}}
+\subsubsection[{function}]{\setlength{\rightskip}{0pt plus 5cm}function\mbox{[}{\bf y}, {\bf e}\mbox{]}}}\label{powspec_8m_acab89a101f59ab28ffc584077f495fee}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= powspec(\hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x}, \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr}, wintime, steptime, dither)
+%[y,e] = powspec(\hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x}, \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr}, wintime, steptime, sumlin, dither)
+%
+% compute the powerspectrum and frame energy of the input signal.
+% basically outputs a \hyperlink{lpc2spec_8m_a11acd983a1f1e312816beefa7c1a8178}{power} \hyperlink{invmelfcc_8m_abdc133b04325921144ac0b76900a4cf3}{spectrogram}
+%
+% each column represents a \hyperlink{lpc2spec_8m_a11acd983a1f1e312816beefa7c1a8178}{power} \hyperlink{melfcc_8m_aaacc6f4351729d66b24c7c064d9c2b0d}{spectrum} \textcolor{keywordflow}{for} a given frame
+% each \hyperlink{rastaplp_8m_ad42e2d1ad172100a2cd1338656cf0425}{row} represents a \hyperlink{fft2melmx_8m_aa373cce97c03f128ec7d3a864adf1601}{frequency}
+%
+% \textcolor{keywordflow}{default} \hyperlink{rastafilt_8m_a6c0bacd88c90494c1a9f3259dad59fc3}{values}:
+% \hyperlink{audspec_8m_a5fadda31e7cec09c1ba240ad18382e08}{sr} = 8000\hyperlink{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}{Hz}
+% wintime = 25ms (200 samps)
+% steptime = 10ms (80 samps)
+% which means use 256 point \hyperlink{mathtool_8cpp_a49a1bc18ebac546fb15ed90d8dfa9650}{fft}
+% hamming window
+%
+% $Header: /Users/dpwe/matlab/rastamat/RCS/powspec.m
+\end{DoxyCode}
+\hypertarget{powspec_8m_a533679fa2f89be06942c8d0e482c749e}{\index{powspec.\+m@{powspec.\+m}!N\+O\+V\+E\+R\+L\+A\+P@{N\+O\+V\+E\+R\+L\+A\+P}}
+\index{N\+O\+V\+E\+R\+L\+A\+P@{N\+O\+V\+E\+R\+L\+A\+P}!powspec.\+m@{powspec.\+m}}
+\subsubsection[{N\+O\+V\+E\+R\+L\+A\+P}]{\setlength{\rightskip}{0pt plus 5cm}N\+O\+V\+E\+R\+L\+A\+P = 120}}\label{powspec_8m_a533679fa2f89be06942c8d0e482c749e}
+\hypertarget{powspec_8m_a859aac22c06995edd0d5f0df6bc0f7f0}{\index{powspec.\+m@{powspec.\+m}!S\+A\+M\+P\+R\+A\+T\+E@{S\+A\+M\+P\+R\+A\+T\+E}}
+\index{S\+A\+M\+P\+R\+A\+T\+E@{S\+A\+M\+P\+R\+A\+T\+E}!powspec.\+m@{powspec.\+m}}
+\subsubsection[{S\+A\+M\+P\+R\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}S\+A\+M\+P\+R\+A\+T\+E = 8000}}\label{powspec_8m_a859aac22c06995edd0d5f0df6bc0f7f0}
+\hypertarget{powspec_8m_a5233c989a91a39f8630900f1d3c23ba5}{\index{powspec.\+m@{powspec.\+m}!W\+I\+N\+D\+O\+W@{W\+I\+N\+D\+O\+W}}
+\index{W\+I\+N\+D\+O\+W@{W\+I\+N\+D\+O\+W}!powspec.\+m@{powspec.\+m}}
+\subsubsection[{W\+I\+N\+D\+O\+W}]{\setlength{\rightskip}{0pt plus 5cm}W\+I\+N\+D\+O\+W = hamming(200)}}\label{powspec_8m_a5233c989a91a39f8630900f1d3c23ba5}

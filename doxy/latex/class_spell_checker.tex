@@ -1,0 +1,168 @@
+\hypertarget{class_spell_checker}{\section{Spell\+Checker Class Reference}
+\label{class_spell_checker}\index{Spell\+Checker@{Spell\+Checker}}
+}
+
+
+{\ttfamily \#include $<$spellcheck.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_spell_checker_a900b34f6161abb0151678f34be07d8f9}{Spell\+Checker} (const char $\ast$dic\+File\+Name, int \hyperlink{class_spell_checker_acaf7176c06b86947773cbb83d7574783}{beam})
+\item 
+char $\ast$ \hyperlink{class_spell_checker_af5801d7b974e71ba7a382a5c5e056d41}{get\+Word} (int index)
+\item 
+void \hyperlink{class_spell_checker_aa7d8af30c6f029106004998b7d4da56d}{set\+Beam} (int b)
+\item 
+\hyperlink{class_spell_checker_ac65b662a48473a0b4c0b5b71e86c4b59}{Spell\+Checker} ()
+\item 
+\hyperlink{class_spell_checker_a26007dcd1c90cdaa790528e68443e9a6}{$\sim$\+Spell\+Checker} ()
+\item 
+int \hyperlink{class_spell_checker_a9b53c92d8e2ed48994d15c7ebdfa7176}{check} (const char $\ast$word, bool \hyperlink{class_spell_checker_a95d95e0ded8b4e1493a406746e509866}{one}=false, bool use\+\_\+path=true)
+\item 
+void \hyperlink{class_spell_checker_ad3f1f2d070dd63b772782d3d50605ac9}{show\+Info} ()
+\item 
+void \hyperlink{class_spell_checker_a187d460357c945d899977e0cd1269964}{print\+Ans} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_link}{Link} \hyperlink{class_spell_checker_a935dea2584e5fdec80a2fe07e5cb08c3}{list} \mbox{[}2\mbox{]}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_link}{Link} $\ast$ \hyperlink{class_spell_checker_aca55ad92aea6ede35932e868f6bbe66d}{init\+Link} ()
+\item 
+void \hyperlink{class_spell_checker_ae26f47f3595a3e4859172a4a1af87442}{refresh\+Link} (char next\+\_\+c, \hyperlink{class_link}{Link} \&now\+Link, \hyperlink{class_link}{Link} \&next\+Link, int)
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_spell_checker_acaf7176c06b86947773cbb83d7574783}{beam}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_spell_checker_a95d95e0ded8b4e1493a406746e509866}{one}
+\item 
+\hyperlink{struct_path}{Path} \hyperlink{class_spell_checker_aff173fdb5d93d05cd3c130f8a5267272}{path}
+\item 
+\hyperlink{class_lex_tree}{Lex\+Tree} \hyperlink{class_spell_checker_abe9e58ca9de98d9a1182612a3c10a5aa}{tree}
+\item 
+int \hyperlink{class_spell_checker_a7c04bca12734e76005fe2535a3698ea5}{ansx}
+\item 
+int \hyperlink{class_spell_checker_aca76cb3fc436ef3970a100a950c4f11a}{ansy}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_spell_checker_a900b34f6161abb0151678f34be07d8f9}{\index{Spell\+Checker@{Spell\+Checker}!Spell\+Checker@{Spell\+Checker}}
+\index{Spell\+Checker@{Spell\+Checker}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{Spell\+Checker}]{\setlength{\rightskip}{0pt plus 5cm}Spell\+Checker\+::\+Spell\+Checker (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{dic\+File\+Name, }
+\item[{int}]{beam}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_spell_checker_a900b34f6161abb0151678f34be07d8f9}
+\hypertarget{class_spell_checker_ac65b662a48473a0b4c0b5b71e86c4b59}{\index{Spell\+Checker@{Spell\+Checker}!Spell\+Checker@{Spell\+Checker}}
+\index{Spell\+Checker@{Spell\+Checker}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{Spell\+Checker}]{\setlength{\rightskip}{0pt plus 5cm}Spell\+Checker\+::\+Spell\+Checker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_spell_checker_ac65b662a48473a0b4c0b5b71e86c4b59}
+\hypertarget{class_spell_checker_a26007dcd1c90cdaa790528e68443e9a6}{\index{Spell\+Checker@{Spell\+Checker}!````~Spell\+Checker@{$\sim$\+Spell\+Checker}}
+\index{````~Spell\+Checker@{$\sim$\+Spell\+Checker}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{$\sim$\+Spell\+Checker}]{\setlength{\rightskip}{0pt plus 5cm}Spell\+Checker\+::$\sim$\+Spell\+Checker (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_spell_checker_a26007dcd1c90cdaa790528e68443e9a6}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_spell_checker_a9b53c92d8e2ed48994d15c7ebdfa7176}{\index{Spell\+Checker@{Spell\+Checker}!check@{check}}
+\index{check@{check}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{check}]{\setlength{\rightskip}{0pt plus 5cm}int Spell\+Checker\+::check (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{word, }
+\item[{bool}]{one = {\ttfamily false}, }
+\item[{bool}]{use\+\_\+path = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{class_spell_checker_a9b53c92d8e2ed48994d15c7ebdfa7176}
+!!! \hypertarget{class_spell_checker_af5801d7b974e71ba7a382a5c5e056d41}{\index{Spell\+Checker@{Spell\+Checker}!get\+Word@{get\+Word}}
+\index{get\+Word@{get\+Word}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{get\+Word}]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ Spell\+Checker\+::get\+Word (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_spell_checker_af5801d7b974e71ba7a382a5c5e056d41}
+\hypertarget{class_spell_checker_aca55ad92aea6ede35932e868f6bbe66d}{\index{Spell\+Checker@{Spell\+Checker}!init\+Link@{init\+Link}}
+\index{init\+Link@{init\+Link}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{init\+Link}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link} $\ast$ Spell\+Checker\+::init\+Link (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_spell_checker_aca55ad92aea6ede35932e868f6bbe66d}
+\hypertarget{class_spell_checker_a187d460357c945d899977e0cd1269964}{\index{Spell\+Checker@{Spell\+Checker}!print\+Ans@{print\+Ans}}
+\index{print\+Ans@{print\+Ans}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{print\+Ans}]{\setlength{\rightskip}{0pt plus 5cm}void Spell\+Checker\+::print\+Ans (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_spell_checker_a187d460357c945d899977e0cd1269964}
+\hypertarget{class_spell_checker_ae26f47f3595a3e4859172a4a1af87442}{\index{Spell\+Checker@{Spell\+Checker}!refresh\+Link@{refresh\+Link}}
+\index{refresh\+Link@{refresh\+Link}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{refresh\+Link}]{\setlength{\rightskip}{0pt plus 5cm}void Spell\+Checker\+::refresh\+Link (
+\begin{DoxyParamCaption}
+\item[{char}]{next\+\_\+c, }
+\item[{{\bf Link} \&}]{now\+Link, }
+\item[{{\bf Link} \&}]{next\+Link, }
+\item[{int}]{column}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_spell_checker_ae26f47f3595a3e4859172a4a1af87442}
+\hypertarget{class_spell_checker_aa7d8af30c6f029106004998b7d4da56d}{\index{Spell\+Checker@{Spell\+Checker}!set\+Beam@{set\+Beam}}
+\index{set\+Beam@{set\+Beam}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{set\+Beam}]{\setlength{\rightskip}{0pt plus 5cm}void Spell\+Checker\+::set\+Beam (
+\begin{DoxyParamCaption}
+\item[{int}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_spell_checker_aa7d8af30c6f029106004998b7d4da56d}
+\hypertarget{class_spell_checker_ad3f1f2d070dd63b772782d3d50605ac9}{\index{Spell\+Checker@{Spell\+Checker}!show\+Info@{show\+Info}}
+\index{show\+Info@{show\+Info}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{show\+Info}]{\setlength{\rightskip}{0pt plus 5cm}void Spell\+Checker\+::show\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_spell_checker_ad3f1f2d070dd63b772782d3d50605ac9}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_spell_checker_a7c04bca12734e76005fe2535a3698ea5}{\index{Spell\+Checker@{Spell\+Checker}!ansx@{ansx}}
+\index{ansx@{ansx}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{ansx}]{\setlength{\rightskip}{0pt plus 5cm}int Spell\+Checker\+::ansx\hspace{0.3cm}{\ttfamily [private]}}}\label{class_spell_checker_a7c04bca12734e76005fe2535a3698ea5}
+\hypertarget{class_spell_checker_aca76cb3fc436ef3970a100a950c4f11a}{\index{Spell\+Checker@{Spell\+Checker}!ansy@{ansy}}
+\index{ansy@{ansy}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{ansy}]{\setlength{\rightskip}{0pt plus 5cm}int Spell\+Checker\+::ansy\hspace{0.3cm}{\ttfamily [private]}}}\label{class_spell_checker_aca76cb3fc436ef3970a100a950c4f11a}
+\hypertarget{class_spell_checker_acaf7176c06b86947773cbb83d7574783}{\index{Spell\+Checker@{Spell\+Checker}!beam@{beam}}
+\index{beam@{beam}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{beam}]{\setlength{\rightskip}{0pt plus 5cm}int Spell\+Checker\+::beam\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_spell_checker_acaf7176c06b86947773cbb83d7574783}
+\hypertarget{class_spell_checker_a935dea2584e5fdec80a2fe07e5cb08c3}{\index{Spell\+Checker@{Spell\+Checker}!list@{list}}
+\index{list@{list}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{list}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Link} Spell\+Checker\+::list\mbox{[}2\mbox{]}}}\label{class_spell_checker_a935dea2584e5fdec80a2fe07e5cb08c3}
+\hypertarget{class_spell_checker_a95d95e0ded8b4e1493a406746e509866}{\index{Spell\+Checker@{Spell\+Checker}!one@{one}}
+\index{one@{one}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{one}]{\setlength{\rightskip}{0pt plus 5cm}bool Spell\+Checker\+::one\hspace{0.3cm}{\ttfamily [private]}}}\label{class_spell_checker_a95d95e0ded8b4e1493a406746e509866}
+\hypertarget{class_spell_checker_aff173fdb5d93d05cd3c130f8a5267272}{\index{Spell\+Checker@{Spell\+Checker}!path@{path}}
+\index{path@{path}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{path}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Path} Spell\+Checker\+::path\hspace{0.3cm}{\ttfamily [private]}}}\label{class_spell_checker_aff173fdb5d93d05cd3c130f8a5267272}
+\hypertarget{class_spell_checker_abe9e58ca9de98d9a1182612a3c10a5aa}{\index{Spell\+Checker@{Spell\+Checker}!tree@{tree}}
+\index{tree@{tree}!Spell\+Checker@{Spell\+Checker}}
+\subsubsection[{tree}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Lex\+Tree} Spell\+Checker\+::tree\hspace{0.3cm}{\ttfamily [private]}}}\label{class_spell_checker_abe9e58ca9de98d9a1182612a3c10a5aa}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Lex\+Tree/\hyperlink{spellcheck_8h}{spellcheck.\+h}\item 
+src/\+Lex\+Tree/\hyperlink{spellcheck_8cpp}{spellcheck.\+cpp}\end{DoxyCompactItemize}

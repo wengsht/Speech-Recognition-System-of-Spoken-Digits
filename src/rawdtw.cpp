@@ -18,6 +18,7 @@
 #include "WaveFeatureOP.h"
 #include <vector>
 #include "tool.h"
+#include <cstring>
 
 using namespace std;
 

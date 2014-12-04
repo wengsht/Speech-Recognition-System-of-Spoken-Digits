@@ -78,9 +78,9 @@ target_link_libraries(${PRO2_MAIN} portaudio)
 target_link_libraries(${PRO2_MAIN} pthread)
 
 
-target_link_libraries(${PRO3_MAIN} ${CONFIGURE})
 target_link_libraries(${PRO3_MAIN} ${EDITDISTANCE})
 target_link_libraries(${PRO3_MAIN} ${THREADPOOL})
+target_link_libraries(${PRO3_MAIN} ${CONFIGURE})
 target_link_libraries(${PRO3_MAIN} pthread)
 
 target_link_libraries(${PRO5_MAIN} ${CONFIGURE})

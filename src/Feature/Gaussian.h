@@ -3,6 +3,7 @@
 #include <vector>
 #include "Feature.h"
 #include <sstream>
+#include <cmath>
 
 class Gaussian{
 private:
@@ -19,6 +20,11 @@ private:
 	double sampleNum;
 	int flag;
 public:
+    static bool equal(double a, double b) {
+        static double eps = 1e-12;
+
+        return std::fabs(a-b) <= eps;
+    }
     void load(std::stringstream &in);
     void store(std::stringstream &out);
 

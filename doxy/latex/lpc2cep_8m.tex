@@ -1,0 +1,48 @@
+\hypertarget{lpc2cep_8m}{\section{src/\+Matlab/rastamat/lpc2cep.m File Reference}
+\label{lpc2cep_8m}\index{src/\+Matlab/rastamat/lpc2cep.\+m@{src/\+Matlab/rastamat/lpc2cep.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} defaults \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{lpc2cep_8m_a1a08864de4283514164bd1eaba013105}{size} (\hyperlink{melfcc_8m_a1029cb7d3ad99b223581d31e082cb037}{lpcas}, 1)\%2003-\/04-\/11 dpwe @ee.\+columbia.\+edu\mbox{[}nin
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}{features}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} defaults \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{lpc2cep_8m_a2299586db3286feb8bf00ec5c8016a23}{ncol} = \hyperlink{rastafilt_8m_a777f01fd1c8394e2fbac19f36c7d2f92}{size}(a)
+\item 
+\hyperlink{lpc2cep_8m_a9f4e8630516f3da89537313b4c828759}{order} = nin -\/ 1
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lpc2cep_8m_a1a08864de4283514164bd1eaba013105}{\index{lpc2cep.\+m@{lpc2cep.\+m}!size@{size}}
+\index{size@{size}!lpc2cep.\+m@{lpc2cep.\+m}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} defaults {\bf to} size (
+\begin{DoxyParamCaption}
+\item[{{\bf lpcas}}]{, }
+\item[{1}]{}
+\end{DoxyParamCaption}
+)}}\label{lpc2cep_8m_a1a08864de4283514164bd1eaba013105}
+
+
+\subsection{Variable Documentation}
+\hypertarget{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}{\index{lpc2cep.\+m@{lpc2cep.\+m}!features@{features}}
+\index{features@{features}!lpc2cep.\+m@{lpc2cep.\+m}}
+\subsubsection[{features}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} features}}\label{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= lpc2cep(a,\hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout})
+% \hyperlink{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}{features} = lpc2cep(\hyperlink{melfcc_8m_a1029cb7d3ad99b223581d31e082cb037}{lpcas},\hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout})
+%    Convert the LPC \textcolor{charliteral}{'a'} coefficients in each column of \hyperlink{melfcc_8m_a1029cb7d3ad99b223581d31e082cb037}{lpcas}
+%    into frames of \hyperlink{melfcc_8m_ad0f1a7920e6f39da3864c784a1cc361c}{cepstra}.
+%    \hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} number of \hyperlink{melfcc_8m_ad0f1a7920e6f39da3864c784a1cc361c}{cepstra} \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} produce
+\end{DoxyCode}
+\hypertarget{lpc2cep_8m_a2299586db3286feb8bf00ec5c8016a23}{\index{lpc2cep.\+m@{lpc2cep.\+m}!ncol@{ncol}}
+\index{ncol@{ncol}!lpc2cep.\+m@{lpc2cep.\+m}}
+\subsubsection[{ncol}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} defaults {\bf to} ncol = {\bf size}(a)}}\label{lpc2cep_8m_a2299586db3286feb8bf00ec5c8016a23}
+\hypertarget{lpc2cep_8m_a9f4e8630516f3da89537313b4c828759}{\index{lpc2cep.\+m@{lpc2cep.\+m}!order@{order}}
+\index{order@{order}!lpc2cep.\+m@{lpc2cep.\+m}}
+\subsubsection[{order}]{\setlength{\rightskip}{0pt plus 5cm}order = nin -\/ 1}}\label{lpc2cep_8m_a9f4e8630516f3da89537313b4c828759}

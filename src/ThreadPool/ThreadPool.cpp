@@ -28,6 +28,14 @@ void ThreadPool::run() {
     }
 }
 
+void ThreadPool::clear() {
+    for(int idx = 0; idx < threadNum; idx++) {
+        threadTasks[idx].tasks.clear();
+    }
+
+    idx = 0;
+}
+
 inline 
 void *ThreadPool::processThread(void *param) {
     thread_info *info = (thread_info *) param;

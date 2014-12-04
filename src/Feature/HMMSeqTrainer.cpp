@@ -23,6 +23,8 @@
 #include "WaveFeatureOPSet.h"
 #include "WaveFeatureOP.h"
 
+#include "ThreadPool.h"
+
 HMMSeqTrainer::HMMSeqTrainer() {
 
 }
@@ -32,10 +34,14 @@ HMMSeqTrainer::~HMMSeqTrainer() {
 }
 
 void HMMSeqTrainer::buildModels(WaveFeatureOPSet::dataSetType & dataSet, std::map<std::string, HMMAutomaton *> & automatons, std::vector<WaveFeatureOP> &mixedWavs) {
+    Log("Begin Build sequential Models");
+
     this->automatons = & automatons;
     this->mixedWavs = & mixedWavs;
 
     WaveFeatureOPSet::dataSetType::iterator templateItr;
+
+    Log("Combine all the wav files");
 
     mixedWavs.clear();
     int idx;
@@ -59,7 +65,6 @@ void HMMSeqTrainer::buildModels(WaveFeatureOPSet::dataSetType & dataSet, std::ma
             trainWavs[idy].model = &(trainModels[idz]);
         }
     }
-
 
     std::map<std::string, HMMAutomaton *>::iterator Itr;
 
@@ -89,22 +94,74 @@ void HMMSeqTrainer::pushNewModel(const std::string &seqStr,std::map<std::string,
     //    trainModels[idx].buildModel(graph, automatons);
 }
 
+void HMMSeqTrainer::buildModelTask(void *in) {
+    BuildInfo * info = (BuildInfo *) in;
+    SeqModel * model = info->model;
+    ParseGraph * graph = info->graph;
+    std::map<std::string, HMMAutomaton *> * automatons = info->automatons;
+
+    model->buildModel( *graph, *automatons);
+    //trainModels[modelIdx].refreshEdges( graphs[modelIdx], *automatons);
+}
+
 void HMMSeqTrainer::buildModels() {
     assert(trainModels.size() == graphs.size());
     int modelIdx;
+    ThreadPool threadPool(ThreadPool::thread_num);
+    for(modelIdx = 0; modelIdx < trainModels.size(); modelIdx++) {
+        sp_task task;
+        BuildInfo * buildInfo = new BuildInfo;
+
+        buildInfo->model = &(trainModels[modelIdx]);
+        buildInfo->graph = &(graphs[modelIdx]);
+        buildInfo->automatons = automatons;
+
+        task.func = buildModelTask;
+        task.in = (void *) buildInfo;
+
+        threadPool.addTask(task);
+    }
+    threadPool.run();
+
+    /*  
     for(modelIdx = 0; modelIdx < trainModels.size(); modelIdx++) 
         trainModels[modelIdx].buildModel( graphs[modelIdx], *automatons);
 
-    /*  
-        std::ofstream out("11.dot");
-        trainModels[0].dumpDot(out);
-        out.close();
         */
 }
 
+void HMMSeqTrainer::refreshModelTask(void *in) {
+    RefreshInfo * info = (RefreshInfo *) in;
+    SeqModel * model = info->model;
+    ParseGraph * graph = info->graph;
+    std::map<std::string, HMMAutomaton *> * automatons = info->automatons;
+
+    model->refreshEdges( *graph, *automatons);
+    //trainModels[modelIdx].refreshEdges( graphs[modelIdx], *automatons);
+}
 void HMMSeqTrainer::refreshModels() {
     assert(trainModels.size() == graphs.size());
     int modelIdx;
+
+    ThreadPool threadPool(ThreadPool::thread_num);
+
+    for(modelIdx = 0; modelIdx < trainModels.size(); modelIdx++) {
+        sp_task task;
+        RefreshInfo * refreshInfo = new RefreshInfo;
+
+        refreshInfo->model = &(trainModels[modelIdx]);
+        refreshInfo->graph = &(graphs[modelIdx]);
+        refreshInfo->automatons = automatons;
+
+        task.func = refreshModelTask;
+        task.in = (void *) refreshInfo;
+
+        threadPool.addTask(task);
+    }
+    threadPool.run();
+
+    /*  
     for(modelIdx = 0; modelIdx < trainModels.size(); modelIdx++) 
         trainModels[modelIdx].refreshEdges( graphs[modelIdx], *automatons);
+        */
 }

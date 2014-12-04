@@ -1,0 +1,153 @@
+\hypertarget{class_serial_files}{\section{Serial\+Files Class Reference}
+\label{class_serial_files}\index{Serial\+Files@{Serial\+Files}}
+}
+
+
+{\ttfamily \#include $<$Serial\+Files.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_serial_files_a133f17022332bcab7d068878554572dd}{Serial\+Files} ()
+\item 
+\hyperlink{class_serial_files_a04fb86b51bf96e93a49961585d547566}{$\sim$\+Serial\+Files} ()
+\item 
+void \hyperlink{class_serial_files_aad5577c514c7203f95453233f30d6131}{set\+Size\+Bit} (int \hyperlink{class_serial_files_acabed1bad4c479b8ce9e99749a540493}{size\+Bit})
+\item 
+void \hyperlink{class_serial_files_ac706daaeaf83b0411c5f7408a828923c}{get\+Serial\+File\+Name} (char $\ast$out, int seq\+Num, int prefix\+Num,...)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static void \hyperlink{class_serial_files_a4cc2ec8a6e28989538a41a6b1c19ddfa}{parse\+Serial\+File\+Name} (const char $\ast$const file\+Name, int \&seq\+Num, int prefix\+Num,...)
+\item 
+static bool \hyperlink{class_serial_files_ac1ff50efbc3b673270ce8555bf0b6299}{is\+Wav\+File} (char $\ast$file\+Name)
+\item 
+static std\+::string \hyperlink{class_serial_files_aa4d5689296f1c4cbae8e0094c2a3f45d}{get\+Mfcc\+File\+Name} (std\+::string \hyperlink{pro2__demo_8cpp_ad9a59c7128669a882a4be4fa879c41f7}{wav\+File\+Name})
+\item 
+static void \hyperlink{class_serial_files_a18cca2d08b8b0bff158a7a2065e7e24d}{get\+Wav\+File\+Names} (char $\ast$\hyperlink{recorder_8cpp_a076467fbbccdf16ebbc375c94af4e31c}{dir}, std\+::vector$<$ std\+::string $>$ \&wav\+File\+Names)
+\item 
+static const char $\ast$ \hyperlink{class_serial_files_ac7c1436624bcf28c90c3a47985e67f48}{in\+Alias} (char $\ast$in)
+\item 
+static const char $\ast$ \hyperlink{class_serial_files_accb34f24ea0dc1c9ff1bb3a6c46b9e2c}{out\+Alias} (char $\ast$out)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \hyperlink{class_serial_files_a1216fbec74b31e80bb07336ccd8f800b}{fullfill} (int num)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_serial_files_acabed1bad4c479b8ce9e99749a540493}{size\+Bit}
+\end{DoxyCompactItemize}
+\subsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const int \hyperlink{class_serial_files_a748a5387dda9cfe1150ff5d189e64eb0}{max\+Size\+Bit} = 13
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_serial_files_a133f17022332bcab7d068878554572dd}{\index{Serial\+Files@{Serial\+Files}!Serial\+Files@{Serial\+Files}}
+\index{Serial\+Files@{Serial\+Files}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{Serial\+Files}]{\setlength{\rightskip}{0pt plus 5cm}Serial\+Files\+::\+Serial\+Files (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_serial_files_a133f17022332bcab7d068878554572dd}
+\hypertarget{class_serial_files_a04fb86b51bf96e93a49961585d547566}{\index{Serial\+Files@{Serial\+Files}!````~Serial\+Files@{$\sim$\+Serial\+Files}}
+\index{````~Serial\+Files@{$\sim$\+Serial\+Files}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{$\sim$\+Serial\+Files}]{\setlength{\rightskip}{0pt plus 5cm}Serial\+Files\+::$\sim$\+Serial\+Files (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_serial_files_a04fb86b51bf96e93a49961585d547566}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_serial_files_a1216fbec74b31e80bb07336ccd8f800b}{\index{Serial\+Files@{Serial\+Files}!fullfill@{fullfill}}
+\index{fullfill@{fullfill}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{fullfill}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ Serial\+Files\+::fullfill (
+\begin{DoxyParamCaption}
+\item[{int}]{num}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_serial_files_a1216fbec74b31e80bb07336ccd8f800b}
+\hypertarget{class_serial_files_aa4d5689296f1c4cbae8e0094c2a3f45d}{\index{Serial\+Files@{Serial\+Files}!get\+Mfcc\+File\+Name@{get\+Mfcc\+File\+Name}}
+\index{get\+Mfcc\+File\+Name@{get\+Mfcc\+File\+Name}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{get\+Mfcc\+File\+Name}]{\setlength{\rightskip}{0pt plus 5cm}static std\+::string Serial\+Files\+::get\+Mfcc\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{wav\+File\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_serial_files_aa4d5689296f1c4cbae8e0094c2a3f45d}
+\hypertarget{class_serial_files_ac706daaeaf83b0411c5f7408a828923c}{\index{Serial\+Files@{Serial\+Files}!get\+Serial\+File\+Name@{get\+Serial\+File\+Name}}
+\index{get\+Serial\+File\+Name@{get\+Serial\+File\+Name}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{get\+Serial\+File\+Name}]{\setlength{\rightskip}{0pt plus 5cm}void Serial\+Files\+::get\+Serial\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{out, }
+\item[{int}]{seq\+Num, }
+\item[{int}]{prefix\+Num, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}\label{class_serial_files_ac706daaeaf83b0411c5f7408a828923c}
+\hypertarget{class_serial_files_a18cca2d08b8b0bff158a7a2065e7e24d}{\index{Serial\+Files@{Serial\+Files}!get\+Wav\+File\+Names@{get\+Wav\+File\+Names}}
+\index{get\+Wav\+File\+Names@{get\+Wav\+File\+Names}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{get\+Wav\+File\+Names}]{\setlength{\rightskip}{0pt plus 5cm}static void Serial\+Files\+::get\+Wav\+File\+Names (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{dir, }
+\item[{std\+::vector$<$ std\+::string $>$ \&}]{wav\+File\+Names}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_serial_files_a18cca2d08b8b0bff158a7a2065e7e24d}
+\hypertarget{class_serial_files_ac7c1436624bcf28c90c3a47985e67f48}{\index{Serial\+Files@{Serial\+Files}!in\+Alias@{in\+Alias}}
+\index{in\+Alias@{in\+Alias}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{in\+Alias}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ Serial\+Files\+::in\+Alias (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_serial_files_ac7c1436624bcf28c90c3a47985e67f48}
+\hypertarget{class_serial_files_ac1ff50efbc3b673270ce8555bf0b6299}{\index{Serial\+Files@{Serial\+Files}!is\+Wav\+File@{is\+Wav\+File}}
+\index{is\+Wav\+File@{is\+Wav\+File}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{is\+Wav\+File}]{\setlength{\rightskip}{0pt plus 5cm}static bool Serial\+Files\+::is\+Wav\+File (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{file\+Name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_serial_files_ac1ff50efbc3b673270ce8555bf0b6299}
+\hypertarget{class_serial_files_accb34f24ea0dc1c9ff1bb3a6c46b9e2c}{\index{Serial\+Files@{Serial\+Files}!out\+Alias@{out\+Alias}}
+\index{out\+Alias@{out\+Alias}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{out\+Alias}]{\setlength{\rightskip}{0pt plus 5cm}const char $\ast$ Serial\+Files\+::out\+Alias (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{out}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_serial_files_accb34f24ea0dc1c9ff1bb3a6c46b9e2c}
+\hypertarget{class_serial_files_a4cc2ec8a6e28989538a41a6b1c19ddfa}{\index{Serial\+Files@{Serial\+Files}!parse\+Serial\+File\+Name@{parse\+Serial\+File\+Name}}
+\index{parse\+Serial\+File\+Name@{parse\+Serial\+File\+Name}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{parse\+Serial\+File\+Name}]{\setlength{\rightskip}{0pt plus 5cm}void Serial\+Files\+::parse\+Serial\+File\+Name (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$const}]{file\+Name, }
+\item[{int \&}]{seq\+Num, }
+\item[{int}]{prefix\+Num, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_serial_files_a4cc2ec8a6e28989538a41a6b1c19ddfa}
+\hypertarget{class_serial_files_aad5577c514c7203f95453233f30d6131}{\index{Serial\+Files@{Serial\+Files}!set\+Size\+Bit@{set\+Size\+Bit}}
+\index{set\+Size\+Bit@{set\+Size\+Bit}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{set\+Size\+Bit}]{\setlength{\rightskip}{0pt plus 5cm}void Serial\+Files\+::set\+Size\+Bit (
+\begin{DoxyParamCaption}
+\item[{int}]{size\+Bit}
+\end{DoxyParamCaption}
+)}}\label{class_serial_files_aad5577c514c7203f95453233f30d6131}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_serial_files_a748a5387dda9cfe1150ff5d189e64eb0}{\index{Serial\+Files@{Serial\+Files}!max\+Size\+Bit@{max\+Size\+Bit}}
+\index{max\+Size\+Bit@{max\+Size\+Bit}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{max\+Size\+Bit}]{\setlength{\rightskip}{0pt plus 5cm}const int Serial\+Files\+::max\+Size\+Bit = 13\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{class_serial_files_a748a5387dda9cfe1150ff5d189e64eb0}
+\hypertarget{class_serial_files_acabed1bad4c479b8ce9e99749a540493}{\index{Serial\+Files@{Serial\+Files}!size\+Bit@{size\+Bit}}
+\index{size\+Bit@{size\+Bit}!Serial\+Files@{Serial\+Files}}
+\subsubsection[{size\+Bit}]{\setlength{\rightskip}{0pt plus 5cm}int Serial\+Files\+::size\+Bit\hspace{0.3cm}{\ttfamily [private]}}}\label{class_serial_files_acabed1bad4c479b8ce9e99749a540493}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Configure/\hyperlink{_serial_files_8h}{Serial\+Files.\+h}\item 
+src/\+Configure/\hyperlink{_serial_files_8cpp}{Serial\+Files.\+cpp}\end{DoxyCompactItemize}

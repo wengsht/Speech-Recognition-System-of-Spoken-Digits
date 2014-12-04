@@ -21,6 +21,8 @@
 #include "configure_hmm.h"
 #include "SeqModel.h"
 
+#include "ThreadPool.h"
+
 HMMSeqKMeanTrainer::HMMSeqKMeanTrainer() {
 
 }
@@ -30,22 +32,22 @@ HMMSeqKMeanTrainer::~HMMSeqKMeanTrainer() {
 }
 
 void HMMSeqKMeanTrainer::hmmSeqTrain() {
+    Log("Starting Sequtial Train!");
+
     initHMMTrain();
+
+    Log("Building Graphs!");
 
     buildModels();
 
     int trainTime = MAX_TRAIN_TIMES;
 
     while(trainTime --) {
+        Log("Train: [%d]", trainTime);
+
         if(! iteratorSeqTrain())
             break;
     }
-
-    /*  
-    std::ofstream out("3.dot");
-    (trainWavs[2].model)->dumpDot(out);
-    out.close();
-    */
 }
 
 bool HMMSeqKMeanTrainer::iteratorSeqTrain() {
@@ -62,11 +64,53 @@ bool HMMSeqKMeanTrainer::iteratorSeqTrain() {
     }
 
     // do dtw to search best path
+    /// TODO Multi thread 
+    int threadNum = ThreadPool::thread_num;
+    if(threadNum > trainWavs.size()) threadNum = trainWavs.size();
+
+    ThreadPool threadPool(threadNum);
+
+    int threadIdx;
+    for(threadIdx = 0; threadIdx < threadNum; threadIdx++) {
+        struct sp_task task;
+        struct segTaskInfo * info = new segTaskInfo;
+
+        info->trainWavs = & trainWavs;
+        info->threadID  = threadIdx;
+        info->threadNum = threadNum;
+
+        task.func = segmentTask;
+        task.in   = (void *) info;
+
+        threadPool.addTask(task);
+    }
+    threadPool.run();
+
+    Log("reSegment Success!");
+    /*  
     for(wavIdx = 0; wavIdx < trainWavs.size(); wavIdx ++) {
         (trainWavs[wavIdx].model)->reSegment( *(trainWavs[wavIdx].wav), wavIdx );
     }
+    */
 
     bool bigChange = false;
+    /// TODO Multi thread
+    threadPool.clear();
+    for(autoIdx = 0; autoIdx < automatonVec.size(); autoIdx ++) {
+        struct sp_task task;
+        struct updateTaskInfo * info = new updateTaskInfo;
+
+        info->bigChange = & bigChange;
+        info->automaton = (HMMKMeanAutomaton *)(automatonVec[autoIdx]);
+
+        task.func = updateParaTask;
+        task.in   = (void *) info;
+
+        threadPool.addTask(task);
+    }
+    threadPool.run();
+
+    /*  
     for(autoIdx = 0; autoIdx < automatonVec.size(); autoIdx ++) {
         HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *)(automatonVec[autoIdx]);
 
@@ -75,10 +119,66 @@ bool HMMSeqKMeanTrainer::iteratorSeqTrain() {
 
         automaton->iterateGauss();
     }
+    */
 
     refreshModels();
 
     return bigChange;
+}
+
+pthread_mutex_t HMMSeqKMeanTrainer::lock = PTHREAD_MUTEX_INITIALIZER;
+
+void HMMSeqKMeanTrainer::updateParaTask( void * in) {
+    struct updateTaskInfo *info = (updateTaskInfo *) in;
+
+    bool &bigChange = *(info->bigChange);
+    bool taskBigChange = false;
+
+    HMMKMeanAutomaton * automaton = info->automaton;
+
+    taskBigChange = automaton->updateTransfer();
+
+    automaton->iterateGauss();
+
+    pthread_mutex_lock(&lock);
+    bigChange |= taskBigChange;
+    pthread_mutex_unlock(&lock);
+
+    delete info;
+}
+
+int HMMSeqKMeanTrainer::addressTag(void * address, int range) {
+    unsigned long addr = (unsigned long) address;
+
+    return (addr >> 3) % range;
+}
+void HMMSeqKMeanTrainer::segmentTask( void * in) {
+    struct segTaskInfo *info = (segTaskInfo *) in;
+
+    int threadID = info->threadID;
+    int threadNum = info->threadNum;
+
+    std::vector<SeqWav> & trainWavs = *(info->trainWavs);
+
+    int wavIdx;
+    for(wavIdx = 0; wavIdx < trainWavs.size(); wavIdx ++) {
+        // model should not be call in different threads!!
+        if(threadID == addressTag(trainWavs[wavIdx].model, threadNum))
+            (trainWavs[wavIdx].model)->reSegment( *(trainWavs[wavIdx].wav), wavIdx );
+    }
+
+    delete info;
+
+//    (trainWavs[wavIdx].model)->reSegment( *(trainWavs[wavIdx].wav), wavIdx );
+}
+
+void HMMSeqKMeanTrainer::initParaTask( void * in) {
+    HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *) in;
+
+    Log("Automaton [%p] init Transfer", in);
+    automaton->initTransfer();
+    Log("Automaton [%p] init Gaussian", in);
+    automaton->iterateGauss();
 }
 
 void HMMSeqKMeanTrainer::initHMMTrain() {
@@ -90,6 +190,7 @@ void HMMSeqKMeanTrainer::initHMMTrain() {
     int templateSiz = templates.size();
     int autoIdx;
 
+    Log("Malloc HMM State and Transfer Cost Matrix");
     
     for(autoIdx = 0; autoIdx < automatonVec.size(); autoIdx ++) {
 //    for(autoItr = automatons.begin(); autoItr != automatons.end(); autoItr ++) {
@@ -104,6 +205,7 @@ void HMMSeqKMeanTrainer::initHMMTrain() {
 
     std::vector< std::string > words;
 
+    Log("Init Segment");
     // first segmentation
     for(templateIdx = 0; templateIdx < templateSiz; templateIdx++) {
         int wavSiz = templates[templateIdx].size();
@@ -115,6 +217,35 @@ void HMMSeqKMeanTrainer::initHMMTrain() {
         int stepLen = wavSiz / wordSiz;
 
         int startI = 0, endI = 0;
+        //  !!! 根据单词状态数INIT :  不合理
+        /*  
+        int wholeStateNum = 0;
+        for(int wordIdx = 0; wordIdx < words.size(); wordIdx ++) {
+            autoItr = automatons.find(words[wordIdx]);
+
+            if(autoItr != automatons.end())
+                wholeStateNum += (autoItr->second)->getStateNum();
+        }
+        for(int wordIdx = 0; wordIdx < words.size(); wordIdx ++) {
+            autoItr = automatons.find(words[wordIdx]);
+
+            if(autoItr == automatons.end()) continue;
+
+            endI = startI + 1.0 * (autoItr->second)->getStateNum() / wholeStateNum * wavSiz;
+
+            if(wordIdx == words.size() - 1 || endI >= wavSiz)
+                endI = wavSiz - 1;
+
+            Log("%d %d %d\n", startI, endI, wavSiz-1);
+
+            HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *)(autoItr->second);
+
+            automaton->initSegment(templateIdx, startI, endI);
+
+            startI = endI + 1;
+        }
+        */
+        
         for(int wordIdx = 0; wordIdx < words.size(); wordIdx ++) {
             autoItr = automatons.find(words[wordIdx]);
 
@@ -132,14 +263,25 @@ void HMMSeqKMeanTrainer::initHMMTrain() {
         }
     }
 
+    ThreadPool threadPool(ThreadPool::thread_num);
     for(autoIdx = 0; autoIdx < automatonVec.size(); autoIdx ++) {
-//    for(autoItr = automatons.begin(); autoItr != automatons.end(); autoItr ++) {
+        sp_task task;
+        task.func = initParaTask;
+        task.in   = (void *) automatonVec[autoIdx];
+
+        threadPool.addTask(task);
+    }
+    threadPool.run();
+
+    /*  
+    for(autoIdx = 0; autoIdx < automatonVec.size(); autoIdx ++) {
         HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *)(automatonVec[autoIdx]); // autoItr->second);
-//    for(autoItr = automatons.begin(); autoItr != automatons.end(); autoItr ++) {
-//        HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *)(autoItr->second);
 
         // init transfer and apply gauss base on the init segmentation
+        Log("Automaton [%d] init Transfer", autoIdx);
         automaton->initTransfer();
+        Log("Automaton [%d] init Gaussian", autoIdx);
         automaton->iterateGauss();
     }
+    */
 }

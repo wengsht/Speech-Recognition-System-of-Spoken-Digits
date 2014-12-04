@@ -1,0 +1,278 @@
+\hypertarget{class_e_p_analysis}{\section{E\+P\+Analysis Class Reference}
+\label{class_e_p_analysis}\index{E\+P\+Analysis@{E\+P\+Analysis}}
+}
+
+
+{\ttfamily \#include $<$E\+P\+Analysis.\+h$>$}
+
+Inheritance diagram for E\+P\+Analysis\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_e_p_analysis}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_e_p_analysis_a0b65e06f79424966ef106c1f39cdc2dc}{E\+P\+Analysis} ()
+\item 
+\hyperlink{class_e_p_analysis_a0bf9e48c6441fed0f5d7c8e755f097f3}{$\sim$\+E\+P\+Analysis} ()
+\item 
+\hyperlink{class_raw_data}{Raw\+Data} $\ast$ \hyperlink{class_e_p_analysis_a09d2b16c0ff0e77fc66c74e54ee1c279}{data} ()
+\item 
+virtual void \hyperlink{class_e_p_analysis_a7e7311c513772986b89d97c7bde0eb39}{Initial} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$raw\+Data)
+\item 
+bool \hyperlink{class_e_p_analysis_a5689e3c5824f3640bc76affd01d5724e}{add\+One\+Block\+Data\+With\+End\+Flag} (const \hyperlink{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$src)
+\item 
+void \hyperlink{class_e_p_analysis_a957fbafe0e4a9f7080ea4c37bcbd212c}{re\+Calc\+All\+Data} ()
+\item 
+void \hyperlink{class_e_p_analysis_a295580a18959d01e9f87a7514c5a0e74}{smooth} ()
+\item 
+void \hyperlink{class_e_p_analysis_a4b999949ec5b73194b29a533da8f00c8}{cut} ()
+\item 
+virtual int \hyperlink{class_e_p_analysis_a04fb7764261d7d579aa5bc98331b8a16}{print\+Inf} (int from, int \hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end}=-\/1)
+\item 
+virtual bool \hyperlink{class_e_p_analysis_a082819267ab6a37c293a07cf5e3e792b}{save\+Matlab} (const char $\ast$file\+\_\+name)
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_e_p_analysis_ad1d552418bdac23493701f726303c088}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (\hyperlink{class_raw_data}{Raw\+Data} $\ast$, raw\+Data, \hyperlink{class_raw_data}{Raw\+Data})
+\item 
+virtual void \hyperlink{class_e_p_analysis_acd38ed7c170e41ce73a2af3f1e8b442f}{calc\+One\+Block\+Energe} (int index)
+\item 
+virtual void \hyperlink{class_e_p_analysis_ac0d297dde8d0e9663f2e2e3b5fa0bc39}{calc\+One\+Block\+Background} (int index)=0
+\item 
+virtual void \hyperlink{class_e_p_analysis_a7767c0329b482231ec33faf935a620ce}{calc\+One\+Block\+Speech} (int index)=0
+\item 
+virtual void \hyperlink{class_e_p_analysis_aba99bc553c0e1f82ca844a5130263e6f}{calc\+One\+Block\+Other\+Data} (int index)
+\item 
+void \hyperlink{class_e_p_analysis_a8390360185d73e872b00c1207ea3cd55}{calc\+One\+Block\+Data} (int index)
+\item 
+bool \hyperlink{class_e_p_analysis_a4bfa7381a0d922990521779f6c4b3ce5}{append\+One\+Block\+Data} (const \hyperlink{configure__basic_8h_abf32ffaff24ba21700fbd0898b49ab02}{S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$src)
+\item 
+virtual bool \hyperlink{class_e_p_analysis_aa9964f5d1dd52e46156ff2304104d26d}{check\+Continue} ()
+\item 
+virtual void \hyperlink{class_e_p_analysis_a0c4270a435264c7aa18408d7f350ca31}{save\+Other\+Data} (F\+I\+L\+E $\ast$\hyperlink{readhtk_8m_ae135fff58330ebb77574e0dd6280aa68}{fid})
+\item 
+void \hyperlink{class_e_p_analysis_a195f5fff329e1df4862758baa80a9454}{change\+Silent\+Segment\+Into\+Speech} ()
+\item 
+void \hyperlink{class_e_p_analysis_aeca6d7b752d925d884bee17237007bb4}{change\+Speech\+Segment\+Into\+Silent} ()
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{class_e_p_analysis_ab9ee2c7ec0c37fd120489f625ad64cde}{block\+\_\+num}
+\item 
+int \hyperlink{class_e_p_analysis_a16dfd308b2c4ba9cfc63be3b8867da6a}{silent\+Time}
+\item 
+vector$<$ double $>$ \hyperlink{class_e_p_analysis_a08a51e10aeea685b4ae0980b694c396a}{background}
+\item 
+vector$<$ double $>$ \hyperlink{class_e_p_analysis_a16d60a56e47c6fd90658dd564badfad3}{energy}
+\item 
+vector$<$ char $>$ \hyperlink{class_e_p_analysis_a349b8500c98d922a49610f2c801ab7ec}{speech}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_e_p_analysis_a0b65e06f79424966ef106c1f39cdc2dc}{\index{E\+P\+Analysis@{E\+P\+Analysis}!E\+P\+Analysis@{E\+P\+Analysis}}
+\index{E\+P\+Analysis@{E\+P\+Analysis}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{E\+P\+Analysis}]{\setlength{\rightskip}{0pt plus 5cm}E\+P\+Analysis\+::\+E\+P\+Analysis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_e_p_analysis_a0b65e06f79424966ef106c1f39cdc2dc}
+\hypertarget{class_e_p_analysis_a0bf9e48c6441fed0f5d7c8e755f097f3}{\index{E\+P\+Analysis@{E\+P\+Analysis}!````~E\+P\+Analysis@{$\sim$\+E\+P\+Analysis}}
+\index{````~E\+P\+Analysis@{$\sim$\+E\+P\+Analysis}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{$\sim$\+E\+P\+Analysis}]{\setlength{\rightskip}{0pt plus 5cm}E\+P\+Analysis\+::$\sim$\+E\+P\+Analysis (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_e_p_analysis_a0bf9e48c6441fed0f5d7c8e755f097f3}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_e_p_analysis_a5689e3c5824f3640bc76affd01d5724e}{\index{E\+P\+Analysis@{E\+P\+Analysis}!add\+One\+Block\+Data\+With\+End\+Flag@{add\+One\+Block\+Data\+With\+End\+Flag}}
+\index{add\+One\+Block\+Data\+With\+End\+Flag@{add\+One\+Block\+Data\+With\+End\+Flag}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{add\+One\+Block\+Data\+With\+End\+Flag}]{\setlength{\rightskip}{0pt plus 5cm}bool E\+P\+Analysis\+::add\+One\+Block\+Data\+With\+End\+Flag (
+\begin{DoxyParamCaption}
+\item[{const {\bf S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$}]{src}
+\end{DoxyParamCaption}
+)}}\label{class_e_p_analysis_a5689e3c5824f3640bc76affd01d5724e}
+\hypertarget{class_e_p_analysis_a4bfa7381a0d922990521779f6c4b3ce5}{\index{E\+P\+Analysis@{E\+P\+Analysis}!append\+One\+Block\+Data@{append\+One\+Block\+Data}}
+\index{append\+One\+Block\+Data@{append\+One\+Block\+Data}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{append\+One\+Block\+Data}]{\setlength{\rightskip}{0pt plus 5cm}bool E\+P\+Analysis\+::append\+One\+Block\+Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf S\+O\+U\+N\+D\+\_\+\+D\+A\+T\+A} $\ast$}]{src}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_a4bfa7381a0d922990521779f6c4b3ce5}
+\hypertarget{class_e_p_analysis_ac0d297dde8d0e9663f2e2e3b5fa0bc39}{\index{E\+P\+Analysis@{E\+P\+Analysis}!calc\+One\+Block\+Background@{calc\+One\+Block\+Background}}
+\index{calc\+One\+Block\+Background@{calc\+One\+Block\+Background}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{calc\+One\+Block\+Background}]{\setlength{\rightskip}{0pt plus 5cm}virtual void E\+P\+Analysis\+::calc\+One\+Block\+Background (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_e_p_analysis_ac0d297dde8d0e9663f2e2e3b5fa0bc39}
+
+
+Implemented in \hyperlink{class_a_e_p_analysis_abdec61d75b30f2d6753c3c237e2b6805}{A\+E\+P\+Analysis}, \hyperlink{class_b_e_p_analysis_ace11d41c17bd9fbbbdddb85ccccb070e}{B\+E\+P\+Analysis}, and \hyperlink{class_d_a_e_p_analysis_af2b91e8bd16a65ec962b748bbf27952a}{D\+A\+E\+P\+Analysis}.
+
+\hypertarget{class_e_p_analysis_a8390360185d73e872b00c1207ea3cd55}{\index{E\+P\+Analysis@{E\+P\+Analysis}!calc\+One\+Block\+Data@{calc\+One\+Block\+Data}}
+\index{calc\+One\+Block\+Data@{calc\+One\+Block\+Data}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{calc\+One\+Block\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void E\+P\+Analysis\+::calc\+One\+Block\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_a8390360185d73e872b00c1207ea3cd55}
+\hypertarget{class_e_p_analysis_acd38ed7c170e41ce73a2af3f1e8b442f}{\index{E\+P\+Analysis@{E\+P\+Analysis}!calc\+One\+Block\+Energe@{calc\+One\+Block\+Energe}}
+\index{calc\+One\+Block\+Energe@{calc\+One\+Block\+Energe}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{calc\+One\+Block\+Energe}]{\setlength{\rightskip}{0pt plus 5cm}void E\+P\+Analysis\+::calc\+One\+Block\+Energe (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_e_p_analysis_acd38ed7c170e41ce73a2af3f1e8b442f}
+\hypertarget{class_e_p_analysis_aba99bc553c0e1f82ca844a5130263e6f}{\index{E\+P\+Analysis@{E\+P\+Analysis}!calc\+One\+Block\+Other\+Data@{calc\+One\+Block\+Other\+Data}}
+\index{calc\+One\+Block\+Other\+Data@{calc\+One\+Block\+Other\+Data}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{calc\+One\+Block\+Other\+Data}]{\setlength{\rightskip}{0pt plus 5cm}virtual void E\+P\+Analysis\+::calc\+One\+Block\+Other\+Data (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_e_p_analysis_aba99bc553c0e1f82ca844a5130263e6f}
+
+
+Reimplemented in \hyperlink{class_a_e_p_analysis_a270d364445bb9ed0d82f2bc15791c046}{A\+E\+P\+Analysis}.
+
+\hypertarget{class_e_p_analysis_a7767c0329b482231ec33faf935a620ce}{\index{E\+P\+Analysis@{E\+P\+Analysis}!calc\+One\+Block\+Speech@{calc\+One\+Block\+Speech}}
+\index{calc\+One\+Block\+Speech@{calc\+One\+Block\+Speech}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{calc\+One\+Block\+Speech}]{\setlength{\rightskip}{0pt plus 5cm}virtual void E\+P\+Analysis\+::calc\+One\+Block\+Speech (
+\begin{DoxyParamCaption}
+\item[{int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [pure virtual]}}}\label{class_e_p_analysis_a7767c0329b482231ec33faf935a620ce}
+
+
+Implemented in \hyperlink{class_a_e_p_analysis_a367b638a878435cf86de9b4b384b61a0}{A\+E\+P\+Analysis}, \hyperlink{class_b_e_p_analysis_ab508a682d38fbc58319ea48bfaa54615}{B\+E\+P\+Analysis}, and \hyperlink{class_d_a_e_p_analysis_ae9996fd139ffd800e5a5be4315b50942}{D\+A\+E\+P\+Analysis}.
+
+\hypertarget{class_e_p_analysis_a195f5fff329e1df4862758baa80a9454}{\index{E\+P\+Analysis@{E\+P\+Analysis}!change\+Silent\+Segment\+Into\+Speech@{change\+Silent\+Segment\+Into\+Speech}}
+\index{change\+Silent\+Segment\+Into\+Speech@{change\+Silent\+Segment\+Into\+Speech}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{change\+Silent\+Segment\+Into\+Speech}]{\setlength{\rightskip}{0pt plus 5cm}void E\+P\+Analysis\+::change\+Silent\+Segment\+Into\+Speech (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_a195f5fff329e1df4862758baa80a9454}
+\hypertarget{class_e_p_analysis_aeca6d7b752d925d884bee17237007bb4}{\index{E\+P\+Analysis@{E\+P\+Analysis}!change\+Speech\+Segment\+Into\+Silent@{change\+Speech\+Segment\+Into\+Silent}}
+\index{change\+Speech\+Segment\+Into\+Silent@{change\+Speech\+Segment\+Into\+Silent}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{change\+Speech\+Segment\+Into\+Silent}]{\setlength{\rightskip}{0pt plus 5cm}void E\+P\+Analysis\+::change\+Speech\+Segment\+Into\+Silent (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_aeca6d7b752d925d884bee17237007bb4}
+\hypertarget{class_e_p_analysis_aa9964f5d1dd52e46156ff2304104d26d}{\index{E\+P\+Analysis@{E\+P\+Analysis}!check\+Continue@{check\+Continue}}
+\index{check\+Continue@{check\+Continue}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{check\+Continue}]{\setlength{\rightskip}{0pt plus 5cm}bool E\+P\+Analysis\+::check\+Continue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_e_p_analysis_aa9964f5d1dd52e46156ff2304104d26d}
+\hypertarget{class_e_p_analysis_a4b999949ec5b73194b29a533da8f00c8}{\index{E\+P\+Analysis@{E\+P\+Analysis}!cut@{cut}}
+\index{cut@{cut}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{cut}]{\setlength{\rightskip}{0pt plus 5cm}void E\+P\+Analysis\+::cut (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_e_p_analysis_a4b999949ec5b73194b29a533da8f00c8}
+\hypertarget{class_e_p_analysis_a09d2b16c0ff0e77fc66c74e54ee1c279}{\index{E\+P\+Analysis@{E\+P\+Analysis}!data@{data}}
+\index{data@{data}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Raw\+Data}$\ast$ E\+P\+Analysis\+::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_e_p_analysis_a09d2b16c0ff0e77fc66c74e54ee1c279}
+\hypertarget{class_e_p_analysis_a7e7311c513772986b89d97c7bde0eb39}{\index{E\+P\+Analysis@{E\+P\+Analysis}!Initial@{Initial}}
+\index{Initial@{Initial}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{Initial}]{\setlength{\rightskip}{0pt plus 5cm}virtual void E\+P\+Analysis\+::\+Initial (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{raw\+Data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_e_p_analysis_a7e7311c513772986b89d97c7bde0eb39}
+
+
+Reimplemented in \hyperlink{class_a_e_p_analysis_af8c0797c01e6d50d4e3f5e89f98863a3}{A\+E\+P\+Analysis}.
+
+\hypertarget{class_e_p_analysis_a04fb7764261d7d579aa5bc98331b8a16}{\index{E\+P\+Analysis@{E\+P\+Analysis}!print\+Inf@{print\+Inf}}
+\index{print\+Inf@{print\+Inf}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{print\+Inf}]{\setlength{\rightskip}{0pt plus 5cm}int E\+P\+Analysis\+::print\+Inf (
+\begin{DoxyParamCaption}
+\item[{int}]{from, }
+\item[{int}]{end = {\ttfamily -\/1}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_e_p_analysis_a04fb7764261d7d579aa5bc98331b8a16}
+
+
+Reimplemented in \hyperlink{class_a_e_p_analysis_a6349405c9185f6ce4e4d3c5711daa217}{A\+E\+P\+Analysis}.
+
+\hypertarget{class_e_p_analysis_ad1d552418bdac23493701f726303c088}{\index{E\+P\+Analysis@{E\+P\+Analysis}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}E\+P\+Analysis\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{{\bf Raw\+Data} $\ast$}]{, }
+\item[{raw\+Data}]{, }
+\item[{{\bf Raw\+Data}}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_ad1d552418bdac23493701f726303c088}
+\hypertarget{class_e_p_analysis_a957fbafe0e4a9f7080ea4c37bcbd212c}{\index{E\+P\+Analysis@{E\+P\+Analysis}!re\+Calc\+All\+Data@{re\+Calc\+All\+Data}}
+\index{re\+Calc\+All\+Data@{re\+Calc\+All\+Data}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{re\+Calc\+All\+Data}]{\setlength{\rightskip}{0pt plus 5cm}void E\+P\+Analysis\+::re\+Calc\+All\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_e_p_analysis_a957fbafe0e4a9f7080ea4c37bcbd212c}
+\hypertarget{class_e_p_analysis_a082819267ab6a37c293a07cf5e3e792b}{\index{E\+P\+Analysis@{E\+P\+Analysis}!save\+Matlab@{save\+Matlab}}
+\index{save\+Matlab@{save\+Matlab}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{save\+Matlab}]{\setlength{\rightskip}{0pt plus 5cm}bool E\+P\+Analysis\+::save\+Matlab (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_e_p_analysis_a082819267ab6a37c293a07cf5e3e792b}
+\hypertarget{class_e_p_analysis_a0c4270a435264c7aa18408d7f350ca31}{\index{E\+P\+Analysis@{E\+P\+Analysis}!save\+Other\+Data@{save\+Other\+Data}}
+\index{save\+Other\+Data@{save\+Other\+Data}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{save\+Other\+Data}]{\setlength{\rightskip}{0pt plus 5cm}virtual void E\+P\+Analysis\+::save\+Other\+Data (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$}]{fid}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}}\label{class_e_p_analysis_a0c4270a435264c7aa18408d7f350ca31}
+
+
+Reimplemented in \hyperlink{class_a_e_p_analysis_a4c230992b22dd17f64614148698a3a17}{A\+E\+P\+Analysis}.
+
+\hypertarget{class_e_p_analysis_a295580a18959d01e9f87a7514c5a0e74}{\index{E\+P\+Analysis@{E\+P\+Analysis}!smooth@{smooth}}
+\index{smooth@{smooth}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{smooth}]{\setlength{\rightskip}{0pt plus 5cm}void E\+P\+Analysis\+::smooth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_e_p_analysis_a295580a18959d01e9f87a7514c5a0e74}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_e_p_analysis_a08a51e10aeea685b4ae0980b694c396a}{\index{E\+P\+Analysis@{E\+P\+Analysis}!background@{background}}
+\index{background@{background}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{background}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ E\+P\+Analysis\+::background\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_a08a51e10aeea685b4ae0980b694c396a}
+\hypertarget{class_e_p_analysis_ab9ee2c7ec0c37fd120489f625ad64cde}{\index{E\+P\+Analysis@{E\+P\+Analysis}!block\+\_\+num@{block\+\_\+num}}
+\index{block\+\_\+num@{block\+\_\+num}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{block\+\_\+num}]{\setlength{\rightskip}{0pt plus 5cm}int E\+P\+Analysis\+::block\+\_\+num\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_ab9ee2c7ec0c37fd120489f625ad64cde}
+\hypertarget{class_e_p_analysis_a16d60a56e47c6fd90658dd564badfad3}{\index{E\+P\+Analysis@{E\+P\+Analysis}!energy@{energy}}
+\index{energy@{energy}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{energy}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ E\+P\+Analysis\+::energy\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_a16d60a56e47c6fd90658dd564badfad3}
+\hypertarget{class_e_p_analysis_a16dfd308b2c4ba9cfc63be3b8867da6a}{\index{E\+P\+Analysis@{E\+P\+Analysis}!silent\+Time@{silent\+Time}}
+\index{silent\+Time@{silent\+Time}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{silent\+Time}]{\setlength{\rightskip}{0pt plus 5cm}int E\+P\+Analysis\+::silent\+Time\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_a16dfd308b2c4ba9cfc63be3b8867da6a}
+\hypertarget{class_e_p_analysis_a349b8500c98d922a49610f2c801ab7ec}{\index{E\+P\+Analysis@{E\+P\+Analysis}!speech@{speech}}
+\index{speech@{speech}!E\+P\+Analysis@{E\+P\+Analysis}}
+\subsubsection[{speech}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$char$>$ E\+P\+Analysis\+::speech\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_e_p_analysis_a349b8500c98d922a49610f2c801ab7ec}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Analysis/\hyperlink{_e_p_analysis_8h}{E\+P\+Analysis.\+h}\item 
+src/\+Analysis/\hyperlink{_e_p_analysis_8cpp}{E\+P\+Analysis.\+cpp}\end{DoxyCompactItemize}

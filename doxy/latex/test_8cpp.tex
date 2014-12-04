@@ -1,0 +1,81 @@
+\hypertarget{test_8cpp}{\section{src/test/test.cpp File Reference}
+\label{test_8cpp}\index{src/test/test.\+cpp@{src/test/test.\+cpp}}
+}
+{\ttfamily \#include \char`\"{}srs.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}test.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$termios.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{test_8cpp_ac983c539df6a69a2cd6eb00356c794c0}{create\+Noise} (const char $\ast$file\+\_\+name)
+\item 
+const char $\ast$ \hyperlink{test_8cpp_a0b48d570e53c8eef9a53e225d8b6a34d}{string\+File} (const char $\ast$a, const char $\ast$b, char $\ast$ab)
+\item 
+void \hyperlink{test_8cpp_a47fbe963641fc1c65d255ddc80ea7848}{capture} (const char $\ast$save\+\_\+file\+\_\+name, const char $\ast$file\+\_\+name, \hyperlink{class_e_p_analysis}{E\+P\+Analysis} \&ep, bool \hyperlink{recorder_8cpp_afca07e4c3b4c5d94f98ac43562d19215}{playback})
+\item 
+void \hyperlink{test_8cpp_a9c2c34c322f1c2a15f9e1c6e6b4a1d1d}{capture} (const char $\ast$save\+\_\+file\+\_\+name, \hyperlink{class_raw_data}{Raw\+Data} \&\hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data}, bool \hyperlink{recorder_8cpp_afca07e4c3b4c5d94f98ac43562d19215}{playback})
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{test_8cpp_a47c10078e2faa328afa3bdff0df695bf}{load\+\_\+calc} (const char $\ast$load\+\_\+file\+\_\+name, const char $\ast$file\+\_\+name, \hyperlink{class_e_p_analysis}{E\+P\+Analysis} \&ep, bool \hyperlink{recorder_8cpp_afca07e4c3b4c5d94f98ac43562d19215}{playback})
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{test_8cpp_a8148ffdff327e04eadc14953ee791867}{load\+\_\+wav\+\_\+file} (const char $\ast$file\+\_\+name, \hyperlink{class_raw_data}{Raw\+Data} \&\hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data})
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{test_8cpp_a47fbe963641fc1c65d255ddc80ea7848}{\index{test.\+cpp@{test.\+cpp}!capture@{capture}}
+\index{capture@{capture}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{capture}]{\setlength{\rightskip}{0pt plus 5cm}void capture (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{save\+\_\+file\+\_\+name, }
+\item[{const char $\ast$}]{file\+\_\+name, }
+\item[{{\bf E\+P\+Analysis} \&}]{ep, }
+\item[{bool}]{playback}
+\end{DoxyParamCaption}
+)}}\label{test_8cpp_a47fbe963641fc1c65d255ddc80ea7848}
+\hypertarget{test_8cpp_a9c2c34c322f1c2a15f9e1c6e6b4a1d1d}{\index{test.\+cpp@{test.\+cpp}!capture@{capture}}
+\index{capture@{capture}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{capture}]{\setlength{\rightskip}{0pt plus 5cm}void capture (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{save\+\_\+file\+\_\+name, }
+\item[{{\bf Raw\+Data} \&}]{data, }
+\item[{bool}]{playback}
+\end{DoxyParamCaption}
+)}}\label{test_8cpp_a9c2c34c322f1c2a15f9e1c6e6b4a1d1d}
+\hypertarget{test_8cpp_ac983c539df6a69a2cd6eb00356c794c0}{\index{test.\+cpp@{test.\+cpp}!create\+Noise@{create\+Noise}}
+\index{create\+Noise@{create\+Noise}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{create\+Noise}]{\setlength{\rightskip}{0pt plus 5cm}void create\+Noise (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\+\_\+name}
+\end{DoxyParamCaption}
+)}}\label{test_8cpp_ac983c539df6a69a2cd6eb00356c794c0}
+\hypertarget{test_8cpp_a47c10078e2faa328afa3bdff0df695bf}{\index{test.\+cpp@{test.\+cpp}!load\+\_\+calc@{load\+\_\+calc}}
+\index{load\+\_\+calc@{load\+\_\+calc}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{load\+\_\+calc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} load\+\_\+calc (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{load\+\_\+file\+\_\+name, }
+\item[{const char $\ast$}]{file\+\_\+name, }
+\item[{{\bf E\+P\+Analysis} \&}]{ep, }
+\item[{bool}]{playback}
+\end{DoxyParamCaption}
+)}}\label{test_8cpp_a47c10078e2faa328afa3bdff0df695bf}
+\hypertarget{test_8cpp_a8148ffdff327e04eadc14953ee791867}{\index{test.\+cpp@{test.\+cpp}!load\+\_\+wav\+\_\+file@{load\+\_\+wav\+\_\+file}}
+\index{load\+\_\+wav\+\_\+file@{load\+\_\+wav\+\_\+file}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{load\+\_\+wav\+\_\+file}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} load\+\_\+wav\+\_\+file (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\+\_\+name, }
+\item[{{\bf Raw\+Data} \&}]{data}
+\end{DoxyParamCaption}
+)}}\label{test_8cpp_a8148ffdff327e04eadc14953ee791867}
+\hypertarget{test_8cpp_a0b48d570e53c8eef9a53e225d8b6a34d}{\index{test.\+cpp@{test.\+cpp}!string\+File@{string\+File}}
+\index{string\+File@{string\+File}!test.\+cpp@{test.\+cpp}}
+\subsubsection[{string\+File}]{\setlength{\rightskip}{0pt plus 5cm}const char$\ast$ string\+File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{a, }
+\item[{const char $\ast$}]{b, }
+\item[{char $\ast$}]{ab}
+\end{DoxyParamCaption}
+)}}\label{test_8cpp_a0b48d570e53c8eef9a53e225d8b6a34d}

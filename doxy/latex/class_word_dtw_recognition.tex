@@ -1,0 +1,159 @@
+\hypertarget{class_word_dtw_recognition}{\section{Word\+Dtw\+Recognition Class Reference}
+\label{class_word_dtw_recognition}\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+}
+
+
+{\ttfamily \#include $<$Word\+Dtw\+Recognition.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_word_dtw_recognition_a653a1287b88f956d3ebfa1f82d445671}{Word\+Dtw\+Recognition} ()
+\item 
+\hyperlink{class_word_dtw_recognition_ac6e182b182ea223871e255f3e102c062}{$\sim$\+Word\+Dtw\+Recognition} ()
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_word_dtw_recognition_a152ce48ffd0ff96a8dd67927f073f7cb}{load\+Templates} (char $\ast$template\+Dir)
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_word_dtw_recognition_aa62bb713b6017a1dc4784a5d5561ea75}{word\+Asyn\+Recognition} (std\+::vector$<$ \hyperlink{class_feature}{Feature} $>$ \&input\+Feature)
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_word_dtw_recognition_ab3f2061dc9d728f7ca887b936881303a}{word\+Syn\+Recognition} (std\+::vector$<$ \hyperlink{class_feature}{Feature} $>$ \&input\+Feature)
+\item 
+void \hyperlink{class_word_dtw_recognition_ab46172d2b8117cbc5a017b95b669e102}{dump\+Color\+Path} (std\+::ostream \&Out)
+\item 
+const \hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} $\ast$ \hyperlink{class_word_dtw_recognition_a0800967c15343c6ad31a255afba9e0dc}{get\+Best\+Template} ()
+\item 
+void \hyperlink{class_word_dtw_recognition_a08ea68aed658667bbd475cdc5413bd31}{set\+Do\+Record\+Path} (bool do\+Record)
+\item 
+void \hyperlink{class_word_dtw_recognition_a9ec0c2d2b97b060b0d7dd2a711a59f19}{set\+Max\+Instance\+Per\+Word} (int \hyperlink{pro4__demo__1_8cpp_adc01d2f6980a1af5c3ddc83d847dafa0}{max\+Instance\+Per})
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_word_dtw_recognition_aa97bdcc7b5ed94afc6597ec3ece754b6}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (\hyperlink{class_wave_feature_o_p_a9c2fd724a37768ed03dc5b011d257500}{Wave\+Feature\+O\+P\+::\+Op\+Type}, op\+Type, Op\+Type)
+\item 
+\hyperlink{class_word_dtw_recognition_a62ec53317ee1451f33dd416f78c512c8}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (double, beam\+Threshold, Beam\+Threshold)
+\item 
+\hyperlink{class_word_dtw_recognition_a71b41be3f78545c7444dd57f60bb3c6c}{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E} (bool, do\+Train\+Threshold, Do\+Train\+Threshold)
+\item 
+void \hyperlink{class_word_dtw_recognition_a912c5401af8c1bea59c680076c8e04a3}{train\+Threshold} ()
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_wave_feature_o_p_set}{Wave\+Feature\+O\+P\+Set} \hyperlink{class_word_dtw_recognition_a1c3086c9382b4bd282230044b15b3d01}{templates}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_word_dtw_recognition_a653a1287b88f956d3ebfa1f82d445671}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{Word\+Dtw\+Recognition}]{\setlength{\rightskip}{0pt plus 5cm}Word\+Dtw\+Recognition\+::\+Word\+Dtw\+Recognition (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_a653a1287b88f956d3ebfa1f82d445671}
+\hypertarget{class_word_dtw_recognition_ac6e182b182ea223871e255f3e102c062}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!````~Word\+Dtw\+Recognition@{$\sim$\+Word\+Dtw\+Recognition}}
+\index{````~Word\+Dtw\+Recognition@{$\sim$\+Word\+Dtw\+Recognition}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{$\sim$\+Word\+Dtw\+Recognition}]{\setlength{\rightskip}{0pt plus 5cm}Word\+Dtw\+Recognition\+::$\sim$\+Word\+Dtw\+Recognition (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_ac6e182b182ea223871e255f3e102c062}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_word_dtw_recognition_ab46172d2b8117cbc5a017b95b669e102}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!dump\+Color\+Path@{dump\+Color\+Path}}
+\index{dump\+Color\+Path@{dump\+Color\+Path}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{dump\+Color\+Path}]{\setlength{\rightskip}{0pt plus 5cm}void Word\+Dtw\+Recognition\+::dump\+Color\+Path (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{Out}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_ab46172d2b8117cbc5a017b95b669e102}
+\hypertarget{class_word_dtw_recognition_a0800967c15343c6ad31a255afba9e0dc}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!get\+Best\+Template@{get\+Best\+Template}}
+\index{get\+Best\+Template@{get\+Best\+Template}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{get\+Best\+Template}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Wave\+Feature\+O\+P} $\ast$ Word\+Dtw\+Recognition\+::get\+Best\+Template (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_a0800967c15343c6ad31a255afba9e0dc}
+\hypertarget{class_word_dtw_recognition_a152ce48ffd0ff96a8dd67927f073f7cb}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!load\+Templates@{load\+Templates}}
+\index{load\+Templates@{load\+Templates}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{load\+Templates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} Word\+Dtw\+Recognition\+::load\+Templates (
+\begin{DoxyParamCaption}
+\item[{char $\ast$}]{template\+Dir}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_a152ce48ffd0ff96a8dd67927f073f7cb}
+\hypertarget{class_word_dtw_recognition_aa97bdcc7b5ed94afc6597ec3ece754b6}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Word\+Dtw\+Recognition\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{{\bf Wave\+Feature\+O\+P\+::\+Op\+Type}}]{, }
+\item[{op\+Type}]{, }
+\item[{Op\+Type}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_word_dtw_recognition_aa97bdcc7b5ed94afc6597ec3ece754b6}
+\hypertarget{class_word_dtw_recognition_a62ec53317ee1451f33dd416f78c512c8}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Word\+Dtw\+Recognition\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{double}]{, }
+\item[{beam\+Threshold}]{, }
+\item[{Beam\+Threshold}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_word_dtw_recognition_a62ec53317ee1451f33dd416f78c512c8}
+\hypertarget{class_word_dtw_recognition_a71b41be3f78545c7444dd57f60bb3c6c}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}}
+\index{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E@{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E}]{\setlength{\rightskip}{0pt plus 5cm}Word\+Dtw\+Recognition\+::\+R\+E\+A\+D\+\_\+\+W\+R\+I\+T\+E\+\_\+\+D\+E\+C\+L\+A\+R\+E (
+\begin{DoxyParamCaption}
+\item[{bool}]{, }
+\item[{do\+Train\+Threshold}]{, }
+\item[{Do\+Train\+Threshold}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_word_dtw_recognition_a71b41be3f78545c7444dd57f60bb3c6c}
+\hypertarget{class_word_dtw_recognition_a08ea68aed658667bbd475cdc5413bd31}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!set\+Do\+Record\+Path@{set\+Do\+Record\+Path}}
+\index{set\+Do\+Record\+Path@{set\+Do\+Record\+Path}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{set\+Do\+Record\+Path}]{\setlength{\rightskip}{0pt plus 5cm}void Word\+Dtw\+Recognition\+::set\+Do\+Record\+Path (
+\begin{DoxyParamCaption}
+\item[{bool}]{do\+Record}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_a08ea68aed658667bbd475cdc5413bd31}
+\hypertarget{class_word_dtw_recognition_a9ec0c2d2b97b060b0d7dd2a711a59f19}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!set\+Max\+Instance\+Per\+Word@{set\+Max\+Instance\+Per\+Word}}
+\index{set\+Max\+Instance\+Per\+Word@{set\+Max\+Instance\+Per\+Word}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{set\+Max\+Instance\+Per\+Word}]{\setlength{\rightskip}{0pt plus 5cm}void Word\+Dtw\+Recognition\+::set\+Max\+Instance\+Per\+Word (
+\begin{DoxyParamCaption}
+\item[{int}]{max\+Instance\+Per}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_a9ec0c2d2b97b060b0d7dd2a711a59f19}
+\hypertarget{class_word_dtw_recognition_a912c5401af8c1bea59c680076c8e04a3}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!train\+Threshold@{train\+Threshold}}
+\index{train\+Threshold@{train\+Threshold}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{train\+Threshold}]{\setlength{\rightskip}{0pt plus 5cm}void Word\+Dtw\+Recognition\+::train\+Threshold (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_word_dtw_recognition_a912c5401af8c1bea59c680076c8e04a3}
+\hypertarget{class_word_dtw_recognition_aa62bb713b6017a1dc4784a5d5561ea75}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!word\+Asyn\+Recognition@{word\+Asyn\+Recognition}}
+\index{word\+Asyn\+Recognition@{word\+Asyn\+Recognition}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{word\+Asyn\+Recognition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} Word\+Dtw\+Recognition\+::word\+Asyn\+Recognition (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Feature} $>$ \&}]{input\+Feature}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_aa62bb713b6017a1dc4784a5d5561ea75}
+\hypertarget{class_word_dtw_recognition_ab3f2061dc9d728f7ca887b936881303a}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!word\+Syn\+Recognition@{word\+Syn\+Recognition}}
+\index{word\+Syn\+Recognition@{word\+Syn\+Recognition}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{word\+Syn\+Recognition}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} Word\+Dtw\+Recognition\+::word\+Syn\+Recognition (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Feature} $>$ \&}]{input\+Feature}
+\end{DoxyParamCaption}
+)}}\label{class_word_dtw_recognition_ab3f2061dc9d728f7ca887b936881303a}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_word_dtw_recognition_a1c3086c9382b4bd282230044b15b3d01}{\index{Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}!templates@{templates}}
+\index{templates@{templates}!Word\+Dtw\+Recognition@{Word\+Dtw\+Recognition}}
+\subsubsection[{templates}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Wave\+Feature\+O\+P\+Set} Word\+Dtw\+Recognition\+::templates\hspace{0.3cm}{\ttfamily [private]}}}\label{class_word_dtw_recognition_a1c3086c9382b4bd282230044b15b3d01}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Feature/\hyperlink{_word_dtw_recognition_8h}{Word\+Dtw\+Recognition.\+h}\item 
+src/\+Feature/\hyperlink{_word_dtw_recognition_8cpp}{Word\+Dtw\+Recognition.\+cpp}\end{DoxyCompactItemize}
