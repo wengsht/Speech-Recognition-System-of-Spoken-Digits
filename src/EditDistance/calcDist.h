@@ -112,7 +112,7 @@ static void printPath(const T& a,const T& b,
 {
 	int da=0,db=0;
 	for(int i = path->len-1;i>=0;i--){
-		DIR d = path->dir[i];
+		DIRP d = path->dir[i];
 		if(d==SAME){
 			//printf(LIGHT_RED);
 			if(strcmp(split,"\n")==0){printf("  ");}
@@ -157,7 +157,7 @@ static void printPath(const T& a,const T& b,
 
 
 
-void update(Path * path,int * val,DIR * p,int a_l,int b_l,int ret, int w){
+void update(Path * path,int * val,DIRP * p,int a_l,int b_l,int ret, int w){
     int px = a_l;
     int py = b_l;
     
@@ -180,7 +180,7 @@ void update(Path * path,int * val,DIR * p,int a_l,int b_l,int ret, int w){
     int cnt =0;
     while(px || py){
             
-        DIR d = p[px*(w+1)+py];
+        DIRP d = p[px*(w+1)+py];
         //   printf("x : %d y : %d  d:%d\n",px,py,d);
     //	printf("d - %d\n",d);
         path->add(d);
@@ -211,7 +211,7 @@ static int compare(const T&  a,const T& b,Path* path = NULL){
     int b_l = size(b);
  	   
 	int * diff[2];
-	DIR * p;
+	DIRP * p;
 	int * val;
 	if(path){
 		if(a_l+b_l>5000){
@@ -220,7 +220,7 @@ static int compare(const T&  a,const T& b,Path* path = NULL){
 		}
 		else{
 			int ma = (a_l+1)*(b_l+1);
-			p = new DIR[ma];
+			p = new DIRP[ma];
 			val = new int[ma];
 			memset(val,-1,sizeof(int)*(ma));
 		}
@@ -354,7 +354,7 @@ static int compareWithBeam(const T&  a,const T& b,
 	int * pos[2];
 	int cnt[2] = {0};
 	int aa = a_l,bb = b_l;
-	DIR * p;
+	DIRP * p;
 	int * val;
 	if(path){
 		if(a_l+b_l>5000){
@@ -363,7 +363,7 @@ static int compareWithBeam(const T&  a,const T& b,
 		}
 		else{
 			int ma = (a_l+1)*(b_l+1);
-			p = new DIR[ma];
+			p = new DIRP[ma];
 			val = new int[ma];
 			memset(val,-1,sizeof(int)*(ma));
 		}
@@ -518,7 +518,7 @@ static int compareWithFixedThreshold(const T&  a,const T& b,
 	int * pos[2];
 	int cnt[2] = {0};
 	int aa = a_l,bb = b_l;
-	DIR * p;
+	DIRP * p;
 	int * val;
 	if(path){
 		if(a_l+b_l>5000){
@@ -527,7 +527,7 @@ static int compareWithFixedThreshold(const T&  a,const T& b,
 		}
 		else{
 			int ma = (a_l+1)*(b_l+1);
-			p = new DIR[ma];
+			p = new DIRP[ma];
 			val = new int[ma];
 			memset(val,-1,sizeof(int)*(ma));
 		}

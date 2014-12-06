@@ -175,10 +175,14 @@ void HMMSeqKMeanTrainer::segmentTask( void * in) {
 void HMMSeqKMeanTrainer::initParaTask( void * in) {
     HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *) in;
 
-    Log("Automaton [%p] init Transfer", in);
-    automaton->initTransfer();
-    Log("Automaton [%p] init Gaussian", in);
-    automaton->iterateGauss();
+    if(! automaton->isLoadFromFile()) {
+        Log("Automaton [%p] init Transfer", in);
+        automaton->initTransfer();
+        Log("Automaton [%p] init Gaussian", in);
+        automaton->iterateGauss();
+
+        automaton->setIsLoadFromFile(false);
+    }
 }
 
 void HMMSeqKMeanTrainer::initHMMTrain() {
@@ -193,11 +197,13 @@ void HMMSeqKMeanTrainer::initHMMTrain() {
     Log("Malloc HMM State and Transfer Cost Matrix");
     
     for(autoIdx = 0; autoIdx < automatonVec.size(); autoIdx ++) {
-//    for(autoItr = automatons.begin(); autoItr != automatons.end(); autoItr ++) {
         HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *)(automatonVec[autoIdx]); // autoItr->second);
 
-        //malloc transfer and state for every automaton
-        automaton->hmmMallocStatesAndTransfer();
+        // automaton that load from file already has transfer matrix and states, don't generate again
+        if(! automaton->isLoadFromFile()) {
+            //malloc transfer and state for every automaton
+            automaton->hmmMallocStatesAndTransfer();
+        }
 
         // all state has not points before first segmentation
         automaton->allEmptyStateSegment();
@@ -217,34 +223,6 @@ void HMMSeqKMeanTrainer::initHMMTrain() {
         int stepLen = wavSiz / wordSiz;
 
         int startI = 0, endI = 0;
-        //  !!! 根据单词状态数INIT :  不合理
-        /*  
-        int wholeStateNum = 0;
-        for(int wordIdx = 0; wordIdx < words.size(); wordIdx ++) {
-            autoItr = automatons.find(words[wordIdx]);
-
-            if(autoItr != automatons.end())
-                wholeStateNum += (autoItr->second)->getStateNum();
-        }
-        for(int wordIdx = 0; wordIdx < words.size(); wordIdx ++) {
-            autoItr = automatons.find(words[wordIdx]);
-
-            if(autoItr == automatons.end()) continue;
-
-            endI = startI + 1.0 * (autoItr->second)->getStateNum() / wholeStateNum * wavSiz;
-
-            if(wordIdx == words.size() - 1 || endI >= wavSiz)
-                endI = wavSiz - 1;
-
-            Log("%d %d %d\n", startI, endI, wavSiz-1);
-
-            HMMKMeanAutomaton * automaton = (HMMKMeanAutomaton *)(autoItr->second);
-
-            automaton->initSegment(templateIdx, startI, endI);
-
-            startI = endI + 1;
-        }
-        */
         
         for(int wordIdx = 0; wordIdx < words.size(); wordIdx ++) {
             autoItr = automatons.find(words[wordIdx]);

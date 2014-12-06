@@ -29,6 +29,8 @@
 #include "Capture.h"
 #include "SeqModel.h"
 #include "configure_hmm.h"
+#include "SerialFiles.h"
+#include "calcDist.h"
 
 using namespace std;
 
@@ -58,6 +60,8 @@ void runNN();
 
 int mode = 0;
 
+
+static int calcDist(char *fileName, vector<string> res, int & wordCnt);
 int main(int argc, char **argv) {
     if(! dealOpts(argc, argv))
         return 0;
@@ -118,7 +122,11 @@ void runNN() {
 
     WaveFeatureOPSet::iterator Itr = inputs.begin();
 
+    int editDistCnt = 0;
+    int sentenceCnt = 0;
+    int wordCntAll = 0;
     for(; Itr != inputs.end(); Itr ++) {
+        sentenceCnt ++;
         res.clear();
 
         recognition.recognition(*(*Itr), res, pathType);
@@ -130,7 +138,19 @@ void runNN() {
         }
         puts("");
         cout << NONE << endl;
+
+        int wordCnt = 0;
+        int editDis = calcDist(const_cast<char *>((*Itr)->getFileName().c_str()), res, wordCnt);
+        editDistCnt += editDis;
+        wordCntAll += wordCnt;
+
+        cout << "Edit distance: " << editDis << endl;
+        cout << "Setence with  " << wordCnt << " words" << endl;
     }
+
+    cout << "Input [" <<  sentenceCnt << "] sentences" <<  endl;
+    cout << "With [" << wordCntAll << "] words " << endl;
+    cout << "Edit distance in all: " << editDistCnt << endl;
 
     ofstream dotOut("model.dot");
     recognition.dumpDot(dotOut);
@@ -195,6 +215,9 @@ void runN1() {
     }
     puts("");
     cout << NONE;
+    int wordCnt = 0;
+    cout << "Edit distance: " << calcDist(inputFileName, res, wordCnt) << endl;
+    cout << "Input " << wordCnt << " words" << endl;
 }
 
 bool dealOpts(int argc, char **argv) {
@@ -256,3 +279,32 @@ bool dealOpts(int argc, char **argv) {
     return true;
 }
 
+
+int calcDist(char *fileName, vector<string> res, int &wordCnt) {
+    wordCnt = 0;
+    static char words[2048];
+    static char user[100];
+    int seqIdx;
+    char * seg;
+    while((seg = strstr(fileName, "/"))) fileName = seg + 1;
+
+    SerialFiles::parseSerialFileName(fileName, seqIdx, 2, user, words);
+
+    seg = strtok(words, LINK_WORD);
+
+    vector<string> origin;
+    vector<string> goodRes;
+    for(; seg; seg = strtok(NULL, LINK_WORD)) {
+        // dont count on silence
+        if(SerialFiles::isNotWord(seg)) 
+            continue;
+        wordCnt ++;
+        origin.push_back(string(SerialFiles::inAlias(seg)));
+    }
+    for(int i = 0;i < res.size(); i++) {
+        if(SerialFiles::isNotWord(const_cast<char *>(res[i].c_str())))
+            continue;
+        goodRes.push_back(res[i]);
+    }
+    return compare(origin, goodRes);
+}

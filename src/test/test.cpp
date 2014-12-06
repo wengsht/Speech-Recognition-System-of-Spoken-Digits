@@ -64,6 +64,7 @@ void capture(const char * save_file_name,
         ErrorLog("Capture error");
     }
 }
+
 void capture(const char *save_file_name, RawData &data, bool playback) {
     DAEPAnalysis ep;
     AutoCapture c(&ep);

@@ -75,6 +75,8 @@ class SerialFiles {
         // "one" ---> "1"
         static const char * outAlias(char * out);
 
+        static bool isNotWord(char *word);
+
     private:
         char *fullfill(int num);
 

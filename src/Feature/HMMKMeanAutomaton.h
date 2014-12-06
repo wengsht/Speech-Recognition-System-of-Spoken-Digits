@@ -66,6 +66,9 @@ class HMMKMeanAutomaton : public HMMAutomaton {
                 states.push_back(new KMeanState(templates));
                 states[idx]->load(in, gaussNum);
             }
+
+            // flag models that were loaded from files!!!
+            setIsLoadFromFile(true);
         }
 
         bool updateTransfer();

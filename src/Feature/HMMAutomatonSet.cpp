@@ -24,7 +24,7 @@
 #include "HMMSeqKMeanTrainer.h"
 #include "HMMSeqTrainer.h"
 
-HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes) {
+HMMAutomatonSet::HMMAutomatonSet(int stateNum, int gaussNum, int trainTimes) : stateNum(stateNum), gaussNum(gaussNum), trainTimes(trainTimes), initAutomatonSet(NULL) {
     loadSpecStateNum();
 }
 
@@ -222,3 +222,4 @@ void HMMAutomatonSet::dumpAutomaton(std::ostream & out) {
         out << "}\n";
     }
 }
+

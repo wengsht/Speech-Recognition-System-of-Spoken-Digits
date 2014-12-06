@@ -64,12 +64,19 @@ public:
     void setTemplates(std::vector<WaveFeatureOP> * newTemps) {
         templates = newTemps;
 
-        /*  
-        for(int i = 1; i <= stateNum; i++) {
+        for(int i = 0;i < states.size(); i++) {
             states[i]->setTemplates(newTemps);
         }
-        */
     }
+
+    void setIsLoadFromFile(bool isLoadFromFile) {
+        this->loadFlag = isLoadFromFile;
+    }
+
+    bool isLoadFromFile() {
+        return this->loadFlag;
+    }
+
 protected:
     enum dtwType {
         Maximum, 
@@ -208,5 +215,7 @@ protected:
     Matrix<double> transferCost;
 
     std::vector<HMMState *> states;
+
+    bool loadFlag; ///< use to flag models that are loaded from file
 };
 #endif

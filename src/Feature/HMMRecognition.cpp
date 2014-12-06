@@ -32,7 +32,7 @@ SP_RESULT HMMRecognition::loadTemplates(char *templateDir, WaveFeatureOP::LOAD_T
     return SP_SUCCESS;
 }
 
-string HMMRecognition::generateHMMFileName() {
+string HMMRecognition::generateHMMFileName(char *suffix) {
     static char buf[1024];
     static std::string algo;
 
@@ -41,14 +41,15 @@ string HMMRecognition::generateHMMFileName() {
     else 
         algo = "soft";
 
-    sprintf(buf, "%s/%s_%d_%d_%d.hmm",  templateDir.c_str(),algo.c_str(), stateNum, gaussNum, stateNum);
+    sprintf(buf, "%s/%s_%d_%d_%d.hmm%s",  templateDir.c_str(),algo.c_str(), stateNum, gaussNum, stateNum, suffix);
 
     return string(buf);
 //    res += string(stateNum);
 //
 }
-bool HMMRecognition::loadHMMModel() {
-    string fileName = generateHMMFileName();
+
+bool HMMRecognition::loadHMMModel(HMMAutomatonSet & automatons, char *suffix) {
+    string fileName = generateHMMFileName(suffix);
 
     ifstream in;
 
@@ -79,7 +80,7 @@ SP_RESULT HMMRecognition::hmmTryLoad(char *templateDir) {
 
     automatons.setStateType(stateType);
 
-    if(loadHMMModel()) {
+    if(loadHMMModel(automatons)) {
 //        loadTemplates(templateDir, WaveFeatureOP::ONLY_FILE_NAME);
         return SP_SUCCESS;
     }
@@ -91,8 +92,10 @@ SP_RESULT HMMRecognition::hmmTrain(HMMAutomaton::TRAIN_TYPE type) {
     automatons.setStateType(stateType);
 
     // load the model from buffer
-    if(loadHMMModel()) ;
-    else { 
+    if(loadHMMModel(automatons)) ;
+    else {
+        loadHMMModel(automatons, INIT_MODEL_SUFFIX);
+
         automatons.train(type);
 
         storeHMMModel();

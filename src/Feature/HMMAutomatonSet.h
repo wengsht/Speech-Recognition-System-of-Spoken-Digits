@@ -64,8 +64,11 @@ class HMMAutomatonSet : public WaveFeatureOPSet {
         std::map< std::string, HMMAutomaton *> & getAutomatons() {
             return automatons;
         }
+
     private:
         std::map< std::string, HMMAutomaton *> automatons;
+
+        HMMAutomatonSet * initAutomatonSet;
 
         std::vector< WaveFeatureOP > mixedWavs;
 

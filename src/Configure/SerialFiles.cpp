@@ -19,6 +19,7 @@
 #include <cstring>
 #include <cstdlib>
 #include <stdarg.h>
+#include "configure_hmm.h"
 
 #define DEFAULT_SIZE_BIT 2
 
@@ -122,4 +123,11 @@ void SerialFiles::parseSerialFileName(const char * const fileName, int &seqNum, 
     va_end(pvar);
 
     delete [] tmp;
+}
+
+bool SerialFiles::isNotWord(char *word) {
+    if(strcmp(word, TROPE TROPE_SILENCE) == 0)
+        return true;
+    return false;
+
 }

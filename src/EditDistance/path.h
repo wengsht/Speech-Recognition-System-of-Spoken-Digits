@@ -1,6 +1,6 @@
 #ifndef __PRO3__EDITDISTANCE__PATH__
 #define __PRO3__EDITDISTANCE__PATH__
-enum DIR {
+enum DIRP {
     DELETE,INSERT,SAME,CHANGE
 };
 struct Path {
@@ -9,7 +9,7 @@ struct Path {
     // 对角无消耗
     // 上加词+1
     // 对角消耗+1
-    DIR * dir;
+    DIRP * dir;
     int * val;
 
 	Path(){
@@ -20,7 +20,7 @@ struct Path {
 
     Path(int m){
         len = 0;
-        dir = new DIR[m];
+        dir = new DIRP[m];
 		val = NULL;
     }
 
@@ -36,11 +36,11 @@ struct Path {
     void setMaxLen(int m){
         len = 0;
         if(dir!=NULL)delete dir;
-        dir = new DIR[m];
+        dir = new DIRP[m];
 		if(val!=NULL)delete val;
 		val = NULL;
 	}
-    void add(DIR t){
+    void add(DIRP t){
         dir[len++] = t;
     }
     ~Path(){

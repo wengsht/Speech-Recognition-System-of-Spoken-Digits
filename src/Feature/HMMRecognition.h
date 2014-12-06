@@ -73,9 +73,9 @@ class HMMRecognition {
         // 
         void dumpAutomaton(std::ostream & out);
     protected:
-        bool loadHMMModel();
+        bool loadHMMModel(HMMAutomatonSet & automatons, char * suffix = "");
         void storeHMMModel();
-        string generateHMMFileName();
+        string generateHMMFileName(char *suffix = "");
 
         int stateNum;
         int gaussNum;

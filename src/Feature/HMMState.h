@@ -42,6 +42,7 @@ class HMMState {
         virtual double nodeCost(Feature *inputFeature) = 0;
 
         virtual void setTemplates(std::vector<WaveFeatureOP> * newTemps) {
+            templates = newTemps;
         }
         virtual void load(std::stringstream &in, int &gaussNum) = 0;
         virtual void store(std::stringstream &out) = 0;

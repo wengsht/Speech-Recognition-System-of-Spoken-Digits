@@ -19,3 +19,5 @@
 // init kmean transfer probability 0.5+0.5 = 1.0!
 #define INIT_KMEAN_0_1 0.5
 #define INIT_KMEAN_0_2 0.5
+
+#define INIT_MODEL_SUFFIX ".inithmm" ///< kmean_5_4_5.hmm.inithmm is used to init the training of it
