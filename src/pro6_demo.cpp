@@ -75,11 +75,14 @@ void runNN() {
     recognition.setStateType(HMMState::KMEAN);
     recognition.setGaussNum(gaussNum);
 
-    if(recognition.hmmTryLoad(tempDir) == SP_SUCCESS) ;
+    if(recognition.hmmTryLoad(tempDir) == SP_SUCCESS) {
+    }
     else {
         recognition.loadTemplates(tempDir);
-        if(0 == strcmp(trainType, seq))
+
+        if(0 == strcmp(trainType, seq)) {
             recognition.hmmSeqTrain();
+        }
         else 
             recognition.hmmSegTrain();
     }
