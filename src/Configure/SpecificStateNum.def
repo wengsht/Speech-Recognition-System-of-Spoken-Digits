@@ -38,6 +38,7 @@ SpecificStateNum("six", 5)
 SpecificStateNum("seven", 5)
 SpecificStateNum("eight", 5)
 SpecificStateNum("nine", 5)
+SpecificStateNum("oh", 3)
 SpecificStateNum(TROPE TROPE_SILENCE, 2)
 */
 

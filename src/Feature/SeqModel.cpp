@@ -233,7 +233,7 @@ void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz)
 
     std::vector< int > path;
 
-    collectBestPath( path, wavSiz );
+    collectBestPath( path, wavSiz, true);
 
     assert(path.size() >= wavSiz);
 
@@ -253,15 +253,9 @@ void SeqModel::collectResFromFullPath(std::vector<std::string> &res, int wavSiz)
         stateID = path[wavIdx];
 
 //        printf("%d ", stateID);
-        // only essential leaf (forwarded value) add a word
-//        if(states[stateID].UUID != states[preWordUUID].UUID && \
-           states[stateID].leafForwardIdx != NIL_FORWARD) {
-//        if(states[stateID].word != states[preStateID].word) {
-            // new word
                if(stateID != NIL_EDGE) {
-            res.push_back( std::string(states[stateID].word ));
+                   res.push_back( std::string(states[stateID].word ));
 
-//            preWordUUID = stateID;
         }
     }
 //    puts("");
@@ -329,11 +323,9 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz , bool elimin
             path[wavIdx] = NIL_EDGE;
 
         newWord = false;
-//        printf("%d ",stateID);
 
         stateID = fullPath[wavIdx][stateID];
     }
-//    puts("");
 }
 
 void SeqModel::collectRes(std::vector<std::string> &res, SEQ_DTW_PATH_TYPE path_type, int wavSiz) {
