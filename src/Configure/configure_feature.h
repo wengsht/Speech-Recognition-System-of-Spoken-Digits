@@ -24,4 +24,5 @@ const int    CEPS_NUM = 13;
 // so the feature will be 13*(2+1)
 const int    DELTA_TIMES = 2;
 
+#define DATA_PRECISION 12
 #endif

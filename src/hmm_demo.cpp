@@ -84,8 +84,22 @@ void runN1() {
         Tip("[Load an input!!]\n\n");
         load_wav_file(inputFileName, data);
     }
+
     extractor.exDoubleDeltaFeatures(&data);
+
     vector<Feature> inputFeature = extractor.getNormalMelCepstrum();
+
+    /* 
+    ofstream out("2.mfcc");
+    out.precision(DATA_PRECISION);
+    for(int i = 0;i < inputFeature.size(); i++) {
+        for(int j = 0;j < inputFeature[i].size(); j++) {
+            out << inputFeature[i][j] << " " ;
+        }
+        out << endl;
+    }
+    out.close();
+    */
 
     HMMRecognition hmm;
     hmm.setGaussNum(gaussNum);
@@ -377,5 +391,5 @@ if("ten" == word) return "  \n \
    #####   .#######  ##    ## \n \
    .####    .#####:  ##    ## \n ";
 
-return "null2";
+return word;
 }

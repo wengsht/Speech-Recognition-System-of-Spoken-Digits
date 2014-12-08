@@ -21,6 +21,7 @@
 #include <set>
 #include <string>
 #include <map>
+#include <iomanip>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -29,6 +30,7 @@
 #include "WaveFeatureOP.h"
 #include "SerialFiles.h"
 #include "configure_dtw.h"
+#include "configure_feature.h"
 
 class WaveFeatureOPSet {
     READ_WRITE_DECLARE(int, maxInstancePer, MaxInstancePerWord);
@@ -177,6 +179,8 @@ private:
 
         for(int i = 0;i < features.size(); i++) {
             std::stringstream sout("");
+
+            sout.precision(DATA_PRECISION);
             if(features[i].size() == 0) continue;
             sout << features[i][0];
 

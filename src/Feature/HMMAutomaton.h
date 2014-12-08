@@ -131,7 +131,10 @@ protected:
             for(stateIdx = 1; stateIdx <= stateNum; stateIdx ++) {
                 double nodeCost = states[stateIdx]->nodeCost(&features[columnIdx]);
 
+//                printf("%d %d %lf \n", columnIdx, stateIdx, nodeCost);
+
                 rollColumnCost[rollIdx][stateIdx] = rollColumnCost[preIdx][stateIdx] + transferCost[stateIdx][stateIdx] + nodeCost;
+
 
                 // should record the path 
                 if(type == Maximum) {
@@ -161,6 +164,8 @@ protected:
                     // need not to record the path
                     else if(type == Sigma) {
                         rollColumnCost[rollIdx][stateIdx] = logInsideSum(rollColumnCost[rollIdx][stateIdx], mayPathCost);
+
+//                        printf("%d %d %lf %lf %lf %lf\n", columnIdx, stateIdx, rollColumnCost[rollIdx][stateIdx], nodeCost, rollColumnCost[preIdx][stateIdx], transferCost[stateIdx][stateIdx]); 
                     }
                 }
             }

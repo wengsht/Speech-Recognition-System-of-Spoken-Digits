@@ -124,6 +124,8 @@ void runNN() {
 
     int editDistCnt = 0;
     int sentenceCnt = 0;
+    int correctSentence = 0;
+    int only1wrong = 0;
     int wordCntAll = 0;
     for(; Itr != inputs.end(); Itr ++) {
         sentenceCnt ++;
@@ -144,6 +146,11 @@ void runNN() {
         editDistCnt += editDis;
         wordCntAll += wordCnt;
 
+        if(!editDis)
+            correctSentence ++;
+        if(editDis == 1)
+            only1wrong ++;
+
         cout << "Edit distance: " << editDis << endl;
         cout << "Setence with  " << wordCnt << " words" << endl;
     }
@@ -151,6 +158,8 @@ void runNN() {
     cout << "Input [" <<  sentenceCnt << "] sentences" <<  endl;
     cout << "With [" << wordCntAll << "] words " << endl;
     cout << "Edit distance in all: " << editDistCnt << endl;
+    cout << "Correct sentences : " << correctSentence << endl;
+    cout << "sentences with 1 edit dist: " << only1wrong << endl;
 
     ofstream dotOut("model.dot");
     recognition.dumpDot(dotOut);

@@ -21,7 +21,7 @@ private:
 	int flag;
 public:
     static bool equal(double a, double b) {
-        static double eps = 1e-12;
+        static double eps = 1e-4;
 
         return std::fabs(a-b) <= eps;
     }

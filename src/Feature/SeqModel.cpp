@@ -311,7 +311,7 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz , bool elimin
 
     bool newWord = true;
     for(wavIdx = wavSiz - 1; wavIdx >= 0; wavIdx --) {
-        while(!isEmit(stateID) )  {
+        while(!isEmit(stateID)  && stateID != fullPath[wavIdx][stateID])  {
             stateID = fullPath[wavIdx][stateID];
 
             newWord = true;
@@ -319,7 +319,7 @@ void SeqModel::collectBestPath( std::vector<int> &path, int wavSiz , bool elimin
 
         path[wavIdx] = stateID;
 
-        if(eliminateDuplicate && !newWord)
+        if(!isEmit(stateID) || (eliminateDuplicate && !newWord))
             path[wavIdx] = NIL_EDGE;
 
         newWord = false;

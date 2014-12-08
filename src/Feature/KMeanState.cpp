@@ -525,37 +525,24 @@ double KMeanState::nodeCost(Feature *inputFeature) {
 }
 
 double KMeanState::KMeanNodeCost(Feature *f){
-//    Log("nodeCost");
 	int gn = GaussianModel.size();
 
-	if( gn == 0 )return Feature::IllegalDist;
+	if( gn == 0 ) return Feature::IllegalDist;
 
-//        printf("%d\n", (this->edgePoints).size());
-    /* 
-    for(int i = 0;i < edgePoints.size(); i++){
-        printf("%d %d\n", edgePoints[i].first, edgePoints[i].second);
-    }
-    printf("o o %d\n", points.size());
-    */
-	
 	double ret = Feature::IllegalDist;
 	const double eps = 1e-13;
 	
 	for(int i = 0;i<GaussianModel.size();i++) {
 		if(fabs(w[i]) < eps) continue;
-		double t = GaussianModel[i]->minuLogP(f) - log(w[i]);
-//        printf("%lf %lf\n", GaussianModel[i]->minuLogP(f), log(w[i]));
-		if(ret == Feature::IllegalDist) {
-//            if(!(t<=0) && !(t>=0) && w[i] == 0)
-//                printf("%lf %lf\n", log(w[i]), w[i]);
 
+		double t = GaussianModel[i]->minuLogP(f) - log(w[i]);
+		if(ret == Feature::IllegalDist) {
             ret = t;
         }
 		else {
             ret = logInsideSum(ret,t);
         }
 	}
-//        printf("%d %lf\n", gn, ret );
 	return ret;
 }
 

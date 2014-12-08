@@ -50,6 +50,7 @@ SP_RESULT WaveFeatureOPSet::loadMfccs(char *templateDir, char *fileName, WaveFea
 
         return SP_SUCCESS;
     }
+
     // 如果有缓存，不重复计算mfcc
     if(loadMfccFromMfccFile(templateDir, fileName, word))
         return SP_SUCCESS;

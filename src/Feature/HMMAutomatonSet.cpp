@@ -155,7 +155,8 @@ std::string HMMAutomatonSet::recognition(WaveFeatureOP & input) {
     for(Itr = automatons.begin(); Itr != automatons.end(); Itr ++) {
         double tmpCost = Itr->second->calcCost(input);
 
-        //        std::cout << Itr->first << " " << tmpCost << std::endl;
+//                std::cout << Itr->first << " " << tmpCost << std::endl;
+
         if(Feature::better(tmpCost, bestCost)) {
             res = Itr->first;
             bestCost = tmpCost;
