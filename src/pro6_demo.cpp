@@ -125,7 +125,9 @@ void runNN() {
     int editDistCnt = 0;
     int sentenceCnt = 0;
     int correctSentence = 0;
-    int only1wrong = 0;
+
+    int Cnt[4] = {0};
+
     int wordCntAll = 0;
     for(; Itr != inputs.end(); Itr ++) {
         sentenceCnt ++;
@@ -136,7 +138,8 @@ void runNN() {
         cout << setw(20) << left << " Input: " <<  (*Itr)->getWord() <<  " " << (*Itr)->getFileName() << endl;
         cout << setw(20) << left << "Templates: ";
         for(int i = 0;i < res.size(); i++) {
-            cout << RED << res[i] << " " ;
+            if(! SerialFiles::isNotWord(const_cast<char *>(res[i].c_str())))
+                cout << RED << res[i] << " " ;
         }
         puts("");
         cout << NONE << endl;
@@ -146,10 +149,9 @@ void runNN() {
         editDistCnt += editDis;
         wordCntAll += wordCnt;
 
-        if(!editDis)
-            correctSentence ++;
-        if(editDis == 1)
-            only1wrong ++;
+        for(int i = editDis; i <= 3; i++) {
+            Cnt[i] ++;
+        }
 
         cout << "Edit distance: " << editDis << endl;
         cout << "Setence with  " << wordCnt << " words" << endl;
@@ -158,8 +160,10 @@ void runNN() {
     cout << "Input [" <<  sentenceCnt << "] sentences" <<  endl;
     cout << "With [" << wordCntAll << "] words " << endl;
     cout << "Edit distance in all: " << editDistCnt << endl;
-    cout << "Correct sentences : " << correctSentence << endl;
-    cout << "sentences with 1 edit dist: " << only1wrong << endl;
+    cout << "Correct sentences : " << Cnt[0] << endl;
+
+    for(int i = 1; i <= 3; i++) 
+        cout << "sentences with [<:" << i << "] edit dist: " << Cnt[i]<< endl;
 
     ofstream dotOut("model.dot");
     recognition.dumpDot(dotOut);
@@ -197,7 +201,8 @@ void runN1() {
     RawData data;
     if(strlen(inputFileName) == 0) {
         Tip("[Capture an input!!]\n\n");
-        capture("tmp", data, true);
+        capture("tmp", data, false);
+
     }
     else {
         Tip("[Load an input!!]\n\n");
@@ -205,6 +210,7 @@ void runN1() {
     }
 
     extractor.exDoubleDeltaFeatures(&data);
+
     vector<Feature> inputFeature = extractor.getNormalMelCepstrum();
     WaveFeatureOP op(inputFeature, "null");
     vector<string> res;
@@ -220,7 +226,8 @@ void runN1() {
     recognition.close();
 
     for(int i = 0;i < res.size(); i++) {
-        cout << RED << res[i] << " " ;
+        if(! SerialFiles::isNotWord(const_cast<char *>(res[i].c_str())))
+            cout << RED << res[i] << " " ;
     }
     puts("");
     cout << NONE;

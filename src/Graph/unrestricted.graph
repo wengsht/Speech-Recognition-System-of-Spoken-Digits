@@ -12,6 +12,6 @@ Edge 0 1 "6"  1.0
 Edge 0 1 "7"  1.0
 Edge 0 1 "8"  1.0
 Edge 0 1 "9"  1.0
-Edge 1 0 "#penalty"    1e-100
+Edge 1 0 "#penalty"    1e-65
 Edge 1 1 "#silence"    1.0
 Edge 0 0 "#silence"    1.0

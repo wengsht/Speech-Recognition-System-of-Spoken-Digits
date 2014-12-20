@@ -60,4 +60,3 @@ void HMMSeqRecognition::close() {
 
     seqModel.close();
 }
-

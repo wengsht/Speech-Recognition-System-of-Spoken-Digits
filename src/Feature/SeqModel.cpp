@@ -19,6 +19,7 @@
 #include "mathtool.h"
 #include <iostream>
 #include "Feature.h"
+#include "SerialFiles.h"
 #include "KMeanState.h"
 
 void SeqModel::buildModel(const ParseGraph & graph, std::map< std::string, HMMAutomaton *> & automatons) {
@@ -103,8 +104,9 @@ void SeqModel::refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, 
                 //
                 // 0->  要加上单词间的penalty
                 //
-                if(!idx) 
+                if(!idx)
                     cost = cost + p2cost(probability);
+                    //cost = cost + p2cost(1e-65);
 
                 refreshEdge(edges, b_from, b_to, cost, edgeCnt);
             }
@@ -114,7 +116,6 @@ void SeqModel::refreshEdge(const GraphEdge & simpleEdge, std::map< std::string, 
         // hmm-to-end
 
         for(int idx = automaton.getStateNum() - DTW_MAX_FORWARD + 2; idx <= automaton.getStateNum(); idx ++) {
-//        for(int idx = 0; idx <= automaton.getStateNum(); idx ++) {
             double p = automaton.enddingProbability(idx);
             if(p < FLOOR_TRANSITION_PROBABILITY)
                 continue;
@@ -268,6 +269,20 @@ void SeqModel::collectResFromBackPtr(std::vector<std::string> &res) {
     while(backPtrIdx >= 0 && backPtrs[backPtrIdx].stateID != endState) {
         backPtrIdx --;
     }
+
+    /*  
+    for(int j = backPtrIdx; j >= 0; j--) {
+        if(backPtrs[j].stateID == endState) {
+            int kk = j;
+
+            for(; kk >= 0; kk = backPtrs[kk].prePtr)  {
+                if(! SerialFiles::isNotWord(const_cast<char *>(backPtrs[kk].word)))
+                    printf("%s ", backPtrs[kk].word );
+            }
+            puts("");
+        }
+    }
+    */
 
 //    assert(backPtrIdx >= 0);
 
@@ -488,12 +503,10 @@ double SeqModel::forwardColumn(Dtw_Column_Link *link, WaveFeatureOP & wav, int c
     for(int preStateID = link[preIdx].head; \
             preStateID != NIL_EDGE; \
             preStateID = link[preIdx].nodes[preStateID].next) {
-
         Dtw_Column_Node & dtw_node = link[preIdx].nodes[preStateID];
 
         double preCost = dtw_node.cost;
         double nextCost;
-
 
         // beam
         if(doBeam && Feature::better(threshold, preCost)) {

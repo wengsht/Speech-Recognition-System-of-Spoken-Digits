@@ -46,7 +46,8 @@ void capture(const char * save_file_name,
 
     if(c.capture(&data)){
         data.saveWav(stringFile(save_file_name,".wav",fn_buffer));
-        ep.saveMatlab(stringFile(file_name,".dat",fn_buffer));
+
+       // ep.saveMatlab(stringFile(file_name,".dat",fn_buffer));
         
         //if(playback)c.play(&data);
         
@@ -57,7 +58,7 @@ void capture(const char * save_file_name,
         
         if(playback) c.play(&data);
         
-        data.saveWav(stringFile(save_file_name,"_cut.wav",fn_buffer));
+        //data.saveWav(stringFile(save_file_name,"_cut.wav",fn_buffer));
 
     }
     else{
@@ -79,7 +80,7 @@ void capture(const char *save_file_name, RawData &data, bool playback) {
     
     Tip("Start talking");
 
-    if(c.capture(&data)){
+    if(c.capture(&data)) {
         data.saveWav(stringFile(save_file_name,".wav",fn_buffer));
         
         //if(playback)c.play(&data);

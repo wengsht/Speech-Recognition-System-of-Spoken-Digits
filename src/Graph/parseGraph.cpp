@@ -62,8 +62,6 @@ void ParseGraph::parseSeqStr(const std::string & seqStr) {
     N_States = node + 1;
     Start_State = 0;
     Terminal_States = node;
-
-    // TODO
 }
 
 void ParseGraph::parseGraph(const char * filename) {

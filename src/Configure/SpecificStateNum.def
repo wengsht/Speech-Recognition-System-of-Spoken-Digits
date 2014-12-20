@@ -45,20 +45,3 @@ SpecificStateNum(TROPE TROPE_SILENCE, 2)
 #undef SpecificStateNum
 #endif
 
-#include "configure_hmm.h"
-
-#ifdef SpecificPenalty
-SpecificPenalty("zero",1.0)
-SpecificPenalty("one", 1.0)
-SpecificPenalty("two", 1.0)
-SpecificPenalty("three", 1.0)
-SpecificPenalty("four", 1.0)
-SpecificPenalty("five", 1.0)
-SpecificPenalty("six", 1.0)
-SpecificPenalty("seven", 1.0)
-SpecificPenalty("eight", 1.0)
-SpecificPenalty("nine", 1.0)
-SpecificPenalty("ten", 1.0)
-SpecificPenalty(TROPE TROPE_SILENCE, 1.0)
-#undef SpecificPenalty
-#endif
