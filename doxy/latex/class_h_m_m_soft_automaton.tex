@@ -1,0 +1,204 @@
+\hypertarget{class_h_m_m_soft_automaton}{\section{H\+M\+M\+Soft\+Automaton Class Reference}
+\label{class_h_m_m_soft_automaton}\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+}
+
+
+{\ttfamily \#include $<$H\+M\+M\+Soft\+Automaton.\+h$>$}
+
+Inheritance diagram for H\+M\+M\+Soft\+Automaton\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_h_m_m_soft_automaton}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_h_m_m_soft_automaton_aaf1234269846de3e87b3e02991768874}{H\+M\+M\+Soft\+Automaton} (std\+::vector$<$ \hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} $>$ $\ast$\hyperlink{class_h_m_m_automaton_a9932eb5aa8ff484ac2406f98498595cf}{templates}, int state\+Num=\hyperlink{configure__hmm_8h_aa9cc71cb42394379957677c761aae79e}{A\+U\+T\+O\+M\+A\+T\+O\+N\+\_\+\+S\+T\+A\+T\+E\+\_\+\+N\+U\+M}, int \hyperlink{pro6__demo_8cpp_a923ffcfa3c56ccdba17bc4e700247d54}{gauss\+Num}=\hyperlink{configure__hmm_8h_a8f9db0624fff0b17f641785bb8d66a82}{G\+A\+U\+S\+S\+I\+A\+N\+\_\+\+N\+U\+M}, int train\+Times=\hyperlink{configure__hmm_8h_a52e22519b5a37e58632e9183d5197b86}{M\+A\+X\+\_\+\+T\+R\+A\+I\+N\+\_\+\+T\+I\+M\+E\+S})
+\item 
+\hyperlink{class_h_m_m_soft_automaton_a3a16b05052259ed3ee1fcf7e12fb343a}{$\sim$\+H\+M\+M\+Soft\+Automaton} ()
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_ac99d24cfbfa563c54a6ee7c68b36d37e}{load} (std\+::stringstream \&in)
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_a06c50e4f7a3461a6c6737cbe077ca0d0}{hmm\+Train} ()
+\item 
+double \hyperlink{class_h_m_m_soft_automaton_a4efa065f2e067d9e0b71bbf4a25bd120}{calc\+Cost} (\hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} \&input)
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_soft_state}{Soft\+State} $\ast$ \hyperlink{class_h_m_m_soft_automaton_a64b264ab97c10c015dd3951dcc0ab876}{get\+State} (int idx)
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_a0761925dd18d2111c15e22414fa57bbb}{clear\+Train\+Buffer} ()
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_ade39618b914aa92c7981af121a61ed5a}{before\+Alpha\+Beta} (\hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} \&\hyperlink{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}{features})
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_a9d9a82629bf46fe3bc4bd2bc58123a22}{calc\+Alpha\+Beta} (\hyperlink{class_wave_feature_o_p}{Wave\+Feature\+O\+P} \&\hyperlink{lpc2cep_8m_afcc1d2df0288347ea10603033506e33b}{features})
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_aa5d4e88fe215f24a5eaa12c60db22793}{init\+Iterate} ()
+\item 
+bool \hyperlink{class_h_m_m_soft_automaton_a884b343c9fa895b4b4ef5dfe9cb7b34d}{iterate\+Train} ()
+\item 
+bool \hyperlink{class_h_m_m_soft_automaton_a599134520b7f52af954dddf0c431194a}{update\+Transfer} ()
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_a158630545b1dd4bbdf1c853d44a88722}{update\+Template\+Node} (int template\+Idx)
+\item 
+void \hyperlink{class_h_m_m_soft_automaton_a7267e6775f4e702c94b8b89418e11504}{update\+Template\+Transfer} (int template\+Idx)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_h_m_m_soft_automaton_af71284a9b8b08b442aff84a41a89b47e}{Yust\+Cost}
+\item 
+\hyperlink{configure__basic_8h_a566a006016cf65b1b01bd2bc633e1c12}{Matrix}$<$ double $>$ \hyperlink{class_h_m_m_soft_automaton_ab27fbd9c234c186025e864a216fb5081}{Ys2s\+Nxt\+Cost}
+\item 
+\hyperlink{configure__basic_8h_a566a006016cf65b1b01bd2bc633e1c12}{Matrix}$<$ double $>$ \hyperlink{class_h_m_m_soft_automaton_ab31c1d1e1011fe8488e44fe944390a72}{node\+Cost\+Tmp}
+\item 
+\hyperlink{configure__basic_8h_a566a006016cf65b1b01bd2bc633e1c12}{Matrix}$<$ double $>$ \hyperlink{class_h_m_m_soft_automaton_a01e5c46f2bdfbbb6f838c1a9b7c6da21}{alpha\+Cost}
+\item 
+\hyperlink{configure__basic_8h_a566a006016cf65b1b01bd2bc633e1c12}{Matrix}$<$ double $>$ \hyperlink{class_h_m_m_soft_automaton_a4e2558ddec8bd8bf0eb4dd25e241d6e9}{beta\+Cost}
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_h_m_m_soft_automaton_aaf1234269846de3e87b3e02991768874}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{H\+M\+M\+Soft\+Automaton}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Soft\+Automaton\+::\+H\+M\+M\+Soft\+Automaton (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ {\bf Wave\+Feature\+O\+P} $>$ $\ast$}]{templates, }
+\item[{int}]{state\+Num = {\ttfamily {\bf A\+U\+T\+O\+M\+A\+T\+O\+N\+\_\+\+S\+T\+A\+T\+E\+\_\+\+N\+U\+M}}, }
+\item[{int}]{gauss\+Num = {\ttfamily {\bf G\+A\+U\+S\+S\+I\+A\+N\+\_\+\+N\+U\+M}}, }
+\item[{int}]{train\+Times = {\ttfamily {\bf M\+A\+X\+\_\+\+T\+R\+A\+I\+N\+\_\+\+T\+I\+M\+E\+S}}}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_soft_automaton_aaf1234269846de3e87b3e02991768874}
+\hypertarget{class_h_m_m_soft_automaton_a3a16b05052259ed3ee1fcf7e12fb343a}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!````~H\+M\+M\+Soft\+Automaton@{$\sim$\+H\+M\+M\+Soft\+Automaton}}
+\index{````~H\+M\+M\+Soft\+Automaton@{$\sim$\+H\+M\+M\+Soft\+Automaton}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{$\sim$\+H\+M\+M\+Soft\+Automaton}]{\setlength{\rightskip}{0pt plus 5cm}H\+M\+M\+Soft\+Automaton\+::$\sim$\+H\+M\+M\+Soft\+Automaton (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_h_m_m_soft_automaton_a3a16b05052259ed3ee1fcf7e12fb343a}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_h_m_m_soft_automaton_ade39618b914aa92c7981af121a61ed5a}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!before\+Alpha\+Beta@{before\+Alpha\+Beta}}
+\index{before\+Alpha\+Beta@{before\+Alpha\+Beta}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{before\+Alpha\+Beta}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::before\+Alpha\+Beta (
+\begin{DoxyParamCaption}
+\item[{{\bf Wave\+Feature\+O\+P} \&}]{features}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_ade39618b914aa92c7981af121a61ed5a}
+\hypertarget{class_h_m_m_soft_automaton_a9d9a82629bf46fe3bc4bd2bc58123a22}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!calc\+Alpha\+Beta@{calc\+Alpha\+Beta}}
+\index{calc\+Alpha\+Beta@{calc\+Alpha\+Beta}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{calc\+Alpha\+Beta}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::calc\+Alpha\+Beta (
+\begin{DoxyParamCaption}
+\item[{{\bf Wave\+Feature\+O\+P} \&}]{features}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a9d9a82629bf46fe3bc4bd2bc58123a22}
+\hypertarget{class_h_m_m_soft_automaton_a4efa065f2e067d9e0b71bbf4a25bd120}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!calc\+Cost@{calc\+Cost}}
+\index{calc\+Cost@{calc\+Cost}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{calc\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}double H\+M\+M\+Soft\+Automaton\+::calc\+Cost (
+\begin{DoxyParamCaption}
+\item[{{\bf Wave\+Feature\+O\+P} \&}]{input}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_h_m_m_soft_automaton_a4efa065f2e067d9e0b71bbf4a25bd120}
+
+
+Implements \hyperlink{class_h_m_m_automaton_a4c43e2b6bba8c6f237bf4503d79b1f12}{H\+M\+M\+Automaton}.
+
+\hypertarget{class_h_m_m_soft_automaton_a0761925dd18d2111c15e22414fa57bbb}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!clear\+Train\+Buffer@{clear\+Train\+Buffer}}
+\index{clear\+Train\+Buffer@{clear\+Train\+Buffer}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{clear\+Train\+Buffer}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::clear\+Train\+Buffer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a0761925dd18d2111c15e22414fa57bbb}
+\hypertarget{class_h_m_m_soft_automaton_a64b264ab97c10c015dd3951dcc0ab876}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!get\+State@{get\+State}}
+\index{get\+State@{get\+State}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{get\+State}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soft\+State}$\ast$ H\+M\+M\+Soft\+Automaton\+::get\+State (
+\begin{DoxyParamCaption}
+\item[{int}]{idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a64b264ab97c10c015dd3951dcc0ab876}
+\hypertarget{class_h_m_m_soft_automaton_a06c50e4f7a3461a6c6737cbe077ca0d0}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!hmm\+Train@{hmm\+Train}}
+\index{hmm\+Train@{hmm\+Train}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{hmm\+Train}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::hmm\+Train (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_h_m_m_soft_automaton_a06c50e4f7a3461a6c6737cbe077ca0d0}
+
+
+Implements \hyperlink{class_h_m_m_automaton_ac6bbc2770cb11b1c9e55cd0652fbe0e3}{H\+M\+M\+Automaton}.
+
+\hypertarget{class_h_m_m_soft_automaton_aa5d4e88fe215f24a5eaa12c60db22793}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!init\+Iterate@{init\+Iterate}}
+\index{init\+Iterate@{init\+Iterate}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{init\+Iterate}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::init\+Iterate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_aa5d4e88fe215f24a5eaa12c60db22793}
+\hypertarget{class_h_m_m_soft_automaton_a884b343c9fa895b4b4ef5dfe9cb7b34d}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!iterate\+Train@{iterate\+Train}}
+\index{iterate\+Train@{iterate\+Train}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{iterate\+Train}]{\setlength{\rightskip}{0pt plus 5cm}bool H\+M\+M\+Soft\+Automaton\+::iterate\+Train (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a884b343c9fa895b4b4ef5dfe9cb7b34d}
+\hypertarget{class_h_m_m_soft_automaton_ac99d24cfbfa563c54a6ee7c68b36d37e}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!load@{load}}
+\index{load@{load}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{load}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::load (
+\begin{DoxyParamCaption}
+\item[{std\+::stringstream \&}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{class_h_m_m_soft_automaton_ac99d24cfbfa563c54a6ee7c68b36d37e}
+
+
+Implements \hyperlink{class_h_m_m_automaton_a04b64e19e77d5fe8b78d471470346872}{H\+M\+M\+Automaton}.
+
+\hypertarget{class_h_m_m_soft_automaton_a158630545b1dd4bbdf1c853d44a88722}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!update\+Template\+Node@{update\+Template\+Node}}
+\index{update\+Template\+Node@{update\+Template\+Node}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{update\+Template\+Node}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::update\+Template\+Node (
+\begin{DoxyParamCaption}
+\item[{int}]{template\+Idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a158630545b1dd4bbdf1c853d44a88722}
+\hypertarget{class_h_m_m_soft_automaton_a7267e6775f4e702c94b8b89418e11504}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!update\+Template\+Transfer@{update\+Template\+Transfer}}
+\index{update\+Template\+Transfer@{update\+Template\+Transfer}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{update\+Template\+Transfer}]{\setlength{\rightskip}{0pt plus 5cm}void H\+M\+M\+Soft\+Automaton\+::update\+Template\+Transfer (
+\begin{DoxyParamCaption}
+\item[{int}]{template\+Idx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a7267e6775f4e702c94b8b89418e11504}
+\hypertarget{class_h_m_m_soft_automaton_a599134520b7f52af954dddf0c431194a}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!update\+Transfer@{update\+Transfer}}
+\index{update\+Transfer@{update\+Transfer}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{update\+Transfer}]{\setlength{\rightskip}{0pt plus 5cm}bool H\+M\+M\+Soft\+Automaton\+::update\+Transfer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a599134520b7f52af954dddf0c431194a}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_h_m_m_soft_automaton_a01e5c46f2bdfbbb6f838c1a9b7c6da21}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!alpha\+Cost@{alpha\+Cost}}
+\index{alpha\+Cost@{alpha\+Cost}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{alpha\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$double$>$ H\+M\+M\+Soft\+Automaton\+::alpha\+Cost\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a01e5c46f2bdfbbb6f838c1a9b7c6da21}
+\hypertarget{class_h_m_m_soft_automaton_a4e2558ddec8bd8bf0eb4dd25e241d6e9}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!beta\+Cost@{beta\+Cost}}
+\index{beta\+Cost@{beta\+Cost}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{beta\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$double$>$ H\+M\+M\+Soft\+Automaton\+::beta\+Cost\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_a4e2558ddec8bd8bf0eb4dd25e241d6e9}
+\hypertarget{class_h_m_m_soft_automaton_ab31c1d1e1011fe8488e44fe944390a72}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!node\+Cost\+Tmp@{node\+Cost\+Tmp}}
+\index{node\+Cost\+Tmp@{node\+Cost\+Tmp}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{node\+Cost\+Tmp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$double$>$ H\+M\+M\+Soft\+Automaton\+::node\+Cost\+Tmp\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_ab31c1d1e1011fe8488e44fe944390a72}
+\hypertarget{class_h_m_m_soft_automaton_ab27fbd9c234c186025e864a216fb5081}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!Ys2s\+Nxt\+Cost@{Ys2s\+Nxt\+Cost}}
+\index{Ys2s\+Nxt\+Cost@{Ys2s\+Nxt\+Cost}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{Ys2s\+Nxt\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix}$<$double$>$ H\+M\+M\+Soft\+Automaton\+::\+Ys2s\+Nxt\+Cost\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_ab27fbd9c234c186025e864a216fb5081}
+\hypertarget{class_h_m_m_soft_automaton_af71284a9b8b08b442aff84a41a89b47e}{\index{H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}!Yust\+Cost@{Yust\+Cost}}
+\index{Yust\+Cost@{Yust\+Cost}!H\+M\+M\+Soft\+Automaton@{H\+M\+M\+Soft\+Automaton}}
+\subsubsection[{Yust\+Cost}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ H\+M\+M\+Soft\+Automaton\+::\+Yust\+Cost\hspace{0.3cm}{\ttfamily [private]}}}\label{class_h_m_m_soft_automaton_af71284a9b8b08b442aff84a41a89b47e}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Feature/\hyperlink{_h_m_m_soft_automaton_8h}{H\+M\+M\+Soft\+Automaton.\+h}\item 
+src/\+Feature/\hyperlink{_h_m_m_soft_automaton_8cpp}{H\+M\+M\+Soft\+Automaton.\+cpp}\end{DoxyCompactItemize}

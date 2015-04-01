@@ -1,0 +1,59 @@
+\hypertarget{hz2bark_8m}{\section{src/\+Matlab/rastamat/hz2bark.m File Reference}
+\label{hz2bark_8m}\index{src/\+Matlab/rastamat/hz2bark.\+m@{src/\+Matlab/rastamat/hz2bark.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} Oct \hyperlink{hz2bark_8m_a34cef69ad03ac1d14fbed50e9cb18a16}{March} (linear mapping added)\%\%z\+\_\+gt\+\_\+200
+\item 
+Inverse of Hynek s \hyperlink{hz2bark_8m_aec2794b47eba09ca1a3409f62b7b7a34}{formula} (see bark2hz) \hyperlink{hz2mel_8m_af687e174fd3ad622ccd626852322ff8f}{z}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{hz2bark_8m_a4acd38fe8ce65978a70043f19baadf66}{z}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} Oct \hyperlink{hz2bark_8m_a9dc5b6acee949b247f9ec7b925e2cc9a}{Kyrill}
+\item 
+\hyperlink{hz2bark_8m_ab40bc30a4183dfbc50dfc0d8495b5861}{z\+\_\+le\+\_\+200} = \hyperlink{mel2hz_8m_a09113e60f6e326656763bae1603c0eb5}{f} ./ 102.\+9
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{hz2bark_8m_aec2794b47eba09ca1a3409f62b7b7a34}{\index{hz2bark.\+m@{hz2bark.\+m}!formula@{formula}}
+\index{formula@{formula}!hz2bark.\+m@{hz2bark.\+m}}
+\subsubsection[{formula}]{\setlength{\rightskip}{0pt plus 5cm}Inverse of Hynek s formula (
+\begin{DoxyParamCaption}
+\item[{see}]{bark2hz}
+\end{DoxyParamCaption}
+)}}\label{hz2bark_8m_aec2794b47eba09ca1a3409f62b7b7a34}
+\hypertarget{hz2bark_8m_a34cef69ad03ac1d14fbed50e9cb18a16}{\index{hz2bark.\+m@{hz2bark.\+m}!March@{March}}
+\index{March@{March}!hz2bark.\+m@{hz2bark.\+m}}
+\subsubsection[{March}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} Oct March (
+\begin{DoxyParamCaption}
+\item[{linear mapping}]{added}
+\end{DoxyParamCaption}
+)}}\label{hz2bark_8m_a34cef69ad03ac1d14fbed50e9cb18a16}
+
+
+\subsection{Variable Documentation}
+\hypertarget{hz2bark_8m_a9dc5b6acee949b247f9ec7b925e2cc9a}{\index{hz2bark.\+m@{hz2bark.\+m}!Kyrill@{Kyrill}}
+\index{Kyrill@{Kyrill}!hz2bark.\+m@{hz2bark.\+m}}
+\subsubsection[{Kyrill}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} Oct Kyrill}}\label{hz2bark_8m_a9dc5b6acee949b247f9ec7b925e2cc9a}
+\hypertarget{hz2bark_8m_a4acd38fe8ce65978a70043f19baadf66}{\index{hz2bark.\+m@{hz2bark.\+m}!z@{z}}
+\index{z@{z}!hz2bark.\+m@{hz2bark.\+m}}
+\subsubsection[{z}]{\setlength{\rightskip}{0pt plus 5cm}Formula used in rasta rasta h z}}\label{hz2bark_8m_a4acd38fe8ce65978a70043f19baadf66}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= hz2bark(\hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f})
+%       HZ2BARK         Converts frequencies Hertz (\hyperlink{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}{Hz}) \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{fft2barkmx_8m_a10bf1dcd112c869610d183bd5291a881}{Bark}
+%   \hyperlink{matrix__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{hz2bark_8m_a4acd38fe8ce65978a70043f19baadf66}{z}= hz2bark(\hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f})
+%   Uses 
+%         Traunmueller-\hyperlink{hz2bark_8m_aec2794b47eba09ca1a3409f62b7b7a34}{formula}    for    \hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f} >  200 \hyperlink{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}{Hz}
+%         linear mapping          for    \hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f} <= 200 \hyperlink{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}{Hz}
+%
+%   Author:   \hyperlink{hz2bark_8m_a9dc5b6acee949b247f9ec7b925e2cc9a}{Kyrill}
+\end{DoxyCode}
+\hypertarget{hz2bark_8m_ab40bc30a4183dfbc50dfc0d8495b5861}{\index{hz2bark.\+m@{hz2bark.\+m}!z\+\_\+le\+\_\+200@{z\+\_\+le\+\_\+200}}
+\index{z\+\_\+le\+\_\+200@{z\+\_\+le\+\_\+200}!hz2bark.\+m@{hz2bark.\+m}}
+\subsubsection[{z\+\_\+le\+\_\+200}]{\setlength{\rightskip}{0pt plus 5cm}z\+\_\+le\+\_\+200 = {\bf f} ./ 102.\+9}}\label{hz2bark_8m_ab40bc30a4183dfbc50dfc0d8495b5861}

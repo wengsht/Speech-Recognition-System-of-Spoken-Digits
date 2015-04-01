@@ -1,0 +1,45 @@
+\hypertarget{stringtool_8h}{\section{src/\+Edit\+Distance/stringtool.h File Reference}
+\label{stringtool_8h}\index{src/\+Edit\+Distance/stringtool.\+h@{src/\+Edit\+Distance/stringtool.\+h}}
+}
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$string$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \hyperlink{stringtool_8h_ae98529a2ae403076c7e8c839617fe257}{get\+Strs\+From\+File} (const char $\ast$File\+Name)
+\item 
+void \hyperlink{stringtool_8h_a8c8a9c8895f396dde69e4e72830057c7}{save\+Strs\+To\+File} (const char $\ast$File\+Name, const std\+::vector$<$ int $>$ ind, const std\+::vector$<$ std\+::string $>$ \&v, char splitor= ' ')
+\item 
+bool \hyperlink{stringtool_8h_a12205dfca88f3f8d86fd883dfe0f6823}{get\+Strs\+From\+File} (std\+::vector$<$ std\+::string $>$ \&words, const char $\ast$File\+Name, const char $\ast$splitor, bool lower=true, bool clean\+Blank=true)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{stringtool_8h_ae98529a2ae403076c7e8c839617fe257}{\index{stringtool.\+h@{stringtool.\+h}!get\+Strs\+From\+File@{get\+Strs\+From\+File}}
+\index{get\+Strs\+From\+File@{get\+Strs\+From\+File}!stringtool.\+h@{stringtool.\+h}}
+\subsubsection[{get\+Strs\+From\+File}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string get\+Strs\+From\+File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{File\+Name}
+\end{DoxyParamCaption}
+)}}\label{stringtool_8h_ae98529a2ae403076c7e8c839617fe257}
+\hypertarget{stringtool_8h_a12205dfca88f3f8d86fd883dfe0f6823}{\index{stringtool.\+h@{stringtool.\+h}!get\+Strs\+From\+File@{get\+Strs\+From\+File}}
+\index{get\+Strs\+From\+File@{get\+Strs\+From\+File}!stringtool.\+h@{stringtool.\+h}}
+\subsubsection[{get\+Strs\+From\+File}]{\setlength{\rightskip}{0pt plus 5cm}bool get\+Strs\+From\+File (
+\begin{DoxyParamCaption}
+\item[{std\+::vector$<$ std\+::string $>$ \&}]{words, }
+\item[{const char $\ast$}]{File\+Name, }
+\item[{const char $\ast$}]{splitor, }
+\item[{bool}]{lower = {\ttfamily true}, }
+\item[{bool}]{clean\+Blank = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{stringtool_8h_a12205dfca88f3f8d86fd883dfe0f6823}
+\hypertarget{stringtool_8h_a8c8a9c8895f396dde69e4e72830057c7}{\index{stringtool.\+h@{stringtool.\+h}!save\+Strs\+To\+File@{save\+Strs\+To\+File}}
+\index{save\+Strs\+To\+File@{save\+Strs\+To\+File}!stringtool.\+h@{stringtool.\+h}}
+\subsubsection[{save\+Strs\+To\+File}]{\setlength{\rightskip}{0pt plus 5cm}void save\+Strs\+To\+File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{File\+Name, }
+\item[{const std\+::vector$<$ int $>$}]{ind, }
+\item[{const std\+::vector$<$ std\+::string $>$ \&}]{v, }
+\item[{char}]{splitor = {\ttfamily '~'}}
+\end{DoxyParamCaption}
+)}}\label{stringtool_8h_a8c8a9c8895f396dde69e4e72830057c7}

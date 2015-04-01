@@ -1,0 +1,26 @@
+var searchData=
+[
+  ['daepanalysis',['DAEPAnalysis',['../class_d_a_e_p_analysis.html#a543fae6145bccbf58f2930501fc76f05',1,'DAEPAnalysis']]],
+  ['data',['data',['../class_e_p_analysis.html#a09d2b16c0ff0e77fc66c74e54ee1c279',1,'EPAnalysis']]],
+  ['dct',['dct',['../mathtool_8cpp.html#af9ca40715654c85c177930b1500f3f9b',1,'dct(double *a, int n, int f):&#160;mathtool.cpp'],['../mathtool_8h.html#af9ca40715654c85c177930b1500f3f9b',1,'dct(double *a, int n, int f):&#160;mathtool.cpp']]],
+  ['dct2',['dct2',['../mathtool_8cpp.html#a9c58ef41f0355795350d3fadd30fd003',1,'dct2(double *a, int n):&#160;mathtool.cpp'],['../mathtool_8h.html#a9c58ef41f0355795350d3fadd30fd003',1,'dct2(double *a, int n):&#160;mathtool.cpp']]],
+  ['dealopts',['dealOpts',['../hmm__demo_8cpp.html#ac3724887ba1a8f79b29e20b1ec558f66',1,'dealOpts(int argc, char **argv):&#160;hmm_demo.cpp'],['../pro2__demo_8cpp.html#ac3724887ba1a8f79b29e20b1ec558f66',1,'dealOpts(int argc, char **argv):&#160;pro2_demo.cpp'],['../pro3__demo_8cpp.html#a99cf5edf45349d3f5ba159a86441eaf0',1,'dealOpts(int argc, char **argv):&#160;pro3_demo.cpp'],['../pro4__demo__1_8cpp.html#ac3724887ba1a8f79b29e20b1ec558f66',1,'dealOpts(int argc, char **argv):&#160;pro4_demo_1.cpp'],['../pro5__demo_8cpp.html#a99cf5edf45349d3f5ba159a86441eaf0',1,'dealOpts(int argc, char **argv):&#160;pro5_demo.cpp'],['../pro6__demo_8cpp.html#ac3724887ba1a8f79b29e20b1ec558f66',1,'dealOpts(int argc, char **argv):&#160;pro6_demo.cpp'],['../rawdtw_8cpp.html#ac3724887ba1a8f79b29e20b1ec558f66',1,'dealOpts(int argc, char **argv):&#160;rawdtw.cpp'],['../recorder_8cpp.html#ac3724887ba1a8f79b29e20b1ec558f66',1,'dealOpts(int argc, char **argv):&#160;recorder.cpp']]],
+  ['default',['default',['../lpc2spec_8m.html#af4a04cb5ecdfd53041f3ce812cd7cfc8',1,'lpc2spec.m']]],
+  ['delete',['delete',['../invmelfcc_8m.html#a56317093c2c5ca9b68a4a24bd5932e93',1,'invmelfcc.m']]],
+  ['deletecluster',['deleteCluster',['../class_k_mean_state.html#aa33d3417885cbbefdf21238f90a5b67c',1,'KMeanState']]],
+  ['dft',['dft',['../mathtool_8cpp.html#aa971b49e060e0b3b8f0ffff7c5b9c551',1,'dft(cp *a, int n, int f):&#160;mathtool.cpp'],['../mathtool_8h.html#aa971b49e060e0b3b8f0ffff7c5b9c551',1,'dft(cp *a, int n, int f):&#160;mathtool.cpp']]],
+  ['dim',['dim',['../deltas_8m.html#a73a7d55b81aa8520a5992a8461fff41d',1,'deltas.m']]],
+  ['disp',['disp',['../lifter_8m.html#a27dd9641227cc129dc4ccf5dd1cc1703',1,'lifter.m']]],
+  ['done',['done',['../class_gaussian.html#aec53f9ac98469f834df76ebfa2031050',1,'Gaussian']]],
+  ['doubledelta',['doubleDelta',['../class_feature_extractor.html#ad410cf27e956f8c00ff225b987c4edbe',1,'FeatureExtractor']]],
+  ['dtw',['dtw',['../class_seq_model.html#ab783695b9217c3bbc7f930a492a729e8',1,'SeqModel']]],
+  ['dtw_5fcolumn_5fnode',['Dtw_Column_Node',['../struct_dtw___column___node.html#a7f5eaa822de02a86ddcac32b20e0b0c1',1,'Dtw_Column_Node']]],
+  ['dummystate',['DummyState',['../class_dummy_state.html#a968f19f362de62f9cabad8a110909d00',1,'DummyState']]],
+  ['dump',['dump',['../class_soft_state.html#a8945e17e64d61c11dedfd85d458c98e2',1,'SoftState::dump()'],['../class_parse_graph.html#a4aefd95b81fbfcb690569ef10c5860ff',1,'ParseGraph::dump()']]],
+  ['dumpautomaton',['dumpAutomaton',['../class_h_m_m_automaton_set.html#a377877b860bba5582aa9a6d620e4263a',1,'HMMAutomatonSet::dumpAutomaton()'],['../class_h_m_m_recognition.html#a8c0bb4205e8b3fde6c905fb17019263f',1,'HMMRecognition::dumpAutomaton()']]],
+  ['dumpcolorpath',['dumpColorPath',['../class_wave_feature_o_p.html#aed6ce75f665daf168b5782672f89096a',1,'WaveFeatureOP::dumpColorPath()'],['../class_word_dtw_recognition.html#ab46172d2b8117cbc5a017b95b669e102',1,'WordDtwRecognition::dumpColorPath()']]],
+  ['dumpdelta',['dumpDelta',['../class_feature.html#a0750e4990eabfcfb38b2fd939de18b7b',1,'Feature']]],
+  ['dumpdot',['dumpDot',['../class_h_m_m_seq_recognition.html#a41681a169988cb857642fcabdf0ecf1d',1,'HMMSeqRecognition::dumpDot()'],['../class_seq_model.html#a06f6db60f7c9e093d75bd633ef4b198f',1,'SeqModel::dumpDot()']]],
+  ['dumpseqstr2vec',['dumpSeqStr2Vec',['../class_parse_graph.html#ad5cc3b524addc21852012302eecee7ad',1,'ParseGraph']]],
+  ['dumptransfer',['dumpTransfer',['../class_h_m_m_automaton.html#a46af46bd5a90c22ecea1076805e595d0',1,'HMMAutomaton']]]
+];

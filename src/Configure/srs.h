@@ -21,4 +21,7 @@
 #include "BEPAnalysis.h"
 #include "DAEPAnalysis.h"
 
+#include "stringtool.h"
+//#include "StringMatch.h"
+
 #endif

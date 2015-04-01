@@ -1,0 +1,358 @@
+\hypertarget{process__options_8m}{\section{src/\+Matlab/rastamat/process\+\_\+options.m File Reference}
+\label{process__options_8m}\index{src/\+Matlab/rastamat/process\+\_\+options.\+m@{src/\+Matlab/rastamat/process\+\_\+options.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+id \hyperlink{process__options_8m_adb41f89c6797ea74cc2b3a1d333463b2}{Usage\+:\+Arguments\+:\+N\+O\+T\+E\+:\+Returns\+:} (var2,\mbox{[},\mbox{]} \hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args},...\%str1, def1, str2, def2,..., strn, defn \hyperlink{invmelfcc_8m_abb69d0b8808f6d39491410cda9a2b5ef}{process\+\_\+options},\mbox{[}Arguments\mbox{]}str1,\mbox{[},\mbox{]}...def1,\mbox{[},\mbox{]}...\hyperlink{process__options_8m_a501ad843c45c86025dd25e634f6c9081}{supplied},\mbox{[}N\+O\+T\+E\mbox{]} \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} support passing in numbers from the command line numeric,\mbox{[}Returns\mbox{]}var1,\mbox{[},\mbox{]}...\hyperlink{process__options_8m_a04fbd85b4efda726d0fad45d103ce2d2}{unused})
+\item 
+calling \hyperlink{process__options_8m_aecac0810327122bcc551570e20d10f61}{func} (0, 1, 'v', 2) will assign 0 \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x}
+\item 
+calling \hyperlink{process__options_8m_afdbae8d5427c41a06329e421d22bed39}{func} (0, 1, 'V', 2) has the same effect.\+The \hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} call\%\%func(0
+\item 
+then the call \hyperlink{process__options_8m_a34fb09f32a03e3ef79cda5d6454c4b3d}{func} (0, 1, '\hyperlink{process__options_8m_a4c78390f8387d6324b7af70192ee2db2}{u}', 5, '\hyperlink{hz2mel_8m_af687e174fd3ad622ccd626852322ff8f}{z}', 2) will yield no warning
+\item 
+all options can be passed \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \\*
+the outer \hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} and its \\*
+unprocessed \hyperlink{melfcc__demo_8m_adb00838201c0d730630e64dab9abb34e}{arguments} can be \\*
+passed \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} the inner \hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{process__options_8m_a455c9500355df8708cc5ece91693c6cd}{Copyright} (C) 2002 Mark A.\+Paskin\%\%This \hyperlink{process__options_8m_ad1fcf7d480c2fceaa3fc2635af62b648}{program} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} free software
+\item 
+either version of the \hyperlink{process__options_8m_a58781a13256e170574b13bb2170e928e}{or} (at your option) any later version.\%\%This \hyperlink{process__options_8m_ad1fcf7d480c2fceaa3fc2635af62b648}{program} \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} distributed in the hope that it will be useful
+\item 
+varargin \hyperlink{process__options_8m_ad86be1e02be7b233b41829b05df1f573}{length} ()
+\item 
+\hyperlink{process__options_8m_a7c285cec3eeb387eb3ccf1a89aa9af58}{if} (mod(n, 2)) error('Each option must be a string/\hyperlink{process__options_8m_a1ef8397832aedb74037d4dcce949657d}{value} pair.')
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} Check the number of \\*
+\hyperlink{process__options_8m_a501ad843c45c86025dd25e634f6c9081}{supplied} output \hyperlink{melfcc__demo_8m_adb00838201c0d730630e64dab9abb34e}{arguments} \hyperlink{process__options_8m_ad2ffdee488baa0f19554de34c81d9f80}{if} (nargout$<$ (n/2)) error('Insufficient number of output \hyperlink{melfcc__demo_8m_adb00838201c0d730630e64dab9abb34e}{arguments} given')
+\item 
+\hyperlink{process__options_8m_aebcba63350ded1ea17c929b1b14ade7a}{elseif} (nargout==(n/2)) \hyperlink{process__options_8m_a4d73ff78a4c51ea1c982991bf36ca135}{warn}
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} ($\sim$\hyperlink{process__options_8m_a21a9a1b6637e6064e090515fcc1bf8ef}{found}) if(\hyperlink{process__options_8m_a4d73ff78a4c51ea1c982991bf36ca135}{warn}) warning(sprintf('Option ''\%s''\hyperlink{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}{not} used.'
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{process__options_8m_aafa2a13275cfe1212352c22787c957ea}{length} (\hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args}) $>$ \hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}\%don'\hyperlink{readhtk_8m_aaccc9105df5383111407fd5b41255e23}{t} demand a \hyperlink{process__options_8m_a1ef8397832aedb74037d4dcce949657d}{value} for the last
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{process__options_8m_a04fbd85b4efda726d0fad45d103ce2d2}{unused} \hyperlink{process__options_8m_adfc6042a5c86141d5322774ba04ebb43}{tag} (e.\+g.-\/\hyperlink{pro5__demo_8cpp_ad7ec84b4d1c84a2d1af0c0de9ea5b86f}{help}) \hyperlink{process__options_8m_a04fbd85b4efda726d0fad45d103ce2d2}{unused}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} this \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} \hyperlink{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}{not} \hyperlink{process__options_8m_a501ad843c45c86025dd25e634f6c9081}{supplied}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} this \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} \hyperlink{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}{not} then a warning \\*
+will be issued for each option \\*
+in \hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args} that lacked a match \hyperlink{process__options_8m_a8b2e3e547565a5591023ed6a3c8a1e8b}{Examples}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} this \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} \hyperlink{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}{not} then a warning \\*
+will be issued for each option \\*
+in \hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args} that lacked a match \\*
+and optional \hyperlink{melfcc__demo_8m_adb00838201c0d730630e64dab9abb34e}{arguments} \hyperlink{process__options_8m_a4c78390f8387d6324b7af70192ee2db2}{u} and v \\*
+With the definition \hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{process__options_8m_a15c79632cd53bc4d0588289470c8653e}{y}
+\item 
+calling \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{process__options_8m_a4c78390f8387d6324b7af70192ee2db2}{u}
+\item 
+calling \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} and \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} v The \\*
+parameter names are \\*
+insensitive \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{process__options_8m_a15ca2169608190dc565fa0f66c40e1a5}{case}
+\item 
+calling \hyperlink{process__options_8m_a51def47387b01338c009f5a4d00fb8bd}{z}
+\item 
+calling will result in \hyperlink{process__options_8m_a4c78390f8387d6324b7af70192ee2db2}{u} \\*
+having the value and v having \hyperlink{process__options_8m_a1ef8397832aedb74037d4dcce949657d}{value}
+\item 
+calling will result in \hyperlink{process__options_8m_a4c78390f8387d6324b7af70192ee2db2}{u} \\*
+having the \hyperlink{process__options_8m_a1ef8397832aedb74037d4dcce949657d}{value} and v having \\*
+but will issue a warning that \\*
+the \hyperlink{hz2mel_8m_af687e174fd3ad622ccd626852322ff8f}{z} option has \hyperlink{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}{not} been used \\*
+On the other \hyperlink{process__options_8m_a0f50d231199e418f2184fe2a0d98c9e0}{hand}
+\item 
+you can redistribute it and \hyperlink{readhtk_8m_a58781a13256e170574b13bb2170e928e}{or} \\*
+modify it under the terms of \\*
+the G\+N\+U General Public \hyperlink{readhtk_8m_a355539e51bed3008068dfe985e226ab8}{License} \\*
+as published by the Free \\*
+Software \hyperlink{process__options_8m_af2e4dfefec07c708c5ac8574c56da537}{Foundation}
+\item 
+either version of the \hyperlink{process__options_8m_a355539e51bed3008068dfe985e226ab8}{License}
+\item 
+either version of the but \\*
+W\+I\+T\+H\+O\+U\+T A\+N\+Y \hyperlink{process__options_8m_a01d4ec73d916d67d085f3e63d1fdbd4b}{W\+A\+R\+R\+A\+N\+T\+Y}
+\item 
+without even the implied \\*
+warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y \hyperlink{readhtk_8m_a58781a13256e170574b13bb2170e928e}{or} \\*
+F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R \\*
+P\+U\+R\+P\+O\+S\+E See the G\+N\+U General \\*
+Public \hyperlink{readhtk_8m_a355539e51bed3008068dfe985e226ab8}{License} for more \\*
+details You should have \\*
+received a copy of the G\+N\+U \\*
+General Public \hyperlink{readhtk_8m_a355539e51bed3008068dfe985e226ab8}{License} along \\*
+with this \hyperlink{process__options_8m_ad1fcf7d480c2fceaa3fc2635af62b648}{program}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}{not}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} write \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} the Free Software \hyperlink{process__options_8m_a905b4a7c11572b0a44b1a053ce673c5d}{Inc}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} write \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} the Free Software \\*
+Temple \hyperlink{process__options_8m_a40e3e892a95bc64b1304431af967fdd6}{Place}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} write \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} the Free Software \\*
+Temple \hyperlink{process__options_8m_a297848e03e2797616e7e732a4724bd72}{Suite}
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} write \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} the Free Software \\*
+Temple \hyperlink{process__options_8m_a3dac873712fa6d5ecb3e1250dc3da8c2}{Boston}
+\item 
+\hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout} = n / 2
+\item 
+else \hyperlink{process__options_8m_a4d73ff78a4c51ea1c982991bf36ca135}{warn} = 0
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} Set outputs \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} be defaults \hyperlink{process__options_8m_a968c36b858473cd33cb78a9354b9a4e7}{varargout} = cell(1, \hyperlink{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{nout})
+\item 
+for \hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} Now process all \hyperlink{melfcc__demo_8m_adb00838201c0d730630e64dab9abb34e}{arguments} \hyperlink{process__options_8m_a6e5fccc70775c8b24ad8f8c4b255f45b}{nunused} = 0
+\item 
+for \hyperlink{process__options_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}
+\item 
+this occurs when specifying \\*
+\hyperlink{melfcc__demo_8m_adb00838201c0d730630e64dab9abb34e}{arguments} from command line \\*
+else in all other \hyperlink{process__options_8m_a9298f0c90b830f34f4b9d0f06adf674e}{cases}
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \hyperlink{process__options_8m_a21a9a1b6637e6064e090515fcc1bf8ef}{found} = 1
+\item 
+\hyperlink{process__options_8m_a91cf6fbebedd86150a36e5ac3d5d3bfc}{break}
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args} \{\hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}\}))
+\item 
+\hyperlink{process__options_8m_a04fbd85b4efda726d0fad45d103ce2d2}{unused} \{2 $\ast$ \hyperlink{process__options_8m_a6e5fccc70775c8b24ad8f8c4b255f45b}{nunused} -\/ 1\} = \hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args}\{\hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{process__options_8m_a455c9500355df8708cc5ece91693c6cd}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Copyright@{Copyright}}
+\index{Copyright@{Copyright}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Copyright}]{\setlength{\rightskip}{0pt plus 5cm}all options can be passed {\bf to} the outer {\bf function} and its unprocessed {\bf arguments} can be passed {\bf to} the inner {\bf function} Copyright (
+\begin{DoxyParamCaption}
+\item[{C}]{}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_a455c9500355df8708cc5ece91693c6cd}
+\hypertarget{process__options_8m_aebcba63350ded1ea17c929b1b14ade7a}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!elseif@{elseif}}
+\index{elseif@{elseif}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{elseif}]{\setlength{\rightskip}{0pt plus 5cm}elseif (
+\begin{DoxyParamCaption}
+\item[{nargout}]{ = {\ttfamily =(n/2)}}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_aebcba63350ded1ea17c929b1b14ade7a}
+\hypertarget{process__options_8m_aecac0810327122bcc551570e20d10f61}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!func@{func}}
+\index{func@{func}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{func}]{\setlength{\rightskip}{0pt plus 5cm}calling func (
+\begin{DoxyParamCaption}
+\item[{0}]{, }
+\item[{1}]{, }
+\item[{'v'}]{, }
+\item[{2}]{}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_aecac0810327122bcc551570e20d10f61}
+\hypertarget{process__options_8m_afdbae8d5427c41a06329e421d22bed39}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!func@{func}}
+\index{func@{func}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{func}]{\setlength{\rightskip}{0pt plus 5cm}calling func (
+\begin{DoxyParamCaption}
+\item[{0}]{, }
+\item[{1}]{, }
+\item[{'V'}]{, }
+\item[{2}]{}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_afdbae8d5427c41a06329e421d22bed39}
+\hypertarget{process__options_8m_a34fb09f32a03e3ef79cda5d6454c4b3d}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!func@{func}}
+\index{func@{func}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{func}]{\setlength{\rightskip}{0pt plus 5cm}then the call func (
+\begin{DoxyParamCaption}
+\item[{0}]{, }
+\item[{1}]{, }
+\item[{'{\bf u}'}]{, }
+\item[{5}]{, }
+\item[{'{\bf z}'}]{, }
+\item[{2}]{}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_a34fb09f32a03e3ef79cda5d6454c4b3d}
+\hypertarget{process__options_8m_a7c285cec3eeb387eb3ccf1a89aa9af58}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!if@{if}}
+\index{if@{if}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{if}]{\setlength{\rightskip}{0pt plus 5cm}if (
+\begin{DoxyParamCaption}
+\item[{mod(n, 2)}]{}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_a7c285cec3eeb387eb3ccf1a89aa9af58}
+\hypertarget{process__options_8m_ad2ffdee488baa0f19554de34c81d9f80}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!if@{if}}
+\index{if@{if}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{if}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} Check the number of {\bf supplied} output {\bf arguments} if (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_ad2ffdee488baa0f19554de34c81d9f80}
+\hypertarget{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!if@{if}}
+\index{if@{if}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{if}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} {\bf end} if (
+\begin{DoxyParamCaption}
+\item[{$\sim$}]{found}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}
+\hypertarget{process__options_8m_ad86be1e02be7b233b41829b05df1f573}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!length@{length}}
+\index{length@{length}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}varargin length (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{process__options_8m_ad86be1e02be7b233b41829b05df1f573}
+\hypertarget{process__options_8m_aafa2a13275cfe1212352c22787c957ea}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!length@{length}}
+\index{length@{length}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{length}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} length (
+\begin{DoxyParamCaption}
+\item[{{\bf args}}]{}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_aafa2a13275cfe1212352c22787c957ea}
+\hypertarget{process__options_8m_a58781a13256e170574b13bb2170e928e}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!or@{or}}
+\index{or@{or}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{or}]{\setlength{\rightskip}{0pt plus 5cm}either version of the or (
+\begin{DoxyParamCaption}
+\item[{at your}]{option}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_a58781a13256e170574b13bb2170e928e}
+\hypertarget{process__options_8m_adfc6042a5c86141d5322774ba04ebb43}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!tag@{tag}}
+\index{tag@{tag}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{tag}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} {\bf unused} tag (
+\begin{DoxyParamCaption}
+\item[{e.\+g.-\/}]{help}
+\end{DoxyParamCaption}
+)}}\label{process__options_8m_adfc6042a5c86141d5322774ba04ebb43}
+\hypertarget{process__options_8m_adb41f89c6797ea74cc2b3a1d333463b2}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Usage\+:\+Arguments\+:\+N\+O\+T\+E\+:\+Returns\+:@{Usage\+:\+Arguments\+:\+N\+O\+T\+E\+:\+Returns\+:}}
+\index{Usage\+:\+Arguments\+:\+N\+O\+T\+E\+:\+Returns\+:@{Usage\+:\+Arguments\+:\+N\+O\+T\+E\+:\+Returns\+:}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Usage\+:\+Arguments\+:\+N\+O\+T\+E\+:\+Returns\+:}]{\setlength{\rightskip}{0pt plus 5cm}id Usage\+:\+Arguments\+:\+N\+O\+T\+E\+:\+Returns\+: (
+\begin{DoxyParamCaption}
+\item[{var2}]{, }
+\item[{\mbox{[},\mbox{]} {\bf args}}]{, }
+\item[{...\%}]{str1, }
+\item[{def1}]{, }
+\item[{str2}]{, }
+\item[{def2}]{, }
+\item[{}]{..., }
+\item[{strn}]{, }
+\item[{defn}]{process\+\_\+options, }
+\item[{\mbox{[}\+Arguments\mbox{]} str1}]{, }
+\item[{\mbox{[},\mbox{]} }]{def1, }
+\item[{\mbox{[},\mbox{]} }]{supplied, }
+\item[{\mbox{[}\+N\+O\+T\+E\mbox{]} {\bf to} support passing in numbers from the command line}]{numeric, }
+\item[{\mbox{[}\+Returns\mbox{]} var1}]{, }
+\item[{\mbox{[},\mbox{]} }]{unused}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{process__options_8m_adb41f89c6797ea74cc2b3a1d333463b2}
+
+
+\subsection{Variable Documentation}
+\hypertarget{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!args@{args}}
+\index{args@{args}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{args}]{\setlength{\rightskip}{0pt plus 5cm}args \{{\bf i}\}))}}\label{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}
+\hypertarget{process__options_8m_a3dac873712fa6d5ecb3e1250dc3da8c2}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Boston@{Boston}}
+\index{Boston@{Boston}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Boston}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} write {\bf to} the Free Software Temple Boston}}\label{process__options_8m_a3dac873712fa6d5ecb3e1250dc3da8c2}
+\hypertarget{process__options_8m_a91cf6fbebedd86150a36e5ac3d5d3bfc}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!break@{break}}
+\index{break@{break}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{break}]{\setlength{\rightskip}{0pt plus 5cm}break}}\label{process__options_8m_a91cf6fbebedd86150a36e5ac3d5d3bfc}
+\hypertarget{process__options_8m_a15ca2169608190dc565fa0f66c40e1a5}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!case@{case}}
+\index{case@{case}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{case}]{\setlength{\rightskip}{0pt plus 5cm}calling {\bf to} {\bf to} and {\bf to} v The parameter names are insensitive {\bf to} case}}\label{process__options_8m_a15ca2169608190dc565fa0f66c40e1a5}
+\hypertarget{process__options_8m_a9298f0c90b830f34f4b9d0f06adf674e}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!cases@{cases}}
+\index{cases@{cases}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{cases}]{\setlength{\rightskip}{0pt plus 5cm}this occurs when specifying {\bf arguments} from command line else in all other cases}}\label{process__options_8m_a9298f0c90b830f34f4b9d0f06adf674e}
+\hypertarget{process__options_8m_a8b2e3e547565a5591023ed6a3c8a1e8b}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Examples@{Examples}}
+\index{Examples@{Examples}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Examples}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} this {\bf is} {\bf not} then a warning will be issued for each option in {\bf args} that lacked a match Examples}}\label{process__options_8m_a8b2e3e547565a5591023ed6a3c8a1e8b}
+\hypertarget{process__options_8m_a21a9a1b6637e6064e090515fcc1bf8ef}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!found@{found}}
+\index{found@{found}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{found}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} found = 1}}\label{process__options_8m_a21a9a1b6637e6064e090515fcc1bf8ef}
+\hypertarget{process__options_8m_af2e4dfefec07c708c5ac8574c56da537}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Foundation@{Foundation}}
+\index{Foundation@{Foundation}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Foundation}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} write {\bf to} the Free Software Foundation}}\label{process__options_8m_af2e4dfefec07c708c5ac8574c56da537}
+\hypertarget{process__options_8m_a0f50d231199e418f2184fe2a0d98c9e0}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!hand@{hand}}
+\index{hand@{hand}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{hand}]{\setlength{\rightskip}{0pt plus 5cm}calling will result in {\bf u} having the {\bf value} and v having but will issue a warning that the {\bf z} option has {\bf not} been used On the other hand}}\label{process__options_8m_a0f50d231199e418f2184fe2a0d98c9e0}
+\hypertarget{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!i@{i}}
+\index{i@{i}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{i}]{\setlength{\rightskip}{0pt plus 5cm}for i}}\label{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=2:2:n
+  \hyperlink{process__options_8m_a968c36b858473cd33cb78a9354b9a4e7}{varargout}\{\hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}/2\} = varargin\{\hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}\}
+\end{DoxyCode}
+\hypertarget{process__options_8m_a905b4a7c11572b0a44b1a053ce673c5d}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Inc@{Inc}}
+\index{Inc@{Inc}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Inc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} write {\bf to} the Free Software Inc}}\label{process__options_8m_a905b4a7c11572b0a44b1a053ce673c5d}
+\hypertarget{process__options_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!j@{j}}
+\index{j@{j}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{j}]{\setlength{\rightskip}{0pt plus 5cm}for j}}\label{process__options_8m_ac86694252f8dfdb19aaeadc4b7c342c6}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+=1:2:n
+    \textcolor{keywordflow}{if} strcmpi(\hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args}\{\hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}\}, varargin\{\hyperlink{process__options_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}\})
+      % dpwe: promote \textcolor{keywordtype}{string} \hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args} \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} numeric \textcolor{keywordflow}{if} \textcolor{keywordflow}{default} arg \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is}
+      % numeric
+      \textcolor{keywordflow}{if} isnumeric(varargin\{\hyperlink{process__options_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j}+1\}) && ischar(\hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args}\{\hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}+1\})
+        \hyperlink{process__options_8m_a968c36b858473cd33cb78a9354b9a4e7}{varargout}\{(\hyperlink{process__options_8m_ac86694252f8dfdb19aaeadc4b7c342c6}{j} + 1)/2\} = str2num(\hyperlink{process__options_8m_a8187411843a6284ffb964ef3fb9fcab3}{args}\{\hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i} + 1\})
+\end{DoxyCode}
+\hypertarget{process__options_8m_a355539e51bed3008068dfe985e226ab8}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!License@{License}}
+\index{License@{License}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{License}]{\setlength{\rightskip}{0pt plus 5cm}either version of the License}}\label{process__options_8m_a355539e51bed3008068dfe985e226ab8}
+\hypertarget{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!not@{not}}
+\index{not@{not}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{not}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} not}}\label{process__options_8m_ae6cf43db481de26465fb7c527d5d985f}
+\hypertarget{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!nout@{nout}}
+\index{nout@{nout}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{nout}]{\setlength{\rightskip}{0pt plus 5cm}nout = n / 2}}\label{process__options_8m_ae63dd23e0d2e3a1fcf0b25b694520371}
+\hypertarget{process__options_8m_a6e5fccc70775c8b24ad8f8c4b255f45b}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!nunused@{nunused}}
+\index{nunused@{nunused}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{nunused}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} Now process all {\bf arguments} nunused = 0}}\label{process__options_8m_a6e5fccc70775c8b24ad8f8c4b255f45b}
+\hypertarget{process__options_8m_a40e3e892a95bc64b1304431af967fdd6}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Place@{Place}}
+\index{Place@{Place}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Place}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} write {\bf to} the Free Software Temple Place}}\label{process__options_8m_a40e3e892a95bc64b1304431af967fdd6}
+\hypertarget{process__options_8m_ad1fcf7d480c2fceaa3fc2635af62b648}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!program@{program}}
+\index{program@{program}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{program}]{\setlength{\rightskip}{0pt plus 5cm}without even the implied warranty of M\+E\+R\+C\+H\+A\+N\+T\+A\+B\+I\+L\+I\+T\+Y {\bf or} F\+I\+T\+N\+E\+S\+S F\+O\+R A P\+A\+R\+T\+I\+C\+U\+L\+A\+R P\+U\+R\+P\+O\+S\+E See the G\+N\+U General Public {\bf License} for more details You should have received a copy of the G\+N\+U General Public {\bf License} along with this program}}\label{process__options_8m_ad1fcf7d480c2fceaa3fc2635af62b648}
+\hypertarget{process__options_8m_a297848e03e2797616e7e732a4724bd72}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!Suite@{Suite}}
+\index{Suite@{Suite}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{Suite}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} write {\bf to} the Free Software Temple Suite}}\label{process__options_8m_a297848e03e2797616e7e732a4724bd72}
+\hypertarget{process__options_8m_a501ad843c45c86025dd25e634f6c9081}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!supplied@{supplied}}
+\index{supplied@{supplied}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{supplied}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} this {\bf is} {\bf not} supplied}}\label{process__options_8m_a501ad843c45c86025dd25e634f6c9081}
+\hypertarget{process__options_8m_a4c78390f8387d6324b7af70192ee2db2}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!u@{u}}
+\index{u@{u}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{u}]{\setlength{\rightskip}{0pt plus 5cm}calling u}}\label{process__options_8m_a4c78390f8387d6324b7af70192ee2db2}
+\hypertarget{process__options_8m_a04fbd85b4efda726d0fad45d103ce2d2}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!unused@{unused}}
+\index{unused@{unused}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{unused}]{\setlength{\rightskip}{0pt plus 5cm}unused \{2 $\ast$ {\bf nunused} -\/ 1\} = {\bf args}\{{\bf i}\}}}\label{process__options_8m_a04fbd85b4efda726d0fad45d103ce2d2}
+\hypertarget{process__options_8m_a1ef8397832aedb74037d4dcce949657d}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!value@{value}}
+\index{value@{value}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{value}]{\setlength{\rightskip}{0pt plus 5cm}then the call and unused\+\_\+args will have the value}}\label{process__options_8m_a1ef8397832aedb74037d4dcce949657d}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+\{\textcolor{charliteral}{'z'}, 2\}.  This behaviour \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is}
+% useful \textcolor{keywordflow}{for} functions with options that invoke other functions
+% with options
+\end{DoxyCode}
+\hypertarget{process__options_8m_a968c36b858473cd33cb78a9354b9a4e7}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!varargout@{varargout}}
+\index{varargout@{varargout}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{varargout}]{\setlength{\rightskip}{0pt plus 5cm}else varargout = cell(1, {\bf nout})}}\label{process__options_8m_a968c36b858473cd33cb78a9354b9a4e7}
+\hypertarget{process__options_8m_a4d73ff78a4c51ea1c982991bf36ca135}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!warn@{warn}}
+\index{warn@{warn}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{warn}]{\setlength{\rightskip}{0pt plus 5cm}else warn = 0}}\label{process__options_8m_a4d73ff78a4c51ea1c982991bf36ca135}
+\hypertarget{process__options_8m_a01d4ec73d916d67d085f3e63d1fdbd4b}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!W\+A\+R\+R\+A\+N\+T\+Y@{W\+A\+R\+R\+A\+N\+T\+Y}}
+\index{W\+A\+R\+R\+A\+N\+T\+Y@{W\+A\+R\+R\+A\+N\+T\+Y}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{W\+A\+R\+R\+A\+N\+T\+Y}]{\setlength{\rightskip}{0pt plus 5cm}either version of the but W\+I\+T\+H\+O\+U\+T A\+N\+Y W\+A\+R\+R\+A\+N\+T\+Y}}\label{process__options_8m_a01d4ec73d916d67d085f3e63d1fdbd4b}
+\hypertarget{process__options_8m_a15c79632cd53bc4d0588289470c8653e}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!y@{y}}
+\index{y@{y}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}calling will result in {\bf u} having the {\bf value} and v having but will issue a warning that the {\bf z} option has {\bf not} been used On the other {\bf if} {\bf func} {\bf is} defined as {\bf function} y}}\label{process__options_8m_a15c79632cd53bc4d0588289470c8653e}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \hyperlink{process__options_8m_aecac0810327122bcc551570e20d10f61}{func}(\hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x}, \hyperlink{process__options_8m_a15c79632cd53bc4d0588289470c8653e}{y}, varargin)
+%
+%     [u, v] = \hyperlink{invmelfcc_8m_abb69d0b8808f6d39491410cda9a2b5ef}{process\_options}(varargin, \textcolor{charliteral}{'u'}, 0, \textcolor{charliteral}{'v'}, 1)
+\end{DoxyCode}
+\hypertarget{process__options_8m_a51def47387b01338c009f5a4d00fb8bd}{\index{process\+\_\+options.\+m@{process\+\_\+options.\+m}!z@{z}}
+\index{z@{z}!process\+\_\+options.\+m@{process\+\_\+options.\+m}}
+\subsubsection[{z}]{\setlength{\rightskip}{0pt plus 5cm}calling z}}\label{process__options_8m_a51def47387b01338c009f5a4d00fb8bd}

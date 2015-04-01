@@ -1,0 +1,12 @@
+var searchData=
+[
+  ['operator_21_3d',['operator!=',['../class_wave_feature_o_p_set_1_1iterator.html#a2d4e4835b6a46853d726a19dd3aab209',1,'WaveFeatureOPSet::iterator']]],
+  ['operator_2a',['operator*',['../class_feature.html#a90f1fbc54bfae85f7edf8234ffbfd29c',1,'Feature::operator*(const Feature &amp;T) const '],['../class_feature.html#a297dc1375d2e371f1c0ec2cf01d6b9b7',1,'Feature::operator*(double c) const '],['../class_wave_feature_o_p_set_1_1iterator.html#a5b55475159717135436bfaaac5fc5702',1,'WaveFeatureOPSet::iterator::operator*()']]],
+  ['operator_2b',['operator+',['../class_feature.html#a733baf36f22566c35aca39fd29236e0f',1,'Feature']]],
+  ['operator_2b_2b',['operator++',['../class_wave_feature_o_p_set_1_1iterator.html#a9e47a4d0cf363ecce99432cc19f6c122',1,'WaveFeatureOPSet::iterator::operator++(int)'],['../class_wave_feature_o_p_set_1_1iterator.html#ae32d8b6a50360369b67f22c938987a6c',1,'WaveFeatureOPSet::iterator::operator++()']]],
+  ['operator_2d',['operator-',['../class_feature.html#a9c94cc178ad282294fa94a795eb0d401',1,'Feature']]],
+  ['operator_3d_3d',['operator==',['../class_wave_feature_o_p.html#a124a8caab52ea00e1cf0165aa1d071c9',1,'WaveFeatureOP::operator==()'],['../class_wave_feature_o_p_set_1_1iterator.html#a429c2e56247bab88043c1de2dbb6551a',1,'WaveFeatureOPSet::iterator::operator==()']]],
+  ['operator_5b_5d',['operator[]',['../class_container.html#acbf6c7d4dbebe662467b35c7b0f48487',1,'Container::operator[]()'],['../class_feature.html#acd67423c3e4b1ea3ddbd257a5614b728',1,'Feature::operator[](int inx) const '],['../class_feature.html#abb9d8d94d76d810ff1e27c520635c3d5',1,'Feature::operator[](int inx)'],['../class_wave_feature_o_p.html#a6a165bd04bb4f29e9b408981cca66328',1,'WaveFeatureOP::operator[]()'],['../class_parse_graph.html#adeac9d18aed9c028ded376dc55940da8',1,'ParseGraph::operator[]()'],['../class_lex_tree.html#aa893ab8e9e56c1f105deca1d722c57e3',1,'LexTree::operator[]()']]],
+  ['or',['or',['../process__options_8m.html#a58781a13256e170574b13bb2170e928e',1,'or(at your option) any later version.%%This program is distributed in the hope that it will be useful:&#160;process_options.m'],['../readhtk_8m.html#a58781a13256e170574b13bb2170e928e',1,'or(at your option) any later version.%%This program is distributed in the hope that it will be useful:&#160;readhtk.m']]],
+  ['outalias',['outAlias',['../class_serial_files.html#accb34f24ea0dc1c9ff1bb3a6c46b9e2c',1,'SerialFiles']]]
+];

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['i',['I',['../class_wave_feature_o_p_set_1_1iterator.html#a20f89afc2f06d44b8aae87e33cc28ef6',1,'WaveFeatureOPSet::iterator::I()'],['../process__options_8m.html#a6f6ccfcf58b31cb6412107d9d5281426',1,'i():&#160;process_options.m']]],
+  ['idx',['idx',['../class_thread_pool.html#a96d38c2d5e24c7ae9d01746ceafecb6b',1,'ThreadPool']]],
+  ['if',['if',['../rastaplp_8m.html#a00308daf8d15cb44ae2b111746c10e5c',1,'rastaplp.m']]],
+  ['ignored',['ignored',['../ispecgram_8m.html#a37baf09c16300b0033d902f8ae97546f',1,'ispecgram.m']]],
+  ['illegaldist',['IllegalDist',['../class_feature.html#ac3083a52765fa23ddccc5a90058fc2d8',1,'Feature']]],
+  ['in',['in',['../class_capture.html#a84320acc014a2d81574a876e6d693108',1,'Capture::in()'],['../structsp__task.html#af558b254a2a1f6e80fd6060a0323f82a',1,'sp_task::in()']]],
+  ['inc',['Inc',['../process__options_8m.html#a905b4a7c11572b0a44b1a053ce673c5d',1,'Inc():&#160;process_options.m'],['../readhtk_8m.html#a69ba69259f276f81ae22cf26725382d6',1,'Inc():&#160;readhtk.m']]],
+  ['index',['index',['../structcmp__task__info.html#a3633d922d3eef29d9ebb03ca51010b8f',1,'cmp_task_info']]],
+  ['inf',['INF',['../spellcheck_8h.html#a14c9dbab105f1b8b8182a022d73e610c',1,'spellcheck.h']]],
+  ['info',['info',['../class_conf.html#adba927d772295408e9c93e9b7bf30eb8',1,'Conf']]],
+  ['inputdirname',['inputDirName',['../hmm__demo_8cpp.html#ae47d6ececb30027834207a380dece244',1,'inputDirName():&#160;hmm_demo.cpp'],['../pro4__demo__1_8cpp.html#ae47d6ececb30027834207a380dece244',1,'inputDirName():&#160;pro4_demo_1.cpp']]],
+  ['inputfeature',['inputFeature',['../class_wave_feature_o_p.html#a2e67fe9dc06889453b70fe6efa19554f',1,'WaveFeatureOP']]],
+  ['inputfilename',['inputFileName',['../hmm__demo_8cpp.html#a3c19e197d1ec0545d242cc18175997a5',1,'inputFileName():&#160;hmm_demo.cpp'],['../pro4__demo__1_8cpp.html#a3c19e197d1ec0545d242cc18175997a5',1,'inputFileName():&#160;pro4_demo_1.cpp'],['../pro6__demo_8cpp.html#a31475369ecb3d57c210b8c0765e7eecd',1,'inputFileName():&#160;pro6_demo.cpp'],['../rawdtw_8cpp.html#a3c19e197d1ec0545d242cc18175997a5',1,'inputFileName():&#160;rawdtw.cpp']]],
+  ['ins',['ins',['../struct_count.html#a4dfe7c57aa8334734f3c9c8cc42d58bb',1,'Count']]],
+  ['integer',['integer',['../lifter_8m.html#a47766603900cc42c7ed9d7dc15f0b322',1,'lifter.m']]],
+  ['is',['is',['../fft2melmx_8m.html#ae072eb1618836a445d4fa5474ba1b87d',1,'fft2melmx.m']]],
+  ['is_5fleaf',['is_leaf',['../class_node.html#a3e5449ec9e41ba98cbaf8f3a993d03c4',1,'Node']]],
+  ['isbeam',['isBeam',['../pro4__demo__1_8cpp.html#a16e91182358a0e7ec0e05fa27f141051',1,'isBeam():&#160;pro4_demo_1.cpp'],['../rawdtw_8cpp.html#a16e91182358a0e7ec0e05fa27f141051',1,'isBeam():&#160;rawdtw.cpp']]],
+  ['iscapture',['isCapture',['../pro2__demo_8cpp.html#a4a19f054bed55360154e6a240fbf7266',1,'isCapture():&#160;pro2_demo.cpp'],['../pro4__demo__1_8cpp.html#a4a19f054bed55360154e6a240fbf7266',1,'isCapture():&#160;pro4_demo_1.cpp']]],
+  ['istft',['istft',['../ispecgram_8m.html#aec872af31a1b4c4890e668e644356d81',1,'ispecgram.m']]],
+  ['items',['items',['../class_container.html#adf060dcd6dfb12774aced955881149d8',1,'Container']]],
+  ['ix',['ix',['../lpc2spec_8m.html#ae933556a4a64dba6dc33be1422196177',1,'lpc2spec.m']]]
+];

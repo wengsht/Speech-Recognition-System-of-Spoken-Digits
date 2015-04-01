@@ -1,0 +1,122 @@
+\hypertarget{class_lex_tree}{\section{Lex\+Tree Class Reference}
+\label{class_lex_tree}\index{Lex\+Tree@{Lex\+Tree}}
+}
+
+
+{\ttfamily \#include $<$Lex\+Tree.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_lex_tree_af3cda7ddb26d500e8d56640950bdd56a}{Lex\+Tree} ()
+\item 
+void \hyperlink{class_lex_tree_ab21f89f388595305a109689657b73e71}{build\+Tree} (const char $\ast$file\+Name)
+\item 
+void \hyperlink{class_lex_tree_a58cf3b490d563f6e4d660e3712b89248}{build\+Tree} (const std\+::vector$<$ std\+::string $>$ \&v)
+\item 
+\hyperlink{class_lex_tree_a799bb7ca2ce7ed6f38a2b1dba55fb8b0}{$\sim$\+Lex\+Tree} ()
+\item 
+int \hyperlink{class_lex_tree_a7f0903e8d4f7c6d43991b28ebcc27dee}{get\+Node\+Size} ()
+\item 
+void \hyperlink{class_lex_tree_abd14fb87093e963a9934b749fa1acc64}{B\+F\+S\+Nodes} ()
+\item 
+void \hyperlink{class_lex_tree_a88177006613ef9f737feaccbecfb4519}{show\+Info} ()
+\item 
+\hyperlink{class_node}{Node} $\ast$ \hyperlink{class_lex_tree_aa893ab8e9e56c1f105deca1d722c57e3}{operator\mbox{[}$\,$\mbox{]}} (int \hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i})
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_lex_tree_a589456a144002c42a7042b23c21d31bc}{add} (const char $\ast$word)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node}{Node} $\ast$ \hyperlink{class_lex_tree_a8090572ccb237634f3f8483305cf878e}{root}
+\item 
+std\+::vector$<$ \hyperlink{class_node}{Node} $\ast$ $>$ \hyperlink{class_lex_tree_a21f434a67d532c1f6e30d77b7948aada}{nodes}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_lex_tree_af3cda7ddb26d500e8d56640950bdd56a}{\index{Lex\+Tree@{Lex\+Tree}!Lex\+Tree@{Lex\+Tree}}
+\index{Lex\+Tree@{Lex\+Tree}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{Lex\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}Lex\+Tree\+::\+Lex\+Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lex_tree_af3cda7ddb26d500e8d56640950bdd56a}
+\hypertarget{class_lex_tree_a799bb7ca2ce7ed6f38a2b1dba55fb8b0}{\index{Lex\+Tree@{Lex\+Tree}!````~Lex\+Tree@{$\sim$\+Lex\+Tree}}
+\index{````~Lex\+Tree@{$\sim$\+Lex\+Tree}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{$\sim$\+Lex\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}Lex\+Tree\+::$\sim$\+Lex\+Tree (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lex_tree_a799bb7ca2ce7ed6f38a2b1dba55fb8b0}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_lex_tree_a589456a144002c42a7042b23c21d31bc}{\index{Lex\+Tree@{Lex\+Tree}!add@{add}}
+\index{add@{add}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}void Lex\+Tree\+::add (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{word}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_lex_tree_a589456a144002c42a7042b23c21d31bc}
+\hypertarget{class_lex_tree_abd14fb87093e963a9934b749fa1acc64}{\index{Lex\+Tree@{Lex\+Tree}!B\+F\+S\+Nodes@{B\+F\+S\+Nodes}}
+\index{B\+F\+S\+Nodes@{B\+F\+S\+Nodes}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{B\+F\+S\+Nodes}]{\setlength{\rightskip}{0pt plus 5cm}void Lex\+Tree\+::\+B\+F\+S\+Nodes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lex_tree_abd14fb87093e963a9934b749fa1acc64}
+\hypertarget{class_lex_tree_ab21f89f388595305a109689657b73e71}{\index{Lex\+Tree@{Lex\+Tree}!build\+Tree@{build\+Tree}}
+\index{build\+Tree@{build\+Tree}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{build\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}void Lex\+Tree\+::build\+Tree (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{file\+Name}
+\end{DoxyParamCaption}
+)}}\label{class_lex_tree_ab21f89f388595305a109689657b73e71}
+\hypertarget{class_lex_tree_a58cf3b490d563f6e4d660e3712b89248}{\index{Lex\+Tree@{Lex\+Tree}!build\+Tree@{build\+Tree}}
+\index{build\+Tree@{build\+Tree}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{build\+Tree}]{\setlength{\rightskip}{0pt plus 5cm}void Lex\+Tree\+::build\+Tree (
+\begin{DoxyParamCaption}
+\item[{const std\+::vector$<$ std\+::string $>$ \&}]{v}
+\end{DoxyParamCaption}
+)}}\label{class_lex_tree_a58cf3b490d563f6e4d660e3712b89248}
+\hypertarget{class_lex_tree_a7f0903e8d4f7c6d43991b28ebcc27dee}{\index{Lex\+Tree@{Lex\+Tree}!get\+Node\+Size@{get\+Node\+Size}}
+\index{get\+Node\+Size@{get\+Node\+Size}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{get\+Node\+Size}]{\setlength{\rightskip}{0pt plus 5cm}int Lex\+Tree\+::get\+Node\+Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_lex_tree_a7f0903e8d4f7c6d43991b28ebcc27dee}
+\hypertarget{class_lex_tree_aa893ab8e9e56c1f105deca1d722c57e3}{\index{Lex\+Tree@{Lex\+Tree}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ Lex\+Tree\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_lex_tree_aa893ab8e9e56c1f105deca1d722c57e3}
+\hypertarget{class_lex_tree_a88177006613ef9f737feaccbecfb4519}{\index{Lex\+Tree@{Lex\+Tree}!show\+Info@{show\+Info}}
+\index{show\+Info@{show\+Info}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{show\+Info}]{\setlength{\rightskip}{0pt plus 5cm}void Lex\+Tree\+::show\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_lex_tree_a88177006613ef9f737feaccbecfb4519}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_lex_tree_a21f434a67d532c1f6e30d77b7948aada}{\index{Lex\+Tree@{Lex\+Tree}!nodes@{nodes}}
+\index{nodes@{nodes}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{nodes}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Node} $\ast$$>$ Lex\+Tree\+::nodes\hspace{0.3cm}{\ttfamily [private]}}}\label{class_lex_tree_a21f434a67d532c1f6e30d77b7948aada}
+\hypertarget{class_lex_tree_a8090572ccb237634f3f8483305cf878e}{\index{Lex\+Tree@{Lex\+Tree}!root@{root}}
+\index{root@{root}!Lex\+Tree@{Lex\+Tree}}
+\subsubsection[{root}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}$\ast$ Lex\+Tree\+::root\hspace{0.3cm}{\ttfamily [private]}}}\label{class_lex_tree_a8090572ccb237634f3f8483305cf878e}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Lex\+Tree/\hyperlink{_lex_tree_8h}{Lex\+Tree.\+h}\item 
+src/\+Lex\+Tree/\hyperlink{_lex_tree_8cpp}{Lex\+Tree.\+cpp}\end{DoxyCompactItemize}

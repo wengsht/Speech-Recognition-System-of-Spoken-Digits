@@ -1,0 +1,6 @@
+#ifndef __PRO3__EDITDISTANCE__WORDSET__
+#ifndef __PRO3__EDITDISTANCE__WORDSET__
+
+
+
+#endif

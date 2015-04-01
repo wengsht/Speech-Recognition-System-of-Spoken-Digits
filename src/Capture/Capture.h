@@ -11,6 +11,8 @@
 
 #include "RawData.h"
 #include "portaudio.h"
+#include "DAEPAnalysis.h"
+
 //do the initial job ,etc. 
 class Capture{
 protected:
@@ -36,17 +38,29 @@ protected:
     virtual bool playAction(RawData * data) ;
     virtual bool init_callback(RawData * data,bool input);
 
+
 public:
+    static SP_RESULT load_wav_file(const char * const file_name, RawData &data, bool playback = false) {
+        DAEPAnalysis da_ep;
+        Capture c;
+        char fn_buffer[128] = "";
+        data.loadWav(file_name);
+        da_ep.Initial(&data);
+        da_ep.reCalcAllData();
+
+        if(playback)
+            c.play(&data);
+        //    da_ep.smooth();
+        //    da_ep.cut();
+
+        return SP_SUCCESS;
+    }
     Capture();
     ~Capture();
-    
     // 
     bool  capture(RawData *);
     bool  play(RawData *);
-    
+
 };
 
-
-
-
-#endif /* defined(__SpeechRecongnitionSystem__Capture__) */
+#endif

@@ -1,0 +1,65 @@
+\hypertarget{lifter_8m}{\section{src/\+Matlab/rastamat/lifter.m File Reference}
+\label{lifter_8m}\index{src/\+Matlab/rastamat/lifter.\+m@{src/\+Matlab/rastamat/lifter.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{lpc2spec_8m_af4a04cb5ecdfd53041f3ce812cd7cfc8}{default} 0 \hyperlink{lifter_8m_a2b7c47865d353a4bac93fe14279cac4b}{nargin} ()
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} liftering exponent \hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \\*
+\hyperlink{spec2cep_8m_a0f36f89762390de6548ef01cf1aec807}{nargin}$<$ 3;invs=0;\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end}\%flag \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \\*
+undo liftering\mbox{[}\hyperlink{spec2cep_8m_a10d306a8b57f352178dbf9ad511cd021}{ncep}, nfrm\mbox{]}=\hyperlink{rastafilt_8m_a777f01fd1c8394e2fbac19f36c7d2f92}{size}(\hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x});\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \\*
+\hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift}==0 \hyperlink{rastafilt_8m_a86d95dcd476896268e6f41d4bcc8c2fc}{y}=\hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x};else \hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift} $>$ \hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \\*
+\hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift} \hyperlink{lifter_8m_a27dd9641227cc129dc4ccf5dd1cc1703}{disp} (\mbox{[}'Unlikely \hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift} exponent of ', num2str(\hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift}),'(did you mean-\/ve?)'\mbox{]})
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{lifter_8m_a0abc9ddee91887084fd7f38e1bcb6f7f}{y}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} as a negative \hyperlink{lifter_8m_a47766603900cc42c7ed9d7dc15f0b322}{integer}
+\item 
+\hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift} = 0.\+6
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \hyperlink{lifter_8m_a8f5e5750a64f30e4131dae3f42d5e2b4}{liftwts} = \mbox{[}1, (\mbox{[}1\+:(\hyperlink{spec2cep_8m_a10d306a8b57f352178dbf9ad511cd021}{ncep}-\/1)\mbox{]}.$^\wedge$\hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift})\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{lifter_8m_a27dd9641227cc129dc4ccf5dd1cc1703}{\index{lifter.\+m@{lifter.\+m}!disp@{disp}}
+\index{disp@{disp}!lifter.\+m@{lifter.\+m}}
+\subsubsection[{disp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} liftering exponent {\bf if} {\bf nargin}$<$ 3; invs = 0; {\bf end} \% flag {\bf to} undo liftering\mbox{[}{\bf ncep}, nfrm\mbox{]} = {\bf size}({\bf x});{\bf if} {\bf lift} == 0 {\bf y} = {\bf x};else {\bf if} {\bf lift} $>$ {\bf if} {\bf lift} disp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{lifter_8m_a27dd9641227cc129dc4ccf5dd1cc1703}
+\hypertarget{lifter_8m_a2b7c47865d353a4bac93fe14279cac4b}{\index{lifter.\+m@{lifter.\+m}!nargin@{nargin}}
+\index{nargin@{nargin}!lifter.\+m@{lifter.\+m}}
+\subsubsection[{nargin}]{\setlength{\rightskip}{0pt plus 5cm}{\bf default} 0 nargin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [virtual]}}}\label{lifter_8m_a2b7c47865d353a4bac93fe14279cac4b}
+
+
+\subsection{Variable Documentation}
+\hypertarget{lifter_8m_a47766603900cc42c7ed9d7dc15f0b322}{\index{lifter.\+m@{lifter.\+m}!integer@{integer}}
+\index{integer@{integer}!lifter.\+m@{lifter.\+m}}
+\subsubsection[{integer}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} as a negative integer}}\label{lifter_8m_a47766603900cc42c7ed9d7dc15f0b322}
+\hypertarget{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{\index{lifter.\+m@{lifter.\+m}!lift@{lift}}
+\index{lift@{lift}!lifter.\+m@{lifter.\+m}}
+\subsubsection[{lift}]{\setlength{\rightskip}{0pt plus 5cm}lift = 0.\+6}}\label{lifter_8m_a575e66f092f68c54e19a486708bf3c77}
+\hypertarget{lifter_8m_a8f5e5750a64f30e4131dae3f42d5e2b4}{\index{lifter.\+m@{lifter.\+m}!liftwts@{liftwts}}
+\index{liftwts@{liftwts}!lifter.\+m@{lifter.\+m}}
+\subsubsection[{liftwts}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} liftwts = \mbox{[}1, (\mbox{[}1\+:({\bf ncep}-\/1)\mbox{]}.$^\wedge${\bf lift})\mbox{]}}}\label{lifter_8m_a8f5e5750a64f30e4131dae3f42d5e2b4}
+\hypertarget{lifter_8m_a0abc9ddee91887084fd7f38e1bcb6f7f}{\index{lifter.\+m@{lifter.\+m}!y@{y}}
+\index{y@{y}!lifter.\+m@{lifter.\+m}}
+\subsubsection[{y}]{\setlength{\rightskip}{0pt plus 5cm}{\bf function} y}}\label{lifter_8m_a0abc9ddee91887084fd7f38e1bcb6f7f}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= lifter(\hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x}, \hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift}, invs)
+% \hyperlink{lifter_8m_a0abc9ddee91887084fd7f38e1bcb6f7f}{y} = lifter(\hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x}, \hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift}, invs)
+%   Apply lifter \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} matrix of \hyperlink{melfcc_8m_ad0f1a7920e6f39da3864c784a1cc361c}{cepstra} (one per column)
+%   \hyperlink{lifter_8m_a575e66f092f68c54e19a486708bf3c77}{lift} = exponent of \hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x} \hyperlink{process__options_8m_a6f6ccfcf58b31cb6412107d9d5281426}{i}^n liftering
+%   \hyperlink{process__options_8m_a58781a13256e170574b13bb2170e928e}{or}
+\end{DoxyCode}

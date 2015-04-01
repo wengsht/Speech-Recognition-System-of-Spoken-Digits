@@ -1,0 +1,194 @@
+\hypertarget{readwave_8h}{\section{src/readwave/readwave.h File Reference}
+\label{readwave_8h}\index{src/readwave/readwave.\+h@{src/readwave/readwave.\+h}}
+}
+{\ttfamily \#include \char`\"{}stdio.\+h\char`\"{}}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_wav_file_head}{Wav\+File\+Head}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{struct_wav_file_head}{Wav\+File\+Head} \hyperlink{readwave_8h_ae5a477c20156731ee4d62ff7e4f06358}{\+\_\+\+\_\+attribute} ((packed))
+\item 
+bool \hyperlink{readwave_8h_a636ab74fd404b4def35d8a47b2cc4842}{Wave\+Rewind} (F\+I\+L\+E $\ast$wav\+\_\+file, \hyperlink{struct_wav_file_head}{Wav\+File\+Head} $\ast$wav\+File\+Head)
+\item 
+short $\ast$ \hyperlink{readwave_8h_a5eb917fd09cbea2375be30e836125911}{Read\+Wave} (const char $\ast$wav\+File, int $\ast$num\+Samples, int $\ast$sample\+Rate)
+\item 
+void \hyperlink{readwave_8h_ac445692c2e84bd72a5d46c742ecf401f}{Write\+Wave} (const char $\ast$wav\+File, short $\ast$wave\+Data, int num\+Samples, int sample\+Rate)
+\item 
+void \hyperlink{readwave_8h_afeedb4d089a5b4d3ec92716add00486c}{Fill\+Wave\+Header} (void $\ast$buffer, int raw\+\_\+wave\+\_\+len, int sample\+Rate)
+\item 
+void \hyperlink{readwave_8h_aafd36d877014afaa29ab9dfe537b3a7f}{Get\+Wav\+Header} (const char $\ast$wav\+File, short $\ast$Bits, int $\ast$Rate, short $\ast$Format, int $\ast$Length, short $\ast$Channels)
+\item 
+short $\ast$ \hyperlink{readwave_8h_ad83a92bc2cf2b162727cb1a1fe336dfa}{Read\+Wav\+File} (const char $\ast$wav\+File, int $\ast$num\+Samples, int $\ast$sample\+Rate)
+\item 
+void \hyperlink{readwave_8h_a07d6d069f1b7e62cfb150ed4ebcd528b}{readwav\+\_\+t} (const char $\ast$wav\+File, short $\ast$wave\+Data, long times, int $\ast$num\+Samples, int $\ast$sample\+Rate)
+\item 
+void \hyperlink{readwave_8h_aa24c7b6a9ceeba60e145086bc188da74}{Get\+Wav\+Time} (const char $\ast$wav\+File, double $\ast$duration)
+\item 
+void \hyperlink{readwave_8h_a949cd614fd8766728324e998540c39bf}{Read\+Wav} (const char $\ast$wav\+File, short $\ast$wave\+Data, int $\ast$num\+Samples, int $\ast$sample\+Rate)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+char \hyperlink{readwave_8h_a12ef8e3e41abbf72d68455caebf5f0c2}{R\+I\+F\+F} \mbox{[}4\mbox{]}
+\item 
+int \hyperlink{readwave_8h_ac58e5f06256d84fec58ae9fec511720f}{File\+Length}
+\item 
+char \hyperlink{readwave_8h_a738a44b8d2e92b5ac71eb641ce68928d}{W\+A\+V\+Efmt\+\_\+} \mbox{[}8\mbox{]}
+\item 
+unsigned int \hyperlink{readwave_8h_a3015fdedbaa9857669883ffdf71564e7}{no\+Use}
+\item 
+short \hyperlink{readwave_8h_af277815162ab1e75c9d6d122623f1ff5}{Format\+Category}
+\item 
+short \hyperlink{readwave_8h_a2a5816e3fa563fe50dee2059b4b6555a}{N\+Channels}
+\item 
+int \hyperlink{readwave_8h_a3b233521f20f9eae6e9ede3f5cb6eae2}{Sample\+Rate}
+\item 
+int \hyperlink{readwave_8h_a6c4d56517ebb9f8d55e44b7b674fe2e9}{Sample\+Bytes}
+\item 
+short \hyperlink{readwave_8h_ab4c43868f82ac39d57753709d10f0b6e}{Bytes\+Per\+Sample}
+\item 
+short \hyperlink{readwave_8h_a65eb099a672107f7dc43c2b50e440489}{N\+Bits\+Persample}
+\item 
+char \hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data} \mbox{[}4\mbox{]}
+\item 
+int \hyperlink{readwave_8h_a912424d5472543715491b7dedeb3f17a}{Raw\+Data\+File\+Length}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{readwave_8h_ae5a477c20156731ee4d62ff7e4f06358}{\index{readwave.\+h@{readwave.\+h}!\+\_\+\+\_\+attribute@{\+\_\+\+\_\+attribute}}
+\index{\+\_\+\+\_\+attribute@{\+\_\+\+\_\+attribute}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{\+\_\+\+\_\+attribute}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf Wav\+File\+Head} \+\_\+\+\_\+attribute (
+\begin{DoxyParamCaption}
+\item[{(packed)}]{}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_ae5a477c20156731ee4d62ff7e4f06358}
+\hypertarget{readwave_8h_afeedb4d089a5b4d3ec92716add00486c}{\index{readwave.\+h@{readwave.\+h}!Fill\+Wave\+Header@{Fill\+Wave\+Header}}
+\index{Fill\+Wave\+Header@{Fill\+Wave\+Header}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Fill\+Wave\+Header}]{\setlength{\rightskip}{0pt plus 5cm}void Fill\+Wave\+Header (
+\begin{DoxyParamCaption}
+\item[{void $\ast$}]{buffer, }
+\item[{int}]{raw\+\_\+wave\+\_\+len, }
+\item[{int}]{sample\+Rate}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_afeedb4d089a5b4d3ec92716add00486c}
+\hypertarget{readwave_8h_aafd36d877014afaa29ab9dfe537b3a7f}{\index{readwave.\+h@{readwave.\+h}!Get\+Wav\+Header@{Get\+Wav\+Header}}
+\index{Get\+Wav\+Header@{Get\+Wav\+Header}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Get\+Wav\+Header}]{\setlength{\rightskip}{0pt plus 5cm}void Get\+Wav\+Header (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{wav\+File, }
+\item[{short $\ast$}]{Bits, }
+\item[{int $\ast$}]{Rate, }
+\item[{short $\ast$}]{Format, }
+\item[{int $\ast$}]{Length, }
+\item[{short $\ast$}]{Channels}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_aafd36d877014afaa29ab9dfe537b3a7f}
+\hypertarget{readwave_8h_aa24c7b6a9ceeba60e145086bc188da74}{\index{readwave.\+h@{readwave.\+h}!Get\+Wav\+Time@{Get\+Wav\+Time}}
+\index{Get\+Wav\+Time@{Get\+Wav\+Time}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Get\+Wav\+Time}]{\setlength{\rightskip}{0pt plus 5cm}void Get\+Wav\+Time (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{wav\+File, }
+\item[{double $\ast$}]{duration}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_aa24c7b6a9ceeba60e145086bc188da74}
+\hypertarget{readwave_8h_a949cd614fd8766728324e998540c39bf}{\index{readwave.\+h@{readwave.\+h}!Read\+Wav@{Read\+Wav}}
+\index{Read\+Wav@{Read\+Wav}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Read\+Wav}]{\setlength{\rightskip}{0pt plus 5cm}void Read\+Wav (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{wav\+File, }
+\item[{short $\ast$}]{wave\+Data, }
+\item[{int $\ast$}]{num\+Samples, }
+\item[{int $\ast$}]{sample\+Rate}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_a949cd614fd8766728324e998540c39bf}
+\hypertarget{readwave_8h_a07d6d069f1b7e62cfb150ed4ebcd528b}{\index{readwave.\+h@{readwave.\+h}!readwav\+\_\+t@{readwav\+\_\+t}}
+\index{readwav\+\_\+t@{readwav\+\_\+t}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{readwav\+\_\+t}]{\setlength{\rightskip}{0pt plus 5cm}void readwav\+\_\+t (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{wav\+File, }
+\item[{short $\ast$}]{wave\+Data, }
+\item[{long}]{times, }
+\item[{int $\ast$}]{num\+Samples, }
+\item[{int $\ast$}]{sample\+Rate}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_a07d6d069f1b7e62cfb150ed4ebcd528b}
+\hypertarget{readwave_8h_a5eb917fd09cbea2375be30e836125911}{\index{readwave.\+h@{readwave.\+h}!Read\+Wave@{Read\+Wave}}
+\index{Read\+Wave@{Read\+Wave}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Read\+Wave}]{\setlength{\rightskip}{0pt plus 5cm}short$\ast$ Read\+Wave (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{wav\+File, }
+\item[{int $\ast$}]{num\+Samples, }
+\item[{int $\ast$}]{sample\+Rate}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_a5eb917fd09cbea2375be30e836125911}
+\hypertarget{readwave_8h_ad83a92bc2cf2b162727cb1a1fe336dfa}{\index{readwave.\+h@{readwave.\+h}!Read\+Wav\+File@{Read\+Wav\+File}}
+\index{Read\+Wav\+File@{Read\+Wav\+File}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Read\+Wav\+File}]{\setlength{\rightskip}{0pt plus 5cm}short$\ast$ Read\+Wav\+File (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{wav\+File, }
+\item[{int $\ast$}]{num\+Samples, }
+\item[{int $\ast$}]{sample\+Rate}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_ad83a92bc2cf2b162727cb1a1fe336dfa}
+\hypertarget{readwave_8h_a636ab74fd404b4def35d8a47b2cc4842}{\index{readwave.\+h@{readwave.\+h}!Wave\+Rewind@{Wave\+Rewind}}
+\index{Wave\+Rewind@{Wave\+Rewind}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Wave\+Rewind}]{\setlength{\rightskip}{0pt plus 5cm}bool Wave\+Rewind (
+\begin{DoxyParamCaption}
+\item[{F\+I\+L\+E $\ast$}]{wav\+\_\+file, }
+\item[{{\bf Wav\+File\+Head} $\ast$}]{wav\+File\+Head}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_a636ab74fd404b4def35d8a47b2cc4842}
+\hypertarget{readwave_8h_ac445692c2e84bd72a5d46c742ecf401f}{\index{readwave.\+h@{readwave.\+h}!Write\+Wave@{Write\+Wave}}
+\index{Write\+Wave@{Write\+Wave}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Write\+Wave}]{\setlength{\rightskip}{0pt plus 5cm}void Write\+Wave (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{wav\+File, }
+\item[{short $\ast$}]{wave\+Data, }
+\item[{int}]{num\+Samples, }
+\item[{int}]{sample\+Rate}
+\end{DoxyParamCaption}
+)}}\label{readwave_8h_ac445692c2e84bd72a5d46c742ecf401f}
+
+
+\subsection{Variable Documentation}
+\hypertarget{readwave_8h_ab4c43868f82ac39d57753709d10f0b6e}{\index{readwave.\+h@{readwave.\+h}!Bytes\+Per\+Sample@{Bytes\+Per\+Sample}}
+\index{Bytes\+Per\+Sample@{Bytes\+Per\+Sample}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Bytes\+Per\+Sample}]{\setlength{\rightskip}{0pt plus 5cm}short Bytes\+Per\+Sample}}\label{readwave_8h_ab4c43868f82ac39d57753709d10f0b6e}
+\hypertarget{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{\index{readwave.\+h@{readwave.\+h}!data@{data}}
+\index{data@{data}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}char data\mbox{[}4\mbox{]}}}\label{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}
+\hypertarget{readwave_8h_ac58e5f06256d84fec58ae9fec511720f}{\index{readwave.\+h@{readwave.\+h}!File\+Length@{File\+Length}}
+\index{File\+Length@{File\+Length}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{File\+Length}]{\setlength{\rightskip}{0pt plus 5cm}int File\+Length}}\label{readwave_8h_ac58e5f06256d84fec58ae9fec511720f}
+\hypertarget{readwave_8h_af277815162ab1e75c9d6d122623f1ff5}{\index{readwave.\+h@{readwave.\+h}!Format\+Category@{Format\+Category}}
+\index{Format\+Category@{Format\+Category}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Format\+Category}]{\setlength{\rightskip}{0pt plus 5cm}short Format\+Category}}\label{readwave_8h_af277815162ab1e75c9d6d122623f1ff5}
+\hypertarget{readwave_8h_a65eb099a672107f7dc43c2b50e440489}{\index{readwave.\+h@{readwave.\+h}!N\+Bits\+Persample@{N\+Bits\+Persample}}
+\index{N\+Bits\+Persample@{N\+Bits\+Persample}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{N\+Bits\+Persample}]{\setlength{\rightskip}{0pt plus 5cm}short N\+Bits\+Persample}}\label{readwave_8h_a65eb099a672107f7dc43c2b50e440489}
+\hypertarget{readwave_8h_a2a5816e3fa563fe50dee2059b4b6555a}{\index{readwave.\+h@{readwave.\+h}!N\+Channels@{N\+Channels}}
+\index{N\+Channels@{N\+Channels}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{N\+Channels}]{\setlength{\rightskip}{0pt plus 5cm}short N\+Channels}}\label{readwave_8h_a2a5816e3fa563fe50dee2059b4b6555a}
+\hypertarget{readwave_8h_a3015fdedbaa9857669883ffdf71564e7}{\index{readwave.\+h@{readwave.\+h}!no\+Use@{no\+Use}}
+\index{no\+Use@{no\+Use}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{no\+Use}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int no\+Use}}\label{readwave_8h_a3015fdedbaa9857669883ffdf71564e7}
+\hypertarget{readwave_8h_a912424d5472543715491b7dedeb3f17a}{\index{readwave.\+h@{readwave.\+h}!Raw\+Data\+File\+Length@{Raw\+Data\+File\+Length}}
+\index{Raw\+Data\+File\+Length@{Raw\+Data\+File\+Length}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Raw\+Data\+File\+Length}]{\setlength{\rightskip}{0pt plus 5cm}int Raw\+Data\+File\+Length}}\label{readwave_8h_a912424d5472543715491b7dedeb3f17a}
+\hypertarget{readwave_8h_a12ef8e3e41abbf72d68455caebf5f0c2}{\index{readwave.\+h@{readwave.\+h}!R\+I\+F\+F@{R\+I\+F\+F}}
+\index{R\+I\+F\+F@{R\+I\+F\+F}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{R\+I\+F\+F}]{\setlength{\rightskip}{0pt plus 5cm}char R\+I\+F\+F\mbox{[}4\mbox{]}}}\label{readwave_8h_a12ef8e3e41abbf72d68455caebf5f0c2}
+\hypertarget{readwave_8h_a6c4d56517ebb9f8d55e44b7b674fe2e9}{\index{readwave.\+h@{readwave.\+h}!Sample\+Bytes@{Sample\+Bytes}}
+\index{Sample\+Bytes@{Sample\+Bytes}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Sample\+Bytes}]{\setlength{\rightskip}{0pt plus 5cm}int Sample\+Bytes}}\label{readwave_8h_a6c4d56517ebb9f8d55e44b7b674fe2e9}
+\hypertarget{readwave_8h_a3b233521f20f9eae6e9ede3f5cb6eae2}{\index{readwave.\+h@{readwave.\+h}!Sample\+Rate@{Sample\+Rate}}
+\index{Sample\+Rate@{Sample\+Rate}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{Sample\+Rate}]{\setlength{\rightskip}{0pt plus 5cm}int Sample\+Rate}}\label{readwave_8h_a3b233521f20f9eae6e9ede3f5cb6eae2}
+\hypertarget{readwave_8h_a738a44b8d2e92b5ac71eb641ce68928d}{\index{readwave.\+h@{readwave.\+h}!W\+A\+V\+Efmt\+\_\+@{W\+A\+V\+Efmt\+\_\+}}
+\index{W\+A\+V\+Efmt\+\_\+@{W\+A\+V\+Efmt\+\_\+}!readwave.\+h@{readwave.\+h}}
+\subsubsection[{W\+A\+V\+Efmt\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}char W\+A\+V\+Efmt\+\_\+\mbox{[}8\mbox{]}}}\label{readwave_8h_a738a44b8d2e92b5ac71eb641ce68928d}

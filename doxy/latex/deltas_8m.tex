@@ -1,0 +1,78 @@
+\hypertarget{deltas_8m}{\section{src/\+Matlab/rastamat/deltas.m File Reference}
+\label{deltas_8m}\index{src/\+Matlab/rastamat/deltas.\+m@{src/\+Matlab/rastamat/deltas.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{rastafilt_8m_ae982e7fdf6081c2350fe3c2b615d995e}{filter} along \hyperlink{deltas_8m_a73a7d55b81aa8520a5992a8461fff41d}{dim} (rows)\%Trim edges \hyperlink{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{d}
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{d}
+\item 
+\hyperlink{deltas_8m_a358bd73ea8cdd8cc2274b2b2e840bbc2}{end} \mbox{[}nr, \hyperlink{deltas_8m_a1e7740c5dbf9c0d12ea0a7c4d5609539}{nc}\mbox{]} = \hyperlink{rastafilt_8m_a777f01fd1c8394e2fbac19f36c7d2f92}{size}(\hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x})
+\item 
+\hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{deltas_8m_a1e7740c5dbf9c0d12ea0a7c4d5609539}{nc}
+\item 
+else actually calculate deltas \\*
+Define window shape \hyperlink{deltas_8m_a3a902b18aeceac57fbd402eab818f355}{hlen} = floor(\hyperlink{deltas_8m_aad57484016654da87125db86f4227ea3}{w}/2)
+\item 
+\hyperlink{deltas_8m_aad57484016654da87125db86f4227ea3}{w} = 2$\ast$\hyperlink{deltas_8m_a3a902b18aeceac57fbd402eab818f355}{hlen} + 1
+\item 
+\hyperlink{deltas_8m_a3b51c79a7f111d2be9d347ac9bfe3abd}{win} = hlen\+:-\/1\+:-\/\hyperlink{deltas_8m_a3a902b18aeceac57fbd402eab818f355}{hlen}
+\item 
+pad \hyperlink{readwave_8h_aa12fa7025612e5f4774f2412dd7f465b}{data} by repeating first \\*
+and last columns \hyperlink{deltas_8m_a46efa1787f8d9121158256fe8a7f3813}{xx} = \mbox{[}repmat(\hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x}(\+:,1),1,\hyperlink{deltas_8m_a3a902b18aeceac57fbd402eab818f355}{hlen}),\hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x},repmat(\hyperlink{rastafilt_8m_ae1674a322a8fdaf497b48f50e749ddac}{x}(\+:,\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end}),1,\hyperlink{deltas_8m_a3a902b18aeceac57fbd402eab818f355}{hlen})\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{deltas_8m_a73a7d55b81aa8520a5992a8461fff41d}{\index{deltas.\+m@{deltas.\+m}!dim@{dim}}
+\index{dim@{dim}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{dim}]{\setlength{\rightskip}{0pt plus 5cm}{\bf filter} along dim (
+\begin{DoxyParamCaption}
+\item[{rows}]{}
+\end{DoxyParamCaption}
+)}}\label{deltas_8m_a73a7d55b81aa8520a5992a8461fff41d}
+
+
+\subsection{Variable Documentation}
+\hypertarget{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{\index{deltas.\+m@{deltas.\+m}!d@{d}}
+\index{d@{d}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{d}]{\setlength{\rightskip}{0pt plus 5cm}Apply the delta {\bf filter} d}}\label{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= deltas(\hyperlink{invpowspec_8m_aa7e1944a3c91c1d7032edca3d14aefb9}{x}, \hyperlink{deltas_8m_aad57484016654da87125db86f4227ea3}{w})
+% D = deltas(X,W)  Calculate the deltas (derivatives) of a sequence
+%    Use a W-point window (W odd, \hyperlink{lpc2spec_8m_af4a04cb5ecdfd53041f3ce812cd7cfc8}{default} 9) \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} calculate deltas using a
+%    simple linear slope.  This mirrors the delta calculation performed 
+%    in feacalc etc.  Each \hyperlink{rastaplp_8m_ad42e2d1ad172100a2cd1338656cf0425}{row} of X \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} filtered separately.
+% 2003-06-30 dpwe@ee.columbia.edu
+
+\hyperlink{rastaplp_8m_a00308daf8d15cb44ae2b111746c10e5c}{if} \hyperlink{fft2barkmx_8m_a0f36f89762390de6548ef01cf1aec807}{nargin} < 2
+  \hyperlink{deltas_8m_aad57484016654da87125db86f4227ea3}{w} = 9
+\end{DoxyCode}
+\hypertarget{deltas_8m_a358bd73ea8cdd8cc2274b2b2e840bbc2}{\index{deltas.\+m@{deltas.\+m}!end@{end}}
+\index{end@{end}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{end}]{\setlength{\rightskip}{0pt plus 5cm}end\mbox{[}nr, {\bf nc}\mbox{]} = {\bf size}({\bf x})}}\label{deltas_8m_a358bd73ea8cdd8cc2274b2b2e840bbc2}
+\hypertarget{deltas_8m_a3a902b18aeceac57fbd402eab818f355}{\index{deltas.\+m@{deltas.\+m}!hlen@{hlen}}
+\index{hlen@{hlen}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{hlen}]{\setlength{\rightskip}{0pt plus 5cm}else actually calculate deltas Define window shape hlen = floor({\bf w}/2)}}\label{deltas_8m_a3a902b18aeceac57fbd402eab818f355}
+\hypertarget{deltas_8m_a1e7740c5dbf9c0d12ea0a7c4d5609539}{\index{deltas.\+m@{deltas.\+m}!nc@{nc}}
+\index{nc@{nc}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{nc}]{\setlength{\rightskip}{0pt plus 5cm}{\bf if} nc}}\label{deltas_8m_a1e7740c5dbf9c0d12ea0a7c4d5609539}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+== 0
+  % empty vector passed in
+\end{DoxyCode}
+\hypertarget{deltas_8m_aad57484016654da87125db86f4227ea3}{\index{deltas.\+m@{deltas.\+m}!w@{w}}
+\index{w@{w}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{w}]{\setlength{\rightskip}{0pt plus 5cm}w = 2$\ast${\bf hlen} + 1}}\label{deltas_8m_aad57484016654da87125db86f4227ea3}
+\hypertarget{deltas_8m_a3b51c79a7f111d2be9d347ac9bfe3abd}{\index{deltas.\+m@{deltas.\+m}!win@{win}}
+\index{win@{win}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{win}]{\setlength{\rightskip}{0pt plus 5cm}win = hlen\+:-\/1\+:-\/{\bf hlen}}}\label{deltas_8m_a3b51c79a7f111d2be9d347ac9bfe3abd}
+\hypertarget{deltas_8m_a46efa1787f8d9121158256fe8a7f3813}{\index{deltas.\+m@{deltas.\+m}!xx@{xx}}
+\index{xx@{xx}!deltas.\+m@{deltas.\+m}}
+\subsubsection[{xx}]{\setlength{\rightskip}{0pt plus 5cm}pad {\bf data} by repeating first and last columns xx = \mbox{[}repmat({\bf x}(\+:,1),1,{\bf hlen}),{\bf x},repmat({\bf x}(\+:,{\bf end}),1,{\bf hlen})\mbox{]}}}\label{deltas_8m_a46efa1787f8d9121158256fe8a7f3813}

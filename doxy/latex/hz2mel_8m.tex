@@ -1,0 +1,105 @@
+\hypertarget{hz2mel_8m}{\section{src/\+Matlab/rastamat/hz2mel.m File Reference}
+\label{hz2mel_8m}\index{src/\+Matlab/rastamat/hz2mel.\+m@{src/\+Matlab/rastamat/hz2mel.\+m}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+the magic which \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} the ratio \\*
+needed \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} get from Hz \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} Hz in \\*
+and \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} $\ast$almost $\ast$the ratio \\*
+between Hz and the preceding \\*
+linear \hyperlink{rastafilt_8m_ae982e7fdf6081c2350fe3c2b615d995e}{filter} center at \hyperlink{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}{Hz} (actually 1000/933.\+33333=1.\+07142857142857 and exp(log(6.\+4)/27)=1.\+07117028749447) linpts
+\item 
+fill in parts separately \hyperlink{hz2mel_8m_ae56357f48a1fcd25e438c63c48f25c5c}{z} (linpts)
+\item 
+\hyperlink{hz2mel_8m_af687e174fd3ad622ccd626852322ff8f}{z} ($\sim$linpts)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{vec__file__read_8m_a3199327ddc943b0ec6f0d5f78b669cb7}{function} \hyperlink{hz2mel_8m_a25ed1bcb423b0b7200f485fc5ff71c8e}{z}
+\item 
+\hyperlink{lpc2spec_8m_a75a3ccc1a712583b6c4b21b94514a7b9}{end} \hyperlink{process__options_8m_a04be3c85cffcdf33052245c86574cd3d}{if} \hyperlink{hz2mel_8m_a138e8ddcf66a552a5b3847ba1cf06f66}{htk}
+\item 
+else \hyperlink{fft2melmx_8m_aaaaf395dc64245882edd7e302d7a6e7c}{Mel} fn \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} match Slaney s \\*
+Auditory Toolbox mfcc m \hyperlink{hz2mel_8m_a09b3097bd5d3eb61a517e2a6e8ad476c}{f\+\_\+0} = 0
+\item 
+\hyperlink{hz2mel_8m_a50dbcb48affa3d538251bb767da3893a}{f\+\_\+sp} = 200/3
+\item 
+\hyperlink{hz2mel_8m_a4f0a93798efb89c33116104fab33fffe}{brkfrq} = 1000
+\item 
+\hyperlink{hz2mel_8m_a6ba8b8df5de37e95918818cb548164f6}{brkpt} = (\hyperlink{mel2hz_8m_a4f0a93798efb89c33116104fab33fffe}{brkfrq} -\/ \hyperlink{mel2hz_8m_abb40316cc3828b44fcd6357c5a3826f8}{f\+\_\+0})/\hyperlink{mel2hz_8m_a50dbcb48affa3d538251bb767da3893a}{f\+\_\+sp}
+\item 
+starting mel \hyperlink{process__options_8m_a1ef8397832aedb74037d4dcce949657d}{value} for log region \hyperlink{hz2mel_8m_a4436119089a153b7ec7c83258c6e407f}{logstep} = exp(log(6.\+4)/27)
+\item 
+the magic which \hyperlink{fft2melmx_8m_ae072eb1618836a445d4fa5474ba1b87d}{is} the ratio \\*
+needed \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} get from \hyperlink{mel2hz_8m_aa9f853c09059a257b0d19e837109d79b}{Hz} \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} \hyperlink{mel2hz_8m_aa9f853c09059a257b0d19e837109d79b}{Hz} in \hyperlink{hz2mel_8m_ad2d26b8ed5da61dc961ec22aa90c4ac3}{steps}
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}{\index{hz2mel.\+m@{hz2mel.\+m}!Hz@{Hz}}
+\index{Hz@{Hz}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{Hz}]{\setlength{\rightskip}{0pt plus 5cm}the magic which {\bf is} the ratio needed {\bf to} get from Hz {\bf to} Hz in and {\bf is}$\ast$ almost$\ast$ the ratio between Hz and the preceding linear {\bf filter} center at Hz (
+\begin{DoxyParamCaption}
+\item[{actually 1000/933.}]{33333 = {\ttfamily 1.07142857142857~and~exp(log(6.4)/27)=1.07117028749447}}
+\end{DoxyParamCaption}
+)}}\label{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}
+\hypertarget{hz2mel_8m_ae56357f48a1fcd25e438c63c48f25c5c}{\index{hz2mel.\+m@{hz2mel.\+m}!z@{z}}
+\index{z@{z}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{z}]{\setlength{\rightskip}{0pt plus 5cm}fill in parts separately z (
+\begin{DoxyParamCaption}
+\item[{linpts}]{}
+\end{DoxyParamCaption}
+)}}\label{hz2mel_8m_ae56357f48a1fcd25e438c63c48f25c5c}
+\hypertarget{hz2mel_8m_af687e174fd3ad622ccd626852322ff8f}{\index{hz2mel.\+m@{hz2mel.\+m}!z@{z}}
+\index{z@{z}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{z}]{\setlength{\rightskip}{0pt plus 5cm}z (
+\begin{DoxyParamCaption}
+\item[{$\sim$}]{linpts}
+\end{DoxyParamCaption}
+)}}\label{hz2mel_8m_af687e174fd3ad622ccd626852322ff8f}
+
+
+\subsection{Variable Documentation}
+\hypertarget{hz2mel_8m_a4f0a93798efb89c33116104fab33fffe}{\index{hz2mel.\+m@{hz2mel.\+m}!brkfrq@{brkfrq}}
+\index{brkfrq@{brkfrq}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{brkfrq}]{\setlength{\rightskip}{0pt plus 5cm}brkfrq = 1000}}\label{hz2mel_8m_a4f0a93798efb89c33116104fab33fffe}
+\hypertarget{hz2mel_8m_a6ba8b8df5de37e95918818cb548164f6}{\index{hz2mel.\+m@{hz2mel.\+m}!brkpt@{brkpt}}
+\index{brkpt@{brkpt}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{brkpt}]{\setlength{\rightskip}{0pt plus 5cm}brkpt = ({\bf brkfrq} -\/ {\bf f\+\_\+0})/{\bf f\+\_\+sp}}}\label{hz2mel_8m_a6ba8b8df5de37e95918818cb548164f6}
+\hypertarget{hz2mel_8m_a09b3097bd5d3eb61a517e2a6e8ad476c}{\index{hz2mel.\+m@{hz2mel.\+m}!f\+\_\+0@{f\+\_\+0}}
+\index{f\+\_\+0@{f\+\_\+0}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{f\+\_\+0}]{\setlength{\rightskip}{0pt plus 5cm}else {\bf Mel} fn {\bf to} match Slaney s Auditory Toolbox mfcc m f\+\_\+0 = 0}}\label{hz2mel_8m_a09b3097bd5d3eb61a517e2a6e8ad476c}
+\hypertarget{hz2mel_8m_a50dbcb48affa3d538251bb767da3893a}{\index{hz2mel.\+m@{hz2mel.\+m}!f\+\_\+sp@{f\+\_\+sp}}
+\index{f\+\_\+sp@{f\+\_\+sp}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{f\+\_\+sp}]{\setlength{\rightskip}{0pt plus 5cm}f\+\_\+sp = 200/3}}\label{hz2mel_8m_a50dbcb48affa3d538251bb767da3893a}
+\hypertarget{hz2mel_8m_a138e8ddcf66a552a5b3847ba1cf06f66}{\index{hz2mel.\+m@{hz2mel.\+m}!htk@{htk}}
+\index{htk@{htk}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{htk}]{\setlength{\rightskip}{0pt plus 5cm}{\bf end} {\bf if} htk}}\label{hz2mel_8m_a138e8ddcf66a552a5b3847ba1cf06f66}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+== 1
+  \hyperlink{hz2mel_8m_a25ed1bcb423b0b7200f485fc5ff71c8e}{z} = 2595 * log10(1+\hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f}/700)
+\end{DoxyCode}
+\hypertarget{hz2mel_8m_a4436119089a153b7ec7c83258c6e407f}{\index{hz2mel.\+m@{hz2mel.\+m}!logstep@{logstep}}
+\index{logstep@{logstep}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{logstep}]{\setlength{\rightskip}{0pt plus 5cm}starting mel {\bf value} for log region logstep = exp(log(6.\+4)/27)}}\label{hz2mel_8m_a4436119089a153b7ec7c83258c6e407f}
+\hypertarget{hz2mel_8m_ad2d26b8ed5da61dc961ec22aa90c4ac3}{\index{hz2mel.\+m@{hz2mel.\+m}!steps@{steps}}
+\index{steps@{steps}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{steps}]{\setlength{\rightskip}{0pt plus 5cm}the magic which {\bf is} the ratio needed {\bf to} get from {\bf Hz} {\bf to} {\bf Hz} in steps}}\label{hz2mel_8m_ad2d26b8ed5da61dc961ec22aa90c4ac3}
+\hypertarget{hz2mel_8m_a25ed1bcb423b0b7200f485fc5ff71c8e}{\index{hz2mel.\+m@{hz2mel.\+m}!z@{z}}
+\index{z@{z}!hz2mel.\+m@{hz2mel.\+m}}
+\subsubsection[{z}]{\setlength{\rightskip}{0pt plus 5cm}z}}\label{hz2mel_8m_a25ed1bcb423b0b7200f485fc5ff71c8e}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= hz2mel(\hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f},\hyperlink{hz2mel_8m_a138e8ddcf66a552a5b3847ba1cf06f66}{htk})
+%  \hyperlink{hz2mel_8m_a25ed1bcb423b0b7200f485fc5ff71c8e}{z} = hz2mel(\hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f},\hyperlink{hz2mel_8m_a138e8ddcf66a552a5b3847ba1cf06f66}{htk})
+%  Convert frequencies \hyperlink{mel2hz_8m_a633de4b0c14ca52ea2432a3c8a5c4c31}{f} (in \hyperlink{hz2mel_8m_aa9f853c09059a257b0d19e837109d79b}{Hz}) \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to} mel \textcolor{stringliteral}{'scale'}.
+%  Optional \hyperlink{hz2mel_8m_a138e8ddcf66a552a5b3847ba1cf06f66}{htk} = 1 uses the mel axis defined in the HTKBook
+%  otherwise use Slaney\textcolor{stringliteral}{'s formula}
+\textcolor{stringliteral}{% 2005-04-19 dpwe@ee.columbia.edu}
+\textcolor{stringliteral}{}
+\textcolor{stringliteral}{if nargin < 2}
+\textcolor{stringliteral}{  htk = 0}
+\end{DoxyCode}

@@ -1,1 +1,1 @@
-add_library(${CONFIGURE} tool.cpp)
+add_library(${CONFIGURE} tool.cpp SerialFiles.cpp)

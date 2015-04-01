@@ -1,0 +1,23 @@
+var searchData=
+[
+  ['c',['c',['../class_node.html#a61aff5c2aea5a34a609ffcbdb88fde6f',1,'Node::c()'],['../lpc2spec_8m.html#aa49cfdd4fa4d74d71f78a001a1b635d0',1,'c():&#160;lpc2spec.m']]],
+  ['callback',['callback',['../class_capture.html#a8011f682b8e253387a717134b454c2d4',1,'Capture']]],
+  ['cambridge',['Cambridge',['../readhtk_8m.html#ab2a242f63989527e32c320e78a6ef4bf',1,'readhtk.m']]],
+  ['case',['case',['../process__options_8m.html#a15ca2169608190dc565fa0f66c40e1a5',1,'process_options.m']]],
+  ['cases',['cases',['../process__options_8m.html#a9298f0c90b830f34f4b9d0f06adf674e',1,'process_options.m']]],
+  ['cc',['cc',['../readhtk_8m.html#a41fcba09f2bdcdf315ba4119dc7978dd',1,'readhtk.m']]],
+  ['cep',['cep',['../invmelfcc_8m.html#aa6f5a931726c3db771db99e063e8b3dd',1,'invmelfcc.m']]],
+  ['ceps_5fnum',['CEPS_NUM',['../configure__feature_8h.html#a85b28565cc223544144d3246c38bc611',1,'configure_feature.h']]],
+  ['cepstra',['cepstra',['../melfcc_8m.html#ad0f1a7920e6f39da3864c784a1cc361c',1,'melfcc.m']]],
+  ['change',['change',['../struct_count.html#a5120be3eaded0f29b6ac96b0da96bef5',1,'Count']]],
+  ['clusterset',['ClusterSet',['../class_k_mean_state.html#af3d3973abdeb6f4659b46ec271be52d7',1,'KMeanState']]],
+  ['code',['code',['../readhtk_8m.html#a6c405b503ff06468e93404f61149fd10',1,'readhtk.m']]],
+  ['col',['col',['../rastaplp_8m.html#a80db10ba8808399dd69164a092cf2920',1,'rastaplp.m']]],
+  ['columndtwres',['columnDtwRes',['../class_wave_feature_o_p.html#a8341cc94705d4f96a53e61b397e26641',1,'WaveFeatureOP']]],
+  ['columnidx',['columnIdx',['../class_wave_feature_o_p.html#a506bd025079326383412704dd93c402d',1,'WaveFeatureOP']]],
+  ['columnnxt',['columnNxt',['../class_wave_feature_o_p.html#ad14d7d2758bef1c990adda645f1a1d34',1,'WaveFeatureOP']]],
+  ['constamp',['constamp',['../fft2melmx_8m.html#a8366c6c2d60bcb047c3ed0794ec0e8cd',1,'fft2melmx.m']]],
+  ['cost',['cost',['../struct_dtw___column___node.html#a4da0707e24783e6dac4af2df75089ad8',1,'Dtw_Column_Node::cost()'],['../struct_seq_edge.html#a7bf5b4558efd51b94a4dd4c80a2294bd',1,'SeqEdge::cost()']]],
+  ['cstory',['cStory',['../class_a_p_p.html#a599d2539b3815e510bf1f1be28e4047f',1,'APP']]],
+  ['cvar',['cvar',['../class_gaussian.html#a2a66072c73e3705d524ff5a8380b1695',1,'Gaussian']]]
+];

@@ -1,0 +1,30 @@
+./\+Feature ├── C\+Make\+Lists.\+txt ├── \hyperlink{_feature_8cpp}{Feature.\+cpp} ├── \hyperlink{_feature_8h}{Feature.\+h} ├── \hyperlink{_feature_extractor_8cpp}{Feature\+Extractor.\+cpp} ├── \hyperlink{_feature_extractor_8h}{Feature\+Extractor.\+h} ├── \hyperlink{_h_m_m_automaton_8cpp}{H\+M\+M\+Automaton.\+cpp} ├── \hyperlink{_h_m_m_automaton_8h}{H\+M\+M\+Automaton.\+h} ; H\+M\+M 自动机的基类 ├── \hyperlink{_h_m_m_automaton_set_8cpp}{H\+M\+M\+Automaton\+Set.\+cpp} ; 存储多个templates的自动机 ├── \hyperlink{_h_m_m_automaton_set_8h}{H\+M\+M\+Automaton\+Set.\+h} ├── \hyperlink{_h_m_m_k_mean_automaton_8h}{H\+M\+M\+K\+Mean\+Automaton.\+h} ; K\+Mean 自动机 ├── \hyperlink{_h_m_m_kmean_automaton_8cpp}{H\+M\+M\+Kmean\+Automaton.\+cpp} ├── \hyperlink{_h_m_m_recognition_8cpp}{H\+M\+M\+Recognition.\+cpp} ├── \hyperlink{_h_m_m_recognition_8h}{H\+M\+M\+Recognition.\+h} ; 前端， 提供 train(), recognition(wav\+\_\+feature) 接口 ├── \hyperlink{_h_m_m_soft_automaton_8cpp}{H\+M\+M\+Soft\+Automaton.\+cpp} ├── \hyperlink{_h_m_m_soft_automaton_8h}{H\+M\+M\+Soft\+Automaton.\+h} ; Soft 自动机 ├── \hyperlink{_h_m_m_state_8cpp}{H\+M\+M\+State.\+cpp} ├── \hyperlink{_h_m_m_state_8h}{H\+M\+M\+State.\+h} ; State 基类 ├── \hyperlink{_k_mean_state_8cpp}{K\+Mean\+State.\+cpp} ├── \hyperlink{_k_mean_state_8h}{K\+Mean\+State.\+h} ; K\+Mean State ， 提供gauss\+Train() node\+Cost() 接口 ├── \hyperlink{_soft_state_8cpp}{Soft\+State.\+cpp} ├── \hyperlink{_soft_state_8h}{Soft\+State.\+h} ; Soft State, 同上 ├── \hyperlink{_wave_feature_o_p_8cpp}{Wave\+Feature\+O\+P.\+cpp} ├── \hyperlink{_wave_feature_o_p_8h}{Wave\+Feature\+O\+P.\+h} ; 在\+H\+M\+M中充当存储一个wav(template) 的feature的作用，调用 .\hyperlink{calc_dist_8h_a32b39d3c55a4c1695596bd1143f4ae24}{size()} 和 \mbox{[}\mbox{]} 遍历它 ├── \hyperlink{_wave_feature_o_p_set_8cpp}{Wave\+Feature\+O\+P\+Set.\+cpp} ├── \hyperlink{_wave_feature_o_p_set_8h}{Wave\+Feature\+O\+P\+Set.\+h} ; 模板库, H\+M\+M中的\+Automaton\+Set 继承自它， 方便从目录中load 数据 ├── \hyperlink{_word_dtw_recognition_8cpp}{Word\+Dtw\+Recognition.\+cpp} ├── \hyperlink{_word_dtw_recognition_8h}{Word\+Dtw\+Recognition.\+h} ; Part 1 前端 ├── \hyperlink{mathtool_8cpp}{mathtool.\+cpp} └── \hyperlink{mathtool_8h}{mathtool.\+h}
+
+\subsection*{\hyperlink{class_gaussian}{Gaussian}}
+
+分成了两个类， K\+Mean 有的信息是一个vector$<$\+Wave\+Feature\+O\+P$>$ $\ast$ptr, 和vector$<$ pair$<$int, int$>$ $>$ edge\+Points;
+
+其中 ptr vector 每一个元素对应一个模板wav， 而edge\+Points 存储对应模板在这个state的开始下标和结束下标
+
+Soft 有的信息是一个vector$<$\+Wave\+Feature\+O\+P$>$ $\ast$ptr, 和\+Matrix$<$double$>$ 概率;
+
+\subsection*{测试驱动}
+
+!!!! 记得在./templates 下面录一个wav
+\begin{DoxyItemize}
+\item ./hmm\+\_\+demo -\/d input(.wav) \hyperlink{hmm__demo_8cpp}{hmm\+\_\+demo.\+cpp}\+: \begin{DoxyVerb}68 hmm.setStateType(HMMState::KMEAN);
+69 //hmm.setStateType(HMMState::SOFT);
+\end{DoxyVerb}
+
+\end{DoxyItemize}
+
+可以设置algorithm
+
+
+\begin{DoxyItemize}
+\item configure\+\_\+hmm 可以设置默认的gaussian分段数
+\item K\+M\+E\+A\+N 在平均分段的时候调用了一次train
+\item Soft 在平均分布的时候（概率都是1.0/state\+Number) 调用一次train
+
+写成两个类是为了节约\+K\+M\+E\+A\+N分段的开销。。你可以试试写个\+Gauss类之类的把他们结合一下，能给我提供借口就行 
+\end{DoxyItemize}

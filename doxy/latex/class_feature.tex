@@ -1,0 +1,245 @@
+\hypertarget{class_feature}{\section{Feature Class Reference}
+\label{class_feature}\index{Feature@{Feature}}
+}
+
+
+{\ttfamily \#include $<$Feature.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264}{Feature\+Type} \{ \hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264ad1f562be2a0e47fb440219948324ab11}{Raw}, 
+\hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264aff7fd054901faaf35c8d02a3aeefef66}{Delta}, 
+\hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264ac9a34ecf21436bc7a31921d2956b1680}{Double\+Delta}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_feature_a06d191f6daea88e0029440a2137f2e07}{Feature} ()
+\item 
+\hyperlink{class_feature}{Feature} \hyperlink{class_feature_a90f1fbc54bfae85f7edf8234ffbfd29c}{operator$\ast$} (const \hyperlink{class_feature}{Feature} \&T) const 
+\item 
+\hyperlink{class_feature}{Feature} \hyperlink{class_feature_a7e9d7aa483a2252b914db28edf0c981f}{sqr} ()
+\item 
+\hyperlink{class_feature}{Feature} \hyperlink{class_feature_a733baf36f22566c35aca39fd29236e0f}{operator+} (const \hyperlink{class_feature}{Feature} \&T) const 
+\item 
+double \hyperlink{class_feature_a9c94cc178ad282294fa94a795eb0d401}{operator-\/} (const \hyperlink{class_feature}{Feature} \&T)
+\item 
+\hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264}{Feature\+Type} \hyperlink{class_feature_a267870d668dfb6c245b00633af6bcb93}{get\+Feature\+Type} ()
+\item 
+\hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264}{Feature\+Type} \hyperlink{class_feature_a4ae182413e415b449023c933c9b7f04d}{set\+Feature\+Type} (\hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264}{Feature\+Type} \hyperlink{class_feature_a9325ce63b0c3062d70ad02a0e51e4ed3}{type})
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_feature_a6eb221814384244f007201c41c95f372}{fill\+Delta} ()
+\item 
+\hyperlink{tool_8h_ab71a1f2fb85a32402ced5c483105b38e}{S\+P\+\_\+\+R\+E\+S\+U\+L\+T} \hyperlink{class_feature_a301410df571143da9c1a584246925122}{fill\+Double\+Delta} ()
+\item 
+void \hyperlink{class_feature_ab8e0691828f51eddd940bb37c90d7d4f}{push\+\_\+back} (double \hyperlink{deltas_8m_ace9cdca9c1b355d9b321fd7f5ec2026b}{d})
+\item 
+\hyperlink{class_feature}{Feature} \hyperlink{class_feature_a297dc1375d2e371f1c0ec2cf01d6b9b7}{operator$\ast$} (double \hyperlink{lpc2spec_8m_aa49cfdd4fa4d74d71f78a001a1b635d0}{c}) const 
+\item 
+void \hyperlink{class_feature_a5f2a277917e11f2b7ae6a3f8a63269b8}{resize} (int s)
+\item 
+const double \& \hyperlink{class_feature_acd67423c3e4b1ea3ddbd257a5614b728}{operator\mbox{[}$\,$\mbox{]}} (int inx) const 
+\item 
+double \& \hyperlink{class_feature_abb9d8d94d76d810ff1e27c520635c3d5}{operator\mbox{[}$\,$\mbox{]}} (int inx)
+\item 
+double $\ast$ \hyperlink{class_feature_aae18201782746fa7c307a23f04bf81e7}{raw\+Data} ()
+\item 
+int \hyperlink{class_feature_a642422dbea17738eca73be4467a683ea}{size} () const 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{class_feature_aa0bc0278d8eab284993d53d300943730}{better} (double a, double b)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const double \hyperlink{class_feature_ac3083a52765fa23ddccc5a90058fc2d8}{Illegal\+Dist} = 1e18
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ double $>$ \hyperlink{class_feature_a6da19ed79bc614409027cf0cf61933a1}{data}
+\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_feature_a0750e4990eabfcfb38b2fd939de18b7b}{dump\+Delta} (int from, int \hyperlink{rastaplp_8m_a41c60bbfbe5db430f286f173be10a1e6}{to}, int siz)
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_feature_afa43293b1c8369e9ff47f6eedb7ad264}{Feature\+Type} \hyperlink{class_feature_a9325ce63b0c3062d70ad02a0e51e4ed3}{type}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_feature_afa43293b1c8369e9ff47f6eedb7ad264}{\index{Feature@{Feature}!Feature\+Type@{Feature\+Type}}
+\index{Feature\+Type@{Feature\+Type}!Feature@{Feature}}
+\subsubsection[{Feature\+Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Feature\+::\+Feature\+Type}}}\label{class_feature_afa43293b1c8369e9ff47f6eedb7ad264}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{Raw@{Raw}!Feature@{Feature}}\index{Feature@{Feature}!Raw@{Raw}}\item[{\em 
+\hypertarget{class_feature_afa43293b1c8369e9ff47f6eedb7ad264ad1f562be2a0e47fb440219948324ab11}{Raw}\label{class_feature_afa43293b1c8369e9ff47f6eedb7ad264ad1f562be2a0e47fb440219948324ab11}
+}]\index{Delta@{Delta}!Feature@{Feature}}\index{Feature@{Feature}!Delta@{Delta}}\item[{\em 
+\hypertarget{class_feature_afa43293b1c8369e9ff47f6eedb7ad264aff7fd054901faaf35c8d02a3aeefef66}{Delta}\label{class_feature_afa43293b1c8369e9ff47f6eedb7ad264aff7fd054901faaf35c8d02a3aeefef66}
+}]\index{Double\+Delta@{Double\+Delta}!Feature@{Feature}}\index{Feature@{Feature}!Double\+Delta@{Double\+Delta}}\item[{\em 
+\hypertarget{class_feature_afa43293b1c8369e9ff47f6eedb7ad264ac9a34ecf21436bc7a31921d2956b1680}{Double\+Delta}\label{class_feature_afa43293b1c8369e9ff47f6eedb7ad264ac9a34ecf21436bc7a31921d2956b1680}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_feature_a06d191f6daea88e0029440a2137f2e07}{\index{Feature@{Feature}!Feature@{Feature}}
+\index{Feature@{Feature}!Feature@{Feature}}
+\subsubsection[{Feature}]{\setlength{\rightskip}{0pt plus 5cm}Feature\+::\+Feature (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_a06d191f6daea88e0029440a2137f2e07}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_feature_aa0bc0278d8eab284993d53d300943730}{\index{Feature@{Feature}!better@{better}}
+\index{better@{better}!Feature@{Feature}}
+\subsubsection[{better}]{\setlength{\rightskip}{0pt plus 5cm}static bool Feature\+::better (
+\begin{DoxyParamCaption}
+\item[{double}]{a, }
+\item[{double}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}}\label{class_feature_aa0bc0278d8eab284993d53d300943730}
+\hypertarget{class_feature_a0750e4990eabfcfb38b2fd939de18b7b}{\index{Feature@{Feature}!dump\+Delta@{dump\+Delta}}
+\index{dump\+Delta@{dump\+Delta}!Feature@{Feature}}
+\subsubsection[{dump\+Delta}]{\setlength{\rightskip}{0pt plus 5cm}void Feature\+::dump\+Delta (
+\begin{DoxyParamCaption}
+\item[{int}]{from, }
+\item[{int}]{to, }
+\item[{int}]{siz}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}}\label{class_feature_a0750e4990eabfcfb38b2fd939de18b7b}
+\hypertarget{class_feature_a6eb221814384244f007201c41c95f372}{\index{Feature@{Feature}!fill\+Delta@{fill\+Delta}}
+\index{fill\+Delta@{fill\+Delta}!Feature@{Feature}}
+\subsubsection[{fill\+Delta}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} Feature\+::fill\+Delta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_feature_a6eb221814384244f007201c41c95f372}
+\hypertarget{class_feature_a301410df571143da9c1a584246925122}{\index{Feature@{Feature}!fill\+Double\+Delta@{fill\+Double\+Delta}}
+\index{fill\+Double\+Delta@{fill\+Double\+Delta}!Feature@{Feature}}
+\subsubsection[{fill\+Double\+Delta}]{\setlength{\rightskip}{0pt plus 5cm}{\bf S\+P\+\_\+\+R\+E\+S\+U\+L\+T} Feature\+::fill\+Double\+Delta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_feature_a301410df571143da9c1a584246925122}
+\hypertarget{class_feature_a267870d668dfb6c245b00633af6bcb93}{\index{Feature@{Feature}!get\+Feature\+Type@{get\+Feature\+Type}}
+\index{get\+Feature\+Type@{get\+Feature\+Type}!Feature@{Feature}}
+\subsubsection[{get\+Feature\+Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature\+::\+Feature\+Type} Feature\+::get\+Feature\+Type (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_feature_a267870d668dfb6c245b00633af6bcb93}
+\hypertarget{class_feature_a90f1fbc54bfae85f7edf8234ffbfd29c}{\index{Feature@{Feature}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Feature@{Feature}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature} Feature\+::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Feature} \&}]{T}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_a90f1fbc54bfae85f7edf8234ffbfd29c}
+\hypertarget{class_feature_a297dc1375d2e371f1c0ec2cf01d6b9b7}{\index{Feature@{Feature}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Feature@{Feature}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature} Feature\+::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{double}]{c}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_a297dc1375d2e371f1c0ec2cf01d6b9b7}
+\hypertarget{class_feature_a733baf36f22566c35aca39fd29236e0f}{\index{Feature@{Feature}!operator+@{operator+}}
+\index{operator+@{operator+}!Feature@{Feature}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature} Feature\+::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Feature} \&}]{T}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_a733baf36f22566c35aca39fd29236e0f}
+\hypertarget{class_feature_a9c94cc178ad282294fa94a795eb0d401}{\index{Feature@{Feature}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Feature@{Feature}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}double Feature\+::operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Feature} \&}]{T}
+\end{DoxyParamCaption}
+)}}\label{class_feature_a9c94cc178ad282294fa94a795eb0d401}
+\hypertarget{class_feature_acd67423c3e4b1ea3ddbd257a5614b728}{\index{Feature@{Feature}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Feature@{Feature}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}const double\& Feature\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{inx}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_acd67423c3e4b1ea3ddbd257a5614b728}
+\hypertarget{class_feature_abb9d8d94d76d810ff1e27c520635c3d5}{\index{Feature@{Feature}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Feature@{Feature}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}double\& Feature\+::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{int}]{inx}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_abb9d8d94d76d810ff1e27c520635c3d5}
+\hypertarget{class_feature_ab8e0691828f51eddd940bb37c90d7d4f}{\index{Feature@{Feature}!push\+\_\+back@{push\+\_\+back}}
+\index{push\+\_\+back@{push\+\_\+back}!Feature@{Feature}}
+\subsubsection[{push\+\_\+back}]{\setlength{\rightskip}{0pt plus 5cm}void Feature\+::push\+\_\+back (
+\begin{DoxyParamCaption}
+\item[{double}]{d}
+\end{DoxyParamCaption}
+)}}\label{class_feature_ab8e0691828f51eddd940bb37c90d7d4f}
+\hypertarget{class_feature_aae18201782746fa7c307a23f04bf81e7}{\index{Feature@{Feature}!raw\+Data@{raw\+Data}}
+\index{raw\+Data@{raw\+Data}!Feature@{Feature}}
+\subsubsection[{raw\+Data}]{\setlength{\rightskip}{0pt plus 5cm}double$\ast$ Feature\+::raw\+Data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_aae18201782746fa7c307a23f04bf81e7}
+\hypertarget{class_feature_a5f2a277917e11f2b7ae6a3f8a63269b8}{\index{Feature@{Feature}!resize@{resize}}
+\index{resize@{resize}!Feature@{Feature}}
+\subsubsection[{resize}]{\setlength{\rightskip}{0pt plus 5cm}void Feature\+::resize (
+\begin{DoxyParamCaption}
+\item[{int}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_a5f2a277917e11f2b7ae6a3f8a63269b8}
+\hypertarget{class_feature_a4ae182413e415b449023c933c9b7f04d}{\index{Feature@{Feature}!set\+Feature\+Type@{set\+Feature\+Type}}
+\index{set\+Feature\+Type@{set\+Feature\+Type}!Feature@{Feature}}
+\subsubsection[{set\+Feature\+Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature\+::\+Feature\+Type} Feature\+::set\+Feature\+Type (
+\begin{DoxyParamCaption}
+\item[{{\bf Feature\+::\+Feature\+Type}}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_feature_a4ae182413e415b449023c933c9b7f04d}
+\hypertarget{class_feature_a642422dbea17738eca73be4467a683ea}{\index{Feature@{Feature}!size@{size}}
+\index{size@{size}!Feature@{Feature}}
+\subsubsection[{size}]{\setlength{\rightskip}{0pt plus 5cm}int Feature\+::size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_a642422dbea17738eca73be4467a683ea}
+\hypertarget{class_feature_a7e9d7aa483a2252b914db28edf0c981f}{\index{Feature@{Feature}!sqr@{sqr}}
+\index{sqr@{sqr}!Feature@{Feature}}
+\subsubsection[{sqr}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature} Feature\+::sqr (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_feature_a7e9d7aa483a2252b914db28edf0c981f}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_feature_a6da19ed79bc614409027cf0cf61933a1}{\index{Feature@{Feature}!data@{data}}
+\index{data@{data}!Feature@{Feature}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$double$>$ Feature\+::data\hspace{0.3cm}{\ttfamily [protected]}}}\label{class_feature_a6da19ed79bc614409027cf0cf61933a1}
+\hypertarget{class_feature_ac3083a52765fa23ddccc5a90058fc2d8}{\index{Feature@{Feature}!Illegal\+Dist@{Illegal\+Dist}}
+\index{Illegal\+Dist@{Illegal\+Dist}!Feature@{Feature}}
+\subsubsection[{Illegal\+Dist}]{\setlength{\rightskip}{0pt plus 5cm}const double Feature\+::\+Illegal\+Dist = 1e18\hspace{0.3cm}{\ttfamily [static]}}}\label{class_feature_ac3083a52765fa23ddccc5a90058fc2d8}
+\hypertarget{class_feature_a9325ce63b0c3062d70ad02a0e51e4ed3}{\index{Feature@{Feature}!type@{type}}
+\index{type@{type}!Feature@{Feature}}
+\subsubsection[{type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Feature\+Type} Feature\+::type\hspace{0.3cm}{\ttfamily [private]}}}\label{class_feature_a9325ce63b0c3062d70ad02a0e51e4ed3}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/\+Feature/\hyperlink{_feature_8h}{Feature.\+h}\item 
+src/\+Feature/\hyperlink{_feature_8cpp}{Feature.\+cpp}\end{DoxyCompactItemize}

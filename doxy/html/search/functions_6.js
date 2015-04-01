@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['f',['F',['../lpc2spec_8m.html#ac21c8b0c2d98b1d274d9dc016c794ca3',1,'F(c, 1:length(ix)):&#160;lpc2spec.m'],['../mel2hz_8m.html#a5108a0c357fd74ef5a445f558a0e9e52',1,'f(linpts):&#160;mel2hz.m'],['../mel2hz_8m.html#a09113e60f6e326656763bae1603c0eb5',1,'f(~linpts):&#160;mel2hz.m']]],
+  ['feature',['Feature',['../class_feature.html#a06d191f6daea88e0029440a2137f2e07',1,'Feature']]],
+  ['featureextractor',['FeatureExtractor',['../class_feature_extractor.html#a58c705d663551bfa7baea3d75614311f',1,'FeatureExtractor::FeatureExtractor()'],['../class_feature_extractor.html#a3d1fbccbdb76c9d5f92d6db16d3ba697',1,'FeatureExtractor::FeatureExtractor(int threadNum)']]],
+  ['fft',['fft',['../mathtool_8cpp.html#a49a1bc18ebac546fb15ed90d8dfa9650',1,'fft(cp *a, int n, int f):&#160;mathtool.cpp'],['../mathtool_8h.html#a49a1bc18ebac546fb15ed90d8dfa9650',1,'fft(cp *a, int n, int f):&#160;mathtool.cpp']]],
+  ['fft2barkmx',['fft2barkmx',['../fft2barkmx_8m.html#a3e8c987803a1b9bdc51de985c263ea32',1,'fft2barkmx.m']]],
+  ['fft2mellog',['fft2MelLog',['../class_feature_extractor.html#ad7c6446050332a006fc9e02217ddf9e0',1,'FeatureExtractor']]],
+  ['fft2melmx',['fft2melmx',['../fft2melmx_8m.html#a4eb471e684fb4466fdc8f0acb205ceaa',1,'fft2melmx(nfft, sr)*abs(fft(xincols:&#160;fft2melmx.m'],['../fft2melmx_8m.html#a2eada7fb673a1dddb4bde8d79fb7f4d9',1,'fft2melmx(512, 8000, 40, 1, 133.33, 6855.5, 0):&#160;fft2melmx.m']]],
+  ['fftpadding',['fftPadding',['../class_feature_extractor.html#a3d8f6602dc06a559cd369cf9c911b29d',1,'FeatureExtractor']]],
+  ['ffttask',['fftTask',['../class_feature_extractor.html#a42b493ca708ec577e99d58125c108143',1,'FeatureExtractor']]],
+  ['figure',['figure',['../melfcc__demo_8m.html#a39cc4eae8cc13eaea23364936540819f',1,'figure(1):&#160;melfcc_demo.m'],['../melfcc__demo_8m.html#a9e2a746243fa4e45593e154973252d0d',1,'figure(2):&#160;melfcc_demo.m'],['../melfcc__demo_8m.html#a9945b0b3c946d8aab2d9644806bef542',1,'figure(3):&#160;melfcc_demo.m']]],
+  ['filldelta',['fillDelta',['../class_feature.html#a6eb221814384244f007201c41c95f372',1,'Feature']]],
+  ['filldoubledelta',['fillDoubleDelta',['../class_feature.html#a301410df571143da9c1a584246925122',1,'Feature']]],
+  ['fillwaveheader',['FillWaveHeader',['../readwave_8cpp.html#afeedb4d089a5b4d3ec92716add00486c',1,'FillWaveHeader(void *buffer, int raw_wave_len, int sampleRate):&#160;readwave.cpp'],['../readwave_8h.html#afeedb4d089a5b4d3ec92716add00486c',1,'FillWaveHeader(void *buffer, int raw_wave_len, int sampleRate):&#160;readwave.cpp']]],
+  ['filter',['filter',['../rastafilt_8m.html#ae982e7fdf6081c2350fe3c2b615d995e',1,'rastafilt.m']]],
+  ['findbigcluster',['findBigCluster',['../class_k_mean_state.html#af96cd123d3b608877f80b4800c47c30c',1,'KMeanState']]],
+  ['findoraddson',['findOrAddson',['../class_node.html#a6bfc60c5d7a39a5fc67e583c5142ee3b',1,'Node']]],
+  ['formula',['formula',['../bark2hz_8m.html#afe1996b2eff20fcdb55c2912abb06c2c',1,'formula(2003-04-11 dpwe @ee.columbia.edu)%(taken from rasta/audspec.c) hz:&#160;bark2hz.m'],['../hz2bark_8m.html#aec2794b47eba09ca1a3409f62b7b7a34',1,'formula(see bark2hz) z:&#160;hz2bark.m']]],
+  ['forwardcolumn',['forwardColumn',['../class_seq_model.html#a5bdca555363833c1877b9967206a6289',1,'SeqModel::forwardColumn()'],['../class_wave_feature_o_p.html#aa71ceac341c47742cb1ebe09bda1294a',1,'WaveFeatureOP::forwardColumn()']]],
+  ['frequency',['frequency',['../fft2melmx_8m.html#aa373cce97c03f128ec7d3a864adf1601',1,'fft2melmx.m']]],
+  ['fromfilejob',['fromFileJob',['../class_a_p_p.html#ab13dec33bbb35a260982031798af0566',1,'APP::fromFileJob()'],['../class_a_p_p.html#ab13dec33bbb35a260982031798af0566',1,'APP::fromFileJob()']]],
+  ['fullfill',['fullfill',['../class_serial_files.html#a1216fbec74b31e80bb07336ccd8f800b',1,'SerialFiles']]],
+  ['func',['func',['../process__options_8m.html#aecac0810327122bcc551570e20d10f61',1,'func(0, 1, &apos;v&apos;, 2) will assign 0 to x:&#160;process_options.m'],['../process__options_8m.html#afdbae8d5427c41a06329e421d22bed39',1,'func(0, 1, &apos;V&apos;, 2) has the same effect.The function call%%func(0:&#160;process_options.m'],['../process__options_8m.html#a34fb09f32a03e3ef79cda5d6454c4b3d',1,'func(0, 1, &apos;u&apos;, 5, &apos;z&apos;, 2) will yield no warning:&#160;process_options.m']]]
+];
