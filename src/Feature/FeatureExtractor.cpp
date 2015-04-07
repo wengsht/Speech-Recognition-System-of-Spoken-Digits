@@ -255,6 +255,7 @@ SP_RESULT FeatureExtractor::getMelLog(std::vector<double> & melLog, \
 }
 */
 
+/*
 void FeatureExtractor::mulTask(void *in) {
     mul_task_info * task_info = (mul_task_info *) in;
 
@@ -271,6 +272,8 @@ void FeatureExtractor::mulTask(void *in) {
 
     delete task_info;
 }
+*/
+
 SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
         Matrix<double> &wts, \
         Matrix<double> & powSpec) {
@@ -281,7 +284,7 @@ SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
     for(int i = 0;i < r;i++)
         melLog[i].resize(c);
 
-    /*  
+    
     for(int i = 0;i < r;i++) {
         for(int j = 0;j < c;j++) {
             melLog[i][j] = 0.0;
@@ -290,7 +293,8 @@ SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
                 melLog[i][j] += wts[i][k] * powSpec[j][k];
         }
     }
-    */
+    
+    /*  
     ThreadPool threadPool(threadNum);
 
     for(int i = 0;i < r;i++) {
@@ -307,7 +311,8 @@ SP_RESULT FeatureExtractor::MatrixMul01(Matrix<double> & melLog, \
         threadPool.addTask(task_struct);
     }
     threadPool.run();
-
+    */
+    
     return SP_SUCCESS;
 }
 SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
@@ -401,6 +406,7 @@ SP_RESULT FeatureExtractor::preEmph(/* out */std::vector<double> &outs, \
     return SP_SUCCESS;
 }
 
+/*
 void FeatureExtractor::paddingTask(void *in) {
     padding_task_info * info = (padding_task_info *) in;
 
@@ -413,18 +419,20 @@ void FeatureExtractor::paddingTask(void *in) {
 
     delete info;
 }
+*/
 SP_RESULT FeatureExtractor::fftPadding(Matrix<double> & windows) {
     if(windows.size() == 0) return SP_SUCCESS;
     int samplePerWin = windows[0].size();
 
     int nfft = (1 << int(ceil(log(1.0 * samplePerWin)/log(2.0))));
 
-    /*  
+    
     for(int i = 0;i < windows.size();i++) {
         while(windows[i].size() < nfft) 
             windows[i].push_back(0.0);
     }
-    */
+    
+    /* 
     ThreadPool threadPool(threadNum);
     for(int i = 0;i < windows.size();i++) {
         struct sp_task task_struct;
@@ -439,6 +447,7 @@ SP_RESULT FeatureExtractor::fftPadding(Matrix<double> & windows) {
         threadPool.addTask(task_struct);
     }
     threadPool.run();
+    */
 
     return SP_SUCCESS;
 }

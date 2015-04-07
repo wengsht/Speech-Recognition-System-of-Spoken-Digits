@@ -43,22 +43,26 @@ private:
     double (*mel2hzFunc)(double);
 
 private:
+    /*
     static void paddingTask(void *in);
     struct padding_task_info {
         std::vector<double> * window;
         int nfft;
     };
+    */
     static void fftTask(void *in);
     struct fft_task_info {
         std::vector<double> * window;
         std::vector<double> * powWinSpec;
     };
+    /*  
     static void mulTask(void *in);
     struct mul_task_info {
         std::vector<double> * wts;
         Matrix<double> * powSpec;
         std::vector<double> *melLog;
     };
+    */
 protected:
 
 //    std::vector<Feature> melCeps;
