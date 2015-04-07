@@ -12,7 +12,10 @@
 #include <iostream>
 #include <complex>
 
+#ifndef __SpeechRecongnitionSystem__PI__
+#define __SpeechRecongnitionSystem__PI__
 const double PI = std::acos(-1);
+#endif
 
 typedef std::complex<double> cp;
 
