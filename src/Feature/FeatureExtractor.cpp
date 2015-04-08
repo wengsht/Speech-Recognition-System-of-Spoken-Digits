@@ -143,6 +143,7 @@ SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \
     return SP_SUCCESS;
 }
 
+/*
 void FeatureExtractor::fftTask(void *in) {
     fft_task_info * task_info = (fft_task_info *) in;
 
@@ -153,6 +154,7 @@ void FeatureExtractor::fftTask(void *in) {
 
     delete task_info;
 }
+*/
 
 SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
         Matrix<double> &windows) {
@@ -162,12 +164,14 @@ SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
     int siz = windows[0].size();
     std::vector<double> powWinSpec(windows[0].size());
 
-    /*  
+    
     for(int i = 0;i < windows.size(); i++) {
         if(windows[i].size() != siz) continue;
-        powSpec.push_back(windowFFT(powWinSpec, windows[i]));
+        //powSpec.push_back(windowFFT(powWinSpec, windows[i]));
+        windowFFT(powSpec[i], windows[i]);
     }
-    */
+    
+    /*
     ThreadPool threadPool(threadNum);
     for(int i = 0;i < windows.size();i++) {
         sp_task task;
@@ -184,6 +188,7 @@ SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
         threadPool.addTask(task);
     }
     threadPool.run();
+    */
 
     return SP_SUCCESS;
 }
@@ -338,7 +343,7 @@ SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
     return SP_SUCCESS;
 }
 
-std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \
+void FeatureExtractor::windowFFT(std::vector<double> &res, \
         std::vector<double> &data) {
     res.resize(data.size() / 2 + 1);
     std::complex<double> * cp = new std::complex<double>[data.size()];
@@ -357,7 +362,6 @@ std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \
 
     delete [] cp;
 
-    return res;
 }
 
 SP_RESULT FeatureExtractor::windowMul(std::vector<double> &window, \

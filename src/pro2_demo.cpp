@@ -19,7 +19,10 @@ int main(int argc, char **argv) {
     if(! dealOpts(argc, argv))
         return 0;
 
+    //cudaDeviceSynchronize();
+    
     FeatureExtractor extractor(threadNum);
+ //   FeatureExtractor extractor2(threadNum);
 
     RawData data;
 
@@ -30,6 +33,7 @@ int main(int argc, char **argv) {
         load_wav_file(wavFileName, data);
 
     extractor.exFeatures(&data);
+//    extractor2.exFeatures(&data);
 
     reportMatlab(extractor);
 

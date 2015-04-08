@@ -50,11 +50,13 @@ private:
         int nfft;
     };
     */
+    /*
     static void fftTask(void *in);
     struct fft_task_info {
         std::vector<double> * window;
         std::vector<double> * powWinSpec;
     };
+    */
     /*  
     static void mulTask(void *in);
     struct mul_task_info {
@@ -96,7 +98,7 @@ protected:
             const Matrix<double> &melLogSpec, \
             int cepsNum = CEPS_NUM);
 
-    static std::vector<double> & windowFFT(std::vector<double> &res, \
+    void windowFFT(std::vector<double> &res, \
             std::vector<double> &data);
 
 

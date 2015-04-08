@@ -2,6 +2,48 @@
 #include "FeatureExtractorTool.h"
 
 __global__
+void windowFFT_cu(cp *d_SpeechSignal, int frameNum, int frameSize, int f, double arg){
+    int p, i, j, rollIdx=0, oldRollIdx;
+    size_t inner_offset = threadIdx.x % frameSize, 
+           innerIdx,
+           frame_offset = blockDim.x*blockIdx.x+(threadIdx.x/frameSize)*frameSize;
+    double temp_cp[2], temp_wm[2], temp_w[2];
+    cp *temp = (cp *) temp_cp, 
+       *wm = (cp*)temp_wm, 
+       *w = (cp*)temp_w; 
+     cp *d_signal[2]; 
+    
+    d_signal[0] = d_SpeechSignal+frame_offset;
+    d_signal[1] = d_signal[0]+frameNum*frameSize;
+    
+    //wholeIdx = frame_offset + inner_offset;
+    innerIdx = inner_offset;
+    
+    for(int k = frameSize>>1; k; k>>=1, arg*=0.5){
+        rollIdx ^= 1;
+        oldRollIdx = rollIdx^1;
+        
+        getPolarValue(1, f*arg, temp_wm);
+        *temp_w = 1;
+        *(temp_w+1) = 0;
+        
+        i = innerIdx/k;
+        j = innerIdx%k;
+        for(int t=0; t<i; t++){
+            //w = w*wm;
+            mulComplex(w,wm,w);
+        }
+        i = i*k;
+        p = i<<1;
+        if(p>=frameSize) p-=frameSize;
+    
+        mulComplex(temp, w, d_signal[oldRollIdx]+(p+k+j)); 
+        addComplex(d_signal[rollIdx]+(i+j), temp, d_signal[oldRollIdx]+(p+j));
+        __syncthreads();
+    }
+}
+
+__global__ 
 void fft_cu_part(cp *d_SpeechSignal, int n, int f, double arg){
     int p, i, j, idx, rollIdx=0, oldRollIdx;
     cp* d_signal[2]; 

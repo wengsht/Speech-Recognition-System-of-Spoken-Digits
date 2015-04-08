@@ -144,6 +144,7 @@ SP_RESULT FeatureExtractor::melCepstrum(std::vector<Feature> &cepstrums, \
     return SP_SUCCESS;
 }
 
+/*
 void FeatureExtractor::fftTask(void *in) {
     fft_task_info * task_info = (fft_task_info *) in;
 
@@ -154,21 +155,57 @@ void FeatureExtractor::fftTask(void *in) {
 
     delete task_info;
 }
+*/
 
 SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
         Matrix<double> &windows) {
     if(windows.size() == 0) return SP_SUCCESS;
 
     powSpec.resize(windows.size());
-    int siz = windows[0].size();
-    std::vector<double> powWinSpec(windows[0].size());
+    
+    int frameNum = windows.size(), 
+        frameSize = windows[0].size(),
+        blockSize = windows[0].size(),
+        elementNum = frameNum * frameSize, 
+        selIdx = (int)(std::log2(frameSize))%2;
+    size_t memSize = elementNum * sizeof(std::complex<double>);
 
+    std::complex<double> *SpeechSignal = new std::complex<double>[elementNum], *d_SpeechSignal;
+    for(int i=0; i<frameNum; i++){
+        int offset = i*frameSize;
+        for(int j=0; j<frameSize; j++){
+            SpeechSignal[offset+j] = std::complex<double>(windows[i][j],0);
+        }
+    }
+
+    cudaMalloc( (void **) &d_SpeechSignal, memSize*2 );
+    cudaMemcpy( d_SpeechSignal, SpeechSignal, memSize, cudaMemcpyHostToDevice);
+    
+    std::cout << "The select index is: " << selIdx << std::endl;
+
+    dim3 dimGrid( ceil( (double)elementNum/blockSize ) );
+    dim3 dimBlock(blockSize);
+    windowFFT_cu<<< dimGrid, dimBlock >>>(d_SpeechSignal, frameNum, frameSize, 1);
+    cudaMemcpy(SpeechSignal, d_SpeechSignal+memSize*selIdx, memSize, cudaMemcpyDeviceToHost);
+    
+    int resSize=frameSize/2+1, resultOffset;
+    for(int i=0; i<frameNum; i++){
+        powSpec[i].resize(resSize);
+        resultOffset = i*frameSize;
+        for(int j=0; j<resSize; j++)
+            powSpec[i][j] = std::norm(SpeechSignal[resultOffset+j]);
+    }
+
+    cudaFree(d_SpeechSignal);
+    delete []SpeechSignal;
     /*  
     for(int i = 0;i < windows.size(); i++) {
         if(windows[i].size() != siz) continue;
-        powSpec.push_back(windowFFT(powWinSpec, windows[i]));
+        windowFFT(powSpec[i], windows[i]);
     }
     */
+    
+    /*
     ThreadPool threadPool(threadNum);
     for(int i = 0;i < windows.size();i++) {
         sp_task task;
@@ -185,6 +222,7 @@ SP_RESULT FeatureExtractor::powSpectrum(Matrix<double> &powSpec, \
         threadPool.addTask(task);
     }
     threadPool.run();
+    */
 
     return SP_SUCCESS;
 }
@@ -336,7 +374,7 @@ SP_RESULT FeatureExtractor::fft2MelLog(int nfft, \
 }
 
 
-std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \
+void FeatureExtractor::windowFFT(std::vector<double> &res, \
         std::vector<double> &data) {
     int blockSize = 256;
     res.resize(data.size() / 2 + 1);
@@ -369,8 +407,6 @@ std::vector<double> & FeatureExtractor::windowFFT(std::vector<double> &res, \
 
     cudaFree(d_cp);
     delete [] cp;
-
-    return res;
 }
 
 SP_RESULT FeatureExtractor::windowMul(std::vector<double> &window, \
