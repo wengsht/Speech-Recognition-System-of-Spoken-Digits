@@ -2,22 +2,26 @@
 #include "FeatureExtractorTool.h"
 
 __global__
-void windowFFT_cu(cp *d_SpeechSignal, int frameNum, int frameSize, int f, double arg){
+void windowFFT_cu(cp *d_SpeechSignal, int frameNum, int frameSize, int f, int selIdx, double arg){
+    extern __shared__ char s_SpeechSignal[];
     int p, i, j, rollIdx=0, oldRollIdx;
-    size_t inner_offset = threadIdx.x % frameSize, 
-           innerIdx,
+    size_t innerIdx = threadIdx.x % frameSize, 
            frame_offset = blockDim.x*blockIdx.x+(threadIdx.x/frameSize)*frameSize;
     double temp_cp[2], temp_wm[2], temp_w[2];
     cp *temp = (cp *) temp_cp, 
        *wm = (cp*)temp_wm, 
        *w = (cp*)temp_w; 
-     cp *d_signal[2]; 
+    //cp *d_signal[2];
+    cp *s_signal[2]; 
     
-    d_signal[0] = d_SpeechSignal+frame_offset;
-    d_signal[1] = d_signal[0]+frameNum*frameSize;
+    size_t sharedSize = blockDim.x * sizeof(cp);
+    s_signal[0] = (cp *)s_SpeechSignal;
+    s_signal[1] = (cp *)&s_SpeechSignal[sharedSize];
+    //d_signal[0] = d_SpeechSignal+frame_offset;
+    //d_signal[1] = d_signal[0]+frameNum*frameSize;
     
-    //wholeIdx = frame_offset + inner_offset;
-    innerIdx = inner_offset;
+    *(s_signal[0]+innerIdx) = *(d_SpeechSignal+frame_offset+innerIdx);
+    __syncthreads();
     
     for(int k = frameSize>>1; k; k>>=1, arg*=0.5){
         rollIdx ^= 1;
@@ -37,10 +41,14 @@ void windowFFT_cu(cp *d_SpeechSignal, int frameNum, int frameSize, int f, double
         p = i<<1;
         if(p>=frameSize) p-=frameSize;
     
-        mulComplex(temp, w, d_signal[oldRollIdx]+(p+k+j)); 
-        addComplex(d_signal[rollIdx]+(i+j), temp, d_signal[oldRollIdx]+(p+j));
+        //mulComplex(temp, w, d_signal[oldRollIdx]+(p+k+j)); 
+        //addComplex(d_signal[rollIdx]+(i+j), temp, d_signal[oldRollIdx]+(p+j));
+        
+        mulComplex(temp, w, s_signal[oldRollIdx]+(p+k+j)); 
+        addComplex(s_signal[rollIdx]+(i+j), temp, s_signal[oldRollIdx]+(p+j));
         __syncthreads();
     }
+    d_SpeechSignal[frame_offset+innerIdx] = *(s_signal[selIdx]+innerIdx);
 }
 
 __global__ 

@@ -14,6 +14,7 @@ add_library(${FEATURE} Feature.cpp FeatureExtractor.cpp mathtool.cpp WaveFeature
     NoEmitState.cpp
     HMMSeqTrainer.cpp
     HMMSeqKMeanTrainer.cpp
+    wtime.cpp
 	)
 
 
@@ -30,4 +31,5 @@ cuda_add_library(${MFCC_CUDA} Feature.cpp FeatureExtractorTool.cu FeatureExtract
     NoEmitState.cpp
     HMMSeqTrainer.cpp
     HMMSeqKMeanTrainer.cpp
+    wtime.cpp
     )

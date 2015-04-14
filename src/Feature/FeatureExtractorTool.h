@@ -14,7 +14,7 @@
 //#endif
 
 __global__
-void windowFFT_cu(cp *d_SpeechSignal, int frameNum, int frameSize, int f, double arg=PI);
+void windowFFT_cu(cp *d_SpeechSignal, int frameNum, int frameSize, int f, int selIdx, double arg=PI);
 
 __global__ 
 void fft_cu_part(cp *d_SpeechSignal, int n, int f, double arg=PI);
