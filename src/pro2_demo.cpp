@@ -31,7 +31,7 @@ int main(int argc, char **argv) {
 
     extractor.exFeatures(&data);
 
-    reportMatlab(extractor);
+    //reportMatlab(extractor);
 
     return 0;
 }

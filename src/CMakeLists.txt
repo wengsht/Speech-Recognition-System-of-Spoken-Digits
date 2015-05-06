@@ -143,3 +143,6 @@ target_link_libraries(${PRO6_MAIN} ${READWAVE})
 target_link_libraries(${PRO6_MAIN} ${GRAPH})
 target_link_libraries(${PRO6_MAIN} portaudio)
 target_link_libraries(${PRO6_MAIN} pthread)
+
+file(COPY ${PROJECT_SOURCE_DIR}/rundot.sh DESTINATION ${PROJECT_BINARY_DIR}/)
+file(COPY ${PROJECT_SOURCE_DIR}/seqdot.sh DESTINATION ${PROJECT_BINARY_DIR}/)
