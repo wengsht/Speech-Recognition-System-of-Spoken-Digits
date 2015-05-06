@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+audspec	audspec.m	/^function [aspectrum,wts] = audspec(pspectrum, sr, nfilts, fbtype, minfreq, maxfreq, sumpower, bwidth)$/;"	f
+bark2hz	bark2hz.m	/^function hz=bark2hz(z)$/;"	f
+cep2spec	cep2spec.m	/^function [spec,idctm] = cep2spec(cep, nfreq, type)$/;"	f
+deltas	deltas.m	/^function d = deltas(x, w)$/;"	f
+dolpc	dolpc.m	/^function y = dolpc(x,modelorder)$/;"	f
+fft2barkmx	fft2barkmx.m	/^function wts = fft2barkmx(nfft, sr, nfilts, width, minfreq, maxfreq)$/;"	f
+fft2melmx	fft2melmx.m	/^function [wts,binfrqs] = fft2melmx(nfft, sr, nfilts, width, minfrq, maxfrq, htkmel, constamp)$/;"	f
+hz2bark	fft2barkmx.m	/^function z = hz2bark(f)$/;"	f
+hz2bark	hz2bark.m	/^function z= hz2bark(f)$/;"	f
+hz2mel	fft2melmx.m	/^function z = hz2mel(f,htk)$/;"	f
+hz2mel	hz2mel.m	/^function z = hz2mel(f,htk)$/;"	f
+invaudspec	invaudspec.m	/^function [spec,wts,iwts] = invaudspec(aspectrum, sr, nfft, fbtype, minfreq, maxfreq, sumpower, bwidth)$/;"	f
+invmelfcc	invmelfcc.m	/^function [x,aspc,spec] = invmelfcc(cep, sr, varargin)$/;"	f
+invpostaud	invpostaud.m	/^function [x,eql] = invpostaud(y,fmax,fbtype,broaden)$/;"	f
+invpowspec	invpowspec.m	/^function x = invpowspec(y, sr, wintime, steptime, excit)$/;"	f
+ispecgram	ispecgram.m	/^function x = ispecgram(d, ftsize, sr, win, nov)$/;"	f
+lifter	lifter.m	/^function y = lifter(x, lift, invs)$/;"	f
+lpc2cep	lpc2cep.m	/^function features = lpc2cep(a,nout)$/;"	f
+lpc2spec	lpc2spec.m	/^function [features,F,M] = lpc2spec(lpcas, nout)$/;"	f
+mel2hz	fft2melmx.m	/^function f = mel2hz(z, htk)$/;"	f
+mel2hz	mel2hz.m	/^function f = mel2hz(z, htk)$/;"	f
+melfcc	melfcc.m	/^function [cepstra,aspectrum,pspectrum] = melfcc(samples, sr, varargin)$/;"	f
+postaud	postaud.m	/^function [y,eql] = postaud(x,fmax,fbtype,broaden)$/;"	f
+powspec	powspec.m	/^function [y,e] = powspec(x, sr, wintime, steptime, dither)$/;"	f
+process_options	process_options.m	/^function [varargout] = process_options(args, varargin)$/;"	f
+rastafilt	rastafilt.m	/^function y = rastafilt(x)$/;"	f
+rastaplp	rastaplp.m	/^function [cepstra, spectra, pspectrum, lpcas, F, M] = rastaplp(samples, sr, dorasta, modelorder)$/;"	f
+readhtk	readhtk.m	/^function [d,fp,dt,tc,t]=readhtk(file)$/;"	f
+spec2cep	spec2cep.m	/^function [cep,dctm] = spec2cep(spec, ncep, type)$/;"	f

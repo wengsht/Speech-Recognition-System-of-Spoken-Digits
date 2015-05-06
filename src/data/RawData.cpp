@@ -36,7 +36,7 @@ RawData::RawData(const RawData& rawData){
 
 RawData::~RawData(){
     Log("Delete RawData");
-    SAFE_DELELE_POINTER(this->data);
+    SAFE_DELETE_POINTER(this->data);
     Log("Delete Safely");
 }
 
@@ -73,6 +73,7 @@ void RawData::copyBlockData(int from,int to){
     to = to *SAMPLES_IN_EACH_FRAME;
     if(from >= frame_num)return;
     if(to>=frame_num)return;
+	if(from == to) return;
     for(int i = 0;i<SAMPLES_IN_EACH_FRAME;i++){
         data[to+i] = data[from+i];
     }
@@ -101,12 +102,14 @@ double RawData::getBlockAveEnergy(int index){
 
 bool RawData::setFrameNum(int f_num){
     if(f_num % SAMPLES_IN_EACH_FRAME != 0 ){
+        /*  
         WarnLog("The frame_num of RawData %d is not a mutiple of \
                 SAMPLES_IN_EACH_FRAME(%d)\n",
                 f_num,SAMPLES_IN_EACH_FRAME);
+                */
     }
     this->frame_num = f_num /
-    SAMPLES_IN_EACH_FRAME *
-    SAMPLES_IN_EACH_FRAME;
+        SAMPLES_IN_EACH_FRAME *
+        SAMPLES_IN_EACH_FRAME;
     return true;
 }

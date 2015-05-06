@@ -50,6 +50,9 @@ public:
     
     ~EPAnalysis(){};
     
+    RawData * data() {
+        return this->rawData;
+    }
     virtual void Initial(RawData * rawData){
         this->rawData = rawData;
         energy.clear();

@@ -104,11 +104,13 @@ void EPAnalysis::changeSilentSegmentIntoSpeech(){
         if(speech[p] == true && speech[p+1] == false){
             int cnt;
             for(cnt = 1;cnt<=MIN_SILENT_FRAMES;cnt++){
+//            for(cnt = 1;cnt<size;cnt++){
                 if(speech[p+cnt] == true){
                     break;
                 }
             }
             if(cnt<=MIN_SILENT_FRAMES){
+            //if(cnt<size){
                 for(int i = 1;i<=cnt;i++){
                     speech[p+i] = true;
                 }
@@ -157,7 +159,7 @@ void EPAnalysis::smooth(){
     Log("Min speech block %d",MIN_SPEECH_FRAMES);
     
     changeSilentSegmentIntoSpeech();
-    changeSpeechSegmentIntoSilent();
+//    changeSpeechSegmentIntoSilent();
 }
 
 void EPAnalysis::cut(){
@@ -170,14 +172,14 @@ void EPAnalysis::cut(){
     int cnt = 0;
     int silent = 0;
     for(int i = 0;i<block_num;i++){
-        if(speech[i]){
+        if(speech[i]) {
             rawData->copyBlockData(i, cnt);
             cnt++;
             silent = 0;
         }
-        else{
+        else {
             silent++;
-            if(silent>MIN_SILENT_FRAMES*2){
+            if(silent > MIN_SILENT_FRAMES*2){
                 continue;
             }
             else{

@@ -9,6 +9,8 @@
 #ifndef SpeechRecongnitionSystem_configure_basic_h
 #define SpeechRecongnitionSystem_configure_basic_h
 
+#define WAV_SUFFIX ".wav"
+#define MFCC_SUFFIX ".mfcc"
 ///
 /// No very important configure, but don't change they for fun.
 ///
@@ -21,7 +23,7 @@ const int FRAME_PER_SECOND = 40; //don't change
 /// performance configure
 ///
 const bool PRINT_DEBUG_FRAME_INF = true; // print the block energy,bg,etc.
-const char  SAVE_DATA_DIR[] = "/Users/admin/Desktop/homework/";
+const char  SAVE_DATA_DIR[] = "./";
 
 
 
@@ -30,7 +32,7 @@ const char  SAVE_DATA_DIR[] = "/Users/admin/Desktop/homework/";
 /// or you can't user some file that made by these configure
 /// and you also need to change other configures to make the algorithm work well.
 ///
-const int SAMPLE_RATE = 44100;  //don't change
+const int SAMPLE_RATE = 8000; // 16000; // 44100;  //don't change
 const int NUM_CHANNELS = 1; //don't change
 
 const int SAMPLES_IN_EACH_FRAME = SAMPLE_RATE / FRAME_PER_SECOND;
@@ -58,5 +60,8 @@ typedef unsigned char SAMPLE;
 #define PRINTF_S_FORMAT "%d"
 #endif
 
+#include <vector>
+template <class T>
+using Matrix = std::vector< std::vector<T> > ;
 
 #endif
